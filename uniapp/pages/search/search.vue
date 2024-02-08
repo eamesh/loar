@@ -1,7 +1,7 @@
 <template>
 	<gui-page>
 		<template v-slot:gFixedTop>
-			<view class="h-[88rpx] bg-white flex flex-row justify-between items-center gap-x-4 px-4">
+			<view class="h-[88rpx] bg-white flex flex-row justify-between items-center gap-x-4 px-4 font-sans">
 				<gui-search @inputting="inputting" @confirm="confirm" kwd="TSLA" placeholder="股票名稱/代碼"></gui-search>
 				<view class="font-semibold font-sans">確認</view>
 			</view>
@@ -9,7 +9,7 @@
 		<!-- 页面主体 -->
 		<template v-slot:gBody>
 			<view style="height:88rpx;"></view>
-			<view class="px-4 py-3">
+			<view class="px-4 py-3 font-sans">
 				<view class="bg-white rounded-md px-3 py-4">
 					<view class="flex flex-row flex-nowrap justify-between items-center text-[#999] font-medium pb-1">
 						<view class="basis-1/2">Symbol/Name</view>
