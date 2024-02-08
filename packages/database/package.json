@@ -1,0 +1,28 @@
+{
+  "name": "@loar/database",
+  "version": "1.0.0",
+  "description": "",
+  "main": "./dist/index.js",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.ts",
+  "files": [
+    "dist/**"
+  ],
+  "scripts": {
+    "build": "tsup",
+    "db:generate": "prisma generate",
+    "db:push": "prisma db push --skip-generate",
+    "db:format": "prisma format"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@prisma/client": "5.9.1"
+  },
+  "devDependencies": {
+    "prisma": "^5.9.1",
+    "tsup": "^8.0.1",
+    "typescript": "^5.1.3"
+  }
+}

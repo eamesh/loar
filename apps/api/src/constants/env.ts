@@ -1,0 +1,9 @@
+export const US = 'US';
+export const HK = 'HK';
+export const AKSHARE_URL = 'AKSHARE_URL';
+export const REDIS_HOST = 'REDIS_HOST'
+export const REDIS_PORT = 'REDIS_PORT'
+export const REDIS_USERNAME = 'REDIS_USERNAME'
+export const REDIS_PASSWORD = 'REDIS_PASSWORD'
+export const CACHE_PREFIX = 'CACHE_PREFIX';
+export const CACHE_TTL = 'CACHE_TTL';

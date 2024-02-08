@@ -1,0 +1,10 @@
+{
+  "compilerOptions": {
+    "skipLibCheck": true,
+    "strict": true,
+    "rootDir": "src",
+    "noEmit": true,
+    "module": "NodeNext"
+  },
+  "include": ["src/**/*"]
+}

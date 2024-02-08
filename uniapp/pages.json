@@ -1,0 +1,273 @@
+{
+	"pages": [ //pages数组中第一项表示应用启动页，参考：https://uniapp.dcloud.io/collocation/pages
+		{
+			"path": "pages/main/home/home",
+			"style": {
+				"navigationBarTitleText": "",
+				"enablePullDownRefresh": false,
+				"navigationStyle": "custom"
+			}
+		},
+		{
+			"path": "pages/main/ipo/ipo",
+			"style": {
+				"navigationBarTitleText": "",
+				"enablePullDownRefresh": false,
+				"navigationStyle": "custom"
+			}
+		},
+		{
+			"path": "pages/main/trade/trade",
+			"style": {
+				"navigationBarTitleText": "",
+				"enablePullDownRefresh": false,
+				"navigationStyle": "custom"
+			}
+		},
+		{
+			"path": "pages/main/news/news",
+			"style": {
+				"navigationBarTitleText": "新闻",
+				"enablePullDownRefresh": false,
+				"navigationBarBackgroundColor": "#fff"
+			}
+		},
+		{
+			"path": "pages/main/profile/profile",
+			"style": {
+				"navigationBarTitleText": "",
+				"enablePullDownRefresh": false,
+				"navigationStyle": "custom"
+			}
+		},
+		{
+			"path": "pages/search/search",
+			"style": {
+				"navigationBarTitleText": "搜索",
+				"enablePullDownRefresh": false,
+				"navigationBarBackgroundColor": "#fff",
+				"backgroundColor": "#fff"
+			}
+		},
+		{
+			"path": "pages/gainers/gainers",
+			"style": {
+				"navigationBarTitleText": "Gainers",
+				"enablePullDownRefresh": false,
+				"navigationBarBackgroundColor": "#fff"
+			}
+		},
+		{
+			"path": "pages/kline/kline",
+			"style": {
+				"navigationBarTitleText": "行情",
+				"enablePullDownRefresh": false,
+				"navigationBarBackgroundColor": "#fff"
+			}
+		},
+		{
+			"path" : "pages/auth/signin/signin",
+			"style" : 
+			{
+				"navigationBarTitleText" : "",
+				"enablePullDownRefresh" : false,
+				"navigationStyle": "custom",
+				"navigationBarBackgroundColor": "#fff"
+			}
+		},
+		{
+			"path" : "pages/auth/signup/signup",
+			"style" : 
+			{
+				"navigationBarTitleText" : "註冊",
+				"enablePullDownRefresh" : false,
+				"navigationBarBackgroundColor": "#fff"
+			}
+		},
+		{
+			"path" : "pages/setting/language/language",
+			"style" : 
+			{
+				"navigationBarTitleText" : "語言設定",
+				"enablePullDownRefresh" : false,
+				"navigationBarBackgroundColor": "#fff"
+			}
+		},
+		{
+			"path" : "pages/user/password/password",
+			"style" : 
+			{
+				"navigationBarTitleText" : "重置密碼",
+				"enablePullDownRefresh" : false,
+				"navigationBarBackgroundColor": "#fff"
+			}
+		},
+		{
+			"path" : "pages/user/detail/detail",
+			"style" : 
+			{
+				"navigationBarTitleText" : "帳號資訊",
+				"enablePullDownRefresh" : false,
+				"navigationBarBackgroundColor": "#fff"
+			}
+		},
+		{
+			"path" : "pages/about/about",
+			"style" : 
+			{
+				"navigationBarTitleText" : "關於我們",
+				"enablePullDownRefresh" : false,
+				"navigationBarBackgroundColor": "#fff"
+			}
+		},
+		{
+			"path" : "pages/article/article",
+			"style" : 
+			{
+				"navigationBarTitleText" : "内容",
+				"enablePullDownRefresh" : false,
+				"navigationBarBackgroundColor": "#fff"
+			}
+		},
+		{
+			"path" : "pages/stock/ipo/record/record",
+			"style" : 
+			{
+				"navigationBarTitleText" : "首次公開發行歷史",
+				"enablePullDownRefresh" : false,
+				"navigationBarBackgroundColor": "#fff"
+			}
+		},
+		{
+			"path" : "pages/auth/reset/reset",
+			"style" : 
+			{
+				"navigationBarTitleText" : "重設密碼",
+				"enablePullDownRefresh" : false,
+				"navigationBarBackgroundColor": "#fff"
+			}
+		},
+		{
+			"path" : "pages/setting/country/country",
+			"style" : 
+			{
+				"navigationBarTitleText" : "國家名單",
+				"enablePullDownRefresh" : false,
+				"navigationBarBackgroundColor": "#fff"
+			}
+		},
+		{
+			"path" : "pages/recharge/card/card",
+			"style" : 
+			{
+				"navigationBarTitleText" : "銀行卡儲值",
+				"enablePullDownRefresh" : false,
+				"navigationBarBackgroundColor": "#fff"
+			}
+		},
+		{
+			"path" : "pages/recharge/usdt/usdt",
+			"style" : 
+			{
+				"navigationBarTitleText" : "USDT儲值",
+				"enablePullDownRefresh" : false,
+				"navigationBarBackgroundColor": "#fff"
+			}
+		},
+		{
+			"path" : "pages/recharge/card/withdraw",
+			"style" : 
+			{
+				"navigationBarTitleText" : "提現",
+				"enablePullDownRefresh" : false,
+				"navigationBarBackgroundColor": "#fff"
+			}
+		},
+		{
+			"path" : "pages/recharge/usdt/withdraw",
+			"style" : 
+			{
+				"navigationBarTitleText" : "USDT提現",
+				"enablePullDownRefresh" : false,
+				"navigationBarBackgroundColor": "#fff"
+			}
+		},
+		{
+			"path" : "pages/wallet/records/records",
+			"style" : 
+			{
+				"navigationBarTitleText" : "現金流量",
+				"enablePullDownRefresh" : false,
+				"navigationBarBackgroundColor": "#fff"
+			}
+		},
+		{
+			"path" : "pages/market/order/history",
+			"style" : 
+			{
+				"navigationBarTitleText" : "持倉歷史記錄",
+				"enablePullDownRefresh" : false,
+				"navigationBarBackgroundColor": "#fff"
+			}
+		},
+		{
+			"path" : "pages/wallet/fundRecords/fundRecords",
+			"style" : 
+			{
+				"navigationBarTitleText" : "提幣歷史",
+				"enablePullDownRefresh" : false,
+				"navigationBarBackgroundColor": "#fff"
+			}
+		}
+	],
+	"tabBar": {
+		"color": "#333",
+		"selectedColor": "#2B2E3D",
+		"borderStyle": "black",
+		"backgroundColor": "#ffffff",
+		"list": [{
+				"pagePath": "pages/main/home/home",
+				"iconPath": "static/main/home.png",
+				"selectedIconPath": "static/main/home_a.png",
+				"text": "%tabbar.home%"
+			},
+			{
+				"pagePath": "pages/main/ipo/ipo",
+				"iconPath": "static/main/ipo.png",
+				"selectedIconPath": "static/main/ipo_a.png",
+				"text": "%tabbar.ipo%"
+			},
+			{
+				"pagePath": "pages/main/trade/trade",
+				"iconPath": "static/main/trade.png",
+				"selectedIconPath": "static/main/trade_a.png",
+				"text": "%tabbar.trade%"
+			},
+			{
+				"pagePath": "pages/main/news/news",
+				"iconPath": "static/main/news.png",
+				"selectedIconPath": "static/main/news_a.png",
+				"text": "%tabbar.news%"
+			},
+			{
+				"pagePath": "pages/main/profile/profile",
+				"iconPath": "static/main/profile.png",
+				"selectedIconPath": "static/main/profile_a.png",
+				"text": "%tabbar.profile%"
+			}
+		]
+	},
+	"globalStyle": {
+		"navigationBarTextStyle": "black",
+		"navigationBarTitleText": "uni-app",
+		"navigationBarBackgroundColor": "#F8F8F8",
+		"backgroundColor": "#F8F8F8"
+	},
+	"uniIdRouter": {},
+	"easycom": {
+		"autoscan": true,
+		"custom": {
+			"gui-(.*)": "@/Grace6/components/gui-$1.vue"
+		}
+	}
+}

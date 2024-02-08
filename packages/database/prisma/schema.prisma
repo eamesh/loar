@@ -1,0 +1,118 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+  output   = "../generated/prisma-client"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id        BigInt    @id @default(autoincrement())
+  email     String    @unique
+  name      String?
+  avatar    String?
+  gender    GENDER    @default(UNKNOWN)
+  createdAt DateTime  @default(now())
+  updatedAt DateTime?
+
+  @@map("users")
+}
+
+model Member {
+  id        BigInt    @id @default(autoincrement())
+  email     String    @unique
+  name      String?
+  avatar    String?
+  gender    GENDER    @default(UNKNOWN)
+  createdAt DateTime  @default(now()) @map("created_at")
+  updatedAt DateTime? @map("updated_at")
+
+  stocks StockOnMembers[]
+
+  @@map("members")
+}
+
+model Stock {
+  id        BigInt       @id @default(autoincrement())
+  code      String       @db.VarChar(100)
+  symbol    String       @db.VarChar(100)
+  name      String       @db.VarChar(100)
+  cname     String?      @db.VarChar(100)
+  type      String       @db.VarChar(20)
+  logo      String?      @db.VarChar(200)
+  sok       String?      @db.VarChar(30)
+  optional  Boolean      @default(false)
+  status    STOCK_STATUS @default(NORMAL)
+  createdAt DateTime     @default(now()) @map("created_at")
+  updatedAt DateTime?    @map("updated_at")
+
+  members     StockOnMembers[]
+  stockRecord StockRecord?
+
+  @@unique([code, symbol, type])
+  @@map("stocks")
+}
+
+model StockRecord {
+  id        BigInt   @id @default(autoincrement())
+  // 最新价
+  price     String   @db.VarChar(200)
+  // 开盘价
+  open      String   @db.VarChar(200)
+  // 收盘价
+  close     String   @db.VarChar(200)
+  // 最高
+  high      String   @db.VarChar(200)
+  // 最低
+  low       String   @db.VarChar(200)
+  // 成交量
+  turnover  String   @db.VarChar(200)
+  // 成交额
+  volume    String   @db.VarChar(200)
+  // 时间
+  createdAt DateTime @default(now()) @map("created_at")
+
+  stockId BigInt @unique @map("stock_id")
+  stock   Stock  @relation(fields: [stockId], references: [id])
+
+  @@map("stock_records")
+}
+
+model StockOnMembers {
+  id       BigInt @id @default(autoincrement())
+  member   Member @relation(fields: [memberId], references: [id])
+  memberId BigInt @map("member_id")
+  stock    Stock  @relation(fields: [stockId], references: [id])
+  stockId  BigInt @map("stock_id")
+
+  createdAt DateTime @default(now()) @map("created_at")
+
+  @@map("stock_on_members")
+}
+
+model Setting {
+  id        BigInt    @id @default(autoincrement())
+  key       String
+  value     String    @db.Text()
+  createdAt DateTime  @default(now()) @map("created_at")
+  updatedAt DateTime? @map("updated_at")
+
+  @@map("settings")
+}
+
+enum GENDER {
+  UNKNOWN
+  MAN
+  WOMAN
+}
+
+enum STOCK_STATUS {
+  NORMAL
+  DISABLE
+  DOWN
+}
