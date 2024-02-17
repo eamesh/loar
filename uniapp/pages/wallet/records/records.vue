@@ -1,9 +1,9 @@
 <template>
 	<view class="p-4">
 		<view class="flex flex-row text-gray-400 font-sans text-[22rpx]">
-			<view class="basis-1/3">型別</view>
-			<view class="basis-1/3 text-center">帳戶變更</view>
-			<view class="basis-1/3 text-right">時間</view>
+			<view class="basis-1/3">{{ $t('table.type') }}</view>
+			<view class="basis-1/3 text-center">{{ $t('table.account_change') }}</view>
+			<view class="basis-1/3 text-right">{{ $t('table.time') }}</view>
 		</view>
 		
 		<view class="flex flex-row items-center font-sans text-xs mt-5">

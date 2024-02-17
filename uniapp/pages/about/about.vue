@@ -5,16 +5,16 @@
 		</view>
 		
 		<view class="bg-white rounded-lg flex flex-col py-1">
-			<view class="flex flex-row justify-between items-center px-4 py-3" @click="$go('/pages/article/article')">
-				<view>使用者協議</view>
+			<view class="flex flex-row justify-between items-center px-4 py-3" @click="$go('/pages/article/setting?key=agree')">
+				<view>{{ $t('user_agree') }}</view>
 				<text class="gui-icons gui-block gui-color-gray text-md">&#xe601;</text>
 			</view>
-			<view class="flex flex-row justify-between items-center px-4 py-3" @click="$go('/pages/article/article')">
-				<view>隱私權政策</view>
+			<view class="flex flex-row justify-between items-center px-4 py-3" @click="$go('/pages/article/setting?key=privacy')">
+				<view>{{ $t('privacy') }}</view>
 				<text class="gui-icons gui-block gui-color-gray text-md">&#xe601;</text>
 			</view>
-			<view class="flex flex-row justify-between items-center px-4 py-3" @click="$go('/pages/article/article')">
-				<view>公司簡介</view>
+			<view class="flex flex-row justify-between items-center px-4 py-3" @click="$go('/pages/article/setting?key=about')">
+				<view>{{ $t('company_profile') }}</view>
 				<text class="gui-icons gui-block gui-color-gray text-md">&#xe601;</text>
 			</view>
 		</view>

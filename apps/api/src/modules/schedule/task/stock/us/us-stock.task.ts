@@ -36,7 +36,7 @@ export class UsStockTask implements ScheduleTask {
     timeZone: US_TIMEZONE,
   })
   every2Hours(): void {
-    this.eventEmitter.emit(US_EVERY_2_HOURS);
+    // this.eventEmitter.emit(US_EVERY_2_HOURS);
   }
 
   @Cron(CronExpression.EVERY_MINUTE, {
@@ -44,7 +44,7 @@ export class UsStockTask implements ScheduleTask {
     timeZone: US_TIMEZONE,
   })
   everyMinute(): void {
-    this.eventEmitter.emit(US_EVERY_MINUTE);
+    // this.eventEmitter.emit(US_EVERY_MINUTE);
   }
 
   @Cron(CronExpression.EVERY_5_MINUTES, {
@@ -52,6 +52,6 @@ export class UsStockTask implements ScheduleTask {
     timeZone: US_TIMEZONE,
   })
   every5Minutes(): void {
-    // throw new Error('Method not implemented.');
+    // this.eventEmitter.emit(US_EVERY_5_MINUTES);
   }
 }

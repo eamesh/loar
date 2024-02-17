@@ -16,6 +16,7 @@ model User {
   email     String    @unique
   name      String?
   avatar    String?
+  password  String
   gender    GENDER    @default(UNKNOWN)
   createdAt DateTime  @default(now())
   updatedAt DateTime?
@@ -24,75 +25,346 @@ model User {
 }
 
 model Member {
-  id        BigInt    @id @default(autoincrement())
-  email     String    @unique
-  name      String?
-  avatar    String?
-  gender    GENDER    @default(UNKNOWN)
-  createdAt DateTime  @default(now()) @map("created_at")
-  updatedAt DateTime? @map("updated_at")
+  id             BigInt    @id @default(autoincrement())
+  email          String    @unique
+  name           String?
+  avatar         String?
+  password       String
+  gender         GENDER    @default(UNKNOWN)
+  address        String?
+  accountBalance Json?
+  status         Int       @default(0)
+  type           Int       @default(0)
+  createdAt      DateTime  @default(now()) @map("created_at")
+  updatedAt      DateTime? @map("updated_at")
 
-  stocks StockOnMembers[]
+  stockPostion    StockPosition[]
+  memberDetail    MemberDetail[]
+  memberSubscribe MemberSubscribe[]
 
   @@map("members")
 }
 
-model Stock {
-  id        BigInt       @id @default(autoincrement())
-  code      String       @db.VarChar(100)
-  symbol    String       @db.VarChar(100)
-  name      String       @db.VarChar(100)
-  cname     String?      @db.VarChar(100)
-  type      String       @db.VarChar(20)
-  logo      String?      @db.VarChar(200)
-  sok       String?      @db.VarChar(30)
-  optional  Boolean      @default(false)
-  status    STOCK_STATUS @default(NORMAL)
-  createdAt DateTime     @default(now()) @map("created_at")
-  updatedAt DateTime?    @map("updated_at")
+model StockSymbol {
+  id             BigInt  @id @default(autoincrement())
+  // 系统CODE
+  code           String
+  // 证券市场
+  market         String
+  // 上线状态
+  online         Int     @default(1)
+  // 证券代码
+  symbol         String
+  // 证券名称
+  showName       String
+  name           String?
+  symbolShowName String? @map("symbol_show_name")
+  trade          Int     @default(0)
+  // 证券类型 0 指数 1 证股 2 ETF
+  type           Int     @default(0)
+  // 最新价
+  newPrice       String? @map("new_price") @db.VarChar(200)
+  // 开盘价
+  open           String? @default("0.000") @db.VarChar(200)
+  // 收盘价
+  close          String? @default("0.000") @db.VarChar(200)
+  // 最高
+  high           String? @default("0.000") @db.VarChar(200)
+  // 最低
+  low            String? @default("0.000") @db.VarChar(200)
+  // 成交量
+  amount         String? @default("0.000") @db.VarChar(200)
+  // 成交额
+  volume         String? @default("0.000") @db.VarChar(200)
 
-  members     StockOnMembers[]
-  stockRecord StockRecord?
+  change        String? @default("0")
+  changePercent String? @default("0")
+
+  date       String?
+  sync       Json?
+  syncMarket String    @map("sync_market")
+  createdAt  DateTime  @default(now()) @map("created_at")
+  updatedAt  DateTime? @map("updated_at")
+
+  stockPostion StockPosition[]
+
+  @@unique([symbol, market])
+  @@map("stock_symbols")
+}
+
+model Stock {
+  id            BigInt       @id @default(autoincrement())
+  code          String       @db.VarChar(100)
+  symbol        String       @db.VarChar(100)
+  name          String       @db.VarChar(100)
+  cname         String?      @db.VarChar(100)
+  type          String       @db.VarChar(20)
+  logo          String?      @db.VarChar(200)
+  sok           String?      @db.VarChar(30)
+  optional      Boolean      @default(false)
+  // 最新价
+  newPrice      String?      @default("0") @map("new_price") @db.VarChar(200)
+  // 开盘价
+  open          String?      @default("0") @db.VarChar(200)
+  // 收盘价
+  close         String?      @default("0") @db.VarChar(200)
+  // 最高
+  high          String?      @default("0") @db.VarChar(200)
+  // 最低
+  low           String?      @default("0") @db.VarChar(200)
+  // 成交量
+  amount        String?      @default("0") @db.VarChar(200)
+  // 成交额
+  volume        String?      @default("0") @db.VarChar(200)
+  status        STOCK_STATUS @default(NORMAL)
+  change        String?      @default("0")
+  changePercent String?      @default("0%")
+  date          String?
+  extra         Json?
+  createdAt     DateTime     @default(now()) @map("created_at")
+  updatedAt     DateTime?    @map("updated_at")
+
+  stockRecord StockRecord[]
 
   @@unique([code, symbol, type])
   @@map("stocks")
 }
 
 model StockRecord {
-  id        BigInt   @id @default(autoincrement())
+  id       BigInt @id @default(autoincrement())
   // 最新价
-  price     String   @db.VarChar(200)
+  newPrice String @map("new_price") @db.VarChar(200)
   // 开盘价
-  open      String   @db.VarChar(200)
+  open     String @db.VarChar(200)
   // 收盘价
-  close     String   @db.VarChar(200)
+  close    String @db.VarChar(200)
   // 最高
-  high      String   @db.VarChar(200)
+  high     String @db.VarChar(200)
   // 最低
-  low       String   @db.VarChar(200)
+  low      String @db.VarChar(200)
   // 成交量
-  turnover  String   @db.VarChar(200)
+  amount   String @db.VarChar(200)
   // 成交额
-  volume    String   @db.VarChar(200)
+  volume   String @db.VarChar(200)
+
+  date      String
+  extra     Json
   // 时间
   createdAt DateTime @default(now()) @map("created_at")
 
-  stockId BigInt @unique @map("stock_id")
+  stockId BigInt @map("stock_id")
   stock   Stock  @relation(fields: [stockId], references: [id])
 
   @@map("stock_records")
 }
 
-model StockOnMembers {
-  id       BigInt @id @default(autoincrement())
-  member   Member @relation(fields: [memberId], references: [id])
-  memberId BigInt @map("member_id")
-  stock    Stock  @relation(fields: [stockId], references: [id])
-  stockId  BigInt @map("stock_id")
+model StockMarket {
+  id             BigInt    @id @default(autoincrement())
+  // 市场标识
+  code           String?
+  // 市场交易货币
+  currency       String?
+  // 最大出金
+  maxWithdrawal  String?   @map("max_withdrawal")
+  // 最小出金
+  minWithdrawal  String?   @map("min_withdrawal")
+  // 手续费率
+  feeRate        String?   @map("fee_rate")
+  // 最低手续费
+  minFee         String?   @map("min_fee")
+  // 杠杆倍数
+  lever          String?
+  // 维持保证金率
+  mmr            String?
+  // 配资费率
+  allocationRate String?   @map("allocation_rate")
+  // 下单频率
+  frequency      Int?
+  // 限制时间/秒
+  bindingHours   Int?      @map("binding_hours")
+  // 市场头部证券
+  headSymbols    String?   @map("head_symbols")
+  // 排序
+  sort           Int?      @default(0)
+  // 市场是否上线
+  online         Int?      @default(1)
+  // 货币是否上线
+  conline        Int?      @default(1)
+  createdAt      DateTime  @default(now()) @map("created_at")
+  updatedAt      DateTime? @map("updated_at")
 
+  @@map("stock_markets")
+}
+
+model StockFavorite {
+  id       BigInt @id @default(autoincrement())
+  // 最新价
+  newPrice String @map("new_price") @db.VarChar(200)
+  // 开盘价
+  open     String @db.VarChar(200)
+  // 收盘价
+  close    String @db.VarChar(200)
+  // 最高
+  high     String @db.VarChar(200)
+  // 最低
+  low      String @db.VarChar(200)
+  // 成交量
+  amount   String @db.VarChar(200)
+  // 成交额
+  volume   String @db.VarChar(200)
+
+  date  String?
+  extra Json?
+
+  memberId      BigInt @map("member_id")
+  stockSymbolId BigInt @map("stock_symbol_id")
+
+  // 时间
   createdAt DateTime @default(now()) @map("created_at")
 
-  @@map("stock_on_members")
+  @@map("stock_favorites")
+}
+
+model StockSubscribe {
+  id                BigInt    @id @default(autoincrement())
+  // 市场
+  market            String
+  // 股票名称
+  name              String
+  // 股票代码
+  code              String
+  // 开始认购时间
+  startAt           DateTime? @map("start_at")
+  // 结束认购时间
+  endAt             DateTime? @map("end_at")
+  // 上市时间
+  upAt              DateTime? @map("up_at")
+  // 发行量
+  circulation       Int?
+  // 剩余发行量
+  remainCirculation Int?      @map("remain_circulation")
+  // 发行价
+  ipoPrice          Decimal   @map("ipo_price") @db.Decimal(10, 5)
+  // 招股价
+  issuePrice        Decimal   @map("issue_price") @db.Decimal(10, 5)
+  // 公布结果时间
+  resultAt          DateTime? @map("result_at")
+  // 认购数量价格
+  subAmount         Json?     @map("sub_amount")
+  // 状态
+  status            Int       @default(1)
+  type              Int       @default(0)
+  createdAt         DateTime  @default(now()) @map("created_at")
+  updatedAt         DateTime? @map("updated_at")
+
+  @@map("stock_subscribes")
+}
+
+model MemberSubscribe {
+  id                BigInt   @id @default(autoincrement())
+  market            String
+  code              String
+  name              String
+  // 申购数量
+  amount            Int
+  // 申购金额
+  money             Decimal  @db.Decimal(10, 5)
+  // 申购单号
+  no                String
+  // 中签数量
+  winningAmount     Int?     @map("winning_amount")
+  // 中签价格
+  winningPrice      Decimal? @map("winning_price") @db.Decimal(10, 5)
+  // 中签总额
+  totalWinningPrice Decimal? @map("total_winning_price") @db.Decimal(10, 5)
+  // 实际金额
+  actualAmount      Decimal? @map("actual_amount") @db.Decimal(10, 5)
+  // 订单状态
+  status            Int      @default(1)
+  // 中间状态
+  type              Int      @default(0)
+
+  createdAt DateTime  @default(now()) @map("created_at")
+  updatedAt DateTime? @map("updated_at")
+
+  stockSubscribeId BigInt @map("stock_subscribe_id")
+
+  memberId BigInt @map("member_id")
+  member   Member @relation(fields: [memberId], references: [id])
+
+  @@map("member_subscribes")
+}
+
+model StockPosition {
+  id         BigInt  @id @default(autoincrement())
+  // 持仓数量
+  amount     Int
+  // 预估爆仓价
+  blast      String
+  // 持仓均价
+  price      String
+  // 交易模式
+  mode       Int
+  // 持仓状态
+  status     Int
+  // 保证金
+  bond       String?
+  // 单号
+  identifier String?
+  // 杠杆
+  lever      String? @default("1")
+  // 止损
+  stopLoss   String?
+  // 止盈
+  takeProfit String?
+  // 市场
+  market     String?
+
+  // 损益
+  pl   String? @default("0")
+  // 损益率
+  rate String? @default("0")
+
+  currentPrice String? @map("current_price")
+
+  memberId      BigInt @map("member_id")
+  stockSymbolId BigInt @map("stock_symbol_id")
+
+  member      Member      @relation(fields: [memberId], references: [id])
+  stockSymbol StockSymbol @relation(fields: [stockSymbolId], references: [id])
+
+  createdAt DateTime  @default(now()) @map("created_at")
+  updatedAt DateTime? @map("updated_at")
+
+  @@map("stock_positions")
+}
+
+model MemberDetail {
+  id       BigInt  @id @default(autoincrement())
+  after    String?
+  amount   String?
+  before   String?
+  market   String?
+  type     Int
+  remark   String?
+  memberId BigInt  @map("member_id")
+  member   Member  @relation(fields: [memberId], references: [id])
+
+  @@map("member_details")
+}
+
+model Country {
+  id        BigInt    @id @default(autoincrement())
+  code      String?   @db.Char(30)
+  name      String    @db.VarChar(60)
+  en        String    @db.VarChar(60)
+  tel       String    @db.Char(10)
+  py        String    @db.Char(30)
+  createdAt DateTime  @default(now()) @map("created_at")
+  updatedAt DateTime? @map("updated_at")
+
+  @@unique([py, tel, name])
+  @@map("countries")
 }
 
 model Setting {
@@ -105,6 +377,35 @@ model Setting {
   @@map("settings")
 }
 
+model StockResource {
+  id             BigInt    @id @default(autoincrement())
+  amountScope    String    @map("amount_scope")
+  frequencyScope String    @map("frequency_scope")
+  market         String    @map("market")
+  spreadScope    String    @map("spread_scope")
+  endAt          String    @map("end_at")
+  startAt        String    @map("start_at")
+  symbol         String
+  type           Int       @default(1)
+  status         Int       @default(1)
+  createdAt      DateTime  @default(now()) @map("created_at")
+  updatedAt      DateTime? @map("updated_at")
+
+  @@map("stock_resources")
+}
+
+model StockResourceRecord {
+  id              BigInt @id @default(autoincrement())
+  open            String
+  high            String
+  close           String
+  low             String
+  time            String
+  stockResourceId BigInt @map("stock_resource_id")
+
+  @@map("stock_resource_records")
+}
+
 enum GENDER {
   UNKNOWN
   MAN
@@ -115,4 +416,15 @@ enum STOCK_STATUS {
   NORMAL
   DISABLE
   DOWN
+}
+
+model Article {
+  id        BigInt    @id @default(autoincrement())
+  thumb     String
+  title     String
+  content   String    @db.LongText
+  createdAt DateTime  @default(now()) @map("created_at")
+  updatedAt DateTime? @map("updated_at")
+
+  @@map("articles")
 }

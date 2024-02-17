@@ -7,6 +7,7 @@
     "lint": "turbo lint",
     "db": "pnpm --filter @loar/database",
     "api": "pnpm --filter @loar/api",
+    "admin": "pnpm --filter @loar/admin",
     "app": "pnpm --filter @loar/app",
     "hybrid": "pnpm --filter @loar/hybrid",
     "locale": "pnpm --filter @loar/locale"

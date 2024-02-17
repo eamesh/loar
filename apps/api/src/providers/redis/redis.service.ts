@@ -5,7 +5,9 @@ import { RedisStore } from 'cache-manager-ioredis-yet';
 
 @Injectable()
 export class RedisService {
-  constructor(@Inject(CACHE_MANAGER) private readonly cache: Cache<RedisStore>) {}
+  constructor(
+    @Inject(CACHE_MANAGER) private readonly cache: Cache<RedisStore>,
+  ) {}
 
   get client() {
     return this.cache.store.client;

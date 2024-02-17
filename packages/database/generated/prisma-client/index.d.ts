@@ -24,6 +24,11 @@ export type User = $Result.DefaultSelection<Prisma.$UserPayload>
  */
 export type Member = $Result.DefaultSelection<Prisma.$MemberPayload>
 /**
+ * Model StockSymbol
+ * 
+ */
+export type StockSymbol = $Result.DefaultSelection<Prisma.$StockSymbolPayload>
+/**
  * Model Stock
  * 
  */
@@ -34,15 +39,60 @@ export type Stock = $Result.DefaultSelection<Prisma.$StockPayload>
  */
 export type StockRecord = $Result.DefaultSelection<Prisma.$StockRecordPayload>
 /**
- * Model StockOnMembers
+ * Model StockMarket
  * 
  */
-export type StockOnMembers = $Result.DefaultSelection<Prisma.$StockOnMembersPayload>
+export type StockMarket = $Result.DefaultSelection<Prisma.$StockMarketPayload>
+/**
+ * Model StockFavorite
+ * 
+ */
+export type StockFavorite = $Result.DefaultSelection<Prisma.$StockFavoritePayload>
+/**
+ * Model StockSubscribe
+ * 
+ */
+export type StockSubscribe = $Result.DefaultSelection<Prisma.$StockSubscribePayload>
+/**
+ * Model MemberSubscribe
+ * 
+ */
+export type MemberSubscribe = $Result.DefaultSelection<Prisma.$MemberSubscribePayload>
+/**
+ * Model StockPosition
+ * 
+ */
+export type StockPosition = $Result.DefaultSelection<Prisma.$StockPositionPayload>
+/**
+ * Model MemberDetail
+ * 
+ */
+export type MemberDetail = $Result.DefaultSelection<Prisma.$MemberDetailPayload>
+/**
+ * Model Country
+ * 
+ */
+export type Country = $Result.DefaultSelection<Prisma.$CountryPayload>
 /**
  * Model Setting
  * 
  */
 export type Setting = $Result.DefaultSelection<Prisma.$SettingPayload>
+/**
+ * Model StockResource
+ * 
+ */
+export type StockResource = $Result.DefaultSelection<Prisma.$StockResourcePayload>
+/**
+ * Model StockResourceRecord
+ * 
+ */
+export type StockResourceRecord = $Result.DefaultSelection<Prisma.$StockResourceRecordPayload>
+/**
+ * Model Article
+ * 
+ */
+export type Article = $Result.DefaultSelection<Prisma.$ArticlePayload>
 
 /**
  * Enums
@@ -218,6 +268,16 @@ export class PrismaClient<
   get member(): Prisma.MemberDelegate<ExtArgs>;
 
   /**
+   * `prisma.stockSymbol`: Exposes CRUD operations for the **StockSymbol** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more StockSymbols
+    * const stockSymbols = await prisma.stockSymbol.findMany()
+    * ```
+    */
+  get stockSymbol(): Prisma.StockSymbolDelegate<ExtArgs>;
+
+  /**
    * `prisma.stock`: Exposes CRUD operations for the **Stock** model.
     * Example usage:
     * ```ts
@@ -238,14 +298,74 @@ export class PrismaClient<
   get stockRecord(): Prisma.StockRecordDelegate<ExtArgs>;
 
   /**
-   * `prisma.stockOnMembers`: Exposes CRUD operations for the **StockOnMembers** model.
+   * `prisma.stockMarket`: Exposes CRUD operations for the **StockMarket** model.
     * Example usage:
     * ```ts
-    * // Fetch zero or more StockOnMembers
-    * const stockOnMembers = await prisma.stockOnMembers.findMany()
+    * // Fetch zero or more StockMarkets
+    * const stockMarkets = await prisma.stockMarket.findMany()
     * ```
     */
-  get stockOnMembers(): Prisma.StockOnMembersDelegate<ExtArgs>;
+  get stockMarket(): Prisma.StockMarketDelegate<ExtArgs>;
+
+  /**
+   * `prisma.stockFavorite`: Exposes CRUD operations for the **StockFavorite** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more StockFavorites
+    * const stockFavorites = await prisma.stockFavorite.findMany()
+    * ```
+    */
+  get stockFavorite(): Prisma.StockFavoriteDelegate<ExtArgs>;
+
+  /**
+   * `prisma.stockSubscribe`: Exposes CRUD operations for the **StockSubscribe** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more StockSubscribes
+    * const stockSubscribes = await prisma.stockSubscribe.findMany()
+    * ```
+    */
+  get stockSubscribe(): Prisma.StockSubscribeDelegate<ExtArgs>;
+
+  /**
+   * `prisma.memberSubscribe`: Exposes CRUD operations for the **MemberSubscribe** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more MemberSubscribes
+    * const memberSubscribes = await prisma.memberSubscribe.findMany()
+    * ```
+    */
+  get memberSubscribe(): Prisma.MemberSubscribeDelegate<ExtArgs>;
+
+  /**
+   * `prisma.stockPosition`: Exposes CRUD operations for the **StockPosition** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more StockPositions
+    * const stockPositions = await prisma.stockPosition.findMany()
+    * ```
+    */
+  get stockPosition(): Prisma.StockPositionDelegate<ExtArgs>;
+
+  /**
+   * `prisma.memberDetail`: Exposes CRUD operations for the **MemberDetail** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more MemberDetails
+    * const memberDetails = await prisma.memberDetail.findMany()
+    * ```
+    */
+  get memberDetail(): Prisma.MemberDetailDelegate<ExtArgs>;
+
+  /**
+   * `prisma.country`: Exposes CRUD operations for the **Country** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more Countries
+    * const countries = await prisma.country.findMany()
+    * ```
+    */
+  get country(): Prisma.CountryDelegate<ExtArgs>;
 
   /**
    * `prisma.setting`: Exposes CRUD operations for the **Setting** model.
@@ -256,6 +376,36 @@ export class PrismaClient<
     * ```
     */
   get setting(): Prisma.SettingDelegate<ExtArgs>;
+
+  /**
+   * `prisma.stockResource`: Exposes CRUD operations for the **StockResource** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more StockResources
+    * const stockResources = await prisma.stockResource.findMany()
+    * ```
+    */
+  get stockResource(): Prisma.StockResourceDelegate<ExtArgs>;
+
+  /**
+   * `prisma.stockResourceRecord`: Exposes CRUD operations for the **StockResourceRecord** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more StockResourceRecords
+    * const stockResourceRecords = await prisma.stockResourceRecord.findMany()
+    * ```
+    */
+  get stockResourceRecord(): Prisma.StockResourceRecordDelegate<ExtArgs>;
+
+  /**
+   * `prisma.article`: Exposes CRUD operations for the **Article** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more Articles
+    * const articles = await prisma.article.findMany()
+    * ```
+    */
+  get article(): Prisma.ArticleDelegate<ExtArgs>;
 }
 
 export namespace Prisma {
@@ -728,10 +878,20 @@ export namespace Prisma {
   export const ModelName: {
     User: 'User',
     Member: 'Member',
+    StockSymbol: 'StockSymbol',
     Stock: 'Stock',
     StockRecord: 'StockRecord',
-    StockOnMembers: 'StockOnMembers',
-    Setting: 'Setting'
+    StockMarket: 'StockMarket',
+    StockFavorite: 'StockFavorite',
+    StockSubscribe: 'StockSubscribe',
+    MemberSubscribe: 'MemberSubscribe',
+    StockPosition: 'StockPosition',
+    MemberDetail: 'MemberDetail',
+    Country: 'Country',
+    Setting: 'Setting',
+    StockResource: 'StockResource',
+    StockResourceRecord: 'StockResourceRecord',
+    Article: 'Article'
   };
 
   export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -748,7 +908,7 @@ export namespace Prisma {
 
   export type TypeMap<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     meta: {
-      modelProps: 'user' | 'member' | 'stock' | 'stockRecord' | 'stockOnMembers' | 'setting'
+      modelProps: 'user' | 'member' | 'stockSymbol' | 'stock' | 'stockRecord' | 'stockMarket' | 'stockFavorite' | 'stockSubscribe' | 'memberSubscribe' | 'stockPosition' | 'memberDetail' | 'country' | 'setting' | 'stockResource' | 'stockResourceRecord' | 'article'
       txIsolationLevel: Prisma.TransactionIsolationLevel
     },
     model: {
@@ -884,6 +1044,72 @@ export namespace Prisma {
           }
         }
       }
+      StockSymbol: {
+        payload: Prisma.$StockSymbolPayload<ExtArgs>
+        fields: Prisma.StockSymbolFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.StockSymbolFindUniqueArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$StockSymbolPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.StockSymbolFindUniqueOrThrowArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$StockSymbolPayload>
+          }
+          findFirst: {
+            args: Prisma.StockSymbolFindFirstArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$StockSymbolPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.StockSymbolFindFirstOrThrowArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$StockSymbolPayload>
+          }
+          findMany: {
+            args: Prisma.StockSymbolFindManyArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$StockSymbolPayload>[]
+          }
+          create: {
+            args: Prisma.StockSymbolCreateArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$StockSymbolPayload>
+          }
+          createMany: {
+            args: Prisma.StockSymbolCreateManyArgs<ExtArgs>,
+            result: Prisma.BatchPayload
+          }
+          delete: {
+            args: Prisma.StockSymbolDeleteArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$StockSymbolPayload>
+          }
+          update: {
+            args: Prisma.StockSymbolUpdateArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$StockSymbolPayload>
+          }
+          deleteMany: {
+            args: Prisma.StockSymbolDeleteManyArgs<ExtArgs>,
+            result: Prisma.BatchPayload
+          }
+          updateMany: {
+            args: Prisma.StockSymbolUpdateManyArgs<ExtArgs>,
+            result: Prisma.BatchPayload
+          }
+          upsert: {
+            args: Prisma.StockSymbolUpsertArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$StockSymbolPayload>
+          }
+          aggregate: {
+            args: Prisma.StockSymbolAggregateArgs<ExtArgs>,
+            result: $Utils.Optional<AggregateStockSymbol>
+          }
+          groupBy: {
+            args: Prisma.StockSymbolGroupByArgs<ExtArgs>,
+            result: $Utils.Optional<StockSymbolGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.StockSymbolCountArgs<ExtArgs>,
+            result: $Utils.Optional<StockSymbolCountAggregateOutputType> | number
+          }
+        }
+      }
       Stock: {
         payload: Prisma.$StockPayload<ExtArgs>
         fields: Prisma.StockFieldRefs
@@ -1016,69 +1242,465 @@ export namespace Prisma {
           }
         }
       }
-      StockOnMembers: {
-        payload: Prisma.$StockOnMembersPayload<ExtArgs>
-        fields: Prisma.StockOnMembersFieldRefs
+      StockMarket: {
+        payload: Prisma.$StockMarketPayload<ExtArgs>
+        fields: Prisma.StockMarketFieldRefs
         operations: {
           findUnique: {
-            args: Prisma.StockOnMembersFindUniqueArgs<ExtArgs>,
-            result: $Utils.PayloadToResult<Prisma.$StockOnMembersPayload> | null
+            args: Prisma.StockMarketFindUniqueArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$StockMarketPayload> | null
           }
           findUniqueOrThrow: {
-            args: Prisma.StockOnMembersFindUniqueOrThrowArgs<ExtArgs>,
-            result: $Utils.PayloadToResult<Prisma.$StockOnMembersPayload>
+            args: Prisma.StockMarketFindUniqueOrThrowArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$StockMarketPayload>
           }
           findFirst: {
-            args: Prisma.StockOnMembersFindFirstArgs<ExtArgs>,
-            result: $Utils.PayloadToResult<Prisma.$StockOnMembersPayload> | null
+            args: Prisma.StockMarketFindFirstArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$StockMarketPayload> | null
           }
           findFirstOrThrow: {
-            args: Prisma.StockOnMembersFindFirstOrThrowArgs<ExtArgs>,
-            result: $Utils.PayloadToResult<Prisma.$StockOnMembersPayload>
+            args: Prisma.StockMarketFindFirstOrThrowArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$StockMarketPayload>
           }
           findMany: {
-            args: Prisma.StockOnMembersFindManyArgs<ExtArgs>,
-            result: $Utils.PayloadToResult<Prisma.$StockOnMembersPayload>[]
+            args: Prisma.StockMarketFindManyArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$StockMarketPayload>[]
           }
           create: {
-            args: Prisma.StockOnMembersCreateArgs<ExtArgs>,
-            result: $Utils.PayloadToResult<Prisma.$StockOnMembersPayload>
+            args: Prisma.StockMarketCreateArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$StockMarketPayload>
           }
           createMany: {
-            args: Prisma.StockOnMembersCreateManyArgs<ExtArgs>,
+            args: Prisma.StockMarketCreateManyArgs<ExtArgs>,
             result: Prisma.BatchPayload
           }
           delete: {
-            args: Prisma.StockOnMembersDeleteArgs<ExtArgs>,
-            result: $Utils.PayloadToResult<Prisma.$StockOnMembersPayload>
+            args: Prisma.StockMarketDeleteArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$StockMarketPayload>
           }
           update: {
-            args: Prisma.StockOnMembersUpdateArgs<ExtArgs>,
-            result: $Utils.PayloadToResult<Prisma.$StockOnMembersPayload>
+            args: Prisma.StockMarketUpdateArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$StockMarketPayload>
           }
           deleteMany: {
-            args: Prisma.StockOnMembersDeleteManyArgs<ExtArgs>,
+            args: Prisma.StockMarketDeleteManyArgs<ExtArgs>,
             result: Prisma.BatchPayload
           }
           updateMany: {
-            args: Prisma.StockOnMembersUpdateManyArgs<ExtArgs>,
+            args: Prisma.StockMarketUpdateManyArgs<ExtArgs>,
             result: Prisma.BatchPayload
           }
           upsert: {
-            args: Prisma.StockOnMembersUpsertArgs<ExtArgs>,
-            result: $Utils.PayloadToResult<Prisma.$StockOnMembersPayload>
+            args: Prisma.StockMarketUpsertArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$StockMarketPayload>
           }
           aggregate: {
-            args: Prisma.StockOnMembersAggregateArgs<ExtArgs>,
-            result: $Utils.Optional<AggregateStockOnMembers>
+            args: Prisma.StockMarketAggregateArgs<ExtArgs>,
+            result: $Utils.Optional<AggregateStockMarket>
           }
           groupBy: {
-            args: Prisma.StockOnMembersGroupByArgs<ExtArgs>,
-            result: $Utils.Optional<StockOnMembersGroupByOutputType>[]
+            args: Prisma.StockMarketGroupByArgs<ExtArgs>,
+            result: $Utils.Optional<StockMarketGroupByOutputType>[]
           }
           count: {
-            args: Prisma.StockOnMembersCountArgs<ExtArgs>,
-            result: $Utils.Optional<StockOnMembersCountAggregateOutputType> | number
+            args: Prisma.StockMarketCountArgs<ExtArgs>,
+            result: $Utils.Optional<StockMarketCountAggregateOutputType> | number
+          }
+        }
+      }
+      StockFavorite: {
+        payload: Prisma.$StockFavoritePayload<ExtArgs>
+        fields: Prisma.StockFavoriteFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.StockFavoriteFindUniqueArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$StockFavoritePayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.StockFavoriteFindUniqueOrThrowArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$StockFavoritePayload>
+          }
+          findFirst: {
+            args: Prisma.StockFavoriteFindFirstArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$StockFavoritePayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.StockFavoriteFindFirstOrThrowArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$StockFavoritePayload>
+          }
+          findMany: {
+            args: Prisma.StockFavoriteFindManyArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$StockFavoritePayload>[]
+          }
+          create: {
+            args: Prisma.StockFavoriteCreateArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$StockFavoritePayload>
+          }
+          createMany: {
+            args: Prisma.StockFavoriteCreateManyArgs<ExtArgs>,
+            result: Prisma.BatchPayload
+          }
+          delete: {
+            args: Prisma.StockFavoriteDeleteArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$StockFavoritePayload>
+          }
+          update: {
+            args: Prisma.StockFavoriteUpdateArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$StockFavoritePayload>
+          }
+          deleteMany: {
+            args: Prisma.StockFavoriteDeleteManyArgs<ExtArgs>,
+            result: Prisma.BatchPayload
+          }
+          updateMany: {
+            args: Prisma.StockFavoriteUpdateManyArgs<ExtArgs>,
+            result: Prisma.BatchPayload
+          }
+          upsert: {
+            args: Prisma.StockFavoriteUpsertArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$StockFavoritePayload>
+          }
+          aggregate: {
+            args: Prisma.StockFavoriteAggregateArgs<ExtArgs>,
+            result: $Utils.Optional<AggregateStockFavorite>
+          }
+          groupBy: {
+            args: Prisma.StockFavoriteGroupByArgs<ExtArgs>,
+            result: $Utils.Optional<StockFavoriteGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.StockFavoriteCountArgs<ExtArgs>,
+            result: $Utils.Optional<StockFavoriteCountAggregateOutputType> | number
+          }
+        }
+      }
+      StockSubscribe: {
+        payload: Prisma.$StockSubscribePayload<ExtArgs>
+        fields: Prisma.StockSubscribeFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.StockSubscribeFindUniqueArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$StockSubscribePayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.StockSubscribeFindUniqueOrThrowArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$StockSubscribePayload>
+          }
+          findFirst: {
+            args: Prisma.StockSubscribeFindFirstArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$StockSubscribePayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.StockSubscribeFindFirstOrThrowArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$StockSubscribePayload>
+          }
+          findMany: {
+            args: Prisma.StockSubscribeFindManyArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$StockSubscribePayload>[]
+          }
+          create: {
+            args: Prisma.StockSubscribeCreateArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$StockSubscribePayload>
+          }
+          createMany: {
+            args: Prisma.StockSubscribeCreateManyArgs<ExtArgs>,
+            result: Prisma.BatchPayload
+          }
+          delete: {
+            args: Prisma.StockSubscribeDeleteArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$StockSubscribePayload>
+          }
+          update: {
+            args: Prisma.StockSubscribeUpdateArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$StockSubscribePayload>
+          }
+          deleteMany: {
+            args: Prisma.StockSubscribeDeleteManyArgs<ExtArgs>,
+            result: Prisma.BatchPayload
+          }
+          updateMany: {
+            args: Prisma.StockSubscribeUpdateManyArgs<ExtArgs>,
+            result: Prisma.BatchPayload
+          }
+          upsert: {
+            args: Prisma.StockSubscribeUpsertArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$StockSubscribePayload>
+          }
+          aggregate: {
+            args: Prisma.StockSubscribeAggregateArgs<ExtArgs>,
+            result: $Utils.Optional<AggregateStockSubscribe>
+          }
+          groupBy: {
+            args: Prisma.StockSubscribeGroupByArgs<ExtArgs>,
+            result: $Utils.Optional<StockSubscribeGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.StockSubscribeCountArgs<ExtArgs>,
+            result: $Utils.Optional<StockSubscribeCountAggregateOutputType> | number
+          }
+        }
+      }
+      MemberSubscribe: {
+        payload: Prisma.$MemberSubscribePayload<ExtArgs>
+        fields: Prisma.MemberSubscribeFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.MemberSubscribeFindUniqueArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$MemberSubscribePayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.MemberSubscribeFindUniqueOrThrowArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$MemberSubscribePayload>
+          }
+          findFirst: {
+            args: Prisma.MemberSubscribeFindFirstArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$MemberSubscribePayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.MemberSubscribeFindFirstOrThrowArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$MemberSubscribePayload>
+          }
+          findMany: {
+            args: Prisma.MemberSubscribeFindManyArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$MemberSubscribePayload>[]
+          }
+          create: {
+            args: Prisma.MemberSubscribeCreateArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$MemberSubscribePayload>
+          }
+          createMany: {
+            args: Prisma.MemberSubscribeCreateManyArgs<ExtArgs>,
+            result: Prisma.BatchPayload
+          }
+          delete: {
+            args: Prisma.MemberSubscribeDeleteArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$MemberSubscribePayload>
+          }
+          update: {
+            args: Prisma.MemberSubscribeUpdateArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$MemberSubscribePayload>
+          }
+          deleteMany: {
+            args: Prisma.MemberSubscribeDeleteManyArgs<ExtArgs>,
+            result: Prisma.BatchPayload
+          }
+          updateMany: {
+            args: Prisma.MemberSubscribeUpdateManyArgs<ExtArgs>,
+            result: Prisma.BatchPayload
+          }
+          upsert: {
+            args: Prisma.MemberSubscribeUpsertArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$MemberSubscribePayload>
+          }
+          aggregate: {
+            args: Prisma.MemberSubscribeAggregateArgs<ExtArgs>,
+            result: $Utils.Optional<AggregateMemberSubscribe>
+          }
+          groupBy: {
+            args: Prisma.MemberSubscribeGroupByArgs<ExtArgs>,
+            result: $Utils.Optional<MemberSubscribeGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.MemberSubscribeCountArgs<ExtArgs>,
+            result: $Utils.Optional<MemberSubscribeCountAggregateOutputType> | number
+          }
+        }
+      }
+      StockPosition: {
+        payload: Prisma.$StockPositionPayload<ExtArgs>
+        fields: Prisma.StockPositionFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.StockPositionFindUniqueArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$StockPositionPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.StockPositionFindUniqueOrThrowArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$StockPositionPayload>
+          }
+          findFirst: {
+            args: Prisma.StockPositionFindFirstArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$StockPositionPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.StockPositionFindFirstOrThrowArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$StockPositionPayload>
+          }
+          findMany: {
+            args: Prisma.StockPositionFindManyArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$StockPositionPayload>[]
+          }
+          create: {
+            args: Prisma.StockPositionCreateArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$StockPositionPayload>
+          }
+          createMany: {
+            args: Prisma.StockPositionCreateManyArgs<ExtArgs>,
+            result: Prisma.BatchPayload
+          }
+          delete: {
+            args: Prisma.StockPositionDeleteArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$StockPositionPayload>
+          }
+          update: {
+            args: Prisma.StockPositionUpdateArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$StockPositionPayload>
+          }
+          deleteMany: {
+            args: Prisma.StockPositionDeleteManyArgs<ExtArgs>,
+            result: Prisma.BatchPayload
+          }
+          updateMany: {
+            args: Prisma.StockPositionUpdateManyArgs<ExtArgs>,
+            result: Prisma.BatchPayload
+          }
+          upsert: {
+            args: Prisma.StockPositionUpsertArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$StockPositionPayload>
+          }
+          aggregate: {
+            args: Prisma.StockPositionAggregateArgs<ExtArgs>,
+            result: $Utils.Optional<AggregateStockPosition>
+          }
+          groupBy: {
+            args: Prisma.StockPositionGroupByArgs<ExtArgs>,
+            result: $Utils.Optional<StockPositionGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.StockPositionCountArgs<ExtArgs>,
+            result: $Utils.Optional<StockPositionCountAggregateOutputType> | number
+          }
+        }
+      }
+      MemberDetail: {
+        payload: Prisma.$MemberDetailPayload<ExtArgs>
+        fields: Prisma.MemberDetailFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.MemberDetailFindUniqueArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$MemberDetailPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.MemberDetailFindUniqueOrThrowArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$MemberDetailPayload>
+          }
+          findFirst: {
+            args: Prisma.MemberDetailFindFirstArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$MemberDetailPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.MemberDetailFindFirstOrThrowArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$MemberDetailPayload>
+          }
+          findMany: {
+            args: Prisma.MemberDetailFindManyArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$MemberDetailPayload>[]
+          }
+          create: {
+            args: Prisma.MemberDetailCreateArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$MemberDetailPayload>
+          }
+          createMany: {
+            args: Prisma.MemberDetailCreateManyArgs<ExtArgs>,
+            result: Prisma.BatchPayload
+          }
+          delete: {
+            args: Prisma.MemberDetailDeleteArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$MemberDetailPayload>
+          }
+          update: {
+            args: Prisma.MemberDetailUpdateArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$MemberDetailPayload>
+          }
+          deleteMany: {
+            args: Prisma.MemberDetailDeleteManyArgs<ExtArgs>,
+            result: Prisma.BatchPayload
+          }
+          updateMany: {
+            args: Prisma.MemberDetailUpdateManyArgs<ExtArgs>,
+            result: Prisma.BatchPayload
+          }
+          upsert: {
+            args: Prisma.MemberDetailUpsertArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$MemberDetailPayload>
+          }
+          aggregate: {
+            args: Prisma.MemberDetailAggregateArgs<ExtArgs>,
+            result: $Utils.Optional<AggregateMemberDetail>
+          }
+          groupBy: {
+            args: Prisma.MemberDetailGroupByArgs<ExtArgs>,
+            result: $Utils.Optional<MemberDetailGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.MemberDetailCountArgs<ExtArgs>,
+            result: $Utils.Optional<MemberDetailCountAggregateOutputType> | number
+          }
+        }
+      }
+      Country: {
+        payload: Prisma.$CountryPayload<ExtArgs>
+        fields: Prisma.CountryFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.CountryFindUniqueArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$CountryPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.CountryFindUniqueOrThrowArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$CountryPayload>
+          }
+          findFirst: {
+            args: Prisma.CountryFindFirstArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$CountryPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.CountryFindFirstOrThrowArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$CountryPayload>
+          }
+          findMany: {
+            args: Prisma.CountryFindManyArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$CountryPayload>[]
+          }
+          create: {
+            args: Prisma.CountryCreateArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$CountryPayload>
+          }
+          createMany: {
+            args: Prisma.CountryCreateManyArgs<ExtArgs>,
+            result: Prisma.BatchPayload
+          }
+          delete: {
+            args: Prisma.CountryDeleteArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$CountryPayload>
+          }
+          update: {
+            args: Prisma.CountryUpdateArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$CountryPayload>
+          }
+          deleteMany: {
+            args: Prisma.CountryDeleteManyArgs<ExtArgs>,
+            result: Prisma.BatchPayload
+          }
+          updateMany: {
+            args: Prisma.CountryUpdateManyArgs<ExtArgs>,
+            result: Prisma.BatchPayload
+          }
+          upsert: {
+            args: Prisma.CountryUpsertArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$CountryPayload>
+          }
+          aggregate: {
+            args: Prisma.CountryAggregateArgs<ExtArgs>,
+            result: $Utils.Optional<AggregateCountry>
+          }
+          groupBy: {
+            args: Prisma.CountryGroupByArgs<ExtArgs>,
+            result: $Utils.Optional<CountryGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.CountryCountArgs<ExtArgs>,
+            result: $Utils.Optional<CountryCountAggregateOutputType> | number
           }
         }
       }
@@ -1145,6 +1767,204 @@ export namespace Prisma {
           count: {
             args: Prisma.SettingCountArgs<ExtArgs>,
             result: $Utils.Optional<SettingCountAggregateOutputType> | number
+          }
+        }
+      }
+      StockResource: {
+        payload: Prisma.$StockResourcePayload<ExtArgs>
+        fields: Prisma.StockResourceFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.StockResourceFindUniqueArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$StockResourcePayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.StockResourceFindUniqueOrThrowArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$StockResourcePayload>
+          }
+          findFirst: {
+            args: Prisma.StockResourceFindFirstArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$StockResourcePayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.StockResourceFindFirstOrThrowArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$StockResourcePayload>
+          }
+          findMany: {
+            args: Prisma.StockResourceFindManyArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$StockResourcePayload>[]
+          }
+          create: {
+            args: Prisma.StockResourceCreateArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$StockResourcePayload>
+          }
+          createMany: {
+            args: Prisma.StockResourceCreateManyArgs<ExtArgs>,
+            result: Prisma.BatchPayload
+          }
+          delete: {
+            args: Prisma.StockResourceDeleteArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$StockResourcePayload>
+          }
+          update: {
+            args: Prisma.StockResourceUpdateArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$StockResourcePayload>
+          }
+          deleteMany: {
+            args: Prisma.StockResourceDeleteManyArgs<ExtArgs>,
+            result: Prisma.BatchPayload
+          }
+          updateMany: {
+            args: Prisma.StockResourceUpdateManyArgs<ExtArgs>,
+            result: Prisma.BatchPayload
+          }
+          upsert: {
+            args: Prisma.StockResourceUpsertArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$StockResourcePayload>
+          }
+          aggregate: {
+            args: Prisma.StockResourceAggregateArgs<ExtArgs>,
+            result: $Utils.Optional<AggregateStockResource>
+          }
+          groupBy: {
+            args: Prisma.StockResourceGroupByArgs<ExtArgs>,
+            result: $Utils.Optional<StockResourceGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.StockResourceCountArgs<ExtArgs>,
+            result: $Utils.Optional<StockResourceCountAggregateOutputType> | number
+          }
+        }
+      }
+      StockResourceRecord: {
+        payload: Prisma.$StockResourceRecordPayload<ExtArgs>
+        fields: Prisma.StockResourceRecordFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.StockResourceRecordFindUniqueArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$StockResourceRecordPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.StockResourceRecordFindUniqueOrThrowArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$StockResourceRecordPayload>
+          }
+          findFirst: {
+            args: Prisma.StockResourceRecordFindFirstArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$StockResourceRecordPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.StockResourceRecordFindFirstOrThrowArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$StockResourceRecordPayload>
+          }
+          findMany: {
+            args: Prisma.StockResourceRecordFindManyArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$StockResourceRecordPayload>[]
+          }
+          create: {
+            args: Prisma.StockResourceRecordCreateArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$StockResourceRecordPayload>
+          }
+          createMany: {
+            args: Prisma.StockResourceRecordCreateManyArgs<ExtArgs>,
+            result: Prisma.BatchPayload
+          }
+          delete: {
+            args: Prisma.StockResourceRecordDeleteArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$StockResourceRecordPayload>
+          }
+          update: {
+            args: Prisma.StockResourceRecordUpdateArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$StockResourceRecordPayload>
+          }
+          deleteMany: {
+            args: Prisma.StockResourceRecordDeleteManyArgs<ExtArgs>,
+            result: Prisma.BatchPayload
+          }
+          updateMany: {
+            args: Prisma.StockResourceRecordUpdateManyArgs<ExtArgs>,
+            result: Prisma.BatchPayload
+          }
+          upsert: {
+            args: Prisma.StockResourceRecordUpsertArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$StockResourceRecordPayload>
+          }
+          aggregate: {
+            args: Prisma.StockResourceRecordAggregateArgs<ExtArgs>,
+            result: $Utils.Optional<AggregateStockResourceRecord>
+          }
+          groupBy: {
+            args: Prisma.StockResourceRecordGroupByArgs<ExtArgs>,
+            result: $Utils.Optional<StockResourceRecordGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.StockResourceRecordCountArgs<ExtArgs>,
+            result: $Utils.Optional<StockResourceRecordCountAggregateOutputType> | number
+          }
+        }
+      }
+      Article: {
+        payload: Prisma.$ArticlePayload<ExtArgs>
+        fields: Prisma.ArticleFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.ArticleFindUniqueArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$ArticlePayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.ArticleFindUniqueOrThrowArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$ArticlePayload>
+          }
+          findFirst: {
+            args: Prisma.ArticleFindFirstArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$ArticlePayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.ArticleFindFirstOrThrowArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$ArticlePayload>
+          }
+          findMany: {
+            args: Prisma.ArticleFindManyArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$ArticlePayload>[]
+          }
+          create: {
+            args: Prisma.ArticleCreateArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$ArticlePayload>
+          }
+          createMany: {
+            args: Prisma.ArticleCreateManyArgs<ExtArgs>,
+            result: Prisma.BatchPayload
+          }
+          delete: {
+            args: Prisma.ArticleDeleteArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$ArticlePayload>
+          }
+          update: {
+            args: Prisma.ArticleUpdateArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$ArticlePayload>
+          }
+          deleteMany: {
+            args: Prisma.ArticleDeleteManyArgs<ExtArgs>,
+            result: Prisma.BatchPayload
+          }
+          updateMany: {
+            args: Prisma.ArticleUpdateManyArgs<ExtArgs>,
+            result: Prisma.BatchPayload
+          }
+          upsert: {
+            args: Prisma.ArticleUpsertArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$ArticlePayload>
+          }
+          aggregate: {
+            args: Prisma.ArticleAggregateArgs<ExtArgs>,
+            result: $Utils.Optional<AggregateArticle>
+          }
+          groupBy: {
+            args: Prisma.ArticleGroupByArgs<ExtArgs>,
+            result: $Utils.Optional<ArticleGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.ArticleCountArgs<ExtArgs>,
+            result: $Utils.Optional<ArticleCountAggregateOutputType> | number
           }
         }
       }
@@ -1297,11 +2117,15 @@ export namespace Prisma {
    */
 
   export type MemberCountOutputType = {
-    stocks: number
+    stockPostion: number
+    memberDetail: number
+    memberSubscribe: number
   }
 
   export type MemberCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    stocks?: boolean | MemberCountOutputTypeCountStocksArgs
+    stockPostion?: boolean | MemberCountOutputTypeCountStockPostionArgs
+    memberDetail?: boolean | MemberCountOutputTypeCountMemberDetailArgs
+    memberSubscribe?: boolean | MemberCountOutputTypeCountMemberSubscribeArgs
   }
 
   // Custom InputTypes
@@ -1320,8 +2144,58 @@ export namespace Prisma {
   /**
    * MemberCountOutputType without action
    */
-  export type MemberCountOutputTypeCountStocksArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: StockOnMembersWhereInput
+  export type MemberCountOutputTypeCountStockPostionArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: StockPositionWhereInput
+  }
+
+
+  /**
+   * MemberCountOutputType without action
+   */
+  export type MemberCountOutputTypeCountMemberDetailArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: MemberDetailWhereInput
+  }
+
+
+  /**
+   * MemberCountOutputType without action
+   */
+  export type MemberCountOutputTypeCountMemberSubscribeArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: MemberSubscribeWhereInput
+  }
+
+
+
+  /**
+   * Count Type StockSymbolCountOutputType
+   */
+
+  export type StockSymbolCountOutputType = {
+    stockPostion: number
+  }
+
+  export type StockSymbolCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    stockPostion?: boolean | StockSymbolCountOutputTypeCountStockPostionArgs
+  }
+
+  // Custom InputTypes
+
+  /**
+   * StockSymbolCountOutputType without action
+   */
+  export type StockSymbolCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the StockSymbolCountOutputType
+     */
+    select?: StockSymbolCountOutputTypeSelect<ExtArgs> | null
+  }
+
+
+  /**
+   * StockSymbolCountOutputType without action
+   */
+  export type StockSymbolCountOutputTypeCountStockPostionArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: StockPositionWhereInput
   }
 
 
@@ -1331,11 +2205,11 @@ export namespace Prisma {
    */
 
   export type StockCountOutputType = {
-    members: number
+    stockRecord: number
   }
 
   export type StockCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    members?: boolean | StockCountOutputTypeCountMembersArgs
+    stockRecord?: boolean | StockCountOutputTypeCountStockRecordArgs
   }
 
   // Custom InputTypes
@@ -1354,8 +2228,8 @@ export namespace Prisma {
   /**
    * StockCountOutputType without action
    */
-  export type StockCountOutputTypeCountMembersArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: StockOnMembersWhereInput
+  export type StockCountOutputTypeCountStockRecordArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: StockRecordWhereInput
   }
 
 
@@ -1389,6 +2263,7 @@ export namespace Prisma {
     email: string | null
     name: string | null
     avatar: string | null
+    password: string | null
     gender: $Enums.GENDER | null
     createdAt: Date | null
     updatedAt: Date | null
@@ -1399,6 +2274,7 @@ export namespace Prisma {
     email: string | null
     name: string | null
     avatar: string | null
+    password: string | null
     gender: $Enums.GENDER | null
     createdAt: Date | null
     updatedAt: Date | null
@@ -1409,6 +2285,7 @@ export namespace Prisma {
     email: number
     name: number
     avatar: number
+    password: number
     gender: number
     createdAt: number
     updatedAt: number
@@ -1429,6 +2306,7 @@ export namespace Prisma {
     email?: true
     name?: true
     avatar?: true
+    password?: true
     gender?: true
     createdAt?: true
     updatedAt?: true
@@ -1439,6 +2317,7 @@ export namespace Prisma {
     email?: true
     name?: true
     avatar?: true
+    password?: true
     gender?: true
     createdAt?: true
     updatedAt?: true
@@ -1449,6 +2328,7 @@ export namespace Prisma {
     email?: true
     name?: true
     avatar?: true
+    password?: true
     gender?: true
     createdAt?: true
     updatedAt?: true
@@ -1546,6 +2426,7 @@ export namespace Prisma {
     email: string
     name: string | null
     avatar: string | null
+    password: string
     gender: $Enums.GENDER
     createdAt: Date
     updatedAt: Date | null
@@ -1575,6 +2456,7 @@ export namespace Prisma {
     email?: boolean
     name?: boolean
     avatar?: boolean
+    password?: boolean
     gender?: boolean
     createdAt?: boolean
     updatedAt?: boolean
@@ -1585,6 +2467,7 @@ export namespace Prisma {
     email?: boolean
     name?: boolean
     avatar?: boolean
+    password?: boolean
     gender?: boolean
     createdAt?: boolean
     updatedAt?: boolean
@@ -1599,6 +2482,7 @@ export namespace Prisma {
       email: string
       name: string | null
       avatar: string | null
+      password: string
       gender: $Enums.GENDER
       createdAt: Date
       updatedAt: Date | null
@@ -2000,6 +2884,7 @@ export namespace Prisma {
     readonly email: FieldRef<"User", 'String'>
     readonly name: FieldRef<"User", 'String'>
     readonly avatar: FieldRef<"User", 'String'>
+    readonly password: FieldRef<"User", 'String'>
     readonly gender: FieldRef<"User", 'GENDER'>
     readonly createdAt: FieldRef<"User", 'DateTime'>
     readonly updatedAt: FieldRef<"User", 'DateTime'>
@@ -2304,10 +3189,14 @@ export namespace Prisma {
 
   export type MemberAvgAggregateOutputType = {
     id: number | null
+    status: number | null
+    type: number | null
   }
 
   export type MemberSumAggregateOutputType = {
     id: bigint | null
+    status: number | null
+    type: number | null
   }
 
   export type MemberMinAggregateOutputType = {
@@ -2315,7 +3204,11 @@ export namespace Prisma {
     email: string | null
     name: string | null
     avatar: string | null
+    password: string | null
     gender: $Enums.GENDER | null
+    address: string | null
+    status: number | null
+    type: number | null
     createdAt: Date | null
     updatedAt: Date | null
   }
@@ -2325,7 +3218,11 @@ export namespace Prisma {
     email: string | null
     name: string | null
     avatar: string | null
+    password: string | null
     gender: $Enums.GENDER | null
+    address: string | null
+    status: number | null
+    type: number | null
     createdAt: Date | null
     updatedAt: Date | null
   }
@@ -2335,7 +3232,12 @@ export namespace Prisma {
     email: number
     name: number
     avatar: number
+    password: number
     gender: number
+    address: number
+    accountBalance: number
+    status: number
+    type: number
     createdAt: number
     updatedAt: number
     _all: number
@@ -2344,10 +3246,14 @@ export namespace Prisma {
 
   export type MemberAvgAggregateInputType = {
     id?: true
+    status?: true
+    type?: true
   }
 
   export type MemberSumAggregateInputType = {
     id?: true
+    status?: true
+    type?: true
   }
 
   export type MemberMinAggregateInputType = {
@@ -2355,7 +3261,11 @@ export namespace Prisma {
     email?: true
     name?: true
     avatar?: true
+    password?: true
     gender?: true
+    address?: true
+    status?: true
+    type?: true
     createdAt?: true
     updatedAt?: true
   }
@@ -2365,7 +3275,11 @@ export namespace Prisma {
     email?: true
     name?: true
     avatar?: true
+    password?: true
     gender?: true
+    address?: true
+    status?: true
+    type?: true
     createdAt?: true
     updatedAt?: true
   }
@@ -2375,7 +3289,12 @@ export namespace Prisma {
     email?: true
     name?: true
     avatar?: true
+    password?: true
     gender?: true
+    address?: true
+    accountBalance?: true
+    status?: true
+    type?: true
     createdAt?: true
     updatedAt?: true
     _all?: true
@@ -2472,7 +3391,12 @@ export namespace Prisma {
     email: string
     name: string | null
     avatar: string | null
+    password: string
     gender: $Enums.GENDER
+    address: string | null
+    accountBalance: JsonValue | null
+    status: number
+    type: number
     createdAt: Date
     updatedAt: Date | null
     _count: MemberCountAggregateOutputType | null
@@ -2501,10 +3425,17 @@ export namespace Prisma {
     email?: boolean
     name?: boolean
     avatar?: boolean
+    password?: boolean
     gender?: boolean
+    address?: boolean
+    accountBalance?: boolean
+    status?: boolean
+    type?: boolean
     createdAt?: boolean
     updatedAt?: boolean
-    stocks?: boolean | Member$stocksArgs<ExtArgs>
+    stockPostion?: boolean | Member$stockPostionArgs<ExtArgs>
+    memberDetail?: boolean | Member$memberDetailArgs<ExtArgs>
+    memberSubscribe?: boolean | Member$memberSubscribeArgs<ExtArgs>
     _count?: boolean | MemberCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["member"]>
 
@@ -2513,13 +3444,20 @@ export namespace Prisma {
     email?: boolean
     name?: boolean
     avatar?: boolean
+    password?: boolean
     gender?: boolean
+    address?: boolean
+    accountBalance?: boolean
+    status?: boolean
+    type?: boolean
     createdAt?: boolean
     updatedAt?: boolean
   }
 
   export type MemberInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    stocks?: boolean | Member$stocksArgs<ExtArgs>
+    stockPostion?: boolean | Member$stockPostionArgs<ExtArgs>
+    memberDetail?: boolean | Member$memberDetailArgs<ExtArgs>
+    memberSubscribe?: boolean | Member$memberSubscribeArgs<ExtArgs>
     _count?: boolean | MemberCountOutputTypeDefaultArgs<ExtArgs>
   }
 
@@ -2527,14 +3465,21 @@ export namespace Prisma {
   export type $MemberPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "Member"
     objects: {
-      stocks: Prisma.$StockOnMembersPayload<ExtArgs>[]
+      stockPostion: Prisma.$StockPositionPayload<ExtArgs>[]
+      memberDetail: Prisma.$MemberDetailPayload<ExtArgs>[]
+      memberSubscribe: Prisma.$MemberSubscribePayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
       id: bigint
       email: string
       name: string | null
       avatar: string | null
+      password: string
       gender: $Enums.GENDER
+      address: string | null
+      accountBalance: Prisma.JsonValue | null
+      status: number
+      type: number
       createdAt: Date
       updatedAt: Date | null
     }, ExtArgs["result"]["member"]>
@@ -2902,7 +3847,11 @@ export namespace Prisma {
   export interface Prisma__MemberClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: 'PrismaPromise';
 
-    stocks<T extends Member$stocksArgs<ExtArgs> = {}>(args?: Subset<T, Member$stocksArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$StockOnMembersPayload<ExtArgs>, T, 'findMany'> | Null>;
+    stockPostion<T extends Member$stockPostionArgs<ExtArgs> = {}>(args?: Subset<T, Member$stockPostionArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$StockPositionPayload<ExtArgs>, T, 'findMany'> | Null>;
+
+    memberDetail<T extends Member$memberDetailArgs<ExtArgs> = {}>(args?: Subset<T, Member$memberDetailArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$MemberDetailPayload<ExtArgs>, T, 'findMany'> | Null>;
+
+    memberSubscribe<T extends Member$memberSubscribeArgs<ExtArgs> = {}>(args?: Subset<T, Member$memberSubscribeArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$MemberSubscribePayload<ExtArgs>, T, 'findMany'> | Null>;
 
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
@@ -2936,7 +3885,12 @@ export namespace Prisma {
     readonly email: FieldRef<"Member", 'String'>
     readonly name: FieldRef<"Member", 'String'>
     readonly avatar: FieldRef<"Member", 'String'>
+    readonly password: FieldRef<"Member", 'String'>
     readonly gender: FieldRef<"Member", 'GENDER'>
+    readonly address: FieldRef<"Member", 'String'>
+    readonly accountBalance: FieldRef<"Member", 'Json'>
+    readonly status: FieldRef<"Member", 'Int'>
+    readonly type: FieldRef<"Member", 'Int'>
     readonly createdAt: FieldRef<"Member", 'DateTime'>
     readonly updatedAt: FieldRef<"Member", 'DateTime'>
   }
@@ -3251,23 +4205,65 @@ export namespace Prisma {
 
 
   /**
-   * Member.stocks
+   * Member.stockPostion
    */
-  export type Member$stocksArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type Member$stockPostionArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the StockOnMembers
+     * Select specific fields to fetch from the StockPosition
      */
-    select?: StockOnMembersSelect<ExtArgs> | null
+    select?: StockPositionSelect<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well.
      */
-    include?: StockOnMembersInclude<ExtArgs> | null
-    where?: StockOnMembersWhereInput
-    orderBy?: StockOnMembersOrderByWithRelationInput | StockOnMembersOrderByWithRelationInput[]
-    cursor?: StockOnMembersWhereUniqueInput
+    include?: StockPositionInclude<ExtArgs> | null
+    where?: StockPositionWhereInput
+    orderBy?: StockPositionOrderByWithRelationInput | StockPositionOrderByWithRelationInput[]
+    cursor?: StockPositionWhereUniqueInput
     take?: number
     skip?: number
-    distinct?: StockOnMembersScalarFieldEnum | StockOnMembersScalarFieldEnum[]
+    distinct?: StockPositionScalarFieldEnum | StockPositionScalarFieldEnum[]
+  }
+
+
+  /**
+   * Member.memberDetail
+   */
+  export type Member$memberDetailArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the MemberDetail
+     */
+    select?: MemberDetailSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well.
+     */
+    include?: MemberDetailInclude<ExtArgs> | null
+    where?: MemberDetailWhereInput
+    orderBy?: MemberDetailOrderByWithRelationInput | MemberDetailOrderByWithRelationInput[]
+    cursor?: MemberDetailWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: MemberDetailScalarFieldEnum | MemberDetailScalarFieldEnum[]
+  }
+
+
+  /**
+   * Member.memberSubscribe
+   */
+  export type Member$memberSubscribeArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the MemberSubscribe
+     */
+    select?: MemberSubscribeSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well.
+     */
+    include?: MemberSubscribeInclude<ExtArgs> | null
+    where?: MemberSubscribeWhereInput
+    orderBy?: MemberSubscribeOrderByWithRelationInput | MemberSubscribeOrderByWithRelationInput[]
+    cursor?: MemberSubscribeWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: MemberSubscribeScalarFieldEnum | MemberSubscribeScalarFieldEnum[]
   }
 
 
@@ -3283,6 +4279,1198 @@ export namespace Prisma {
      * Choose, which related nodes to fetch as well.
      */
     include?: MemberInclude<ExtArgs> | null
+  }
+
+
+
+  /**
+   * Model StockSymbol
+   */
+
+  export type AggregateStockSymbol = {
+    _count: StockSymbolCountAggregateOutputType | null
+    _avg: StockSymbolAvgAggregateOutputType | null
+    _sum: StockSymbolSumAggregateOutputType | null
+    _min: StockSymbolMinAggregateOutputType | null
+    _max: StockSymbolMaxAggregateOutputType | null
+  }
+
+  export type StockSymbolAvgAggregateOutputType = {
+    id: number | null
+    online: number | null
+    trade: number | null
+    type: number | null
+  }
+
+  export type StockSymbolSumAggregateOutputType = {
+    id: bigint | null
+    online: number | null
+    trade: number | null
+    type: number | null
+  }
+
+  export type StockSymbolMinAggregateOutputType = {
+    id: bigint | null
+    code: string | null
+    market: string | null
+    online: number | null
+    symbol: string | null
+    showName: string | null
+    name: string | null
+    symbolShowName: string | null
+    trade: number | null
+    type: number | null
+    newPrice: string | null
+    open: string | null
+    close: string | null
+    high: string | null
+    low: string | null
+    amount: string | null
+    volume: string | null
+    change: string | null
+    changePercent: string | null
+    date: string | null
+    syncMarket: string | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type StockSymbolMaxAggregateOutputType = {
+    id: bigint | null
+    code: string | null
+    market: string | null
+    online: number | null
+    symbol: string | null
+    showName: string | null
+    name: string | null
+    symbolShowName: string | null
+    trade: number | null
+    type: number | null
+    newPrice: string | null
+    open: string | null
+    close: string | null
+    high: string | null
+    low: string | null
+    amount: string | null
+    volume: string | null
+    change: string | null
+    changePercent: string | null
+    date: string | null
+    syncMarket: string | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type StockSymbolCountAggregateOutputType = {
+    id: number
+    code: number
+    market: number
+    online: number
+    symbol: number
+    showName: number
+    name: number
+    symbolShowName: number
+    trade: number
+    type: number
+    newPrice: number
+    open: number
+    close: number
+    high: number
+    low: number
+    amount: number
+    volume: number
+    change: number
+    changePercent: number
+    date: number
+    sync: number
+    syncMarket: number
+    createdAt: number
+    updatedAt: number
+    _all: number
+  }
+
+
+  export type StockSymbolAvgAggregateInputType = {
+    id?: true
+    online?: true
+    trade?: true
+    type?: true
+  }
+
+  export type StockSymbolSumAggregateInputType = {
+    id?: true
+    online?: true
+    trade?: true
+    type?: true
+  }
+
+  export type StockSymbolMinAggregateInputType = {
+    id?: true
+    code?: true
+    market?: true
+    online?: true
+    symbol?: true
+    showName?: true
+    name?: true
+    symbolShowName?: true
+    trade?: true
+    type?: true
+    newPrice?: true
+    open?: true
+    close?: true
+    high?: true
+    low?: true
+    amount?: true
+    volume?: true
+    change?: true
+    changePercent?: true
+    date?: true
+    syncMarket?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type StockSymbolMaxAggregateInputType = {
+    id?: true
+    code?: true
+    market?: true
+    online?: true
+    symbol?: true
+    showName?: true
+    name?: true
+    symbolShowName?: true
+    trade?: true
+    type?: true
+    newPrice?: true
+    open?: true
+    close?: true
+    high?: true
+    low?: true
+    amount?: true
+    volume?: true
+    change?: true
+    changePercent?: true
+    date?: true
+    syncMarket?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type StockSymbolCountAggregateInputType = {
+    id?: true
+    code?: true
+    market?: true
+    online?: true
+    symbol?: true
+    showName?: true
+    name?: true
+    symbolShowName?: true
+    trade?: true
+    type?: true
+    newPrice?: true
+    open?: true
+    close?: true
+    high?: true
+    low?: true
+    amount?: true
+    volume?: true
+    change?: true
+    changePercent?: true
+    date?: true
+    sync?: true
+    syncMarket?: true
+    createdAt?: true
+    updatedAt?: true
+    _all?: true
+  }
+
+  export type StockSymbolAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which StockSymbol to aggregate.
+     */
+    where?: StockSymbolWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of StockSymbols to fetch.
+     */
+    orderBy?: StockSymbolOrderByWithRelationInput | StockSymbolOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: StockSymbolWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` StockSymbols from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` StockSymbols.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned StockSymbols
+    **/
+    _count?: true | StockSymbolCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: StockSymbolAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: StockSymbolSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: StockSymbolMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: StockSymbolMaxAggregateInputType
+  }
+
+  export type GetStockSymbolAggregateType<T extends StockSymbolAggregateArgs> = {
+        [P in keyof T & keyof AggregateStockSymbol]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateStockSymbol[P]>
+      : GetScalarType<T[P], AggregateStockSymbol[P]>
+  }
+
+
+
+
+  export type StockSymbolGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: StockSymbolWhereInput
+    orderBy?: StockSymbolOrderByWithAggregationInput | StockSymbolOrderByWithAggregationInput[]
+    by: StockSymbolScalarFieldEnum[] | StockSymbolScalarFieldEnum
+    having?: StockSymbolScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: StockSymbolCountAggregateInputType | true
+    _avg?: StockSymbolAvgAggregateInputType
+    _sum?: StockSymbolSumAggregateInputType
+    _min?: StockSymbolMinAggregateInputType
+    _max?: StockSymbolMaxAggregateInputType
+  }
+
+  export type StockSymbolGroupByOutputType = {
+    id: bigint
+    code: string
+    market: string
+    online: number
+    symbol: string
+    showName: string
+    name: string | null
+    symbolShowName: string | null
+    trade: number
+    type: number
+    newPrice: string | null
+    open: string | null
+    close: string | null
+    high: string | null
+    low: string | null
+    amount: string | null
+    volume: string | null
+    change: string | null
+    changePercent: string | null
+    date: string | null
+    sync: JsonValue | null
+    syncMarket: string
+    createdAt: Date
+    updatedAt: Date | null
+    _count: StockSymbolCountAggregateOutputType | null
+    _avg: StockSymbolAvgAggregateOutputType | null
+    _sum: StockSymbolSumAggregateOutputType | null
+    _min: StockSymbolMinAggregateOutputType | null
+    _max: StockSymbolMaxAggregateOutputType | null
+  }
+
+  type GetStockSymbolGroupByPayload<T extends StockSymbolGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<StockSymbolGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof StockSymbolGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], StockSymbolGroupByOutputType[P]>
+            : GetScalarType<T[P], StockSymbolGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type StockSymbolSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    code?: boolean
+    market?: boolean
+    online?: boolean
+    symbol?: boolean
+    showName?: boolean
+    name?: boolean
+    symbolShowName?: boolean
+    trade?: boolean
+    type?: boolean
+    newPrice?: boolean
+    open?: boolean
+    close?: boolean
+    high?: boolean
+    low?: boolean
+    amount?: boolean
+    volume?: boolean
+    change?: boolean
+    changePercent?: boolean
+    date?: boolean
+    sync?: boolean
+    syncMarket?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    stockPostion?: boolean | StockSymbol$stockPostionArgs<ExtArgs>
+    _count?: boolean | StockSymbolCountOutputTypeDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["stockSymbol"]>
+
+  export type StockSymbolSelectScalar = {
+    id?: boolean
+    code?: boolean
+    market?: boolean
+    online?: boolean
+    symbol?: boolean
+    showName?: boolean
+    name?: boolean
+    symbolShowName?: boolean
+    trade?: boolean
+    type?: boolean
+    newPrice?: boolean
+    open?: boolean
+    close?: boolean
+    high?: boolean
+    low?: boolean
+    amount?: boolean
+    volume?: boolean
+    change?: boolean
+    changePercent?: boolean
+    date?: boolean
+    sync?: boolean
+    syncMarket?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+  }
+
+  export type StockSymbolInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    stockPostion?: boolean | StockSymbol$stockPostionArgs<ExtArgs>
+    _count?: boolean | StockSymbolCountOutputTypeDefaultArgs<ExtArgs>
+  }
+
+
+  export type $StockSymbolPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "StockSymbol"
+    objects: {
+      stockPostion: Prisma.$StockPositionPayload<ExtArgs>[]
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: bigint
+      code: string
+      market: string
+      online: number
+      symbol: string
+      showName: string
+      name: string | null
+      symbolShowName: string | null
+      trade: number
+      type: number
+      newPrice: string | null
+      open: string | null
+      close: string | null
+      high: string | null
+      low: string | null
+      amount: string | null
+      volume: string | null
+      change: string | null
+      changePercent: string | null
+      date: string | null
+      sync: Prisma.JsonValue | null
+      syncMarket: string
+      createdAt: Date
+      updatedAt: Date | null
+    }, ExtArgs["result"]["stockSymbol"]>
+    composites: {}
+  }
+
+
+  type StockSymbolGetPayload<S extends boolean | null | undefined | StockSymbolDefaultArgs> = $Result.GetResult<Prisma.$StockSymbolPayload, S>
+
+  type StockSymbolCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = 
+    Omit<StockSymbolFindManyArgs, 'select' | 'include' | 'distinct'> & {
+      select?: StockSymbolCountAggregateInputType | true
+    }
+
+  export interface StockSymbolDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['StockSymbol'], meta: { name: 'StockSymbol' } }
+    /**
+     * Find zero or one StockSymbol that matches the filter.
+     * @param {StockSymbolFindUniqueArgs} args - Arguments to find a StockSymbol
+     * @example
+     * // Get one StockSymbol
+     * const stockSymbol = await prisma.stockSymbol.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+    **/
+    findUnique<T extends StockSymbolFindUniqueArgs<ExtArgs>>(
+      args: SelectSubset<T, StockSymbolFindUniqueArgs<ExtArgs>>
+    ): Prisma__StockSymbolClient<$Result.GetResult<Prisma.$StockSymbolPayload<ExtArgs>, T, 'findUnique'> | null, null, ExtArgs>
+
+    /**
+     * Find one StockSymbol that matches the filter or throw an error  with `error.code='P2025'` 
+     *     if no matches were found.
+     * @param {StockSymbolFindUniqueOrThrowArgs} args - Arguments to find a StockSymbol
+     * @example
+     * // Get one StockSymbol
+     * const stockSymbol = await prisma.stockSymbol.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+    **/
+    findUniqueOrThrow<T extends StockSymbolFindUniqueOrThrowArgs<ExtArgs>>(
+      args?: SelectSubset<T, StockSymbolFindUniqueOrThrowArgs<ExtArgs>>
+    ): Prisma__StockSymbolClient<$Result.GetResult<Prisma.$StockSymbolPayload<ExtArgs>, T, 'findUniqueOrThrow'>, never, ExtArgs>
+
+    /**
+     * Find the first StockSymbol that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {StockSymbolFindFirstArgs} args - Arguments to find a StockSymbol
+     * @example
+     * // Get one StockSymbol
+     * const stockSymbol = await prisma.stockSymbol.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+    **/
+    findFirst<T extends StockSymbolFindFirstArgs<ExtArgs>>(
+      args?: SelectSubset<T, StockSymbolFindFirstArgs<ExtArgs>>
+    ): Prisma__StockSymbolClient<$Result.GetResult<Prisma.$StockSymbolPayload<ExtArgs>, T, 'findFirst'> | null, null, ExtArgs>
+
+    /**
+     * Find the first StockSymbol that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {StockSymbolFindFirstOrThrowArgs} args - Arguments to find a StockSymbol
+     * @example
+     * // Get one StockSymbol
+     * const stockSymbol = await prisma.stockSymbol.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+    **/
+    findFirstOrThrow<T extends StockSymbolFindFirstOrThrowArgs<ExtArgs>>(
+      args?: SelectSubset<T, StockSymbolFindFirstOrThrowArgs<ExtArgs>>
+    ): Prisma__StockSymbolClient<$Result.GetResult<Prisma.$StockSymbolPayload<ExtArgs>, T, 'findFirstOrThrow'>, never, ExtArgs>
+
+    /**
+     * Find zero or more StockSymbols that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {StockSymbolFindManyArgs=} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all StockSymbols
+     * const stockSymbols = await prisma.stockSymbol.findMany()
+     * 
+     * // Get first 10 StockSymbols
+     * const stockSymbols = await prisma.stockSymbol.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const stockSymbolWithIdOnly = await prisma.stockSymbol.findMany({ select: { id: true } })
+     * 
+    **/
+    findMany<T extends StockSymbolFindManyArgs<ExtArgs>>(
+      args?: SelectSubset<T, StockSymbolFindManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<$Result.GetResult<Prisma.$StockSymbolPayload<ExtArgs>, T, 'findMany'>>
+
+    /**
+     * Create a StockSymbol.
+     * @param {StockSymbolCreateArgs} args - Arguments to create a StockSymbol.
+     * @example
+     * // Create one StockSymbol
+     * const StockSymbol = await prisma.stockSymbol.create({
+     *   data: {
+     *     // ... data to create a StockSymbol
+     *   }
+     * })
+     * 
+    **/
+    create<T extends StockSymbolCreateArgs<ExtArgs>>(
+      args: SelectSubset<T, StockSymbolCreateArgs<ExtArgs>>
+    ): Prisma__StockSymbolClient<$Result.GetResult<Prisma.$StockSymbolPayload<ExtArgs>, T, 'create'>, never, ExtArgs>
+
+    /**
+     * Create many StockSymbols.
+     *     @param {StockSymbolCreateManyArgs} args - Arguments to create many StockSymbols.
+     *     @example
+     *     // Create many StockSymbols
+     *     const stockSymbol = await prisma.stockSymbol.createMany({
+     *       data: {
+     *         // ... provide data here
+     *       }
+     *     })
+     *     
+    **/
+    createMany<T extends StockSymbolCreateManyArgs<ExtArgs>>(
+      args?: SelectSubset<T, StockSymbolCreateManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Delete a StockSymbol.
+     * @param {StockSymbolDeleteArgs} args - Arguments to delete one StockSymbol.
+     * @example
+     * // Delete one StockSymbol
+     * const StockSymbol = await prisma.stockSymbol.delete({
+     *   where: {
+     *     // ... filter to delete one StockSymbol
+     *   }
+     * })
+     * 
+    **/
+    delete<T extends StockSymbolDeleteArgs<ExtArgs>>(
+      args: SelectSubset<T, StockSymbolDeleteArgs<ExtArgs>>
+    ): Prisma__StockSymbolClient<$Result.GetResult<Prisma.$StockSymbolPayload<ExtArgs>, T, 'delete'>, never, ExtArgs>
+
+    /**
+     * Update one StockSymbol.
+     * @param {StockSymbolUpdateArgs} args - Arguments to update one StockSymbol.
+     * @example
+     * // Update one StockSymbol
+     * const stockSymbol = await prisma.stockSymbol.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+    **/
+    update<T extends StockSymbolUpdateArgs<ExtArgs>>(
+      args: SelectSubset<T, StockSymbolUpdateArgs<ExtArgs>>
+    ): Prisma__StockSymbolClient<$Result.GetResult<Prisma.$StockSymbolPayload<ExtArgs>, T, 'update'>, never, ExtArgs>
+
+    /**
+     * Delete zero or more StockSymbols.
+     * @param {StockSymbolDeleteManyArgs} args - Arguments to filter StockSymbols to delete.
+     * @example
+     * // Delete a few StockSymbols
+     * const { count } = await prisma.stockSymbol.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+    **/
+    deleteMany<T extends StockSymbolDeleteManyArgs<ExtArgs>>(
+      args?: SelectSubset<T, StockSymbolDeleteManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more StockSymbols.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {StockSymbolUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many StockSymbols
+     * const stockSymbol = await prisma.stockSymbol.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+    **/
+    updateMany<T extends StockSymbolUpdateManyArgs<ExtArgs>>(
+      args: SelectSubset<T, StockSymbolUpdateManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create or update one StockSymbol.
+     * @param {StockSymbolUpsertArgs} args - Arguments to update or create a StockSymbol.
+     * @example
+     * // Update or create a StockSymbol
+     * const stockSymbol = await prisma.stockSymbol.upsert({
+     *   create: {
+     *     // ... data to create a StockSymbol
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the StockSymbol we want to update
+     *   }
+     * })
+    **/
+    upsert<T extends StockSymbolUpsertArgs<ExtArgs>>(
+      args: SelectSubset<T, StockSymbolUpsertArgs<ExtArgs>>
+    ): Prisma__StockSymbolClient<$Result.GetResult<Prisma.$StockSymbolPayload<ExtArgs>, T, 'upsert'>, never, ExtArgs>
+
+    /**
+     * Count the number of StockSymbols.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {StockSymbolCountArgs} args - Arguments to filter StockSymbols to count.
+     * @example
+     * // Count the number of StockSymbols
+     * const count = await prisma.stockSymbol.count({
+     *   where: {
+     *     // ... the filter for the StockSymbols we want to count
+     *   }
+     * })
+    **/
+    count<T extends StockSymbolCountArgs>(
+      args?: Subset<T, StockSymbolCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], StockSymbolCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a StockSymbol.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {StockSymbolAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends StockSymbolAggregateArgs>(args: Subset<T, StockSymbolAggregateArgs>): Prisma.PrismaPromise<GetStockSymbolAggregateType<T>>
+
+    /**
+     * Group by StockSymbol.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {StockSymbolGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends StockSymbolGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: StockSymbolGroupByArgs['orderBy'] }
+        : { orderBy?: StockSymbolGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, StockSymbolGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetStockSymbolGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the StockSymbol model
+   */
+  readonly fields: StockSymbolFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for StockSymbol.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__StockSymbolClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: 'PrismaPromise';
+
+    stockPostion<T extends StockSymbol$stockPostionArgs<ExtArgs> = {}>(args?: Subset<T, StockSymbol$stockPostionArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$StockPositionPayload<ExtArgs>, T, 'findMany'> | Null>;
+
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>;
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>;
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>;
+  }
+
+
+
+  /**
+   * Fields of the StockSymbol model
+   */ 
+  interface StockSymbolFieldRefs {
+    readonly id: FieldRef<"StockSymbol", 'BigInt'>
+    readonly code: FieldRef<"StockSymbol", 'String'>
+    readonly market: FieldRef<"StockSymbol", 'String'>
+    readonly online: FieldRef<"StockSymbol", 'Int'>
+    readonly symbol: FieldRef<"StockSymbol", 'String'>
+    readonly showName: FieldRef<"StockSymbol", 'String'>
+    readonly name: FieldRef<"StockSymbol", 'String'>
+    readonly symbolShowName: FieldRef<"StockSymbol", 'String'>
+    readonly trade: FieldRef<"StockSymbol", 'Int'>
+    readonly type: FieldRef<"StockSymbol", 'Int'>
+    readonly newPrice: FieldRef<"StockSymbol", 'String'>
+    readonly open: FieldRef<"StockSymbol", 'String'>
+    readonly close: FieldRef<"StockSymbol", 'String'>
+    readonly high: FieldRef<"StockSymbol", 'String'>
+    readonly low: FieldRef<"StockSymbol", 'String'>
+    readonly amount: FieldRef<"StockSymbol", 'String'>
+    readonly volume: FieldRef<"StockSymbol", 'String'>
+    readonly change: FieldRef<"StockSymbol", 'String'>
+    readonly changePercent: FieldRef<"StockSymbol", 'String'>
+    readonly date: FieldRef<"StockSymbol", 'String'>
+    readonly sync: FieldRef<"StockSymbol", 'Json'>
+    readonly syncMarket: FieldRef<"StockSymbol", 'String'>
+    readonly createdAt: FieldRef<"StockSymbol", 'DateTime'>
+    readonly updatedAt: FieldRef<"StockSymbol", 'DateTime'>
+  }
+    
+
+  // Custom InputTypes
+
+  /**
+   * StockSymbol findUnique
+   */
+  export type StockSymbolFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the StockSymbol
+     */
+    select?: StockSymbolSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well.
+     */
+    include?: StockSymbolInclude<ExtArgs> | null
+    /**
+     * Filter, which StockSymbol to fetch.
+     */
+    where: StockSymbolWhereUniqueInput
+  }
+
+
+  /**
+   * StockSymbol findUniqueOrThrow
+   */
+  export type StockSymbolFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the StockSymbol
+     */
+    select?: StockSymbolSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well.
+     */
+    include?: StockSymbolInclude<ExtArgs> | null
+    /**
+     * Filter, which StockSymbol to fetch.
+     */
+    where: StockSymbolWhereUniqueInput
+  }
+
+
+  /**
+   * StockSymbol findFirst
+   */
+  export type StockSymbolFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the StockSymbol
+     */
+    select?: StockSymbolSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well.
+     */
+    include?: StockSymbolInclude<ExtArgs> | null
+    /**
+     * Filter, which StockSymbol to fetch.
+     */
+    where?: StockSymbolWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of StockSymbols to fetch.
+     */
+    orderBy?: StockSymbolOrderByWithRelationInput | StockSymbolOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for StockSymbols.
+     */
+    cursor?: StockSymbolWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` StockSymbols from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` StockSymbols.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of StockSymbols.
+     */
+    distinct?: StockSymbolScalarFieldEnum | StockSymbolScalarFieldEnum[]
+  }
+
+
+  /**
+   * StockSymbol findFirstOrThrow
+   */
+  export type StockSymbolFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the StockSymbol
+     */
+    select?: StockSymbolSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well.
+     */
+    include?: StockSymbolInclude<ExtArgs> | null
+    /**
+     * Filter, which StockSymbol to fetch.
+     */
+    where?: StockSymbolWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of StockSymbols to fetch.
+     */
+    orderBy?: StockSymbolOrderByWithRelationInput | StockSymbolOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for StockSymbols.
+     */
+    cursor?: StockSymbolWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` StockSymbols from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` StockSymbols.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of StockSymbols.
+     */
+    distinct?: StockSymbolScalarFieldEnum | StockSymbolScalarFieldEnum[]
+  }
+
+
+  /**
+   * StockSymbol findMany
+   */
+  export type StockSymbolFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the StockSymbol
+     */
+    select?: StockSymbolSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well.
+     */
+    include?: StockSymbolInclude<ExtArgs> | null
+    /**
+     * Filter, which StockSymbols to fetch.
+     */
+    where?: StockSymbolWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of StockSymbols to fetch.
+     */
+    orderBy?: StockSymbolOrderByWithRelationInput | StockSymbolOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing StockSymbols.
+     */
+    cursor?: StockSymbolWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` StockSymbols from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` StockSymbols.
+     */
+    skip?: number
+    distinct?: StockSymbolScalarFieldEnum | StockSymbolScalarFieldEnum[]
+  }
+
+
+  /**
+   * StockSymbol create
+   */
+  export type StockSymbolCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the StockSymbol
+     */
+    select?: StockSymbolSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well.
+     */
+    include?: StockSymbolInclude<ExtArgs> | null
+    /**
+     * The data needed to create a StockSymbol.
+     */
+    data: XOR<StockSymbolCreateInput, StockSymbolUncheckedCreateInput>
+  }
+
+
+  /**
+   * StockSymbol createMany
+   */
+  export type StockSymbolCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many StockSymbols.
+     */
+    data: StockSymbolCreateManyInput | StockSymbolCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+
+  /**
+   * StockSymbol update
+   */
+  export type StockSymbolUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the StockSymbol
+     */
+    select?: StockSymbolSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well.
+     */
+    include?: StockSymbolInclude<ExtArgs> | null
+    /**
+     * The data needed to update a StockSymbol.
+     */
+    data: XOR<StockSymbolUpdateInput, StockSymbolUncheckedUpdateInput>
+    /**
+     * Choose, which StockSymbol to update.
+     */
+    where: StockSymbolWhereUniqueInput
+  }
+
+
+  /**
+   * StockSymbol updateMany
+   */
+  export type StockSymbolUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update StockSymbols.
+     */
+    data: XOR<StockSymbolUpdateManyMutationInput, StockSymbolUncheckedUpdateManyInput>
+    /**
+     * Filter which StockSymbols to update
+     */
+    where?: StockSymbolWhereInput
+  }
+
+
+  /**
+   * StockSymbol upsert
+   */
+  export type StockSymbolUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the StockSymbol
+     */
+    select?: StockSymbolSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well.
+     */
+    include?: StockSymbolInclude<ExtArgs> | null
+    /**
+     * The filter to search for the StockSymbol to update in case it exists.
+     */
+    where: StockSymbolWhereUniqueInput
+    /**
+     * In case the StockSymbol found by the `where` argument doesn't exist, create a new StockSymbol with this data.
+     */
+    create: XOR<StockSymbolCreateInput, StockSymbolUncheckedCreateInput>
+    /**
+     * In case the StockSymbol was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<StockSymbolUpdateInput, StockSymbolUncheckedUpdateInput>
+  }
+
+
+  /**
+   * StockSymbol delete
+   */
+  export type StockSymbolDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the StockSymbol
+     */
+    select?: StockSymbolSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well.
+     */
+    include?: StockSymbolInclude<ExtArgs> | null
+    /**
+     * Filter which StockSymbol to delete.
+     */
+    where: StockSymbolWhereUniqueInput
+  }
+
+
+  /**
+   * StockSymbol deleteMany
+   */
+  export type StockSymbolDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which StockSymbols to delete
+     */
+    where?: StockSymbolWhereInput
+  }
+
+
+  /**
+   * StockSymbol.stockPostion
+   */
+  export type StockSymbol$stockPostionArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the StockPosition
+     */
+    select?: StockPositionSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well.
+     */
+    include?: StockPositionInclude<ExtArgs> | null
+    where?: StockPositionWhereInput
+    orderBy?: StockPositionOrderByWithRelationInput | StockPositionOrderByWithRelationInput[]
+    cursor?: StockPositionWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: StockPositionScalarFieldEnum | StockPositionScalarFieldEnum[]
+  }
+
+
+  /**
+   * StockSymbol without action
+   */
+  export type StockSymbolDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the StockSymbol
+     */
+    select?: StockSymbolSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well.
+     */
+    include?: StockSymbolInclude<ExtArgs> | null
   }
 
 
@@ -3317,7 +5505,17 @@ export namespace Prisma {
     logo: string | null
     sok: string | null
     optional: boolean | null
+    newPrice: string | null
+    open: string | null
+    close: string | null
+    high: string | null
+    low: string | null
+    amount: string | null
+    volume: string | null
     status: $Enums.STOCK_STATUS | null
+    change: string | null
+    changePercent: string | null
+    date: string | null
     createdAt: Date | null
     updatedAt: Date | null
   }
@@ -3332,7 +5530,17 @@ export namespace Prisma {
     logo: string | null
     sok: string | null
     optional: boolean | null
+    newPrice: string | null
+    open: string | null
+    close: string | null
+    high: string | null
+    low: string | null
+    amount: string | null
+    volume: string | null
     status: $Enums.STOCK_STATUS | null
+    change: string | null
+    changePercent: string | null
+    date: string | null
     createdAt: Date | null
     updatedAt: Date | null
   }
@@ -3347,7 +5555,18 @@ export namespace Prisma {
     logo: number
     sok: number
     optional: number
+    newPrice: number
+    open: number
+    close: number
+    high: number
+    low: number
+    amount: number
+    volume: number
     status: number
+    change: number
+    changePercent: number
+    date: number
+    extra: number
     createdAt: number
     updatedAt: number
     _all: number
@@ -3372,7 +5591,17 @@ export namespace Prisma {
     logo?: true
     sok?: true
     optional?: true
+    newPrice?: true
+    open?: true
+    close?: true
+    high?: true
+    low?: true
+    amount?: true
+    volume?: true
     status?: true
+    change?: true
+    changePercent?: true
+    date?: true
     createdAt?: true
     updatedAt?: true
   }
@@ -3387,7 +5616,17 @@ export namespace Prisma {
     logo?: true
     sok?: true
     optional?: true
+    newPrice?: true
+    open?: true
+    close?: true
+    high?: true
+    low?: true
+    amount?: true
+    volume?: true
     status?: true
+    change?: true
+    changePercent?: true
+    date?: true
     createdAt?: true
     updatedAt?: true
   }
@@ -3402,7 +5641,18 @@ export namespace Prisma {
     logo?: true
     sok?: true
     optional?: true
+    newPrice?: true
+    open?: true
+    close?: true
+    high?: true
+    low?: true
+    amount?: true
+    volume?: true
     status?: true
+    change?: true
+    changePercent?: true
+    date?: true
+    extra?: true
     createdAt?: true
     updatedAt?: true
     _all?: true
@@ -3504,7 +5754,18 @@ export namespace Prisma {
     logo: string | null
     sok: string | null
     optional: boolean
+    newPrice: string | null
+    open: string | null
+    close: string | null
+    high: string | null
+    low: string | null
+    amount: string | null
+    volume: string | null
     status: $Enums.STOCK_STATUS
+    change: string | null
+    changePercent: string | null
+    date: string | null
+    extra: JsonValue | null
     createdAt: Date
     updatedAt: Date | null
     _count: StockCountAggregateOutputType | null
@@ -3538,10 +5799,20 @@ export namespace Prisma {
     logo?: boolean
     sok?: boolean
     optional?: boolean
+    newPrice?: boolean
+    open?: boolean
+    close?: boolean
+    high?: boolean
+    low?: boolean
+    amount?: boolean
+    volume?: boolean
     status?: boolean
+    change?: boolean
+    changePercent?: boolean
+    date?: boolean
+    extra?: boolean
     createdAt?: boolean
     updatedAt?: boolean
-    members?: boolean | Stock$membersArgs<ExtArgs>
     stockRecord?: boolean | Stock$stockRecordArgs<ExtArgs>
     _count?: boolean | StockCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["stock"]>
@@ -3556,13 +5827,23 @@ export namespace Prisma {
     logo?: boolean
     sok?: boolean
     optional?: boolean
+    newPrice?: boolean
+    open?: boolean
+    close?: boolean
+    high?: boolean
+    low?: boolean
+    amount?: boolean
+    volume?: boolean
     status?: boolean
+    change?: boolean
+    changePercent?: boolean
+    date?: boolean
+    extra?: boolean
     createdAt?: boolean
     updatedAt?: boolean
   }
 
   export type StockInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    members?: boolean | Stock$membersArgs<ExtArgs>
     stockRecord?: boolean | Stock$stockRecordArgs<ExtArgs>
     _count?: boolean | StockCountOutputTypeDefaultArgs<ExtArgs>
   }
@@ -3571,8 +5852,7 @@ export namespace Prisma {
   export type $StockPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "Stock"
     objects: {
-      members: Prisma.$StockOnMembersPayload<ExtArgs>[]
-      stockRecord: Prisma.$StockRecordPayload<ExtArgs> | null
+      stockRecord: Prisma.$StockRecordPayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
       id: bigint
@@ -3584,7 +5864,18 @@ export namespace Prisma {
       logo: string | null
       sok: string | null
       optional: boolean
+      newPrice: string | null
+      open: string | null
+      close: string | null
+      high: string | null
+      low: string | null
+      amount: string | null
+      volume: string | null
       status: $Enums.STOCK_STATUS
+      change: string | null
+      changePercent: string | null
+      date: string | null
+      extra: Prisma.JsonValue | null
       createdAt: Date
       updatedAt: Date | null
     }, ExtArgs["result"]["stock"]>
@@ -3952,9 +6243,7 @@ export namespace Prisma {
   export interface Prisma__StockClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: 'PrismaPromise';
 
-    members<T extends Stock$membersArgs<ExtArgs> = {}>(args?: Subset<T, Stock$membersArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$StockOnMembersPayload<ExtArgs>, T, 'findMany'> | Null>;
-
-    stockRecord<T extends Stock$stockRecordArgs<ExtArgs> = {}>(args?: Subset<T, Stock$stockRecordArgs<ExtArgs>>): Prisma__StockRecordClient<$Result.GetResult<Prisma.$StockRecordPayload<ExtArgs>, T, 'findUniqueOrThrow'> | null, null, ExtArgs>;
+    stockRecord<T extends Stock$stockRecordArgs<ExtArgs> = {}>(args?: Subset<T, Stock$stockRecordArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$StockRecordPayload<ExtArgs>, T, 'findMany'> | Null>;
 
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
@@ -3993,7 +6282,18 @@ export namespace Prisma {
     readonly logo: FieldRef<"Stock", 'String'>
     readonly sok: FieldRef<"Stock", 'String'>
     readonly optional: FieldRef<"Stock", 'Boolean'>
+    readonly newPrice: FieldRef<"Stock", 'String'>
+    readonly open: FieldRef<"Stock", 'String'>
+    readonly close: FieldRef<"Stock", 'String'>
+    readonly high: FieldRef<"Stock", 'String'>
+    readonly low: FieldRef<"Stock", 'String'>
+    readonly amount: FieldRef<"Stock", 'String'>
+    readonly volume: FieldRef<"Stock", 'String'>
     readonly status: FieldRef<"Stock", 'STOCK_STATUS'>
+    readonly change: FieldRef<"Stock", 'String'>
+    readonly changePercent: FieldRef<"Stock", 'String'>
+    readonly date: FieldRef<"Stock", 'String'>
+    readonly extra: FieldRef<"Stock", 'Json'>
     readonly createdAt: FieldRef<"Stock", 'DateTime'>
     readonly updatedAt: FieldRef<"Stock", 'DateTime'>
   }
@@ -4308,27 +6608,6 @@ export namespace Prisma {
 
 
   /**
-   * Stock.members
-   */
-  export type Stock$membersArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the StockOnMembers
-     */
-    select?: StockOnMembersSelect<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well.
-     */
-    include?: StockOnMembersInclude<ExtArgs> | null
-    where?: StockOnMembersWhereInput
-    orderBy?: StockOnMembersOrderByWithRelationInput | StockOnMembersOrderByWithRelationInput[]
-    cursor?: StockOnMembersWhereUniqueInput
-    take?: number
-    skip?: number
-    distinct?: StockOnMembersScalarFieldEnum | StockOnMembersScalarFieldEnum[]
-  }
-
-
-  /**
    * Stock.stockRecord
    */
   export type Stock$stockRecordArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -4341,6 +6620,11 @@ export namespace Prisma {
      */
     include?: StockRecordInclude<ExtArgs> | null
     where?: StockRecordWhereInput
+    orderBy?: StockRecordOrderByWithRelationInput | StockRecordOrderByWithRelationInput[]
+    cursor?: StockRecordWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: StockRecordScalarFieldEnum | StockRecordScalarFieldEnum[]
   }
 
 
@@ -4384,39 +6668,43 @@ export namespace Prisma {
 
   export type StockRecordMinAggregateOutputType = {
     id: bigint | null
-    price: string | null
+    newPrice: string | null
     open: string | null
     close: string | null
     high: string | null
     low: string | null
-    turnover: string | null
+    amount: string | null
     volume: string | null
+    date: string | null
     createdAt: Date | null
     stockId: bigint | null
   }
 
   export type StockRecordMaxAggregateOutputType = {
     id: bigint | null
-    price: string | null
+    newPrice: string | null
     open: string | null
     close: string | null
     high: string | null
     low: string | null
-    turnover: string | null
+    amount: string | null
     volume: string | null
+    date: string | null
     createdAt: Date | null
     stockId: bigint | null
   }
 
   export type StockRecordCountAggregateOutputType = {
     id: number
-    price: number
+    newPrice: number
     open: number
     close: number
     high: number
     low: number
-    turnover: number
+    amount: number
     volume: number
+    date: number
+    extra: number
     createdAt: number
     stockId: number
     _all: number
@@ -4435,39 +6723,43 @@ export namespace Prisma {
 
   export type StockRecordMinAggregateInputType = {
     id?: true
-    price?: true
+    newPrice?: true
     open?: true
     close?: true
     high?: true
     low?: true
-    turnover?: true
+    amount?: true
     volume?: true
+    date?: true
     createdAt?: true
     stockId?: true
   }
 
   export type StockRecordMaxAggregateInputType = {
     id?: true
-    price?: true
+    newPrice?: true
     open?: true
     close?: true
     high?: true
     low?: true
-    turnover?: true
+    amount?: true
     volume?: true
+    date?: true
     createdAt?: true
     stockId?: true
   }
 
   export type StockRecordCountAggregateInputType = {
     id?: true
-    price?: true
+    newPrice?: true
     open?: true
     close?: true
     high?: true
     low?: true
-    turnover?: true
+    amount?: true
     volume?: true
+    date?: true
+    extra?: true
     createdAt?: true
     stockId?: true
     _all?: true
@@ -4561,13 +6853,15 @@ export namespace Prisma {
 
   export type StockRecordGroupByOutputType = {
     id: bigint
-    price: string
+    newPrice: string
     open: string
     close: string
     high: string
     low: string
-    turnover: string
+    amount: string
     volume: string
+    date: string
+    extra: JsonValue
     createdAt: Date
     stockId: bigint
     _count: StockRecordCountAggregateOutputType | null
@@ -4593,13 +6887,15 @@ export namespace Prisma {
 
   export type StockRecordSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
-    price?: boolean
+    newPrice?: boolean
     open?: boolean
     close?: boolean
     high?: boolean
     low?: boolean
-    turnover?: boolean
+    amount?: boolean
     volume?: boolean
+    date?: boolean
+    extra?: boolean
     createdAt?: boolean
     stockId?: boolean
     stock?: boolean | StockDefaultArgs<ExtArgs>
@@ -4607,13 +6903,15 @@ export namespace Prisma {
 
   export type StockRecordSelectScalar = {
     id?: boolean
-    price?: boolean
+    newPrice?: boolean
     open?: boolean
     close?: boolean
     high?: boolean
     low?: boolean
-    turnover?: boolean
+    amount?: boolean
     volume?: boolean
+    date?: boolean
+    extra?: boolean
     createdAt?: boolean
     stockId?: boolean
   }
@@ -4630,13 +6928,15 @@ export namespace Prisma {
     }
     scalars: $Extensions.GetPayloadResult<{
       id: bigint
-      price: string
+      newPrice: string
       open: string
       close: string
       high: string
       low: string
-      turnover: string
+      amount: string
       volume: string
+      date: string
+      extra: Prisma.JsonValue
       createdAt: Date
       stockId: bigint
     }, ExtArgs["result"]["stockRecord"]>
@@ -5035,13 +7335,15 @@ export namespace Prisma {
    */ 
   interface StockRecordFieldRefs {
     readonly id: FieldRef<"StockRecord", 'BigInt'>
-    readonly price: FieldRef<"StockRecord", 'String'>
+    readonly newPrice: FieldRef<"StockRecord", 'String'>
     readonly open: FieldRef<"StockRecord", 'String'>
     readonly close: FieldRef<"StockRecord", 'String'>
     readonly high: FieldRef<"StockRecord", 'String'>
     readonly low: FieldRef<"StockRecord", 'String'>
-    readonly turnover: FieldRef<"StockRecord", 'String'>
+    readonly amount: FieldRef<"StockRecord", 'String'>
     readonly volume: FieldRef<"StockRecord", 'String'>
+    readonly date: FieldRef<"StockRecord", 'String'>
+    readonly extra: FieldRef<"StockRecord", 'Json'>
     readonly createdAt: FieldRef<"StockRecord", 'DateTime'>
     readonly stockId: FieldRef<"StockRecord", 'BigInt'>
   }
@@ -5372,385 +7674,527 @@ export namespace Prisma {
 
 
   /**
-   * Model StockOnMembers
+   * Model StockMarket
    */
 
-  export type AggregateStockOnMembers = {
-    _count: StockOnMembersCountAggregateOutputType | null
-    _avg: StockOnMembersAvgAggregateOutputType | null
-    _sum: StockOnMembersSumAggregateOutputType | null
-    _min: StockOnMembersMinAggregateOutputType | null
-    _max: StockOnMembersMaxAggregateOutputType | null
+  export type AggregateStockMarket = {
+    _count: StockMarketCountAggregateOutputType | null
+    _avg: StockMarketAvgAggregateOutputType | null
+    _sum: StockMarketSumAggregateOutputType | null
+    _min: StockMarketMinAggregateOutputType | null
+    _max: StockMarketMaxAggregateOutputType | null
   }
 
-  export type StockOnMembersAvgAggregateOutputType = {
+  export type StockMarketAvgAggregateOutputType = {
     id: number | null
-    memberId: number | null
-    stockId: number | null
+    frequency: number | null
+    bindingHours: number | null
+    sort: number | null
+    online: number | null
+    conline: number | null
   }
 
-  export type StockOnMembersSumAggregateOutputType = {
+  export type StockMarketSumAggregateOutputType = {
     id: bigint | null
-    memberId: bigint | null
-    stockId: bigint | null
+    frequency: number | null
+    bindingHours: number | null
+    sort: number | null
+    online: number | null
+    conline: number | null
   }
 
-  export type StockOnMembersMinAggregateOutputType = {
+  export type StockMarketMinAggregateOutputType = {
     id: bigint | null
-    memberId: bigint | null
-    stockId: bigint | null
+    code: string | null
+    currency: string | null
+    maxWithdrawal: string | null
+    minWithdrawal: string | null
+    feeRate: string | null
+    minFee: string | null
+    lever: string | null
+    mmr: string | null
+    allocationRate: string | null
+    frequency: number | null
+    bindingHours: number | null
+    headSymbols: string | null
+    sort: number | null
+    online: number | null
+    conline: number | null
     createdAt: Date | null
+    updatedAt: Date | null
   }
 
-  export type StockOnMembersMaxAggregateOutputType = {
+  export type StockMarketMaxAggregateOutputType = {
     id: bigint | null
-    memberId: bigint | null
-    stockId: bigint | null
+    code: string | null
+    currency: string | null
+    maxWithdrawal: string | null
+    minWithdrawal: string | null
+    feeRate: string | null
+    minFee: string | null
+    lever: string | null
+    mmr: string | null
+    allocationRate: string | null
+    frequency: number | null
+    bindingHours: number | null
+    headSymbols: string | null
+    sort: number | null
+    online: number | null
+    conline: number | null
     createdAt: Date | null
+    updatedAt: Date | null
   }
 
-  export type StockOnMembersCountAggregateOutputType = {
+  export type StockMarketCountAggregateOutputType = {
     id: number
-    memberId: number
-    stockId: number
+    code: number
+    currency: number
+    maxWithdrawal: number
+    minWithdrawal: number
+    feeRate: number
+    minFee: number
+    lever: number
+    mmr: number
+    allocationRate: number
+    frequency: number
+    bindingHours: number
+    headSymbols: number
+    sort: number
+    online: number
+    conline: number
     createdAt: number
+    updatedAt: number
     _all: number
   }
 
 
-  export type StockOnMembersAvgAggregateInputType = {
+  export type StockMarketAvgAggregateInputType = {
     id?: true
-    memberId?: true
-    stockId?: true
+    frequency?: true
+    bindingHours?: true
+    sort?: true
+    online?: true
+    conline?: true
   }
 
-  export type StockOnMembersSumAggregateInputType = {
+  export type StockMarketSumAggregateInputType = {
     id?: true
-    memberId?: true
-    stockId?: true
+    frequency?: true
+    bindingHours?: true
+    sort?: true
+    online?: true
+    conline?: true
   }
 
-  export type StockOnMembersMinAggregateInputType = {
+  export type StockMarketMinAggregateInputType = {
     id?: true
-    memberId?: true
-    stockId?: true
+    code?: true
+    currency?: true
+    maxWithdrawal?: true
+    minWithdrawal?: true
+    feeRate?: true
+    minFee?: true
+    lever?: true
+    mmr?: true
+    allocationRate?: true
+    frequency?: true
+    bindingHours?: true
+    headSymbols?: true
+    sort?: true
+    online?: true
+    conline?: true
     createdAt?: true
+    updatedAt?: true
   }
 
-  export type StockOnMembersMaxAggregateInputType = {
+  export type StockMarketMaxAggregateInputType = {
     id?: true
-    memberId?: true
-    stockId?: true
+    code?: true
+    currency?: true
+    maxWithdrawal?: true
+    minWithdrawal?: true
+    feeRate?: true
+    minFee?: true
+    lever?: true
+    mmr?: true
+    allocationRate?: true
+    frequency?: true
+    bindingHours?: true
+    headSymbols?: true
+    sort?: true
+    online?: true
+    conline?: true
     createdAt?: true
+    updatedAt?: true
   }
 
-  export type StockOnMembersCountAggregateInputType = {
+  export type StockMarketCountAggregateInputType = {
     id?: true
-    memberId?: true
-    stockId?: true
+    code?: true
+    currency?: true
+    maxWithdrawal?: true
+    minWithdrawal?: true
+    feeRate?: true
+    minFee?: true
+    lever?: true
+    mmr?: true
+    allocationRate?: true
+    frequency?: true
+    bindingHours?: true
+    headSymbols?: true
+    sort?: true
+    online?: true
+    conline?: true
     createdAt?: true
+    updatedAt?: true
     _all?: true
   }
 
-  export type StockOnMembersAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type StockMarketAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Filter which StockOnMembers to aggregate.
+     * Filter which StockMarket to aggregate.
      */
-    where?: StockOnMembersWhereInput
+    where?: StockMarketWhereInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
      * 
-     * Determine the order of StockOnMembers to fetch.
+     * Determine the order of StockMarkets to fetch.
      */
-    orderBy?: StockOnMembersOrderByWithRelationInput | StockOnMembersOrderByWithRelationInput[]
+    orderBy?: StockMarketOrderByWithRelationInput | StockMarketOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
      * Sets the start position
      */
-    cursor?: StockOnMembersWhereUniqueInput
+    cursor?: StockMarketWhereUniqueInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Take `±n` StockOnMembers from the position of the cursor.
+     * Take `±n` StockMarkets from the position of the cursor.
      */
     take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Skip the first `n` StockOnMembers.
+     * Skip the first `n` StockMarkets.
      */
     skip?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
-     * Count returned StockOnMembers
+     * Count returned StockMarkets
     **/
-    _count?: true | StockOnMembersCountAggregateInputType
+    _count?: true | StockMarketCountAggregateInputType
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
      * Select which fields to average
     **/
-    _avg?: StockOnMembersAvgAggregateInputType
+    _avg?: StockMarketAvgAggregateInputType
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
      * Select which fields to sum
     **/
-    _sum?: StockOnMembersSumAggregateInputType
+    _sum?: StockMarketSumAggregateInputType
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
      * Select which fields to find the minimum value
     **/
-    _min?: StockOnMembersMinAggregateInputType
+    _min?: StockMarketMinAggregateInputType
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
      * Select which fields to find the maximum value
     **/
-    _max?: StockOnMembersMaxAggregateInputType
+    _max?: StockMarketMaxAggregateInputType
   }
 
-  export type GetStockOnMembersAggregateType<T extends StockOnMembersAggregateArgs> = {
-        [P in keyof T & keyof AggregateStockOnMembers]: P extends '_count' | 'count'
+  export type GetStockMarketAggregateType<T extends StockMarketAggregateArgs> = {
+        [P in keyof T & keyof AggregateStockMarket]: P extends '_count' | 'count'
       ? T[P] extends true
         ? number
-        : GetScalarType<T[P], AggregateStockOnMembers[P]>
-      : GetScalarType<T[P], AggregateStockOnMembers[P]>
+        : GetScalarType<T[P], AggregateStockMarket[P]>
+      : GetScalarType<T[P], AggregateStockMarket[P]>
   }
 
 
 
 
-  export type StockOnMembersGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: StockOnMembersWhereInput
-    orderBy?: StockOnMembersOrderByWithAggregationInput | StockOnMembersOrderByWithAggregationInput[]
-    by: StockOnMembersScalarFieldEnum[] | StockOnMembersScalarFieldEnum
-    having?: StockOnMembersScalarWhereWithAggregatesInput
+  export type StockMarketGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: StockMarketWhereInput
+    orderBy?: StockMarketOrderByWithAggregationInput | StockMarketOrderByWithAggregationInput[]
+    by: StockMarketScalarFieldEnum[] | StockMarketScalarFieldEnum
+    having?: StockMarketScalarWhereWithAggregatesInput
     take?: number
     skip?: number
-    _count?: StockOnMembersCountAggregateInputType | true
-    _avg?: StockOnMembersAvgAggregateInputType
-    _sum?: StockOnMembersSumAggregateInputType
-    _min?: StockOnMembersMinAggregateInputType
-    _max?: StockOnMembersMaxAggregateInputType
+    _count?: StockMarketCountAggregateInputType | true
+    _avg?: StockMarketAvgAggregateInputType
+    _sum?: StockMarketSumAggregateInputType
+    _min?: StockMarketMinAggregateInputType
+    _max?: StockMarketMaxAggregateInputType
   }
 
-  export type StockOnMembersGroupByOutputType = {
+  export type StockMarketGroupByOutputType = {
     id: bigint
-    memberId: bigint
-    stockId: bigint
+    code: string | null
+    currency: string | null
+    maxWithdrawal: string | null
+    minWithdrawal: string | null
+    feeRate: string | null
+    minFee: string | null
+    lever: string | null
+    mmr: string | null
+    allocationRate: string | null
+    frequency: number | null
+    bindingHours: number | null
+    headSymbols: string | null
+    sort: number | null
+    online: number | null
+    conline: number | null
     createdAt: Date
-    _count: StockOnMembersCountAggregateOutputType | null
-    _avg: StockOnMembersAvgAggregateOutputType | null
-    _sum: StockOnMembersSumAggregateOutputType | null
-    _min: StockOnMembersMinAggregateOutputType | null
-    _max: StockOnMembersMaxAggregateOutputType | null
+    updatedAt: Date | null
+    _count: StockMarketCountAggregateOutputType | null
+    _avg: StockMarketAvgAggregateOutputType | null
+    _sum: StockMarketSumAggregateOutputType | null
+    _min: StockMarketMinAggregateOutputType | null
+    _max: StockMarketMaxAggregateOutputType | null
   }
 
-  type GetStockOnMembersGroupByPayload<T extends StockOnMembersGroupByArgs> = Prisma.PrismaPromise<
+  type GetStockMarketGroupByPayload<T extends StockMarketGroupByArgs> = Prisma.PrismaPromise<
     Array<
-      PickEnumerable<StockOnMembersGroupByOutputType, T['by']> &
+      PickEnumerable<StockMarketGroupByOutputType, T['by']> &
         {
-          [P in ((keyof T) & (keyof StockOnMembersGroupByOutputType))]: P extends '_count'
+          [P in ((keyof T) & (keyof StockMarketGroupByOutputType))]: P extends '_count'
             ? T[P] extends boolean
               ? number
-              : GetScalarType<T[P], StockOnMembersGroupByOutputType[P]>
-            : GetScalarType<T[P], StockOnMembersGroupByOutputType[P]>
+              : GetScalarType<T[P], StockMarketGroupByOutputType[P]>
+            : GetScalarType<T[P], StockMarketGroupByOutputType[P]>
         }
       >
     >
 
 
-  export type StockOnMembersSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+  export type StockMarketSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
-    memberId?: boolean
-    stockId?: boolean
+    code?: boolean
+    currency?: boolean
+    maxWithdrawal?: boolean
+    minWithdrawal?: boolean
+    feeRate?: boolean
+    minFee?: boolean
+    lever?: boolean
+    mmr?: boolean
+    allocationRate?: boolean
+    frequency?: boolean
+    bindingHours?: boolean
+    headSymbols?: boolean
+    sort?: boolean
+    online?: boolean
+    conline?: boolean
     createdAt?: boolean
-    member?: boolean | MemberDefaultArgs<ExtArgs>
-    stock?: boolean | StockDefaultArgs<ExtArgs>
-  }, ExtArgs["result"]["stockOnMembers"]>
+    updatedAt?: boolean
+  }, ExtArgs["result"]["stockMarket"]>
 
-  export type StockOnMembersSelectScalar = {
+  export type StockMarketSelectScalar = {
     id?: boolean
-    memberId?: boolean
-    stockId?: boolean
+    code?: boolean
+    currency?: boolean
+    maxWithdrawal?: boolean
+    minWithdrawal?: boolean
+    feeRate?: boolean
+    minFee?: boolean
+    lever?: boolean
+    mmr?: boolean
+    allocationRate?: boolean
+    frequency?: boolean
+    bindingHours?: boolean
+    headSymbols?: boolean
+    sort?: boolean
+    online?: boolean
+    conline?: boolean
     createdAt?: boolean
+    updatedAt?: boolean
   }
 
-  export type StockOnMembersInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    member?: boolean | MemberDefaultArgs<ExtArgs>
-    stock?: boolean | StockDefaultArgs<ExtArgs>
-  }
 
-
-  export type $StockOnMembersPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    name: "StockOnMembers"
-    objects: {
-      member: Prisma.$MemberPayload<ExtArgs>
-      stock: Prisma.$StockPayload<ExtArgs>
-    }
+  export type $StockMarketPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "StockMarket"
+    objects: {}
     scalars: $Extensions.GetPayloadResult<{
       id: bigint
-      memberId: bigint
-      stockId: bigint
+      code: string | null
+      currency: string | null
+      maxWithdrawal: string | null
+      minWithdrawal: string | null
+      feeRate: string | null
+      minFee: string | null
+      lever: string | null
+      mmr: string | null
+      allocationRate: string | null
+      frequency: number | null
+      bindingHours: number | null
+      headSymbols: string | null
+      sort: number | null
+      online: number | null
+      conline: number | null
       createdAt: Date
-    }, ExtArgs["result"]["stockOnMembers"]>
+      updatedAt: Date | null
+    }, ExtArgs["result"]["stockMarket"]>
     composites: {}
   }
 
 
-  type StockOnMembersGetPayload<S extends boolean | null | undefined | StockOnMembersDefaultArgs> = $Result.GetResult<Prisma.$StockOnMembersPayload, S>
+  type StockMarketGetPayload<S extends boolean | null | undefined | StockMarketDefaultArgs> = $Result.GetResult<Prisma.$StockMarketPayload, S>
 
-  type StockOnMembersCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = 
-    Omit<StockOnMembersFindManyArgs, 'select' | 'include' | 'distinct'> & {
-      select?: StockOnMembersCountAggregateInputType | true
+  type StockMarketCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = 
+    Omit<StockMarketFindManyArgs, 'select' | 'include' | 'distinct'> & {
+      select?: StockMarketCountAggregateInputType | true
     }
 
-  export interface StockOnMembersDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> {
-    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['StockOnMembers'], meta: { name: 'StockOnMembers' } }
+  export interface StockMarketDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['StockMarket'], meta: { name: 'StockMarket' } }
     /**
-     * Find zero or one StockOnMembers that matches the filter.
-     * @param {StockOnMembersFindUniqueArgs} args - Arguments to find a StockOnMembers
+     * Find zero or one StockMarket that matches the filter.
+     * @param {StockMarketFindUniqueArgs} args - Arguments to find a StockMarket
      * @example
-     * // Get one StockOnMembers
-     * const stockOnMembers = await prisma.stockOnMembers.findUnique({
+     * // Get one StockMarket
+     * const stockMarket = await prisma.stockMarket.findUnique({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
     **/
-    findUnique<T extends StockOnMembersFindUniqueArgs<ExtArgs>>(
-      args: SelectSubset<T, StockOnMembersFindUniqueArgs<ExtArgs>>
-    ): Prisma__StockOnMembersClient<$Result.GetResult<Prisma.$StockOnMembersPayload<ExtArgs>, T, 'findUnique'> | null, null, ExtArgs>
+    findUnique<T extends StockMarketFindUniqueArgs<ExtArgs>>(
+      args: SelectSubset<T, StockMarketFindUniqueArgs<ExtArgs>>
+    ): Prisma__StockMarketClient<$Result.GetResult<Prisma.$StockMarketPayload<ExtArgs>, T, 'findUnique'> | null, null, ExtArgs>
 
     /**
-     * Find one StockOnMembers that matches the filter or throw an error  with `error.code='P2025'` 
+     * Find one StockMarket that matches the filter or throw an error  with `error.code='P2025'` 
      *     if no matches were found.
-     * @param {StockOnMembersFindUniqueOrThrowArgs} args - Arguments to find a StockOnMembers
+     * @param {StockMarketFindUniqueOrThrowArgs} args - Arguments to find a StockMarket
      * @example
-     * // Get one StockOnMembers
-     * const stockOnMembers = await prisma.stockOnMembers.findUniqueOrThrow({
+     * // Get one StockMarket
+     * const stockMarket = await prisma.stockMarket.findUniqueOrThrow({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
     **/
-    findUniqueOrThrow<T extends StockOnMembersFindUniqueOrThrowArgs<ExtArgs>>(
-      args?: SelectSubset<T, StockOnMembersFindUniqueOrThrowArgs<ExtArgs>>
-    ): Prisma__StockOnMembersClient<$Result.GetResult<Prisma.$StockOnMembersPayload<ExtArgs>, T, 'findUniqueOrThrow'>, never, ExtArgs>
+    findUniqueOrThrow<T extends StockMarketFindUniqueOrThrowArgs<ExtArgs>>(
+      args?: SelectSubset<T, StockMarketFindUniqueOrThrowArgs<ExtArgs>>
+    ): Prisma__StockMarketClient<$Result.GetResult<Prisma.$StockMarketPayload<ExtArgs>, T, 'findUniqueOrThrow'>, never, ExtArgs>
 
     /**
-     * Find the first StockOnMembers that matches the filter.
+     * Find the first StockMarket that matches the filter.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {StockOnMembersFindFirstArgs} args - Arguments to find a StockOnMembers
+     * @param {StockMarketFindFirstArgs} args - Arguments to find a StockMarket
      * @example
-     * // Get one StockOnMembers
-     * const stockOnMembers = await prisma.stockOnMembers.findFirst({
+     * // Get one StockMarket
+     * const stockMarket = await prisma.stockMarket.findFirst({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
     **/
-    findFirst<T extends StockOnMembersFindFirstArgs<ExtArgs>>(
-      args?: SelectSubset<T, StockOnMembersFindFirstArgs<ExtArgs>>
-    ): Prisma__StockOnMembersClient<$Result.GetResult<Prisma.$StockOnMembersPayload<ExtArgs>, T, 'findFirst'> | null, null, ExtArgs>
+    findFirst<T extends StockMarketFindFirstArgs<ExtArgs>>(
+      args?: SelectSubset<T, StockMarketFindFirstArgs<ExtArgs>>
+    ): Prisma__StockMarketClient<$Result.GetResult<Prisma.$StockMarketPayload<ExtArgs>, T, 'findFirst'> | null, null, ExtArgs>
 
     /**
-     * Find the first StockOnMembers that matches the filter or
+     * Find the first StockMarket that matches the filter or
      * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {StockOnMembersFindFirstOrThrowArgs} args - Arguments to find a StockOnMembers
+     * @param {StockMarketFindFirstOrThrowArgs} args - Arguments to find a StockMarket
      * @example
-     * // Get one StockOnMembers
-     * const stockOnMembers = await prisma.stockOnMembers.findFirstOrThrow({
+     * // Get one StockMarket
+     * const stockMarket = await prisma.stockMarket.findFirstOrThrow({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
     **/
-    findFirstOrThrow<T extends StockOnMembersFindFirstOrThrowArgs<ExtArgs>>(
-      args?: SelectSubset<T, StockOnMembersFindFirstOrThrowArgs<ExtArgs>>
-    ): Prisma__StockOnMembersClient<$Result.GetResult<Prisma.$StockOnMembersPayload<ExtArgs>, T, 'findFirstOrThrow'>, never, ExtArgs>
+    findFirstOrThrow<T extends StockMarketFindFirstOrThrowArgs<ExtArgs>>(
+      args?: SelectSubset<T, StockMarketFindFirstOrThrowArgs<ExtArgs>>
+    ): Prisma__StockMarketClient<$Result.GetResult<Prisma.$StockMarketPayload<ExtArgs>, T, 'findFirstOrThrow'>, never, ExtArgs>
 
     /**
-     * Find zero or more StockOnMembers that matches the filter.
+     * Find zero or more StockMarkets that matches the filter.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {StockOnMembersFindManyArgs=} args - Arguments to filter and select certain fields only.
+     * @param {StockMarketFindManyArgs=} args - Arguments to filter and select certain fields only.
      * @example
-     * // Get all StockOnMembers
-     * const stockOnMembers = await prisma.stockOnMembers.findMany()
+     * // Get all StockMarkets
+     * const stockMarkets = await prisma.stockMarket.findMany()
      * 
-     * // Get first 10 StockOnMembers
-     * const stockOnMembers = await prisma.stockOnMembers.findMany({ take: 10 })
+     * // Get first 10 StockMarkets
+     * const stockMarkets = await prisma.stockMarket.findMany({ take: 10 })
      * 
      * // Only select the `id`
-     * const stockOnMembersWithIdOnly = await prisma.stockOnMembers.findMany({ select: { id: true } })
+     * const stockMarketWithIdOnly = await prisma.stockMarket.findMany({ select: { id: true } })
      * 
     **/
-    findMany<T extends StockOnMembersFindManyArgs<ExtArgs>>(
-      args?: SelectSubset<T, StockOnMembersFindManyArgs<ExtArgs>>
-    ): Prisma.PrismaPromise<$Result.GetResult<Prisma.$StockOnMembersPayload<ExtArgs>, T, 'findMany'>>
+    findMany<T extends StockMarketFindManyArgs<ExtArgs>>(
+      args?: SelectSubset<T, StockMarketFindManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<$Result.GetResult<Prisma.$StockMarketPayload<ExtArgs>, T, 'findMany'>>
 
     /**
-     * Create a StockOnMembers.
-     * @param {StockOnMembersCreateArgs} args - Arguments to create a StockOnMembers.
+     * Create a StockMarket.
+     * @param {StockMarketCreateArgs} args - Arguments to create a StockMarket.
      * @example
-     * // Create one StockOnMembers
-     * const StockOnMembers = await prisma.stockOnMembers.create({
+     * // Create one StockMarket
+     * const StockMarket = await prisma.stockMarket.create({
      *   data: {
-     *     // ... data to create a StockOnMembers
+     *     // ... data to create a StockMarket
      *   }
      * })
      * 
     **/
-    create<T extends StockOnMembersCreateArgs<ExtArgs>>(
-      args: SelectSubset<T, StockOnMembersCreateArgs<ExtArgs>>
-    ): Prisma__StockOnMembersClient<$Result.GetResult<Prisma.$StockOnMembersPayload<ExtArgs>, T, 'create'>, never, ExtArgs>
+    create<T extends StockMarketCreateArgs<ExtArgs>>(
+      args: SelectSubset<T, StockMarketCreateArgs<ExtArgs>>
+    ): Prisma__StockMarketClient<$Result.GetResult<Prisma.$StockMarketPayload<ExtArgs>, T, 'create'>, never, ExtArgs>
 
     /**
-     * Create many StockOnMembers.
-     *     @param {StockOnMembersCreateManyArgs} args - Arguments to create many StockOnMembers.
+     * Create many StockMarkets.
+     *     @param {StockMarketCreateManyArgs} args - Arguments to create many StockMarkets.
      *     @example
-     *     // Create many StockOnMembers
-     *     const stockOnMembers = await prisma.stockOnMembers.createMany({
+     *     // Create many StockMarkets
+     *     const stockMarket = await prisma.stockMarket.createMany({
      *       data: {
      *         // ... provide data here
      *       }
      *     })
      *     
     **/
-    createMany<T extends StockOnMembersCreateManyArgs<ExtArgs>>(
-      args?: SelectSubset<T, StockOnMembersCreateManyArgs<ExtArgs>>
+    createMany<T extends StockMarketCreateManyArgs<ExtArgs>>(
+      args?: SelectSubset<T, StockMarketCreateManyArgs<ExtArgs>>
     ): Prisma.PrismaPromise<BatchPayload>
 
     /**
-     * Delete a StockOnMembers.
-     * @param {StockOnMembersDeleteArgs} args - Arguments to delete one StockOnMembers.
+     * Delete a StockMarket.
+     * @param {StockMarketDeleteArgs} args - Arguments to delete one StockMarket.
      * @example
-     * // Delete one StockOnMembers
-     * const StockOnMembers = await prisma.stockOnMembers.delete({
+     * // Delete one StockMarket
+     * const StockMarket = await prisma.stockMarket.delete({
      *   where: {
-     *     // ... filter to delete one StockOnMembers
+     *     // ... filter to delete one StockMarket
      *   }
      * })
      * 
     **/
-    delete<T extends StockOnMembersDeleteArgs<ExtArgs>>(
-      args: SelectSubset<T, StockOnMembersDeleteArgs<ExtArgs>>
-    ): Prisma__StockOnMembersClient<$Result.GetResult<Prisma.$StockOnMembersPayload<ExtArgs>, T, 'delete'>, never, ExtArgs>
+    delete<T extends StockMarketDeleteArgs<ExtArgs>>(
+      args: SelectSubset<T, StockMarketDeleteArgs<ExtArgs>>
+    ): Prisma__StockMarketClient<$Result.GetResult<Prisma.$StockMarketPayload<ExtArgs>, T, 'delete'>, never, ExtArgs>
 
     /**
-     * Update one StockOnMembers.
-     * @param {StockOnMembersUpdateArgs} args - Arguments to update one StockOnMembers.
+     * Update one StockMarket.
+     * @param {StockMarketUpdateArgs} args - Arguments to update one StockMarket.
      * @example
-     * // Update one StockOnMembers
-     * const stockOnMembers = await prisma.stockOnMembers.update({
+     * // Update one StockMarket
+     * const stockMarket = await prisma.stockMarket.update({
      *   where: {
      *     // ... provide filter here
      *   },
@@ -5760,34 +8204,34 @@ export namespace Prisma {
      * })
      * 
     **/
-    update<T extends StockOnMembersUpdateArgs<ExtArgs>>(
-      args: SelectSubset<T, StockOnMembersUpdateArgs<ExtArgs>>
-    ): Prisma__StockOnMembersClient<$Result.GetResult<Prisma.$StockOnMembersPayload<ExtArgs>, T, 'update'>, never, ExtArgs>
+    update<T extends StockMarketUpdateArgs<ExtArgs>>(
+      args: SelectSubset<T, StockMarketUpdateArgs<ExtArgs>>
+    ): Prisma__StockMarketClient<$Result.GetResult<Prisma.$StockMarketPayload<ExtArgs>, T, 'update'>, never, ExtArgs>
 
     /**
-     * Delete zero or more StockOnMembers.
-     * @param {StockOnMembersDeleteManyArgs} args - Arguments to filter StockOnMembers to delete.
+     * Delete zero or more StockMarkets.
+     * @param {StockMarketDeleteManyArgs} args - Arguments to filter StockMarkets to delete.
      * @example
-     * // Delete a few StockOnMembers
-     * const { count } = await prisma.stockOnMembers.deleteMany({
+     * // Delete a few StockMarkets
+     * const { count } = await prisma.stockMarket.deleteMany({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
      * 
     **/
-    deleteMany<T extends StockOnMembersDeleteManyArgs<ExtArgs>>(
-      args?: SelectSubset<T, StockOnMembersDeleteManyArgs<ExtArgs>>
+    deleteMany<T extends StockMarketDeleteManyArgs<ExtArgs>>(
+      args?: SelectSubset<T, StockMarketDeleteManyArgs<ExtArgs>>
     ): Prisma.PrismaPromise<BatchPayload>
 
     /**
-     * Update zero or more StockOnMembers.
+     * Update zero or more StockMarkets.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {StockOnMembersUpdateManyArgs} args - Arguments to update one or more rows.
+     * @param {StockMarketUpdateManyArgs} args - Arguments to update one or more rows.
      * @example
-     * // Update many StockOnMembers
-     * const stockOnMembers = await prisma.stockOnMembers.updateMany({
+     * // Update many StockMarkets
+     * const stockMarket = await prisma.stockMarket.updateMany({
      *   where: {
      *     // ... provide filter here
      *   },
@@ -5797,59 +8241,59 @@ export namespace Prisma {
      * })
      * 
     **/
-    updateMany<T extends StockOnMembersUpdateManyArgs<ExtArgs>>(
-      args: SelectSubset<T, StockOnMembersUpdateManyArgs<ExtArgs>>
+    updateMany<T extends StockMarketUpdateManyArgs<ExtArgs>>(
+      args: SelectSubset<T, StockMarketUpdateManyArgs<ExtArgs>>
     ): Prisma.PrismaPromise<BatchPayload>
 
     /**
-     * Create or update one StockOnMembers.
-     * @param {StockOnMembersUpsertArgs} args - Arguments to update or create a StockOnMembers.
+     * Create or update one StockMarket.
+     * @param {StockMarketUpsertArgs} args - Arguments to update or create a StockMarket.
      * @example
-     * // Update or create a StockOnMembers
-     * const stockOnMembers = await prisma.stockOnMembers.upsert({
+     * // Update or create a StockMarket
+     * const stockMarket = await prisma.stockMarket.upsert({
      *   create: {
-     *     // ... data to create a StockOnMembers
+     *     // ... data to create a StockMarket
      *   },
      *   update: {
      *     // ... in case it already exists, update
      *   },
      *   where: {
-     *     // ... the filter for the StockOnMembers we want to update
+     *     // ... the filter for the StockMarket we want to update
      *   }
      * })
     **/
-    upsert<T extends StockOnMembersUpsertArgs<ExtArgs>>(
-      args: SelectSubset<T, StockOnMembersUpsertArgs<ExtArgs>>
-    ): Prisma__StockOnMembersClient<$Result.GetResult<Prisma.$StockOnMembersPayload<ExtArgs>, T, 'upsert'>, never, ExtArgs>
+    upsert<T extends StockMarketUpsertArgs<ExtArgs>>(
+      args: SelectSubset<T, StockMarketUpsertArgs<ExtArgs>>
+    ): Prisma__StockMarketClient<$Result.GetResult<Prisma.$StockMarketPayload<ExtArgs>, T, 'upsert'>, never, ExtArgs>
 
     /**
-     * Count the number of StockOnMembers.
+     * Count the number of StockMarkets.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {StockOnMembersCountArgs} args - Arguments to filter StockOnMembers to count.
+     * @param {StockMarketCountArgs} args - Arguments to filter StockMarkets to count.
      * @example
-     * // Count the number of StockOnMembers
-     * const count = await prisma.stockOnMembers.count({
+     * // Count the number of StockMarkets
+     * const count = await prisma.stockMarket.count({
      *   where: {
-     *     // ... the filter for the StockOnMembers we want to count
+     *     // ... the filter for the StockMarkets we want to count
      *   }
      * })
     **/
-    count<T extends StockOnMembersCountArgs>(
-      args?: Subset<T, StockOnMembersCountArgs>,
+    count<T extends StockMarketCountArgs>(
+      args?: Subset<T, StockMarketCountArgs>,
     ): Prisma.PrismaPromise<
       T extends $Utils.Record<'select', any>
         ? T['select'] extends true
           ? number
-          : GetScalarType<T['select'], StockOnMembersCountAggregateOutputType>
+          : GetScalarType<T['select'], StockMarketCountAggregateOutputType>
         : number
     >
 
     /**
-     * Allows you to perform aggregations operations on a StockOnMembers.
+     * Allows you to perform aggregations operations on a StockMarket.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {StockOnMembersAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @param {StockMarketAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
      * @example
      * // Ordered by age ascending
      * // Where email contains prisma.io
@@ -5869,13 +8313,13 @@ export namespace Prisma {
      *   take: 10,
      * })
     **/
-    aggregate<T extends StockOnMembersAggregateArgs>(args: Subset<T, StockOnMembersAggregateArgs>): Prisma.PrismaPromise<GetStockOnMembersAggregateType<T>>
+    aggregate<T extends StockMarketAggregateArgs>(args: Subset<T, StockMarketAggregateArgs>): Prisma.PrismaPromise<GetStockMarketAggregateType<T>>
 
     /**
-     * Group by StockOnMembers.
+     * Group by StockMarket.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {StockOnMembersGroupByArgs} args - Group by arguments.
+     * @param {StockMarketGroupByArgs} args - Group by arguments.
      * @example
      * // Group by city, order by createdAt, get count
      * const result = await prisma.user.groupBy({
@@ -5890,14 +8334,14 @@ export namespace Prisma {
      * 
     **/
     groupBy<
-      T extends StockOnMembersGroupByArgs,
+      T extends StockMarketGroupByArgs,
       HasSelectOrTake extends Or<
         Extends<'skip', Keys<T>>,
         Extends<'take', Keys<T>>
       >,
       OrderByArg extends True extends HasSelectOrTake
-        ? { orderBy: StockOnMembersGroupByArgs['orderBy'] }
-        : { orderBy?: StockOnMembersGroupByArgs['orderBy'] },
+        ? { orderBy: StockMarketGroupByArgs['orderBy'] }
+        : { orderBy?: StockMarketGroupByArgs['orderBy'] },
       OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
       ByFields extends MaybeTupleToUnion<T['by']>,
       ByValid extends Has<ByFields, OrderFields>,
@@ -5946,25 +8390,22 @@ export namespace Prisma {
             ? never
             : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
         }[OrderFields]
-    >(args: SubsetIntersection<T, StockOnMembersGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetStockOnMembersGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+    >(args: SubsetIntersection<T, StockMarketGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetStockMarketGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
   /**
-   * Fields of the StockOnMembers model
+   * Fields of the StockMarket model
    */
-  readonly fields: StockOnMembersFieldRefs;
+  readonly fields: StockMarketFieldRefs;
   }
 
   /**
-   * The delegate class that acts as a "Promise-like" for StockOnMembers.
+   * The delegate class that acts as a "Promise-like" for StockMarket.
    * Why is this prefixed with `Prisma__`?
    * Because we want to prevent naming conflicts as mentioned in
    * https://github.com/prisma/prisma-client-js/issues/707
    */
-  export interface Prisma__StockOnMembersClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> extends Prisma.PrismaPromise<T> {
+  export interface Prisma__StockMarketClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: 'PrismaPromise';
 
-    member<T extends MemberDefaultArgs<ExtArgs> = {}>(args?: Subset<T, MemberDefaultArgs<ExtArgs>>): Prisma__MemberClient<$Result.GetResult<Prisma.$MemberPayload<ExtArgs>, T, 'findUniqueOrThrow'> | Null, Null, ExtArgs>;
-
-    stock<T extends StockDefaultArgs<ExtArgs> = {}>(args?: Subset<T, StockDefaultArgs<ExtArgs>>): Prisma__StockClient<$Result.GetResult<Prisma.$StockPayload<ExtArgs>, T, 'findUniqueOrThrow'> | Null, Null, ExtArgs>;
 
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
@@ -5991,336 +8432,6547 @@ export namespace Prisma {
 
 
   /**
-   * Fields of the StockOnMembers model
+   * Fields of the StockMarket model
    */ 
-  interface StockOnMembersFieldRefs {
-    readonly id: FieldRef<"StockOnMembers", 'BigInt'>
-    readonly memberId: FieldRef<"StockOnMembers", 'BigInt'>
-    readonly stockId: FieldRef<"StockOnMembers", 'BigInt'>
-    readonly createdAt: FieldRef<"StockOnMembers", 'DateTime'>
+  interface StockMarketFieldRefs {
+    readonly id: FieldRef<"StockMarket", 'BigInt'>
+    readonly code: FieldRef<"StockMarket", 'String'>
+    readonly currency: FieldRef<"StockMarket", 'String'>
+    readonly maxWithdrawal: FieldRef<"StockMarket", 'String'>
+    readonly minWithdrawal: FieldRef<"StockMarket", 'String'>
+    readonly feeRate: FieldRef<"StockMarket", 'String'>
+    readonly minFee: FieldRef<"StockMarket", 'String'>
+    readonly lever: FieldRef<"StockMarket", 'String'>
+    readonly mmr: FieldRef<"StockMarket", 'String'>
+    readonly allocationRate: FieldRef<"StockMarket", 'String'>
+    readonly frequency: FieldRef<"StockMarket", 'Int'>
+    readonly bindingHours: FieldRef<"StockMarket", 'Int'>
+    readonly headSymbols: FieldRef<"StockMarket", 'String'>
+    readonly sort: FieldRef<"StockMarket", 'Int'>
+    readonly online: FieldRef<"StockMarket", 'Int'>
+    readonly conline: FieldRef<"StockMarket", 'Int'>
+    readonly createdAt: FieldRef<"StockMarket", 'DateTime'>
+    readonly updatedAt: FieldRef<"StockMarket", 'DateTime'>
   }
     
 
   // Custom InputTypes
 
   /**
-   * StockOnMembers findUnique
+   * StockMarket findUnique
    */
-  export type StockOnMembersFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type StockMarketFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the StockOnMembers
+     * Select specific fields to fetch from the StockMarket
      */
-    select?: StockOnMembersSelect<ExtArgs> | null
+    select?: StockMarketSelect<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well.
+     * Filter, which StockMarket to fetch.
      */
-    include?: StockOnMembersInclude<ExtArgs> | null
-    /**
-     * Filter, which StockOnMembers to fetch.
-     */
-    where: StockOnMembersWhereUniqueInput
+    where: StockMarketWhereUniqueInput
   }
 
 
   /**
-   * StockOnMembers findUniqueOrThrow
+   * StockMarket findUniqueOrThrow
    */
-  export type StockOnMembersFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type StockMarketFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the StockOnMembers
+     * Select specific fields to fetch from the StockMarket
      */
-    select?: StockOnMembersSelect<ExtArgs> | null
+    select?: StockMarketSelect<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well.
+     * Filter, which StockMarket to fetch.
      */
-    include?: StockOnMembersInclude<ExtArgs> | null
-    /**
-     * Filter, which StockOnMembers to fetch.
-     */
-    where: StockOnMembersWhereUniqueInput
+    where: StockMarketWhereUniqueInput
   }
 
 
   /**
-   * StockOnMembers findFirst
+   * StockMarket findFirst
    */
-  export type StockOnMembersFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type StockMarketFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the StockOnMembers
+     * Select specific fields to fetch from the StockMarket
      */
-    select?: StockOnMembersSelect<ExtArgs> | null
+    select?: StockMarketSelect<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well.
+     * Filter, which StockMarket to fetch.
      */
-    include?: StockOnMembersInclude<ExtArgs> | null
-    /**
-     * Filter, which StockOnMembers to fetch.
-     */
-    where?: StockOnMembersWhereInput
+    where?: StockMarketWhereInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
      * 
-     * Determine the order of StockOnMembers to fetch.
+     * Determine the order of StockMarkets to fetch.
      */
-    orderBy?: StockOnMembersOrderByWithRelationInput | StockOnMembersOrderByWithRelationInput[]
+    orderBy?: StockMarketOrderByWithRelationInput | StockMarketOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
-     * Sets the position for searching for StockOnMembers.
+     * Sets the position for searching for StockMarkets.
      */
-    cursor?: StockOnMembersWhereUniqueInput
+    cursor?: StockMarketWhereUniqueInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Take `±n` StockOnMembers from the position of the cursor.
+     * Take `±n` StockMarkets from the position of the cursor.
      */
     take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Skip the first `n` StockOnMembers.
+     * Skip the first `n` StockMarkets.
      */
     skip?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
      * 
-     * Filter by unique combinations of StockOnMembers.
+     * Filter by unique combinations of StockMarkets.
      */
-    distinct?: StockOnMembersScalarFieldEnum | StockOnMembersScalarFieldEnum[]
+    distinct?: StockMarketScalarFieldEnum | StockMarketScalarFieldEnum[]
   }
 
 
   /**
-   * StockOnMembers findFirstOrThrow
+   * StockMarket findFirstOrThrow
    */
-  export type StockOnMembersFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type StockMarketFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the StockOnMembers
+     * Select specific fields to fetch from the StockMarket
      */
-    select?: StockOnMembersSelect<ExtArgs> | null
+    select?: StockMarketSelect<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well.
+     * Filter, which StockMarket to fetch.
      */
-    include?: StockOnMembersInclude<ExtArgs> | null
-    /**
-     * Filter, which StockOnMembers to fetch.
-     */
-    where?: StockOnMembersWhereInput
+    where?: StockMarketWhereInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
      * 
-     * Determine the order of StockOnMembers to fetch.
+     * Determine the order of StockMarkets to fetch.
      */
-    orderBy?: StockOnMembersOrderByWithRelationInput | StockOnMembersOrderByWithRelationInput[]
+    orderBy?: StockMarketOrderByWithRelationInput | StockMarketOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
-     * Sets the position for searching for StockOnMembers.
+     * Sets the position for searching for StockMarkets.
      */
-    cursor?: StockOnMembersWhereUniqueInput
+    cursor?: StockMarketWhereUniqueInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Take `±n` StockOnMembers from the position of the cursor.
+     * Take `±n` StockMarkets from the position of the cursor.
      */
     take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Skip the first `n` StockOnMembers.
+     * Skip the first `n` StockMarkets.
      */
     skip?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
      * 
-     * Filter by unique combinations of StockOnMembers.
+     * Filter by unique combinations of StockMarkets.
      */
-    distinct?: StockOnMembersScalarFieldEnum | StockOnMembersScalarFieldEnum[]
+    distinct?: StockMarketScalarFieldEnum | StockMarketScalarFieldEnum[]
   }
 
 
   /**
-   * StockOnMembers findMany
+   * StockMarket findMany
    */
-  export type StockOnMembersFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type StockMarketFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the StockOnMembers
+     * Select specific fields to fetch from the StockMarket
      */
-    select?: StockOnMembersSelect<ExtArgs> | null
+    select?: StockMarketSelect<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well.
+     * Filter, which StockMarkets to fetch.
      */
-    include?: StockOnMembersInclude<ExtArgs> | null
-    /**
-     * Filter, which StockOnMembers to fetch.
-     */
-    where?: StockOnMembersWhereInput
+    where?: StockMarketWhereInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
      * 
-     * Determine the order of StockOnMembers to fetch.
+     * Determine the order of StockMarkets to fetch.
      */
-    orderBy?: StockOnMembersOrderByWithRelationInput | StockOnMembersOrderByWithRelationInput[]
+    orderBy?: StockMarketOrderByWithRelationInput | StockMarketOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
-     * Sets the position for listing StockOnMembers.
+     * Sets the position for listing StockMarkets.
      */
-    cursor?: StockOnMembersWhereUniqueInput
+    cursor?: StockMarketWhereUniqueInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Take `±n` StockOnMembers from the position of the cursor.
+     * Take `±n` StockMarkets from the position of the cursor.
      */
     take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Skip the first `n` StockOnMembers.
+     * Skip the first `n` StockMarkets.
      */
     skip?: number
-    distinct?: StockOnMembersScalarFieldEnum | StockOnMembersScalarFieldEnum[]
+    distinct?: StockMarketScalarFieldEnum | StockMarketScalarFieldEnum[]
   }
 
 
   /**
-   * StockOnMembers create
+   * StockMarket create
    */
-  export type StockOnMembersCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type StockMarketCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the StockOnMembers
+     * Select specific fields to fetch from the StockMarket
      */
-    select?: StockOnMembersSelect<ExtArgs> | null
+    select?: StockMarketSelect<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well.
+     * The data needed to create a StockMarket.
      */
-    include?: StockOnMembersInclude<ExtArgs> | null
-    /**
-     * The data needed to create a StockOnMembers.
-     */
-    data: XOR<StockOnMembersCreateInput, StockOnMembersUncheckedCreateInput>
+    data?: XOR<StockMarketCreateInput, StockMarketUncheckedCreateInput>
   }
 
 
   /**
-   * StockOnMembers createMany
+   * StockMarket createMany
    */
-  export type StockOnMembersCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type StockMarketCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * The data used to create many StockOnMembers.
+     * The data used to create many StockMarkets.
      */
-    data: StockOnMembersCreateManyInput | StockOnMembersCreateManyInput[]
+    data: StockMarketCreateManyInput | StockMarketCreateManyInput[]
     skipDuplicates?: boolean
   }
 
 
   /**
-   * StockOnMembers update
+   * StockMarket update
    */
-  export type StockOnMembersUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type StockMarketUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the StockOnMembers
+     * Select specific fields to fetch from the StockMarket
      */
-    select?: StockOnMembersSelect<ExtArgs> | null
+    select?: StockMarketSelect<ExtArgs> | null
+    /**
+     * The data needed to update a StockMarket.
+     */
+    data: XOR<StockMarketUpdateInput, StockMarketUncheckedUpdateInput>
+    /**
+     * Choose, which StockMarket to update.
+     */
+    where: StockMarketWhereUniqueInput
+  }
+
+
+  /**
+   * StockMarket updateMany
+   */
+  export type StockMarketUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update StockMarkets.
+     */
+    data: XOR<StockMarketUpdateManyMutationInput, StockMarketUncheckedUpdateManyInput>
+    /**
+     * Filter which StockMarkets to update
+     */
+    where?: StockMarketWhereInput
+  }
+
+
+  /**
+   * StockMarket upsert
+   */
+  export type StockMarketUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the StockMarket
+     */
+    select?: StockMarketSelect<ExtArgs> | null
+    /**
+     * The filter to search for the StockMarket to update in case it exists.
+     */
+    where: StockMarketWhereUniqueInput
+    /**
+     * In case the StockMarket found by the `where` argument doesn't exist, create a new StockMarket with this data.
+     */
+    create: XOR<StockMarketCreateInput, StockMarketUncheckedCreateInput>
+    /**
+     * In case the StockMarket was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<StockMarketUpdateInput, StockMarketUncheckedUpdateInput>
+  }
+
+
+  /**
+   * StockMarket delete
+   */
+  export type StockMarketDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the StockMarket
+     */
+    select?: StockMarketSelect<ExtArgs> | null
+    /**
+     * Filter which StockMarket to delete.
+     */
+    where: StockMarketWhereUniqueInput
+  }
+
+
+  /**
+   * StockMarket deleteMany
+   */
+  export type StockMarketDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which StockMarkets to delete
+     */
+    where?: StockMarketWhereInput
+  }
+
+
+  /**
+   * StockMarket without action
+   */
+  export type StockMarketDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the StockMarket
+     */
+    select?: StockMarketSelect<ExtArgs> | null
+  }
+
+
+
+  /**
+   * Model StockFavorite
+   */
+
+  export type AggregateStockFavorite = {
+    _count: StockFavoriteCountAggregateOutputType | null
+    _avg: StockFavoriteAvgAggregateOutputType | null
+    _sum: StockFavoriteSumAggregateOutputType | null
+    _min: StockFavoriteMinAggregateOutputType | null
+    _max: StockFavoriteMaxAggregateOutputType | null
+  }
+
+  export type StockFavoriteAvgAggregateOutputType = {
+    id: number | null
+    memberId: number | null
+    stockSymbolId: number | null
+  }
+
+  export type StockFavoriteSumAggregateOutputType = {
+    id: bigint | null
+    memberId: bigint | null
+    stockSymbolId: bigint | null
+  }
+
+  export type StockFavoriteMinAggregateOutputType = {
+    id: bigint | null
+    newPrice: string | null
+    open: string | null
+    close: string | null
+    high: string | null
+    low: string | null
+    amount: string | null
+    volume: string | null
+    date: string | null
+    memberId: bigint | null
+    stockSymbolId: bigint | null
+    createdAt: Date | null
+  }
+
+  export type StockFavoriteMaxAggregateOutputType = {
+    id: bigint | null
+    newPrice: string | null
+    open: string | null
+    close: string | null
+    high: string | null
+    low: string | null
+    amount: string | null
+    volume: string | null
+    date: string | null
+    memberId: bigint | null
+    stockSymbolId: bigint | null
+    createdAt: Date | null
+  }
+
+  export type StockFavoriteCountAggregateOutputType = {
+    id: number
+    newPrice: number
+    open: number
+    close: number
+    high: number
+    low: number
+    amount: number
+    volume: number
+    date: number
+    extra: number
+    memberId: number
+    stockSymbolId: number
+    createdAt: number
+    _all: number
+  }
+
+
+  export type StockFavoriteAvgAggregateInputType = {
+    id?: true
+    memberId?: true
+    stockSymbolId?: true
+  }
+
+  export type StockFavoriteSumAggregateInputType = {
+    id?: true
+    memberId?: true
+    stockSymbolId?: true
+  }
+
+  export type StockFavoriteMinAggregateInputType = {
+    id?: true
+    newPrice?: true
+    open?: true
+    close?: true
+    high?: true
+    low?: true
+    amount?: true
+    volume?: true
+    date?: true
+    memberId?: true
+    stockSymbolId?: true
+    createdAt?: true
+  }
+
+  export type StockFavoriteMaxAggregateInputType = {
+    id?: true
+    newPrice?: true
+    open?: true
+    close?: true
+    high?: true
+    low?: true
+    amount?: true
+    volume?: true
+    date?: true
+    memberId?: true
+    stockSymbolId?: true
+    createdAt?: true
+  }
+
+  export type StockFavoriteCountAggregateInputType = {
+    id?: true
+    newPrice?: true
+    open?: true
+    close?: true
+    high?: true
+    low?: true
+    amount?: true
+    volume?: true
+    date?: true
+    extra?: true
+    memberId?: true
+    stockSymbolId?: true
+    createdAt?: true
+    _all?: true
+  }
+
+  export type StockFavoriteAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which StockFavorite to aggregate.
+     */
+    where?: StockFavoriteWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of StockFavorites to fetch.
+     */
+    orderBy?: StockFavoriteOrderByWithRelationInput | StockFavoriteOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: StockFavoriteWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` StockFavorites from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` StockFavorites.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned StockFavorites
+    **/
+    _count?: true | StockFavoriteCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: StockFavoriteAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: StockFavoriteSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: StockFavoriteMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: StockFavoriteMaxAggregateInputType
+  }
+
+  export type GetStockFavoriteAggregateType<T extends StockFavoriteAggregateArgs> = {
+        [P in keyof T & keyof AggregateStockFavorite]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateStockFavorite[P]>
+      : GetScalarType<T[P], AggregateStockFavorite[P]>
+  }
+
+
+
+
+  export type StockFavoriteGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: StockFavoriteWhereInput
+    orderBy?: StockFavoriteOrderByWithAggregationInput | StockFavoriteOrderByWithAggregationInput[]
+    by: StockFavoriteScalarFieldEnum[] | StockFavoriteScalarFieldEnum
+    having?: StockFavoriteScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: StockFavoriteCountAggregateInputType | true
+    _avg?: StockFavoriteAvgAggregateInputType
+    _sum?: StockFavoriteSumAggregateInputType
+    _min?: StockFavoriteMinAggregateInputType
+    _max?: StockFavoriteMaxAggregateInputType
+  }
+
+  export type StockFavoriteGroupByOutputType = {
+    id: bigint
+    newPrice: string
+    open: string
+    close: string
+    high: string
+    low: string
+    amount: string
+    volume: string
+    date: string | null
+    extra: JsonValue | null
+    memberId: bigint
+    stockSymbolId: bigint
+    createdAt: Date
+    _count: StockFavoriteCountAggregateOutputType | null
+    _avg: StockFavoriteAvgAggregateOutputType | null
+    _sum: StockFavoriteSumAggregateOutputType | null
+    _min: StockFavoriteMinAggregateOutputType | null
+    _max: StockFavoriteMaxAggregateOutputType | null
+  }
+
+  type GetStockFavoriteGroupByPayload<T extends StockFavoriteGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<StockFavoriteGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof StockFavoriteGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], StockFavoriteGroupByOutputType[P]>
+            : GetScalarType<T[P], StockFavoriteGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type StockFavoriteSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    newPrice?: boolean
+    open?: boolean
+    close?: boolean
+    high?: boolean
+    low?: boolean
+    amount?: boolean
+    volume?: boolean
+    date?: boolean
+    extra?: boolean
+    memberId?: boolean
+    stockSymbolId?: boolean
+    createdAt?: boolean
+  }, ExtArgs["result"]["stockFavorite"]>
+
+  export type StockFavoriteSelectScalar = {
+    id?: boolean
+    newPrice?: boolean
+    open?: boolean
+    close?: boolean
+    high?: boolean
+    low?: boolean
+    amount?: boolean
+    volume?: boolean
+    date?: boolean
+    extra?: boolean
+    memberId?: boolean
+    stockSymbolId?: boolean
+    createdAt?: boolean
+  }
+
+
+  export type $StockFavoritePayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "StockFavorite"
+    objects: {}
+    scalars: $Extensions.GetPayloadResult<{
+      id: bigint
+      newPrice: string
+      open: string
+      close: string
+      high: string
+      low: string
+      amount: string
+      volume: string
+      date: string | null
+      extra: Prisma.JsonValue | null
+      memberId: bigint
+      stockSymbolId: bigint
+      createdAt: Date
+    }, ExtArgs["result"]["stockFavorite"]>
+    composites: {}
+  }
+
+
+  type StockFavoriteGetPayload<S extends boolean | null | undefined | StockFavoriteDefaultArgs> = $Result.GetResult<Prisma.$StockFavoritePayload, S>
+
+  type StockFavoriteCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = 
+    Omit<StockFavoriteFindManyArgs, 'select' | 'include' | 'distinct'> & {
+      select?: StockFavoriteCountAggregateInputType | true
+    }
+
+  export interface StockFavoriteDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['StockFavorite'], meta: { name: 'StockFavorite' } }
+    /**
+     * Find zero or one StockFavorite that matches the filter.
+     * @param {StockFavoriteFindUniqueArgs} args - Arguments to find a StockFavorite
+     * @example
+     * // Get one StockFavorite
+     * const stockFavorite = await prisma.stockFavorite.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+    **/
+    findUnique<T extends StockFavoriteFindUniqueArgs<ExtArgs>>(
+      args: SelectSubset<T, StockFavoriteFindUniqueArgs<ExtArgs>>
+    ): Prisma__StockFavoriteClient<$Result.GetResult<Prisma.$StockFavoritePayload<ExtArgs>, T, 'findUnique'> | null, null, ExtArgs>
+
+    /**
+     * Find one StockFavorite that matches the filter or throw an error  with `error.code='P2025'` 
+     *     if no matches were found.
+     * @param {StockFavoriteFindUniqueOrThrowArgs} args - Arguments to find a StockFavorite
+     * @example
+     * // Get one StockFavorite
+     * const stockFavorite = await prisma.stockFavorite.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+    **/
+    findUniqueOrThrow<T extends StockFavoriteFindUniqueOrThrowArgs<ExtArgs>>(
+      args?: SelectSubset<T, StockFavoriteFindUniqueOrThrowArgs<ExtArgs>>
+    ): Prisma__StockFavoriteClient<$Result.GetResult<Prisma.$StockFavoritePayload<ExtArgs>, T, 'findUniqueOrThrow'>, never, ExtArgs>
+
+    /**
+     * Find the first StockFavorite that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {StockFavoriteFindFirstArgs} args - Arguments to find a StockFavorite
+     * @example
+     * // Get one StockFavorite
+     * const stockFavorite = await prisma.stockFavorite.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+    **/
+    findFirst<T extends StockFavoriteFindFirstArgs<ExtArgs>>(
+      args?: SelectSubset<T, StockFavoriteFindFirstArgs<ExtArgs>>
+    ): Prisma__StockFavoriteClient<$Result.GetResult<Prisma.$StockFavoritePayload<ExtArgs>, T, 'findFirst'> | null, null, ExtArgs>
+
+    /**
+     * Find the first StockFavorite that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {StockFavoriteFindFirstOrThrowArgs} args - Arguments to find a StockFavorite
+     * @example
+     * // Get one StockFavorite
+     * const stockFavorite = await prisma.stockFavorite.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+    **/
+    findFirstOrThrow<T extends StockFavoriteFindFirstOrThrowArgs<ExtArgs>>(
+      args?: SelectSubset<T, StockFavoriteFindFirstOrThrowArgs<ExtArgs>>
+    ): Prisma__StockFavoriteClient<$Result.GetResult<Prisma.$StockFavoritePayload<ExtArgs>, T, 'findFirstOrThrow'>, never, ExtArgs>
+
+    /**
+     * Find zero or more StockFavorites that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {StockFavoriteFindManyArgs=} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all StockFavorites
+     * const stockFavorites = await prisma.stockFavorite.findMany()
+     * 
+     * // Get first 10 StockFavorites
+     * const stockFavorites = await prisma.stockFavorite.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const stockFavoriteWithIdOnly = await prisma.stockFavorite.findMany({ select: { id: true } })
+     * 
+    **/
+    findMany<T extends StockFavoriteFindManyArgs<ExtArgs>>(
+      args?: SelectSubset<T, StockFavoriteFindManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<$Result.GetResult<Prisma.$StockFavoritePayload<ExtArgs>, T, 'findMany'>>
+
+    /**
+     * Create a StockFavorite.
+     * @param {StockFavoriteCreateArgs} args - Arguments to create a StockFavorite.
+     * @example
+     * // Create one StockFavorite
+     * const StockFavorite = await prisma.stockFavorite.create({
+     *   data: {
+     *     // ... data to create a StockFavorite
+     *   }
+     * })
+     * 
+    **/
+    create<T extends StockFavoriteCreateArgs<ExtArgs>>(
+      args: SelectSubset<T, StockFavoriteCreateArgs<ExtArgs>>
+    ): Prisma__StockFavoriteClient<$Result.GetResult<Prisma.$StockFavoritePayload<ExtArgs>, T, 'create'>, never, ExtArgs>
+
+    /**
+     * Create many StockFavorites.
+     *     @param {StockFavoriteCreateManyArgs} args - Arguments to create many StockFavorites.
+     *     @example
+     *     // Create many StockFavorites
+     *     const stockFavorite = await prisma.stockFavorite.createMany({
+     *       data: {
+     *         // ... provide data here
+     *       }
+     *     })
+     *     
+    **/
+    createMany<T extends StockFavoriteCreateManyArgs<ExtArgs>>(
+      args?: SelectSubset<T, StockFavoriteCreateManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Delete a StockFavorite.
+     * @param {StockFavoriteDeleteArgs} args - Arguments to delete one StockFavorite.
+     * @example
+     * // Delete one StockFavorite
+     * const StockFavorite = await prisma.stockFavorite.delete({
+     *   where: {
+     *     // ... filter to delete one StockFavorite
+     *   }
+     * })
+     * 
+    **/
+    delete<T extends StockFavoriteDeleteArgs<ExtArgs>>(
+      args: SelectSubset<T, StockFavoriteDeleteArgs<ExtArgs>>
+    ): Prisma__StockFavoriteClient<$Result.GetResult<Prisma.$StockFavoritePayload<ExtArgs>, T, 'delete'>, never, ExtArgs>
+
+    /**
+     * Update one StockFavorite.
+     * @param {StockFavoriteUpdateArgs} args - Arguments to update one StockFavorite.
+     * @example
+     * // Update one StockFavorite
+     * const stockFavorite = await prisma.stockFavorite.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+    **/
+    update<T extends StockFavoriteUpdateArgs<ExtArgs>>(
+      args: SelectSubset<T, StockFavoriteUpdateArgs<ExtArgs>>
+    ): Prisma__StockFavoriteClient<$Result.GetResult<Prisma.$StockFavoritePayload<ExtArgs>, T, 'update'>, never, ExtArgs>
+
+    /**
+     * Delete zero or more StockFavorites.
+     * @param {StockFavoriteDeleteManyArgs} args - Arguments to filter StockFavorites to delete.
+     * @example
+     * // Delete a few StockFavorites
+     * const { count } = await prisma.stockFavorite.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+    **/
+    deleteMany<T extends StockFavoriteDeleteManyArgs<ExtArgs>>(
+      args?: SelectSubset<T, StockFavoriteDeleteManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more StockFavorites.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {StockFavoriteUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many StockFavorites
+     * const stockFavorite = await prisma.stockFavorite.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+    **/
+    updateMany<T extends StockFavoriteUpdateManyArgs<ExtArgs>>(
+      args: SelectSubset<T, StockFavoriteUpdateManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create or update one StockFavorite.
+     * @param {StockFavoriteUpsertArgs} args - Arguments to update or create a StockFavorite.
+     * @example
+     * // Update or create a StockFavorite
+     * const stockFavorite = await prisma.stockFavorite.upsert({
+     *   create: {
+     *     // ... data to create a StockFavorite
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the StockFavorite we want to update
+     *   }
+     * })
+    **/
+    upsert<T extends StockFavoriteUpsertArgs<ExtArgs>>(
+      args: SelectSubset<T, StockFavoriteUpsertArgs<ExtArgs>>
+    ): Prisma__StockFavoriteClient<$Result.GetResult<Prisma.$StockFavoritePayload<ExtArgs>, T, 'upsert'>, never, ExtArgs>
+
+    /**
+     * Count the number of StockFavorites.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {StockFavoriteCountArgs} args - Arguments to filter StockFavorites to count.
+     * @example
+     * // Count the number of StockFavorites
+     * const count = await prisma.stockFavorite.count({
+     *   where: {
+     *     // ... the filter for the StockFavorites we want to count
+     *   }
+     * })
+    **/
+    count<T extends StockFavoriteCountArgs>(
+      args?: Subset<T, StockFavoriteCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], StockFavoriteCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a StockFavorite.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {StockFavoriteAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends StockFavoriteAggregateArgs>(args: Subset<T, StockFavoriteAggregateArgs>): Prisma.PrismaPromise<GetStockFavoriteAggregateType<T>>
+
+    /**
+     * Group by StockFavorite.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {StockFavoriteGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends StockFavoriteGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: StockFavoriteGroupByArgs['orderBy'] }
+        : { orderBy?: StockFavoriteGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, StockFavoriteGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetStockFavoriteGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the StockFavorite model
+   */
+  readonly fields: StockFavoriteFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for StockFavorite.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__StockFavoriteClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: 'PrismaPromise';
+
+
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>;
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>;
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>;
+  }
+
+
+
+  /**
+   * Fields of the StockFavorite model
+   */ 
+  interface StockFavoriteFieldRefs {
+    readonly id: FieldRef<"StockFavorite", 'BigInt'>
+    readonly newPrice: FieldRef<"StockFavorite", 'String'>
+    readonly open: FieldRef<"StockFavorite", 'String'>
+    readonly close: FieldRef<"StockFavorite", 'String'>
+    readonly high: FieldRef<"StockFavorite", 'String'>
+    readonly low: FieldRef<"StockFavorite", 'String'>
+    readonly amount: FieldRef<"StockFavorite", 'String'>
+    readonly volume: FieldRef<"StockFavorite", 'String'>
+    readonly date: FieldRef<"StockFavorite", 'String'>
+    readonly extra: FieldRef<"StockFavorite", 'Json'>
+    readonly memberId: FieldRef<"StockFavorite", 'BigInt'>
+    readonly stockSymbolId: FieldRef<"StockFavorite", 'BigInt'>
+    readonly createdAt: FieldRef<"StockFavorite", 'DateTime'>
+  }
+    
+
+  // Custom InputTypes
+
+  /**
+   * StockFavorite findUnique
+   */
+  export type StockFavoriteFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the StockFavorite
+     */
+    select?: StockFavoriteSelect<ExtArgs> | null
+    /**
+     * Filter, which StockFavorite to fetch.
+     */
+    where: StockFavoriteWhereUniqueInput
+  }
+
+
+  /**
+   * StockFavorite findUniqueOrThrow
+   */
+  export type StockFavoriteFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the StockFavorite
+     */
+    select?: StockFavoriteSelect<ExtArgs> | null
+    /**
+     * Filter, which StockFavorite to fetch.
+     */
+    where: StockFavoriteWhereUniqueInput
+  }
+
+
+  /**
+   * StockFavorite findFirst
+   */
+  export type StockFavoriteFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the StockFavorite
+     */
+    select?: StockFavoriteSelect<ExtArgs> | null
+    /**
+     * Filter, which StockFavorite to fetch.
+     */
+    where?: StockFavoriteWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of StockFavorites to fetch.
+     */
+    orderBy?: StockFavoriteOrderByWithRelationInput | StockFavoriteOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for StockFavorites.
+     */
+    cursor?: StockFavoriteWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` StockFavorites from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` StockFavorites.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of StockFavorites.
+     */
+    distinct?: StockFavoriteScalarFieldEnum | StockFavoriteScalarFieldEnum[]
+  }
+
+
+  /**
+   * StockFavorite findFirstOrThrow
+   */
+  export type StockFavoriteFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the StockFavorite
+     */
+    select?: StockFavoriteSelect<ExtArgs> | null
+    /**
+     * Filter, which StockFavorite to fetch.
+     */
+    where?: StockFavoriteWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of StockFavorites to fetch.
+     */
+    orderBy?: StockFavoriteOrderByWithRelationInput | StockFavoriteOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for StockFavorites.
+     */
+    cursor?: StockFavoriteWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` StockFavorites from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` StockFavorites.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of StockFavorites.
+     */
+    distinct?: StockFavoriteScalarFieldEnum | StockFavoriteScalarFieldEnum[]
+  }
+
+
+  /**
+   * StockFavorite findMany
+   */
+  export type StockFavoriteFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the StockFavorite
+     */
+    select?: StockFavoriteSelect<ExtArgs> | null
+    /**
+     * Filter, which StockFavorites to fetch.
+     */
+    where?: StockFavoriteWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of StockFavorites to fetch.
+     */
+    orderBy?: StockFavoriteOrderByWithRelationInput | StockFavoriteOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing StockFavorites.
+     */
+    cursor?: StockFavoriteWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` StockFavorites from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` StockFavorites.
+     */
+    skip?: number
+    distinct?: StockFavoriteScalarFieldEnum | StockFavoriteScalarFieldEnum[]
+  }
+
+
+  /**
+   * StockFavorite create
+   */
+  export type StockFavoriteCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the StockFavorite
+     */
+    select?: StockFavoriteSelect<ExtArgs> | null
+    /**
+     * The data needed to create a StockFavorite.
+     */
+    data: XOR<StockFavoriteCreateInput, StockFavoriteUncheckedCreateInput>
+  }
+
+
+  /**
+   * StockFavorite createMany
+   */
+  export type StockFavoriteCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many StockFavorites.
+     */
+    data: StockFavoriteCreateManyInput | StockFavoriteCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+
+  /**
+   * StockFavorite update
+   */
+  export type StockFavoriteUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the StockFavorite
+     */
+    select?: StockFavoriteSelect<ExtArgs> | null
+    /**
+     * The data needed to update a StockFavorite.
+     */
+    data: XOR<StockFavoriteUpdateInput, StockFavoriteUncheckedUpdateInput>
+    /**
+     * Choose, which StockFavorite to update.
+     */
+    where: StockFavoriteWhereUniqueInput
+  }
+
+
+  /**
+   * StockFavorite updateMany
+   */
+  export type StockFavoriteUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update StockFavorites.
+     */
+    data: XOR<StockFavoriteUpdateManyMutationInput, StockFavoriteUncheckedUpdateManyInput>
+    /**
+     * Filter which StockFavorites to update
+     */
+    where?: StockFavoriteWhereInput
+  }
+
+
+  /**
+   * StockFavorite upsert
+   */
+  export type StockFavoriteUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the StockFavorite
+     */
+    select?: StockFavoriteSelect<ExtArgs> | null
+    /**
+     * The filter to search for the StockFavorite to update in case it exists.
+     */
+    where: StockFavoriteWhereUniqueInput
+    /**
+     * In case the StockFavorite found by the `where` argument doesn't exist, create a new StockFavorite with this data.
+     */
+    create: XOR<StockFavoriteCreateInput, StockFavoriteUncheckedCreateInput>
+    /**
+     * In case the StockFavorite was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<StockFavoriteUpdateInput, StockFavoriteUncheckedUpdateInput>
+  }
+
+
+  /**
+   * StockFavorite delete
+   */
+  export type StockFavoriteDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the StockFavorite
+     */
+    select?: StockFavoriteSelect<ExtArgs> | null
+    /**
+     * Filter which StockFavorite to delete.
+     */
+    where: StockFavoriteWhereUniqueInput
+  }
+
+
+  /**
+   * StockFavorite deleteMany
+   */
+  export type StockFavoriteDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which StockFavorites to delete
+     */
+    where?: StockFavoriteWhereInput
+  }
+
+
+  /**
+   * StockFavorite without action
+   */
+  export type StockFavoriteDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the StockFavorite
+     */
+    select?: StockFavoriteSelect<ExtArgs> | null
+  }
+
+
+
+  /**
+   * Model StockSubscribe
+   */
+
+  export type AggregateStockSubscribe = {
+    _count: StockSubscribeCountAggregateOutputType | null
+    _avg: StockSubscribeAvgAggregateOutputType | null
+    _sum: StockSubscribeSumAggregateOutputType | null
+    _min: StockSubscribeMinAggregateOutputType | null
+    _max: StockSubscribeMaxAggregateOutputType | null
+  }
+
+  export type StockSubscribeAvgAggregateOutputType = {
+    id: number | null
+    circulation: number | null
+    remainCirculation: number | null
+    ipoPrice: Decimal | null
+    issuePrice: Decimal | null
+    status: number | null
+    type: number | null
+  }
+
+  export type StockSubscribeSumAggregateOutputType = {
+    id: bigint | null
+    circulation: number | null
+    remainCirculation: number | null
+    ipoPrice: Decimal | null
+    issuePrice: Decimal | null
+    status: number | null
+    type: number | null
+  }
+
+  export type StockSubscribeMinAggregateOutputType = {
+    id: bigint | null
+    market: string | null
+    name: string | null
+    code: string | null
+    startAt: Date | null
+    endAt: Date | null
+    upAt: Date | null
+    circulation: number | null
+    remainCirculation: number | null
+    ipoPrice: Decimal | null
+    issuePrice: Decimal | null
+    resultAt: Date | null
+    status: number | null
+    type: number | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type StockSubscribeMaxAggregateOutputType = {
+    id: bigint | null
+    market: string | null
+    name: string | null
+    code: string | null
+    startAt: Date | null
+    endAt: Date | null
+    upAt: Date | null
+    circulation: number | null
+    remainCirculation: number | null
+    ipoPrice: Decimal | null
+    issuePrice: Decimal | null
+    resultAt: Date | null
+    status: number | null
+    type: number | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type StockSubscribeCountAggregateOutputType = {
+    id: number
+    market: number
+    name: number
+    code: number
+    startAt: number
+    endAt: number
+    upAt: number
+    circulation: number
+    remainCirculation: number
+    ipoPrice: number
+    issuePrice: number
+    resultAt: number
+    subAmount: number
+    status: number
+    type: number
+    createdAt: number
+    updatedAt: number
+    _all: number
+  }
+
+
+  export type StockSubscribeAvgAggregateInputType = {
+    id?: true
+    circulation?: true
+    remainCirculation?: true
+    ipoPrice?: true
+    issuePrice?: true
+    status?: true
+    type?: true
+  }
+
+  export type StockSubscribeSumAggregateInputType = {
+    id?: true
+    circulation?: true
+    remainCirculation?: true
+    ipoPrice?: true
+    issuePrice?: true
+    status?: true
+    type?: true
+  }
+
+  export type StockSubscribeMinAggregateInputType = {
+    id?: true
+    market?: true
+    name?: true
+    code?: true
+    startAt?: true
+    endAt?: true
+    upAt?: true
+    circulation?: true
+    remainCirculation?: true
+    ipoPrice?: true
+    issuePrice?: true
+    resultAt?: true
+    status?: true
+    type?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type StockSubscribeMaxAggregateInputType = {
+    id?: true
+    market?: true
+    name?: true
+    code?: true
+    startAt?: true
+    endAt?: true
+    upAt?: true
+    circulation?: true
+    remainCirculation?: true
+    ipoPrice?: true
+    issuePrice?: true
+    resultAt?: true
+    status?: true
+    type?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type StockSubscribeCountAggregateInputType = {
+    id?: true
+    market?: true
+    name?: true
+    code?: true
+    startAt?: true
+    endAt?: true
+    upAt?: true
+    circulation?: true
+    remainCirculation?: true
+    ipoPrice?: true
+    issuePrice?: true
+    resultAt?: true
+    subAmount?: true
+    status?: true
+    type?: true
+    createdAt?: true
+    updatedAt?: true
+    _all?: true
+  }
+
+  export type StockSubscribeAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which StockSubscribe to aggregate.
+     */
+    where?: StockSubscribeWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of StockSubscribes to fetch.
+     */
+    orderBy?: StockSubscribeOrderByWithRelationInput | StockSubscribeOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: StockSubscribeWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` StockSubscribes from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` StockSubscribes.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned StockSubscribes
+    **/
+    _count?: true | StockSubscribeCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: StockSubscribeAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: StockSubscribeSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: StockSubscribeMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: StockSubscribeMaxAggregateInputType
+  }
+
+  export type GetStockSubscribeAggregateType<T extends StockSubscribeAggregateArgs> = {
+        [P in keyof T & keyof AggregateStockSubscribe]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateStockSubscribe[P]>
+      : GetScalarType<T[P], AggregateStockSubscribe[P]>
+  }
+
+
+
+
+  export type StockSubscribeGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: StockSubscribeWhereInput
+    orderBy?: StockSubscribeOrderByWithAggregationInput | StockSubscribeOrderByWithAggregationInput[]
+    by: StockSubscribeScalarFieldEnum[] | StockSubscribeScalarFieldEnum
+    having?: StockSubscribeScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: StockSubscribeCountAggregateInputType | true
+    _avg?: StockSubscribeAvgAggregateInputType
+    _sum?: StockSubscribeSumAggregateInputType
+    _min?: StockSubscribeMinAggregateInputType
+    _max?: StockSubscribeMaxAggregateInputType
+  }
+
+  export type StockSubscribeGroupByOutputType = {
+    id: bigint
+    market: string
+    name: string
+    code: string
+    startAt: Date | null
+    endAt: Date | null
+    upAt: Date | null
+    circulation: number | null
+    remainCirculation: number | null
+    ipoPrice: Decimal
+    issuePrice: Decimal
+    resultAt: Date | null
+    subAmount: JsonValue | null
+    status: number
+    type: number
+    createdAt: Date
+    updatedAt: Date | null
+    _count: StockSubscribeCountAggregateOutputType | null
+    _avg: StockSubscribeAvgAggregateOutputType | null
+    _sum: StockSubscribeSumAggregateOutputType | null
+    _min: StockSubscribeMinAggregateOutputType | null
+    _max: StockSubscribeMaxAggregateOutputType | null
+  }
+
+  type GetStockSubscribeGroupByPayload<T extends StockSubscribeGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<StockSubscribeGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof StockSubscribeGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], StockSubscribeGroupByOutputType[P]>
+            : GetScalarType<T[P], StockSubscribeGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type StockSubscribeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    market?: boolean
+    name?: boolean
+    code?: boolean
+    startAt?: boolean
+    endAt?: boolean
+    upAt?: boolean
+    circulation?: boolean
+    remainCirculation?: boolean
+    ipoPrice?: boolean
+    issuePrice?: boolean
+    resultAt?: boolean
+    subAmount?: boolean
+    status?: boolean
+    type?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+  }, ExtArgs["result"]["stockSubscribe"]>
+
+  export type StockSubscribeSelectScalar = {
+    id?: boolean
+    market?: boolean
+    name?: boolean
+    code?: boolean
+    startAt?: boolean
+    endAt?: boolean
+    upAt?: boolean
+    circulation?: boolean
+    remainCirculation?: boolean
+    ipoPrice?: boolean
+    issuePrice?: boolean
+    resultAt?: boolean
+    subAmount?: boolean
+    status?: boolean
+    type?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+  }
+
+
+  export type $StockSubscribePayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "StockSubscribe"
+    objects: {}
+    scalars: $Extensions.GetPayloadResult<{
+      id: bigint
+      market: string
+      name: string
+      code: string
+      startAt: Date | null
+      endAt: Date | null
+      upAt: Date | null
+      circulation: number | null
+      remainCirculation: number | null
+      ipoPrice: Prisma.Decimal
+      issuePrice: Prisma.Decimal
+      resultAt: Date | null
+      subAmount: Prisma.JsonValue | null
+      status: number
+      type: number
+      createdAt: Date
+      updatedAt: Date | null
+    }, ExtArgs["result"]["stockSubscribe"]>
+    composites: {}
+  }
+
+
+  type StockSubscribeGetPayload<S extends boolean | null | undefined | StockSubscribeDefaultArgs> = $Result.GetResult<Prisma.$StockSubscribePayload, S>
+
+  type StockSubscribeCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = 
+    Omit<StockSubscribeFindManyArgs, 'select' | 'include' | 'distinct'> & {
+      select?: StockSubscribeCountAggregateInputType | true
+    }
+
+  export interface StockSubscribeDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['StockSubscribe'], meta: { name: 'StockSubscribe' } }
+    /**
+     * Find zero or one StockSubscribe that matches the filter.
+     * @param {StockSubscribeFindUniqueArgs} args - Arguments to find a StockSubscribe
+     * @example
+     * // Get one StockSubscribe
+     * const stockSubscribe = await prisma.stockSubscribe.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+    **/
+    findUnique<T extends StockSubscribeFindUniqueArgs<ExtArgs>>(
+      args: SelectSubset<T, StockSubscribeFindUniqueArgs<ExtArgs>>
+    ): Prisma__StockSubscribeClient<$Result.GetResult<Prisma.$StockSubscribePayload<ExtArgs>, T, 'findUnique'> | null, null, ExtArgs>
+
+    /**
+     * Find one StockSubscribe that matches the filter or throw an error  with `error.code='P2025'` 
+     *     if no matches were found.
+     * @param {StockSubscribeFindUniqueOrThrowArgs} args - Arguments to find a StockSubscribe
+     * @example
+     * // Get one StockSubscribe
+     * const stockSubscribe = await prisma.stockSubscribe.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+    **/
+    findUniqueOrThrow<T extends StockSubscribeFindUniqueOrThrowArgs<ExtArgs>>(
+      args?: SelectSubset<T, StockSubscribeFindUniqueOrThrowArgs<ExtArgs>>
+    ): Prisma__StockSubscribeClient<$Result.GetResult<Prisma.$StockSubscribePayload<ExtArgs>, T, 'findUniqueOrThrow'>, never, ExtArgs>
+
+    /**
+     * Find the first StockSubscribe that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {StockSubscribeFindFirstArgs} args - Arguments to find a StockSubscribe
+     * @example
+     * // Get one StockSubscribe
+     * const stockSubscribe = await prisma.stockSubscribe.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+    **/
+    findFirst<T extends StockSubscribeFindFirstArgs<ExtArgs>>(
+      args?: SelectSubset<T, StockSubscribeFindFirstArgs<ExtArgs>>
+    ): Prisma__StockSubscribeClient<$Result.GetResult<Prisma.$StockSubscribePayload<ExtArgs>, T, 'findFirst'> | null, null, ExtArgs>
+
+    /**
+     * Find the first StockSubscribe that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {StockSubscribeFindFirstOrThrowArgs} args - Arguments to find a StockSubscribe
+     * @example
+     * // Get one StockSubscribe
+     * const stockSubscribe = await prisma.stockSubscribe.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+    **/
+    findFirstOrThrow<T extends StockSubscribeFindFirstOrThrowArgs<ExtArgs>>(
+      args?: SelectSubset<T, StockSubscribeFindFirstOrThrowArgs<ExtArgs>>
+    ): Prisma__StockSubscribeClient<$Result.GetResult<Prisma.$StockSubscribePayload<ExtArgs>, T, 'findFirstOrThrow'>, never, ExtArgs>
+
+    /**
+     * Find zero or more StockSubscribes that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {StockSubscribeFindManyArgs=} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all StockSubscribes
+     * const stockSubscribes = await prisma.stockSubscribe.findMany()
+     * 
+     * // Get first 10 StockSubscribes
+     * const stockSubscribes = await prisma.stockSubscribe.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const stockSubscribeWithIdOnly = await prisma.stockSubscribe.findMany({ select: { id: true } })
+     * 
+    **/
+    findMany<T extends StockSubscribeFindManyArgs<ExtArgs>>(
+      args?: SelectSubset<T, StockSubscribeFindManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<$Result.GetResult<Prisma.$StockSubscribePayload<ExtArgs>, T, 'findMany'>>
+
+    /**
+     * Create a StockSubscribe.
+     * @param {StockSubscribeCreateArgs} args - Arguments to create a StockSubscribe.
+     * @example
+     * // Create one StockSubscribe
+     * const StockSubscribe = await prisma.stockSubscribe.create({
+     *   data: {
+     *     // ... data to create a StockSubscribe
+     *   }
+     * })
+     * 
+    **/
+    create<T extends StockSubscribeCreateArgs<ExtArgs>>(
+      args: SelectSubset<T, StockSubscribeCreateArgs<ExtArgs>>
+    ): Prisma__StockSubscribeClient<$Result.GetResult<Prisma.$StockSubscribePayload<ExtArgs>, T, 'create'>, never, ExtArgs>
+
+    /**
+     * Create many StockSubscribes.
+     *     @param {StockSubscribeCreateManyArgs} args - Arguments to create many StockSubscribes.
+     *     @example
+     *     // Create many StockSubscribes
+     *     const stockSubscribe = await prisma.stockSubscribe.createMany({
+     *       data: {
+     *         // ... provide data here
+     *       }
+     *     })
+     *     
+    **/
+    createMany<T extends StockSubscribeCreateManyArgs<ExtArgs>>(
+      args?: SelectSubset<T, StockSubscribeCreateManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Delete a StockSubscribe.
+     * @param {StockSubscribeDeleteArgs} args - Arguments to delete one StockSubscribe.
+     * @example
+     * // Delete one StockSubscribe
+     * const StockSubscribe = await prisma.stockSubscribe.delete({
+     *   where: {
+     *     // ... filter to delete one StockSubscribe
+     *   }
+     * })
+     * 
+    **/
+    delete<T extends StockSubscribeDeleteArgs<ExtArgs>>(
+      args: SelectSubset<T, StockSubscribeDeleteArgs<ExtArgs>>
+    ): Prisma__StockSubscribeClient<$Result.GetResult<Prisma.$StockSubscribePayload<ExtArgs>, T, 'delete'>, never, ExtArgs>
+
+    /**
+     * Update one StockSubscribe.
+     * @param {StockSubscribeUpdateArgs} args - Arguments to update one StockSubscribe.
+     * @example
+     * // Update one StockSubscribe
+     * const stockSubscribe = await prisma.stockSubscribe.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+    **/
+    update<T extends StockSubscribeUpdateArgs<ExtArgs>>(
+      args: SelectSubset<T, StockSubscribeUpdateArgs<ExtArgs>>
+    ): Prisma__StockSubscribeClient<$Result.GetResult<Prisma.$StockSubscribePayload<ExtArgs>, T, 'update'>, never, ExtArgs>
+
+    /**
+     * Delete zero or more StockSubscribes.
+     * @param {StockSubscribeDeleteManyArgs} args - Arguments to filter StockSubscribes to delete.
+     * @example
+     * // Delete a few StockSubscribes
+     * const { count } = await prisma.stockSubscribe.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+    **/
+    deleteMany<T extends StockSubscribeDeleteManyArgs<ExtArgs>>(
+      args?: SelectSubset<T, StockSubscribeDeleteManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more StockSubscribes.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {StockSubscribeUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many StockSubscribes
+     * const stockSubscribe = await prisma.stockSubscribe.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+    **/
+    updateMany<T extends StockSubscribeUpdateManyArgs<ExtArgs>>(
+      args: SelectSubset<T, StockSubscribeUpdateManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create or update one StockSubscribe.
+     * @param {StockSubscribeUpsertArgs} args - Arguments to update or create a StockSubscribe.
+     * @example
+     * // Update or create a StockSubscribe
+     * const stockSubscribe = await prisma.stockSubscribe.upsert({
+     *   create: {
+     *     // ... data to create a StockSubscribe
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the StockSubscribe we want to update
+     *   }
+     * })
+    **/
+    upsert<T extends StockSubscribeUpsertArgs<ExtArgs>>(
+      args: SelectSubset<T, StockSubscribeUpsertArgs<ExtArgs>>
+    ): Prisma__StockSubscribeClient<$Result.GetResult<Prisma.$StockSubscribePayload<ExtArgs>, T, 'upsert'>, never, ExtArgs>
+
+    /**
+     * Count the number of StockSubscribes.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {StockSubscribeCountArgs} args - Arguments to filter StockSubscribes to count.
+     * @example
+     * // Count the number of StockSubscribes
+     * const count = await prisma.stockSubscribe.count({
+     *   where: {
+     *     // ... the filter for the StockSubscribes we want to count
+     *   }
+     * })
+    **/
+    count<T extends StockSubscribeCountArgs>(
+      args?: Subset<T, StockSubscribeCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], StockSubscribeCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a StockSubscribe.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {StockSubscribeAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends StockSubscribeAggregateArgs>(args: Subset<T, StockSubscribeAggregateArgs>): Prisma.PrismaPromise<GetStockSubscribeAggregateType<T>>
+
+    /**
+     * Group by StockSubscribe.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {StockSubscribeGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends StockSubscribeGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: StockSubscribeGroupByArgs['orderBy'] }
+        : { orderBy?: StockSubscribeGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, StockSubscribeGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetStockSubscribeGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the StockSubscribe model
+   */
+  readonly fields: StockSubscribeFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for StockSubscribe.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__StockSubscribeClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: 'PrismaPromise';
+
+
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>;
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>;
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>;
+  }
+
+
+
+  /**
+   * Fields of the StockSubscribe model
+   */ 
+  interface StockSubscribeFieldRefs {
+    readonly id: FieldRef<"StockSubscribe", 'BigInt'>
+    readonly market: FieldRef<"StockSubscribe", 'String'>
+    readonly name: FieldRef<"StockSubscribe", 'String'>
+    readonly code: FieldRef<"StockSubscribe", 'String'>
+    readonly startAt: FieldRef<"StockSubscribe", 'DateTime'>
+    readonly endAt: FieldRef<"StockSubscribe", 'DateTime'>
+    readonly upAt: FieldRef<"StockSubscribe", 'DateTime'>
+    readonly circulation: FieldRef<"StockSubscribe", 'Int'>
+    readonly remainCirculation: FieldRef<"StockSubscribe", 'Int'>
+    readonly ipoPrice: FieldRef<"StockSubscribe", 'Decimal'>
+    readonly issuePrice: FieldRef<"StockSubscribe", 'Decimal'>
+    readonly resultAt: FieldRef<"StockSubscribe", 'DateTime'>
+    readonly subAmount: FieldRef<"StockSubscribe", 'Json'>
+    readonly status: FieldRef<"StockSubscribe", 'Int'>
+    readonly type: FieldRef<"StockSubscribe", 'Int'>
+    readonly createdAt: FieldRef<"StockSubscribe", 'DateTime'>
+    readonly updatedAt: FieldRef<"StockSubscribe", 'DateTime'>
+  }
+    
+
+  // Custom InputTypes
+
+  /**
+   * StockSubscribe findUnique
+   */
+  export type StockSubscribeFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the StockSubscribe
+     */
+    select?: StockSubscribeSelect<ExtArgs> | null
+    /**
+     * Filter, which StockSubscribe to fetch.
+     */
+    where: StockSubscribeWhereUniqueInput
+  }
+
+
+  /**
+   * StockSubscribe findUniqueOrThrow
+   */
+  export type StockSubscribeFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the StockSubscribe
+     */
+    select?: StockSubscribeSelect<ExtArgs> | null
+    /**
+     * Filter, which StockSubscribe to fetch.
+     */
+    where: StockSubscribeWhereUniqueInput
+  }
+
+
+  /**
+   * StockSubscribe findFirst
+   */
+  export type StockSubscribeFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the StockSubscribe
+     */
+    select?: StockSubscribeSelect<ExtArgs> | null
+    /**
+     * Filter, which StockSubscribe to fetch.
+     */
+    where?: StockSubscribeWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of StockSubscribes to fetch.
+     */
+    orderBy?: StockSubscribeOrderByWithRelationInput | StockSubscribeOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for StockSubscribes.
+     */
+    cursor?: StockSubscribeWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` StockSubscribes from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` StockSubscribes.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of StockSubscribes.
+     */
+    distinct?: StockSubscribeScalarFieldEnum | StockSubscribeScalarFieldEnum[]
+  }
+
+
+  /**
+   * StockSubscribe findFirstOrThrow
+   */
+  export type StockSubscribeFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the StockSubscribe
+     */
+    select?: StockSubscribeSelect<ExtArgs> | null
+    /**
+     * Filter, which StockSubscribe to fetch.
+     */
+    where?: StockSubscribeWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of StockSubscribes to fetch.
+     */
+    orderBy?: StockSubscribeOrderByWithRelationInput | StockSubscribeOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for StockSubscribes.
+     */
+    cursor?: StockSubscribeWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` StockSubscribes from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` StockSubscribes.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of StockSubscribes.
+     */
+    distinct?: StockSubscribeScalarFieldEnum | StockSubscribeScalarFieldEnum[]
+  }
+
+
+  /**
+   * StockSubscribe findMany
+   */
+  export type StockSubscribeFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the StockSubscribe
+     */
+    select?: StockSubscribeSelect<ExtArgs> | null
+    /**
+     * Filter, which StockSubscribes to fetch.
+     */
+    where?: StockSubscribeWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of StockSubscribes to fetch.
+     */
+    orderBy?: StockSubscribeOrderByWithRelationInput | StockSubscribeOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing StockSubscribes.
+     */
+    cursor?: StockSubscribeWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` StockSubscribes from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` StockSubscribes.
+     */
+    skip?: number
+    distinct?: StockSubscribeScalarFieldEnum | StockSubscribeScalarFieldEnum[]
+  }
+
+
+  /**
+   * StockSubscribe create
+   */
+  export type StockSubscribeCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the StockSubscribe
+     */
+    select?: StockSubscribeSelect<ExtArgs> | null
+    /**
+     * The data needed to create a StockSubscribe.
+     */
+    data: XOR<StockSubscribeCreateInput, StockSubscribeUncheckedCreateInput>
+  }
+
+
+  /**
+   * StockSubscribe createMany
+   */
+  export type StockSubscribeCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many StockSubscribes.
+     */
+    data: StockSubscribeCreateManyInput | StockSubscribeCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+
+  /**
+   * StockSubscribe update
+   */
+  export type StockSubscribeUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the StockSubscribe
+     */
+    select?: StockSubscribeSelect<ExtArgs> | null
+    /**
+     * The data needed to update a StockSubscribe.
+     */
+    data: XOR<StockSubscribeUpdateInput, StockSubscribeUncheckedUpdateInput>
+    /**
+     * Choose, which StockSubscribe to update.
+     */
+    where: StockSubscribeWhereUniqueInput
+  }
+
+
+  /**
+   * StockSubscribe updateMany
+   */
+  export type StockSubscribeUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update StockSubscribes.
+     */
+    data: XOR<StockSubscribeUpdateManyMutationInput, StockSubscribeUncheckedUpdateManyInput>
+    /**
+     * Filter which StockSubscribes to update
+     */
+    where?: StockSubscribeWhereInput
+  }
+
+
+  /**
+   * StockSubscribe upsert
+   */
+  export type StockSubscribeUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the StockSubscribe
+     */
+    select?: StockSubscribeSelect<ExtArgs> | null
+    /**
+     * The filter to search for the StockSubscribe to update in case it exists.
+     */
+    where: StockSubscribeWhereUniqueInput
+    /**
+     * In case the StockSubscribe found by the `where` argument doesn't exist, create a new StockSubscribe with this data.
+     */
+    create: XOR<StockSubscribeCreateInput, StockSubscribeUncheckedCreateInput>
+    /**
+     * In case the StockSubscribe was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<StockSubscribeUpdateInput, StockSubscribeUncheckedUpdateInput>
+  }
+
+
+  /**
+   * StockSubscribe delete
+   */
+  export type StockSubscribeDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the StockSubscribe
+     */
+    select?: StockSubscribeSelect<ExtArgs> | null
+    /**
+     * Filter which StockSubscribe to delete.
+     */
+    where: StockSubscribeWhereUniqueInput
+  }
+
+
+  /**
+   * StockSubscribe deleteMany
+   */
+  export type StockSubscribeDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which StockSubscribes to delete
+     */
+    where?: StockSubscribeWhereInput
+  }
+
+
+  /**
+   * StockSubscribe without action
+   */
+  export type StockSubscribeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the StockSubscribe
+     */
+    select?: StockSubscribeSelect<ExtArgs> | null
+  }
+
+
+
+  /**
+   * Model MemberSubscribe
+   */
+
+  export type AggregateMemberSubscribe = {
+    _count: MemberSubscribeCountAggregateOutputType | null
+    _avg: MemberSubscribeAvgAggregateOutputType | null
+    _sum: MemberSubscribeSumAggregateOutputType | null
+    _min: MemberSubscribeMinAggregateOutputType | null
+    _max: MemberSubscribeMaxAggregateOutputType | null
+  }
+
+  export type MemberSubscribeAvgAggregateOutputType = {
+    id: number | null
+    amount: number | null
+    money: Decimal | null
+    winningAmount: number | null
+    winningPrice: Decimal | null
+    totalWinningPrice: Decimal | null
+    actualAmount: Decimal | null
+    status: number | null
+    type: number | null
+    stockSubscribeId: number | null
+    memberId: number | null
+  }
+
+  export type MemberSubscribeSumAggregateOutputType = {
+    id: bigint | null
+    amount: number | null
+    money: Decimal | null
+    winningAmount: number | null
+    winningPrice: Decimal | null
+    totalWinningPrice: Decimal | null
+    actualAmount: Decimal | null
+    status: number | null
+    type: number | null
+    stockSubscribeId: bigint | null
+    memberId: bigint | null
+  }
+
+  export type MemberSubscribeMinAggregateOutputType = {
+    id: bigint | null
+    market: string | null
+    code: string | null
+    name: string | null
+    amount: number | null
+    money: Decimal | null
+    no: string | null
+    winningAmount: number | null
+    winningPrice: Decimal | null
+    totalWinningPrice: Decimal | null
+    actualAmount: Decimal | null
+    status: number | null
+    type: number | null
+    createdAt: Date | null
+    updatedAt: Date | null
+    stockSubscribeId: bigint | null
+    memberId: bigint | null
+  }
+
+  export type MemberSubscribeMaxAggregateOutputType = {
+    id: bigint | null
+    market: string | null
+    code: string | null
+    name: string | null
+    amount: number | null
+    money: Decimal | null
+    no: string | null
+    winningAmount: number | null
+    winningPrice: Decimal | null
+    totalWinningPrice: Decimal | null
+    actualAmount: Decimal | null
+    status: number | null
+    type: number | null
+    createdAt: Date | null
+    updatedAt: Date | null
+    stockSubscribeId: bigint | null
+    memberId: bigint | null
+  }
+
+  export type MemberSubscribeCountAggregateOutputType = {
+    id: number
+    market: number
+    code: number
+    name: number
+    amount: number
+    money: number
+    no: number
+    winningAmount: number
+    winningPrice: number
+    totalWinningPrice: number
+    actualAmount: number
+    status: number
+    type: number
+    createdAt: number
+    updatedAt: number
+    stockSubscribeId: number
+    memberId: number
+    _all: number
+  }
+
+
+  export type MemberSubscribeAvgAggregateInputType = {
+    id?: true
+    amount?: true
+    money?: true
+    winningAmount?: true
+    winningPrice?: true
+    totalWinningPrice?: true
+    actualAmount?: true
+    status?: true
+    type?: true
+    stockSubscribeId?: true
+    memberId?: true
+  }
+
+  export type MemberSubscribeSumAggregateInputType = {
+    id?: true
+    amount?: true
+    money?: true
+    winningAmount?: true
+    winningPrice?: true
+    totalWinningPrice?: true
+    actualAmount?: true
+    status?: true
+    type?: true
+    stockSubscribeId?: true
+    memberId?: true
+  }
+
+  export type MemberSubscribeMinAggregateInputType = {
+    id?: true
+    market?: true
+    code?: true
+    name?: true
+    amount?: true
+    money?: true
+    no?: true
+    winningAmount?: true
+    winningPrice?: true
+    totalWinningPrice?: true
+    actualAmount?: true
+    status?: true
+    type?: true
+    createdAt?: true
+    updatedAt?: true
+    stockSubscribeId?: true
+    memberId?: true
+  }
+
+  export type MemberSubscribeMaxAggregateInputType = {
+    id?: true
+    market?: true
+    code?: true
+    name?: true
+    amount?: true
+    money?: true
+    no?: true
+    winningAmount?: true
+    winningPrice?: true
+    totalWinningPrice?: true
+    actualAmount?: true
+    status?: true
+    type?: true
+    createdAt?: true
+    updatedAt?: true
+    stockSubscribeId?: true
+    memberId?: true
+  }
+
+  export type MemberSubscribeCountAggregateInputType = {
+    id?: true
+    market?: true
+    code?: true
+    name?: true
+    amount?: true
+    money?: true
+    no?: true
+    winningAmount?: true
+    winningPrice?: true
+    totalWinningPrice?: true
+    actualAmount?: true
+    status?: true
+    type?: true
+    createdAt?: true
+    updatedAt?: true
+    stockSubscribeId?: true
+    memberId?: true
+    _all?: true
+  }
+
+  export type MemberSubscribeAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which MemberSubscribe to aggregate.
+     */
+    where?: MemberSubscribeWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of MemberSubscribes to fetch.
+     */
+    orderBy?: MemberSubscribeOrderByWithRelationInput | MemberSubscribeOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: MemberSubscribeWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` MemberSubscribes from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` MemberSubscribes.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned MemberSubscribes
+    **/
+    _count?: true | MemberSubscribeCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: MemberSubscribeAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: MemberSubscribeSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: MemberSubscribeMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: MemberSubscribeMaxAggregateInputType
+  }
+
+  export type GetMemberSubscribeAggregateType<T extends MemberSubscribeAggregateArgs> = {
+        [P in keyof T & keyof AggregateMemberSubscribe]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateMemberSubscribe[P]>
+      : GetScalarType<T[P], AggregateMemberSubscribe[P]>
+  }
+
+
+
+
+  export type MemberSubscribeGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: MemberSubscribeWhereInput
+    orderBy?: MemberSubscribeOrderByWithAggregationInput | MemberSubscribeOrderByWithAggregationInput[]
+    by: MemberSubscribeScalarFieldEnum[] | MemberSubscribeScalarFieldEnum
+    having?: MemberSubscribeScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: MemberSubscribeCountAggregateInputType | true
+    _avg?: MemberSubscribeAvgAggregateInputType
+    _sum?: MemberSubscribeSumAggregateInputType
+    _min?: MemberSubscribeMinAggregateInputType
+    _max?: MemberSubscribeMaxAggregateInputType
+  }
+
+  export type MemberSubscribeGroupByOutputType = {
+    id: bigint
+    market: string
+    code: string
+    name: string
+    amount: number
+    money: Decimal
+    no: string
+    winningAmount: number | null
+    winningPrice: Decimal | null
+    totalWinningPrice: Decimal | null
+    actualAmount: Decimal | null
+    status: number
+    type: number
+    createdAt: Date
+    updatedAt: Date | null
+    stockSubscribeId: bigint
+    memberId: bigint
+    _count: MemberSubscribeCountAggregateOutputType | null
+    _avg: MemberSubscribeAvgAggregateOutputType | null
+    _sum: MemberSubscribeSumAggregateOutputType | null
+    _min: MemberSubscribeMinAggregateOutputType | null
+    _max: MemberSubscribeMaxAggregateOutputType | null
+  }
+
+  type GetMemberSubscribeGroupByPayload<T extends MemberSubscribeGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<MemberSubscribeGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof MemberSubscribeGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], MemberSubscribeGroupByOutputType[P]>
+            : GetScalarType<T[P], MemberSubscribeGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type MemberSubscribeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    market?: boolean
+    code?: boolean
+    name?: boolean
+    amount?: boolean
+    money?: boolean
+    no?: boolean
+    winningAmount?: boolean
+    winningPrice?: boolean
+    totalWinningPrice?: boolean
+    actualAmount?: boolean
+    status?: boolean
+    type?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    stockSubscribeId?: boolean
+    memberId?: boolean
+    member?: boolean | MemberDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["memberSubscribe"]>
+
+  export type MemberSubscribeSelectScalar = {
+    id?: boolean
+    market?: boolean
+    code?: boolean
+    name?: boolean
+    amount?: boolean
+    money?: boolean
+    no?: boolean
+    winningAmount?: boolean
+    winningPrice?: boolean
+    totalWinningPrice?: boolean
+    actualAmount?: boolean
+    status?: boolean
+    type?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    stockSubscribeId?: boolean
+    memberId?: boolean
+  }
+
+  export type MemberSubscribeInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    member?: boolean | MemberDefaultArgs<ExtArgs>
+  }
+
+
+  export type $MemberSubscribePayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "MemberSubscribe"
+    objects: {
+      member: Prisma.$MemberPayload<ExtArgs>
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: bigint
+      market: string
+      code: string
+      name: string
+      amount: number
+      money: Prisma.Decimal
+      no: string
+      winningAmount: number | null
+      winningPrice: Prisma.Decimal | null
+      totalWinningPrice: Prisma.Decimal | null
+      actualAmount: Prisma.Decimal | null
+      status: number
+      type: number
+      createdAt: Date
+      updatedAt: Date | null
+      stockSubscribeId: bigint
+      memberId: bigint
+    }, ExtArgs["result"]["memberSubscribe"]>
+    composites: {}
+  }
+
+
+  type MemberSubscribeGetPayload<S extends boolean | null | undefined | MemberSubscribeDefaultArgs> = $Result.GetResult<Prisma.$MemberSubscribePayload, S>
+
+  type MemberSubscribeCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = 
+    Omit<MemberSubscribeFindManyArgs, 'select' | 'include' | 'distinct'> & {
+      select?: MemberSubscribeCountAggregateInputType | true
+    }
+
+  export interface MemberSubscribeDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['MemberSubscribe'], meta: { name: 'MemberSubscribe' } }
+    /**
+     * Find zero or one MemberSubscribe that matches the filter.
+     * @param {MemberSubscribeFindUniqueArgs} args - Arguments to find a MemberSubscribe
+     * @example
+     * // Get one MemberSubscribe
+     * const memberSubscribe = await prisma.memberSubscribe.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+    **/
+    findUnique<T extends MemberSubscribeFindUniqueArgs<ExtArgs>>(
+      args: SelectSubset<T, MemberSubscribeFindUniqueArgs<ExtArgs>>
+    ): Prisma__MemberSubscribeClient<$Result.GetResult<Prisma.$MemberSubscribePayload<ExtArgs>, T, 'findUnique'> | null, null, ExtArgs>
+
+    /**
+     * Find one MemberSubscribe that matches the filter or throw an error  with `error.code='P2025'` 
+     *     if no matches were found.
+     * @param {MemberSubscribeFindUniqueOrThrowArgs} args - Arguments to find a MemberSubscribe
+     * @example
+     * // Get one MemberSubscribe
+     * const memberSubscribe = await prisma.memberSubscribe.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+    **/
+    findUniqueOrThrow<T extends MemberSubscribeFindUniqueOrThrowArgs<ExtArgs>>(
+      args?: SelectSubset<T, MemberSubscribeFindUniqueOrThrowArgs<ExtArgs>>
+    ): Prisma__MemberSubscribeClient<$Result.GetResult<Prisma.$MemberSubscribePayload<ExtArgs>, T, 'findUniqueOrThrow'>, never, ExtArgs>
+
+    /**
+     * Find the first MemberSubscribe that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {MemberSubscribeFindFirstArgs} args - Arguments to find a MemberSubscribe
+     * @example
+     * // Get one MemberSubscribe
+     * const memberSubscribe = await prisma.memberSubscribe.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+    **/
+    findFirst<T extends MemberSubscribeFindFirstArgs<ExtArgs>>(
+      args?: SelectSubset<T, MemberSubscribeFindFirstArgs<ExtArgs>>
+    ): Prisma__MemberSubscribeClient<$Result.GetResult<Prisma.$MemberSubscribePayload<ExtArgs>, T, 'findFirst'> | null, null, ExtArgs>
+
+    /**
+     * Find the first MemberSubscribe that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {MemberSubscribeFindFirstOrThrowArgs} args - Arguments to find a MemberSubscribe
+     * @example
+     * // Get one MemberSubscribe
+     * const memberSubscribe = await prisma.memberSubscribe.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+    **/
+    findFirstOrThrow<T extends MemberSubscribeFindFirstOrThrowArgs<ExtArgs>>(
+      args?: SelectSubset<T, MemberSubscribeFindFirstOrThrowArgs<ExtArgs>>
+    ): Prisma__MemberSubscribeClient<$Result.GetResult<Prisma.$MemberSubscribePayload<ExtArgs>, T, 'findFirstOrThrow'>, never, ExtArgs>
+
+    /**
+     * Find zero or more MemberSubscribes that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {MemberSubscribeFindManyArgs=} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all MemberSubscribes
+     * const memberSubscribes = await prisma.memberSubscribe.findMany()
+     * 
+     * // Get first 10 MemberSubscribes
+     * const memberSubscribes = await prisma.memberSubscribe.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const memberSubscribeWithIdOnly = await prisma.memberSubscribe.findMany({ select: { id: true } })
+     * 
+    **/
+    findMany<T extends MemberSubscribeFindManyArgs<ExtArgs>>(
+      args?: SelectSubset<T, MemberSubscribeFindManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<$Result.GetResult<Prisma.$MemberSubscribePayload<ExtArgs>, T, 'findMany'>>
+
+    /**
+     * Create a MemberSubscribe.
+     * @param {MemberSubscribeCreateArgs} args - Arguments to create a MemberSubscribe.
+     * @example
+     * // Create one MemberSubscribe
+     * const MemberSubscribe = await prisma.memberSubscribe.create({
+     *   data: {
+     *     // ... data to create a MemberSubscribe
+     *   }
+     * })
+     * 
+    **/
+    create<T extends MemberSubscribeCreateArgs<ExtArgs>>(
+      args: SelectSubset<T, MemberSubscribeCreateArgs<ExtArgs>>
+    ): Prisma__MemberSubscribeClient<$Result.GetResult<Prisma.$MemberSubscribePayload<ExtArgs>, T, 'create'>, never, ExtArgs>
+
+    /**
+     * Create many MemberSubscribes.
+     *     @param {MemberSubscribeCreateManyArgs} args - Arguments to create many MemberSubscribes.
+     *     @example
+     *     // Create many MemberSubscribes
+     *     const memberSubscribe = await prisma.memberSubscribe.createMany({
+     *       data: {
+     *         // ... provide data here
+     *       }
+     *     })
+     *     
+    **/
+    createMany<T extends MemberSubscribeCreateManyArgs<ExtArgs>>(
+      args?: SelectSubset<T, MemberSubscribeCreateManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Delete a MemberSubscribe.
+     * @param {MemberSubscribeDeleteArgs} args - Arguments to delete one MemberSubscribe.
+     * @example
+     * // Delete one MemberSubscribe
+     * const MemberSubscribe = await prisma.memberSubscribe.delete({
+     *   where: {
+     *     // ... filter to delete one MemberSubscribe
+     *   }
+     * })
+     * 
+    **/
+    delete<T extends MemberSubscribeDeleteArgs<ExtArgs>>(
+      args: SelectSubset<T, MemberSubscribeDeleteArgs<ExtArgs>>
+    ): Prisma__MemberSubscribeClient<$Result.GetResult<Prisma.$MemberSubscribePayload<ExtArgs>, T, 'delete'>, never, ExtArgs>
+
+    /**
+     * Update one MemberSubscribe.
+     * @param {MemberSubscribeUpdateArgs} args - Arguments to update one MemberSubscribe.
+     * @example
+     * // Update one MemberSubscribe
+     * const memberSubscribe = await prisma.memberSubscribe.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+    **/
+    update<T extends MemberSubscribeUpdateArgs<ExtArgs>>(
+      args: SelectSubset<T, MemberSubscribeUpdateArgs<ExtArgs>>
+    ): Prisma__MemberSubscribeClient<$Result.GetResult<Prisma.$MemberSubscribePayload<ExtArgs>, T, 'update'>, never, ExtArgs>
+
+    /**
+     * Delete zero or more MemberSubscribes.
+     * @param {MemberSubscribeDeleteManyArgs} args - Arguments to filter MemberSubscribes to delete.
+     * @example
+     * // Delete a few MemberSubscribes
+     * const { count } = await prisma.memberSubscribe.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+    **/
+    deleteMany<T extends MemberSubscribeDeleteManyArgs<ExtArgs>>(
+      args?: SelectSubset<T, MemberSubscribeDeleteManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more MemberSubscribes.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {MemberSubscribeUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many MemberSubscribes
+     * const memberSubscribe = await prisma.memberSubscribe.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+    **/
+    updateMany<T extends MemberSubscribeUpdateManyArgs<ExtArgs>>(
+      args: SelectSubset<T, MemberSubscribeUpdateManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create or update one MemberSubscribe.
+     * @param {MemberSubscribeUpsertArgs} args - Arguments to update or create a MemberSubscribe.
+     * @example
+     * // Update or create a MemberSubscribe
+     * const memberSubscribe = await prisma.memberSubscribe.upsert({
+     *   create: {
+     *     // ... data to create a MemberSubscribe
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the MemberSubscribe we want to update
+     *   }
+     * })
+    **/
+    upsert<T extends MemberSubscribeUpsertArgs<ExtArgs>>(
+      args: SelectSubset<T, MemberSubscribeUpsertArgs<ExtArgs>>
+    ): Prisma__MemberSubscribeClient<$Result.GetResult<Prisma.$MemberSubscribePayload<ExtArgs>, T, 'upsert'>, never, ExtArgs>
+
+    /**
+     * Count the number of MemberSubscribes.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {MemberSubscribeCountArgs} args - Arguments to filter MemberSubscribes to count.
+     * @example
+     * // Count the number of MemberSubscribes
+     * const count = await prisma.memberSubscribe.count({
+     *   where: {
+     *     // ... the filter for the MemberSubscribes we want to count
+     *   }
+     * })
+    **/
+    count<T extends MemberSubscribeCountArgs>(
+      args?: Subset<T, MemberSubscribeCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], MemberSubscribeCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a MemberSubscribe.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {MemberSubscribeAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends MemberSubscribeAggregateArgs>(args: Subset<T, MemberSubscribeAggregateArgs>): Prisma.PrismaPromise<GetMemberSubscribeAggregateType<T>>
+
+    /**
+     * Group by MemberSubscribe.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {MemberSubscribeGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends MemberSubscribeGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: MemberSubscribeGroupByArgs['orderBy'] }
+        : { orderBy?: MemberSubscribeGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, MemberSubscribeGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetMemberSubscribeGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the MemberSubscribe model
+   */
+  readonly fields: MemberSubscribeFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for MemberSubscribe.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__MemberSubscribeClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: 'PrismaPromise';
+
+    member<T extends MemberDefaultArgs<ExtArgs> = {}>(args?: Subset<T, MemberDefaultArgs<ExtArgs>>): Prisma__MemberClient<$Result.GetResult<Prisma.$MemberPayload<ExtArgs>, T, 'findUniqueOrThrow'> | Null, Null, ExtArgs>;
+
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>;
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>;
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>;
+  }
+
+
+
+  /**
+   * Fields of the MemberSubscribe model
+   */ 
+  interface MemberSubscribeFieldRefs {
+    readonly id: FieldRef<"MemberSubscribe", 'BigInt'>
+    readonly market: FieldRef<"MemberSubscribe", 'String'>
+    readonly code: FieldRef<"MemberSubscribe", 'String'>
+    readonly name: FieldRef<"MemberSubscribe", 'String'>
+    readonly amount: FieldRef<"MemberSubscribe", 'Int'>
+    readonly money: FieldRef<"MemberSubscribe", 'Decimal'>
+    readonly no: FieldRef<"MemberSubscribe", 'String'>
+    readonly winningAmount: FieldRef<"MemberSubscribe", 'Int'>
+    readonly winningPrice: FieldRef<"MemberSubscribe", 'Decimal'>
+    readonly totalWinningPrice: FieldRef<"MemberSubscribe", 'Decimal'>
+    readonly actualAmount: FieldRef<"MemberSubscribe", 'Decimal'>
+    readonly status: FieldRef<"MemberSubscribe", 'Int'>
+    readonly type: FieldRef<"MemberSubscribe", 'Int'>
+    readonly createdAt: FieldRef<"MemberSubscribe", 'DateTime'>
+    readonly updatedAt: FieldRef<"MemberSubscribe", 'DateTime'>
+    readonly stockSubscribeId: FieldRef<"MemberSubscribe", 'BigInt'>
+    readonly memberId: FieldRef<"MemberSubscribe", 'BigInt'>
+  }
+    
+
+  // Custom InputTypes
+
+  /**
+   * MemberSubscribe findUnique
+   */
+  export type MemberSubscribeFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the MemberSubscribe
+     */
+    select?: MemberSubscribeSelect<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well.
      */
-    include?: StockOnMembersInclude<ExtArgs> | null
+    include?: MemberSubscribeInclude<ExtArgs> | null
     /**
-     * The data needed to update a StockOnMembers.
+     * Filter, which MemberSubscribe to fetch.
      */
-    data: XOR<StockOnMembersUpdateInput, StockOnMembersUncheckedUpdateInput>
-    /**
-     * Choose, which StockOnMembers to update.
-     */
-    where: StockOnMembersWhereUniqueInput
+    where: MemberSubscribeWhereUniqueInput
   }
 
 
   /**
-   * StockOnMembers updateMany
+   * MemberSubscribe findUniqueOrThrow
    */
-  export type StockOnMembersUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type MemberSubscribeFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * The data used to update StockOnMembers.
+     * Select specific fields to fetch from the MemberSubscribe
      */
-    data: XOR<StockOnMembersUpdateManyMutationInput, StockOnMembersUncheckedUpdateManyInput>
-    /**
-     * Filter which StockOnMembers to update
-     */
-    where?: StockOnMembersWhereInput
-  }
-
-
-  /**
-   * StockOnMembers upsert
-   */
-  export type StockOnMembersUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the StockOnMembers
-     */
-    select?: StockOnMembersSelect<ExtArgs> | null
+    select?: MemberSubscribeSelect<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well.
      */
-    include?: StockOnMembersInclude<ExtArgs> | null
+    include?: MemberSubscribeInclude<ExtArgs> | null
     /**
-     * The filter to search for the StockOnMembers to update in case it exists.
+     * Filter, which MemberSubscribe to fetch.
      */
-    where: StockOnMembersWhereUniqueInput
-    /**
-     * In case the StockOnMembers found by the `where` argument doesn't exist, create a new StockOnMembers with this data.
-     */
-    create: XOR<StockOnMembersCreateInput, StockOnMembersUncheckedCreateInput>
-    /**
-     * In case the StockOnMembers was found with the provided `where` argument, update it with this data.
-     */
-    update: XOR<StockOnMembersUpdateInput, StockOnMembersUncheckedUpdateInput>
+    where: MemberSubscribeWhereUniqueInput
   }
 
 
   /**
-   * StockOnMembers delete
+   * MemberSubscribe findFirst
    */
-  export type StockOnMembersDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type MemberSubscribeFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the StockOnMembers
+     * Select specific fields to fetch from the MemberSubscribe
      */
-    select?: StockOnMembersSelect<ExtArgs> | null
+    select?: MemberSubscribeSelect<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well.
      */
-    include?: StockOnMembersInclude<ExtArgs> | null
+    include?: MemberSubscribeInclude<ExtArgs> | null
     /**
-     * Filter which StockOnMembers to delete.
+     * Filter, which MemberSubscribe to fetch.
      */
-    where: StockOnMembersWhereUniqueInput
+    where?: MemberSubscribeWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of MemberSubscribes to fetch.
+     */
+    orderBy?: MemberSubscribeOrderByWithRelationInput | MemberSubscribeOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for MemberSubscribes.
+     */
+    cursor?: MemberSubscribeWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` MemberSubscribes from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` MemberSubscribes.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of MemberSubscribes.
+     */
+    distinct?: MemberSubscribeScalarFieldEnum | MemberSubscribeScalarFieldEnum[]
   }
 
 
   /**
-   * StockOnMembers deleteMany
+   * MemberSubscribe findFirstOrThrow
    */
-  export type StockOnMembersDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type MemberSubscribeFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Filter which StockOnMembers to delete
+     * Select specific fields to fetch from the MemberSubscribe
      */
-    where?: StockOnMembersWhereInput
-  }
-
-
-  /**
-   * StockOnMembers without action
-   */
-  export type StockOnMembersDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the StockOnMembers
-     */
-    select?: StockOnMembersSelect<ExtArgs> | null
+    select?: MemberSubscribeSelect<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well.
      */
-    include?: StockOnMembersInclude<ExtArgs> | null
+    include?: MemberSubscribeInclude<ExtArgs> | null
+    /**
+     * Filter, which MemberSubscribe to fetch.
+     */
+    where?: MemberSubscribeWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of MemberSubscribes to fetch.
+     */
+    orderBy?: MemberSubscribeOrderByWithRelationInput | MemberSubscribeOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for MemberSubscribes.
+     */
+    cursor?: MemberSubscribeWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` MemberSubscribes from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` MemberSubscribes.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of MemberSubscribes.
+     */
+    distinct?: MemberSubscribeScalarFieldEnum | MemberSubscribeScalarFieldEnum[]
+  }
+
+
+  /**
+   * MemberSubscribe findMany
+   */
+  export type MemberSubscribeFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the MemberSubscribe
+     */
+    select?: MemberSubscribeSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well.
+     */
+    include?: MemberSubscribeInclude<ExtArgs> | null
+    /**
+     * Filter, which MemberSubscribes to fetch.
+     */
+    where?: MemberSubscribeWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of MemberSubscribes to fetch.
+     */
+    orderBy?: MemberSubscribeOrderByWithRelationInput | MemberSubscribeOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing MemberSubscribes.
+     */
+    cursor?: MemberSubscribeWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` MemberSubscribes from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` MemberSubscribes.
+     */
+    skip?: number
+    distinct?: MemberSubscribeScalarFieldEnum | MemberSubscribeScalarFieldEnum[]
+  }
+
+
+  /**
+   * MemberSubscribe create
+   */
+  export type MemberSubscribeCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the MemberSubscribe
+     */
+    select?: MemberSubscribeSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well.
+     */
+    include?: MemberSubscribeInclude<ExtArgs> | null
+    /**
+     * The data needed to create a MemberSubscribe.
+     */
+    data: XOR<MemberSubscribeCreateInput, MemberSubscribeUncheckedCreateInput>
+  }
+
+
+  /**
+   * MemberSubscribe createMany
+   */
+  export type MemberSubscribeCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many MemberSubscribes.
+     */
+    data: MemberSubscribeCreateManyInput | MemberSubscribeCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+
+  /**
+   * MemberSubscribe update
+   */
+  export type MemberSubscribeUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the MemberSubscribe
+     */
+    select?: MemberSubscribeSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well.
+     */
+    include?: MemberSubscribeInclude<ExtArgs> | null
+    /**
+     * The data needed to update a MemberSubscribe.
+     */
+    data: XOR<MemberSubscribeUpdateInput, MemberSubscribeUncheckedUpdateInput>
+    /**
+     * Choose, which MemberSubscribe to update.
+     */
+    where: MemberSubscribeWhereUniqueInput
+  }
+
+
+  /**
+   * MemberSubscribe updateMany
+   */
+  export type MemberSubscribeUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update MemberSubscribes.
+     */
+    data: XOR<MemberSubscribeUpdateManyMutationInput, MemberSubscribeUncheckedUpdateManyInput>
+    /**
+     * Filter which MemberSubscribes to update
+     */
+    where?: MemberSubscribeWhereInput
+  }
+
+
+  /**
+   * MemberSubscribe upsert
+   */
+  export type MemberSubscribeUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the MemberSubscribe
+     */
+    select?: MemberSubscribeSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well.
+     */
+    include?: MemberSubscribeInclude<ExtArgs> | null
+    /**
+     * The filter to search for the MemberSubscribe to update in case it exists.
+     */
+    where: MemberSubscribeWhereUniqueInput
+    /**
+     * In case the MemberSubscribe found by the `where` argument doesn't exist, create a new MemberSubscribe with this data.
+     */
+    create: XOR<MemberSubscribeCreateInput, MemberSubscribeUncheckedCreateInput>
+    /**
+     * In case the MemberSubscribe was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<MemberSubscribeUpdateInput, MemberSubscribeUncheckedUpdateInput>
+  }
+
+
+  /**
+   * MemberSubscribe delete
+   */
+  export type MemberSubscribeDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the MemberSubscribe
+     */
+    select?: MemberSubscribeSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well.
+     */
+    include?: MemberSubscribeInclude<ExtArgs> | null
+    /**
+     * Filter which MemberSubscribe to delete.
+     */
+    where: MemberSubscribeWhereUniqueInput
+  }
+
+
+  /**
+   * MemberSubscribe deleteMany
+   */
+  export type MemberSubscribeDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which MemberSubscribes to delete
+     */
+    where?: MemberSubscribeWhereInput
+  }
+
+
+  /**
+   * MemberSubscribe without action
+   */
+  export type MemberSubscribeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the MemberSubscribe
+     */
+    select?: MemberSubscribeSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well.
+     */
+    include?: MemberSubscribeInclude<ExtArgs> | null
+  }
+
+
+
+  /**
+   * Model StockPosition
+   */
+
+  export type AggregateStockPosition = {
+    _count: StockPositionCountAggregateOutputType | null
+    _avg: StockPositionAvgAggregateOutputType | null
+    _sum: StockPositionSumAggregateOutputType | null
+    _min: StockPositionMinAggregateOutputType | null
+    _max: StockPositionMaxAggregateOutputType | null
+  }
+
+  export type StockPositionAvgAggregateOutputType = {
+    id: number | null
+    amount: number | null
+    mode: number | null
+    status: number | null
+    memberId: number | null
+    stockSymbolId: number | null
+  }
+
+  export type StockPositionSumAggregateOutputType = {
+    id: bigint | null
+    amount: number | null
+    mode: number | null
+    status: number | null
+    memberId: bigint | null
+    stockSymbolId: bigint | null
+  }
+
+  export type StockPositionMinAggregateOutputType = {
+    id: bigint | null
+    amount: number | null
+    blast: string | null
+    price: string | null
+    mode: number | null
+    status: number | null
+    bond: string | null
+    identifier: string | null
+    lever: string | null
+    stopLoss: string | null
+    takeProfit: string | null
+    market: string | null
+    pl: string | null
+    rate: string | null
+    currentPrice: string | null
+    memberId: bigint | null
+    stockSymbolId: bigint | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type StockPositionMaxAggregateOutputType = {
+    id: bigint | null
+    amount: number | null
+    blast: string | null
+    price: string | null
+    mode: number | null
+    status: number | null
+    bond: string | null
+    identifier: string | null
+    lever: string | null
+    stopLoss: string | null
+    takeProfit: string | null
+    market: string | null
+    pl: string | null
+    rate: string | null
+    currentPrice: string | null
+    memberId: bigint | null
+    stockSymbolId: bigint | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type StockPositionCountAggregateOutputType = {
+    id: number
+    amount: number
+    blast: number
+    price: number
+    mode: number
+    status: number
+    bond: number
+    identifier: number
+    lever: number
+    stopLoss: number
+    takeProfit: number
+    market: number
+    pl: number
+    rate: number
+    currentPrice: number
+    memberId: number
+    stockSymbolId: number
+    createdAt: number
+    updatedAt: number
+    _all: number
+  }
+
+
+  export type StockPositionAvgAggregateInputType = {
+    id?: true
+    amount?: true
+    mode?: true
+    status?: true
+    memberId?: true
+    stockSymbolId?: true
+  }
+
+  export type StockPositionSumAggregateInputType = {
+    id?: true
+    amount?: true
+    mode?: true
+    status?: true
+    memberId?: true
+    stockSymbolId?: true
+  }
+
+  export type StockPositionMinAggregateInputType = {
+    id?: true
+    amount?: true
+    blast?: true
+    price?: true
+    mode?: true
+    status?: true
+    bond?: true
+    identifier?: true
+    lever?: true
+    stopLoss?: true
+    takeProfit?: true
+    market?: true
+    pl?: true
+    rate?: true
+    currentPrice?: true
+    memberId?: true
+    stockSymbolId?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type StockPositionMaxAggregateInputType = {
+    id?: true
+    amount?: true
+    blast?: true
+    price?: true
+    mode?: true
+    status?: true
+    bond?: true
+    identifier?: true
+    lever?: true
+    stopLoss?: true
+    takeProfit?: true
+    market?: true
+    pl?: true
+    rate?: true
+    currentPrice?: true
+    memberId?: true
+    stockSymbolId?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type StockPositionCountAggregateInputType = {
+    id?: true
+    amount?: true
+    blast?: true
+    price?: true
+    mode?: true
+    status?: true
+    bond?: true
+    identifier?: true
+    lever?: true
+    stopLoss?: true
+    takeProfit?: true
+    market?: true
+    pl?: true
+    rate?: true
+    currentPrice?: true
+    memberId?: true
+    stockSymbolId?: true
+    createdAt?: true
+    updatedAt?: true
+    _all?: true
+  }
+
+  export type StockPositionAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which StockPosition to aggregate.
+     */
+    where?: StockPositionWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of StockPositions to fetch.
+     */
+    orderBy?: StockPositionOrderByWithRelationInput | StockPositionOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: StockPositionWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` StockPositions from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` StockPositions.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned StockPositions
+    **/
+    _count?: true | StockPositionCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: StockPositionAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: StockPositionSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: StockPositionMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: StockPositionMaxAggregateInputType
+  }
+
+  export type GetStockPositionAggregateType<T extends StockPositionAggregateArgs> = {
+        [P in keyof T & keyof AggregateStockPosition]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateStockPosition[P]>
+      : GetScalarType<T[P], AggregateStockPosition[P]>
+  }
+
+
+
+
+  export type StockPositionGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: StockPositionWhereInput
+    orderBy?: StockPositionOrderByWithAggregationInput | StockPositionOrderByWithAggregationInput[]
+    by: StockPositionScalarFieldEnum[] | StockPositionScalarFieldEnum
+    having?: StockPositionScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: StockPositionCountAggregateInputType | true
+    _avg?: StockPositionAvgAggregateInputType
+    _sum?: StockPositionSumAggregateInputType
+    _min?: StockPositionMinAggregateInputType
+    _max?: StockPositionMaxAggregateInputType
+  }
+
+  export type StockPositionGroupByOutputType = {
+    id: bigint
+    amount: number
+    blast: string
+    price: string
+    mode: number
+    status: number
+    bond: string | null
+    identifier: string | null
+    lever: string | null
+    stopLoss: string | null
+    takeProfit: string | null
+    market: string | null
+    pl: string | null
+    rate: string | null
+    currentPrice: string | null
+    memberId: bigint
+    stockSymbolId: bigint
+    createdAt: Date
+    updatedAt: Date | null
+    _count: StockPositionCountAggregateOutputType | null
+    _avg: StockPositionAvgAggregateOutputType | null
+    _sum: StockPositionSumAggregateOutputType | null
+    _min: StockPositionMinAggregateOutputType | null
+    _max: StockPositionMaxAggregateOutputType | null
+  }
+
+  type GetStockPositionGroupByPayload<T extends StockPositionGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<StockPositionGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof StockPositionGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], StockPositionGroupByOutputType[P]>
+            : GetScalarType<T[P], StockPositionGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type StockPositionSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    amount?: boolean
+    blast?: boolean
+    price?: boolean
+    mode?: boolean
+    status?: boolean
+    bond?: boolean
+    identifier?: boolean
+    lever?: boolean
+    stopLoss?: boolean
+    takeProfit?: boolean
+    market?: boolean
+    pl?: boolean
+    rate?: boolean
+    currentPrice?: boolean
+    memberId?: boolean
+    stockSymbolId?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    member?: boolean | MemberDefaultArgs<ExtArgs>
+    stockSymbol?: boolean | StockSymbolDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["stockPosition"]>
+
+  export type StockPositionSelectScalar = {
+    id?: boolean
+    amount?: boolean
+    blast?: boolean
+    price?: boolean
+    mode?: boolean
+    status?: boolean
+    bond?: boolean
+    identifier?: boolean
+    lever?: boolean
+    stopLoss?: boolean
+    takeProfit?: boolean
+    market?: boolean
+    pl?: boolean
+    rate?: boolean
+    currentPrice?: boolean
+    memberId?: boolean
+    stockSymbolId?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+  }
+
+  export type StockPositionInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    member?: boolean | MemberDefaultArgs<ExtArgs>
+    stockSymbol?: boolean | StockSymbolDefaultArgs<ExtArgs>
+  }
+
+
+  export type $StockPositionPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "StockPosition"
+    objects: {
+      member: Prisma.$MemberPayload<ExtArgs>
+      stockSymbol: Prisma.$StockSymbolPayload<ExtArgs>
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: bigint
+      amount: number
+      blast: string
+      price: string
+      mode: number
+      status: number
+      bond: string | null
+      identifier: string | null
+      lever: string | null
+      stopLoss: string | null
+      takeProfit: string | null
+      market: string | null
+      pl: string | null
+      rate: string | null
+      currentPrice: string | null
+      memberId: bigint
+      stockSymbolId: bigint
+      createdAt: Date
+      updatedAt: Date | null
+    }, ExtArgs["result"]["stockPosition"]>
+    composites: {}
+  }
+
+
+  type StockPositionGetPayload<S extends boolean | null | undefined | StockPositionDefaultArgs> = $Result.GetResult<Prisma.$StockPositionPayload, S>
+
+  type StockPositionCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = 
+    Omit<StockPositionFindManyArgs, 'select' | 'include' | 'distinct'> & {
+      select?: StockPositionCountAggregateInputType | true
+    }
+
+  export interface StockPositionDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['StockPosition'], meta: { name: 'StockPosition' } }
+    /**
+     * Find zero or one StockPosition that matches the filter.
+     * @param {StockPositionFindUniqueArgs} args - Arguments to find a StockPosition
+     * @example
+     * // Get one StockPosition
+     * const stockPosition = await prisma.stockPosition.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+    **/
+    findUnique<T extends StockPositionFindUniqueArgs<ExtArgs>>(
+      args: SelectSubset<T, StockPositionFindUniqueArgs<ExtArgs>>
+    ): Prisma__StockPositionClient<$Result.GetResult<Prisma.$StockPositionPayload<ExtArgs>, T, 'findUnique'> | null, null, ExtArgs>
+
+    /**
+     * Find one StockPosition that matches the filter or throw an error  with `error.code='P2025'` 
+     *     if no matches were found.
+     * @param {StockPositionFindUniqueOrThrowArgs} args - Arguments to find a StockPosition
+     * @example
+     * // Get one StockPosition
+     * const stockPosition = await prisma.stockPosition.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+    **/
+    findUniqueOrThrow<T extends StockPositionFindUniqueOrThrowArgs<ExtArgs>>(
+      args?: SelectSubset<T, StockPositionFindUniqueOrThrowArgs<ExtArgs>>
+    ): Prisma__StockPositionClient<$Result.GetResult<Prisma.$StockPositionPayload<ExtArgs>, T, 'findUniqueOrThrow'>, never, ExtArgs>
+
+    /**
+     * Find the first StockPosition that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {StockPositionFindFirstArgs} args - Arguments to find a StockPosition
+     * @example
+     * // Get one StockPosition
+     * const stockPosition = await prisma.stockPosition.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+    **/
+    findFirst<T extends StockPositionFindFirstArgs<ExtArgs>>(
+      args?: SelectSubset<T, StockPositionFindFirstArgs<ExtArgs>>
+    ): Prisma__StockPositionClient<$Result.GetResult<Prisma.$StockPositionPayload<ExtArgs>, T, 'findFirst'> | null, null, ExtArgs>
+
+    /**
+     * Find the first StockPosition that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {StockPositionFindFirstOrThrowArgs} args - Arguments to find a StockPosition
+     * @example
+     * // Get one StockPosition
+     * const stockPosition = await prisma.stockPosition.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+    **/
+    findFirstOrThrow<T extends StockPositionFindFirstOrThrowArgs<ExtArgs>>(
+      args?: SelectSubset<T, StockPositionFindFirstOrThrowArgs<ExtArgs>>
+    ): Prisma__StockPositionClient<$Result.GetResult<Prisma.$StockPositionPayload<ExtArgs>, T, 'findFirstOrThrow'>, never, ExtArgs>
+
+    /**
+     * Find zero or more StockPositions that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {StockPositionFindManyArgs=} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all StockPositions
+     * const stockPositions = await prisma.stockPosition.findMany()
+     * 
+     * // Get first 10 StockPositions
+     * const stockPositions = await prisma.stockPosition.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const stockPositionWithIdOnly = await prisma.stockPosition.findMany({ select: { id: true } })
+     * 
+    **/
+    findMany<T extends StockPositionFindManyArgs<ExtArgs>>(
+      args?: SelectSubset<T, StockPositionFindManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<$Result.GetResult<Prisma.$StockPositionPayload<ExtArgs>, T, 'findMany'>>
+
+    /**
+     * Create a StockPosition.
+     * @param {StockPositionCreateArgs} args - Arguments to create a StockPosition.
+     * @example
+     * // Create one StockPosition
+     * const StockPosition = await prisma.stockPosition.create({
+     *   data: {
+     *     // ... data to create a StockPosition
+     *   }
+     * })
+     * 
+    **/
+    create<T extends StockPositionCreateArgs<ExtArgs>>(
+      args: SelectSubset<T, StockPositionCreateArgs<ExtArgs>>
+    ): Prisma__StockPositionClient<$Result.GetResult<Prisma.$StockPositionPayload<ExtArgs>, T, 'create'>, never, ExtArgs>
+
+    /**
+     * Create many StockPositions.
+     *     @param {StockPositionCreateManyArgs} args - Arguments to create many StockPositions.
+     *     @example
+     *     // Create many StockPositions
+     *     const stockPosition = await prisma.stockPosition.createMany({
+     *       data: {
+     *         // ... provide data here
+     *       }
+     *     })
+     *     
+    **/
+    createMany<T extends StockPositionCreateManyArgs<ExtArgs>>(
+      args?: SelectSubset<T, StockPositionCreateManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Delete a StockPosition.
+     * @param {StockPositionDeleteArgs} args - Arguments to delete one StockPosition.
+     * @example
+     * // Delete one StockPosition
+     * const StockPosition = await prisma.stockPosition.delete({
+     *   where: {
+     *     // ... filter to delete one StockPosition
+     *   }
+     * })
+     * 
+    **/
+    delete<T extends StockPositionDeleteArgs<ExtArgs>>(
+      args: SelectSubset<T, StockPositionDeleteArgs<ExtArgs>>
+    ): Prisma__StockPositionClient<$Result.GetResult<Prisma.$StockPositionPayload<ExtArgs>, T, 'delete'>, never, ExtArgs>
+
+    /**
+     * Update one StockPosition.
+     * @param {StockPositionUpdateArgs} args - Arguments to update one StockPosition.
+     * @example
+     * // Update one StockPosition
+     * const stockPosition = await prisma.stockPosition.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+    **/
+    update<T extends StockPositionUpdateArgs<ExtArgs>>(
+      args: SelectSubset<T, StockPositionUpdateArgs<ExtArgs>>
+    ): Prisma__StockPositionClient<$Result.GetResult<Prisma.$StockPositionPayload<ExtArgs>, T, 'update'>, never, ExtArgs>
+
+    /**
+     * Delete zero or more StockPositions.
+     * @param {StockPositionDeleteManyArgs} args - Arguments to filter StockPositions to delete.
+     * @example
+     * // Delete a few StockPositions
+     * const { count } = await prisma.stockPosition.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+    **/
+    deleteMany<T extends StockPositionDeleteManyArgs<ExtArgs>>(
+      args?: SelectSubset<T, StockPositionDeleteManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more StockPositions.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {StockPositionUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many StockPositions
+     * const stockPosition = await prisma.stockPosition.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+    **/
+    updateMany<T extends StockPositionUpdateManyArgs<ExtArgs>>(
+      args: SelectSubset<T, StockPositionUpdateManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create or update one StockPosition.
+     * @param {StockPositionUpsertArgs} args - Arguments to update or create a StockPosition.
+     * @example
+     * // Update or create a StockPosition
+     * const stockPosition = await prisma.stockPosition.upsert({
+     *   create: {
+     *     // ... data to create a StockPosition
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the StockPosition we want to update
+     *   }
+     * })
+    **/
+    upsert<T extends StockPositionUpsertArgs<ExtArgs>>(
+      args: SelectSubset<T, StockPositionUpsertArgs<ExtArgs>>
+    ): Prisma__StockPositionClient<$Result.GetResult<Prisma.$StockPositionPayload<ExtArgs>, T, 'upsert'>, never, ExtArgs>
+
+    /**
+     * Count the number of StockPositions.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {StockPositionCountArgs} args - Arguments to filter StockPositions to count.
+     * @example
+     * // Count the number of StockPositions
+     * const count = await prisma.stockPosition.count({
+     *   where: {
+     *     // ... the filter for the StockPositions we want to count
+     *   }
+     * })
+    **/
+    count<T extends StockPositionCountArgs>(
+      args?: Subset<T, StockPositionCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], StockPositionCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a StockPosition.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {StockPositionAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends StockPositionAggregateArgs>(args: Subset<T, StockPositionAggregateArgs>): Prisma.PrismaPromise<GetStockPositionAggregateType<T>>
+
+    /**
+     * Group by StockPosition.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {StockPositionGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends StockPositionGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: StockPositionGroupByArgs['orderBy'] }
+        : { orderBy?: StockPositionGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, StockPositionGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetStockPositionGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the StockPosition model
+   */
+  readonly fields: StockPositionFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for StockPosition.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__StockPositionClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: 'PrismaPromise';
+
+    member<T extends MemberDefaultArgs<ExtArgs> = {}>(args?: Subset<T, MemberDefaultArgs<ExtArgs>>): Prisma__MemberClient<$Result.GetResult<Prisma.$MemberPayload<ExtArgs>, T, 'findUniqueOrThrow'> | Null, Null, ExtArgs>;
+
+    stockSymbol<T extends StockSymbolDefaultArgs<ExtArgs> = {}>(args?: Subset<T, StockSymbolDefaultArgs<ExtArgs>>): Prisma__StockSymbolClient<$Result.GetResult<Prisma.$StockSymbolPayload<ExtArgs>, T, 'findUniqueOrThrow'> | Null, Null, ExtArgs>;
+
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>;
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>;
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>;
+  }
+
+
+
+  /**
+   * Fields of the StockPosition model
+   */ 
+  interface StockPositionFieldRefs {
+    readonly id: FieldRef<"StockPosition", 'BigInt'>
+    readonly amount: FieldRef<"StockPosition", 'Int'>
+    readonly blast: FieldRef<"StockPosition", 'String'>
+    readonly price: FieldRef<"StockPosition", 'String'>
+    readonly mode: FieldRef<"StockPosition", 'Int'>
+    readonly status: FieldRef<"StockPosition", 'Int'>
+    readonly bond: FieldRef<"StockPosition", 'String'>
+    readonly identifier: FieldRef<"StockPosition", 'String'>
+    readonly lever: FieldRef<"StockPosition", 'String'>
+    readonly stopLoss: FieldRef<"StockPosition", 'String'>
+    readonly takeProfit: FieldRef<"StockPosition", 'String'>
+    readonly market: FieldRef<"StockPosition", 'String'>
+    readonly pl: FieldRef<"StockPosition", 'String'>
+    readonly rate: FieldRef<"StockPosition", 'String'>
+    readonly currentPrice: FieldRef<"StockPosition", 'String'>
+    readonly memberId: FieldRef<"StockPosition", 'BigInt'>
+    readonly stockSymbolId: FieldRef<"StockPosition", 'BigInt'>
+    readonly createdAt: FieldRef<"StockPosition", 'DateTime'>
+    readonly updatedAt: FieldRef<"StockPosition", 'DateTime'>
+  }
+    
+
+  // Custom InputTypes
+
+  /**
+   * StockPosition findUnique
+   */
+  export type StockPositionFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the StockPosition
+     */
+    select?: StockPositionSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well.
+     */
+    include?: StockPositionInclude<ExtArgs> | null
+    /**
+     * Filter, which StockPosition to fetch.
+     */
+    where: StockPositionWhereUniqueInput
+  }
+
+
+  /**
+   * StockPosition findUniqueOrThrow
+   */
+  export type StockPositionFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the StockPosition
+     */
+    select?: StockPositionSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well.
+     */
+    include?: StockPositionInclude<ExtArgs> | null
+    /**
+     * Filter, which StockPosition to fetch.
+     */
+    where: StockPositionWhereUniqueInput
+  }
+
+
+  /**
+   * StockPosition findFirst
+   */
+  export type StockPositionFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the StockPosition
+     */
+    select?: StockPositionSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well.
+     */
+    include?: StockPositionInclude<ExtArgs> | null
+    /**
+     * Filter, which StockPosition to fetch.
+     */
+    where?: StockPositionWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of StockPositions to fetch.
+     */
+    orderBy?: StockPositionOrderByWithRelationInput | StockPositionOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for StockPositions.
+     */
+    cursor?: StockPositionWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` StockPositions from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` StockPositions.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of StockPositions.
+     */
+    distinct?: StockPositionScalarFieldEnum | StockPositionScalarFieldEnum[]
+  }
+
+
+  /**
+   * StockPosition findFirstOrThrow
+   */
+  export type StockPositionFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the StockPosition
+     */
+    select?: StockPositionSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well.
+     */
+    include?: StockPositionInclude<ExtArgs> | null
+    /**
+     * Filter, which StockPosition to fetch.
+     */
+    where?: StockPositionWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of StockPositions to fetch.
+     */
+    orderBy?: StockPositionOrderByWithRelationInput | StockPositionOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for StockPositions.
+     */
+    cursor?: StockPositionWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` StockPositions from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` StockPositions.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of StockPositions.
+     */
+    distinct?: StockPositionScalarFieldEnum | StockPositionScalarFieldEnum[]
+  }
+
+
+  /**
+   * StockPosition findMany
+   */
+  export type StockPositionFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the StockPosition
+     */
+    select?: StockPositionSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well.
+     */
+    include?: StockPositionInclude<ExtArgs> | null
+    /**
+     * Filter, which StockPositions to fetch.
+     */
+    where?: StockPositionWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of StockPositions to fetch.
+     */
+    orderBy?: StockPositionOrderByWithRelationInput | StockPositionOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing StockPositions.
+     */
+    cursor?: StockPositionWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` StockPositions from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` StockPositions.
+     */
+    skip?: number
+    distinct?: StockPositionScalarFieldEnum | StockPositionScalarFieldEnum[]
+  }
+
+
+  /**
+   * StockPosition create
+   */
+  export type StockPositionCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the StockPosition
+     */
+    select?: StockPositionSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well.
+     */
+    include?: StockPositionInclude<ExtArgs> | null
+    /**
+     * The data needed to create a StockPosition.
+     */
+    data: XOR<StockPositionCreateInput, StockPositionUncheckedCreateInput>
+  }
+
+
+  /**
+   * StockPosition createMany
+   */
+  export type StockPositionCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many StockPositions.
+     */
+    data: StockPositionCreateManyInput | StockPositionCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+
+  /**
+   * StockPosition update
+   */
+  export type StockPositionUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the StockPosition
+     */
+    select?: StockPositionSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well.
+     */
+    include?: StockPositionInclude<ExtArgs> | null
+    /**
+     * The data needed to update a StockPosition.
+     */
+    data: XOR<StockPositionUpdateInput, StockPositionUncheckedUpdateInput>
+    /**
+     * Choose, which StockPosition to update.
+     */
+    where: StockPositionWhereUniqueInput
+  }
+
+
+  /**
+   * StockPosition updateMany
+   */
+  export type StockPositionUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update StockPositions.
+     */
+    data: XOR<StockPositionUpdateManyMutationInput, StockPositionUncheckedUpdateManyInput>
+    /**
+     * Filter which StockPositions to update
+     */
+    where?: StockPositionWhereInput
+  }
+
+
+  /**
+   * StockPosition upsert
+   */
+  export type StockPositionUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the StockPosition
+     */
+    select?: StockPositionSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well.
+     */
+    include?: StockPositionInclude<ExtArgs> | null
+    /**
+     * The filter to search for the StockPosition to update in case it exists.
+     */
+    where: StockPositionWhereUniqueInput
+    /**
+     * In case the StockPosition found by the `where` argument doesn't exist, create a new StockPosition with this data.
+     */
+    create: XOR<StockPositionCreateInput, StockPositionUncheckedCreateInput>
+    /**
+     * In case the StockPosition was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<StockPositionUpdateInput, StockPositionUncheckedUpdateInput>
+  }
+
+
+  /**
+   * StockPosition delete
+   */
+  export type StockPositionDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the StockPosition
+     */
+    select?: StockPositionSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well.
+     */
+    include?: StockPositionInclude<ExtArgs> | null
+    /**
+     * Filter which StockPosition to delete.
+     */
+    where: StockPositionWhereUniqueInput
+  }
+
+
+  /**
+   * StockPosition deleteMany
+   */
+  export type StockPositionDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which StockPositions to delete
+     */
+    where?: StockPositionWhereInput
+  }
+
+
+  /**
+   * StockPosition without action
+   */
+  export type StockPositionDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the StockPosition
+     */
+    select?: StockPositionSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well.
+     */
+    include?: StockPositionInclude<ExtArgs> | null
+  }
+
+
+
+  /**
+   * Model MemberDetail
+   */
+
+  export type AggregateMemberDetail = {
+    _count: MemberDetailCountAggregateOutputType | null
+    _avg: MemberDetailAvgAggregateOutputType | null
+    _sum: MemberDetailSumAggregateOutputType | null
+    _min: MemberDetailMinAggregateOutputType | null
+    _max: MemberDetailMaxAggregateOutputType | null
+  }
+
+  export type MemberDetailAvgAggregateOutputType = {
+    id: number | null
+    type: number | null
+    memberId: number | null
+  }
+
+  export type MemberDetailSumAggregateOutputType = {
+    id: bigint | null
+    type: number | null
+    memberId: bigint | null
+  }
+
+  export type MemberDetailMinAggregateOutputType = {
+    id: bigint | null
+    after: string | null
+    amount: string | null
+    before: string | null
+    market: string | null
+    type: number | null
+    remark: string | null
+    memberId: bigint | null
+  }
+
+  export type MemberDetailMaxAggregateOutputType = {
+    id: bigint | null
+    after: string | null
+    amount: string | null
+    before: string | null
+    market: string | null
+    type: number | null
+    remark: string | null
+    memberId: bigint | null
+  }
+
+  export type MemberDetailCountAggregateOutputType = {
+    id: number
+    after: number
+    amount: number
+    before: number
+    market: number
+    type: number
+    remark: number
+    memberId: number
+    _all: number
+  }
+
+
+  export type MemberDetailAvgAggregateInputType = {
+    id?: true
+    type?: true
+    memberId?: true
+  }
+
+  export type MemberDetailSumAggregateInputType = {
+    id?: true
+    type?: true
+    memberId?: true
+  }
+
+  export type MemberDetailMinAggregateInputType = {
+    id?: true
+    after?: true
+    amount?: true
+    before?: true
+    market?: true
+    type?: true
+    remark?: true
+    memberId?: true
+  }
+
+  export type MemberDetailMaxAggregateInputType = {
+    id?: true
+    after?: true
+    amount?: true
+    before?: true
+    market?: true
+    type?: true
+    remark?: true
+    memberId?: true
+  }
+
+  export type MemberDetailCountAggregateInputType = {
+    id?: true
+    after?: true
+    amount?: true
+    before?: true
+    market?: true
+    type?: true
+    remark?: true
+    memberId?: true
+    _all?: true
+  }
+
+  export type MemberDetailAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which MemberDetail to aggregate.
+     */
+    where?: MemberDetailWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of MemberDetails to fetch.
+     */
+    orderBy?: MemberDetailOrderByWithRelationInput | MemberDetailOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: MemberDetailWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` MemberDetails from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` MemberDetails.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned MemberDetails
+    **/
+    _count?: true | MemberDetailCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: MemberDetailAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: MemberDetailSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: MemberDetailMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: MemberDetailMaxAggregateInputType
+  }
+
+  export type GetMemberDetailAggregateType<T extends MemberDetailAggregateArgs> = {
+        [P in keyof T & keyof AggregateMemberDetail]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateMemberDetail[P]>
+      : GetScalarType<T[P], AggregateMemberDetail[P]>
+  }
+
+
+
+
+  export type MemberDetailGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: MemberDetailWhereInput
+    orderBy?: MemberDetailOrderByWithAggregationInput | MemberDetailOrderByWithAggregationInput[]
+    by: MemberDetailScalarFieldEnum[] | MemberDetailScalarFieldEnum
+    having?: MemberDetailScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: MemberDetailCountAggregateInputType | true
+    _avg?: MemberDetailAvgAggregateInputType
+    _sum?: MemberDetailSumAggregateInputType
+    _min?: MemberDetailMinAggregateInputType
+    _max?: MemberDetailMaxAggregateInputType
+  }
+
+  export type MemberDetailGroupByOutputType = {
+    id: bigint
+    after: string | null
+    amount: string | null
+    before: string | null
+    market: string | null
+    type: number
+    remark: string | null
+    memberId: bigint
+    _count: MemberDetailCountAggregateOutputType | null
+    _avg: MemberDetailAvgAggregateOutputType | null
+    _sum: MemberDetailSumAggregateOutputType | null
+    _min: MemberDetailMinAggregateOutputType | null
+    _max: MemberDetailMaxAggregateOutputType | null
+  }
+
+  type GetMemberDetailGroupByPayload<T extends MemberDetailGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<MemberDetailGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof MemberDetailGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], MemberDetailGroupByOutputType[P]>
+            : GetScalarType<T[P], MemberDetailGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type MemberDetailSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    after?: boolean
+    amount?: boolean
+    before?: boolean
+    market?: boolean
+    type?: boolean
+    remark?: boolean
+    memberId?: boolean
+    member?: boolean | MemberDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["memberDetail"]>
+
+  export type MemberDetailSelectScalar = {
+    id?: boolean
+    after?: boolean
+    amount?: boolean
+    before?: boolean
+    market?: boolean
+    type?: boolean
+    remark?: boolean
+    memberId?: boolean
+  }
+
+  export type MemberDetailInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    member?: boolean | MemberDefaultArgs<ExtArgs>
+  }
+
+
+  export type $MemberDetailPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "MemberDetail"
+    objects: {
+      member: Prisma.$MemberPayload<ExtArgs>
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: bigint
+      after: string | null
+      amount: string | null
+      before: string | null
+      market: string | null
+      type: number
+      remark: string | null
+      memberId: bigint
+    }, ExtArgs["result"]["memberDetail"]>
+    composites: {}
+  }
+
+
+  type MemberDetailGetPayload<S extends boolean | null | undefined | MemberDetailDefaultArgs> = $Result.GetResult<Prisma.$MemberDetailPayload, S>
+
+  type MemberDetailCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = 
+    Omit<MemberDetailFindManyArgs, 'select' | 'include' | 'distinct'> & {
+      select?: MemberDetailCountAggregateInputType | true
+    }
+
+  export interface MemberDetailDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['MemberDetail'], meta: { name: 'MemberDetail' } }
+    /**
+     * Find zero or one MemberDetail that matches the filter.
+     * @param {MemberDetailFindUniqueArgs} args - Arguments to find a MemberDetail
+     * @example
+     * // Get one MemberDetail
+     * const memberDetail = await prisma.memberDetail.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+    **/
+    findUnique<T extends MemberDetailFindUniqueArgs<ExtArgs>>(
+      args: SelectSubset<T, MemberDetailFindUniqueArgs<ExtArgs>>
+    ): Prisma__MemberDetailClient<$Result.GetResult<Prisma.$MemberDetailPayload<ExtArgs>, T, 'findUnique'> | null, null, ExtArgs>
+
+    /**
+     * Find one MemberDetail that matches the filter or throw an error  with `error.code='P2025'` 
+     *     if no matches were found.
+     * @param {MemberDetailFindUniqueOrThrowArgs} args - Arguments to find a MemberDetail
+     * @example
+     * // Get one MemberDetail
+     * const memberDetail = await prisma.memberDetail.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+    **/
+    findUniqueOrThrow<T extends MemberDetailFindUniqueOrThrowArgs<ExtArgs>>(
+      args?: SelectSubset<T, MemberDetailFindUniqueOrThrowArgs<ExtArgs>>
+    ): Prisma__MemberDetailClient<$Result.GetResult<Prisma.$MemberDetailPayload<ExtArgs>, T, 'findUniqueOrThrow'>, never, ExtArgs>
+
+    /**
+     * Find the first MemberDetail that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {MemberDetailFindFirstArgs} args - Arguments to find a MemberDetail
+     * @example
+     * // Get one MemberDetail
+     * const memberDetail = await prisma.memberDetail.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+    **/
+    findFirst<T extends MemberDetailFindFirstArgs<ExtArgs>>(
+      args?: SelectSubset<T, MemberDetailFindFirstArgs<ExtArgs>>
+    ): Prisma__MemberDetailClient<$Result.GetResult<Prisma.$MemberDetailPayload<ExtArgs>, T, 'findFirst'> | null, null, ExtArgs>
+
+    /**
+     * Find the first MemberDetail that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {MemberDetailFindFirstOrThrowArgs} args - Arguments to find a MemberDetail
+     * @example
+     * // Get one MemberDetail
+     * const memberDetail = await prisma.memberDetail.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+    **/
+    findFirstOrThrow<T extends MemberDetailFindFirstOrThrowArgs<ExtArgs>>(
+      args?: SelectSubset<T, MemberDetailFindFirstOrThrowArgs<ExtArgs>>
+    ): Prisma__MemberDetailClient<$Result.GetResult<Prisma.$MemberDetailPayload<ExtArgs>, T, 'findFirstOrThrow'>, never, ExtArgs>
+
+    /**
+     * Find zero or more MemberDetails that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {MemberDetailFindManyArgs=} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all MemberDetails
+     * const memberDetails = await prisma.memberDetail.findMany()
+     * 
+     * // Get first 10 MemberDetails
+     * const memberDetails = await prisma.memberDetail.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const memberDetailWithIdOnly = await prisma.memberDetail.findMany({ select: { id: true } })
+     * 
+    **/
+    findMany<T extends MemberDetailFindManyArgs<ExtArgs>>(
+      args?: SelectSubset<T, MemberDetailFindManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<$Result.GetResult<Prisma.$MemberDetailPayload<ExtArgs>, T, 'findMany'>>
+
+    /**
+     * Create a MemberDetail.
+     * @param {MemberDetailCreateArgs} args - Arguments to create a MemberDetail.
+     * @example
+     * // Create one MemberDetail
+     * const MemberDetail = await prisma.memberDetail.create({
+     *   data: {
+     *     // ... data to create a MemberDetail
+     *   }
+     * })
+     * 
+    **/
+    create<T extends MemberDetailCreateArgs<ExtArgs>>(
+      args: SelectSubset<T, MemberDetailCreateArgs<ExtArgs>>
+    ): Prisma__MemberDetailClient<$Result.GetResult<Prisma.$MemberDetailPayload<ExtArgs>, T, 'create'>, never, ExtArgs>
+
+    /**
+     * Create many MemberDetails.
+     *     @param {MemberDetailCreateManyArgs} args - Arguments to create many MemberDetails.
+     *     @example
+     *     // Create many MemberDetails
+     *     const memberDetail = await prisma.memberDetail.createMany({
+     *       data: {
+     *         // ... provide data here
+     *       }
+     *     })
+     *     
+    **/
+    createMany<T extends MemberDetailCreateManyArgs<ExtArgs>>(
+      args?: SelectSubset<T, MemberDetailCreateManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Delete a MemberDetail.
+     * @param {MemberDetailDeleteArgs} args - Arguments to delete one MemberDetail.
+     * @example
+     * // Delete one MemberDetail
+     * const MemberDetail = await prisma.memberDetail.delete({
+     *   where: {
+     *     // ... filter to delete one MemberDetail
+     *   }
+     * })
+     * 
+    **/
+    delete<T extends MemberDetailDeleteArgs<ExtArgs>>(
+      args: SelectSubset<T, MemberDetailDeleteArgs<ExtArgs>>
+    ): Prisma__MemberDetailClient<$Result.GetResult<Prisma.$MemberDetailPayload<ExtArgs>, T, 'delete'>, never, ExtArgs>
+
+    /**
+     * Update one MemberDetail.
+     * @param {MemberDetailUpdateArgs} args - Arguments to update one MemberDetail.
+     * @example
+     * // Update one MemberDetail
+     * const memberDetail = await prisma.memberDetail.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+    **/
+    update<T extends MemberDetailUpdateArgs<ExtArgs>>(
+      args: SelectSubset<T, MemberDetailUpdateArgs<ExtArgs>>
+    ): Prisma__MemberDetailClient<$Result.GetResult<Prisma.$MemberDetailPayload<ExtArgs>, T, 'update'>, never, ExtArgs>
+
+    /**
+     * Delete zero or more MemberDetails.
+     * @param {MemberDetailDeleteManyArgs} args - Arguments to filter MemberDetails to delete.
+     * @example
+     * // Delete a few MemberDetails
+     * const { count } = await prisma.memberDetail.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+    **/
+    deleteMany<T extends MemberDetailDeleteManyArgs<ExtArgs>>(
+      args?: SelectSubset<T, MemberDetailDeleteManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more MemberDetails.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {MemberDetailUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many MemberDetails
+     * const memberDetail = await prisma.memberDetail.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+    **/
+    updateMany<T extends MemberDetailUpdateManyArgs<ExtArgs>>(
+      args: SelectSubset<T, MemberDetailUpdateManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create or update one MemberDetail.
+     * @param {MemberDetailUpsertArgs} args - Arguments to update or create a MemberDetail.
+     * @example
+     * // Update or create a MemberDetail
+     * const memberDetail = await prisma.memberDetail.upsert({
+     *   create: {
+     *     // ... data to create a MemberDetail
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the MemberDetail we want to update
+     *   }
+     * })
+    **/
+    upsert<T extends MemberDetailUpsertArgs<ExtArgs>>(
+      args: SelectSubset<T, MemberDetailUpsertArgs<ExtArgs>>
+    ): Prisma__MemberDetailClient<$Result.GetResult<Prisma.$MemberDetailPayload<ExtArgs>, T, 'upsert'>, never, ExtArgs>
+
+    /**
+     * Count the number of MemberDetails.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {MemberDetailCountArgs} args - Arguments to filter MemberDetails to count.
+     * @example
+     * // Count the number of MemberDetails
+     * const count = await prisma.memberDetail.count({
+     *   where: {
+     *     // ... the filter for the MemberDetails we want to count
+     *   }
+     * })
+    **/
+    count<T extends MemberDetailCountArgs>(
+      args?: Subset<T, MemberDetailCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], MemberDetailCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a MemberDetail.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {MemberDetailAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends MemberDetailAggregateArgs>(args: Subset<T, MemberDetailAggregateArgs>): Prisma.PrismaPromise<GetMemberDetailAggregateType<T>>
+
+    /**
+     * Group by MemberDetail.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {MemberDetailGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends MemberDetailGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: MemberDetailGroupByArgs['orderBy'] }
+        : { orderBy?: MemberDetailGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, MemberDetailGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetMemberDetailGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the MemberDetail model
+   */
+  readonly fields: MemberDetailFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for MemberDetail.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__MemberDetailClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: 'PrismaPromise';
+
+    member<T extends MemberDefaultArgs<ExtArgs> = {}>(args?: Subset<T, MemberDefaultArgs<ExtArgs>>): Prisma__MemberClient<$Result.GetResult<Prisma.$MemberPayload<ExtArgs>, T, 'findUniqueOrThrow'> | Null, Null, ExtArgs>;
+
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>;
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>;
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>;
+  }
+
+
+
+  /**
+   * Fields of the MemberDetail model
+   */ 
+  interface MemberDetailFieldRefs {
+    readonly id: FieldRef<"MemberDetail", 'BigInt'>
+    readonly after: FieldRef<"MemberDetail", 'String'>
+    readonly amount: FieldRef<"MemberDetail", 'String'>
+    readonly before: FieldRef<"MemberDetail", 'String'>
+    readonly market: FieldRef<"MemberDetail", 'String'>
+    readonly type: FieldRef<"MemberDetail", 'Int'>
+    readonly remark: FieldRef<"MemberDetail", 'String'>
+    readonly memberId: FieldRef<"MemberDetail", 'BigInt'>
+  }
+    
+
+  // Custom InputTypes
+
+  /**
+   * MemberDetail findUnique
+   */
+  export type MemberDetailFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the MemberDetail
+     */
+    select?: MemberDetailSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well.
+     */
+    include?: MemberDetailInclude<ExtArgs> | null
+    /**
+     * Filter, which MemberDetail to fetch.
+     */
+    where: MemberDetailWhereUniqueInput
+  }
+
+
+  /**
+   * MemberDetail findUniqueOrThrow
+   */
+  export type MemberDetailFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the MemberDetail
+     */
+    select?: MemberDetailSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well.
+     */
+    include?: MemberDetailInclude<ExtArgs> | null
+    /**
+     * Filter, which MemberDetail to fetch.
+     */
+    where: MemberDetailWhereUniqueInput
+  }
+
+
+  /**
+   * MemberDetail findFirst
+   */
+  export type MemberDetailFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the MemberDetail
+     */
+    select?: MemberDetailSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well.
+     */
+    include?: MemberDetailInclude<ExtArgs> | null
+    /**
+     * Filter, which MemberDetail to fetch.
+     */
+    where?: MemberDetailWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of MemberDetails to fetch.
+     */
+    orderBy?: MemberDetailOrderByWithRelationInput | MemberDetailOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for MemberDetails.
+     */
+    cursor?: MemberDetailWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` MemberDetails from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` MemberDetails.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of MemberDetails.
+     */
+    distinct?: MemberDetailScalarFieldEnum | MemberDetailScalarFieldEnum[]
+  }
+
+
+  /**
+   * MemberDetail findFirstOrThrow
+   */
+  export type MemberDetailFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the MemberDetail
+     */
+    select?: MemberDetailSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well.
+     */
+    include?: MemberDetailInclude<ExtArgs> | null
+    /**
+     * Filter, which MemberDetail to fetch.
+     */
+    where?: MemberDetailWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of MemberDetails to fetch.
+     */
+    orderBy?: MemberDetailOrderByWithRelationInput | MemberDetailOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for MemberDetails.
+     */
+    cursor?: MemberDetailWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` MemberDetails from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` MemberDetails.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of MemberDetails.
+     */
+    distinct?: MemberDetailScalarFieldEnum | MemberDetailScalarFieldEnum[]
+  }
+
+
+  /**
+   * MemberDetail findMany
+   */
+  export type MemberDetailFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the MemberDetail
+     */
+    select?: MemberDetailSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well.
+     */
+    include?: MemberDetailInclude<ExtArgs> | null
+    /**
+     * Filter, which MemberDetails to fetch.
+     */
+    where?: MemberDetailWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of MemberDetails to fetch.
+     */
+    orderBy?: MemberDetailOrderByWithRelationInput | MemberDetailOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing MemberDetails.
+     */
+    cursor?: MemberDetailWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` MemberDetails from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` MemberDetails.
+     */
+    skip?: number
+    distinct?: MemberDetailScalarFieldEnum | MemberDetailScalarFieldEnum[]
+  }
+
+
+  /**
+   * MemberDetail create
+   */
+  export type MemberDetailCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the MemberDetail
+     */
+    select?: MemberDetailSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well.
+     */
+    include?: MemberDetailInclude<ExtArgs> | null
+    /**
+     * The data needed to create a MemberDetail.
+     */
+    data: XOR<MemberDetailCreateInput, MemberDetailUncheckedCreateInput>
+  }
+
+
+  /**
+   * MemberDetail createMany
+   */
+  export type MemberDetailCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many MemberDetails.
+     */
+    data: MemberDetailCreateManyInput | MemberDetailCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+
+  /**
+   * MemberDetail update
+   */
+  export type MemberDetailUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the MemberDetail
+     */
+    select?: MemberDetailSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well.
+     */
+    include?: MemberDetailInclude<ExtArgs> | null
+    /**
+     * The data needed to update a MemberDetail.
+     */
+    data: XOR<MemberDetailUpdateInput, MemberDetailUncheckedUpdateInput>
+    /**
+     * Choose, which MemberDetail to update.
+     */
+    where: MemberDetailWhereUniqueInput
+  }
+
+
+  /**
+   * MemberDetail updateMany
+   */
+  export type MemberDetailUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update MemberDetails.
+     */
+    data: XOR<MemberDetailUpdateManyMutationInput, MemberDetailUncheckedUpdateManyInput>
+    /**
+     * Filter which MemberDetails to update
+     */
+    where?: MemberDetailWhereInput
+  }
+
+
+  /**
+   * MemberDetail upsert
+   */
+  export type MemberDetailUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the MemberDetail
+     */
+    select?: MemberDetailSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well.
+     */
+    include?: MemberDetailInclude<ExtArgs> | null
+    /**
+     * The filter to search for the MemberDetail to update in case it exists.
+     */
+    where: MemberDetailWhereUniqueInput
+    /**
+     * In case the MemberDetail found by the `where` argument doesn't exist, create a new MemberDetail with this data.
+     */
+    create: XOR<MemberDetailCreateInput, MemberDetailUncheckedCreateInput>
+    /**
+     * In case the MemberDetail was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<MemberDetailUpdateInput, MemberDetailUncheckedUpdateInput>
+  }
+
+
+  /**
+   * MemberDetail delete
+   */
+  export type MemberDetailDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the MemberDetail
+     */
+    select?: MemberDetailSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well.
+     */
+    include?: MemberDetailInclude<ExtArgs> | null
+    /**
+     * Filter which MemberDetail to delete.
+     */
+    where: MemberDetailWhereUniqueInput
+  }
+
+
+  /**
+   * MemberDetail deleteMany
+   */
+  export type MemberDetailDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which MemberDetails to delete
+     */
+    where?: MemberDetailWhereInput
+  }
+
+
+  /**
+   * MemberDetail without action
+   */
+  export type MemberDetailDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the MemberDetail
+     */
+    select?: MemberDetailSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well.
+     */
+    include?: MemberDetailInclude<ExtArgs> | null
+  }
+
+
+
+  /**
+   * Model Country
+   */
+
+  export type AggregateCountry = {
+    _count: CountryCountAggregateOutputType | null
+    _avg: CountryAvgAggregateOutputType | null
+    _sum: CountrySumAggregateOutputType | null
+    _min: CountryMinAggregateOutputType | null
+    _max: CountryMaxAggregateOutputType | null
+  }
+
+  export type CountryAvgAggregateOutputType = {
+    id: number | null
+  }
+
+  export type CountrySumAggregateOutputType = {
+    id: bigint | null
+  }
+
+  export type CountryMinAggregateOutputType = {
+    id: bigint | null
+    code: string | null
+    name: string | null
+    en: string | null
+    tel: string | null
+    py: string | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type CountryMaxAggregateOutputType = {
+    id: bigint | null
+    code: string | null
+    name: string | null
+    en: string | null
+    tel: string | null
+    py: string | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type CountryCountAggregateOutputType = {
+    id: number
+    code: number
+    name: number
+    en: number
+    tel: number
+    py: number
+    createdAt: number
+    updatedAt: number
+    _all: number
+  }
+
+
+  export type CountryAvgAggregateInputType = {
+    id?: true
+  }
+
+  export type CountrySumAggregateInputType = {
+    id?: true
+  }
+
+  export type CountryMinAggregateInputType = {
+    id?: true
+    code?: true
+    name?: true
+    en?: true
+    tel?: true
+    py?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type CountryMaxAggregateInputType = {
+    id?: true
+    code?: true
+    name?: true
+    en?: true
+    tel?: true
+    py?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type CountryCountAggregateInputType = {
+    id?: true
+    code?: true
+    name?: true
+    en?: true
+    tel?: true
+    py?: true
+    createdAt?: true
+    updatedAt?: true
+    _all?: true
+  }
+
+  export type CountryAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which Country to aggregate.
+     */
+    where?: CountryWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Countries to fetch.
+     */
+    orderBy?: CountryOrderByWithRelationInput | CountryOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: CountryWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Countries from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Countries.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned Countries
+    **/
+    _count?: true | CountryCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: CountryAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: CountrySumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: CountryMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: CountryMaxAggregateInputType
+  }
+
+  export type GetCountryAggregateType<T extends CountryAggregateArgs> = {
+        [P in keyof T & keyof AggregateCountry]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateCountry[P]>
+      : GetScalarType<T[P], AggregateCountry[P]>
+  }
+
+
+
+
+  export type CountryGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: CountryWhereInput
+    orderBy?: CountryOrderByWithAggregationInput | CountryOrderByWithAggregationInput[]
+    by: CountryScalarFieldEnum[] | CountryScalarFieldEnum
+    having?: CountryScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: CountryCountAggregateInputType | true
+    _avg?: CountryAvgAggregateInputType
+    _sum?: CountrySumAggregateInputType
+    _min?: CountryMinAggregateInputType
+    _max?: CountryMaxAggregateInputType
+  }
+
+  export type CountryGroupByOutputType = {
+    id: bigint
+    code: string | null
+    name: string
+    en: string
+    tel: string
+    py: string
+    createdAt: Date
+    updatedAt: Date | null
+    _count: CountryCountAggregateOutputType | null
+    _avg: CountryAvgAggregateOutputType | null
+    _sum: CountrySumAggregateOutputType | null
+    _min: CountryMinAggregateOutputType | null
+    _max: CountryMaxAggregateOutputType | null
+  }
+
+  type GetCountryGroupByPayload<T extends CountryGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<CountryGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof CountryGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], CountryGroupByOutputType[P]>
+            : GetScalarType<T[P], CountryGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type CountrySelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    code?: boolean
+    name?: boolean
+    en?: boolean
+    tel?: boolean
+    py?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+  }, ExtArgs["result"]["country"]>
+
+  export type CountrySelectScalar = {
+    id?: boolean
+    code?: boolean
+    name?: boolean
+    en?: boolean
+    tel?: boolean
+    py?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+  }
+
+
+  export type $CountryPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "Country"
+    objects: {}
+    scalars: $Extensions.GetPayloadResult<{
+      id: bigint
+      code: string | null
+      name: string
+      en: string
+      tel: string
+      py: string
+      createdAt: Date
+      updatedAt: Date | null
+    }, ExtArgs["result"]["country"]>
+    composites: {}
+  }
+
+
+  type CountryGetPayload<S extends boolean | null | undefined | CountryDefaultArgs> = $Result.GetResult<Prisma.$CountryPayload, S>
+
+  type CountryCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = 
+    Omit<CountryFindManyArgs, 'select' | 'include' | 'distinct'> & {
+      select?: CountryCountAggregateInputType | true
+    }
+
+  export interface CountryDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['Country'], meta: { name: 'Country' } }
+    /**
+     * Find zero or one Country that matches the filter.
+     * @param {CountryFindUniqueArgs} args - Arguments to find a Country
+     * @example
+     * // Get one Country
+     * const country = await prisma.country.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+    **/
+    findUnique<T extends CountryFindUniqueArgs<ExtArgs>>(
+      args: SelectSubset<T, CountryFindUniqueArgs<ExtArgs>>
+    ): Prisma__CountryClient<$Result.GetResult<Prisma.$CountryPayload<ExtArgs>, T, 'findUnique'> | null, null, ExtArgs>
+
+    /**
+     * Find one Country that matches the filter or throw an error  with `error.code='P2025'` 
+     *     if no matches were found.
+     * @param {CountryFindUniqueOrThrowArgs} args - Arguments to find a Country
+     * @example
+     * // Get one Country
+     * const country = await prisma.country.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+    **/
+    findUniqueOrThrow<T extends CountryFindUniqueOrThrowArgs<ExtArgs>>(
+      args?: SelectSubset<T, CountryFindUniqueOrThrowArgs<ExtArgs>>
+    ): Prisma__CountryClient<$Result.GetResult<Prisma.$CountryPayload<ExtArgs>, T, 'findUniqueOrThrow'>, never, ExtArgs>
+
+    /**
+     * Find the first Country that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CountryFindFirstArgs} args - Arguments to find a Country
+     * @example
+     * // Get one Country
+     * const country = await prisma.country.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+    **/
+    findFirst<T extends CountryFindFirstArgs<ExtArgs>>(
+      args?: SelectSubset<T, CountryFindFirstArgs<ExtArgs>>
+    ): Prisma__CountryClient<$Result.GetResult<Prisma.$CountryPayload<ExtArgs>, T, 'findFirst'> | null, null, ExtArgs>
+
+    /**
+     * Find the first Country that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CountryFindFirstOrThrowArgs} args - Arguments to find a Country
+     * @example
+     * // Get one Country
+     * const country = await prisma.country.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+    **/
+    findFirstOrThrow<T extends CountryFindFirstOrThrowArgs<ExtArgs>>(
+      args?: SelectSubset<T, CountryFindFirstOrThrowArgs<ExtArgs>>
+    ): Prisma__CountryClient<$Result.GetResult<Prisma.$CountryPayload<ExtArgs>, T, 'findFirstOrThrow'>, never, ExtArgs>
+
+    /**
+     * Find zero or more Countries that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CountryFindManyArgs=} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all Countries
+     * const countries = await prisma.country.findMany()
+     * 
+     * // Get first 10 Countries
+     * const countries = await prisma.country.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const countryWithIdOnly = await prisma.country.findMany({ select: { id: true } })
+     * 
+    **/
+    findMany<T extends CountryFindManyArgs<ExtArgs>>(
+      args?: SelectSubset<T, CountryFindManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CountryPayload<ExtArgs>, T, 'findMany'>>
+
+    /**
+     * Create a Country.
+     * @param {CountryCreateArgs} args - Arguments to create a Country.
+     * @example
+     * // Create one Country
+     * const Country = await prisma.country.create({
+     *   data: {
+     *     // ... data to create a Country
+     *   }
+     * })
+     * 
+    **/
+    create<T extends CountryCreateArgs<ExtArgs>>(
+      args: SelectSubset<T, CountryCreateArgs<ExtArgs>>
+    ): Prisma__CountryClient<$Result.GetResult<Prisma.$CountryPayload<ExtArgs>, T, 'create'>, never, ExtArgs>
+
+    /**
+     * Create many Countries.
+     *     @param {CountryCreateManyArgs} args - Arguments to create many Countries.
+     *     @example
+     *     // Create many Countries
+     *     const country = await prisma.country.createMany({
+     *       data: {
+     *         // ... provide data here
+     *       }
+     *     })
+     *     
+    **/
+    createMany<T extends CountryCreateManyArgs<ExtArgs>>(
+      args?: SelectSubset<T, CountryCreateManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Delete a Country.
+     * @param {CountryDeleteArgs} args - Arguments to delete one Country.
+     * @example
+     * // Delete one Country
+     * const Country = await prisma.country.delete({
+     *   where: {
+     *     // ... filter to delete one Country
+     *   }
+     * })
+     * 
+    **/
+    delete<T extends CountryDeleteArgs<ExtArgs>>(
+      args: SelectSubset<T, CountryDeleteArgs<ExtArgs>>
+    ): Prisma__CountryClient<$Result.GetResult<Prisma.$CountryPayload<ExtArgs>, T, 'delete'>, never, ExtArgs>
+
+    /**
+     * Update one Country.
+     * @param {CountryUpdateArgs} args - Arguments to update one Country.
+     * @example
+     * // Update one Country
+     * const country = await prisma.country.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+    **/
+    update<T extends CountryUpdateArgs<ExtArgs>>(
+      args: SelectSubset<T, CountryUpdateArgs<ExtArgs>>
+    ): Prisma__CountryClient<$Result.GetResult<Prisma.$CountryPayload<ExtArgs>, T, 'update'>, never, ExtArgs>
+
+    /**
+     * Delete zero or more Countries.
+     * @param {CountryDeleteManyArgs} args - Arguments to filter Countries to delete.
+     * @example
+     * // Delete a few Countries
+     * const { count } = await prisma.country.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+    **/
+    deleteMany<T extends CountryDeleteManyArgs<ExtArgs>>(
+      args?: SelectSubset<T, CountryDeleteManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Countries.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CountryUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many Countries
+     * const country = await prisma.country.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+    **/
+    updateMany<T extends CountryUpdateManyArgs<ExtArgs>>(
+      args: SelectSubset<T, CountryUpdateManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create or update one Country.
+     * @param {CountryUpsertArgs} args - Arguments to update or create a Country.
+     * @example
+     * // Update or create a Country
+     * const country = await prisma.country.upsert({
+     *   create: {
+     *     // ... data to create a Country
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the Country we want to update
+     *   }
+     * })
+    **/
+    upsert<T extends CountryUpsertArgs<ExtArgs>>(
+      args: SelectSubset<T, CountryUpsertArgs<ExtArgs>>
+    ): Prisma__CountryClient<$Result.GetResult<Prisma.$CountryPayload<ExtArgs>, T, 'upsert'>, never, ExtArgs>
+
+    /**
+     * Count the number of Countries.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CountryCountArgs} args - Arguments to filter Countries to count.
+     * @example
+     * // Count the number of Countries
+     * const count = await prisma.country.count({
+     *   where: {
+     *     // ... the filter for the Countries we want to count
+     *   }
+     * })
+    **/
+    count<T extends CountryCountArgs>(
+      args?: Subset<T, CountryCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], CountryCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a Country.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CountryAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends CountryAggregateArgs>(args: Subset<T, CountryAggregateArgs>): Prisma.PrismaPromise<GetCountryAggregateType<T>>
+
+    /**
+     * Group by Country.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CountryGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends CountryGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: CountryGroupByArgs['orderBy'] }
+        : { orderBy?: CountryGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, CountryGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetCountryGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the Country model
+   */
+  readonly fields: CountryFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for Country.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__CountryClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: 'PrismaPromise';
+
+
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>;
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>;
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>;
+  }
+
+
+
+  /**
+   * Fields of the Country model
+   */ 
+  interface CountryFieldRefs {
+    readonly id: FieldRef<"Country", 'BigInt'>
+    readonly code: FieldRef<"Country", 'String'>
+    readonly name: FieldRef<"Country", 'String'>
+    readonly en: FieldRef<"Country", 'String'>
+    readonly tel: FieldRef<"Country", 'String'>
+    readonly py: FieldRef<"Country", 'String'>
+    readonly createdAt: FieldRef<"Country", 'DateTime'>
+    readonly updatedAt: FieldRef<"Country", 'DateTime'>
+  }
+    
+
+  // Custom InputTypes
+
+  /**
+   * Country findUnique
+   */
+  export type CountryFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Country
+     */
+    select?: CountrySelect<ExtArgs> | null
+    /**
+     * Filter, which Country to fetch.
+     */
+    where: CountryWhereUniqueInput
+  }
+
+
+  /**
+   * Country findUniqueOrThrow
+   */
+  export type CountryFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Country
+     */
+    select?: CountrySelect<ExtArgs> | null
+    /**
+     * Filter, which Country to fetch.
+     */
+    where: CountryWhereUniqueInput
+  }
+
+
+  /**
+   * Country findFirst
+   */
+  export type CountryFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Country
+     */
+    select?: CountrySelect<ExtArgs> | null
+    /**
+     * Filter, which Country to fetch.
+     */
+    where?: CountryWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Countries to fetch.
+     */
+    orderBy?: CountryOrderByWithRelationInput | CountryOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for Countries.
+     */
+    cursor?: CountryWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Countries from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Countries.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Countries.
+     */
+    distinct?: CountryScalarFieldEnum | CountryScalarFieldEnum[]
+  }
+
+
+  /**
+   * Country findFirstOrThrow
+   */
+  export type CountryFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Country
+     */
+    select?: CountrySelect<ExtArgs> | null
+    /**
+     * Filter, which Country to fetch.
+     */
+    where?: CountryWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Countries to fetch.
+     */
+    orderBy?: CountryOrderByWithRelationInput | CountryOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for Countries.
+     */
+    cursor?: CountryWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Countries from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Countries.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Countries.
+     */
+    distinct?: CountryScalarFieldEnum | CountryScalarFieldEnum[]
+  }
+
+
+  /**
+   * Country findMany
+   */
+  export type CountryFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Country
+     */
+    select?: CountrySelect<ExtArgs> | null
+    /**
+     * Filter, which Countries to fetch.
+     */
+    where?: CountryWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Countries to fetch.
+     */
+    orderBy?: CountryOrderByWithRelationInput | CountryOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing Countries.
+     */
+    cursor?: CountryWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Countries from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Countries.
+     */
+    skip?: number
+    distinct?: CountryScalarFieldEnum | CountryScalarFieldEnum[]
+  }
+
+
+  /**
+   * Country create
+   */
+  export type CountryCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Country
+     */
+    select?: CountrySelect<ExtArgs> | null
+    /**
+     * The data needed to create a Country.
+     */
+    data: XOR<CountryCreateInput, CountryUncheckedCreateInput>
+  }
+
+
+  /**
+   * Country createMany
+   */
+  export type CountryCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many Countries.
+     */
+    data: CountryCreateManyInput | CountryCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+
+  /**
+   * Country update
+   */
+  export type CountryUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Country
+     */
+    select?: CountrySelect<ExtArgs> | null
+    /**
+     * The data needed to update a Country.
+     */
+    data: XOR<CountryUpdateInput, CountryUncheckedUpdateInput>
+    /**
+     * Choose, which Country to update.
+     */
+    where: CountryWhereUniqueInput
+  }
+
+
+  /**
+   * Country updateMany
+   */
+  export type CountryUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update Countries.
+     */
+    data: XOR<CountryUpdateManyMutationInput, CountryUncheckedUpdateManyInput>
+    /**
+     * Filter which Countries to update
+     */
+    where?: CountryWhereInput
+  }
+
+
+  /**
+   * Country upsert
+   */
+  export type CountryUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Country
+     */
+    select?: CountrySelect<ExtArgs> | null
+    /**
+     * The filter to search for the Country to update in case it exists.
+     */
+    where: CountryWhereUniqueInput
+    /**
+     * In case the Country found by the `where` argument doesn't exist, create a new Country with this data.
+     */
+    create: XOR<CountryCreateInput, CountryUncheckedCreateInput>
+    /**
+     * In case the Country was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<CountryUpdateInput, CountryUncheckedUpdateInput>
+  }
+
+
+  /**
+   * Country delete
+   */
+  export type CountryDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Country
+     */
+    select?: CountrySelect<ExtArgs> | null
+    /**
+     * Filter which Country to delete.
+     */
+    where: CountryWhereUniqueInput
+  }
+
+
+  /**
+   * Country deleteMany
+   */
+  export type CountryDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which Countries to delete
+     */
+    where?: CountryWhereInput
+  }
+
+
+  /**
+   * Country without action
+   */
+  export type CountryDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Country
+     */
+    select?: CountrySelect<ExtArgs> | null
   }
 
 
@@ -7230,6 +15882,2840 @@ export namespace Prisma {
 
 
   /**
+   * Model StockResource
+   */
+
+  export type AggregateStockResource = {
+    _count: StockResourceCountAggregateOutputType | null
+    _avg: StockResourceAvgAggregateOutputType | null
+    _sum: StockResourceSumAggregateOutputType | null
+    _min: StockResourceMinAggregateOutputType | null
+    _max: StockResourceMaxAggregateOutputType | null
+  }
+
+  export type StockResourceAvgAggregateOutputType = {
+    id: number | null
+    type: number | null
+    status: number | null
+  }
+
+  export type StockResourceSumAggregateOutputType = {
+    id: bigint | null
+    type: number | null
+    status: number | null
+  }
+
+  export type StockResourceMinAggregateOutputType = {
+    id: bigint | null
+    amountScope: string | null
+    frequencyScope: string | null
+    market: string | null
+    spreadScope: string | null
+    endAt: string | null
+    startAt: string | null
+    symbol: string | null
+    type: number | null
+    status: number | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type StockResourceMaxAggregateOutputType = {
+    id: bigint | null
+    amountScope: string | null
+    frequencyScope: string | null
+    market: string | null
+    spreadScope: string | null
+    endAt: string | null
+    startAt: string | null
+    symbol: string | null
+    type: number | null
+    status: number | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type StockResourceCountAggregateOutputType = {
+    id: number
+    amountScope: number
+    frequencyScope: number
+    market: number
+    spreadScope: number
+    endAt: number
+    startAt: number
+    symbol: number
+    type: number
+    status: number
+    createdAt: number
+    updatedAt: number
+    _all: number
+  }
+
+
+  export type StockResourceAvgAggregateInputType = {
+    id?: true
+    type?: true
+    status?: true
+  }
+
+  export type StockResourceSumAggregateInputType = {
+    id?: true
+    type?: true
+    status?: true
+  }
+
+  export type StockResourceMinAggregateInputType = {
+    id?: true
+    amountScope?: true
+    frequencyScope?: true
+    market?: true
+    spreadScope?: true
+    endAt?: true
+    startAt?: true
+    symbol?: true
+    type?: true
+    status?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type StockResourceMaxAggregateInputType = {
+    id?: true
+    amountScope?: true
+    frequencyScope?: true
+    market?: true
+    spreadScope?: true
+    endAt?: true
+    startAt?: true
+    symbol?: true
+    type?: true
+    status?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type StockResourceCountAggregateInputType = {
+    id?: true
+    amountScope?: true
+    frequencyScope?: true
+    market?: true
+    spreadScope?: true
+    endAt?: true
+    startAt?: true
+    symbol?: true
+    type?: true
+    status?: true
+    createdAt?: true
+    updatedAt?: true
+    _all?: true
+  }
+
+  export type StockResourceAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which StockResource to aggregate.
+     */
+    where?: StockResourceWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of StockResources to fetch.
+     */
+    orderBy?: StockResourceOrderByWithRelationInput | StockResourceOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: StockResourceWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` StockResources from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` StockResources.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned StockResources
+    **/
+    _count?: true | StockResourceCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: StockResourceAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: StockResourceSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: StockResourceMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: StockResourceMaxAggregateInputType
+  }
+
+  export type GetStockResourceAggregateType<T extends StockResourceAggregateArgs> = {
+        [P in keyof T & keyof AggregateStockResource]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateStockResource[P]>
+      : GetScalarType<T[P], AggregateStockResource[P]>
+  }
+
+
+
+
+  export type StockResourceGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: StockResourceWhereInput
+    orderBy?: StockResourceOrderByWithAggregationInput | StockResourceOrderByWithAggregationInput[]
+    by: StockResourceScalarFieldEnum[] | StockResourceScalarFieldEnum
+    having?: StockResourceScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: StockResourceCountAggregateInputType | true
+    _avg?: StockResourceAvgAggregateInputType
+    _sum?: StockResourceSumAggregateInputType
+    _min?: StockResourceMinAggregateInputType
+    _max?: StockResourceMaxAggregateInputType
+  }
+
+  export type StockResourceGroupByOutputType = {
+    id: bigint
+    amountScope: string
+    frequencyScope: string
+    market: string
+    spreadScope: string
+    endAt: string
+    startAt: string
+    symbol: string
+    type: number
+    status: number
+    createdAt: Date
+    updatedAt: Date | null
+    _count: StockResourceCountAggregateOutputType | null
+    _avg: StockResourceAvgAggregateOutputType | null
+    _sum: StockResourceSumAggregateOutputType | null
+    _min: StockResourceMinAggregateOutputType | null
+    _max: StockResourceMaxAggregateOutputType | null
+  }
+
+  type GetStockResourceGroupByPayload<T extends StockResourceGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<StockResourceGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof StockResourceGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], StockResourceGroupByOutputType[P]>
+            : GetScalarType<T[P], StockResourceGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type StockResourceSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    amountScope?: boolean
+    frequencyScope?: boolean
+    market?: boolean
+    spreadScope?: boolean
+    endAt?: boolean
+    startAt?: boolean
+    symbol?: boolean
+    type?: boolean
+    status?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+  }, ExtArgs["result"]["stockResource"]>
+
+  export type StockResourceSelectScalar = {
+    id?: boolean
+    amountScope?: boolean
+    frequencyScope?: boolean
+    market?: boolean
+    spreadScope?: boolean
+    endAt?: boolean
+    startAt?: boolean
+    symbol?: boolean
+    type?: boolean
+    status?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+  }
+
+
+  export type $StockResourcePayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "StockResource"
+    objects: {}
+    scalars: $Extensions.GetPayloadResult<{
+      id: bigint
+      amountScope: string
+      frequencyScope: string
+      market: string
+      spreadScope: string
+      endAt: string
+      startAt: string
+      symbol: string
+      type: number
+      status: number
+      createdAt: Date
+      updatedAt: Date | null
+    }, ExtArgs["result"]["stockResource"]>
+    composites: {}
+  }
+
+
+  type StockResourceGetPayload<S extends boolean | null | undefined | StockResourceDefaultArgs> = $Result.GetResult<Prisma.$StockResourcePayload, S>
+
+  type StockResourceCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = 
+    Omit<StockResourceFindManyArgs, 'select' | 'include' | 'distinct'> & {
+      select?: StockResourceCountAggregateInputType | true
+    }
+
+  export interface StockResourceDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['StockResource'], meta: { name: 'StockResource' } }
+    /**
+     * Find zero or one StockResource that matches the filter.
+     * @param {StockResourceFindUniqueArgs} args - Arguments to find a StockResource
+     * @example
+     * // Get one StockResource
+     * const stockResource = await prisma.stockResource.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+    **/
+    findUnique<T extends StockResourceFindUniqueArgs<ExtArgs>>(
+      args: SelectSubset<T, StockResourceFindUniqueArgs<ExtArgs>>
+    ): Prisma__StockResourceClient<$Result.GetResult<Prisma.$StockResourcePayload<ExtArgs>, T, 'findUnique'> | null, null, ExtArgs>
+
+    /**
+     * Find one StockResource that matches the filter or throw an error  with `error.code='P2025'` 
+     *     if no matches were found.
+     * @param {StockResourceFindUniqueOrThrowArgs} args - Arguments to find a StockResource
+     * @example
+     * // Get one StockResource
+     * const stockResource = await prisma.stockResource.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+    **/
+    findUniqueOrThrow<T extends StockResourceFindUniqueOrThrowArgs<ExtArgs>>(
+      args?: SelectSubset<T, StockResourceFindUniqueOrThrowArgs<ExtArgs>>
+    ): Prisma__StockResourceClient<$Result.GetResult<Prisma.$StockResourcePayload<ExtArgs>, T, 'findUniqueOrThrow'>, never, ExtArgs>
+
+    /**
+     * Find the first StockResource that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {StockResourceFindFirstArgs} args - Arguments to find a StockResource
+     * @example
+     * // Get one StockResource
+     * const stockResource = await prisma.stockResource.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+    **/
+    findFirst<T extends StockResourceFindFirstArgs<ExtArgs>>(
+      args?: SelectSubset<T, StockResourceFindFirstArgs<ExtArgs>>
+    ): Prisma__StockResourceClient<$Result.GetResult<Prisma.$StockResourcePayload<ExtArgs>, T, 'findFirst'> | null, null, ExtArgs>
+
+    /**
+     * Find the first StockResource that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {StockResourceFindFirstOrThrowArgs} args - Arguments to find a StockResource
+     * @example
+     * // Get one StockResource
+     * const stockResource = await prisma.stockResource.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+    **/
+    findFirstOrThrow<T extends StockResourceFindFirstOrThrowArgs<ExtArgs>>(
+      args?: SelectSubset<T, StockResourceFindFirstOrThrowArgs<ExtArgs>>
+    ): Prisma__StockResourceClient<$Result.GetResult<Prisma.$StockResourcePayload<ExtArgs>, T, 'findFirstOrThrow'>, never, ExtArgs>
+
+    /**
+     * Find zero or more StockResources that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {StockResourceFindManyArgs=} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all StockResources
+     * const stockResources = await prisma.stockResource.findMany()
+     * 
+     * // Get first 10 StockResources
+     * const stockResources = await prisma.stockResource.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const stockResourceWithIdOnly = await prisma.stockResource.findMany({ select: { id: true } })
+     * 
+    **/
+    findMany<T extends StockResourceFindManyArgs<ExtArgs>>(
+      args?: SelectSubset<T, StockResourceFindManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<$Result.GetResult<Prisma.$StockResourcePayload<ExtArgs>, T, 'findMany'>>
+
+    /**
+     * Create a StockResource.
+     * @param {StockResourceCreateArgs} args - Arguments to create a StockResource.
+     * @example
+     * // Create one StockResource
+     * const StockResource = await prisma.stockResource.create({
+     *   data: {
+     *     // ... data to create a StockResource
+     *   }
+     * })
+     * 
+    **/
+    create<T extends StockResourceCreateArgs<ExtArgs>>(
+      args: SelectSubset<T, StockResourceCreateArgs<ExtArgs>>
+    ): Prisma__StockResourceClient<$Result.GetResult<Prisma.$StockResourcePayload<ExtArgs>, T, 'create'>, never, ExtArgs>
+
+    /**
+     * Create many StockResources.
+     *     @param {StockResourceCreateManyArgs} args - Arguments to create many StockResources.
+     *     @example
+     *     // Create many StockResources
+     *     const stockResource = await prisma.stockResource.createMany({
+     *       data: {
+     *         // ... provide data here
+     *       }
+     *     })
+     *     
+    **/
+    createMany<T extends StockResourceCreateManyArgs<ExtArgs>>(
+      args?: SelectSubset<T, StockResourceCreateManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Delete a StockResource.
+     * @param {StockResourceDeleteArgs} args - Arguments to delete one StockResource.
+     * @example
+     * // Delete one StockResource
+     * const StockResource = await prisma.stockResource.delete({
+     *   where: {
+     *     // ... filter to delete one StockResource
+     *   }
+     * })
+     * 
+    **/
+    delete<T extends StockResourceDeleteArgs<ExtArgs>>(
+      args: SelectSubset<T, StockResourceDeleteArgs<ExtArgs>>
+    ): Prisma__StockResourceClient<$Result.GetResult<Prisma.$StockResourcePayload<ExtArgs>, T, 'delete'>, never, ExtArgs>
+
+    /**
+     * Update one StockResource.
+     * @param {StockResourceUpdateArgs} args - Arguments to update one StockResource.
+     * @example
+     * // Update one StockResource
+     * const stockResource = await prisma.stockResource.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+    **/
+    update<T extends StockResourceUpdateArgs<ExtArgs>>(
+      args: SelectSubset<T, StockResourceUpdateArgs<ExtArgs>>
+    ): Prisma__StockResourceClient<$Result.GetResult<Prisma.$StockResourcePayload<ExtArgs>, T, 'update'>, never, ExtArgs>
+
+    /**
+     * Delete zero or more StockResources.
+     * @param {StockResourceDeleteManyArgs} args - Arguments to filter StockResources to delete.
+     * @example
+     * // Delete a few StockResources
+     * const { count } = await prisma.stockResource.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+    **/
+    deleteMany<T extends StockResourceDeleteManyArgs<ExtArgs>>(
+      args?: SelectSubset<T, StockResourceDeleteManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more StockResources.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {StockResourceUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many StockResources
+     * const stockResource = await prisma.stockResource.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+    **/
+    updateMany<T extends StockResourceUpdateManyArgs<ExtArgs>>(
+      args: SelectSubset<T, StockResourceUpdateManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create or update one StockResource.
+     * @param {StockResourceUpsertArgs} args - Arguments to update or create a StockResource.
+     * @example
+     * // Update or create a StockResource
+     * const stockResource = await prisma.stockResource.upsert({
+     *   create: {
+     *     // ... data to create a StockResource
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the StockResource we want to update
+     *   }
+     * })
+    **/
+    upsert<T extends StockResourceUpsertArgs<ExtArgs>>(
+      args: SelectSubset<T, StockResourceUpsertArgs<ExtArgs>>
+    ): Prisma__StockResourceClient<$Result.GetResult<Prisma.$StockResourcePayload<ExtArgs>, T, 'upsert'>, never, ExtArgs>
+
+    /**
+     * Count the number of StockResources.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {StockResourceCountArgs} args - Arguments to filter StockResources to count.
+     * @example
+     * // Count the number of StockResources
+     * const count = await prisma.stockResource.count({
+     *   where: {
+     *     // ... the filter for the StockResources we want to count
+     *   }
+     * })
+    **/
+    count<T extends StockResourceCountArgs>(
+      args?: Subset<T, StockResourceCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], StockResourceCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a StockResource.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {StockResourceAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends StockResourceAggregateArgs>(args: Subset<T, StockResourceAggregateArgs>): Prisma.PrismaPromise<GetStockResourceAggregateType<T>>
+
+    /**
+     * Group by StockResource.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {StockResourceGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends StockResourceGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: StockResourceGroupByArgs['orderBy'] }
+        : { orderBy?: StockResourceGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, StockResourceGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetStockResourceGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the StockResource model
+   */
+  readonly fields: StockResourceFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for StockResource.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__StockResourceClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: 'PrismaPromise';
+
+
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>;
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>;
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>;
+  }
+
+
+
+  /**
+   * Fields of the StockResource model
+   */ 
+  interface StockResourceFieldRefs {
+    readonly id: FieldRef<"StockResource", 'BigInt'>
+    readonly amountScope: FieldRef<"StockResource", 'String'>
+    readonly frequencyScope: FieldRef<"StockResource", 'String'>
+    readonly market: FieldRef<"StockResource", 'String'>
+    readonly spreadScope: FieldRef<"StockResource", 'String'>
+    readonly endAt: FieldRef<"StockResource", 'String'>
+    readonly startAt: FieldRef<"StockResource", 'String'>
+    readonly symbol: FieldRef<"StockResource", 'String'>
+    readonly type: FieldRef<"StockResource", 'Int'>
+    readonly status: FieldRef<"StockResource", 'Int'>
+    readonly createdAt: FieldRef<"StockResource", 'DateTime'>
+    readonly updatedAt: FieldRef<"StockResource", 'DateTime'>
+  }
+    
+
+  // Custom InputTypes
+
+  /**
+   * StockResource findUnique
+   */
+  export type StockResourceFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the StockResource
+     */
+    select?: StockResourceSelect<ExtArgs> | null
+    /**
+     * Filter, which StockResource to fetch.
+     */
+    where: StockResourceWhereUniqueInput
+  }
+
+
+  /**
+   * StockResource findUniqueOrThrow
+   */
+  export type StockResourceFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the StockResource
+     */
+    select?: StockResourceSelect<ExtArgs> | null
+    /**
+     * Filter, which StockResource to fetch.
+     */
+    where: StockResourceWhereUniqueInput
+  }
+
+
+  /**
+   * StockResource findFirst
+   */
+  export type StockResourceFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the StockResource
+     */
+    select?: StockResourceSelect<ExtArgs> | null
+    /**
+     * Filter, which StockResource to fetch.
+     */
+    where?: StockResourceWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of StockResources to fetch.
+     */
+    orderBy?: StockResourceOrderByWithRelationInput | StockResourceOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for StockResources.
+     */
+    cursor?: StockResourceWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` StockResources from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` StockResources.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of StockResources.
+     */
+    distinct?: StockResourceScalarFieldEnum | StockResourceScalarFieldEnum[]
+  }
+
+
+  /**
+   * StockResource findFirstOrThrow
+   */
+  export type StockResourceFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the StockResource
+     */
+    select?: StockResourceSelect<ExtArgs> | null
+    /**
+     * Filter, which StockResource to fetch.
+     */
+    where?: StockResourceWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of StockResources to fetch.
+     */
+    orderBy?: StockResourceOrderByWithRelationInput | StockResourceOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for StockResources.
+     */
+    cursor?: StockResourceWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` StockResources from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` StockResources.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of StockResources.
+     */
+    distinct?: StockResourceScalarFieldEnum | StockResourceScalarFieldEnum[]
+  }
+
+
+  /**
+   * StockResource findMany
+   */
+  export type StockResourceFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the StockResource
+     */
+    select?: StockResourceSelect<ExtArgs> | null
+    /**
+     * Filter, which StockResources to fetch.
+     */
+    where?: StockResourceWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of StockResources to fetch.
+     */
+    orderBy?: StockResourceOrderByWithRelationInput | StockResourceOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing StockResources.
+     */
+    cursor?: StockResourceWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` StockResources from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` StockResources.
+     */
+    skip?: number
+    distinct?: StockResourceScalarFieldEnum | StockResourceScalarFieldEnum[]
+  }
+
+
+  /**
+   * StockResource create
+   */
+  export type StockResourceCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the StockResource
+     */
+    select?: StockResourceSelect<ExtArgs> | null
+    /**
+     * The data needed to create a StockResource.
+     */
+    data: XOR<StockResourceCreateInput, StockResourceUncheckedCreateInput>
+  }
+
+
+  /**
+   * StockResource createMany
+   */
+  export type StockResourceCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many StockResources.
+     */
+    data: StockResourceCreateManyInput | StockResourceCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+
+  /**
+   * StockResource update
+   */
+  export type StockResourceUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the StockResource
+     */
+    select?: StockResourceSelect<ExtArgs> | null
+    /**
+     * The data needed to update a StockResource.
+     */
+    data: XOR<StockResourceUpdateInput, StockResourceUncheckedUpdateInput>
+    /**
+     * Choose, which StockResource to update.
+     */
+    where: StockResourceWhereUniqueInput
+  }
+
+
+  /**
+   * StockResource updateMany
+   */
+  export type StockResourceUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update StockResources.
+     */
+    data: XOR<StockResourceUpdateManyMutationInput, StockResourceUncheckedUpdateManyInput>
+    /**
+     * Filter which StockResources to update
+     */
+    where?: StockResourceWhereInput
+  }
+
+
+  /**
+   * StockResource upsert
+   */
+  export type StockResourceUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the StockResource
+     */
+    select?: StockResourceSelect<ExtArgs> | null
+    /**
+     * The filter to search for the StockResource to update in case it exists.
+     */
+    where: StockResourceWhereUniqueInput
+    /**
+     * In case the StockResource found by the `where` argument doesn't exist, create a new StockResource with this data.
+     */
+    create: XOR<StockResourceCreateInput, StockResourceUncheckedCreateInput>
+    /**
+     * In case the StockResource was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<StockResourceUpdateInput, StockResourceUncheckedUpdateInput>
+  }
+
+
+  /**
+   * StockResource delete
+   */
+  export type StockResourceDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the StockResource
+     */
+    select?: StockResourceSelect<ExtArgs> | null
+    /**
+     * Filter which StockResource to delete.
+     */
+    where: StockResourceWhereUniqueInput
+  }
+
+
+  /**
+   * StockResource deleteMany
+   */
+  export type StockResourceDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which StockResources to delete
+     */
+    where?: StockResourceWhereInput
+  }
+
+
+  /**
+   * StockResource without action
+   */
+  export type StockResourceDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the StockResource
+     */
+    select?: StockResourceSelect<ExtArgs> | null
+  }
+
+
+
+  /**
+   * Model StockResourceRecord
+   */
+
+  export type AggregateStockResourceRecord = {
+    _count: StockResourceRecordCountAggregateOutputType | null
+    _avg: StockResourceRecordAvgAggregateOutputType | null
+    _sum: StockResourceRecordSumAggregateOutputType | null
+    _min: StockResourceRecordMinAggregateOutputType | null
+    _max: StockResourceRecordMaxAggregateOutputType | null
+  }
+
+  export type StockResourceRecordAvgAggregateOutputType = {
+    id: number | null
+    stockResourceId: number | null
+  }
+
+  export type StockResourceRecordSumAggregateOutputType = {
+    id: bigint | null
+    stockResourceId: bigint | null
+  }
+
+  export type StockResourceRecordMinAggregateOutputType = {
+    id: bigint | null
+    open: string | null
+    high: string | null
+    close: string | null
+    low: string | null
+    time: string | null
+    stockResourceId: bigint | null
+  }
+
+  export type StockResourceRecordMaxAggregateOutputType = {
+    id: bigint | null
+    open: string | null
+    high: string | null
+    close: string | null
+    low: string | null
+    time: string | null
+    stockResourceId: bigint | null
+  }
+
+  export type StockResourceRecordCountAggregateOutputType = {
+    id: number
+    open: number
+    high: number
+    close: number
+    low: number
+    time: number
+    stockResourceId: number
+    _all: number
+  }
+
+
+  export type StockResourceRecordAvgAggregateInputType = {
+    id?: true
+    stockResourceId?: true
+  }
+
+  export type StockResourceRecordSumAggregateInputType = {
+    id?: true
+    stockResourceId?: true
+  }
+
+  export type StockResourceRecordMinAggregateInputType = {
+    id?: true
+    open?: true
+    high?: true
+    close?: true
+    low?: true
+    time?: true
+    stockResourceId?: true
+  }
+
+  export type StockResourceRecordMaxAggregateInputType = {
+    id?: true
+    open?: true
+    high?: true
+    close?: true
+    low?: true
+    time?: true
+    stockResourceId?: true
+  }
+
+  export type StockResourceRecordCountAggregateInputType = {
+    id?: true
+    open?: true
+    high?: true
+    close?: true
+    low?: true
+    time?: true
+    stockResourceId?: true
+    _all?: true
+  }
+
+  export type StockResourceRecordAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which StockResourceRecord to aggregate.
+     */
+    where?: StockResourceRecordWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of StockResourceRecords to fetch.
+     */
+    orderBy?: StockResourceRecordOrderByWithRelationInput | StockResourceRecordOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: StockResourceRecordWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` StockResourceRecords from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` StockResourceRecords.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned StockResourceRecords
+    **/
+    _count?: true | StockResourceRecordCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: StockResourceRecordAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: StockResourceRecordSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: StockResourceRecordMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: StockResourceRecordMaxAggregateInputType
+  }
+
+  export type GetStockResourceRecordAggregateType<T extends StockResourceRecordAggregateArgs> = {
+        [P in keyof T & keyof AggregateStockResourceRecord]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateStockResourceRecord[P]>
+      : GetScalarType<T[P], AggregateStockResourceRecord[P]>
+  }
+
+
+
+
+  export type StockResourceRecordGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: StockResourceRecordWhereInput
+    orderBy?: StockResourceRecordOrderByWithAggregationInput | StockResourceRecordOrderByWithAggregationInput[]
+    by: StockResourceRecordScalarFieldEnum[] | StockResourceRecordScalarFieldEnum
+    having?: StockResourceRecordScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: StockResourceRecordCountAggregateInputType | true
+    _avg?: StockResourceRecordAvgAggregateInputType
+    _sum?: StockResourceRecordSumAggregateInputType
+    _min?: StockResourceRecordMinAggregateInputType
+    _max?: StockResourceRecordMaxAggregateInputType
+  }
+
+  export type StockResourceRecordGroupByOutputType = {
+    id: bigint
+    open: string
+    high: string
+    close: string
+    low: string
+    time: string
+    stockResourceId: bigint
+    _count: StockResourceRecordCountAggregateOutputType | null
+    _avg: StockResourceRecordAvgAggregateOutputType | null
+    _sum: StockResourceRecordSumAggregateOutputType | null
+    _min: StockResourceRecordMinAggregateOutputType | null
+    _max: StockResourceRecordMaxAggregateOutputType | null
+  }
+
+  type GetStockResourceRecordGroupByPayload<T extends StockResourceRecordGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<StockResourceRecordGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof StockResourceRecordGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], StockResourceRecordGroupByOutputType[P]>
+            : GetScalarType<T[P], StockResourceRecordGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type StockResourceRecordSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    open?: boolean
+    high?: boolean
+    close?: boolean
+    low?: boolean
+    time?: boolean
+    stockResourceId?: boolean
+  }, ExtArgs["result"]["stockResourceRecord"]>
+
+  export type StockResourceRecordSelectScalar = {
+    id?: boolean
+    open?: boolean
+    high?: boolean
+    close?: boolean
+    low?: boolean
+    time?: boolean
+    stockResourceId?: boolean
+  }
+
+
+  export type $StockResourceRecordPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "StockResourceRecord"
+    objects: {}
+    scalars: $Extensions.GetPayloadResult<{
+      id: bigint
+      open: string
+      high: string
+      close: string
+      low: string
+      time: string
+      stockResourceId: bigint
+    }, ExtArgs["result"]["stockResourceRecord"]>
+    composites: {}
+  }
+
+
+  type StockResourceRecordGetPayload<S extends boolean | null | undefined | StockResourceRecordDefaultArgs> = $Result.GetResult<Prisma.$StockResourceRecordPayload, S>
+
+  type StockResourceRecordCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = 
+    Omit<StockResourceRecordFindManyArgs, 'select' | 'include' | 'distinct'> & {
+      select?: StockResourceRecordCountAggregateInputType | true
+    }
+
+  export interface StockResourceRecordDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['StockResourceRecord'], meta: { name: 'StockResourceRecord' } }
+    /**
+     * Find zero or one StockResourceRecord that matches the filter.
+     * @param {StockResourceRecordFindUniqueArgs} args - Arguments to find a StockResourceRecord
+     * @example
+     * // Get one StockResourceRecord
+     * const stockResourceRecord = await prisma.stockResourceRecord.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+    **/
+    findUnique<T extends StockResourceRecordFindUniqueArgs<ExtArgs>>(
+      args: SelectSubset<T, StockResourceRecordFindUniqueArgs<ExtArgs>>
+    ): Prisma__StockResourceRecordClient<$Result.GetResult<Prisma.$StockResourceRecordPayload<ExtArgs>, T, 'findUnique'> | null, null, ExtArgs>
+
+    /**
+     * Find one StockResourceRecord that matches the filter or throw an error  with `error.code='P2025'` 
+     *     if no matches were found.
+     * @param {StockResourceRecordFindUniqueOrThrowArgs} args - Arguments to find a StockResourceRecord
+     * @example
+     * // Get one StockResourceRecord
+     * const stockResourceRecord = await prisma.stockResourceRecord.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+    **/
+    findUniqueOrThrow<T extends StockResourceRecordFindUniqueOrThrowArgs<ExtArgs>>(
+      args?: SelectSubset<T, StockResourceRecordFindUniqueOrThrowArgs<ExtArgs>>
+    ): Prisma__StockResourceRecordClient<$Result.GetResult<Prisma.$StockResourceRecordPayload<ExtArgs>, T, 'findUniqueOrThrow'>, never, ExtArgs>
+
+    /**
+     * Find the first StockResourceRecord that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {StockResourceRecordFindFirstArgs} args - Arguments to find a StockResourceRecord
+     * @example
+     * // Get one StockResourceRecord
+     * const stockResourceRecord = await prisma.stockResourceRecord.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+    **/
+    findFirst<T extends StockResourceRecordFindFirstArgs<ExtArgs>>(
+      args?: SelectSubset<T, StockResourceRecordFindFirstArgs<ExtArgs>>
+    ): Prisma__StockResourceRecordClient<$Result.GetResult<Prisma.$StockResourceRecordPayload<ExtArgs>, T, 'findFirst'> | null, null, ExtArgs>
+
+    /**
+     * Find the first StockResourceRecord that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {StockResourceRecordFindFirstOrThrowArgs} args - Arguments to find a StockResourceRecord
+     * @example
+     * // Get one StockResourceRecord
+     * const stockResourceRecord = await prisma.stockResourceRecord.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+    **/
+    findFirstOrThrow<T extends StockResourceRecordFindFirstOrThrowArgs<ExtArgs>>(
+      args?: SelectSubset<T, StockResourceRecordFindFirstOrThrowArgs<ExtArgs>>
+    ): Prisma__StockResourceRecordClient<$Result.GetResult<Prisma.$StockResourceRecordPayload<ExtArgs>, T, 'findFirstOrThrow'>, never, ExtArgs>
+
+    /**
+     * Find zero or more StockResourceRecords that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {StockResourceRecordFindManyArgs=} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all StockResourceRecords
+     * const stockResourceRecords = await prisma.stockResourceRecord.findMany()
+     * 
+     * // Get first 10 StockResourceRecords
+     * const stockResourceRecords = await prisma.stockResourceRecord.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const stockResourceRecordWithIdOnly = await prisma.stockResourceRecord.findMany({ select: { id: true } })
+     * 
+    **/
+    findMany<T extends StockResourceRecordFindManyArgs<ExtArgs>>(
+      args?: SelectSubset<T, StockResourceRecordFindManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<$Result.GetResult<Prisma.$StockResourceRecordPayload<ExtArgs>, T, 'findMany'>>
+
+    /**
+     * Create a StockResourceRecord.
+     * @param {StockResourceRecordCreateArgs} args - Arguments to create a StockResourceRecord.
+     * @example
+     * // Create one StockResourceRecord
+     * const StockResourceRecord = await prisma.stockResourceRecord.create({
+     *   data: {
+     *     // ... data to create a StockResourceRecord
+     *   }
+     * })
+     * 
+    **/
+    create<T extends StockResourceRecordCreateArgs<ExtArgs>>(
+      args: SelectSubset<T, StockResourceRecordCreateArgs<ExtArgs>>
+    ): Prisma__StockResourceRecordClient<$Result.GetResult<Prisma.$StockResourceRecordPayload<ExtArgs>, T, 'create'>, never, ExtArgs>
+
+    /**
+     * Create many StockResourceRecords.
+     *     @param {StockResourceRecordCreateManyArgs} args - Arguments to create many StockResourceRecords.
+     *     @example
+     *     // Create many StockResourceRecords
+     *     const stockResourceRecord = await prisma.stockResourceRecord.createMany({
+     *       data: {
+     *         // ... provide data here
+     *       }
+     *     })
+     *     
+    **/
+    createMany<T extends StockResourceRecordCreateManyArgs<ExtArgs>>(
+      args?: SelectSubset<T, StockResourceRecordCreateManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Delete a StockResourceRecord.
+     * @param {StockResourceRecordDeleteArgs} args - Arguments to delete one StockResourceRecord.
+     * @example
+     * // Delete one StockResourceRecord
+     * const StockResourceRecord = await prisma.stockResourceRecord.delete({
+     *   where: {
+     *     // ... filter to delete one StockResourceRecord
+     *   }
+     * })
+     * 
+    **/
+    delete<T extends StockResourceRecordDeleteArgs<ExtArgs>>(
+      args: SelectSubset<T, StockResourceRecordDeleteArgs<ExtArgs>>
+    ): Prisma__StockResourceRecordClient<$Result.GetResult<Prisma.$StockResourceRecordPayload<ExtArgs>, T, 'delete'>, never, ExtArgs>
+
+    /**
+     * Update one StockResourceRecord.
+     * @param {StockResourceRecordUpdateArgs} args - Arguments to update one StockResourceRecord.
+     * @example
+     * // Update one StockResourceRecord
+     * const stockResourceRecord = await prisma.stockResourceRecord.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+    **/
+    update<T extends StockResourceRecordUpdateArgs<ExtArgs>>(
+      args: SelectSubset<T, StockResourceRecordUpdateArgs<ExtArgs>>
+    ): Prisma__StockResourceRecordClient<$Result.GetResult<Prisma.$StockResourceRecordPayload<ExtArgs>, T, 'update'>, never, ExtArgs>
+
+    /**
+     * Delete zero or more StockResourceRecords.
+     * @param {StockResourceRecordDeleteManyArgs} args - Arguments to filter StockResourceRecords to delete.
+     * @example
+     * // Delete a few StockResourceRecords
+     * const { count } = await prisma.stockResourceRecord.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+    **/
+    deleteMany<T extends StockResourceRecordDeleteManyArgs<ExtArgs>>(
+      args?: SelectSubset<T, StockResourceRecordDeleteManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more StockResourceRecords.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {StockResourceRecordUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many StockResourceRecords
+     * const stockResourceRecord = await prisma.stockResourceRecord.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+    **/
+    updateMany<T extends StockResourceRecordUpdateManyArgs<ExtArgs>>(
+      args: SelectSubset<T, StockResourceRecordUpdateManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create or update one StockResourceRecord.
+     * @param {StockResourceRecordUpsertArgs} args - Arguments to update or create a StockResourceRecord.
+     * @example
+     * // Update or create a StockResourceRecord
+     * const stockResourceRecord = await prisma.stockResourceRecord.upsert({
+     *   create: {
+     *     // ... data to create a StockResourceRecord
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the StockResourceRecord we want to update
+     *   }
+     * })
+    **/
+    upsert<T extends StockResourceRecordUpsertArgs<ExtArgs>>(
+      args: SelectSubset<T, StockResourceRecordUpsertArgs<ExtArgs>>
+    ): Prisma__StockResourceRecordClient<$Result.GetResult<Prisma.$StockResourceRecordPayload<ExtArgs>, T, 'upsert'>, never, ExtArgs>
+
+    /**
+     * Count the number of StockResourceRecords.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {StockResourceRecordCountArgs} args - Arguments to filter StockResourceRecords to count.
+     * @example
+     * // Count the number of StockResourceRecords
+     * const count = await prisma.stockResourceRecord.count({
+     *   where: {
+     *     // ... the filter for the StockResourceRecords we want to count
+     *   }
+     * })
+    **/
+    count<T extends StockResourceRecordCountArgs>(
+      args?: Subset<T, StockResourceRecordCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], StockResourceRecordCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a StockResourceRecord.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {StockResourceRecordAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends StockResourceRecordAggregateArgs>(args: Subset<T, StockResourceRecordAggregateArgs>): Prisma.PrismaPromise<GetStockResourceRecordAggregateType<T>>
+
+    /**
+     * Group by StockResourceRecord.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {StockResourceRecordGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends StockResourceRecordGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: StockResourceRecordGroupByArgs['orderBy'] }
+        : { orderBy?: StockResourceRecordGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, StockResourceRecordGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetStockResourceRecordGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the StockResourceRecord model
+   */
+  readonly fields: StockResourceRecordFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for StockResourceRecord.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__StockResourceRecordClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: 'PrismaPromise';
+
+
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>;
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>;
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>;
+  }
+
+
+
+  /**
+   * Fields of the StockResourceRecord model
+   */ 
+  interface StockResourceRecordFieldRefs {
+    readonly id: FieldRef<"StockResourceRecord", 'BigInt'>
+    readonly open: FieldRef<"StockResourceRecord", 'String'>
+    readonly high: FieldRef<"StockResourceRecord", 'String'>
+    readonly close: FieldRef<"StockResourceRecord", 'String'>
+    readonly low: FieldRef<"StockResourceRecord", 'String'>
+    readonly time: FieldRef<"StockResourceRecord", 'String'>
+    readonly stockResourceId: FieldRef<"StockResourceRecord", 'BigInt'>
+  }
+    
+
+  // Custom InputTypes
+
+  /**
+   * StockResourceRecord findUnique
+   */
+  export type StockResourceRecordFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the StockResourceRecord
+     */
+    select?: StockResourceRecordSelect<ExtArgs> | null
+    /**
+     * Filter, which StockResourceRecord to fetch.
+     */
+    where: StockResourceRecordWhereUniqueInput
+  }
+
+
+  /**
+   * StockResourceRecord findUniqueOrThrow
+   */
+  export type StockResourceRecordFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the StockResourceRecord
+     */
+    select?: StockResourceRecordSelect<ExtArgs> | null
+    /**
+     * Filter, which StockResourceRecord to fetch.
+     */
+    where: StockResourceRecordWhereUniqueInput
+  }
+
+
+  /**
+   * StockResourceRecord findFirst
+   */
+  export type StockResourceRecordFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the StockResourceRecord
+     */
+    select?: StockResourceRecordSelect<ExtArgs> | null
+    /**
+     * Filter, which StockResourceRecord to fetch.
+     */
+    where?: StockResourceRecordWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of StockResourceRecords to fetch.
+     */
+    orderBy?: StockResourceRecordOrderByWithRelationInput | StockResourceRecordOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for StockResourceRecords.
+     */
+    cursor?: StockResourceRecordWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` StockResourceRecords from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` StockResourceRecords.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of StockResourceRecords.
+     */
+    distinct?: StockResourceRecordScalarFieldEnum | StockResourceRecordScalarFieldEnum[]
+  }
+
+
+  /**
+   * StockResourceRecord findFirstOrThrow
+   */
+  export type StockResourceRecordFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the StockResourceRecord
+     */
+    select?: StockResourceRecordSelect<ExtArgs> | null
+    /**
+     * Filter, which StockResourceRecord to fetch.
+     */
+    where?: StockResourceRecordWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of StockResourceRecords to fetch.
+     */
+    orderBy?: StockResourceRecordOrderByWithRelationInput | StockResourceRecordOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for StockResourceRecords.
+     */
+    cursor?: StockResourceRecordWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` StockResourceRecords from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` StockResourceRecords.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of StockResourceRecords.
+     */
+    distinct?: StockResourceRecordScalarFieldEnum | StockResourceRecordScalarFieldEnum[]
+  }
+
+
+  /**
+   * StockResourceRecord findMany
+   */
+  export type StockResourceRecordFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the StockResourceRecord
+     */
+    select?: StockResourceRecordSelect<ExtArgs> | null
+    /**
+     * Filter, which StockResourceRecords to fetch.
+     */
+    where?: StockResourceRecordWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of StockResourceRecords to fetch.
+     */
+    orderBy?: StockResourceRecordOrderByWithRelationInput | StockResourceRecordOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing StockResourceRecords.
+     */
+    cursor?: StockResourceRecordWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` StockResourceRecords from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` StockResourceRecords.
+     */
+    skip?: number
+    distinct?: StockResourceRecordScalarFieldEnum | StockResourceRecordScalarFieldEnum[]
+  }
+
+
+  /**
+   * StockResourceRecord create
+   */
+  export type StockResourceRecordCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the StockResourceRecord
+     */
+    select?: StockResourceRecordSelect<ExtArgs> | null
+    /**
+     * The data needed to create a StockResourceRecord.
+     */
+    data: XOR<StockResourceRecordCreateInput, StockResourceRecordUncheckedCreateInput>
+  }
+
+
+  /**
+   * StockResourceRecord createMany
+   */
+  export type StockResourceRecordCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many StockResourceRecords.
+     */
+    data: StockResourceRecordCreateManyInput | StockResourceRecordCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+
+  /**
+   * StockResourceRecord update
+   */
+  export type StockResourceRecordUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the StockResourceRecord
+     */
+    select?: StockResourceRecordSelect<ExtArgs> | null
+    /**
+     * The data needed to update a StockResourceRecord.
+     */
+    data: XOR<StockResourceRecordUpdateInput, StockResourceRecordUncheckedUpdateInput>
+    /**
+     * Choose, which StockResourceRecord to update.
+     */
+    where: StockResourceRecordWhereUniqueInput
+  }
+
+
+  /**
+   * StockResourceRecord updateMany
+   */
+  export type StockResourceRecordUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update StockResourceRecords.
+     */
+    data: XOR<StockResourceRecordUpdateManyMutationInput, StockResourceRecordUncheckedUpdateManyInput>
+    /**
+     * Filter which StockResourceRecords to update
+     */
+    where?: StockResourceRecordWhereInput
+  }
+
+
+  /**
+   * StockResourceRecord upsert
+   */
+  export type StockResourceRecordUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the StockResourceRecord
+     */
+    select?: StockResourceRecordSelect<ExtArgs> | null
+    /**
+     * The filter to search for the StockResourceRecord to update in case it exists.
+     */
+    where: StockResourceRecordWhereUniqueInput
+    /**
+     * In case the StockResourceRecord found by the `where` argument doesn't exist, create a new StockResourceRecord with this data.
+     */
+    create: XOR<StockResourceRecordCreateInput, StockResourceRecordUncheckedCreateInput>
+    /**
+     * In case the StockResourceRecord was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<StockResourceRecordUpdateInput, StockResourceRecordUncheckedUpdateInput>
+  }
+
+
+  /**
+   * StockResourceRecord delete
+   */
+  export type StockResourceRecordDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the StockResourceRecord
+     */
+    select?: StockResourceRecordSelect<ExtArgs> | null
+    /**
+     * Filter which StockResourceRecord to delete.
+     */
+    where: StockResourceRecordWhereUniqueInput
+  }
+
+
+  /**
+   * StockResourceRecord deleteMany
+   */
+  export type StockResourceRecordDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which StockResourceRecords to delete
+     */
+    where?: StockResourceRecordWhereInput
+  }
+
+
+  /**
+   * StockResourceRecord without action
+   */
+  export type StockResourceRecordDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the StockResourceRecord
+     */
+    select?: StockResourceRecordSelect<ExtArgs> | null
+  }
+
+
+
+  /**
+   * Model Article
+   */
+
+  export type AggregateArticle = {
+    _count: ArticleCountAggregateOutputType | null
+    _avg: ArticleAvgAggregateOutputType | null
+    _sum: ArticleSumAggregateOutputType | null
+    _min: ArticleMinAggregateOutputType | null
+    _max: ArticleMaxAggregateOutputType | null
+  }
+
+  export type ArticleAvgAggregateOutputType = {
+    id: number | null
+  }
+
+  export type ArticleSumAggregateOutputType = {
+    id: bigint | null
+  }
+
+  export type ArticleMinAggregateOutputType = {
+    id: bigint | null
+    thumb: string | null
+    title: string | null
+    content: string | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type ArticleMaxAggregateOutputType = {
+    id: bigint | null
+    thumb: string | null
+    title: string | null
+    content: string | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type ArticleCountAggregateOutputType = {
+    id: number
+    thumb: number
+    title: number
+    content: number
+    createdAt: number
+    updatedAt: number
+    _all: number
+  }
+
+
+  export type ArticleAvgAggregateInputType = {
+    id?: true
+  }
+
+  export type ArticleSumAggregateInputType = {
+    id?: true
+  }
+
+  export type ArticleMinAggregateInputType = {
+    id?: true
+    thumb?: true
+    title?: true
+    content?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type ArticleMaxAggregateInputType = {
+    id?: true
+    thumb?: true
+    title?: true
+    content?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type ArticleCountAggregateInputType = {
+    id?: true
+    thumb?: true
+    title?: true
+    content?: true
+    createdAt?: true
+    updatedAt?: true
+    _all?: true
+  }
+
+  export type ArticleAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which Article to aggregate.
+     */
+    where?: ArticleWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Articles to fetch.
+     */
+    orderBy?: ArticleOrderByWithRelationInput | ArticleOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: ArticleWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Articles from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Articles.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned Articles
+    **/
+    _count?: true | ArticleCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: ArticleAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: ArticleSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: ArticleMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: ArticleMaxAggregateInputType
+  }
+
+  export type GetArticleAggregateType<T extends ArticleAggregateArgs> = {
+        [P in keyof T & keyof AggregateArticle]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateArticle[P]>
+      : GetScalarType<T[P], AggregateArticle[P]>
+  }
+
+
+
+
+  export type ArticleGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: ArticleWhereInput
+    orderBy?: ArticleOrderByWithAggregationInput | ArticleOrderByWithAggregationInput[]
+    by: ArticleScalarFieldEnum[] | ArticleScalarFieldEnum
+    having?: ArticleScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: ArticleCountAggregateInputType | true
+    _avg?: ArticleAvgAggregateInputType
+    _sum?: ArticleSumAggregateInputType
+    _min?: ArticleMinAggregateInputType
+    _max?: ArticleMaxAggregateInputType
+  }
+
+  export type ArticleGroupByOutputType = {
+    id: bigint
+    thumb: string
+    title: string
+    content: string
+    createdAt: Date
+    updatedAt: Date | null
+    _count: ArticleCountAggregateOutputType | null
+    _avg: ArticleAvgAggregateOutputType | null
+    _sum: ArticleSumAggregateOutputType | null
+    _min: ArticleMinAggregateOutputType | null
+    _max: ArticleMaxAggregateOutputType | null
+  }
+
+  type GetArticleGroupByPayload<T extends ArticleGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<ArticleGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof ArticleGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], ArticleGroupByOutputType[P]>
+            : GetScalarType<T[P], ArticleGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type ArticleSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    thumb?: boolean
+    title?: boolean
+    content?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+  }, ExtArgs["result"]["article"]>
+
+  export type ArticleSelectScalar = {
+    id?: boolean
+    thumb?: boolean
+    title?: boolean
+    content?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+  }
+
+
+  export type $ArticlePayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "Article"
+    objects: {}
+    scalars: $Extensions.GetPayloadResult<{
+      id: bigint
+      thumb: string
+      title: string
+      content: string
+      createdAt: Date
+      updatedAt: Date | null
+    }, ExtArgs["result"]["article"]>
+    composites: {}
+  }
+
+
+  type ArticleGetPayload<S extends boolean | null | undefined | ArticleDefaultArgs> = $Result.GetResult<Prisma.$ArticlePayload, S>
+
+  type ArticleCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = 
+    Omit<ArticleFindManyArgs, 'select' | 'include' | 'distinct'> & {
+      select?: ArticleCountAggregateInputType | true
+    }
+
+  export interface ArticleDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['Article'], meta: { name: 'Article' } }
+    /**
+     * Find zero or one Article that matches the filter.
+     * @param {ArticleFindUniqueArgs} args - Arguments to find a Article
+     * @example
+     * // Get one Article
+     * const article = await prisma.article.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+    **/
+    findUnique<T extends ArticleFindUniqueArgs<ExtArgs>>(
+      args: SelectSubset<T, ArticleFindUniqueArgs<ExtArgs>>
+    ): Prisma__ArticleClient<$Result.GetResult<Prisma.$ArticlePayload<ExtArgs>, T, 'findUnique'> | null, null, ExtArgs>
+
+    /**
+     * Find one Article that matches the filter or throw an error  with `error.code='P2025'` 
+     *     if no matches were found.
+     * @param {ArticleFindUniqueOrThrowArgs} args - Arguments to find a Article
+     * @example
+     * // Get one Article
+     * const article = await prisma.article.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+    **/
+    findUniqueOrThrow<T extends ArticleFindUniqueOrThrowArgs<ExtArgs>>(
+      args?: SelectSubset<T, ArticleFindUniqueOrThrowArgs<ExtArgs>>
+    ): Prisma__ArticleClient<$Result.GetResult<Prisma.$ArticlePayload<ExtArgs>, T, 'findUniqueOrThrow'>, never, ExtArgs>
+
+    /**
+     * Find the first Article that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ArticleFindFirstArgs} args - Arguments to find a Article
+     * @example
+     * // Get one Article
+     * const article = await prisma.article.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+    **/
+    findFirst<T extends ArticleFindFirstArgs<ExtArgs>>(
+      args?: SelectSubset<T, ArticleFindFirstArgs<ExtArgs>>
+    ): Prisma__ArticleClient<$Result.GetResult<Prisma.$ArticlePayload<ExtArgs>, T, 'findFirst'> | null, null, ExtArgs>
+
+    /**
+     * Find the first Article that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ArticleFindFirstOrThrowArgs} args - Arguments to find a Article
+     * @example
+     * // Get one Article
+     * const article = await prisma.article.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+    **/
+    findFirstOrThrow<T extends ArticleFindFirstOrThrowArgs<ExtArgs>>(
+      args?: SelectSubset<T, ArticleFindFirstOrThrowArgs<ExtArgs>>
+    ): Prisma__ArticleClient<$Result.GetResult<Prisma.$ArticlePayload<ExtArgs>, T, 'findFirstOrThrow'>, never, ExtArgs>
+
+    /**
+     * Find zero or more Articles that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ArticleFindManyArgs=} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all Articles
+     * const articles = await prisma.article.findMany()
+     * 
+     * // Get first 10 Articles
+     * const articles = await prisma.article.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const articleWithIdOnly = await prisma.article.findMany({ select: { id: true } })
+     * 
+    **/
+    findMany<T extends ArticleFindManyArgs<ExtArgs>>(
+      args?: SelectSubset<T, ArticleFindManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ArticlePayload<ExtArgs>, T, 'findMany'>>
+
+    /**
+     * Create a Article.
+     * @param {ArticleCreateArgs} args - Arguments to create a Article.
+     * @example
+     * // Create one Article
+     * const Article = await prisma.article.create({
+     *   data: {
+     *     // ... data to create a Article
+     *   }
+     * })
+     * 
+    **/
+    create<T extends ArticleCreateArgs<ExtArgs>>(
+      args: SelectSubset<T, ArticleCreateArgs<ExtArgs>>
+    ): Prisma__ArticleClient<$Result.GetResult<Prisma.$ArticlePayload<ExtArgs>, T, 'create'>, never, ExtArgs>
+
+    /**
+     * Create many Articles.
+     *     @param {ArticleCreateManyArgs} args - Arguments to create many Articles.
+     *     @example
+     *     // Create many Articles
+     *     const article = await prisma.article.createMany({
+     *       data: {
+     *         // ... provide data here
+     *       }
+     *     })
+     *     
+    **/
+    createMany<T extends ArticleCreateManyArgs<ExtArgs>>(
+      args?: SelectSubset<T, ArticleCreateManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Delete a Article.
+     * @param {ArticleDeleteArgs} args - Arguments to delete one Article.
+     * @example
+     * // Delete one Article
+     * const Article = await prisma.article.delete({
+     *   where: {
+     *     // ... filter to delete one Article
+     *   }
+     * })
+     * 
+    **/
+    delete<T extends ArticleDeleteArgs<ExtArgs>>(
+      args: SelectSubset<T, ArticleDeleteArgs<ExtArgs>>
+    ): Prisma__ArticleClient<$Result.GetResult<Prisma.$ArticlePayload<ExtArgs>, T, 'delete'>, never, ExtArgs>
+
+    /**
+     * Update one Article.
+     * @param {ArticleUpdateArgs} args - Arguments to update one Article.
+     * @example
+     * // Update one Article
+     * const article = await prisma.article.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+    **/
+    update<T extends ArticleUpdateArgs<ExtArgs>>(
+      args: SelectSubset<T, ArticleUpdateArgs<ExtArgs>>
+    ): Prisma__ArticleClient<$Result.GetResult<Prisma.$ArticlePayload<ExtArgs>, T, 'update'>, never, ExtArgs>
+
+    /**
+     * Delete zero or more Articles.
+     * @param {ArticleDeleteManyArgs} args - Arguments to filter Articles to delete.
+     * @example
+     * // Delete a few Articles
+     * const { count } = await prisma.article.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+    **/
+    deleteMany<T extends ArticleDeleteManyArgs<ExtArgs>>(
+      args?: SelectSubset<T, ArticleDeleteManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Articles.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ArticleUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many Articles
+     * const article = await prisma.article.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+    **/
+    updateMany<T extends ArticleUpdateManyArgs<ExtArgs>>(
+      args: SelectSubset<T, ArticleUpdateManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create or update one Article.
+     * @param {ArticleUpsertArgs} args - Arguments to update or create a Article.
+     * @example
+     * // Update or create a Article
+     * const article = await prisma.article.upsert({
+     *   create: {
+     *     // ... data to create a Article
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the Article we want to update
+     *   }
+     * })
+    **/
+    upsert<T extends ArticleUpsertArgs<ExtArgs>>(
+      args: SelectSubset<T, ArticleUpsertArgs<ExtArgs>>
+    ): Prisma__ArticleClient<$Result.GetResult<Prisma.$ArticlePayload<ExtArgs>, T, 'upsert'>, never, ExtArgs>
+
+    /**
+     * Count the number of Articles.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ArticleCountArgs} args - Arguments to filter Articles to count.
+     * @example
+     * // Count the number of Articles
+     * const count = await prisma.article.count({
+     *   where: {
+     *     // ... the filter for the Articles we want to count
+     *   }
+     * })
+    **/
+    count<T extends ArticleCountArgs>(
+      args?: Subset<T, ArticleCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], ArticleCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a Article.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ArticleAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends ArticleAggregateArgs>(args: Subset<T, ArticleAggregateArgs>): Prisma.PrismaPromise<GetArticleAggregateType<T>>
+
+    /**
+     * Group by Article.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ArticleGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends ArticleGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: ArticleGroupByArgs['orderBy'] }
+        : { orderBy?: ArticleGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, ArticleGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetArticleGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the Article model
+   */
+  readonly fields: ArticleFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for Article.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__ArticleClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: 'PrismaPromise';
+
+
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>;
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>;
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>;
+  }
+
+
+
+  /**
+   * Fields of the Article model
+   */ 
+  interface ArticleFieldRefs {
+    readonly id: FieldRef<"Article", 'BigInt'>
+    readonly thumb: FieldRef<"Article", 'String'>
+    readonly title: FieldRef<"Article", 'String'>
+    readonly content: FieldRef<"Article", 'String'>
+    readonly createdAt: FieldRef<"Article", 'DateTime'>
+    readonly updatedAt: FieldRef<"Article", 'DateTime'>
+  }
+    
+
+  // Custom InputTypes
+
+  /**
+   * Article findUnique
+   */
+  export type ArticleFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Article
+     */
+    select?: ArticleSelect<ExtArgs> | null
+    /**
+     * Filter, which Article to fetch.
+     */
+    where: ArticleWhereUniqueInput
+  }
+
+
+  /**
+   * Article findUniqueOrThrow
+   */
+  export type ArticleFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Article
+     */
+    select?: ArticleSelect<ExtArgs> | null
+    /**
+     * Filter, which Article to fetch.
+     */
+    where: ArticleWhereUniqueInput
+  }
+
+
+  /**
+   * Article findFirst
+   */
+  export type ArticleFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Article
+     */
+    select?: ArticleSelect<ExtArgs> | null
+    /**
+     * Filter, which Article to fetch.
+     */
+    where?: ArticleWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Articles to fetch.
+     */
+    orderBy?: ArticleOrderByWithRelationInput | ArticleOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for Articles.
+     */
+    cursor?: ArticleWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Articles from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Articles.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Articles.
+     */
+    distinct?: ArticleScalarFieldEnum | ArticleScalarFieldEnum[]
+  }
+
+
+  /**
+   * Article findFirstOrThrow
+   */
+  export type ArticleFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Article
+     */
+    select?: ArticleSelect<ExtArgs> | null
+    /**
+     * Filter, which Article to fetch.
+     */
+    where?: ArticleWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Articles to fetch.
+     */
+    orderBy?: ArticleOrderByWithRelationInput | ArticleOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for Articles.
+     */
+    cursor?: ArticleWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Articles from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Articles.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Articles.
+     */
+    distinct?: ArticleScalarFieldEnum | ArticleScalarFieldEnum[]
+  }
+
+
+  /**
+   * Article findMany
+   */
+  export type ArticleFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Article
+     */
+    select?: ArticleSelect<ExtArgs> | null
+    /**
+     * Filter, which Articles to fetch.
+     */
+    where?: ArticleWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Articles to fetch.
+     */
+    orderBy?: ArticleOrderByWithRelationInput | ArticleOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing Articles.
+     */
+    cursor?: ArticleWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Articles from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Articles.
+     */
+    skip?: number
+    distinct?: ArticleScalarFieldEnum | ArticleScalarFieldEnum[]
+  }
+
+
+  /**
+   * Article create
+   */
+  export type ArticleCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Article
+     */
+    select?: ArticleSelect<ExtArgs> | null
+    /**
+     * The data needed to create a Article.
+     */
+    data: XOR<ArticleCreateInput, ArticleUncheckedCreateInput>
+  }
+
+
+  /**
+   * Article createMany
+   */
+  export type ArticleCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many Articles.
+     */
+    data: ArticleCreateManyInput | ArticleCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+
+  /**
+   * Article update
+   */
+  export type ArticleUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Article
+     */
+    select?: ArticleSelect<ExtArgs> | null
+    /**
+     * The data needed to update a Article.
+     */
+    data: XOR<ArticleUpdateInput, ArticleUncheckedUpdateInput>
+    /**
+     * Choose, which Article to update.
+     */
+    where: ArticleWhereUniqueInput
+  }
+
+
+  /**
+   * Article updateMany
+   */
+  export type ArticleUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update Articles.
+     */
+    data: XOR<ArticleUpdateManyMutationInput, ArticleUncheckedUpdateManyInput>
+    /**
+     * Filter which Articles to update
+     */
+    where?: ArticleWhereInput
+  }
+
+
+  /**
+   * Article upsert
+   */
+  export type ArticleUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Article
+     */
+    select?: ArticleSelect<ExtArgs> | null
+    /**
+     * The filter to search for the Article to update in case it exists.
+     */
+    where: ArticleWhereUniqueInput
+    /**
+     * In case the Article found by the `where` argument doesn't exist, create a new Article with this data.
+     */
+    create: XOR<ArticleCreateInput, ArticleUncheckedCreateInput>
+    /**
+     * In case the Article was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<ArticleUpdateInput, ArticleUncheckedUpdateInput>
+  }
+
+
+  /**
+   * Article delete
+   */
+  export type ArticleDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Article
+     */
+    select?: ArticleSelect<ExtArgs> | null
+    /**
+     * Filter which Article to delete.
+     */
+    where: ArticleWhereUniqueInput
+  }
+
+
+  /**
+   * Article deleteMany
+   */
+  export type ArticleDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which Articles to delete
+     */
+    where?: ArticleWhereInput
+  }
+
+
+  /**
+   * Article without action
+   */
+  export type ArticleDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Article
+     */
+    select?: ArticleSelect<ExtArgs> | null
+  }
+
+
+
+  /**
    * Enums
    */
 
@@ -7248,6 +18734,7 @@ export namespace Prisma {
     email: 'email',
     name: 'name',
     avatar: 'avatar',
+    password: 'password',
     gender: 'gender',
     createdAt: 'createdAt',
     updatedAt: 'updatedAt'
@@ -7261,12 +18748,47 @@ export namespace Prisma {
     email: 'email',
     name: 'name',
     avatar: 'avatar',
+    password: 'password',
     gender: 'gender',
+    address: 'address',
+    accountBalance: 'accountBalance',
+    status: 'status',
+    type: 'type',
     createdAt: 'createdAt',
     updatedAt: 'updatedAt'
   };
 
   export type MemberScalarFieldEnum = (typeof MemberScalarFieldEnum)[keyof typeof MemberScalarFieldEnum]
+
+
+  export const StockSymbolScalarFieldEnum: {
+    id: 'id',
+    code: 'code',
+    market: 'market',
+    online: 'online',
+    symbol: 'symbol',
+    showName: 'showName',
+    name: 'name',
+    symbolShowName: 'symbolShowName',
+    trade: 'trade',
+    type: 'type',
+    newPrice: 'newPrice',
+    open: 'open',
+    close: 'close',
+    high: 'high',
+    low: 'low',
+    amount: 'amount',
+    volume: 'volume',
+    change: 'change',
+    changePercent: 'changePercent',
+    date: 'date',
+    sync: 'sync',
+    syncMarket: 'syncMarket',
+    createdAt: 'createdAt',
+    updatedAt: 'updatedAt'
+  };
+
+  export type StockSymbolScalarFieldEnum = (typeof StockSymbolScalarFieldEnum)[keyof typeof StockSymbolScalarFieldEnum]
 
 
   export const StockScalarFieldEnum: {
@@ -7279,7 +18801,18 @@ export namespace Prisma {
     logo: 'logo',
     sok: 'sok',
     optional: 'optional',
+    newPrice: 'newPrice',
+    open: 'open',
+    close: 'close',
+    high: 'high',
+    low: 'low',
+    amount: 'amount',
+    volume: 'volume',
     status: 'status',
+    change: 'change',
+    changePercent: 'changePercent',
+    date: 'date',
+    extra: 'extra',
     createdAt: 'createdAt',
     updatedAt: 'updatedAt'
   };
@@ -7289,13 +18822,15 @@ export namespace Prisma {
 
   export const StockRecordScalarFieldEnum: {
     id: 'id',
-    price: 'price',
+    newPrice: 'newPrice',
     open: 'open',
     close: 'close',
     high: 'high',
     low: 'low',
-    turnover: 'turnover',
+    amount: 'amount',
     volume: 'volume',
+    date: 'date',
+    extra: 'extra',
     createdAt: 'createdAt',
     stockId: 'stockId'
   };
@@ -7303,14 +18838,146 @@ export namespace Prisma {
   export type StockRecordScalarFieldEnum = (typeof StockRecordScalarFieldEnum)[keyof typeof StockRecordScalarFieldEnum]
 
 
-  export const StockOnMembersScalarFieldEnum: {
+  export const StockMarketScalarFieldEnum: {
     id: 'id',
+    code: 'code',
+    currency: 'currency',
+    maxWithdrawal: 'maxWithdrawal',
+    minWithdrawal: 'minWithdrawal',
+    feeRate: 'feeRate',
+    minFee: 'minFee',
+    lever: 'lever',
+    mmr: 'mmr',
+    allocationRate: 'allocationRate',
+    frequency: 'frequency',
+    bindingHours: 'bindingHours',
+    headSymbols: 'headSymbols',
+    sort: 'sort',
+    online: 'online',
+    conline: 'conline',
+    createdAt: 'createdAt',
+    updatedAt: 'updatedAt'
+  };
+
+  export type StockMarketScalarFieldEnum = (typeof StockMarketScalarFieldEnum)[keyof typeof StockMarketScalarFieldEnum]
+
+
+  export const StockFavoriteScalarFieldEnum: {
+    id: 'id',
+    newPrice: 'newPrice',
+    open: 'open',
+    close: 'close',
+    high: 'high',
+    low: 'low',
+    amount: 'amount',
+    volume: 'volume',
+    date: 'date',
+    extra: 'extra',
     memberId: 'memberId',
-    stockId: 'stockId',
+    stockSymbolId: 'stockSymbolId',
     createdAt: 'createdAt'
   };
 
-  export type StockOnMembersScalarFieldEnum = (typeof StockOnMembersScalarFieldEnum)[keyof typeof StockOnMembersScalarFieldEnum]
+  export type StockFavoriteScalarFieldEnum = (typeof StockFavoriteScalarFieldEnum)[keyof typeof StockFavoriteScalarFieldEnum]
+
+
+  export const StockSubscribeScalarFieldEnum: {
+    id: 'id',
+    market: 'market',
+    name: 'name',
+    code: 'code',
+    startAt: 'startAt',
+    endAt: 'endAt',
+    upAt: 'upAt',
+    circulation: 'circulation',
+    remainCirculation: 'remainCirculation',
+    ipoPrice: 'ipoPrice',
+    issuePrice: 'issuePrice',
+    resultAt: 'resultAt',
+    subAmount: 'subAmount',
+    status: 'status',
+    type: 'type',
+    createdAt: 'createdAt',
+    updatedAt: 'updatedAt'
+  };
+
+  export type StockSubscribeScalarFieldEnum = (typeof StockSubscribeScalarFieldEnum)[keyof typeof StockSubscribeScalarFieldEnum]
+
+
+  export const MemberSubscribeScalarFieldEnum: {
+    id: 'id',
+    market: 'market',
+    code: 'code',
+    name: 'name',
+    amount: 'amount',
+    money: 'money',
+    no: 'no',
+    winningAmount: 'winningAmount',
+    winningPrice: 'winningPrice',
+    totalWinningPrice: 'totalWinningPrice',
+    actualAmount: 'actualAmount',
+    status: 'status',
+    type: 'type',
+    createdAt: 'createdAt',
+    updatedAt: 'updatedAt',
+    stockSubscribeId: 'stockSubscribeId',
+    memberId: 'memberId'
+  };
+
+  export type MemberSubscribeScalarFieldEnum = (typeof MemberSubscribeScalarFieldEnum)[keyof typeof MemberSubscribeScalarFieldEnum]
+
+
+  export const StockPositionScalarFieldEnum: {
+    id: 'id',
+    amount: 'amount',
+    blast: 'blast',
+    price: 'price',
+    mode: 'mode',
+    status: 'status',
+    bond: 'bond',
+    identifier: 'identifier',
+    lever: 'lever',
+    stopLoss: 'stopLoss',
+    takeProfit: 'takeProfit',
+    market: 'market',
+    pl: 'pl',
+    rate: 'rate',
+    currentPrice: 'currentPrice',
+    memberId: 'memberId',
+    stockSymbolId: 'stockSymbolId',
+    createdAt: 'createdAt',
+    updatedAt: 'updatedAt'
+  };
+
+  export type StockPositionScalarFieldEnum = (typeof StockPositionScalarFieldEnum)[keyof typeof StockPositionScalarFieldEnum]
+
+
+  export const MemberDetailScalarFieldEnum: {
+    id: 'id',
+    after: 'after',
+    amount: 'amount',
+    before: 'before',
+    market: 'market',
+    type: 'type',
+    remark: 'remark',
+    memberId: 'memberId'
+  };
+
+  export type MemberDetailScalarFieldEnum = (typeof MemberDetailScalarFieldEnum)[keyof typeof MemberDetailScalarFieldEnum]
+
+
+  export const CountryScalarFieldEnum: {
+    id: 'id',
+    code: 'code',
+    name: 'name',
+    en: 'en',
+    tel: 'tel',
+    py: 'py',
+    createdAt: 'createdAt',
+    updatedAt: 'updatedAt'
+  };
+
+  export type CountryScalarFieldEnum = (typeof CountryScalarFieldEnum)[keyof typeof CountryScalarFieldEnum]
 
 
   export const SettingScalarFieldEnum: {
@@ -7324,6 +18991,49 @@ export namespace Prisma {
   export type SettingScalarFieldEnum = (typeof SettingScalarFieldEnum)[keyof typeof SettingScalarFieldEnum]
 
 
+  export const StockResourceScalarFieldEnum: {
+    id: 'id',
+    amountScope: 'amountScope',
+    frequencyScope: 'frequencyScope',
+    market: 'market',
+    spreadScope: 'spreadScope',
+    endAt: 'endAt',
+    startAt: 'startAt',
+    symbol: 'symbol',
+    type: 'type',
+    status: 'status',
+    createdAt: 'createdAt',
+    updatedAt: 'updatedAt'
+  };
+
+  export type StockResourceScalarFieldEnum = (typeof StockResourceScalarFieldEnum)[keyof typeof StockResourceScalarFieldEnum]
+
+
+  export const StockResourceRecordScalarFieldEnum: {
+    id: 'id',
+    open: 'open',
+    high: 'high',
+    close: 'close',
+    low: 'low',
+    time: 'time',
+    stockResourceId: 'stockResourceId'
+  };
+
+  export type StockResourceRecordScalarFieldEnum = (typeof StockResourceRecordScalarFieldEnum)[keyof typeof StockResourceRecordScalarFieldEnum]
+
+
+  export const ArticleScalarFieldEnum: {
+    id: 'id',
+    thumb: 'thumb',
+    title: 'title',
+    content: 'content',
+    createdAt: 'createdAt',
+    updatedAt: 'updatedAt'
+  };
+
+  export type ArticleScalarFieldEnum = (typeof ArticleScalarFieldEnum)[keyof typeof ArticleScalarFieldEnum]
+
+
   export const SortOrder: {
     asc: 'asc',
     desc: 'desc'
@@ -7332,12 +19042,36 @@ export namespace Prisma {
   export type SortOrder = (typeof SortOrder)[keyof typeof SortOrder]
 
 
+  export const NullableJsonNullValueInput: {
+    DbNull: typeof DbNull,
+    JsonNull: typeof JsonNull
+  };
+
+  export type NullableJsonNullValueInput = (typeof NullableJsonNullValueInput)[keyof typeof NullableJsonNullValueInput]
+
+
+  export const JsonNullValueInput: {
+    JsonNull: typeof JsonNull
+  };
+
+  export type JsonNullValueInput = (typeof JsonNullValueInput)[keyof typeof JsonNullValueInput]
+
+
   export const NullsOrder: {
     first: 'first',
     last: 'last'
   };
 
   export type NullsOrder = (typeof NullsOrder)[keyof typeof NullsOrder]
+
+
+  export const JsonNullValueFilter: {
+    DbNull: typeof DbNull,
+    JsonNull: typeof JsonNull,
+    AnyNull: typeof AnyNull
+  };
+
+  export type JsonNullValueFilter = (typeof JsonNullValueFilter)[keyof typeof JsonNullValueFilter]
 
 
   /**
@@ -7374,6 +19108,20 @@ export namespace Prisma {
 
 
   /**
+   * Reference to a field of type 'Json'
+   */
+  export type JsonFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Json'>
+    
+
+
+  /**
+   * Reference to a field of type 'Int'
+   */
+  export type IntFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Int'>
+    
+
+
+  /**
    * Reference to a field of type 'Boolean'
    */
   export type BooleanFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Boolean'>
@@ -7388,9 +19136,9 @@ export namespace Prisma {
 
 
   /**
-   * Reference to a field of type 'Int'
+   * Reference to a field of type 'Decimal'
    */
-  export type IntFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Int'>
+  export type DecimalFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Decimal'>
     
 
 
@@ -7412,6 +19160,7 @@ export namespace Prisma {
     email?: StringFilter<"User"> | string
     name?: StringNullableFilter<"User"> | string | null
     avatar?: StringNullableFilter<"User"> | string | null
+    password?: StringFilter<"User"> | string
     gender?: EnumGENDERFilter<"User"> | $Enums.GENDER
     createdAt?: DateTimeFilter<"User"> | Date | string
     updatedAt?: DateTimeNullableFilter<"User"> | Date | string | null
@@ -7422,6 +19171,7 @@ export namespace Prisma {
     email?: SortOrder
     name?: SortOrderInput | SortOrder
     avatar?: SortOrderInput | SortOrder
+    password?: SortOrder
     gender?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrderInput | SortOrder
@@ -7435,6 +19185,7 @@ export namespace Prisma {
     NOT?: UserWhereInput | UserWhereInput[]
     name?: StringNullableFilter<"User"> | string | null
     avatar?: StringNullableFilter<"User"> | string | null
+    password?: StringFilter<"User"> | string
     gender?: EnumGENDERFilter<"User"> | $Enums.GENDER
     createdAt?: DateTimeFilter<"User"> | Date | string
     updatedAt?: DateTimeNullableFilter<"User"> | Date | string | null
@@ -7445,6 +19196,7 @@ export namespace Prisma {
     email?: SortOrder
     name?: SortOrderInput | SortOrder
     avatar?: SortOrderInput | SortOrder
+    password?: SortOrder
     gender?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrderInput | SortOrder
@@ -7463,6 +19215,7 @@ export namespace Prisma {
     email?: StringWithAggregatesFilter<"User"> | string
     name?: StringNullableWithAggregatesFilter<"User"> | string | null
     avatar?: StringNullableWithAggregatesFilter<"User"> | string | null
+    password?: StringWithAggregatesFilter<"User"> | string
     gender?: EnumGENDERWithAggregatesFilter<"User"> | $Enums.GENDER
     createdAt?: DateTimeWithAggregatesFilter<"User"> | Date | string
     updatedAt?: DateTimeNullableWithAggregatesFilter<"User"> | Date | string | null
@@ -7476,10 +19229,17 @@ export namespace Prisma {
     email?: StringFilter<"Member"> | string
     name?: StringNullableFilter<"Member"> | string | null
     avatar?: StringNullableFilter<"Member"> | string | null
+    password?: StringFilter<"Member"> | string
     gender?: EnumGENDERFilter<"Member"> | $Enums.GENDER
+    address?: StringNullableFilter<"Member"> | string | null
+    accountBalance?: JsonNullableFilter<"Member">
+    status?: IntFilter<"Member"> | number
+    type?: IntFilter<"Member"> | number
     createdAt?: DateTimeFilter<"Member"> | Date | string
     updatedAt?: DateTimeNullableFilter<"Member"> | Date | string | null
-    stocks?: StockOnMembersListRelationFilter
+    stockPostion?: StockPositionListRelationFilter
+    memberDetail?: MemberDetailListRelationFilter
+    memberSubscribe?: MemberSubscribeListRelationFilter
   }
 
   export type MemberOrderByWithRelationInput = {
@@ -7487,10 +19247,17 @@ export namespace Prisma {
     email?: SortOrder
     name?: SortOrderInput | SortOrder
     avatar?: SortOrderInput | SortOrder
+    password?: SortOrder
     gender?: SortOrder
+    address?: SortOrderInput | SortOrder
+    accountBalance?: SortOrderInput | SortOrder
+    status?: SortOrder
+    type?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrderInput | SortOrder
-    stocks?: StockOnMembersOrderByRelationAggregateInput
+    stockPostion?: StockPositionOrderByRelationAggregateInput
+    memberDetail?: MemberDetailOrderByRelationAggregateInput
+    memberSubscribe?: MemberSubscribeOrderByRelationAggregateInput
   }
 
   export type MemberWhereUniqueInput = Prisma.AtLeast<{
@@ -7501,10 +19268,17 @@ export namespace Prisma {
     NOT?: MemberWhereInput | MemberWhereInput[]
     name?: StringNullableFilter<"Member"> | string | null
     avatar?: StringNullableFilter<"Member"> | string | null
+    password?: StringFilter<"Member"> | string
     gender?: EnumGENDERFilter<"Member"> | $Enums.GENDER
+    address?: StringNullableFilter<"Member"> | string | null
+    accountBalance?: JsonNullableFilter<"Member">
+    status?: IntFilter<"Member"> | number
+    type?: IntFilter<"Member"> | number
     createdAt?: DateTimeFilter<"Member"> | Date | string
     updatedAt?: DateTimeNullableFilter<"Member"> | Date | string | null
-    stocks?: StockOnMembersListRelationFilter
+    stockPostion?: StockPositionListRelationFilter
+    memberDetail?: MemberDetailListRelationFilter
+    memberSubscribe?: MemberSubscribeListRelationFilter
   }, "id" | "email">
 
   export type MemberOrderByWithAggregationInput = {
@@ -7512,7 +19286,12 @@ export namespace Prisma {
     email?: SortOrder
     name?: SortOrderInput | SortOrder
     avatar?: SortOrderInput | SortOrder
+    password?: SortOrder
     gender?: SortOrder
+    address?: SortOrderInput | SortOrder
+    accountBalance?: SortOrderInput | SortOrder
+    status?: SortOrder
+    type?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrderInput | SortOrder
     _count?: MemberCountOrderByAggregateInput
@@ -7530,9 +19309,167 @@ export namespace Prisma {
     email?: StringWithAggregatesFilter<"Member"> | string
     name?: StringNullableWithAggregatesFilter<"Member"> | string | null
     avatar?: StringNullableWithAggregatesFilter<"Member"> | string | null
+    password?: StringWithAggregatesFilter<"Member"> | string
     gender?: EnumGENDERWithAggregatesFilter<"Member"> | $Enums.GENDER
+    address?: StringNullableWithAggregatesFilter<"Member"> | string | null
+    accountBalance?: JsonNullableWithAggregatesFilter<"Member">
+    status?: IntWithAggregatesFilter<"Member"> | number
+    type?: IntWithAggregatesFilter<"Member"> | number
     createdAt?: DateTimeWithAggregatesFilter<"Member"> | Date | string
     updatedAt?: DateTimeNullableWithAggregatesFilter<"Member"> | Date | string | null
+  }
+
+  export type StockSymbolWhereInput = {
+    AND?: StockSymbolWhereInput | StockSymbolWhereInput[]
+    OR?: StockSymbolWhereInput[]
+    NOT?: StockSymbolWhereInput | StockSymbolWhereInput[]
+    id?: BigIntFilter<"StockSymbol"> | bigint | number
+    code?: StringFilter<"StockSymbol"> | string
+    market?: StringFilter<"StockSymbol"> | string
+    online?: IntFilter<"StockSymbol"> | number
+    symbol?: StringFilter<"StockSymbol"> | string
+    showName?: StringFilter<"StockSymbol"> | string
+    name?: StringNullableFilter<"StockSymbol"> | string | null
+    symbolShowName?: StringNullableFilter<"StockSymbol"> | string | null
+    trade?: IntFilter<"StockSymbol"> | number
+    type?: IntFilter<"StockSymbol"> | number
+    newPrice?: StringNullableFilter<"StockSymbol"> | string | null
+    open?: StringNullableFilter<"StockSymbol"> | string | null
+    close?: StringNullableFilter<"StockSymbol"> | string | null
+    high?: StringNullableFilter<"StockSymbol"> | string | null
+    low?: StringNullableFilter<"StockSymbol"> | string | null
+    amount?: StringNullableFilter<"StockSymbol"> | string | null
+    volume?: StringNullableFilter<"StockSymbol"> | string | null
+    change?: StringNullableFilter<"StockSymbol"> | string | null
+    changePercent?: StringNullableFilter<"StockSymbol"> | string | null
+    date?: StringNullableFilter<"StockSymbol"> | string | null
+    sync?: JsonNullableFilter<"StockSymbol">
+    syncMarket?: StringFilter<"StockSymbol"> | string
+    createdAt?: DateTimeFilter<"StockSymbol"> | Date | string
+    updatedAt?: DateTimeNullableFilter<"StockSymbol"> | Date | string | null
+    stockPostion?: StockPositionListRelationFilter
+  }
+
+  export type StockSymbolOrderByWithRelationInput = {
+    id?: SortOrder
+    code?: SortOrder
+    market?: SortOrder
+    online?: SortOrder
+    symbol?: SortOrder
+    showName?: SortOrder
+    name?: SortOrderInput | SortOrder
+    symbolShowName?: SortOrderInput | SortOrder
+    trade?: SortOrder
+    type?: SortOrder
+    newPrice?: SortOrderInput | SortOrder
+    open?: SortOrderInput | SortOrder
+    close?: SortOrderInput | SortOrder
+    high?: SortOrderInput | SortOrder
+    low?: SortOrderInput | SortOrder
+    amount?: SortOrderInput | SortOrder
+    volume?: SortOrderInput | SortOrder
+    change?: SortOrderInput | SortOrder
+    changePercent?: SortOrderInput | SortOrder
+    date?: SortOrderInput | SortOrder
+    sync?: SortOrderInput | SortOrder
+    syncMarket?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrderInput | SortOrder
+    stockPostion?: StockPositionOrderByRelationAggregateInput
+  }
+
+  export type StockSymbolWhereUniqueInput = Prisma.AtLeast<{
+    id?: bigint | number
+    symbol_market?: StockSymbolSymbolMarketCompoundUniqueInput
+    AND?: StockSymbolWhereInput | StockSymbolWhereInput[]
+    OR?: StockSymbolWhereInput[]
+    NOT?: StockSymbolWhereInput | StockSymbolWhereInput[]
+    code?: StringFilter<"StockSymbol"> | string
+    market?: StringFilter<"StockSymbol"> | string
+    online?: IntFilter<"StockSymbol"> | number
+    symbol?: StringFilter<"StockSymbol"> | string
+    showName?: StringFilter<"StockSymbol"> | string
+    name?: StringNullableFilter<"StockSymbol"> | string | null
+    symbolShowName?: StringNullableFilter<"StockSymbol"> | string | null
+    trade?: IntFilter<"StockSymbol"> | number
+    type?: IntFilter<"StockSymbol"> | number
+    newPrice?: StringNullableFilter<"StockSymbol"> | string | null
+    open?: StringNullableFilter<"StockSymbol"> | string | null
+    close?: StringNullableFilter<"StockSymbol"> | string | null
+    high?: StringNullableFilter<"StockSymbol"> | string | null
+    low?: StringNullableFilter<"StockSymbol"> | string | null
+    amount?: StringNullableFilter<"StockSymbol"> | string | null
+    volume?: StringNullableFilter<"StockSymbol"> | string | null
+    change?: StringNullableFilter<"StockSymbol"> | string | null
+    changePercent?: StringNullableFilter<"StockSymbol"> | string | null
+    date?: StringNullableFilter<"StockSymbol"> | string | null
+    sync?: JsonNullableFilter<"StockSymbol">
+    syncMarket?: StringFilter<"StockSymbol"> | string
+    createdAt?: DateTimeFilter<"StockSymbol"> | Date | string
+    updatedAt?: DateTimeNullableFilter<"StockSymbol"> | Date | string | null
+    stockPostion?: StockPositionListRelationFilter
+  }, "id" | "symbol_market">
+
+  export type StockSymbolOrderByWithAggregationInput = {
+    id?: SortOrder
+    code?: SortOrder
+    market?: SortOrder
+    online?: SortOrder
+    symbol?: SortOrder
+    showName?: SortOrder
+    name?: SortOrderInput | SortOrder
+    symbolShowName?: SortOrderInput | SortOrder
+    trade?: SortOrder
+    type?: SortOrder
+    newPrice?: SortOrderInput | SortOrder
+    open?: SortOrderInput | SortOrder
+    close?: SortOrderInput | SortOrder
+    high?: SortOrderInput | SortOrder
+    low?: SortOrderInput | SortOrder
+    amount?: SortOrderInput | SortOrder
+    volume?: SortOrderInput | SortOrder
+    change?: SortOrderInput | SortOrder
+    changePercent?: SortOrderInput | SortOrder
+    date?: SortOrderInput | SortOrder
+    sync?: SortOrderInput | SortOrder
+    syncMarket?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrderInput | SortOrder
+    _count?: StockSymbolCountOrderByAggregateInput
+    _avg?: StockSymbolAvgOrderByAggregateInput
+    _max?: StockSymbolMaxOrderByAggregateInput
+    _min?: StockSymbolMinOrderByAggregateInput
+    _sum?: StockSymbolSumOrderByAggregateInput
+  }
+
+  export type StockSymbolScalarWhereWithAggregatesInput = {
+    AND?: StockSymbolScalarWhereWithAggregatesInput | StockSymbolScalarWhereWithAggregatesInput[]
+    OR?: StockSymbolScalarWhereWithAggregatesInput[]
+    NOT?: StockSymbolScalarWhereWithAggregatesInput | StockSymbolScalarWhereWithAggregatesInput[]
+    id?: BigIntWithAggregatesFilter<"StockSymbol"> | bigint | number
+    code?: StringWithAggregatesFilter<"StockSymbol"> | string
+    market?: StringWithAggregatesFilter<"StockSymbol"> | string
+    online?: IntWithAggregatesFilter<"StockSymbol"> | number
+    symbol?: StringWithAggregatesFilter<"StockSymbol"> | string
+    showName?: StringWithAggregatesFilter<"StockSymbol"> | string
+    name?: StringNullableWithAggregatesFilter<"StockSymbol"> | string | null
+    symbolShowName?: StringNullableWithAggregatesFilter<"StockSymbol"> | string | null
+    trade?: IntWithAggregatesFilter<"StockSymbol"> | number
+    type?: IntWithAggregatesFilter<"StockSymbol"> | number
+    newPrice?: StringNullableWithAggregatesFilter<"StockSymbol"> | string | null
+    open?: StringNullableWithAggregatesFilter<"StockSymbol"> | string | null
+    close?: StringNullableWithAggregatesFilter<"StockSymbol"> | string | null
+    high?: StringNullableWithAggregatesFilter<"StockSymbol"> | string | null
+    low?: StringNullableWithAggregatesFilter<"StockSymbol"> | string | null
+    amount?: StringNullableWithAggregatesFilter<"StockSymbol"> | string | null
+    volume?: StringNullableWithAggregatesFilter<"StockSymbol"> | string | null
+    change?: StringNullableWithAggregatesFilter<"StockSymbol"> | string | null
+    changePercent?: StringNullableWithAggregatesFilter<"StockSymbol"> | string | null
+    date?: StringNullableWithAggregatesFilter<"StockSymbol"> | string | null
+    sync?: JsonNullableWithAggregatesFilter<"StockSymbol">
+    syncMarket?: StringWithAggregatesFilter<"StockSymbol"> | string
+    createdAt?: DateTimeWithAggregatesFilter<"StockSymbol"> | Date | string
+    updatedAt?: DateTimeNullableWithAggregatesFilter<"StockSymbol"> | Date | string | null
   }
 
   export type StockWhereInput = {
@@ -7548,11 +19485,21 @@ export namespace Prisma {
     logo?: StringNullableFilter<"Stock"> | string | null
     sok?: StringNullableFilter<"Stock"> | string | null
     optional?: BoolFilter<"Stock"> | boolean
+    newPrice?: StringNullableFilter<"Stock"> | string | null
+    open?: StringNullableFilter<"Stock"> | string | null
+    close?: StringNullableFilter<"Stock"> | string | null
+    high?: StringNullableFilter<"Stock"> | string | null
+    low?: StringNullableFilter<"Stock"> | string | null
+    amount?: StringNullableFilter<"Stock"> | string | null
+    volume?: StringNullableFilter<"Stock"> | string | null
     status?: EnumSTOCK_STATUSFilter<"Stock"> | $Enums.STOCK_STATUS
+    change?: StringNullableFilter<"Stock"> | string | null
+    changePercent?: StringNullableFilter<"Stock"> | string | null
+    date?: StringNullableFilter<"Stock"> | string | null
+    extra?: JsonNullableFilter<"Stock">
     createdAt?: DateTimeFilter<"Stock"> | Date | string
     updatedAt?: DateTimeNullableFilter<"Stock"> | Date | string | null
-    members?: StockOnMembersListRelationFilter
-    stockRecord?: XOR<StockRecordNullableRelationFilter, StockRecordWhereInput> | null
+    stockRecord?: StockRecordListRelationFilter
   }
 
   export type StockOrderByWithRelationInput = {
@@ -7565,11 +19512,21 @@ export namespace Prisma {
     logo?: SortOrderInput | SortOrder
     sok?: SortOrderInput | SortOrder
     optional?: SortOrder
+    newPrice?: SortOrderInput | SortOrder
+    open?: SortOrderInput | SortOrder
+    close?: SortOrderInput | SortOrder
+    high?: SortOrderInput | SortOrder
+    low?: SortOrderInput | SortOrder
+    amount?: SortOrderInput | SortOrder
+    volume?: SortOrderInput | SortOrder
     status?: SortOrder
+    change?: SortOrderInput | SortOrder
+    changePercent?: SortOrderInput | SortOrder
+    date?: SortOrderInput | SortOrder
+    extra?: SortOrderInput | SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrderInput | SortOrder
-    members?: StockOnMembersOrderByRelationAggregateInput
-    stockRecord?: StockRecordOrderByWithRelationInput
+    stockRecord?: StockRecordOrderByRelationAggregateInput
   }
 
   export type StockWhereUniqueInput = Prisma.AtLeast<{
@@ -7586,11 +19543,21 @@ export namespace Prisma {
     logo?: StringNullableFilter<"Stock"> | string | null
     sok?: StringNullableFilter<"Stock"> | string | null
     optional?: BoolFilter<"Stock"> | boolean
+    newPrice?: StringNullableFilter<"Stock"> | string | null
+    open?: StringNullableFilter<"Stock"> | string | null
+    close?: StringNullableFilter<"Stock"> | string | null
+    high?: StringNullableFilter<"Stock"> | string | null
+    low?: StringNullableFilter<"Stock"> | string | null
+    amount?: StringNullableFilter<"Stock"> | string | null
+    volume?: StringNullableFilter<"Stock"> | string | null
     status?: EnumSTOCK_STATUSFilter<"Stock"> | $Enums.STOCK_STATUS
+    change?: StringNullableFilter<"Stock"> | string | null
+    changePercent?: StringNullableFilter<"Stock"> | string | null
+    date?: StringNullableFilter<"Stock"> | string | null
+    extra?: JsonNullableFilter<"Stock">
     createdAt?: DateTimeFilter<"Stock"> | Date | string
     updatedAt?: DateTimeNullableFilter<"Stock"> | Date | string | null
-    members?: StockOnMembersListRelationFilter
-    stockRecord?: XOR<StockRecordNullableRelationFilter, StockRecordWhereInput> | null
+    stockRecord?: StockRecordListRelationFilter
   }, "id" | "code_symbol_type">
 
   export type StockOrderByWithAggregationInput = {
@@ -7603,7 +19570,18 @@ export namespace Prisma {
     logo?: SortOrderInput | SortOrder
     sok?: SortOrderInput | SortOrder
     optional?: SortOrder
+    newPrice?: SortOrderInput | SortOrder
+    open?: SortOrderInput | SortOrder
+    close?: SortOrderInput | SortOrder
+    high?: SortOrderInput | SortOrder
+    low?: SortOrderInput | SortOrder
+    amount?: SortOrderInput | SortOrder
+    volume?: SortOrderInput | SortOrder
     status?: SortOrder
+    change?: SortOrderInput | SortOrder
+    changePercent?: SortOrderInput | SortOrder
+    date?: SortOrderInput | SortOrder
+    extra?: SortOrderInput | SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrderInput | SortOrder
     _count?: StockCountOrderByAggregateInput
@@ -7626,7 +19604,18 @@ export namespace Prisma {
     logo?: StringNullableWithAggregatesFilter<"Stock"> | string | null
     sok?: StringNullableWithAggregatesFilter<"Stock"> | string | null
     optional?: BoolWithAggregatesFilter<"Stock"> | boolean
+    newPrice?: StringNullableWithAggregatesFilter<"Stock"> | string | null
+    open?: StringNullableWithAggregatesFilter<"Stock"> | string | null
+    close?: StringNullableWithAggregatesFilter<"Stock"> | string | null
+    high?: StringNullableWithAggregatesFilter<"Stock"> | string | null
+    low?: StringNullableWithAggregatesFilter<"Stock"> | string | null
+    amount?: StringNullableWithAggregatesFilter<"Stock"> | string | null
+    volume?: StringNullableWithAggregatesFilter<"Stock"> | string | null
     status?: EnumSTOCK_STATUSWithAggregatesFilter<"Stock"> | $Enums.STOCK_STATUS
+    change?: StringNullableWithAggregatesFilter<"Stock"> | string | null
+    changePercent?: StringNullableWithAggregatesFilter<"Stock"> | string | null
+    date?: StringNullableWithAggregatesFilter<"Stock"> | string | null
+    extra?: JsonNullableWithAggregatesFilter<"Stock">
     createdAt?: DateTimeWithAggregatesFilter<"Stock"> | Date | string
     updatedAt?: DateTimeNullableWithAggregatesFilter<"Stock"> | Date | string | null
   }
@@ -7636,13 +19625,15 @@ export namespace Prisma {
     OR?: StockRecordWhereInput[]
     NOT?: StockRecordWhereInput | StockRecordWhereInput[]
     id?: BigIntFilter<"StockRecord"> | bigint | number
-    price?: StringFilter<"StockRecord"> | string
+    newPrice?: StringFilter<"StockRecord"> | string
     open?: StringFilter<"StockRecord"> | string
     close?: StringFilter<"StockRecord"> | string
     high?: StringFilter<"StockRecord"> | string
     low?: StringFilter<"StockRecord"> | string
-    turnover?: StringFilter<"StockRecord"> | string
+    amount?: StringFilter<"StockRecord"> | string
     volume?: StringFilter<"StockRecord"> | string
+    date?: StringFilter<"StockRecord"> | string
+    extra?: JsonFilter<"StockRecord">
     createdAt?: DateTimeFilter<"StockRecord"> | Date | string
     stockId?: BigIntFilter<"StockRecord"> | bigint | number
     stock?: XOR<StockRelationFilter, StockWhereInput>
@@ -7650,13 +19641,15 @@ export namespace Prisma {
 
   export type StockRecordOrderByWithRelationInput = {
     id?: SortOrder
-    price?: SortOrder
+    newPrice?: SortOrder
     open?: SortOrder
     close?: SortOrder
     high?: SortOrder
     low?: SortOrder
-    turnover?: SortOrder
+    amount?: SortOrder
     volume?: SortOrder
+    date?: SortOrder
+    extra?: SortOrder
     createdAt?: SortOrder
     stockId?: SortOrder
     stock?: StockOrderByWithRelationInput
@@ -7664,30 +19657,34 @@ export namespace Prisma {
 
   export type StockRecordWhereUniqueInput = Prisma.AtLeast<{
     id?: bigint | number
-    stockId?: bigint | number
     AND?: StockRecordWhereInput | StockRecordWhereInput[]
     OR?: StockRecordWhereInput[]
     NOT?: StockRecordWhereInput | StockRecordWhereInput[]
-    price?: StringFilter<"StockRecord"> | string
+    newPrice?: StringFilter<"StockRecord"> | string
     open?: StringFilter<"StockRecord"> | string
     close?: StringFilter<"StockRecord"> | string
     high?: StringFilter<"StockRecord"> | string
     low?: StringFilter<"StockRecord"> | string
-    turnover?: StringFilter<"StockRecord"> | string
+    amount?: StringFilter<"StockRecord"> | string
     volume?: StringFilter<"StockRecord"> | string
+    date?: StringFilter<"StockRecord"> | string
+    extra?: JsonFilter<"StockRecord">
     createdAt?: DateTimeFilter<"StockRecord"> | Date | string
+    stockId?: BigIntFilter<"StockRecord"> | bigint | number
     stock?: XOR<StockRelationFilter, StockWhereInput>
-  }, "id" | "stockId">
+  }, "id">
 
   export type StockRecordOrderByWithAggregationInput = {
     id?: SortOrder
-    price?: SortOrder
+    newPrice?: SortOrder
     open?: SortOrder
     close?: SortOrder
     high?: SortOrder
     low?: SortOrder
-    turnover?: SortOrder
+    amount?: SortOrder
     volume?: SortOrder
+    date?: SortOrder
+    extra?: SortOrder
     createdAt?: SortOrder
     stockId?: SortOrder
     _count?: StockRecordCountOrderByAggregateInput
@@ -7702,70 +19699,733 @@ export namespace Prisma {
     OR?: StockRecordScalarWhereWithAggregatesInput[]
     NOT?: StockRecordScalarWhereWithAggregatesInput | StockRecordScalarWhereWithAggregatesInput[]
     id?: BigIntWithAggregatesFilter<"StockRecord"> | bigint | number
-    price?: StringWithAggregatesFilter<"StockRecord"> | string
+    newPrice?: StringWithAggregatesFilter<"StockRecord"> | string
     open?: StringWithAggregatesFilter<"StockRecord"> | string
     close?: StringWithAggregatesFilter<"StockRecord"> | string
     high?: StringWithAggregatesFilter<"StockRecord"> | string
     low?: StringWithAggregatesFilter<"StockRecord"> | string
-    turnover?: StringWithAggregatesFilter<"StockRecord"> | string
+    amount?: StringWithAggregatesFilter<"StockRecord"> | string
     volume?: StringWithAggregatesFilter<"StockRecord"> | string
+    date?: StringWithAggregatesFilter<"StockRecord"> | string
+    extra?: JsonWithAggregatesFilter<"StockRecord">
     createdAt?: DateTimeWithAggregatesFilter<"StockRecord"> | Date | string
     stockId?: BigIntWithAggregatesFilter<"StockRecord"> | bigint | number
   }
 
-  export type StockOnMembersWhereInput = {
-    AND?: StockOnMembersWhereInput | StockOnMembersWhereInput[]
-    OR?: StockOnMembersWhereInput[]
-    NOT?: StockOnMembersWhereInput | StockOnMembersWhereInput[]
-    id?: BigIntFilter<"StockOnMembers"> | bigint | number
-    memberId?: BigIntFilter<"StockOnMembers"> | bigint | number
-    stockId?: BigIntFilter<"StockOnMembers"> | bigint | number
-    createdAt?: DateTimeFilter<"StockOnMembers"> | Date | string
-    member?: XOR<MemberRelationFilter, MemberWhereInput>
-    stock?: XOR<StockRelationFilter, StockWhereInput>
+  export type StockMarketWhereInput = {
+    AND?: StockMarketWhereInput | StockMarketWhereInput[]
+    OR?: StockMarketWhereInput[]
+    NOT?: StockMarketWhereInput | StockMarketWhereInput[]
+    id?: BigIntFilter<"StockMarket"> | bigint | number
+    code?: StringNullableFilter<"StockMarket"> | string | null
+    currency?: StringNullableFilter<"StockMarket"> | string | null
+    maxWithdrawal?: StringNullableFilter<"StockMarket"> | string | null
+    minWithdrawal?: StringNullableFilter<"StockMarket"> | string | null
+    feeRate?: StringNullableFilter<"StockMarket"> | string | null
+    minFee?: StringNullableFilter<"StockMarket"> | string | null
+    lever?: StringNullableFilter<"StockMarket"> | string | null
+    mmr?: StringNullableFilter<"StockMarket"> | string | null
+    allocationRate?: StringNullableFilter<"StockMarket"> | string | null
+    frequency?: IntNullableFilter<"StockMarket"> | number | null
+    bindingHours?: IntNullableFilter<"StockMarket"> | number | null
+    headSymbols?: StringNullableFilter<"StockMarket"> | string | null
+    sort?: IntNullableFilter<"StockMarket"> | number | null
+    online?: IntNullableFilter<"StockMarket"> | number | null
+    conline?: IntNullableFilter<"StockMarket"> | number | null
+    createdAt?: DateTimeFilter<"StockMarket"> | Date | string
+    updatedAt?: DateTimeNullableFilter<"StockMarket"> | Date | string | null
   }
 
-  export type StockOnMembersOrderByWithRelationInput = {
+  export type StockMarketOrderByWithRelationInput = {
     id?: SortOrder
-    memberId?: SortOrder
-    stockId?: SortOrder
+    code?: SortOrderInput | SortOrder
+    currency?: SortOrderInput | SortOrder
+    maxWithdrawal?: SortOrderInput | SortOrder
+    minWithdrawal?: SortOrderInput | SortOrder
+    feeRate?: SortOrderInput | SortOrder
+    minFee?: SortOrderInput | SortOrder
+    lever?: SortOrderInput | SortOrder
+    mmr?: SortOrderInput | SortOrder
+    allocationRate?: SortOrderInput | SortOrder
+    frequency?: SortOrderInput | SortOrder
+    bindingHours?: SortOrderInput | SortOrder
+    headSymbols?: SortOrderInput | SortOrder
+    sort?: SortOrderInput | SortOrder
+    online?: SortOrderInput | SortOrder
+    conline?: SortOrderInput | SortOrder
     createdAt?: SortOrder
-    member?: MemberOrderByWithRelationInput
-    stock?: StockOrderByWithRelationInput
+    updatedAt?: SortOrderInput | SortOrder
   }
 
-  export type StockOnMembersWhereUniqueInput = Prisma.AtLeast<{
+  export type StockMarketWhereUniqueInput = Prisma.AtLeast<{
     id?: bigint | number
-    AND?: StockOnMembersWhereInput | StockOnMembersWhereInput[]
-    OR?: StockOnMembersWhereInput[]
-    NOT?: StockOnMembersWhereInput | StockOnMembersWhereInput[]
-    memberId?: BigIntFilter<"StockOnMembers"> | bigint | number
-    stockId?: BigIntFilter<"StockOnMembers"> | bigint | number
-    createdAt?: DateTimeFilter<"StockOnMembers"> | Date | string
-    member?: XOR<MemberRelationFilter, MemberWhereInput>
-    stock?: XOR<StockRelationFilter, StockWhereInput>
+    AND?: StockMarketWhereInput | StockMarketWhereInput[]
+    OR?: StockMarketWhereInput[]
+    NOT?: StockMarketWhereInput | StockMarketWhereInput[]
+    code?: StringNullableFilter<"StockMarket"> | string | null
+    currency?: StringNullableFilter<"StockMarket"> | string | null
+    maxWithdrawal?: StringNullableFilter<"StockMarket"> | string | null
+    minWithdrawal?: StringNullableFilter<"StockMarket"> | string | null
+    feeRate?: StringNullableFilter<"StockMarket"> | string | null
+    minFee?: StringNullableFilter<"StockMarket"> | string | null
+    lever?: StringNullableFilter<"StockMarket"> | string | null
+    mmr?: StringNullableFilter<"StockMarket"> | string | null
+    allocationRate?: StringNullableFilter<"StockMarket"> | string | null
+    frequency?: IntNullableFilter<"StockMarket"> | number | null
+    bindingHours?: IntNullableFilter<"StockMarket"> | number | null
+    headSymbols?: StringNullableFilter<"StockMarket"> | string | null
+    sort?: IntNullableFilter<"StockMarket"> | number | null
+    online?: IntNullableFilter<"StockMarket"> | number | null
+    conline?: IntNullableFilter<"StockMarket"> | number | null
+    createdAt?: DateTimeFilter<"StockMarket"> | Date | string
+    updatedAt?: DateTimeNullableFilter<"StockMarket"> | Date | string | null
   }, "id">
 
-  export type StockOnMembersOrderByWithAggregationInput = {
+  export type StockMarketOrderByWithAggregationInput = {
     id?: SortOrder
-    memberId?: SortOrder
-    stockId?: SortOrder
+    code?: SortOrderInput | SortOrder
+    currency?: SortOrderInput | SortOrder
+    maxWithdrawal?: SortOrderInput | SortOrder
+    minWithdrawal?: SortOrderInput | SortOrder
+    feeRate?: SortOrderInput | SortOrder
+    minFee?: SortOrderInput | SortOrder
+    lever?: SortOrderInput | SortOrder
+    mmr?: SortOrderInput | SortOrder
+    allocationRate?: SortOrderInput | SortOrder
+    frequency?: SortOrderInput | SortOrder
+    bindingHours?: SortOrderInput | SortOrder
+    headSymbols?: SortOrderInput | SortOrder
+    sort?: SortOrderInput | SortOrder
+    online?: SortOrderInput | SortOrder
+    conline?: SortOrderInput | SortOrder
     createdAt?: SortOrder
-    _count?: StockOnMembersCountOrderByAggregateInput
-    _avg?: StockOnMembersAvgOrderByAggregateInput
-    _max?: StockOnMembersMaxOrderByAggregateInput
-    _min?: StockOnMembersMinOrderByAggregateInput
-    _sum?: StockOnMembersSumOrderByAggregateInput
+    updatedAt?: SortOrderInput | SortOrder
+    _count?: StockMarketCountOrderByAggregateInput
+    _avg?: StockMarketAvgOrderByAggregateInput
+    _max?: StockMarketMaxOrderByAggregateInput
+    _min?: StockMarketMinOrderByAggregateInput
+    _sum?: StockMarketSumOrderByAggregateInput
   }
 
-  export type StockOnMembersScalarWhereWithAggregatesInput = {
-    AND?: StockOnMembersScalarWhereWithAggregatesInput | StockOnMembersScalarWhereWithAggregatesInput[]
-    OR?: StockOnMembersScalarWhereWithAggregatesInput[]
-    NOT?: StockOnMembersScalarWhereWithAggregatesInput | StockOnMembersScalarWhereWithAggregatesInput[]
-    id?: BigIntWithAggregatesFilter<"StockOnMembers"> | bigint | number
-    memberId?: BigIntWithAggregatesFilter<"StockOnMembers"> | bigint | number
-    stockId?: BigIntWithAggregatesFilter<"StockOnMembers"> | bigint | number
-    createdAt?: DateTimeWithAggregatesFilter<"StockOnMembers"> | Date | string
+  export type StockMarketScalarWhereWithAggregatesInput = {
+    AND?: StockMarketScalarWhereWithAggregatesInput | StockMarketScalarWhereWithAggregatesInput[]
+    OR?: StockMarketScalarWhereWithAggregatesInput[]
+    NOT?: StockMarketScalarWhereWithAggregatesInput | StockMarketScalarWhereWithAggregatesInput[]
+    id?: BigIntWithAggregatesFilter<"StockMarket"> | bigint | number
+    code?: StringNullableWithAggregatesFilter<"StockMarket"> | string | null
+    currency?: StringNullableWithAggregatesFilter<"StockMarket"> | string | null
+    maxWithdrawal?: StringNullableWithAggregatesFilter<"StockMarket"> | string | null
+    minWithdrawal?: StringNullableWithAggregatesFilter<"StockMarket"> | string | null
+    feeRate?: StringNullableWithAggregatesFilter<"StockMarket"> | string | null
+    minFee?: StringNullableWithAggregatesFilter<"StockMarket"> | string | null
+    lever?: StringNullableWithAggregatesFilter<"StockMarket"> | string | null
+    mmr?: StringNullableWithAggregatesFilter<"StockMarket"> | string | null
+    allocationRate?: StringNullableWithAggregatesFilter<"StockMarket"> | string | null
+    frequency?: IntNullableWithAggregatesFilter<"StockMarket"> | number | null
+    bindingHours?: IntNullableWithAggregatesFilter<"StockMarket"> | number | null
+    headSymbols?: StringNullableWithAggregatesFilter<"StockMarket"> | string | null
+    sort?: IntNullableWithAggregatesFilter<"StockMarket"> | number | null
+    online?: IntNullableWithAggregatesFilter<"StockMarket"> | number | null
+    conline?: IntNullableWithAggregatesFilter<"StockMarket"> | number | null
+    createdAt?: DateTimeWithAggregatesFilter<"StockMarket"> | Date | string
+    updatedAt?: DateTimeNullableWithAggregatesFilter<"StockMarket"> | Date | string | null
+  }
+
+  export type StockFavoriteWhereInput = {
+    AND?: StockFavoriteWhereInput | StockFavoriteWhereInput[]
+    OR?: StockFavoriteWhereInput[]
+    NOT?: StockFavoriteWhereInput | StockFavoriteWhereInput[]
+    id?: BigIntFilter<"StockFavorite"> | bigint | number
+    newPrice?: StringFilter<"StockFavorite"> | string
+    open?: StringFilter<"StockFavorite"> | string
+    close?: StringFilter<"StockFavorite"> | string
+    high?: StringFilter<"StockFavorite"> | string
+    low?: StringFilter<"StockFavorite"> | string
+    amount?: StringFilter<"StockFavorite"> | string
+    volume?: StringFilter<"StockFavorite"> | string
+    date?: StringNullableFilter<"StockFavorite"> | string | null
+    extra?: JsonNullableFilter<"StockFavorite">
+    memberId?: BigIntFilter<"StockFavorite"> | bigint | number
+    stockSymbolId?: BigIntFilter<"StockFavorite"> | bigint | number
+    createdAt?: DateTimeFilter<"StockFavorite"> | Date | string
+  }
+
+  export type StockFavoriteOrderByWithRelationInput = {
+    id?: SortOrder
+    newPrice?: SortOrder
+    open?: SortOrder
+    close?: SortOrder
+    high?: SortOrder
+    low?: SortOrder
+    amount?: SortOrder
+    volume?: SortOrder
+    date?: SortOrderInput | SortOrder
+    extra?: SortOrderInput | SortOrder
+    memberId?: SortOrder
+    stockSymbolId?: SortOrder
+    createdAt?: SortOrder
+  }
+
+  export type StockFavoriteWhereUniqueInput = Prisma.AtLeast<{
+    id?: bigint | number
+    AND?: StockFavoriteWhereInput | StockFavoriteWhereInput[]
+    OR?: StockFavoriteWhereInput[]
+    NOT?: StockFavoriteWhereInput | StockFavoriteWhereInput[]
+    newPrice?: StringFilter<"StockFavorite"> | string
+    open?: StringFilter<"StockFavorite"> | string
+    close?: StringFilter<"StockFavorite"> | string
+    high?: StringFilter<"StockFavorite"> | string
+    low?: StringFilter<"StockFavorite"> | string
+    amount?: StringFilter<"StockFavorite"> | string
+    volume?: StringFilter<"StockFavorite"> | string
+    date?: StringNullableFilter<"StockFavorite"> | string | null
+    extra?: JsonNullableFilter<"StockFavorite">
+    memberId?: BigIntFilter<"StockFavorite"> | bigint | number
+    stockSymbolId?: BigIntFilter<"StockFavorite"> | bigint | number
+    createdAt?: DateTimeFilter<"StockFavorite"> | Date | string
+  }, "id">
+
+  export type StockFavoriteOrderByWithAggregationInput = {
+    id?: SortOrder
+    newPrice?: SortOrder
+    open?: SortOrder
+    close?: SortOrder
+    high?: SortOrder
+    low?: SortOrder
+    amount?: SortOrder
+    volume?: SortOrder
+    date?: SortOrderInput | SortOrder
+    extra?: SortOrderInput | SortOrder
+    memberId?: SortOrder
+    stockSymbolId?: SortOrder
+    createdAt?: SortOrder
+    _count?: StockFavoriteCountOrderByAggregateInput
+    _avg?: StockFavoriteAvgOrderByAggregateInput
+    _max?: StockFavoriteMaxOrderByAggregateInput
+    _min?: StockFavoriteMinOrderByAggregateInput
+    _sum?: StockFavoriteSumOrderByAggregateInput
+  }
+
+  export type StockFavoriteScalarWhereWithAggregatesInput = {
+    AND?: StockFavoriteScalarWhereWithAggregatesInput | StockFavoriteScalarWhereWithAggregatesInput[]
+    OR?: StockFavoriteScalarWhereWithAggregatesInput[]
+    NOT?: StockFavoriteScalarWhereWithAggregatesInput | StockFavoriteScalarWhereWithAggregatesInput[]
+    id?: BigIntWithAggregatesFilter<"StockFavorite"> | bigint | number
+    newPrice?: StringWithAggregatesFilter<"StockFavorite"> | string
+    open?: StringWithAggregatesFilter<"StockFavorite"> | string
+    close?: StringWithAggregatesFilter<"StockFavorite"> | string
+    high?: StringWithAggregatesFilter<"StockFavorite"> | string
+    low?: StringWithAggregatesFilter<"StockFavorite"> | string
+    amount?: StringWithAggregatesFilter<"StockFavorite"> | string
+    volume?: StringWithAggregatesFilter<"StockFavorite"> | string
+    date?: StringNullableWithAggregatesFilter<"StockFavorite"> | string | null
+    extra?: JsonNullableWithAggregatesFilter<"StockFavorite">
+    memberId?: BigIntWithAggregatesFilter<"StockFavorite"> | bigint | number
+    stockSymbolId?: BigIntWithAggregatesFilter<"StockFavorite"> | bigint | number
+    createdAt?: DateTimeWithAggregatesFilter<"StockFavorite"> | Date | string
+  }
+
+  export type StockSubscribeWhereInput = {
+    AND?: StockSubscribeWhereInput | StockSubscribeWhereInput[]
+    OR?: StockSubscribeWhereInput[]
+    NOT?: StockSubscribeWhereInput | StockSubscribeWhereInput[]
+    id?: BigIntFilter<"StockSubscribe"> | bigint | number
+    market?: StringFilter<"StockSubscribe"> | string
+    name?: StringFilter<"StockSubscribe"> | string
+    code?: StringFilter<"StockSubscribe"> | string
+    startAt?: DateTimeNullableFilter<"StockSubscribe"> | Date | string | null
+    endAt?: DateTimeNullableFilter<"StockSubscribe"> | Date | string | null
+    upAt?: DateTimeNullableFilter<"StockSubscribe"> | Date | string | null
+    circulation?: IntNullableFilter<"StockSubscribe"> | number | null
+    remainCirculation?: IntNullableFilter<"StockSubscribe"> | number | null
+    ipoPrice?: DecimalFilter<"StockSubscribe"> | Decimal | DecimalJsLike | number | string
+    issuePrice?: DecimalFilter<"StockSubscribe"> | Decimal | DecimalJsLike | number | string
+    resultAt?: DateTimeNullableFilter<"StockSubscribe"> | Date | string | null
+    subAmount?: JsonNullableFilter<"StockSubscribe">
+    status?: IntFilter<"StockSubscribe"> | number
+    type?: IntFilter<"StockSubscribe"> | number
+    createdAt?: DateTimeFilter<"StockSubscribe"> | Date | string
+    updatedAt?: DateTimeNullableFilter<"StockSubscribe"> | Date | string | null
+  }
+
+  export type StockSubscribeOrderByWithRelationInput = {
+    id?: SortOrder
+    market?: SortOrder
+    name?: SortOrder
+    code?: SortOrder
+    startAt?: SortOrderInput | SortOrder
+    endAt?: SortOrderInput | SortOrder
+    upAt?: SortOrderInput | SortOrder
+    circulation?: SortOrderInput | SortOrder
+    remainCirculation?: SortOrderInput | SortOrder
+    ipoPrice?: SortOrder
+    issuePrice?: SortOrder
+    resultAt?: SortOrderInput | SortOrder
+    subAmount?: SortOrderInput | SortOrder
+    status?: SortOrder
+    type?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrderInput | SortOrder
+  }
+
+  export type StockSubscribeWhereUniqueInput = Prisma.AtLeast<{
+    id?: bigint | number
+    AND?: StockSubscribeWhereInput | StockSubscribeWhereInput[]
+    OR?: StockSubscribeWhereInput[]
+    NOT?: StockSubscribeWhereInput | StockSubscribeWhereInput[]
+    market?: StringFilter<"StockSubscribe"> | string
+    name?: StringFilter<"StockSubscribe"> | string
+    code?: StringFilter<"StockSubscribe"> | string
+    startAt?: DateTimeNullableFilter<"StockSubscribe"> | Date | string | null
+    endAt?: DateTimeNullableFilter<"StockSubscribe"> | Date | string | null
+    upAt?: DateTimeNullableFilter<"StockSubscribe"> | Date | string | null
+    circulation?: IntNullableFilter<"StockSubscribe"> | number | null
+    remainCirculation?: IntNullableFilter<"StockSubscribe"> | number | null
+    ipoPrice?: DecimalFilter<"StockSubscribe"> | Decimal | DecimalJsLike | number | string
+    issuePrice?: DecimalFilter<"StockSubscribe"> | Decimal | DecimalJsLike | number | string
+    resultAt?: DateTimeNullableFilter<"StockSubscribe"> | Date | string | null
+    subAmount?: JsonNullableFilter<"StockSubscribe">
+    status?: IntFilter<"StockSubscribe"> | number
+    type?: IntFilter<"StockSubscribe"> | number
+    createdAt?: DateTimeFilter<"StockSubscribe"> | Date | string
+    updatedAt?: DateTimeNullableFilter<"StockSubscribe"> | Date | string | null
+  }, "id">
+
+  export type StockSubscribeOrderByWithAggregationInput = {
+    id?: SortOrder
+    market?: SortOrder
+    name?: SortOrder
+    code?: SortOrder
+    startAt?: SortOrderInput | SortOrder
+    endAt?: SortOrderInput | SortOrder
+    upAt?: SortOrderInput | SortOrder
+    circulation?: SortOrderInput | SortOrder
+    remainCirculation?: SortOrderInput | SortOrder
+    ipoPrice?: SortOrder
+    issuePrice?: SortOrder
+    resultAt?: SortOrderInput | SortOrder
+    subAmount?: SortOrderInput | SortOrder
+    status?: SortOrder
+    type?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrderInput | SortOrder
+    _count?: StockSubscribeCountOrderByAggregateInput
+    _avg?: StockSubscribeAvgOrderByAggregateInput
+    _max?: StockSubscribeMaxOrderByAggregateInput
+    _min?: StockSubscribeMinOrderByAggregateInput
+    _sum?: StockSubscribeSumOrderByAggregateInput
+  }
+
+  export type StockSubscribeScalarWhereWithAggregatesInput = {
+    AND?: StockSubscribeScalarWhereWithAggregatesInput | StockSubscribeScalarWhereWithAggregatesInput[]
+    OR?: StockSubscribeScalarWhereWithAggregatesInput[]
+    NOT?: StockSubscribeScalarWhereWithAggregatesInput | StockSubscribeScalarWhereWithAggregatesInput[]
+    id?: BigIntWithAggregatesFilter<"StockSubscribe"> | bigint | number
+    market?: StringWithAggregatesFilter<"StockSubscribe"> | string
+    name?: StringWithAggregatesFilter<"StockSubscribe"> | string
+    code?: StringWithAggregatesFilter<"StockSubscribe"> | string
+    startAt?: DateTimeNullableWithAggregatesFilter<"StockSubscribe"> | Date | string | null
+    endAt?: DateTimeNullableWithAggregatesFilter<"StockSubscribe"> | Date | string | null
+    upAt?: DateTimeNullableWithAggregatesFilter<"StockSubscribe"> | Date | string | null
+    circulation?: IntNullableWithAggregatesFilter<"StockSubscribe"> | number | null
+    remainCirculation?: IntNullableWithAggregatesFilter<"StockSubscribe"> | number | null
+    ipoPrice?: DecimalWithAggregatesFilter<"StockSubscribe"> | Decimal | DecimalJsLike | number | string
+    issuePrice?: DecimalWithAggregatesFilter<"StockSubscribe"> | Decimal | DecimalJsLike | number | string
+    resultAt?: DateTimeNullableWithAggregatesFilter<"StockSubscribe"> | Date | string | null
+    subAmount?: JsonNullableWithAggregatesFilter<"StockSubscribe">
+    status?: IntWithAggregatesFilter<"StockSubscribe"> | number
+    type?: IntWithAggregatesFilter<"StockSubscribe"> | number
+    createdAt?: DateTimeWithAggregatesFilter<"StockSubscribe"> | Date | string
+    updatedAt?: DateTimeNullableWithAggregatesFilter<"StockSubscribe"> | Date | string | null
+  }
+
+  export type MemberSubscribeWhereInput = {
+    AND?: MemberSubscribeWhereInput | MemberSubscribeWhereInput[]
+    OR?: MemberSubscribeWhereInput[]
+    NOT?: MemberSubscribeWhereInput | MemberSubscribeWhereInput[]
+    id?: BigIntFilter<"MemberSubscribe"> | bigint | number
+    market?: StringFilter<"MemberSubscribe"> | string
+    code?: StringFilter<"MemberSubscribe"> | string
+    name?: StringFilter<"MemberSubscribe"> | string
+    amount?: IntFilter<"MemberSubscribe"> | number
+    money?: DecimalFilter<"MemberSubscribe"> | Decimal | DecimalJsLike | number | string
+    no?: StringFilter<"MemberSubscribe"> | string
+    winningAmount?: IntNullableFilter<"MemberSubscribe"> | number | null
+    winningPrice?: DecimalNullableFilter<"MemberSubscribe"> | Decimal | DecimalJsLike | number | string | null
+    totalWinningPrice?: DecimalNullableFilter<"MemberSubscribe"> | Decimal | DecimalJsLike | number | string | null
+    actualAmount?: DecimalNullableFilter<"MemberSubscribe"> | Decimal | DecimalJsLike | number | string | null
+    status?: IntFilter<"MemberSubscribe"> | number
+    type?: IntFilter<"MemberSubscribe"> | number
+    createdAt?: DateTimeFilter<"MemberSubscribe"> | Date | string
+    updatedAt?: DateTimeNullableFilter<"MemberSubscribe"> | Date | string | null
+    stockSubscribeId?: BigIntFilter<"MemberSubscribe"> | bigint | number
+    memberId?: BigIntFilter<"MemberSubscribe"> | bigint | number
+    member?: XOR<MemberRelationFilter, MemberWhereInput>
+  }
+
+  export type MemberSubscribeOrderByWithRelationInput = {
+    id?: SortOrder
+    market?: SortOrder
+    code?: SortOrder
+    name?: SortOrder
+    amount?: SortOrder
+    money?: SortOrder
+    no?: SortOrder
+    winningAmount?: SortOrderInput | SortOrder
+    winningPrice?: SortOrderInput | SortOrder
+    totalWinningPrice?: SortOrderInput | SortOrder
+    actualAmount?: SortOrderInput | SortOrder
+    status?: SortOrder
+    type?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrderInput | SortOrder
+    stockSubscribeId?: SortOrder
+    memberId?: SortOrder
+    member?: MemberOrderByWithRelationInput
+  }
+
+  export type MemberSubscribeWhereUniqueInput = Prisma.AtLeast<{
+    id?: bigint | number
+    AND?: MemberSubscribeWhereInput | MemberSubscribeWhereInput[]
+    OR?: MemberSubscribeWhereInput[]
+    NOT?: MemberSubscribeWhereInput | MemberSubscribeWhereInput[]
+    market?: StringFilter<"MemberSubscribe"> | string
+    code?: StringFilter<"MemberSubscribe"> | string
+    name?: StringFilter<"MemberSubscribe"> | string
+    amount?: IntFilter<"MemberSubscribe"> | number
+    money?: DecimalFilter<"MemberSubscribe"> | Decimal | DecimalJsLike | number | string
+    no?: StringFilter<"MemberSubscribe"> | string
+    winningAmount?: IntNullableFilter<"MemberSubscribe"> | number | null
+    winningPrice?: DecimalNullableFilter<"MemberSubscribe"> | Decimal | DecimalJsLike | number | string | null
+    totalWinningPrice?: DecimalNullableFilter<"MemberSubscribe"> | Decimal | DecimalJsLike | number | string | null
+    actualAmount?: DecimalNullableFilter<"MemberSubscribe"> | Decimal | DecimalJsLike | number | string | null
+    status?: IntFilter<"MemberSubscribe"> | number
+    type?: IntFilter<"MemberSubscribe"> | number
+    createdAt?: DateTimeFilter<"MemberSubscribe"> | Date | string
+    updatedAt?: DateTimeNullableFilter<"MemberSubscribe"> | Date | string | null
+    stockSubscribeId?: BigIntFilter<"MemberSubscribe"> | bigint | number
+    memberId?: BigIntFilter<"MemberSubscribe"> | bigint | number
+    member?: XOR<MemberRelationFilter, MemberWhereInput>
+  }, "id">
+
+  export type MemberSubscribeOrderByWithAggregationInput = {
+    id?: SortOrder
+    market?: SortOrder
+    code?: SortOrder
+    name?: SortOrder
+    amount?: SortOrder
+    money?: SortOrder
+    no?: SortOrder
+    winningAmount?: SortOrderInput | SortOrder
+    winningPrice?: SortOrderInput | SortOrder
+    totalWinningPrice?: SortOrderInput | SortOrder
+    actualAmount?: SortOrderInput | SortOrder
+    status?: SortOrder
+    type?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrderInput | SortOrder
+    stockSubscribeId?: SortOrder
+    memberId?: SortOrder
+    _count?: MemberSubscribeCountOrderByAggregateInput
+    _avg?: MemberSubscribeAvgOrderByAggregateInput
+    _max?: MemberSubscribeMaxOrderByAggregateInput
+    _min?: MemberSubscribeMinOrderByAggregateInput
+    _sum?: MemberSubscribeSumOrderByAggregateInput
+  }
+
+  export type MemberSubscribeScalarWhereWithAggregatesInput = {
+    AND?: MemberSubscribeScalarWhereWithAggregatesInput | MemberSubscribeScalarWhereWithAggregatesInput[]
+    OR?: MemberSubscribeScalarWhereWithAggregatesInput[]
+    NOT?: MemberSubscribeScalarWhereWithAggregatesInput | MemberSubscribeScalarWhereWithAggregatesInput[]
+    id?: BigIntWithAggregatesFilter<"MemberSubscribe"> | bigint | number
+    market?: StringWithAggregatesFilter<"MemberSubscribe"> | string
+    code?: StringWithAggregatesFilter<"MemberSubscribe"> | string
+    name?: StringWithAggregatesFilter<"MemberSubscribe"> | string
+    amount?: IntWithAggregatesFilter<"MemberSubscribe"> | number
+    money?: DecimalWithAggregatesFilter<"MemberSubscribe"> | Decimal | DecimalJsLike | number | string
+    no?: StringWithAggregatesFilter<"MemberSubscribe"> | string
+    winningAmount?: IntNullableWithAggregatesFilter<"MemberSubscribe"> | number | null
+    winningPrice?: DecimalNullableWithAggregatesFilter<"MemberSubscribe"> | Decimal | DecimalJsLike | number | string | null
+    totalWinningPrice?: DecimalNullableWithAggregatesFilter<"MemberSubscribe"> | Decimal | DecimalJsLike | number | string | null
+    actualAmount?: DecimalNullableWithAggregatesFilter<"MemberSubscribe"> | Decimal | DecimalJsLike | number | string | null
+    status?: IntWithAggregatesFilter<"MemberSubscribe"> | number
+    type?: IntWithAggregatesFilter<"MemberSubscribe"> | number
+    createdAt?: DateTimeWithAggregatesFilter<"MemberSubscribe"> | Date | string
+    updatedAt?: DateTimeNullableWithAggregatesFilter<"MemberSubscribe"> | Date | string | null
+    stockSubscribeId?: BigIntWithAggregatesFilter<"MemberSubscribe"> | bigint | number
+    memberId?: BigIntWithAggregatesFilter<"MemberSubscribe"> | bigint | number
+  }
+
+  export type StockPositionWhereInput = {
+    AND?: StockPositionWhereInput | StockPositionWhereInput[]
+    OR?: StockPositionWhereInput[]
+    NOT?: StockPositionWhereInput | StockPositionWhereInput[]
+    id?: BigIntFilter<"StockPosition"> | bigint | number
+    amount?: IntFilter<"StockPosition"> | number
+    blast?: StringFilter<"StockPosition"> | string
+    price?: StringFilter<"StockPosition"> | string
+    mode?: IntFilter<"StockPosition"> | number
+    status?: IntFilter<"StockPosition"> | number
+    bond?: StringNullableFilter<"StockPosition"> | string | null
+    identifier?: StringNullableFilter<"StockPosition"> | string | null
+    lever?: StringNullableFilter<"StockPosition"> | string | null
+    stopLoss?: StringNullableFilter<"StockPosition"> | string | null
+    takeProfit?: StringNullableFilter<"StockPosition"> | string | null
+    market?: StringNullableFilter<"StockPosition"> | string | null
+    pl?: StringNullableFilter<"StockPosition"> | string | null
+    rate?: StringNullableFilter<"StockPosition"> | string | null
+    currentPrice?: StringNullableFilter<"StockPosition"> | string | null
+    memberId?: BigIntFilter<"StockPosition"> | bigint | number
+    stockSymbolId?: BigIntFilter<"StockPosition"> | bigint | number
+    createdAt?: DateTimeFilter<"StockPosition"> | Date | string
+    updatedAt?: DateTimeNullableFilter<"StockPosition"> | Date | string | null
+    member?: XOR<MemberRelationFilter, MemberWhereInput>
+    stockSymbol?: XOR<StockSymbolRelationFilter, StockSymbolWhereInput>
+  }
+
+  export type StockPositionOrderByWithRelationInput = {
+    id?: SortOrder
+    amount?: SortOrder
+    blast?: SortOrder
+    price?: SortOrder
+    mode?: SortOrder
+    status?: SortOrder
+    bond?: SortOrderInput | SortOrder
+    identifier?: SortOrderInput | SortOrder
+    lever?: SortOrderInput | SortOrder
+    stopLoss?: SortOrderInput | SortOrder
+    takeProfit?: SortOrderInput | SortOrder
+    market?: SortOrderInput | SortOrder
+    pl?: SortOrderInput | SortOrder
+    rate?: SortOrderInput | SortOrder
+    currentPrice?: SortOrderInput | SortOrder
+    memberId?: SortOrder
+    stockSymbolId?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrderInput | SortOrder
+    member?: MemberOrderByWithRelationInput
+    stockSymbol?: StockSymbolOrderByWithRelationInput
+  }
+
+  export type StockPositionWhereUniqueInput = Prisma.AtLeast<{
+    id?: bigint | number
+    AND?: StockPositionWhereInput | StockPositionWhereInput[]
+    OR?: StockPositionWhereInput[]
+    NOT?: StockPositionWhereInput | StockPositionWhereInput[]
+    amount?: IntFilter<"StockPosition"> | number
+    blast?: StringFilter<"StockPosition"> | string
+    price?: StringFilter<"StockPosition"> | string
+    mode?: IntFilter<"StockPosition"> | number
+    status?: IntFilter<"StockPosition"> | number
+    bond?: StringNullableFilter<"StockPosition"> | string | null
+    identifier?: StringNullableFilter<"StockPosition"> | string | null
+    lever?: StringNullableFilter<"StockPosition"> | string | null
+    stopLoss?: StringNullableFilter<"StockPosition"> | string | null
+    takeProfit?: StringNullableFilter<"StockPosition"> | string | null
+    market?: StringNullableFilter<"StockPosition"> | string | null
+    pl?: StringNullableFilter<"StockPosition"> | string | null
+    rate?: StringNullableFilter<"StockPosition"> | string | null
+    currentPrice?: StringNullableFilter<"StockPosition"> | string | null
+    memberId?: BigIntFilter<"StockPosition"> | bigint | number
+    stockSymbolId?: BigIntFilter<"StockPosition"> | bigint | number
+    createdAt?: DateTimeFilter<"StockPosition"> | Date | string
+    updatedAt?: DateTimeNullableFilter<"StockPosition"> | Date | string | null
+    member?: XOR<MemberRelationFilter, MemberWhereInput>
+    stockSymbol?: XOR<StockSymbolRelationFilter, StockSymbolWhereInput>
+  }, "id">
+
+  export type StockPositionOrderByWithAggregationInput = {
+    id?: SortOrder
+    amount?: SortOrder
+    blast?: SortOrder
+    price?: SortOrder
+    mode?: SortOrder
+    status?: SortOrder
+    bond?: SortOrderInput | SortOrder
+    identifier?: SortOrderInput | SortOrder
+    lever?: SortOrderInput | SortOrder
+    stopLoss?: SortOrderInput | SortOrder
+    takeProfit?: SortOrderInput | SortOrder
+    market?: SortOrderInput | SortOrder
+    pl?: SortOrderInput | SortOrder
+    rate?: SortOrderInput | SortOrder
+    currentPrice?: SortOrderInput | SortOrder
+    memberId?: SortOrder
+    stockSymbolId?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrderInput | SortOrder
+    _count?: StockPositionCountOrderByAggregateInput
+    _avg?: StockPositionAvgOrderByAggregateInput
+    _max?: StockPositionMaxOrderByAggregateInput
+    _min?: StockPositionMinOrderByAggregateInput
+    _sum?: StockPositionSumOrderByAggregateInput
+  }
+
+  export type StockPositionScalarWhereWithAggregatesInput = {
+    AND?: StockPositionScalarWhereWithAggregatesInput | StockPositionScalarWhereWithAggregatesInput[]
+    OR?: StockPositionScalarWhereWithAggregatesInput[]
+    NOT?: StockPositionScalarWhereWithAggregatesInput | StockPositionScalarWhereWithAggregatesInput[]
+    id?: BigIntWithAggregatesFilter<"StockPosition"> | bigint | number
+    amount?: IntWithAggregatesFilter<"StockPosition"> | number
+    blast?: StringWithAggregatesFilter<"StockPosition"> | string
+    price?: StringWithAggregatesFilter<"StockPosition"> | string
+    mode?: IntWithAggregatesFilter<"StockPosition"> | number
+    status?: IntWithAggregatesFilter<"StockPosition"> | number
+    bond?: StringNullableWithAggregatesFilter<"StockPosition"> | string | null
+    identifier?: StringNullableWithAggregatesFilter<"StockPosition"> | string | null
+    lever?: StringNullableWithAggregatesFilter<"StockPosition"> | string | null
+    stopLoss?: StringNullableWithAggregatesFilter<"StockPosition"> | string | null
+    takeProfit?: StringNullableWithAggregatesFilter<"StockPosition"> | string | null
+    market?: StringNullableWithAggregatesFilter<"StockPosition"> | string | null
+    pl?: StringNullableWithAggregatesFilter<"StockPosition"> | string | null
+    rate?: StringNullableWithAggregatesFilter<"StockPosition"> | string | null
+    currentPrice?: StringNullableWithAggregatesFilter<"StockPosition"> | string | null
+    memberId?: BigIntWithAggregatesFilter<"StockPosition"> | bigint | number
+    stockSymbolId?: BigIntWithAggregatesFilter<"StockPosition"> | bigint | number
+    createdAt?: DateTimeWithAggregatesFilter<"StockPosition"> | Date | string
+    updatedAt?: DateTimeNullableWithAggregatesFilter<"StockPosition"> | Date | string | null
+  }
+
+  export type MemberDetailWhereInput = {
+    AND?: MemberDetailWhereInput | MemberDetailWhereInput[]
+    OR?: MemberDetailWhereInput[]
+    NOT?: MemberDetailWhereInput | MemberDetailWhereInput[]
+    id?: BigIntFilter<"MemberDetail"> | bigint | number
+    after?: StringNullableFilter<"MemberDetail"> | string | null
+    amount?: StringNullableFilter<"MemberDetail"> | string | null
+    before?: StringNullableFilter<"MemberDetail"> | string | null
+    market?: StringNullableFilter<"MemberDetail"> | string | null
+    type?: IntFilter<"MemberDetail"> | number
+    remark?: StringNullableFilter<"MemberDetail"> | string | null
+    memberId?: BigIntFilter<"MemberDetail"> | bigint | number
+    member?: XOR<MemberRelationFilter, MemberWhereInput>
+  }
+
+  export type MemberDetailOrderByWithRelationInput = {
+    id?: SortOrder
+    after?: SortOrderInput | SortOrder
+    amount?: SortOrderInput | SortOrder
+    before?: SortOrderInput | SortOrder
+    market?: SortOrderInput | SortOrder
+    type?: SortOrder
+    remark?: SortOrderInput | SortOrder
+    memberId?: SortOrder
+    member?: MemberOrderByWithRelationInput
+  }
+
+  export type MemberDetailWhereUniqueInput = Prisma.AtLeast<{
+    id?: bigint | number
+    AND?: MemberDetailWhereInput | MemberDetailWhereInput[]
+    OR?: MemberDetailWhereInput[]
+    NOT?: MemberDetailWhereInput | MemberDetailWhereInput[]
+    after?: StringNullableFilter<"MemberDetail"> | string | null
+    amount?: StringNullableFilter<"MemberDetail"> | string | null
+    before?: StringNullableFilter<"MemberDetail"> | string | null
+    market?: StringNullableFilter<"MemberDetail"> | string | null
+    type?: IntFilter<"MemberDetail"> | number
+    remark?: StringNullableFilter<"MemberDetail"> | string | null
+    memberId?: BigIntFilter<"MemberDetail"> | bigint | number
+    member?: XOR<MemberRelationFilter, MemberWhereInput>
+  }, "id">
+
+  export type MemberDetailOrderByWithAggregationInput = {
+    id?: SortOrder
+    after?: SortOrderInput | SortOrder
+    amount?: SortOrderInput | SortOrder
+    before?: SortOrderInput | SortOrder
+    market?: SortOrderInput | SortOrder
+    type?: SortOrder
+    remark?: SortOrderInput | SortOrder
+    memberId?: SortOrder
+    _count?: MemberDetailCountOrderByAggregateInput
+    _avg?: MemberDetailAvgOrderByAggregateInput
+    _max?: MemberDetailMaxOrderByAggregateInput
+    _min?: MemberDetailMinOrderByAggregateInput
+    _sum?: MemberDetailSumOrderByAggregateInput
+  }
+
+  export type MemberDetailScalarWhereWithAggregatesInput = {
+    AND?: MemberDetailScalarWhereWithAggregatesInput | MemberDetailScalarWhereWithAggregatesInput[]
+    OR?: MemberDetailScalarWhereWithAggregatesInput[]
+    NOT?: MemberDetailScalarWhereWithAggregatesInput | MemberDetailScalarWhereWithAggregatesInput[]
+    id?: BigIntWithAggregatesFilter<"MemberDetail"> | bigint | number
+    after?: StringNullableWithAggregatesFilter<"MemberDetail"> | string | null
+    amount?: StringNullableWithAggregatesFilter<"MemberDetail"> | string | null
+    before?: StringNullableWithAggregatesFilter<"MemberDetail"> | string | null
+    market?: StringNullableWithAggregatesFilter<"MemberDetail"> | string | null
+    type?: IntWithAggregatesFilter<"MemberDetail"> | number
+    remark?: StringNullableWithAggregatesFilter<"MemberDetail"> | string | null
+    memberId?: BigIntWithAggregatesFilter<"MemberDetail"> | bigint | number
+  }
+
+  export type CountryWhereInput = {
+    AND?: CountryWhereInput | CountryWhereInput[]
+    OR?: CountryWhereInput[]
+    NOT?: CountryWhereInput | CountryWhereInput[]
+    id?: BigIntFilter<"Country"> | bigint | number
+    code?: StringNullableFilter<"Country"> | string | null
+    name?: StringFilter<"Country"> | string
+    en?: StringFilter<"Country"> | string
+    tel?: StringFilter<"Country"> | string
+    py?: StringFilter<"Country"> | string
+    createdAt?: DateTimeFilter<"Country"> | Date | string
+    updatedAt?: DateTimeNullableFilter<"Country"> | Date | string | null
+  }
+
+  export type CountryOrderByWithRelationInput = {
+    id?: SortOrder
+    code?: SortOrderInput | SortOrder
+    name?: SortOrder
+    en?: SortOrder
+    tel?: SortOrder
+    py?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrderInput | SortOrder
+  }
+
+  export type CountryWhereUniqueInput = Prisma.AtLeast<{
+    id?: bigint | number
+    py_tel_name?: CountryPyTelNameCompoundUniqueInput
+    AND?: CountryWhereInput | CountryWhereInput[]
+    OR?: CountryWhereInput[]
+    NOT?: CountryWhereInput | CountryWhereInput[]
+    code?: StringNullableFilter<"Country"> | string | null
+    name?: StringFilter<"Country"> | string
+    en?: StringFilter<"Country"> | string
+    tel?: StringFilter<"Country"> | string
+    py?: StringFilter<"Country"> | string
+    createdAt?: DateTimeFilter<"Country"> | Date | string
+    updatedAt?: DateTimeNullableFilter<"Country"> | Date | string | null
+  }, "id" | "py_tel_name">
+
+  export type CountryOrderByWithAggregationInput = {
+    id?: SortOrder
+    code?: SortOrderInput | SortOrder
+    name?: SortOrder
+    en?: SortOrder
+    tel?: SortOrder
+    py?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrderInput | SortOrder
+    _count?: CountryCountOrderByAggregateInput
+    _avg?: CountryAvgOrderByAggregateInput
+    _max?: CountryMaxOrderByAggregateInput
+    _min?: CountryMinOrderByAggregateInput
+    _sum?: CountrySumOrderByAggregateInput
+  }
+
+  export type CountryScalarWhereWithAggregatesInput = {
+    AND?: CountryScalarWhereWithAggregatesInput | CountryScalarWhereWithAggregatesInput[]
+    OR?: CountryScalarWhereWithAggregatesInput[]
+    NOT?: CountryScalarWhereWithAggregatesInput | CountryScalarWhereWithAggregatesInput[]
+    id?: BigIntWithAggregatesFilter<"Country"> | bigint | number
+    code?: StringNullableWithAggregatesFilter<"Country"> | string | null
+    name?: StringWithAggregatesFilter<"Country"> | string
+    en?: StringWithAggregatesFilter<"Country"> | string
+    tel?: StringWithAggregatesFilter<"Country"> | string
+    py?: StringWithAggregatesFilter<"Country"> | string
+    createdAt?: DateTimeWithAggregatesFilter<"Country"> | Date | string
+    updatedAt?: DateTimeNullableWithAggregatesFilter<"Country"> | Date | string | null
   }
 
   export type SettingWhereInput = {
@@ -7822,11 +20482,224 @@ export namespace Prisma {
     updatedAt?: DateTimeNullableWithAggregatesFilter<"Setting"> | Date | string | null
   }
 
+  export type StockResourceWhereInput = {
+    AND?: StockResourceWhereInput | StockResourceWhereInput[]
+    OR?: StockResourceWhereInput[]
+    NOT?: StockResourceWhereInput | StockResourceWhereInput[]
+    id?: BigIntFilter<"StockResource"> | bigint | number
+    amountScope?: StringFilter<"StockResource"> | string
+    frequencyScope?: StringFilter<"StockResource"> | string
+    market?: StringFilter<"StockResource"> | string
+    spreadScope?: StringFilter<"StockResource"> | string
+    endAt?: StringFilter<"StockResource"> | string
+    startAt?: StringFilter<"StockResource"> | string
+    symbol?: StringFilter<"StockResource"> | string
+    type?: IntFilter<"StockResource"> | number
+    status?: IntFilter<"StockResource"> | number
+    createdAt?: DateTimeFilter<"StockResource"> | Date | string
+    updatedAt?: DateTimeNullableFilter<"StockResource"> | Date | string | null
+  }
+
+  export type StockResourceOrderByWithRelationInput = {
+    id?: SortOrder
+    amountScope?: SortOrder
+    frequencyScope?: SortOrder
+    market?: SortOrder
+    spreadScope?: SortOrder
+    endAt?: SortOrder
+    startAt?: SortOrder
+    symbol?: SortOrder
+    type?: SortOrder
+    status?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrderInput | SortOrder
+  }
+
+  export type StockResourceWhereUniqueInput = Prisma.AtLeast<{
+    id?: bigint | number
+    AND?: StockResourceWhereInput | StockResourceWhereInput[]
+    OR?: StockResourceWhereInput[]
+    NOT?: StockResourceWhereInput | StockResourceWhereInput[]
+    amountScope?: StringFilter<"StockResource"> | string
+    frequencyScope?: StringFilter<"StockResource"> | string
+    market?: StringFilter<"StockResource"> | string
+    spreadScope?: StringFilter<"StockResource"> | string
+    endAt?: StringFilter<"StockResource"> | string
+    startAt?: StringFilter<"StockResource"> | string
+    symbol?: StringFilter<"StockResource"> | string
+    type?: IntFilter<"StockResource"> | number
+    status?: IntFilter<"StockResource"> | number
+    createdAt?: DateTimeFilter<"StockResource"> | Date | string
+    updatedAt?: DateTimeNullableFilter<"StockResource"> | Date | string | null
+  }, "id">
+
+  export type StockResourceOrderByWithAggregationInput = {
+    id?: SortOrder
+    amountScope?: SortOrder
+    frequencyScope?: SortOrder
+    market?: SortOrder
+    spreadScope?: SortOrder
+    endAt?: SortOrder
+    startAt?: SortOrder
+    symbol?: SortOrder
+    type?: SortOrder
+    status?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrderInput | SortOrder
+    _count?: StockResourceCountOrderByAggregateInput
+    _avg?: StockResourceAvgOrderByAggregateInput
+    _max?: StockResourceMaxOrderByAggregateInput
+    _min?: StockResourceMinOrderByAggregateInput
+    _sum?: StockResourceSumOrderByAggregateInput
+  }
+
+  export type StockResourceScalarWhereWithAggregatesInput = {
+    AND?: StockResourceScalarWhereWithAggregatesInput | StockResourceScalarWhereWithAggregatesInput[]
+    OR?: StockResourceScalarWhereWithAggregatesInput[]
+    NOT?: StockResourceScalarWhereWithAggregatesInput | StockResourceScalarWhereWithAggregatesInput[]
+    id?: BigIntWithAggregatesFilter<"StockResource"> | bigint | number
+    amountScope?: StringWithAggregatesFilter<"StockResource"> | string
+    frequencyScope?: StringWithAggregatesFilter<"StockResource"> | string
+    market?: StringWithAggregatesFilter<"StockResource"> | string
+    spreadScope?: StringWithAggregatesFilter<"StockResource"> | string
+    endAt?: StringWithAggregatesFilter<"StockResource"> | string
+    startAt?: StringWithAggregatesFilter<"StockResource"> | string
+    symbol?: StringWithAggregatesFilter<"StockResource"> | string
+    type?: IntWithAggregatesFilter<"StockResource"> | number
+    status?: IntWithAggregatesFilter<"StockResource"> | number
+    createdAt?: DateTimeWithAggregatesFilter<"StockResource"> | Date | string
+    updatedAt?: DateTimeNullableWithAggregatesFilter<"StockResource"> | Date | string | null
+  }
+
+  export type StockResourceRecordWhereInput = {
+    AND?: StockResourceRecordWhereInput | StockResourceRecordWhereInput[]
+    OR?: StockResourceRecordWhereInput[]
+    NOT?: StockResourceRecordWhereInput | StockResourceRecordWhereInput[]
+    id?: BigIntFilter<"StockResourceRecord"> | bigint | number
+    open?: StringFilter<"StockResourceRecord"> | string
+    high?: StringFilter<"StockResourceRecord"> | string
+    close?: StringFilter<"StockResourceRecord"> | string
+    low?: StringFilter<"StockResourceRecord"> | string
+    time?: StringFilter<"StockResourceRecord"> | string
+    stockResourceId?: BigIntFilter<"StockResourceRecord"> | bigint | number
+  }
+
+  export type StockResourceRecordOrderByWithRelationInput = {
+    id?: SortOrder
+    open?: SortOrder
+    high?: SortOrder
+    close?: SortOrder
+    low?: SortOrder
+    time?: SortOrder
+    stockResourceId?: SortOrder
+  }
+
+  export type StockResourceRecordWhereUniqueInput = Prisma.AtLeast<{
+    id?: bigint | number
+    AND?: StockResourceRecordWhereInput | StockResourceRecordWhereInput[]
+    OR?: StockResourceRecordWhereInput[]
+    NOT?: StockResourceRecordWhereInput | StockResourceRecordWhereInput[]
+    open?: StringFilter<"StockResourceRecord"> | string
+    high?: StringFilter<"StockResourceRecord"> | string
+    close?: StringFilter<"StockResourceRecord"> | string
+    low?: StringFilter<"StockResourceRecord"> | string
+    time?: StringFilter<"StockResourceRecord"> | string
+    stockResourceId?: BigIntFilter<"StockResourceRecord"> | bigint | number
+  }, "id">
+
+  export type StockResourceRecordOrderByWithAggregationInput = {
+    id?: SortOrder
+    open?: SortOrder
+    high?: SortOrder
+    close?: SortOrder
+    low?: SortOrder
+    time?: SortOrder
+    stockResourceId?: SortOrder
+    _count?: StockResourceRecordCountOrderByAggregateInput
+    _avg?: StockResourceRecordAvgOrderByAggregateInput
+    _max?: StockResourceRecordMaxOrderByAggregateInput
+    _min?: StockResourceRecordMinOrderByAggregateInput
+    _sum?: StockResourceRecordSumOrderByAggregateInput
+  }
+
+  export type StockResourceRecordScalarWhereWithAggregatesInput = {
+    AND?: StockResourceRecordScalarWhereWithAggregatesInput | StockResourceRecordScalarWhereWithAggregatesInput[]
+    OR?: StockResourceRecordScalarWhereWithAggregatesInput[]
+    NOT?: StockResourceRecordScalarWhereWithAggregatesInput | StockResourceRecordScalarWhereWithAggregatesInput[]
+    id?: BigIntWithAggregatesFilter<"StockResourceRecord"> | bigint | number
+    open?: StringWithAggregatesFilter<"StockResourceRecord"> | string
+    high?: StringWithAggregatesFilter<"StockResourceRecord"> | string
+    close?: StringWithAggregatesFilter<"StockResourceRecord"> | string
+    low?: StringWithAggregatesFilter<"StockResourceRecord"> | string
+    time?: StringWithAggregatesFilter<"StockResourceRecord"> | string
+    stockResourceId?: BigIntWithAggregatesFilter<"StockResourceRecord"> | bigint | number
+  }
+
+  export type ArticleWhereInput = {
+    AND?: ArticleWhereInput | ArticleWhereInput[]
+    OR?: ArticleWhereInput[]
+    NOT?: ArticleWhereInput | ArticleWhereInput[]
+    id?: BigIntFilter<"Article"> | bigint | number
+    thumb?: StringFilter<"Article"> | string
+    title?: StringFilter<"Article"> | string
+    content?: StringFilter<"Article"> | string
+    createdAt?: DateTimeFilter<"Article"> | Date | string
+    updatedAt?: DateTimeNullableFilter<"Article"> | Date | string | null
+  }
+
+  export type ArticleOrderByWithRelationInput = {
+    id?: SortOrder
+    thumb?: SortOrder
+    title?: SortOrder
+    content?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrderInput | SortOrder
+  }
+
+  export type ArticleWhereUniqueInput = Prisma.AtLeast<{
+    id?: bigint | number
+    AND?: ArticleWhereInput | ArticleWhereInput[]
+    OR?: ArticleWhereInput[]
+    NOT?: ArticleWhereInput | ArticleWhereInput[]
+    thumb?: StringFilter<"Article"> | string
+    title?: StringFilter<"Article"> | string
+    content?: StringFilter<"Article"> | string
+    createdAt?: DateTimeFilter<"Article"> | Date | string
+    updatedAt?: DateTimeNullableFilter<"Article"> | Date | string | null
+  }, "id">
+
+  export type ArticleOrderByWithAggregationInput = {
+    id?: SortOrder
+    thumb?: SortOrder
+    title?: SortOrder
+    content?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrderInput | SortOrder
+    _count?: ArticleCountOrderByAggregateInput
+    _avg?: ArticleAvgOrderByAggregateInput
+    _max?: ArticleMaxOrderByAggregateInput
+    _min?: ArticleMinOrderByAggregateInput
+    _sum?: ArticleSumOrderByAggregateInput
+  }
+
+  export type ArticleScalarWhereWithAggregatesInput = {
+    AND?: ArticleScalarWhereWithAggregatesInput | ArticleScalarWhereWithAggregatesInput[]
+    OR?: ArticleScalarWhereWithAggregatesInput[]
+    NOT?: ArticleScalarWhereWithAggregatesInput | ArticleScalarWhereWithAggregatesInput[]
+    id?: BigIntWithAggregatesFilter<"Article"> | bigint | number
+    thumb?: StringWithAggregatesFilter<"Article"> | string
+    title?: StringWithAggregatesFilter<"Article"> | string
+    content?: StringWithAggregatesFilter<"Article"> | string
+    createdAt?: DateTimeWithAggregatesFilter<"Article"> | Date | string
+    updatedAt?: DateTimeNullableWithAggregatesFilter<"Article"> | Date | string | null
+  }
+
   export type UserCreateInput = {
     id?: bigint | number
     email: string
     name?: string | null
     avatar?: string | null
+    password: string
     gender?: $Enums.GENDER
     createdAt?: Date | string
     updatedAt?: Date | string | null
@@ -7837,6 +20710,7 @@ export namespace Prisma {
     email: string
     name?: string | null
     avatar?: string | null
+    password: string
     gender?: $Enums.GENDER
     createdAt?: Date | string
     updatedAt?: Date | string | null
@@ -7847,6 +20721,7 @@ export namespace Prisma {
     email?: StringFieldUpdateOperationsInput | string
     name?: NullableStringFieldUpdateOperationsInput | string | null
     avatar?: NullableStringFieldUpdateOperationsInput | string | null
+    password?: StringFieldUpdateOperationsInput | string
     gender?: EnumGENDERFieldUpdateOperationsInput | $Enums.GENDER
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -7857,6 +20732,7 @@ export namespace Prisma {
     email?: StringFieldUpdateOperationsInput | string
     name?: NullableStringFieldUpdateOperationsInput | string | null
     avatar?: NullableStringFieldUpdateOperationsInput | string | null
+    password?: StringFieldUpdateOperationsInput | string
     gender?: EnumGENDERFieldUpdateOperationsInput | $Enums.GENDER
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -7867,6 +20743,7 @@ export namespace Prisma {
     email: string
     name?: string | null
     avatar?: string | null
+    password: string
     gender?: $Enums.GENDER
     createdAt?: Date | string
     updatedAt?: Date | string | null
@@ -7877,6 +20754,7 @@ export namespace Prisma {
     email?: StringFieldUpdateOperationsInput | string
     name?: NullableStringFieldUpdateOperationsInput | string | null
     avatar?: NullableStringFieldUpdateOperationsInput | string | null
+    password?: StringFieldUpdateOperationsInput | string
     gender?: EnumGENDERFieldUpdateOperationsInput | $Enums.GENDER
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -7887,6 +20765,7 @@ export namespace Prisma {
     email?: StringFieldUpdateOperationsInput | string
     name?: NullableStringFieldUpdateOperationsInput | string | null
     avatar?: NullableStringFieldUpdateOperationsInput | string | null
+    password?: StringFieldUpdateOperationsInput | string
     gender?: EnumGENDERFieldUpdateOperationsInput | $Enums.GENDER
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -7897,10 +20776,17 @@ export namespace Prisma {
     email: string
     name?: string | null
     avatar?: string | null
+    password: string
     gender?: $Enums.GENDER
+    address?: string | null
+    accountBalance?: NullableJsonNullValueInput | InputJsonValue
+    status?: number
+    type?: number
     createdAt?: Date | string
     updatedAt?: Date | string | null
-    stocks?: StockOnMembersCreateNestedManyWithoutMemberInput
+    stockPostion?: StockPositionCreateNestedManyWithoutMemberInput
+    memberDetail?: MemberDetailCreateNestedManyWithoutMemberInput
+    memberSubscribe?: MemberSubscribeCreateNestedManyWithoutMemberInput
   }
 
   export type MemberUncheckedCreateInput = {
@@ -7908,10 +20794,17 @@ export namespace Prisma {
     email: string
     name?: string | null
     avatar?: string | null
+    password: string
     gender?: $Enums.GENDER
+    address?: string | null
+    accountBalance?: NullableJsonNullValueInput | InputJsonValue
+    status?: number
+    type?: number
     createdAt?: Date | string
     updatedAt?: Date | string | null
-    stocks?: StockOnMembersUncheckedCreateNestedManyWithoutMemberInput
+    stockPostion?: StockPositionUncheckedCreateNestedManyWithoutMemberInput
+    memberDetail?: MemberDetailUncheckedCreateNestedManyWithoutMemberInput
+    memberSubscribe?: MemberSubscribeUncheckedCreateNestedManyWithoutMemberInput
   }
 
   export type MemberUpdateInput = {
@@ -7919,10 +20812,17 @@ export namespace Prisma {
     email?: StringFieldUpdateOperationsInput | string
     name?: NullableStringFieldUpdateOperationsInput | string | null
     avatar?: NullableStringFieldUpdateOperationsInput | string | null
+    password?: StringFieldUpdateOperationsInput | string
     gender?: EnumGENDERFieldUpdateOperationsInput | $Enums.GENDER
+    address?: NullableStringFieldUpdateOperationsInput | string | null
+    accountBalance?: NullableJsonNullValueInput | InputJsonValue
+    status?: IntFieldUpdateOperationsInput | number
+    type?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    stocks?: StockOnMembersUpdateManyWithoutMemberNestedInput
+    stockPostion?: StockPositionUpdateManyWithoutMemberNestedInput
+    memberDetail?: MemberDetailUpdateManyWithoutMemberNestedInput
+    memberSubscribe?: MemberSubscribeUpdateManyWithoutMemberNestedInput
   }
 
   export type MemberUncheckedUpdateInput = {
@@ -7930,10 +20830,17 @@ export namespace Prisma {
     email?: StringFieldUpdateOperationsInput | string
     name?: NullableStringFieldUpdateOperationsInput | string | null
     avatar?: NullableStringFieldUpdateOperationsInput | string | null
+    password?: StringFieldUpdateOperationsInput | string
     gender?: EnumGENDERFieldUpdateOperationsInput | $Enums.GENDER
+    address?: NullableStringFieldUpdateOperationsInput | string | null
+    accountBalance?: NullableJsonNullValueInput | InputJsonValue
+    status?: IntFieldUpdateOperationsInput | number
+    type?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    stocks?: StockOnMembersUncheckedUpdateManyWithoutMemberNestedInput
+    stockPostion?: StockPositionUncheckedUpdateManyWithoutMemberNestedInput
+    memberDetail?: MemberDetailUncheckedUpdateManyWithoutMemberNestedInput
+    memberSubscribe?: MemberSubscribeUncheckedUpdateManyWithoutMemberNestedInput
   }
 
   export type MemberCreateManyInput = {
@@ -7941,7 +20848,12 @@ export namespace Prisma {
     email: string
     name?: string | null
     avatar?: string | null
+    password: string
     gender?: $Enums.GENDER
+    address?: string | null
+    accountBalance?: NullableJsonNullValueInput | InputJsonValue
+    status?: number
+    type?: number
     createdAt?: Date | string
     updatedAt?: Date | string | null
   }
@@ -7951,7 +20863,12 @@ export namespace Prisma {
     email?: StringFieldUpdateOperationsInput | string
     name?: NullableStringFieldUpdateOperationsInput | string | null
     avatar?: NullableStringFieldUpdateOperationsInput | string | null
+    password?: StringFieldUpdateOperationsInput | string
     gender?: EnumGENDERFieldUpdateOperationsInput | $Enums.GENDER
+    address?: NullableStringFieldUpdateOperationsInput | string | null
+    accountBalance?: NullableJsonNullValueInput | InputJsonValue
+    status?: IntFieldUpdateOperationsInput | number
+    type?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
@@ -7961,7 +20878,205 @@ export namespace Prisma {
     email?: StringFieldUpdateOperationsInput | string
     name?: NullableStringFieldUpdateOperationsInput | string | null
     avatar?: NullableStringFieldUpdateOperationsInput | string | null
+    password?: StringFieldUpdateOperationsInput | string
     gender?: EnumGENDERFieldUpdateOperationsInput | $Enums.GENDER
+    address?: NullableStringFieldUpdateOperationsInput | string | null
+    accountBalance?: NullableJsonNullValueInput | InputJsonValue
+    status?: IntFieldUpdateOperationsInput | number
+    type?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  }
+
+  export type StockSymbolCreateInput = {
+    id?: bigint | number
+    code: string
+    market: string
+    online?: number
+    symbol: string
+    showName: string
+    name?: string | null
+    symbolShowName?: string | null
+    trade?: number
+    type?: number
+    newPrice?: string | null
+    open?: string | null
+    close?: string | null
+    high?: string | null
+    low?: string | null
+    amount?: string | null
+    volume?: string | null
+    change?: string | null
+    changePercent?: string | null
+    date?: string | null
+    sync?: NullableJsonNullValueInput | InputJsonValue
+    syncMarket: string
+    createdAt?: Date | string
+    updatedAt?: Date | string | null
+    stockPostion?: StockPositionCreateNestedManyWithoutStockSymbolInput
+  }
+
+  export type StockSymbolUncheckedCreateInput = {
+    id?: bigint | number
+    code: string
+    market: string
+    online?: number
+    symbol: string
+    showName: string
+    name?: string | null
+    symbolShowName?: string | null
+    trade?: number
+    type?: number
+    newPrice?: string | null
+    open?: string | null
+    close?: string | null
+    high?: string | null
+    low?: string | null
+    amount?: string | null
+    volume?: string | null
+    change?: string | null
+    changePercent?: string | null
+    date?: string | null
+    sync?: NullableJsonNullValueInput | InputJsonValue
+    syncMarket: string
+    createdAt?: Date | string
+    updatedAt?: Date | string | null
+    stockPostion?: StockPositionUncheckedCreateNestedManyWithoutStockSymbolInput
+  }
+
+  export type StockSymbolUpdateInput = {
+    id?: BigIntFieldUpdateOperationsInput | bigint | number
+    code?: StringFieldUpdateOperationsInput | string
+    market?: StringFieldUpdateOperationsInput | string
+    online?: IntFieldUpdateOperationsInput | number
+    symbol?: StringFieldUpdateOperationsInput | string
+    showName?: StringFieldUpdateOperationsInput | string
+    name?: NullableStringFieldUpdateOperationsInput | string | null
+    symbolShowName?: NullableStringFieldUpdateOperationsInput | string | null
+    trade?: IntFieldUpdateOperationsInput | number
+    type?: IntFieldUpdateOperationsInput | number
+    newPrice?: NullableStringFieldUpdateOperationsInput | string | null
+    open?: NullableStringFieldUpdateOperationsInput | string | null
+    close?: NullableStringFieldUpdateOperationsInput | string | null
+    high?: NullableStringFieldUpdateOperationsInput | string | null
+    low?: NullableStringFieldUpdateOperationsInput | string | null
+    amount?: NullableStringFieldUpdateOperationsInput | string | null
+    volume?: NullableStringFieldUpdateOperationsInput | string | null
+    change?: NullableStringFieldUpdateOperationsInput | string | null
+    changePercent?: NullableStringFieldUpdateOperationsInput | string | null
+    date?: NullableStringFieldUpdateOperationsInput | string | null
+    sync?: NullableJsonNullValueInput | InputJsonValue
+    syncMarket?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    stockPostion?: StockPositionUpdateManyWithoutStockSymbolNestedInput
+  }
+
+  export type StockSymbolUncheckedUpdateInput = {
+    id?: BigIntFieldUpdateOperationsInput | bigint | number
+    code?: StringFieldUpdateOperationsInput | string
+    market?: StringFieldUpdateOperationsInput | string
+    online?: IntFieldUpdateOperationsInput | number
+    symbol?: StringFieldUpdateOperationsInput | string
+    showName?: StringFieldUpdateOperationsInput | string
+    name?: NullableStringFieldUpdateOperationsInput | string | null
+    symbolShowName?: NullableStringFieldUpdateOperationsInput | string | null
+    trade?: IntFieldUpdateOperationsInput | number
+    type?: IntFieldUpdateOperationsInput | number
+    newPrice?: NullableStringFieldUpdateOperationsInput | string | null
+    open?: NullableStringFieldUpdateOperationsInput | string | null
+    close?: NullableStringFieldUpdateOperationsInput | string | null
+    high?: NullableStringFieldUpdateOperationsInput | string | null
+    low?: NullableStringFieldUpdateOperationsInput | string | null
+    amount?: NullableStringFieldUpdateOperationsInput | string | null
+    volume?: NullableStringFieldUpdateOperationsInput | string | null
+    change?: NullableStringFieldUpdateOperationsInput | string | null
+    changePercent?: NullableStringFieldUpdateOperationsInput | string | null
+    date?: NullableStringFieldUpdateOperationsInput | string | null
+    sync?: NullableJsonNullValueInput | InputJsonValue
+    syncMarket?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    stockPostion?: StockPositionUncheckedUpdateManyWithoutStockSymbolNestedInput
+  }
+
+  export type StockSymbolCreateManyInput = {
+    id?: bigint | number
+    code: string
+    market: string
+    online?: number
+    symbol: string
+    showName: string
+    name?: string | null
+    symbolShowName?: string | null
+    trade?: number
+    type?: number
+    newPrice?: string | null
+    open?: string | null
+    close?: string | null
+    high?: string | null
+    low?: string | null
+    amount?: string | null
+    volume?: string | null
+    change?: string | null
+    changePercent?: string | null
+    date?: string | null
+    sync?: NullableJsonNullValueInput | InputJsonValue
+    syncMarket: string
+    createdAt?: Date | string
+    updatedAt?: Date | string | null
+  }
+
+  export type StockSymbolUpdateManyMutationInput = {
+    id?: BigIntFieldUpdateOperationsInput | bigint | number
+    code?: StringFieldUpdateOperationsInput | string
+    market?: StringFieldUpdateOperationsInput | string
+    online?: IntFieldUpdateOperationsInput | number
+    symbol?: StringFieldUpdateOperationsInput | string
+    showName?: StringFieldUpdateOperationsInput | string
+    name?: NullableStringFieldUpdateOperationsInput | string | null
+    symbolShowName?: NullableStringFieldUpdateOperationsInput | string | null
+    trade?: IntFieldUpdateOperationsInput | number
+    type?: IntFieldUpdateOperationsInput | number
+    newPrice?: NullableStringFieldUpdateOperationsInput | string | null
+    open?: NullableStringFieldUpdateOperationsInput | string | null
+    close?: NullableStringFieldUpdateOperationsInput | string | null
+    high?: NullableStringFieldUpdateOperationsInput | string | null
+    low?: NullableStringFieldUpdateOperationsInput | string | null
+    amount?: NullableStringFieldUpdateOperationsInput | string | null
+    volume?: NullableStringFieldUpdateOperationsInput | string | null
+    change?: NullableStringFieldUpdateOperationsInput | string | null
+    changePercent?: NullableStringFieldUpdateOperationsInput | string | null
+    date?: NullableStringFieldUpdateOperationsInput | string | null
+    sync?: NullableJsonNullValueInput | InputJsonValue
+    syncMarket?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  }
+
+  export type StockSymbolUncheckedUpdateManyInput = {
+    id?: BigIntFieldUpdateOperationsInput | bigint | number
+    code?: StringFieldUpdateOperationsInput | string
+    market?: StringFieldUpdateOperationsInput | string
+    online?: IntFieldUpdateOperationsInput | number
+    symbol?: StringFieldUpdateOperationsInput | string
+    showName?: StringFieldUpdateOperationsInput | string
+    name?: NullableStringFieldUpdateOperationsInput | string | null
+    symbolShowName?: NullableStringFieldUpdateOperationsInput | string | null
+    trade?: IntFieldUpdateOperationsInput | number
+    type?: IntFieldUpdateOperationsInput | number
+    newPrice?: NullableStringFieldUpdateOperationsInput | string | null
+    open?: NullableStringFieldUpdateOperationsInput | string | null
+    close?: NullableStringFieldUpdateOperationsInput | string | null
+    high?: NullableStringFieldUpdateOperationsInput | string | null
+    low?: NullableStringFieldUpdateOperationsInput | string | null
+    amount?: NullableStringFieldUpdateOperationsInput | string | null
+    volume?: NullableStringFieldUpdateOperationsInput | string | null
+    change?: NullableStringFieldUpdateOperationsInput | string | null
+    changePercent?: NullableStringFieldUpdateOperationsInput | string | null
+    date?: NullableStringFieldUpdateOperationsInput | string | null
+    sync?: NullableJsonNullValueInput | InputJsonValue
+    syncMarket?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
@@ -7976,11 +21091,21 @@ export namespace Prisma {
     logo?: string | null
     sok?: string | null
     optional?: boolean
+    newPrice?: string | null
+    open?: string | null
+    close?: string | null
+    high?: string | null
+    low?: string | null
+    amount?: string | null
+    volume?: string | null
     status?: $Enums.STOCK_STATUS
+    change?: string | null
+    changePercent?: string | null
+    date?: string | null
+    extra?: NullableJsonNullValueInput | InputJsonValue
     createdAt?: Date | string
     updatedAt?: Date | string | null
-    members?: StockOnMembersCreateNestedManyWithoutStockInput
-    stockRecord?: StockRecordCreateNestedOneWithoutStockInput
+    stockRecord?: StockRecordCreateNestedManyWithoutStockInput
   }
 
   export type StockUncheckedCreateInput = {
@@ -7993,11 +21118,21 @@ export namespace Prisma {
     logo?: string | null
     sok?: string | null
     optional?: boolean
+    newPrice?: string | null
+    open?: string | null
+    close?: string | null
+    high?: string | null
+    low?: string | null
+    amount?: string | null
+    volume?: string | null
     status?: $Enums.STOCK_STATUS
+    change?: string | null
+    changePercent?: string | null
+    date?: string | null
+    extra?: NullableJsonNullValueInput | InputJsonValue
     createdAt?: Date | string
     updatedAt?: Date | string | null
-    members?: StockOnMembersUncheckedCreateNestedManyWithoutStockInput
-    stockRecord?: StockRecordUncheckedCreateNestedOneWithoutStockInput
+    stockRecord?: StockRecordUncheckedCreateNestedManyWithoutStockInput
   }
 
   export type StockUpdateInput = {
@@ -8010,11 +21145,21 @@ export namespace Prisma {
     logo?: NullableStringFieldUpdateOperationsInput | string | null
     sok?: NullableStringFieldUpdateOperationsInput | string | null
     optional?: BoolFieldUpdateOperationsInput | boolean
+    newPrice?: NullableStringFieldUpdateOperationsInput | string | null
+    open?: NullableStringFieldUpdateOperationsInput | string | null
+    close?: NullableStringFieldUpdateOperationsInput | string | null
+    high?: NullableStringFieldUpdateOperationsInput | string | null
+    low?: NullableStringFieldUpdateOperationsInput | string | null
+    amount?: NullableStringFieldUpdateOperationsInput | string | null
+    volume?: NullableStringFieldUpdateOperationsInput | string | null
     status?: EnumSTOCK_STATUSFieldUpdateOperationsInput | $Enums.STOCK_STATUS
+    change?: NullableStringFieldUpdateOperationsInput | string | null
+    changePercent?: NullableStringFieldUpdateOperationsInput | string | null
+    date?: NullableStringFieldUpdateOperationsInput | string | null
+    extra?: NullableJsonNullValueInput | InputJsonValue
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    members?: StockOnMembersUpdateManyWithoutStockNestedInput
-    stockRecord?: StockRecordUpdateOneWithoutStockNestedInput
+    stockRecord?: StockRecordUpdateManyWithoutStockNestedInput
   }
 
   export type StockUncheckedUpdateInput = {
@@ -8027,11 +21172,21 @@ export namespace Prisma {
     logo?: NullableStringFieldUpdateOperationsInput | string | null
     sok?: NullableStringFieldUpdateOperationsInput | string | null
     optional?: BoolFieldUpdateOperationsInput | boolean
+    newPrice?: NullableStringFieldUpdateOperationsInput | string | null
+    open?: NullableStringFieldUpdateOperationsInput | string | null
+    close?: NullableStringFieldUpdateOperationsInput | string | null
+    high?: NullableStringFieldUpdateOperationsInput | string | null
+    low?: NullableStringFieldUpdateOperationsInput | string | null
+    amount?: NullableStringFieldUpdateOperationsInput | string | null
+    volume?: NullableStringFieldUpdateOperationsInput | string | null
     status?: EnumSTOCK_STATUSFieldUpdateOperationsInput | $Enums.STOCK_STATUS
+    change?: NullableStringFieldUpdateOperationsInput | string | null
+    changePercent?: NullableStringFieldUpdateOperationsInput | string | null
+    date?: NullableStringFieldUpdateOperationsInput | string | null
+    extra?: NullableJsonNullValueInput | InputJsonValue
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    members?: StockOnMembersUncheckedUpdateManyWithoutStockNestedInput
-    stockRecord?: StockRecordUncheckedUpdateOneWithoutStockNestedInput
+    stockRecord?: StockRecordUncheckedUpdateManyWithoutStockNestedInput
   }
 
   export type StockCreateManyInput = {
@@ -8044,7 +21199,18 @@ export namespace Prisma {
     logo?: string | null
     sok?: string | null
     optional?: boolean
+    newPrice?: string | null
+    open?: string | null
+    close?: string | null
+    high?: string | null
+    low?: string | null
+    amount?: string | null
+    volume?: string | null
     status?: $Enums.STOCK_STATUS
+    change?: string | null
+    changePercent?: string | null
+    date?: string | null
+    extra?: NullableJsonNullValueInput | InputJsonValue
     createdAt?: Date | string
     updatedAt?: Date | string | null
   }
@@ -8059,7 +21225,18 @@ export namespace Prisma {
     logo?: NullableStringFieldUpdateOperationsInput | string | null
     sok?: NullableStringFieldUpdateOperationsInput | string | null
     optional?: BoolFieldUpdateOperationsInput | boolean
+    newPrice?: NullableStringFieldUpdateOperationsInput | string | null
+    open?: NullableStringFieldUpdateOperationsInput | string | null
+    close?: NullableStringFieldUpdateOperationsInput | string | null
+    high?: NullableStringFieldUpdateOperationsInput | string | null
+    low?: NullableStringFieldUpdateOperationsInput | string | null
+    amount?: NullableStringFieldUpdateOperationsInput | string | null
+    volume?: NullableStringFieldUpdateOperationsInput | string | null
     status?: EnumSTOCK_STATUSFieldUpdateOperationsInput | $Enums.STOCK_STATUS
+    change?: NullableStringFieldUpdateOperationsInput | string | null
+    changePercent?: NullableStringFieldUpdateOperationsInput | string | null
+    date?: NullableStringFieldUpdateOperationsInput | string | null
+    extra?: NullableJsonNullValueInput | InputJsonValue
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
@@ -8074,146 +21251,967 @@ export namespace Prisma {
     logo?: NullableStringFieldUpdateOperationsInput | string | null
     sok?: NullableStringFieldUpdateOperationsInput | string | null
     optional?: BoolFieldUpdateOperationsInput | boolean
+    newPrice?: NullableStringFieldUpdateOperationsInput | string | null
+    open?: NullableStringFieldUpdateOperationsInput | string | null
+    close?: NullableStringFieldUpdateOperationsInput | string | null
+    high?: NullableStringFieldUpdateOperationsInput | string | null
+    low?: NullableStringFieldUpdateOperationsInput | string | null
+    amount?: NullableStringFieldUpdateOperationsInput | string | null
+    volume?: NullableStringFieldUpdateOperationsInput | string | null
     status?: EnumSTOCK_STATUSFieldUpdateOperationsInput | $Enums.STOCK_STATUS
+    change?: NullableStringFieldUpdateOperationsInput | string | null
+    changePercent?: NullableStringFieldUpdateOperationsInput | string | null
+    date?: NullableStringFieldUpdateOperationsInput | string | null
+    extra?: NullableJsonNullValueInput | InputJsonValue
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
 
   export type StockRecordCreateInput = {
     id?: bigint | number
-    price: string
+    newPrice: string
     open: string
     close: string
     high: string
     low: string
-    turnover: string
+    amount: string
     volume: string
+    date: string
+    extra: JsonNullValueInput | InputJsonValue
     createdAt?: Date | string
     stock: StockCreateNestedOneWithoutStockRecordInput
   }
 
   export type StockRecordUncheckedCreateInput = {
     id?: bigint | number
-    price: string
+    newPrice: string
     open: string
     close: string
     high: string
     low: string
-    turnover: string
+    amount: string
     volume: string
+    date: string
+    extra: JsonNullValueInput | InputJsonValue
     createdAt?: Date | string
     stockId: bigint | number
   }
 
   export type StockRecordUpdateInput = {
     id?: BigIntFieldUpdateOperationsInput | bigint | number
-    price?: StringFieldUpdateOperationsInput | string
+    newPrice?: StringFieldUpdateOperationsInput | string
     open?: StringFieldUpdateOperationsInput | string
     close?: StringFieldUpdateOperationsInput | string
     high?: StringFieldUpdateOperationsInput | string
     low?: StringFieldUpdateOperationsInput | string
-    turnover?: StringFieldUpdateOperationsInput | string
+    amount?: StringFieldUpdateOperationsInput | string
     volume?: StringFieldUpdateOperationsInput | string
+    date?: StringFieldUpdateOperationsInput | string
+    extra?: JsonNullValueInput | InputJsonValue
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     stock?: StockUpdateOneRequiredWithoutStockRecordNestedInput
   }
 
   export type StockRecordUncheckedUpdateInput = {
     id?: BigIntFieldUpdateOperationsInput | bigint | number
-    price?: StringFieldUpdateOperationsInput | string
+    newPrice?: StringFieldUpdateOperationsInput | string
     open?: StringFieldUpdateOperationsInput | string
     close?: StringFieldUpdateOperationsInput | string
     high?: StringFieldUpdateOperationsInput | string
     low?: StringFieldUpdateOperationsInput | string
-    turnover?: StringFieldUpdateOperationsInput | string
+    amount?: StringFieldUpdateOperationsInput | string
     volume?: StringFieldUpdateOperationsInput | string
+    date?: StringFieldUpdateOperationsInput | string
+    extra?: JsonNullValueInput | InputJsonValue
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     stockId?: BigIntFieldUpdateOperationsInput | bigint | number
   }
 
   export type StockRecordCreateManyInput = {
     id?: bigint | number
-    price: string
+    newPrice: string
     open: string
     close: string
     high: string
     low: string
-    turnover: string
+    amount: string
     volume: string
+    date: string
+    extra: JsonNullValueInput | InputJsonValue
     createdAt?: Date | string
     stockId: bigint | number
   }
 
   export type StockRecordUpdateManyMutationInput = {
     id?: BigIntFieldUpdateOperationsInput | bigint | number
-    price?: StringFieldUpdateOperationsInput | string
+    newPrice?: StringFieldUpdateOperationsInput | string
     open?: StringFieldUpdateOperationsInput | string
     close?: StringFieldUpdateOperationsInput | string
     high?: StringFieldUpdateOperationsInput | string
     low?: StringFieldUpdateOperationsInput | string
-    turnover?: StringFieldUpdateOperationsInput | string
+    amount?: StringFieldUpdateOperationsInput | string
     volume?: StringFieldUpdateOperationsInput | string
+    date?: StringFieldUpdateOperationsInput | string
+    extra?: JsonNullValueInput | InputJsonValue
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type StockRecordUncheckedUpdateManyInput = {
     id?: BigIntFieldUpdateOperationsInput | bigint | number
-    price?: StringFieldUpdateOperationsInput | string
+    newPrice?: StringFieldUpdateOperationsInput | string
     open?: StringFieldUpdateOperationsInput | string
     close?: StringFieldUpdateOperationsInput | string
     high?: StringFieldUpdateOperationsInput | string
     low?: StringFieldUpdateOperationsInput | string
-    turnover?: StringFieldUpdateOperationsInput | string
+    amount?: StringFieldUpdateOperationsInput | string
     volume?: StringFieldUpdateOperationsInput | string
+    date?: StringFieldUpdateOperationsInput | string
+    extra?: JsonNullValueInput | InputJsonValue
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     stockId?: BigIntFieldUpdateOperationsInput | bigint | number
   }
 
-  export type StockOnMembersCreateInput = {
+  export type StockMarketCreateInput = {
     id?: bigint | number
+    code?: string | null
+    currency?: string | null
+    maxWithdrawal?: string | null
+    minWithdrawal?: string | null
+    feeRate?: string | null
+    minFee?: string | null
+    lever?: string | null
+    mmr?: string | null
+    allocationRate?: string | null
+    frequency?: number | null
+    bindingHours?: number | null
+    headSymbols?: string | null
+    sort?: number | null
+    online?: number | null
+    conline?: number | null
     createdAt?: Date | string
-    member: MemberCreateNestedOneWithoutStocksInput
-    stock: StockCreateNestedOneWithoutMembersInput
+    updatedAt?: Date | string | null
   }
 
-  export type StockOnMembersUncheckedCreateInput = {
+  export type StockMarketUncheckedCreateInput = {
     id?: bigint | number
+    code?: string | null
+    currency?: string | null
+    maxWithdrawal?: string | null
+    minWithdrawal?: string | null
+    feeRate?: string | null
+    minFee?: string | null
+    lever?: string | null
+    mmr?: string | null
+    allocationRate?: string | null
+    frequency?: number | null
+    bindingHours?: number | null
+    headSymbols?: string | null
+    sort?: number | null
+    online?: number | null
+    conline?: number | null
+    createdAt?: Date | string
+    updatedAt?: Date | string | null
+  }
+
+  export type StockMarketUpdateInput = {
+    id?: BigIntFieldUpdateOperationsInput | bigint | number
+    code?: NullableStringFieldUpdateOperationsInput | string | null
+    currency?: NullableStringFieldUpdateOperationsInput | string | null
+    maxWithdrawal?: NullableStringFieldUpdateOperationsInput | string | null
+    minWithdrawal?: NullableStringFieldUpdateOperationsInput | string | null
+    feeRate?: NullableStringFieldUpdateOperationsInput | string | null
+    minFee?: NullableStringFieldUpdateOperationsInput | string | null
+    lever?: NullableStringFieldUpdateOperationsInput | string | null
+    mmr?: NullableStringFieldUpdateOperationsInput | string | null
+    allocationRate?: NullableStringFieldUpdateOperationsInput | string | null
+    frequency?: NullableIntFieldUpdateOperationsInput | number | null
+    bindingHours?: NullableIntFieldUpdateOperationsInput | number | null
+    headSymbols?: NullableStringFieldUpdateOperationsInput | string | null
+    sort?: NullableIntFieldUpdateOperationsInput | number | null
+    online?: NullableIntFieldUpdateOperationsInput | number | null
+    conline?: NullableIntFieldUpdateOperationsInput | number | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  }
+
+  export type StockMarketUncheckedUpdateInput = {
+    id?: BigIntFieldUpdateOperationsInput | bigint | number
+    code?: NullableStringFieldUpdateOperationsInput | string | null
+    currency?: NullableStringFieldUpdateOperationsInput | string | null
+    maxWithdrawal?: NullableStringFieldUpdateOperationsInput | string | null
+    minWithdrawal?: NullableStringFieldUpdateOperationsInput | string | null
+    feeRate?: NullableStringFieldUpdateOperationsInput | string | null
+    minFee?: NullableStringFieldUpdateOperationsInput | string | null
+    lever?: NullableStringFieldUpdateOperationsInput | string | null
+    mmr?: NullableStringFieldUpdateOperationsInput | string | null
+    allocationRate?: NullableStringFieldUpdateOperationsInput | string | null
+    frequency?: NullableIntFieldUpdateOperationsInput | number | null
+    bindingHours?: NullableIntFieldUpdateOperationsInput | number | null
+    headSymbols?: NullableStringFieldUpdateOperationsInput | string | null
+    sort?: NullableIntFieldUpdateOperationsInput | number | null
+    online?: NullableIntFieldUpdateOperationsInput | number | null
+    conline?: NullableIntFieldUpdateOperationsInput | number | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  }
+
+  export type StockMarketCreateManyInput = {
+    id?: bigint | number
+    code?: string | null
+    currency?: string | null
+    maxWithdrawal?: string | null
+    minWithdrawal?: string | null
+    feeRate?: string | null
+    minFee?: string | null
+    lever?: string | null
+    mmr?: string | null
+    allocationRate?: string | null
+    frequency?: number | null
+    bindingHours?: number | null
+    headSymbols?: string | null
+    sort?: number | null
+    online?: number | null
+    conline?: number | null
+    createdAt?: Date | string
+    updatedAt?: Date | string | null
+  }
+
+  export type StockMarketUpdateManyMutationInput = {
+    id?: BigIntFieldUpdateOperationsInput | bigint | number
+    code?: NullableStringFieldUpdateOperationsInput | string | null
+    currency?: NullableStringFieldUpdateOperationsInput | string | null
+    maxWithdrawal?: NullableStringFieldUpdateOperationsInput | string | null
+    minWithdrawal?: NullableStringFieldUpdateOperationsInput | string | null
+    feeRate?: NullableStringFieldUpdateOperationsInput | string | null
+    minFee?: NullableStringFieldUpdateOperationsInput | string | null
+    lever?: NullableStringFieldUpdateOperationsInput | string | null
+    mmr?: NullableStringFieldUpdateOperationsInput | string | null
+    allocationRate?: NullableStringFieldUpdateOperationsInput | string | null
+    frequency?: NullableIntFieldUpdateOperationsInput | number | null
+    bindingHours?: NullableIntFieldUpdateOperationsInput | number | null
+    headSymbols?: NullableStringFieldUpdateOperationsInput | string | null
+    sort?: NullableIntFieldUpdateOperationsInput | number | null
+    online?: NullableIntFieldUpdateOperationsInput | number | null
+    conline?: NullableIntFieldUpdateOperationsInput | number | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  }
+
+  export type StockMarketUncheckedUpdateManyInput = {
+    id?: BigIntFieldUpdateOperationsInput | bigint | number
+    code?: NullableStringFieldUpdateOperationsInput | string | null
+    currency?: NullableStringFieldUpdateOperationsInput | string | null
+    maxWithdrawal?: NullableStringFieldUpdateOperationsInput | string | null
+    minWithdrawal?: NullableStringFieldUpdateOperationsInput | string | null
+    feeRate?: NullableStringFieldUpdateOperationsInput | string | null
+    minFee?: NullableStringFieldUpdateOperationsInput | string | null
+    lever?: NullableStringFieldUpdateOperationsInput | string | null
+    mmr?: NullableStringFieldUpdateOperationsInput | string | null
+    allocationRate?: NullableStringFieldUpdateOperationsInput | string | null
+    frequency?: NullableIntFieldUpdateOperationsInput | number | null
+    bindingHours?: NullableIntFieldUpdateOperationsInput | number | null
+    headSymbols?: NullableStringFieldUpdateOperationsInput | string | null
+    sort?: NullableIntFieldUpdateOperationsInput | number | null
+    online?: NullableIntFieldUpdateOperationsInput | number | null
+    conline?: NullableIntFieldUpdateOperationsInput | number | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  }
+
+  export type StockFavoriteCreateInput = {
+    id?: bigint | number
+    newPrice: string
+    open: string
+    close: string
+    high: string
+    low: string
+    amount: string
+    volume: string
+    date?: string | null
+    extra?: NullableJsonNullValueInput | InputJsonValue
     memberId: bigint | number
-    stockId: bigint | number
+    stockSymbolId: bigint | number
     createdAt?: Date | string
   }
 
-  export type StockOnMembersUpdateInput = {
-    id?: BigIntFieldUpdateOperationsInput | bigint | number
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    member?: MemberUpdateOneRequiredWithoutStocksNestedInput
-    stock?: StockUpdateOneRequiredWithoutMembersNestedInput
-  }
-
-  export type StockOnMembersUncheckedUpdateInput = {
-    id?: BigIntFieldUpdateOperationsInput | bigint | number
-    memberId?: BigIntFieldUpdateOperationsInput | bigint | number
-    stockId?: BigIntFieldUpdateOperationsInput | bigint | number
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-  }
-
-  export type StockOnMembersCreateManyInput = {
+  export type StockFavoriteUncheckedCreateInput = {
     id?: bigint | number
+    newPrice: string
+    open: string
+    close: string
+    high: string
+    low: string
+    amount: string
+    volume: string
+    date?: string | null
+    extra?: NullableJsonNullValueInput | InputJsonValue
     memberId: bigint | number
-    stockId: bigint | number
+    stockSymbolId: bigint | number
     createdAt?: Date | string
   }
 
-  export type StockOnMembersUpdateManyMutationInput = {
+  export type StockFavoriteUpdateInput = {
     id?: BigIntFieldUpdateOperationsInput | bigint | number
+    newPrice?: StringFieldUpdateOperationsInput | string
+    open?: StringFieldUpdateOperationsInput | string
+    close?: StringFieldUpdateOperationsInput | string
+    high?: StringFieldUpdateOperationsInput | string
+    low?: StringFieldUpdateOperationsInput | string
+    amount?: StringFieldUpdateOperationsInput | string
+    volume?: StringFieldUpdateOperationsInput | string
+    date?: NullableStringFieldUpdateOperationsInput | string | null
+    extra?: NullableJsonNullValueInput | InputJsonValue
+    memberId?: BigIntFieldUpdateOperationsInput | bigint | number
+    stockSymbolId?: BigIntFieldUpdateOperationsInput | bigint | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
-  export type StockOnMembersUncheckedUpdateManyInput = {
+  export type StockFavoriteUncheckedUpdateInput = {
     id?: BigIntFieldUpdateOperationsInput | bigint | number
+    newPrice?: StringFieldUpdateOperationsInput | string
+    open?: StringFieldUpdateOperationsInput | string
+    close?: StringFieldUpdateOperationsInput | string
+    high?: StringFieldUpdateOperationsInput | string
+    low?: StringFieldUpdateOperationsInput | string
+    amount?: StringFieldUpdateOperationsInput | string
+    volume?: StringFieldUpdateOperationsInput | string
+    date?: NullableStringFieldUpdateOperationsInput | string | null
+    extra?: NullableJsonNullValueInput | InputJsonValue
     memberId?: BigIntFieldUpdateOperationsInput | bigint | number
-    stockId?: BigIntFieldUpdateOperationsInput | bigint | number
+    stockSymbolId?: BigIntFieldUpdateOperationsInput | bigint | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type StockFavoriteCreateManyInput = {
+    id?: bigint | number
+    newPrice: string
+    open: string
+    close: string
+    high: string
+    low: string
+    amount: string
+    volume: string
+    date?: string | null
+    extra?: NullableJsonNullValueInput | InputJsonValue
+    memberId: bigint | number
+    stockSymbolId: bigint | number
+    createdAt?: Date | string
+  }
+
+  export type StockFavoriteUpdateManyMutationInput = {
+    id?: BigIntFieldUpdateOperationsInput | bigint | number
+    newPrice?: StringFieldUpdateOperationsInput | string
+    open?: StringFieldUpdateOperationsInput | string
+    close?: StringFieldUpdateOperationsInput | string
+    high?: StringFieldUpdateOperationsInput | string
+    low?: StringFieldUpdateOperationsInput | string
+    amount?: StringFieldUpdateOperationsInput | string
+    volume?: StringFieldUpdateOperationsInput | string
+    date?: NullableStringFieldUpdateOperationsInput | string | null
+    extra?: NullableJsonNullValueInput | InputJsonValue
+    memberId?: BigIntFieldUpdateOperationsInput | bigint | number
+    stockSymbolId?: BigIntFieldUpdateOperationsInput | bigint | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type StockFavoriteUncheckedUpdateManyInput = {
+    id?: BigIntFieldUpdateOperationsInput | bigint | number
+    newPrice?: StringFieldUpdateOperationsInput | string
+    open?: StringFieldUpdateOperationsInput | string
+    close?: StringFieldUpdateOperationsInput | string
+    high?: StringFieldUpdateOperationsInput | string
+    low?: StringFieldUpdateOperationsInput | string
+    amount?: StringFieldUpdateOperationsInput | string
+    volume?: StringFieldUpdateOperationsInput | string
+    date?: NullableStringFieldUpdateOperationsInput | string | null
+    extra?: NullableJsonNullValueInput | InputJsonValue
+    memberId?: BigIntFieldUpdateOperationsInput | bigint | number
+    stockSymbolId?: BigIntFieldUpdateOperationsInput | bigint | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type StockSubscribeCreateInput = {
+    id?: bigint | number
+    market: string
+    name: string
+    code: string
+    startAt?: Date | string | null
+    endAt?: Date | string | null
+    upAt?: Date | string | null
+    circulation?: number | null
+    remainCirculation?: number | null
+    ipoPrice: Decimal | DecimalJsLike | number | string
+    issuePrice: Decimal | DecimalJsLike | number | string
+    resultAt?: Date | string | null
+    subAmount?: NullableJsonNullValueInput | InputJsonValue
+    status?: number
+    type?: number
+    createdAt?: Date | string
+    updatedAt?: Date | string | null
+  }
+
+  export type StockSubscribeUncheckedCreateInput = {
+    id?: bigint | number
+    market: string
+    name: string
+    code: string
+    startAt?: Date | string | null
+    endAt?: Date | string | null
+    upAt?: Date | string | null
+    circulation?: number | null
+    remainCirculation?: number | null
+    ipoPrice: Decimal | DecimalJsLike | number | string
+    issuePrice: Decimal | DecimalJsLike | number | string
+    resultAt?: Date | string | null
+    subAmount?: NullableJsonNullValueInput | InputJsonValue
+    status?: number
+    type?: number
+    createdAt?: Date | string
+    updatedAt?: Date | string | null
+  }
+
+  export type StockSubscribeUpdateInput = {
+    id?: BigIntFieldUpdateOperationsInput | bigint | number
+    market?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    code?: StringFieldUpdateOperationsInput | string
+    startAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    endAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    upAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    circulation?: NullableIntFieldUpdateOperationsInput | number | null
+    remainCirculation?: NullableIntFieldUpdateOperationsInput | number | null
+    ipoPrice?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    issuePrice?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    resultAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    subAmount?: NullableJsonNullValueInput | InputJsonValue
+    status?: IntFieldUpdateOperationsInput | number
+    type?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  }
+
+  export type StockSubscribeUncheckedUpdateInput = {
+    id?: BigIntFieldUpdateOperationsInput | bigint | number
+    market?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    code?: StringFieldUpdateOperationsInput | string
+    startAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    endAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    upAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    circulation?: NullableIntFieldUpdateOperationsInput | number | null
+    remainCirculation?: NullableIntFieldUpdateOperationsInput | number | null
+    ipoPrice?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    issuePrice?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    resultAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    subAmount?: NullableJsonNullValueInput | InputJsonValue
+    status?: IntFieldUpdateOperationsInput | number
+    type?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  }
+
+  export type StockSubscribeCreateManyInput = {
+    id?: bigint | number
+    market: string
+    name: string
+    code: string
+    startAt?: Date | string | null
+    endAt?: Date | string | null
+    upAt?: Date | string | null
+    circulation?: number | null
+    remainCirculation?: number | null
+    ipoPrice: Decimal | DecimalJsLike | number | string
+    issuePrice: Decimal | DecimalJsLike | number | string
+    resultAt?: Date | string | null
+    subAmount?: NullableJsonNullValueInput | InputJsonValue
+    status?: number
+    type?: number
+    createdAt?: Date | string
+    updatedAt?: Date | string | null
+  }
+
+  export type StockSubscribeUpdateManyMutationInput = {
+    id?: BigIntFieldUpdateOperationsInput | bigint | number
+    market?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    code?: StringFieldUpdateOperationsInput | string
+    startAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    endAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    upAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    circulation?: NullableIntFieldUpdateOperationsInput | number | null
+    remainCirculation?: NullableIntFieldUpdateOperationsInput | number | null
+    ipoPrice?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    issuePrice?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    resultAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    subAmount?: NullableJsonNullValueInput | InputJsonValue
+    status?: IntFieldUpdateOperationsInput | number
+    type?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  }
+
+  export type StockSubscribeUncheckedUpdateManyInput = {
+    id?: BigIntFieldUpdateOperationsInput | bigint | number
+    market?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    code?: StringFieldUpdateOperationsInput | string
+    startAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    endAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    upAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    circulation?: NullableIntFieldUpdateOperationsInput | number | null
+    remainCirculation?: NullableIntFieldUpdateOperationsInput | number | null
+    ipoPrice?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    issuePrice?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    resultAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    subAmount?: NullableJsonNullValueInput | InputJsonValue
+    status?: IntFieldUpdateOperationsInput | number
+    type?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  }
+
+  export type MemberSubscribeCreateInput = {
+    id?: bigint | number
+    market: string
+    code: string
+    name: string
+    amount: number
+    money: Decimal | DecimalJsLike | number | string
+    no: string
+    winningAmount?: number | null
+    winningPrice?: Decimal | DecimalJsLike | number | string | null
+    totalWinningPrice?: Decimal | DecimalJsLike | number | string | null
+    actualAmount?: Decimal | DecimalJsLike | number | string | null
+    status?: number
+    type?: number
+    createdAt?: Date | string
+    updatedAt?: Date | string | null
+    stockSubscribeId: bigint | number
+    member: MemberCreateNestedOneWithoutMemberSubscribeInput
+  }
+
+  export type MemberSubscribeUncheckedCreateInput = {
+    id?: bigint | number
+    market: string
+    code: string
+    name: string
+    amount: number
+    money: Decimal | DecimalJsLike | number | string
+    no: string
+    winningAmount?: number | null
+    winningPrice?: Decimal | DecimalJsLike | number | string | null
+    totalWinningPrice?: Decimal | DecimalJsLike | number | string | null
+    actualAmount?: Decimal | DecimalJsLike | number | string | null
+    status?: number
+    type?: number
+    createdAt?: Date | string
+    updatedAt?: Date | string | null
+    stockSubscribeId: bigint | number
+    memberId: bigint | number
+  }
+
+  export type MemberSubscribeUpdateInput = {
+    id?: BigIntFieldUpdateOperationsInput | bigint | number
+    market?: StringFieldUpdateOperationsInput | string
+    code?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    amount?: IntFieldUpdateOperationsInput | number
+    money?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    no?: StringFieldUpdateOperationsInput | string
+    winningAmount?: NullableIntFieldUpdateOperationsInput | number | null
+    winningPrice?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    totalWinningPrice?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    actualAmount?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    status?: IntFieldUpdateOperationsInput | number
+    type?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    stockSubscribeId?: BigIntFieldUpdateOperationsInput | bigint | number
+    member?: MemberUpdateOneRequiredWithoutMemberSubscribeNestedInput
+  }
+
+  export type MemberSubscribeUncheckedUpdateInput = {
+    id?: BigIntFieldUpdateOperationsInput | bigint | number
+    market?: StringFieldUpdateOperationsInput | string
+    code?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    amount?: IntFieldUpdateOperationsInput | number
+    money?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    no?: StringFieldUpdateOperationsInput | string
+    winningAmount?: NullableIntFieldUpdateOperationsInput | number | null
+    winningPrice?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    totalWinningPrice?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    actualAmount?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    status?: IntFieldUpdateOperationsInput | number
+    type?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    stockSubscribeId?: BigIntFieldUpdateOperationsInput | bigint | number
+    memberId?: BigIntFieldUpdateOperationsInput | bigint | number
+  }
+
+  export type MemberSubscribeCreateManyInput = {
+    id?: bigint | number
+    market: string
+    code: string
+    name: string
+    amount: number
+    money: Decimal | DecimalJsLike | number | string
+    no: string
+    winningAmount?: number | null
+    winningPrice?: Decimal | DecimalJsLike | number | string | null
+    totalWinningPrice?: Decimal | DecimalJsLike | number | string | null
+    actualAmount?: Decimal | DecimalJsLike | number | string | null
+    status?: number
+    type?: number
+    createdAt?: Date | string
+    updatedAt?: Date | string | null
+    stockSubscribeId: bigint | number
+    memberId: bigint | number
+  }
+
+  export type MemberSubscribeUpdateManyMutationInput = {
+    id?: BigIntFieldUpdateOperationsInput | bigint | number
+    market?: StringFieldUpdateOperationsInput | string
+    code?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    amount?: IntFieldUpdateOperationsInput | number
+    money?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    no?: StringFieldUpdateOperationsInput | string
+    winningAmount?: NullableIntFieldUpdateOperationsInput | number | null
+    winningPrice?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    totalWinningPrice?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    actualAmount?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    status?: IntFieldUpdateOperationsInput | number
+    type?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    stockSubscribeId?: BigIntFieldUpdateOperationsInput | bigint | number
+  }
+
+  export type MemberSubscribeUncheckedUpdateManyInput = {
+    id?: BigIntFieldUpdateOperationsInput | bigint | number
+    market?: StringFieldUpdateOperationsInput | string
+    code?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    amount?: IntFieldUpdateOperationsInput | number
+    money?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    no?: StringFieldUpdateOperationsInput | string
+    winningAmount?: NullableIntFieldUpdateOperationsInput | number | null
+    winningPrice?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    totalWinningPrice?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    actualAmount?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    status?: IntFieldUpdateOperationsInput | number
+    type?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    stockSubscribeId?: BigIntFieldUpdateOperationsInput | bigint | number
+    memberId?: BigIntFieldUpdateOperationsInput | bigint | number
+  }
+
+  export type StockPositionCreateInput = {
+    id?: bigint | number
+    amount: number
+    blast: string
+    price: string
+    mode: number
+    status: number
+    bond?: string | null
+    identifier?: string | null
+    lever?: string | null
+    stopLoss?: string | null
+    takeProfit?: string | null
+    market?: string | null
+    pl?: string | null
+    rate?: string | null
+    currentPrice?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string | null
+    member: MemberCreateNestedOneWithoutStockPostionInput
+    stockSymbol: StockSymbolCreateNestedOneWithoutStockPostionInput
+  }
+
+  export type StockPositionUncheckedCreateInput = {
+    id?: bigint | number
+    amount: number
+    blast: string
+    price: string
+    mode: number
+    status: number
+    bond?: string | null
+    identifier?: string | null
+    lever?: string | null
+    stopLoss?: string | null
+    takeProfit?: string | null
+    market?: string | null
+    pl?: string | null
+    rate?: string | null
+    currentPrice?: string | null
+    memberId: bigint | number
+    stockSymbolId: bigint | number
+    createdAt?: Date | string
+    updatedAt?: Date | string | null
+  }
+
+  export type StockPositionUpdateInput = {
+    id?: BigIntFieldUpdateOperationsInput | bigint | number
+    amount?: IntFieldUpdateOperationsInput | number
+    blast?: StringFieldUpdateOperationsInput | string
+    price?: StringFieldUpdateOperationsInput | string
+    mode?: IntFieldUpdateOperationsInput | number
+    status?: IntFieldUpdateOperationsInput | number
+    bond?: NullableStringFieldUpdateOperationsInput | string | null
+    identifier?: NullableStringFieldUpdateOperationsInput | string | null
+    lever?: NullableStringFieldUpdateOperationsInput | string | null
+    stopLoss?: NullableStringFieldUpdateOperationsInput | string | null
+    takeProfit?: NullableStringFieldUpdateOperationsInput | string | null
+    market?: NullableStringFieldUpdateOperationsInput | string | null
+    pl?: NullableStringFieldUpdateOperationsInput | string | null
+    rate?: NullableStringFieldUpdateOperationsInput | string | null
+    currentPrice?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    member?: MemberUpdateOneRequiredWithoutStockPostionNestedInput
+    stockSymbol?: StockSymbolUpdateOneRequiredWithoutStockPostionNestedInput
+  }
+
+  export type StockPositionUncheckedUpdateInput = {
+    id?: BigIntFieldUpdateOperationsInput | bigint | number
+    amount?: IntFieldUpdateOperationsInput | number
+    blast?: StringFieldUpdateOperationsInput | string
+    price?: StringFieldUpdateOperationsInput | string
+    mode?: IntFieldUpdateOperationsInput | number
+    status?: IntFieldUpdateOperationsInput | number
+    bond?: NullableStringFieldUpdateOperationsInput | string | null
+    identifier?: NullableStringFieldUpdateOperationsInput | string | null
+    lever?: NullableStringFieldUpdateOperationsInput | string | null
+    stopLoss?: NullableStringFieldUpdateOperationsInput | string | null
+    takeProfit?: NullableStringFieldUpdateOperationsInput | string | null
+    market?: NullableStringFieldUpdateOperationsInput | string | null
+    pl?: NullableStringFieldUpdateOperationsInput | string | null
+    rate?: NullableStringFieldUpdateOperationsInput | string | null
+    currentPrice?: NullableStringFieldUpdateOperationsInput | string | null
+    memberId?: BigIntFieldUpdateOperationsInput | bigint | number
+    stockSymbolId?: BigIntFieldUpdateOperationsInput | bigint | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  }
+
+  export type StockPositionCreateManyInput = {
+    id?: bigint | number
+    amount: number
+    blast: string
+    price: string
+    mode: number
+    status: number
+    bond?: string | null
+    identifier?: string | null
+    lever?: string | null
+    stopLoss?: string | null
+    takeProfit?: string | null
+    market?: string | null
+    pl?: string | null
+    rate?: string | null
+    currentPrice?: string | null
+    memberId: bigint | number
+    stockSymbolId: bigint | number
+    createdAt?: Date | string
+    updatedAt?: Date | string | null
+  }
+
+  export type StockPositionUpdateManyMutationInput = {
+    id?: BigIntFieldUpdateOperationsInput | bigint | number
+    amount?: IntFieldUpdateOperationsInput | number
+    blast?: StringFieldUpdateOperationsInput | string
+    price?: StringFieldUpdateOperationsInput | string
+    mode?: IntFieldUpdateOperationsInput | number
+    status?: IntFieldUpdateOperationsInput | number
+    bond?: NullableStringFieldUpdateOperationsInput | string | null
+    identifier?: NullableStringFieldUpdateOperationsInput | string | null
+    lever?: NullableStringFieldUpdateOperationsInput | string | null
+    stopLoss?: NullableStringFieldUpdateOperationsInput | string | null
+    takeProfit?: NullableStringFieldUpdateOperationsInput | string | null
+    market?: NullableStringFieldUpdateOperationsInput | string | null
+    pl?: NullableStringFieldUpdateOperationsInput | string | null
+    rate?: NullableStringFieldUpdateOperationsInput | string | null
+    currentPrice?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  }
+
+  export type StockPositionUncheckedUpdateManyInput = {
+    id?: BigIntFieldUpdateOperationsInput | bigint | number
+    amount?: IntFieldUpdateOperationsInput | number
+    blast?: StringFieldUpdateOperationsInput | string
+    price?: StringFieldUpdateOperationsInput | string
+    mode?: IntFieldUpdateOperationsInput | number
+    status?: IntFieldUpdateOperationsInput | number
+    bond?: NullableStringFieldUpdateOperationsInput | string | null
+    identifier?: NullableStringFieldUpdateOperationsInput | string | null
+    lever?: NullableStringFieldUpdateOperationsInput | string | null
+    stopLoss?: NullableStringFieldUpdateOperationsInput | string | null
+    takeProfit?: NullableStringFieldUpdateOperationsInput | string | null
+    market?: NullableStringFieldUpdateOperationsInput | string | null
+    pl?: NullableStringFieldUpdateOperationsInput | string | null
+    rate?: NullableStringFieldUpdateOperationsInput | string | null
+    currentPrice?: NullableStringFieldUpdateOperationsInput | string | null
+    memberId?: BigIntFieldUpdateOperationsInput | bigint | number
+    stockSymbolId?: BigIntFieldUpdateOperationsInput | bigint | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  }
+
+  export type MemberDetailCreateInput = {
+    id?: bigint | number
+    after?: string | null
+    amount?: string | null
+    before?: string | null
+    market?: string | null
+    type: number
+    remark?: string | null
+    member: MemberCreateNestedOneWithoutMemberDetailInput
+  }
+
+  export type MemberDetailUncheckedCreateInput = {
+    id?: bigint | number
+    after?: string | null
+    amount?: string | null
+    before?: string | null
+    market?: string | null
+    type: number
+    remark?: string | null
+    memberId: bigint | number
+  }
+
+  export type MemberDetailUpdateInput = {
+    id?: BigIntFieldUpdateOperationsInput | bigint | number
+    after?: NullableStringFieldUpdateOperationsInput | string | null
+    amount?: NullableStringFieldUpdateOperationsInput | string | null
+    before?: NullableStringFieldUpdateOperationsInput | string | null
+    market?: NullableStringFieldUpdateOperationsInput | string | null
+    type?: IntFieldUpdateOperationsInput | number
+    remark?: NullableStringFieldUpdateOperationsInput | string | null
+    member?: MemberUpdateOneRequiredWithoutMemberDetailNestedInput
+  }
+
+  export type MemberDetailUncheckedUpdateInput = {
+    id?: BigIntFieldUpdateOperationsInput | bigint | number
+    after?: NullableStringFieldUpdateOperationsInput | string | null
+    amount?: NullableStringFieldUpdateOperationsInput | string | null
+    before?: NullableStringFieldUpdateOperationsInput | string | null
+    market?: NullableStringFieldUpdateOperationsInput | string | null
+    type?: IntFieldUpdateOperationsInput | number
+    remark?: NullableStringFieldUpdateOperationsInput | string | null
+    memberId?: BigIntFieldUpdateOperationsInput | bigint | number
+  }
+
+  export type MemberDetailCreateManyInput = {
+    id?: bigint | number
+    after?: string | null
+    amount?: string | null
+    before?: string | null
+    market?: string | null
+    type: number
+    remark?: string | null
+    memberId: bigint | number
+  }
+
+  export type MemberDetailUpdateManyMutationInput = {
+    id?: BigIntFieldUpdateOperationsInput | bigint | number
+    after?: NullableStringFieldUpdateOperationsInput | string | null
+    amount?: NullableStringFieldUpdateOperationsInput | string | null
+    before?: NullableStringFieldUpdateOperationsInput | string | null
+    market?: NullableStringFieldUpdateOperationsInput | string | null
+    type?: IntFieldUpdateOperationsInput | number
+    remark?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
+  export type MemberDetailUncheckedUpdateManyInput = {
+    id?: BigIntFieldUpdateOperationsInput | bigint | number
+    after?: NullableStringFieldUpdateOperationsInput | string | null
+    amount?: NullableStringFieldUpdateOperationsInput | string | null
+    before?: NullableStringFieldUpdateOperationsInput | string | null
+    market?: NullableStringFieldUpdateOperationsInput | string | null
+    type?: IntFieldUpdateOperationsInput | number
+    remark?: NullableStringFieldUpdateOperationsInput | string | null
+    memberId?: BigIntFieldUpdateOperationsInput | bigint | number
+  }
+
+  export type CountryCreateInput = {
+    id?: bigint | number
+    code?: string | null
+    name: string
+    en: string
+    tel: string
+    py: string
+    createdAt?: Date | string
+    updatedAt?: Date | string | null
+  }
+
+  export type CountryUncheckedCreateInput = {
+    id?: bigint | number
+    code?: string | null
+    name: string
+    en: string
+    tel: string
+    py: string
+    createdAt?: Date | string
+    updatedAt?: Date | string | null
+  }
+
+  export type CountryUpdateInput = {
+    id?: BigIntFieldUpdateOperationsInput | bigint | number
+    code?: NullableStringFieldUpdateOperationsInput | string | null
+    name?: StringFieldUpdateOperationsInput | string
+    en?: StringFieldUpdateOperationsInput | string
+    tel?: StringFieldUpdateOperationsInput | string
+    py?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  }
+
+  export type CountryUncheckedUpdateInput = {
+    id?: BigIntFieldUpdateOperationsInput | bigint | number
+    code?: NullableStringFieldUpdateOperationsInput | string | null
+    name?: StringFieldUpdateOperationsInput | string
+    en?: StringFieldUpdateOperationsInput | string
+    tel?: StringFieldUpdateOperationsInput | string
+    py?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  }
+
+  export type CountryCreateManyInput = {
+    id?: bigint | number
+    code?: string | null
+    name: string
+    en: string
+    tel: string
+    py: string
+    createdAt?: Date | string
+    updatedAt?: Date | string | null
+  }
+
+  export type CountryUpdateManyMutationInput = {
+    id?: BigIntFieldUpdateOperationsInput | bigint | number
+    code?: NullableStringFieldUpdateOperationsInput | string | null
+    name?: StringFieldUpdateOperationsInput | string
+    en?: StringFieldUpdateOperationsInput | string
+    tel?: StringFieldUpdateOperationsInput | string
+    py?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  }
+
+  export type CountryUncheckedUpdateManyInput = {
+    id?: BigIntFieldUpdateOperationsInput | bigint | number
+    code?: NullableStringFieldUpdateOperationsInput | string | null
+    name?: StringFieldUpdateOperationsInput | string
+    en?: StringFieldUpdateOperationsInput | string
+    tel?: StringFieldUpdateOperationsInput | string
+    py?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
 
   export type SettingCreateInput = {
@@ -8268,6 +22266,244 @@ export namespace Prisma {
     id?: BigIntFieldUpdateOperationsInput | bigint | number
     key?: StringFieldUpdateOperationsInput | string
     value?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  }
+
+  export type StockResourceCreateInput = {
+    id?: bigint | number
+    amountScope: string
+    frequencyScope: string
+    market: string
+    spreadScope: string
+    endAt: string
+    startAt: string
+    symbol: string
+    type?: number
+    status?: number
+    createdAt?: Date | string
+    updatedAt?: Date | string | null
+  }
+
+  export type StockResourceUncheckedCreateInput = {
+    id?: bigint | number
+    amountScope: string
+    frequencyScope: string
+    market: string
+    spreadScope: string
+    endAt: string
+    startAt: string
+    symbol: string
+    type?: number
+    status?: number
+    createdAt?: Date | string
+    updatedAt?: Date | string | null
+  }
+
+  export type StockResourceUpdateInput = {
+    id?: BigIntFieldUpdateOperationsInput | bigint | number
+    amountScope?: StringFieldUpdateOperationsInput | string
+    frequencyScope?: StringFieldUpdateOperationsInput | string
+    market?: StringFieldUpdateOperationsInput | string
+    spreadScope?: StringFieldUpdateOperationsInput | string
+    endAt?: StringFieldUpdateOperationsInput | string
+    startAt?: StringFieldUpdateOperationsInput | string
+    symbol?: StringFieldUpdateOperationsInput | string
+    type?: IntFieldUpdateOperationsInput | number
+    status?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  }
+
+  export type StockResourceUncheckedUpdateInput = {
+    id?: BigIntFieldUpdateOperationsInput | bigint | number
+    amountScope?: StringFieldUpdateOperationsInput | string
+    frequencyScope?: StringFieldUpdateOperationsInput | string
+    market?: StringFieldUpdateOperationsInput | string
+    spreadScope?: StringFieldUpdateOperationsInput | string
+    endAt?: StringFieldUpdateOperationsInput | string
+    startAt?: StringFieldUpdateOperationsInput | string
+    symbol?: StringFieldUpdateOperationsInput | string
+    type?: IntFieldUpdateOperationsInput | number
+    status?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  }
+
+  export type StockResourceCreateManyInput = {
+    id?: bigint | number
+    amountScope: string
+    frequencyScope: string
+    market: string
+    spreadScope: string
+    endAt: string
+    startAt: string
+    symbol: string
+    type?: number
+    status?: number
+    createdAt?: Date | string
+    updatedAt?: Date | string | null
+  }
+
+  export type StockResourceUpdateManyMutationInput = {
+    id?: BigIntFieldUpdateOperationsInput | bigint | number
+    amountScope?: StringFieldUpdateOperationsInput | string
+    frequencyScope?: StringFieldUpdateOperationsInput | string
+    market?: StringFieldUpdateOperationsInput | string
+    spreadScope?: StringFieldUpdateOperationsInput | string
+    endAt?: StringFieldUpdateOperationsInput | string
+    startAt?: StringFieldUpdateOperationsInput | string
+    symbol?: StringFieldUpdateOperationsInput | string
+    type?: IntFieldUpdateOperationsInput | number
+    status?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  }
+
+  export type StockResourceUncheckedUpdateManyInput = {
+    id?: BigIntFieldUpdateOperationsInput | bigint | number
+    amountScope?: StringFieldUpdateOperationsInput | string
+    frequencyScope?: StringFieldUpdateOperationsInput | string
+    market?: StringFieldUpdateOperationsInput | string
+    spreadScope?: StringFieldUpdateOperationsInput | string
+    endAt?: StringFieldUpdateOperationsInput | string
+    startAt?: StringFieldUpdateOperationsInput | string
+    symbol?: StringFieldUpdateOperationsInput | string
+    type?: IntFieldUpdateOperationsInput | number
+    status?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  }
+
+  export type StockResourceRecordCreateInput = {
+    id?: bigint | number
+    open: string
+    high: string
+    close: string
+    low: string
+    time: string
+    stockResourceId: bigint | number
+  }
+
+  export type StockResourceRecordUncheckedCreateInput = {
+    id?: bigint | number
+    open: string
+    high: string
+    close: string
+    low: string
+    time: string
+    stockResourceId: bigint | number
+  }
+
+  export type StockResourceRecordUpdateInput = {
+    id?: BigIntFieldUpdateOperationsInput | bigint | number
+    open?: StringFieldUpdateOperationsInput | string
+    high?: StringFieldUpdateOperationsInput | string
+    close?: StringFieldUpdateOperationsInput | string
+    low?: StringFieldUpdateOperationsInput | string
+    time?: StringFieldUpdateOperationsInput | string
+    stockResourceId?: BigIntFieldUpdateOperationsInput | bigint | number
+  }
+
+  export type StockResourceRecordUncheckedUpdateInput = {
+    id?: BigIntFieldUpdateOperationsInput | bigint | number
+    open?: StringFieldUpdateOperationsInput | string
+    high?: StringFieldUpdateOperationsInput | string
+    close?: StringFieldUpdateOperationsInput | string
+    low?: StringFieldUpdateOperationsInput | string
+    time?: StringFieldUpdateOperationsInput | string
+    stockResourceId?: BigIntFieldUpdateOperationsInput | bigint | number
+  }
+
+  export type StockResourceRecordCreateManyInput = {
+    id?: bigint | number
+    open: string
+    high: string
+    close: string
+    low: string
+    time: string
+    stockResourceId: bigint | number
+  }
+
+  export type StockResourceRecordUpdateManyMutationInput = {
+    id?: BigIntFieldUpdateOperationsInput | bigint | number
+    open?: StringFieldUpdateOperationsInput | string
+    high?: StringFieldUpdateOperationsInput | string
+    close?: StringFieldUpdateOperationsInput | string
+    low?: StringFieldUpdateOperationsInput | string
+    time?: StringFieldUpdateOperationsInput | string
+    stockResourceId?: BigIntFieldUpdateOperationsInput | bigint | number
+  }
+
+  export type StockResourceRecordUncheckedUpdateManyInput = {
+    id?: BigIntFieldUpdateOperationsInput | bigint | number
+    open?: StringFieldUpdateOperationsInput | string
+    high?: StringFieldUpdateOperationsInput | string
+    close?: StringFieldUpdateOperationsInput | string
+    low?: StringFieldUpdateOperationsInput | string
+    time?: StringFieldUpdateOperationsInput | string
+    stockResourceId?: BigIntFieldUpdateOperationsInput | bigint | number
+  }
+
+  export type ArticleCreateInput = {
+    id?: bigint | number
+    thumb: string
+    title: string
+    content: string
+    createdAt?: Date | string
+    updatedAt?: Date | string | null
+  }
+
+  export type ArticleUncheckedCreateInput = {
+    id?: bigint | number
+    thumb: string
+    title: string
+    content: string
+    createdAt?: Date | string
+    updatedAt?: Date | string | null
+  }
+
+  export type ArticleUpdateInput = {
+    id?: BigIntFieldUpdateOperationsInput | bigint | number
+    thumb?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    content?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  }
+
+  export type ArticleUncheckedUpdateInput = {
+    id?: BigIntFieldUpdateOperationsInput | bigint | number
+    thumb?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    content?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  }
+
+  export type ArticleCreateManyInput = {
+    id?: bigint | number
+    thumb: string
+    title: string
+    content: string
+    createdAt?: Date | string
+    updatedAt?: Date | string | null
+  }
+
+  export type ArticleUpdateManyMutationInput = {
+    id?: BigIntFieldUpdateOperationsInput | bigint | number
+    thumb?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    content?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  }
+
+  export type ArticleUncheckedUpdateManyInput = {
+    id?: BigIntFieldUpdateOperationsInput | bigint | number
+    thumb?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    content?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
@@ -8350,6 +22586,7 @@ export namespace Prisma {
     email?: SortOrder
     name?: SortOrder
     avatar?: SortOrder
+    password?: SortOrder
     gender?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
@@ -8364,6 +22601,7 @@ export namespace Prisma {
     email?: SortOrder
     name?: SortOrder
     avatar?: SortOrder
+    password?: SortOrder
     gender?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
@@ -8374,6 +22612,7 @@ export namespace Prisma {
     email?: SortOrder
     name?: SortOrder
     avatar?: SortOrder
+    password?: SortOrder
     gender?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
@@ -8470,14 +22709,67 @@ export namespace Prisma {
     _min?: NestedDateTimeNullableFilter<$PrismaModel>
     _max?: NestedDateTimeNullableFilter<$PrismaModel>
   }
+  export type JsonNullableFilter<$PrismaModel = never> = 
+    | PatchUndefined<
+        Either<Required<JsonNullableFilterBase<$PrismaModel>>, Exclude<keyof Required<JsonNullableFilterBase<$PrismaModel>>, 'path'>>,
+        Required<JsonNullableFilterBase<$PrismaModel>>
+      >
+    | OptionalFlat<Omit<Required<JsonNullableFilterBase<$PrismaModel>>, 'path'>>
 
-  export type StockOnMembersListRelationFilter = {
-    every?: StockOnMembersWhereInput
-    some?: StockOnMembersWhereInput
-    none?: StockOnMembersWhereInput
+  export type JsonNullableFilterBase<$PrismaModel = never> = {
+    equals?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | JsonNullValueFilter
+    path?: string
+    string_contains?: string | StringFieldRefInput<$PrismaModel>
+    string_starts_with?: string | StringFieldRefInput<$PrismaModel>
+    string_ends_with?: string | StringFieldRefInput<$PrismaModel>
+    array_contains?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
+    array_starts_with?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
+    array_ends_with?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
+    lt?: InputJsonValue
+    lte?: InputJsonValue
+    gt?: InputJsonValue
+    gte?: InputJsonValue
+    not?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | JsonNullValueFilter
   }
 
-  export type StockOnMembersOrderByRelationAggregateInput = {
+  export type IntFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel>
+    in?: number[]
+    notIn?: number[]
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntFilter<$PrismaModel> | number
+  }
+
+  export type StockPositionListRelationFilter = {
+    every?: StockPositionWhereInput
+    some?: StockPositionWhereInput
+    none?: StockPositionWhereInput
+  }
+
+  export type MemberDetailListRelationFilter = {
+    every?: MemberDetailWhereInput
+    some?: MemberDetailWhereInput
+    none?: MemberDetailWhereInput
+  }
+
+  export type MemberSubscribeListRelationFilter = {
+    every?: MemberSubscribeWhereInput
+    some?: MemberSubscribeWhereInput
+    none?: MemberSubscribeWhereInput
+  }
+
+  export type StockPositionOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type MemberDetailOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type MemberSubscribeOrderByRelationAggregateInput = {
     _count?: SortOrder
   }
 
@@ -8486,13 +22778,20 @@ export namespace Prisma {
     email?: SortOrder
     name?: SortOrder
     avatar?: SortOrder
+    password?: SortOrder
     gender?: SortOrder
+    address?: SortOrder
+    accountBalance?: SortOrder
+    status?: SortOrder
+    type?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
   }
 
   export type MemberAvgOrderByAggregateInput = {
     id?: SortOrder
+    status?: SortOrder
+    type?: SortOrder
   }
 
   export type MemberMaxOrderByAggregateInput = {
@@ -8500,7 +22799,11 @@ export namespace Prisma {
     email?: SortOrder
     name?: SortOrder
     avatar?: SortOrder
+    password?: SortOrder
     gender?: SortOrder
+    address?: SortOrder
+    status?: SortOrder
+    type?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
   }
@@ -8510,13 +22813,158 @@ export namespace Prisma {
     email?: SortOrder
     name?: SortOrder
     avatar?: SortOrder
+    password?: SortOrder
     gender?: SortOrder
+    address?: SortOrder
+    status?: SortOrder
+    type?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
   }
 
   export type MemberSumOrderByAggregateInput = {
     id?: SortOrder
+    status?: SortOrder
+    type?: SortOrder
+  }
+  export type JsonNullableWithAggregatesFilter<$PrismaModel = never> = 
+    | PatchUndefined<
+        Either<Required<JsonNullableWithAggregatesFilterBase<$PrismaModel>>, Exclude<keyof Required<JsonNullableWithAggregatesFilterBase<$PrismaModel>>, 'path'>>,
+        Required<JsonNullableWithAggregatesFilterBase<$PrismaModel>>
+      >
+    | OptionalFlat<Omit<Required<JsonNullableWithAggregatesFilterBase<$PrismaModel>>, 'path'>>
+
+  export type JsonNullableWithAggregatesFilterBase<$PrismaModel = never> = {
+    equals?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | JsonNullValueFilter
+    path?: string
+    string_contains?: string | StringFieldRefInput<$PrismaModel>
+    string_starts_with?: string | StringFieldRefInput<$PrismaModel>
+    string_ends_with?: string | StringFieldRefInput<$PrismaModel>
+    array_contains?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
+    array_starts_with?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
+    array_ends_with?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
+    lt?: InputJsonValue
+    lte?: InputJsonValue
+    gt?: InputJsonValue
+    gte?: InputJsonValue
+    not?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | JsonNullValueFilter
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedJsonNullableFilter<$PrismaModel>
+    _max?: NestedJsonNullableFilter<$PrismaModel>
+  }
+
+  export type IntWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel>
+    in?: number[]
+    notIn?: number[]
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntWithAggregatesFilter<$PrismaModel> | number
+    _count?: NestedIntFilter<$PrismaModel>
+    _avg?: NestedFloatFilter<$PrismaModel>
+    _sum?: NestedIntFilter<$PrismaModel>
+    _min?: NestedIntFilter<$PrismaModel>
+    _max?: NestedIntFilter<$PrismaModel>
+  }
+
+  export type StockSymbolSymbolMarketCompoundUniqueInput = {
+    symbol: string
+    market: string
+  }
+
+  export type StockSymbolCountOrderByAggregateInput = {
+    id?: SortOrder
+    code?: SortOrder
+    market?: SortOrder
+    online?: SortOrder
+    symbol?: SortOrder
+    showName?: SortOrder
+    name?: SortOrder
+    symbolShowName?: SortOrder
+    trade?: SortOrder
+    type?: SortOrder
+    newPrice?: SortOrder
+    open?: SortOrder
+    close?: SortOrder
+    high?: SortOrder
+    low?: SortOrder
+    amount?: SortOrder
+    volume?: SortOrder
+    change?: SortOrder
+    changePercent?: SortOrder
+    date?: SortOrder
+    sync?: SortOrder
+    syncMarket?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type StockSymbolAvgOrderByAggregateInput = {
+    id?: SortOrder
+    online?: SortOrder
+    trade?: SortOrder
+    type?: SortOrder
+  }
+
+  export type StockSymbolMaxOrderByAggregateInput = {
+    id?: SortOrder
+    code?: SortOrder
+    market?: SortOrder
+    online?: SortOrder
+    symbol?: SortOrder
+    showName?: SortOrder
+    name?: SortOrder
+    symbolShowName?: SortOrder
+    trade?: SortOrder
+    type?: SortOrder
+    newPrice?: SortOrder
+    open?: SortOrder
+    close?: SortOrder
+    high?: SortOrder
+    low?: SortOrder
+    amount?: SortOrder
+    volume?: SortOrder
+    change?: SortOrder
+    changePercent?: SortOrder
+    date?: SortOrder
+    syncMarket?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type StockSymbolMinOrderByAggregateInput = {
+    id?: SortOrder
+    code?: SortOrder
+    market?: SortOrder
+    online?: SortOrder
+    symbol?: SortOrder
+    showName?: SortOrder
+    name?: SortOrder
+    symbolShowName?: SortOrder
+    trade?: SortOrder
+    type?: SortOrder
+    newPrice?: SortOrder
+    open?: SortOrder
+    close?: SortOrder
+    high?: SortOrder
+    low?: SortOrder
+    amount?: SortOrder
+    volume?: SortOrder
+    change?: SortOrder
+    changePercent?: SortOrder
+    date?: SortOrder
+    syncMarket?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type StockSymbolSumOrderByAggregateInput = {
+    id?: SortOrder
+    online?: SortOrder
+    trade?: SortOrder
+    type?: SortOrder
   }
 
   export type BoolFilter<$PrismaModel = never> = {
@@ -8531,9 +22979,14 @@ export namespace Prisma {
     not?: NestedEnumSTOCK_STATUSFilter<$PrismaModel> | $Enums.STOCK_STATUS
   }
 
-  export type StockRecordNullableRelationFilter = {
-    is?: StockRecordWhereInput | null
-    isNot?: StockRecordWhereInput | null
+  export type StockRecordListRelationFilter = {
+    every?: StockRecordWhereInput
+    some?: StockRecordWhereInput
+    none?: StockRecordWhereInput
+  }
+
+  export type StockRecordOrderByRelationAggregateInput = {
+    _count?: SortOrder
   }
 
   export type StockCodeSymbolTypeCompoundUniqueInput = {
@@ -8552,7 +23005,18 @@ export namespace Prisma {
     logo?: SortOrder
     sok?: SortOrder
     optional?: SortOrder
+    newPrice?: SortOrder
+    open?: SortOrder
+    close?: SortOrder
+    high?: SortOrder
+    low?: SortOrder
+    amount?: SortOrder
+    volume?: SortOrder
     status?: SortOrder
+    change?: SortOrder
+    changePercent?: SortOrder
+    date?: SortOrder
+    extra?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
   }
@@ -8571,7 +23035,17 @@ export namespace Prisma {
     logo?: SortOrder
     sok?: SortOrder
     optional?: SortOrder
+    newPrice?: SortOrder
+    open?: SortOrder
+    close?: SortOrder
+    high?: SortOrder
+    low?: SortOrder
+    amount?: SortOrder
+    volume?: SortOrder
     status?: SortOrder
+    change?: SortOrder
+    changePercent?: SortOrder
+    date?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
   }
@@ -8586,7 +23060,17 @@ export namespace Prisma {
     logo?: SortOrder
     sok?: SortOrder
     optional?: SortOrder
+    newPrice?: SortOrder
+    open?: SortOrder
+    close?: SortOrder
+    high?: SortOrder
+    low?: SortOrder
+    amount?: SortOrder
+    volume?: SortOrder
     status?: SortOrder
+    change?: SortOrder
+    changePercent?: SortOrder
+    date?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
   }
@@ -8612,6 +23096,28 @@ export namespace Prisma {
     _min?: NestedEnumSTOCK_STATUSFilter<$PrismaModel>
     _max?: NestedEnumSTOCK_STATUSFilter<$PrismaModel>
   }
+  export type JsonFilter<$PrismaModel = never> = 
+    | PatchUndefined<
+        Either<Required<JsonFilterBase<$PrismaModel>>, Exclude<keyof Required<JsonFilterBase<$PrismaModel>>, 'path'>>,
+        Required<JsonFilterBase<$PrismaModel>>
+      >
+    | OptionalFlat<Omit<Required<JsonFilterBase<$PrismaModel>>, 'path'>>
+
+  export type JsonFilterBase<$PrismaModel = never> = {
+    equals?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | JsonNullValueFilter
+    path?: string
+    string_contains?: string | StringFieldRefInput<$PrismaModel>
+    string_starts_with?: string | StringFieldRefInput<$PrismaModel>
+    string_ends_with?: string | StringFieldRefInput<$PrismaModel>
+    array_contains?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
+    array_starts_with?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
+    array_ends_with?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
+    lt?: InputJsonValue
+    lte?: InputJsonValue
+    gt?: InputJsonValue
+    gte?: InputJsonValue
+    not?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | JsonNullValueFilter
+  }
 
   export type StockRelationFilter = {
     is?: StockWhereInput
@@ -8620,13 +23126,15 @@ export namespace Prisma {
 
   export type StockRecordCountOrderByAggregateInput = {
     id?: SortOrder
-    price?: SortOrder
+    newPrice?: SortOrder
     open?: SortOrder
     close?: SortOrder
     high?: SortOrder
     low?: SortOrder
-    turnover?: SortOrder
+    amount?: SortOrder
     volume?: SortOrder
+    date?: SortOrder
+    extra?: SortOrder
     createdAt?: SortOrder
     stockId?: SortOrder
   }
@@ -8638,26 +23146,28 @@ export namespace Prisma {
 
   export type StockRecordMaxOrderByAggregateInput = {
     id?: SortOrder
-    price?: SortOrder
+    newPrice?: SortOrder
     open?: SortOrder
     close?: SortOrder
     high?: SortOrder
     low?: SortOrder
-    turnover?: SortOrder
+    amount?: SortOrder
     volume?: SortOrder
+    date?: SortOrder
     createdAt?: SortOrder
     stockId?: SortOrder
   }
 
   export type StockRecordMinOrderByAggregateInput = {
     id?: SortOrder
-    price?: SortOrder
+    newPrice?: SortOrder
     open?: SortOrder
     close?: SortOrder
     high?: SortOrder
     low?: SortOrder
-    turnover?: SortOrder
+    amount?: SortOrder
     volume?: SortOrder
+    date?: SortOrder
     createdAt?: SortOrder
     stockId?: SortOrder
   }
@@ -8666,43 +23176,602 @@ export namespace Prisma {
     id?: SortOrder
     stockId?: SortOrder
   }
+  export type JsonWithAggregatesFilter<$PrismaModel = never> = 
+    | PatchUndefined<
+        Either<Required<JsonWithAggregatesFilterBase<$PrismaModel>>, Exclude<keyof Required<JsonWithAggregatesFilterBase<$PrismaModel>>, 'path'>>,
+        Required<JsonWithAggregatesFilterBase<$PrismaModel>>
+      >
+    | OptionalFlat<Omit<Required<JsonWithAggregatesFilterBase<$PrismaModel>>, 'path'>>
+
+  export type JsonWithAggregatesFilterBase<$PrismaModel = never> = {
+    equals?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | JsonNullValueFilter
+    path?: string
+    string_contains?: string | StringFieldRefInput<$PrismaModel>
+    string_starts_with?: string | StringFieldRefInput<$PrismaModel>
+    string_ends_with?: string | StringFieldRefInput<$PrismaModel>
+    array_contains?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
+    array_starts_with?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
+    array_ends_with?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
+    lt?: InputJsonValue
+    lte?: InputJsonValue
+    gt?: InputJsonValue
+    gte?: InputJsonValue
+    not?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | JsonNullValueFilter
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedJsonFilter<$PrismaModel>
+    _max?: NestedJsonFilter<$PrismaModel>
+  }
+
+  export type IntNullableFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel> | null
+    in?: number[] | null
+    notIn?: number[] | null
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntNullableFilter<$PrismaModel> | number | null
+  }
+
+  export type StockMarketCountOrderByAggregateInput = {
+    id?: SortOrder
+    code?: SortOrder
+    currency?: SortOrder
+    maxWithdrawal?: SortOrder
+    minWithdrawal?: SortOrder
+    feeRate?: SortOrder
+    minFee?: SortOrder
+    lever?: SortOrder
+    mmr?: SortOrder
+    allocationRate?: SortOrder
+    frequency?: SortOrder
+    bindingHours?: SortOrder
+    headSymbols?: SortOrder
+    sort?: SortOrder
+    online?: SortOrder
+    conline?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type StockMarketAvgOrderByAggregateInput = {
+    id?: SortOrder
+    frequency?: SortOrder
+    bindingHours?: SortOrder
+    sort?: SortOrder
+    online?: SortOrder
+    conline?: SortOrder
+  }
+
+  export type StockMarketMaxOrderByAggregateInput = {
+    id?: SortOrder
+    code?: SortOrder
+    currency?: SortOrder
+    maxWithdrawal?: SortOrder
+    minWithdrawal?: SortOrder
+    feeRate?: SortOrder
+    minFee?: SortOrder
+    lever?: SortOrder
+    mmr?: SortOrder
+    allocationRate?: SortOrder
+    frequency?: SortOrder
+    bindingHours?: SortOrder
+    headSymbols?: SortOrder
+    sort?: SortOrder
+    online?: SortOrder
+    conline?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type StockMarketMinOrderByAggregateInput = {
+    id?: SortOrder
+    code?: SortOrder
+    currency?: SortOrder
+    maxWithdrawal?: SortOrder
+    minWithdrawal?: SortOrder
+    feeRate?: SortOrder
+    minFee?: SortOrder
+    lever?: SortOrder
+    mmr?: SortOrder
+    allocationRate?: SortOrder
+    frequency?: SortOrder
+    bindingHours?: SortOrder
+    headSymbols?: SortOrder
+    sort?: SortOrder
+    online?: SortOrder
+    conline?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type StockMarketSumOrderByAggregateInput = {
+    id?: SortOrder
+    frequency?: SortOrder
+    bindingHours?: SortOrder
+    sort?: SortOrder
+    online?: SortOrder
+    conline?: SortOrder
+  }
+
+  export type IntNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel> | null
+    in?: number[] | null
+    notIn?: number[] | null
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntNullableWithAggregatesFilter<$PrismaModel> | number | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _avg?: NestedFloatNullableFilter<$PrismaModel>
+    _sum?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedIntNullableFilter<$PrismaModel>
+    _max?: NestedIntNullableFilter<$PrismaModel>
+  }
+
+  export type StockFavoriteCountOrderByAggregateInput = {
+    id?: SortOrder
+    newPrice?: SortOrder
+    open?: SortOrder
+    close?: SortOrder
+    high?: SortOrder
+    low?: SortOrder
+    amount?: SortOrder
+    volume?: SortOrder
+    date?: SortOrder
+    extra?: SortOrder
+    memberId?: SortOrder
+    stockSymbolId?: SortOrder
+    createdAt?: SortOrder
+  }
+
+  export type StockFavoriteAvgOrderByAggregateInput = {
+    id?: SortOrder
+    memberId?: SortOrder
+    stockSymbolId?: SortOrder
+  }
+
+  export type StockFavoriteMaxOrderByAggregateInput = {
+    id?: SortOrder
+    newPrice?: SortOrder
+    open?: SortOrder
+    close?: SortOrder
+    high?: SortOrder
+    low?: SortOrder
+    amount?: SortOrder
+    volume?: SortOrder
+    date?: SortOrder
+    memberId?: SortOrder
+    stockSymbolId?: SortOrder
+    createdAt?: SortOrder
+  }
+
+  export type StockFavoriteMinOrderByAggregateInput = {
+    id?: SortOrder
+    newPrice?: SortOrder
+    open?: SortOrder
+    close?: SortOrder
+    high?: SortOrder
+    low?: SortOrder
+    amount?: SortOrder
+    volume?: SortOrder
+    date?: SortOrder
+    memberId?: SortOrder
+    stockSymbolId?: SortOrder
+    createdAt?: SortOrder
+  }
+
+  export type StockFavoriteSumOrderByAggregateInput = {
+    id?: SortOrder
+    memberId?: SortOrder
+    stockSymbolId?: SortOrder
+  }
+
+  export type DecimalFilter<$PrismaModel = never> = {
+    equals?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
+    in?: Decimal[] | DecimalJsLike[] | number[] | string[]
+    notIn?: Decimal[] | DecimalJsLike[] | number[] | string[]
+    lt?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
+    lte?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
+    gt?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
+    gte?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
+    not?: NestedDecimalFilter<$PrismaModel> | Decimal | DecimalJsLike | number | string
+  }
+
+  export type StockSubscribeCountOrderByAggregateInput = {
+    id?: SortOrder
+    market?: SortOrder
+    name?: SortOrder
+    code?: SortOrder
+    startAt?: SortOrder
+    endAt?: SortOrder
+    upAt?: SortOrder
+    circulation?: SortOrder
+    remainCirculation?: SortOrder
+    ipoPrice?: SortOrder
+    issuePrice?: SortOrder
+    resultAt?: SortOrder
+    subAmount?: SortOrder
+    status?: SortOrder
+    type?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type StockSubscribeAvgOrderByAggregateInput = {
+    id?: SortOrder
+    circulation?: SortOrder
+    remainCirculation?: SortOrder
+    ipoPrice?: SortOrder
+    issuePrice?: SortOrder
+    status?: SortOrder
+    type?: SortOrder
+  }
+
+  export type StockSubscribeMaxOrderByAggregateInput = {
+    id?: SortOrder
+    market?: SortOrder
+    name?: SortOrder
+    code?: SortOrder
+    startAt?: SortOrder
+    endAt?: SortOrder
+    upAt?: SortOrder
+    circulation?: SortOrder
+    remainCirculation?: SortOrder
+    ipoPrice?: SortOrder
+    issuePrice?: SortOrder
+    resultAt?: SortOrder
+    status?: SortOrder
+    type?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type StockSubscribeMinOrderByAggregateInput = {
+    id?: SortOrder
+    market?: SortOrder
+    name?: SortOrder
+    code?: SortOrder
+    startAt?: SortOrder
+    endAt?: SortOrder
+    upAt?: SortOrder
+    circulation?: SortOrder
+    remainCirculation?: SortOrder
+    ipoPrice?: SortOrder
+    issuePrice?: SortOrder
+    resultAt?: SortOrder
+    status?: SortOrder
+    type?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type StockSubscribeSumOrderByAggregateInput = {
+    id?: SortOrder
+    circulation?: SortOrder
+    remainCirculation?: SortOrder
+    ipoPrice?: SortOrder
+    issuePrice?: SortOrder
+    status?: SortOrder
+    type?: SortOrder
+  }
+
+  export type DecimalWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
+    in?: Decimal[] | DecimalJsLike[] | number[] | string[]
+    notIn?: Decimal[] | DecimalJsLike[] | number[] | string[]
+    lt?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
+    lte?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
+    gt?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
+    gte?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
+    not?: NestedDecimalWithAggregatesFilter<$PrismaModel> | Decimal | DecimalJsLike | number | string
+    _count?: NestedIntFilter<$PrismaModel>
+    _avg?: NestedDecimalFilter<$PrismaModel>
+    _sum?: NestedDecimalFilter<$PrismaModel>
+    _min?: NestedDecimalFilter<$PrismaModel>
+    _max?: NestedDecimalFilter<$PrismaModel>
+  }
+
+  export type DecimalNullableFilter<$PrismaModel = never> = {
+    equals?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel> | null
+    in?: Decimal[] | DecimalJsLike[] | number[] | string[] | null
+    notIn?: Decimal[] | DecimalJsLike[] | number[] | string[] | null
+    lt?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
+    lte?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
+    gt?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
+    gte?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
+    not?: NestedDecimalNullableFilter<$PrismaModel> | Decimal | DecimalJsLike | number | string | null
+  }
 
   export type MemberRelationFilter = {
     is?: MemberWhereInput
     isNot?: MemberWhereInput
   }
 
-  export type StockOnMembersCountOrderByAggregateInput = {
+  export type MemberSubscribeCountOrderByAggregateInput = {
     id?: SortOrder
-    memberId?: SortOrder
-    stockId?: SortOrder
+    market?: SortOrder
+    code?: SortOrder
+    name?: SortOrder
+    amount?: SortOrder
+    money?: SortOrder
+    no?: SortOrder
+    winningAmount?: SortOrder
+    winningPrice?: SortOrder
+    totalWinningPrice?: SortOrder
+    actualAmount?: SortOrder
+    status?: SortOrder
+    type?: SortOrder
     createdAt?: SortOrder
+    updatedAt?: SortOrder
+    stockSubscribeId?: SortOrder
+    memberId?: SortOrder
   }
 
-  export type StockOnMembersAvgOrderByAggregateInput = {
+  export type MemberSubscribeAvgOrderByAggregateInput = {
     id?: SortOrder
+    amount?: SortOrder
+    money?: SortOrder
+    winningAmount?: SortOrder
+    winningPrice?: SortOrder
+    totalWinningPrice?: SortOrder
+    actualAmount?: SortOrder
+    status?: SortOrder
+    type?: SortOrder
+    stockSubscribeId?: SortOrder
     memberId?: SortOrder
-    stockId?: SortOrder
   }
 
-  export type StockOnMembersMaxOrderByAggregateInput = {
+  export type MemberSubscribeMaxOrderByAggregateInput = {
     id?: SortOrder
-    memberId?: SortOrder
-    stockId?: SortOrder
+    market?: SortOrder
+    code?: SortOrder
+    name?: SortOrder
+    amount?: SortOrder
+    money?: SortOrder
+    no?: SortOrder
+    winningAmount?: SortOrder
+    winningPrice?: SortOrder
+    totalWinningPrice?: SortOrder
+    actualAmount?: SortOrder
+    status?: SortOrder
+    type?: SortOrder
     createdAt?: SortOrder
+    updatedAt?: SortOrder
+    stockSubscribeId?: SortOrder
+    memberId?: SortOrder
   }
 
-  export type StockOnMembersMinOrderByAggregateInput = {
+  export type MemberSubscribeMinOrderByAggregateInput = {
     id?: SortOrder
-    memberId?: SortOrder
-    stockId?: SortOrder
+    market?: SortOrder
+    code?: SortOrder
+    name?: SortOrder
+    amount?: SortOrder
+    money?: SortOrder
+    no?: SortOrder
+    winningAmount?: SortOrder
+    winningPrice?: SortOrder
+    totalWinningPrice?: SortOrder
+    actualAmount?: SortOrder
+    status?: SortOrder
+    type?: SortOrder
     createdAt?: SortOrder
+    updatedAt?: SortOrder
+    stockSubscribeId?: SortOrder
+    memberId?: SortOrder
   }
 
-  export type StockOnMembersSumOrderByAggregateInput = {
+  export type MemberSubscribeSumOrderByAggregateInput = {
     id?: SortOrder
+    amount?: SortOrder
+    money?: SortOrder
+    winningAmount?: SortOrder
+    winningPrice?: SortOrder
+    totalWinningPrice?: SortOrder
+    actualAmount?: SortOrder
+    status?: SortOrder
+    type?: SortOrder
+    stockSubscribeId?: SortOrder
     memberId?: SortOrder
-    stockId?: SortOrder
+  }
+
+  export type DecimalNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel> | null
+    in?: Decimal[] | DecimalJsLike[] | number[] | string[] | null
+    notIn?: Decimal[] | DecimalJsLike[] | number[] | string[] | null
+    lt?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
+    lte?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
+    gt?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
+    gte?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
+    not?: NestedDecimalNullableWithAggregatesFilter<$PrismaModel> | Decimal | DecimalJsLike | number | string | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _avg?: NestedDecimalNullableFilter<$PrismaModel>
+    _sum?: NestedDecimalNullableFilter<$PrismaModel>
+    _min?: NestedDecimalNullableFilter<$PrismaModel>
+    _max?: NestedDecimalNullableFilter<$PrismaModel>
+  }
+
+  export type StockSymbolRelationFilter = {
+    is?: StockSymbolWhereInput
+    isNot?: StockSymbolWhereInput
+  }
+
+  export type StockPositionCountOrderByAggregateInput = {
+    id?: SortOrder
+    amount?: SortOrder
+    blast?: SortOrder
+    price?: SortOrder
+    mode?: SortOrder
+    status?: SortOrder
+    bond?: SortOrder
+    identifier?: SortOrder
+    lever?: SortOrder
+    stopLoss?: SortOrder
+    takeProfit?: SortOrder
+    market?: SortOrder
+    pl?: SortOrder
+    rate?: SortOrder
+    currentPrice?: SortOrder
+    memberId?: SortOrder
+    stockSymbolId?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type StockPositionAvgOrderByAggregateInput = {
+    id?: SortOrder
+    amount?: SortOrder
+    mode?: SortOrder
+    status?: SortOrder
+    memberId?: SortOrder
+    stockSymbolId?: SortOrder
+  }
+
+  export type StockPositionMaxOrderByAggregateInput = {
+    id?: SortOrder
+    amount?: SortOrder
+    blast?: SortOrder
+    price?: SortOrder
+    mode?: SortOrder
+    status?: SortOrder
+    bond?: SortOrder
+    identifier?: SortOrder
+    lever?: SortOrder
+    stopLoss?: SortOrder
+    takeProfit?: SortOrder
+    market?: SortOrder
+    pl?: SortOrder
+    rate?: SortOrder
+    currentPrice?: SortOrder
+    memberId?: SortOrder
+    stockSymbolId?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type StockPositionMinOrderByAggregateInput = {
+    id?: SortOrder
+    amount?: SortOrder
+    blast?: SortOrder
+    price?: SortOrder
+    mode?: SortOrder
+    status?: SortOrder
+    bond?: SortOrder
+    identifier?: SortOrder
+    lever?: SortOrder
+    stopLoss?: SortOrder
+    takeProfit?: SortOrder
+    market?: SortOrder
+    pl?: SortOrder
+    rate?: SortOrder
+    currentPrice?: SortOrder
+    memberId?: SortOrder
+    stockSymbolId?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type StockPositionSumOrderByAggregateInput = {
+    id?: SortOrder
+    amount?: SortOrder
+    mode?: SortOrder
+    status?: SortOrder
+    memberId?: SortOrder
+    stockSymbolId?: SortOrder
+  }
+
+  export type MemberDetailCountOrderByAggregateInput = {
+    id?: SortOrder
+    after?: SortOrder
+    amount?: SortOrder
+    before?: SortOrder
+    market?: SortOrder
+    type?: SortOrder
+    remark?: SortOrder
+    memberId?: SortOrder
+  }
+
+  export type MemberDetailAvgOrderByAggregateInput = {
+    id?: SortOrder
+    type?: SortOrder
+    memberId?: SortOrder
+  }
+
+  export type MemberDetailMaxOrderByAggregateInput = {
+    id?: SortOrder
+    after?: SortOrder
+    amount?: SortOrder
+    before?: SortOrder
+    market?: SortOrder
+    type?: SortOrder
+    remark?: SortOrder
+    memberId?: SortOrder
+  }
+
+  export type MemberDetailMinOrderByAggregateInput = {
+    id?: SortOrder
+    after?: SortOrder
+    amount?: SortOrder
+    before?: SortOrder
+    market?: SortOrder
+    type?: SortOrder
+    remark?: SortOrder
+    memberId?: SortOrder
+  }
+
+  export type MemberDetailSumOrderByAggregateInput = {
+    id?: SortOrder
+    type?: SortOrder
+    memberId?: SortOrder
+  }
+
+  export type CountryPyTelNameCompoundUniqueInput = {
+    py: string
+    tel: string
+    name: string
+  }
+
+  export type CountryCountOrderByAggregateInput = {
+    id?: SortOrder
+    code?: SortOrder
+    name?: SortOrder
+    en?: SortOrder
+    tel?: SortOrder
+    py?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type CountryAvgOrderByAggregateInput = {
+    id?: SortOrder
+  }
+
+  export type CountryMaxOrderByAggregateInput = {
+    id?: SortOrder
+    code?: SortOrder
+    name?: SortOrder
+    en?: SortOrder
+    tel?: SortOrder
+    py?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type CountryMinOrderByAggregateInput = {
+    id?: SortOrder
+    code?: SortOrder
+    name?: SortOrder
+    en?: SortOrder
+    tel?: SortOrder
+    py?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type CountrySumOrderByAggregateInput = {
+    id?: SortOrder
   }
 
   export type SettingCountOrderByAggregateInput = {
@@ -8737,6 +23806,138 @@ export namespace Prisma {
     id?: SortOrder
   }
 
+  export type StockResourceCountOrderByAggregateInput = {
+    id?: SortOrder
+    amountScope?: SortOrder
+    frequencyScope?: SortOrder
+    market?: SortOrder
+    spreadScope?: SortOrder
+    endAt?: SortOrder
+    startAt?: SortOrder
+    symbol?: SortOrder
+    type?: SortOrder
+    status?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type StockResourceAvgOrderByAggregateInput = {
+    id?: SortOrder
+    type?: SortOrder
+    status?: SortOrder
+  }
+
+  export type StockResourceMaxOrderByAggregateInput = {
+    id?: SortOrder
+    amountScope?: SortOrder
+    frequencyScope?: SortOrder
+    market?: SortOrder
+    spreadScope?: SortOrder
+    endAt?: SortOrder
+    startAt?: SortOrder
+    symbol?: SortOrder
+    type?: SortOrder
+    status?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type StockResourceMinOrderByAggregateInput = {
+    id?: SortOrder
+    amountScope?: SortOrder
+    frequencyScope?: SortOrder
+    market?: SortOrder
+    spreadScope?: SortOrder
+    endAt?: SortOrder
+    startAt?: SortOrder
+    symbol?: SortOrder
+    type?: SortOrder
+    status?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type StockResourceSumOrderByAggregateInput = {
+    id?: SortOrder
+    type?: SortOrder
+    status?: SortOrder
+  }
+
+  export type StockResourceRecordCountOrderByAggregateInput = {
+    id?: SortOrder
+    open?: SortOrder
+    high?: SortOrder
+    close?: SortOrder
+    low?: SortOrder
+    time?: SortOrder
+    stockResourceId?: SortOrder
+  }
+
+  export type StockResourceRecordAvgOrderByAggregateInput = {
+    id?: SortOrder
+    stockResourceId?: SortOrder
+  }
+
+  export type StockResourceRecordMaxOrderByAggregateInput = {
+    id?: SortOrder
+    open?: SortOrder
+    high?: SortOrder
+    close?: SortOrder
+    low?: SortOrder
+    time?: SortOrder
+    stockResourceId?: SortOrder
+  }
+
+  export type StockResourceRecordMinOrderByAggregateInput = {
+    id?: SortOrder
+    open?: SortOrder
+    high?: SortOrder
+    close?: SortOrder
+    low?: SortOrder
+    time?: SortOrder
+    stockResourceId?: SortOrder
+  }
+
+  export type StockResourceRecordSumOrderByAggregateInput = {
+    id?: SortOrder
+    stockResourceId?: SortOrder
+  }
+
+  export type ArticleCountOrderByAggregateInput = {
+    id?: SortOrder
+    thumb?: SortOrder
+    title?: SortOrder
+    content?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type ArticleAvgOrderByAggregateInput = {
+    id?: SortOrder
+  }
+
+  export type ArticleMaxOrderByAggregateInput = {
+    id?: SortOrder
+    thumb?: SortOrder
+    title?: SortOrder
+    content?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type ArticleMinOrderByAggregateInput = {
+    id?: SortOrder
+    thumb?: SortOrder
+    title?: SortOrder
+    content?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type ArticleSumOrderByAggregateInput = {
+    id?: SortOrder
+  }
+
   export type BigIntFieldUpdateOperationsInput = {
     set?: bigint | number
     increment?: bigint | number
@@ -8765,72 +23966,194 @@ export namespace Prisma {
     set?: Date | string | null
   }
 
-  export type StockOnMembersCreateNestedManyWithoutMemberInput = {
-    create?: XOR<StockOnMembersCreateWithoutMemberInput, StockOnMembersUncheckedCreateWithoutMemberInput> | StockOnMembersCreateWithoutMemberInput[] | StockOnMembersUncheckedCreateWithoutMemberInput[]
-    connectOrCreate?: StockOnMembersCreateOrConnectWithoutMemberInput | StockOnMembersCreateOrConnectWithoutMemberInput[]
-    createMany?: StockOnMembersCreateManyMemberInputEnvelope
-    connect?: StockOnMembersWhereUniqueInput | StockOnMembersWhereUniqueInput[]
+  export type StockPositionCreateNestedManyWithoutMemberInput = {
+    create?: XOR<StockPositionCreateWithoutMemberInput, StockPositionUncheckedCreateWithoutMemberInput> | StockPositionCreateWithoutMemberInput[] | StockPositionUncheckedCreateWithoutMemberInput[]
+    connectOrCreate?: StockPositionCreateOrConnectWithoutMemberInput | StockPositionCreateOrConnectWithoutMemberInput[]
+    createMany?: StockPositionCreateManyMemberInputEnvelope
+    connect?: StockPositionWhereUniqueInput | StockPositionWhereUniqueInput[]
   }
 
-  export type StockOnMembersUncheckedCreateNestedManyWithoutMemberInput = {
-    create?: XOR<StockOnMembersCreateWithoutMemberInput, StockOnMembersUncheckedCreateWithoutMemberInput> | StockOnMembersCreateWithoutMemberInput[] | StockOnMembersUncheckedCreateWithoutMemberInput[]
-    connectOrCreate?: StockOnMembersCreateOrConnectWithoutMemberInput | StockOnMembersCreateOrConnectWithoutMemberInput[]
-    createMany?: StockOnMembersCreateManyMemberInputEnvelope
-    connect?: StockOnMembersWhereUniqueInput | StockOnMembersWhereUniqueInput[]
+  export type MemberDetailCreateNestedManyWithoutMemberInput = {
+    create?: XOR<MemberDetailCreateWithoutMemberInput, MemberDetailUncheckedCreateWithoutMemberInput> | MemberDetailCreateWithoutMemberInput[] | MemberDetailUncheckedCreateWithoutMemberInput[]
+    connectOrCreate?: MemberDetailCreateOrConnectWithoutMemberInput | MemberDetailCreateOrConnectWithoutMemberInput[]
+    createMany?: MemberDetailCreateManyMemberInputEnvelope
+    connect?: MemberDetailWhereUniqueInput | MemberDetailWhereUniqueInput[]
   }
 
-  export type StockOnMembersUpdateManyWithoutMemberNestedInput = {
-    create?: XOR<StockOnMembersCreateWithoutMemberInput, StockOnMembersUncheckedCreateWithoutMemberInput> | StockOnMembersCreateWithoutMemberInput[] | StockOnMembersUncheckedCreateWithoutMemberInput[]
-    connectOrCreate?: StockOnMembersCreateOrConnectWithoutMemberInput | StockOnMembersCreateOrConnectWithoutMemberInput[]
-    upsert?: StockOnMembersUpsertWithWhereUniqueWithoutMemberInput | StockOnMembersUpsertWithWhereUniqueWithoutMemberInput[]
-    createMany?: StockOnMembersCreateManyMemberInputEnvelope
-    set?: StockOnMembersWhereUniqueInput | StockOnMembersWhereUniqueInput[]
-    disconnect?: StockOnMembersWhereUniqueInput | StockOnMembersWhereUniqueInput[]
-    delete?: StockOnMembersWhereUniqueInput | StockOnMembersWhereUniqueInput[]
-    connect?: StockOnMembersWhereUniqueInput | StockOnMembersWhereUniqueInput[]
-    update?: StockOnMembersUpdateWithWhereUniqueWithoutMemberInput | StockOnMembersUpdateWithWhereUniqueWithoutMemberInput[]
-    updateMany?: StockOnMembersUpdateManyWithWhereWithoutMemberInput | StockOnMembersUpdateManyWithWhereWithoutMemberInput[]
-    deleteMany?: StockOnMembersScalarWhereInput | StockOnMembersScalarWhereInput[]
+  export type MemberSubscribeCreateNestedManyWithoutMemberInput = {
+    create?: XOR<MemberSubscribeCreateWithoutMemberInput, MemberSubscribeUncheckedCreateWithoutMemberInput> | MemberSubscribeCreateWithoutMemberInput[] | MemberSubscribeUncheckedCreateWithoutMemberInput[]
+    connectOrCreate?: MemberSubscribeCreateOrConnectWithoutMemberInput | MemberSubscribeCreateOrConnectWithoutMemberInput[]
+    createMany?: MemberSubscribeCreateManyMemberInputEnvelope
+    connect?: MemberSubscribeWhereUniqueInput | MemberSubscribeWhereUniqueInput[]
   }
 
-  export type StockOnMembersUncheckedUpdateManyWithoutMemberNestedInput = {
-    create?: XOR<StockOnMembersCreateWithoutMemberInput, StockOnMembersUncheckedCreateWithoutMemberInput> | StockOnMembersCreateWithoutMemberInput[] | StockOnMembersUncheckedCreateWithoutMemberInput[]
-    connectOrCreate?: StockOnMembersCreateOrConnectWithoutMemberInput | StockOnMembersCreateOrConnectWithoutMemberInput[]
-    upsert?: StockOnMembersUpsertWithWhereUniqueWithoutMemberInput | StockOnMembersUpsertWithWhereUniqueWithoutMemberInput[]
-    createMany?: StockOnMembersCreateManyMemberInputEnvelope
-    set?: StockOnMembersWhereUniqueInput | StockOnMembersWhereUniqueInput[]
-    disconnect?: StockOnMembersWhereUniqueInput | StockOnMembersWhereUniqueInput[]
-    delete?: StockOnMembersWhereUniqueInput | StockOnMembersWhereUniqueInput[]
-    connect?: StockOnMembersWhereUniqueInput | StockOnMembersWhereUniqueInput[]
-    update?: StockOnMembersUpdateWithWhereUniqueWithoutMemberInput | StockOnMembersUpdateWithWhereUniqueWithoutMemberInput[]
-    updateMany?: StockOnMembersUpdateManyWithWhereWithoutMemberInput | StockOnMembersUpdateManyWithWhereWithoutMemberInput[]
-    deleteMany?: StockOnMembersScalarWhereInput | StockOnMembersScalarWhereInput[]
+  export type StockPositionUncheckedCreateNestedManyWithoutMemberInput = {
+    create?: XOR<StockPositionCreateWithoutMemberInput, StockPositionUncheckedCreateWithoutMemberInput> | StockPositionCreateWithoutMemberInput[] | StockPositionUncheckedCreateWithoutMemberInput[]
+    connectOrCreate?: StockPositionCreateOrConnectWithoutMemberInput | StockPositionCreateOrConnectWithoutMemberInput[]
+    createMany?: StockPositionCreateManyMemberInputEnvelope
+    connect?: StockPositionWhereUniqueInput | StockPositionWhereUniqueInput[]
   }
 
-  export type StockOnMembersCreateNestedManyWithoutStockInput = {
-    create?: XOR<StockOnMembersCreateWithoutStockInput, StockOnMembersUncheckedCreateWithoutStockInput> | StockOnMembersCreateWithoutStockInput[] | StockOnMembersUncheckedCreateWithoutStockInput[]
-    connectOrCreate?: StockOnMembersCreateOrConnectWithoutStockInput | StockOnMembersCreateOrConnectWithoutStockInput[]
-    createMany?: StockOnMembersCreateManyStockInputEnvelope
-    connect?: StockOnMembersWhereUniqueInput | StockOnMembersWhereUniqueInput[]
+  export type MemberDetailUncheckedCreateNestedManyWithoutMemberInput = {
+    create?: XOR<MemberDetailCreateWithoutMemberInput, MemberDetailUncheckedCreateWithoutMemberInput> | MemberDetailCreateWithoutMemberInput[] | MemberDetailUncheckedCreateWithoutMemberInput[]
+    connectOrCreate?: MemberDetailCreateOrConnectWithoutMemberInput | MemberDetailCreateOrConnectWithoutMemberInput[]
+    createMany?: MemberDetailCreateManyMemberInputEnvelope
+    connect?: MemberDetailWhereUniqueInput | MemberDetailWhereUniqueInput[]
   }
 
-  export type StockRecordCreateNestedOneWithoutStockInput = {
-    create?: XOR<StockRecordCreateWithoutStockInput, StockRecordUncheckedCreateWithoutStockInput>
-    connectOrCreate?: StockRecordCreateOrConnectWithoutStockInput
-    connect?: StockRecordWhereUniqueInput
+  export type MemberSubscribeUncheckedCreateNestedManyWithoutMemberInput = {
+    create?: XOR<MemberSubscribeCreateWithoutMemberInput, MemberSubscribeUncheckedCreateWithoutMemberInput> | MemberSubscribeCreateWithoutMemberInput[] | MemberSubscribeUncheckedCreateWithoutMemberInput[]
+    connectOrCreate?: MemberSubscribeCreateOrConnectWithoutMemberInput | MemberSubscribeCreateOrConnectWithoutMemberInput[]
+    createMany?: MemberSubscribeCreateManyMemberInputEnvelope
+    connect?: MemberSubscribeWhereUniqueInput | MemberSubscribeWhereUniqueInput[]
   }
 
-  export type StockOnMembersUncheckedCreateNestedManyWithoutStockInput = {
-    create?: XOR<StockOnMembersCreateWithoutStockInput, StockOnMembersUncheckedCreateWithoutStockInput> | StockOnMembersCreateWithoutStockInput[] | StockOnMembersUncheckedCreateWithoutStockInput[]
-    connectOrCreate?: StockOnMembersCreateOrConnectWithoutStockInput | StockOnMembersCreateOrConnectWithoutStockInput[]
-    createMany?: StockOnMembersCreateManyStockInputEnvelope
-    connect?: StockOnMembersWhereUniqueInput | StockOnMembersWhereUniqueInput[]
+  export type IntFieldUpdateOperationsInput = {
+    set?: number
+    increment?: number
+    decrement?: number
+    multiply?: number
+    divide?: number
   }
 
-  export type StockRecordUncheckedCreateNestedOneWithoutStockInput = {
-    create?: XOR<StockRecordCreateWithoutStockInput, StockRecordUncheckedCreateWithoutStockInput>
-    connectOrCreate?: StockRecordCreateOrConnectWithoutStockInput
-    connect?: StockRecordWhereUniqueInput
+  export type StockPositionUpdateManyWithoutMemberNestedInput = {
+    create?: XOR<StockPositionCreateWithoutMemberInput, StockPositionUncheckedCreateWithoutMemberInput> | StockPositionCreateWithoutMemberInput[] | StockPositionUncheckedCreateWithoutMemberInput[]
+    connectOrCreate?: StockPositionCreateOrConnectWithoutMemberInput | StockPositionCreateOrConnectWithoutMemberInput[]
+    upsert?: StockPositionUpsertWithWhereUniqueWithoutMemberInput | StockPositionUpsertWithWhereUniqueWithoutMemberInput[]
+    createMany?: StockPositionCreateManyMemberInputEnvelope
+    set?: StockPositionWhereUniqueInput | StockPositionWhereUniqueInput[]
+    disconnect?: StockPositionWhereUniqueInput | StockPositionWhereUniqueInput[]
+    delete?: StockPositionWhereUniqueInput | StockPositionWhereUniqueInput[]
+    connect?: StockPositionWhereUniqueInput | StockPositionWhereUniqueInput[]
+    update?: StockPositionUpdateWithWhereUniqueWithoutMemberInput | StockPositionUpdateWithWhereUniqueWithoutMemberInput[]
+    updateMany?: StockPositionUpdateManyWithWhereWithoutMemberInput | StockPositionUpdateManyWithWhereWithoutMemberInput[]
+    deleteMany?: StockPositionScalarWhereInput | StockPositionScalarWhereInput[]
+  }
+
+  export type MemberDetailUpdateManyWithoutMemberNestedInput = {
+    create?: XOR<MemberDetailCreateWithoutMemberInput, MemberDetailUncheckedCreateWithoutMemberInput> | MemberDetailCreateWithoutMemberInput[] | MemberDetailUncheckedCreateWithoutMemberInput[]
+    connectOrCreate?: MemberDetailCreateOrConnectWithoutMemberInput | MemberDetailCreateOrConnectWithoutMemberInput[]
+    upsert?: MemberDetailUpsertWithWhereUniqueWithoutMemberInput | MemberDetailUpsertWithWhereUniqueWithoutMemberInput[]
+    createMany?: MemberDetailCreateManyMemberInputEnvelope
+    set?: MemberDetailWhereUniqueInput | MemberDetailWhereUniqueInput[]
+    disconnect?: MemberDetailWhereUniqueInput | MemberDetailWhereUniqueInput[]
+    delete?: MemberDetailWhereUniqueInput | MemberDetailWhereUniqueInput[]
+    connect?: MemberDetailWhereUniqueInput | MemberDetailWhereUniqueInput[]
+    update?: MemberDetailUpdateWithWhereUniqueWithoutMemberInput | MemberDetailUpdateWithWhereUniqueWithoutMemberInput[]
+    updateMany?: MemberDetailUpdateManyWithWhereWithoutMemberInput | MemberDetailUpdateManyWithWhereWithoutMemberInput[]
+    deleteMany?: MemberDetailScalarWhereInput | MemberDetailScalarWhereInput[]
+  }
+
+  export type MemberSubscribeUpdateManyWithoutMemberNestedInput = {
+    create?: XOR<MemberSubscribeCreateWithoutMemberInput, MemberSubscribeUncheckedCreateWithoutMemberInput> | MemberSubscribeCreateWithoutMemberInput[] | MemberSubscribeUncheckedCreateWithoutMemberInput[]
+    connectOrCreate?: MemberSubscribeCreateOrConnectWithoutMemberInput | MemberSubscribeCreateOrConnectWithoutMemberInput[]
+    upsert?: MemberSubscribeUpsertWithWhereUniqueWithoutMemberInput | MemberSubscribeUpsertWithWhereUniqueWithoutMemberInput[]
+    createMany?: MemberSubscribeCreateManyMemberInputEnvelope
+    set?: MemberSubscribeWhereUniqueInput | MemberSubscribeWhereUniqueInput[]
+    disconnect?: MemberSubscribeWhereUniqueInput | MemberSubscribeWhereUniqueInput[]
+    delete?: MemberSubscribeWhereUniqueInput | MemberSubscribeWhereUniqueInput[]
+    connect?: MemberSubscribeWhereUniqueInput | MemberSubscribeWhereUniqueInput[]
+    update?: MemberSubscribeUpdateWithWhereUniqueWithoutMemberInput | MemberSubscribeUpdateWithWhereUniqueWithoutMemberInput[]
+    updateMany?: MemberSubscribeUpdateManyWithWhereWithoutMemberInput | MemberSubscribeUpdateManyWithWhereWithoutMemberInput[]
+    deleteMany?: MemberSubscribeScalarWhereInput | MemberSubscribeScalarWhereInput[]
+  }
+
+  export type StockPositionUncheckedUpdateManyWithoutMemberNestedInput = {
+    create?: XOR<StockPositionCreateWithoutMemberInput, StockPositionUncheckedCreateWithoutMemberInput> | StockPositionCreateWithoutMemberInput[] | StockPositionUncheckedCreateWithoutMemberInput[]
+    connectOrCreate?: StockPositionCreateOrConnectWithoutMemberInput | StockPositionCreateOrConnectWithoutMemberInput[]
+    upsert?: StockPositionUpsertWithWhereUniqueWithoutMemberInput | StockPositionUpsertWithWhereUniqueWithoutMemberInput[]
+    createMany?: StockPositionCreateManyMemberInputEnvelope
+    set?: StockPositionWhereUniqueInput | StockPositionWhereUniqueInput[]
+    disconnect?: StockPositionWhereUniqueInput | StockPositionWhereUniqueInput[]
+    delete?: StockPositionWhereUniqueInput | StockPositionWhereUniqueInput[]
+    connect?: StockPositionWhereUniqueInput | StockPositionWhereUniqueInput[]
+    update?: StockPositionUpdateWithWhereUniqueWithoutMemberInput | StockPositionUpdateWithWhereUniqueWithoutMemberInput[]
+    updateMany?: StockPositionUpdateManyWithWhereWithoutMemberInput | StockPositionUpdateManyWithWhereWithoutMemberInput[]
+    deleteMany?: StockPositionScalarWhereInput | StockPositionScalarWhereInput[]
+  }
+
+  export type MemberDetailUncheckedUpdateManyWithoutMemberNestedInput = {
+    create?: XOR<MemberDetailCreateWithoutMemberInput, MemberDetailUncheckedCreateWithoutMemberInput> | MemberDetailCreateWithoutMemberInput[] | MemberDetailUncheckedCreateWithoutMemberInput[]
+    connectOrCreate?: MemberDetailCreateOrConnectWithoutMemberInput | MemberDetailCreateOrConnectWithoutMemberInput[]
+    upsert?: MemberDetailUpsertWithWhereUniqueWithoutMemberInput | MemberDetailUpsertWithWhereUniqueWithoutMemberInput[]
+    createMany?: MemberDetailCreateManyMemberInputEnvelope
+    set?: MemberDetailWhereUniqueInput | MemberDetailWhereUniqueInput[]
+    disconnect?: MemberDetailWhereUniqueInput | MemberDetailWhereUniqueInput[]
+    delete?: MemberDetailWhereUniqueInput | MemberDetailWhereUniqueInput[]
+    connect?: MemberDetailWhereUniqueInput | MemberDetailWhereUniqueInput[]
+    update?: MemberDetailUpdateWithWhereUniqueWithoutMemberInput | MemberDetailUpdateWithWhereUniqueWithoutMemberInput[]
+    updateMany?: MemberDetailUpdateManyWithWhereWithoutMemberInput | MemberDetailUpdateManyWithWhereWithoutMemberInput[]
+    deleteMany?: MemberDetailScalarWhereInput | MemberDetailScalarWhereInput[]
+  }
+
+  export type MemberSubscribeUncheckedUpdateManyWithoutMemberNestedInput = {
+    create?: XOR<MemberSubscribeCreateWithoutMemberInput, MemberSubscribeUncheckedCreateWithoutMemberInput> | MemberSubscribeCreateWithoutMemberInput[] | MemberSubscribeUncheckedCreateWithoutMemberInput[]
+    connectOrCreate?: MemberSubscribeCreateOrConnectWithoutMemberInput | MemberSubscribeCreateOrConnectWithoutMemberInput[]
+    upsert?: MemberSubscribeUpsertWithWhereUniqueWithoutMemberInput | MemberSubscribeUpsertWithWhereUniqueWithoutMemberInput[]
+    createMany?: MemberSubscribeCreateManyMemberInputEnvelope
+    set?: MemberSubscribeWhereUniqueInput | MemberSubscribeWhereUniqueInput[]
+    disconnect?: MemberSubscribeWhereUniqueInput | MemberSubscribeWhereUniqueInput[]
+    delete?: MemberSubscribeWhereUniqueInput | MemberSubscribeWhereUniqueInput[]
+    connect?: MemberSubscribeWhereUniqueInput | MemberSubscribeWhereUniqueInput[]
+    update?: MemberSubscribeUpdateWithWhereUniqueWithoutMemberInput | MemberSubscribeUpdateWithWhereUniqueWithoutMemberInput[]
+    updateMany?: MemberSubscribeUpdateManyWithWhereWithoutMemberInput | MemberSubscribeUpdateManyWithWhereWithoutMemberInput[]
+    deleteMany?: MemberSubscribeScalarWhereInput | MemberSubscribeScalarWhereInput[]
+  }
+
+  export type StockPositionCreateNestedManyWithoutStockSymbolInput = {
+    create?: XOR<StockPositionCreateWithoutStockSymbolInput, StockPositionUncheckedCreateWithoutStockSymbolInput> | StockPositionCreateWithoutStockSymbolInput[] | StockPositionUncheckedCreateWithoutStockSymbolInput[]
+    connectOrCreate?: StockPositionCreateOrConnectWithoutStockSymbolInput | StockPositionCreateOrConnectWithoutStockSymbolInput[]
+    createMany?: StockPositionCreateManyStockSymbolInputEnvelope
+    connect?: StockPositionWhereUniqueInput | StockPositionWhereUniqueInput[]
+  }
+
+  export type StockPositionUncheckedCreateNestedManyWithoutStockSymbolInput = {
+    create?: XOR<StockPositionCreateWithoutStockSymbolInput, StockPositionUncheckedCreateWithoutStockSymbolInput> | StockPositionCreateWithoutStockSymbolInput[] | StockPositionUncheckedCreateWithoutStockSymbolInput[]
+    connectOrCreate?: StockPositionCreateOrConnectWithoutStockSymbolInput | StockPositionCreateOrConnectWithoutStockSymbolInput[]
+    createMany?: StockPositionCreateManyStockSymbolInputEnvelope
+    connect?: StockPositionWhereUniqueInput | StockPositionWhereUniqueInput[]
+  }
+
+  export type StockPositionUpdateManyWithoutStockSymbolNestedInput = {
+    create?: XOR<StockPositionCreateWithoutStockSymbolInput, StockPositionUncheckedCreateWithoutStockSymbolInput> | StockPositionCreateWithoutStockSymbolInput[] | StockPositionUncheckedCreateWithoutStockSymbolInput[]
+    connectOrCreate?: StockPositionCreateOrConnectWithoutStockSymbolInput | StockPositionCreateOrConnectWithoutStockSymbolInput[]
+    upsert?: StockPositionUpsertWithWhereUniqueWithoutStockSymbolInput | StockPositionUpsertWithWhereUniqueWithoutStockSymbolInput[]
+    createMany?: StockPositionCreateManyStockSymbolInputEnvelope
+    set?: StockPositionWhereUniqueInput | StockPositionWhereUniqueInput[]
+    disconnect?: StockPositionWhereUniqueInput | StockPositionWhereUniqueInput[]
+    delete?: StockPositionWhereUniqueInput | StockPositionWhereUniqueInput[]
+    connect?: StockPositionWhereUniqueInput | StockPositionWhereUniqueInput[]
+    update?: StockPositionUpdateWithWhereUniqueWithoutStockSymbolInput | StockPositionUpdateWithWhereUniqueWithoutStockSymbolInput[]
+    updateMany?: StockPositionUpdateManyWithWhereWithoutStockSymbolInput | StockPositionUpdateManyWithWhereWithoutStockSymbolInput[]
+    deleteMany?: StockPositionScalarWhereInput | StockPositionScalarWhereInput[]
+  }
+
+  export type StockPositionUncheckedUpdateManyWithoutStockSymbolNestedInput = {
+    create?: XOR<StockPositionCreateWithoutStockSymbolInput, StockPositionUncheckedCreateWithoutStockSymbolInput> | StockPositionCreateWithoutStockSymbolInput[] | StockPositionUncheckedCreateWithoutStockSymbolInput[]
+    connectOrCreate?: StockPositionCreateOrConnectWithoutStockSymbolInput | StockPositionCreateOrConnectWithoutStockSymbolInput[]
+    upsert?: StockPositionUpsertWithWhereUniqueWithoutStockSymbolInput | StockPositionUpsertWithWhereUniqueWithoutStockSymbolInput[]
+    createMany?: StockPositionCreateManyStockSymbolInputEnvelope
+    set?: StockPositionWhereUniqueInput | StockPositionWhereUniqueInput[]
+    disconnect?: StockPositionWhereUniqueInput | StockPositionWhereUniqueInput[]
+    delete?: StockPositionWhereUniqueInput | StockPositionWhereUniqueInput[]
+    connect?: StockPositionWhereUniqueInput | StockPositionWhereUniqueInput[]
+    update?: StockPositionUpdateWithWhereUniqueWithoutStockSymbolInput | StockPositionUpdateWithWhereUniqueWithoutStockSymbolInput[]
+    updateMany?: StockPositionUpdateManyWithWhereWithoutStockSymbolInput | StockPositionUpdateManyWithWhereWithoutStockSymbolInput[]
+    deleteMany?: StockPositionScalarWhereInput | StockPositionScalarWhereInput[]
+  }
+
+  export type StockRecordCreateNestedManyWithoutStockInput = {
+    create?: XOR<StockRecordCreateWithoutStockInput, StockRecordUncheckedCreateWithoutStockInput> | StockRecordCreateWithoutStockInput[] | StockRecordUncheckedCreateWithoutStockInput[]
+    connectOrCreate?: StockRecordCreateOrConnectWithoutStockInput | StockRecordCreateOrConnectWithoutStockInput[]
+    createMany?: StockRecordCreateManyStockInputEnvelope
+    connect?: StockRecordWhereUniqueInput | StockRecordWhereUniqueInput[]
+  }
+
+  export type StockRecordUncheckedCreateNestedManyWithoutStockInput = {
+    create?: XOR<StockRecordCreateWithoutStockInput, StockRecordUncheckedCreateWithoutStockInput> | StockRecordCreateWithoutStockInput[] | StockRecordUncheckedCreateWithoutStockInput[]
+    connectOrCreate?: StockRecordCreateOrConnectWithoutStockInput | StockRecordCreateOrConnectWithoutStockInput[]
+    createMany?: StockRecordCreateManyStockInputEnvelope
+    connect?: StockRecordWhereUniqueInput | StockRecordWhereUniqueInput[]
   }
 
   export type BoolFieldUpdateOperationsInput = {
@@ -8841,52 +24164,32 @@ export namespace Prisma {
     set?: $Enums.STOCK_STATUS
   }
 
-  export type StockOnMembersUpdateManyWithoutStockNestedInput = {
-    create?: XOR<StockOnMembersCreateWithoutStockInput, StockOnMembersUncheckedCreateWithoutStockInput> | StockOnMembersCreateWithoutStockInput[] | StockOnMembersUncheckedCreateWithoutStockInput[]
-    connectOrCreate?: StockOnMembersCreateOrConnectWithoutStockInput | StockOnMembersCreateOrConnectWithoutStockInput[]
-    upsert?: StockOnMembersUpsertWithWhereUniqueWithoutStockInput | StockOnMembersUpsertWithWhereUniqueWithoutStockInput[]
-    createMany?: StockOnMembersCreateManyStockInputEnvelope
-    set?: StockOnMembersWhereUniqueInput | StockOnMembersWhereUniqueInput[]
-    disconnect?: StockOnMembersWhereUniqueInput | StockOnMembersWhereUniqueInput[]
-    delete?: StockOnMembersWhereUniqueInput | StockOnMembersWhereUniqueInput[]
-    connect?: StockOnMembersWhereUniqueInput | StockOnMembersWhereUniqueInput[]
-    update?: StockOnMembersUpdateWithWhereUniqueWithoutStockInput | StockOnMembersUpdateWithWhereUniqueWithoutStockInput[]
-    updateMany?: StockOnMembersUpdateManyWithWhereWithoutStockInput | StockOnMembersUpdateManyWithWhereWithoutStockInput[]
-    deleteMany?: StockOnMembersScalarWhereInput | StockOnMembersScalarWhereInput[]
+  export type StockRecordUpdateManyWithoutStockNestedInput = {
+    create?: XOR<StockRecordCreateWithoutStockInput, StockRecordUncheckedCreateWithoutStockInput> | StockRecordCreateWithoutStockInput[] | StockRecordUncheckedCreateWithoutStockInput[]
+    connectOrCreate?: StockRecordCreateOrConnectWithoutStockInput | StockRecordCreateOrConnectWithoutStockInput[]
+    upsert?: StockRecordUpsertWithWhereUniqueWithoutStockInput | StockRecordUpsertWithWhereUniqueWithoutStockInput[]
+    createMany?: StockRecordCreateManyStockInputEnvelope
+    set?: StockRecordWhereUniqueInput | StockRecordWhereUniqueInput[]
+    disconnect?: StockRecordWhereUniqueInput | StockRecordWhereUniqueInput[]
+    delete?: StockRecordWhereUniqueInput | StockRecordWhereUniqueInput[]
+    connect?: StockRecordWhereUniqueInput | StockRecordWhereUniqueInput[]
+    update?: StockRecordUpdateWithWhereUniqueWithoutStockInput | StockRecordUpdateWithWhereUniqueWithoutStockInput[]
+    updateMany?: StockRecordUpdateManyWithWhereWithoutStockInput | StockRecordUpdateManyWithWhereWithoutStockInput[]
+    deleteMany?: StockRecordScalarWhereInput | StockRecordScalarWhereInput[]
   }
 
-  export type StockRecordUpdateOneWithoutStockNestedInput = {
-    create?: XOR<StockRecordCreateWithoutStockInput, StockRecordUncheckedCreateWithoutStockInput>
-    connectOrCreate?: StockRecordCreateOrConnectWithoutStockInput
-    upsert?: StockRecordUpsertWithoutStockInput
-    disconnect?: StockRecordWhereInput | boolean
-    delete?: StockRecordWhereInput | boolean
-    connect?: StockRecordWhereUniqueInput
-    update?: XOR<XOR<StockRecordUpdateToOneWithWhereWithoutStockInput, StockRecordUpdateWithoutStockInput>, StockRecordUncheckedUpdateWithoutStockInput>
-  }
-
-  export type StockOnMembersUncheckedUpdateManyWithoutStockNestedInput = {
-    create?: XOR<StockOnMembersCreateWithoutStockInput, StockOnMembersUncheckedCreateWithoutStockInput> | StockOnMembersCreateWithoutStockInput[] | StockOnMembersUncheckedCreateWithoutStockInput[]
-    connectOrCreate?: StockOnMembersCreateOrConnectWithoutStockInput | StockOnMembersCreateOrConnectWithoutStockInput[]
-    upsert?: StockOnMembersUpsertWithWhereUniqueWithoutStockInput | StockOnMembersUpsertWithWhereUniqueWithoutStockInput[]
-    createMany?: StockOnMembersCreateManyStockInputEnvelope
-    set?: StockOnMembersWhereUniqueInput | StockOnMembersWhereUniqueInput[]
-    disconnect?: StockOnMembersWhereUniqueInput | StockOnMembersWhereUniqueInput[]
-    delete?: StockOnMembersWhereUniqueInput | StockOnMembersWhereUniqueInput[]
-    connect?: StockOnMembersWhereUniqueInput | StockOnMembersWhereUniqueInput[]
-    update?: StockOnMembersUpdateWithWhereUniqueWithoutStockInput | StockOnMembersUpdateWithWhereUniqueWithoutStockInput[]
-    updateMany?: StockOnMembersUpdateManyWithWhereWithoutStockInput | StockOnMembersUpdateManyWithWhereWithoutStockInput[]
-    deleteMany?: StockOnMembersScalarWhereInput | StockOnMembersScalarWhereInput[]
-  }
-
-  export type StockRecordUncheckedUpdateOneWithoutStockNestedInput = {
-    create?: XOR<StockRecordCreateWithoutStockInput, StockRecordUncheckedCreateWithoutStockInput>
-    connectOrCreate?: StockRecordCreateOrConnectWithoutStockInput
-    upsert?: StockRecordUpsertWithoutStockInput
-    disconnect?: StockRecordWhereInput | boolean
-    delete?: StockRecordWhereInput | boolean
-    connect?: StockRecordWhereUniqueInput
-    update?: XOR<XOR<StockRecordUpdateToOneWithWhereWithoutStockInput, StockRecordUpdateWithoutStockInput>, StockRecordUncheckedUpdateWithoutStockInput>
+  export type StockRecordUncheckedUpdateManyWithoutStockNestedInput = {
+    create?: XOR<StockRecordCreateWithoutStockInput, StockRecordUncheckedCreateWithoutStockInput> | StockRecordCreateWithoutStockInput[] | StockRecordUncheckedCreateWithoutStockInput[]
+    connectOrCreate?: StockRecordCreateOrConnectWithoutStockInput | StockRecordCreateOrConnectWithoutStockInput[]
+    upsert?: StockRecordUpsertWithWhereUniqueWithoutStockInput | StockRecordUpsertWithWhereUniqueWithoutStockInput[]
+    createMany?: StockRecordCreateManyStockInputEnvelope
+    set?: StockRecordWhereUniqueInput | StockRecordWhereUniqueInput[]
+    disconnect?: StockRecordWhereUniqueInput | StockRecordWhereUniqueInput[]
+    delete?: StockRecordWhereUniqueInput | StockRecordWhereUniqueInput[]
+    connect?: StockRecordWhereUniqueInput | StockRecordWhereUniqueInput[]
+    update?: StockRecordUpdateWithWhereUniqueWithoutStockInput | StockRecordUpdateWithWhereUniqueWithoutStockInput[]
+    updateMany?: StockRecordUpdateManyWithWhereWithoutStockInput | StockRecordUpdateManyWithWhereWithoutStockInput[]
+    deleteMany?: StockRecordScalarWhereInput | StockRecordScalarWhereInput[]
   }
 
   export type StockCreateNestedOneWithoutStockRecordInput = {
@@ -8903,32 +24206,84 @@ export namespace Prisma {
     update?: XOR<XOR<StockUpdateToOneWithWhereWithoutStockRecordInput, StockUpdateWithoutStockRecordInput>, StockUncheckedUpdateWithoutStockRecordInput>
   }
 
-  export type MemberCreateNestedOneWithoutStocksInput = {
-    create?: XOR<MemberCreateWithoutStocksInput, MemberUncheckedCreateWithoutStocksInput>
-    connectOrCreate?: MemberCreateOrConnectWithoutStocksInput
+  export type NullableIntFieldUpdateOperationsInput = {
+    set?: number | null
+    increment?: number
+    decrement?: number
+    multiply?: number
+    divide?: number
+  }
+
+  export type DecimalFieldUpdateOperationsInput = {
+    set?: Decimal | DecimalJsLike | number | string
+    increment?: Decimal | DecimalJsLike | number | string
+    decrement?: Decimal | DecimalJsLike | number | string
+    multiply?: Decimal | DecimalJsLike | number | string
+    divide?: Decimal | DecimalJsLike | number | string
+  }
+
+  export type MemberCreateNestedOneWithoutMemberSubscribeInput = {
+    create?: XOR<MemberCreateWithoutMemberSubscribeInput, MemberUncheckedCreateWithoutMemberSubscribeInput>
+    connectOrCreate?: MemberCreateOrConnectWithoutMemberSubscribeInput
     connect?: MemberWhereUniqueInput
   }
 
-  export type StockCreateNestedOneWithoutMembersInput = {
-    create?: XOR<StockCreateWithoutMembersInput, StockUncheckedCreateWithoutMembersInput>
-    connectOrCreate?: StockCreateOrConnectWithoutMembersInput
-    connect?: StockWhereUniqueInput
+  export type NullableDecimalFieldUpdateOperationsInput = {
+    set?: Decimal | DecimalJsLike | number | string | null
+    increment?: Decimal | DecimalJsLike | number | string
+    decrement?: Decimal | DecimalJsLike | number | string
+    multiply?: Decimal | DecimalJsLike | number | string
+    divide?: Decimal | DecimalJsLike | number | string
   }
 
-  export type MemberUpdateOneRequiredWithoutStocksNestedInput = {
-    create?: XOR<MemberCreateWithoutStocksInput, MemberUncheckedCreateWithoutStocksInput>
-    connectOrCreate?: MemberCreateOrConnectWithoutStocksInput
-    upsert?: MemberUpsertWithoutStocksInput
+  export type MemberUpdateOneRequiredWithoutMemberSubscribeNestedInput = {
+    create?: XOR<MemberCreateWithoutMemberSubscribeInput, MemberUncheckedCreateWithoutMemberSubscribeInput>
+    connectOrCreate?: MemberCreateOrConnectWithoutMemberSubscribeInput
+    upsert?: MemberUpsertWithoutMemberSubscribeInput
     connect?: MemberWhereUniqueInput
-    update?: XOR<XOR<MemberUpdateToOneWithWhereWithoutStocksInput, MemberUpdateWithoutStocksInput>, MemberUncheckedUpdateWithoutStocksInput>
+    update?: XOR<XOR<MemberUpdateToOneWithWhereWithoutMemberSubscribeInput, MemberUpdateWithoutMemberSubscribeInput>, MemberUncheckedUpdateWithoutMemberSubscribeInput>
   }
 
-  export type StockUpdateOneRequiredWithoutMembersNestedInput = {
-    create?: XOR<StockCreateWithoutMembersInput, StockUncheckedCreateWithoutMembersInput>
-    connectOrCreate?: StockCreateOrConnectWithoutMembersInput
-    upsert?: StockUpsertWithoutMembersInput
-    connect?: StockWhereUniqueInput
-    update?: XOR<XOR<StockUpdateToOneWithWhereWithoutMembersInput, StockUpdateWithoutMembersInput>, StockUncheckedUpdateWithoutMembersInput>
+  export type MemberCreateNestedOneWithoutStockPostionInput = {
+    create?: XOR<MemberCreateWithoutStockPostionInput, MemberUncheckedCreateWithoutStockPostionInput>
+    connectOrCreate?: MemberCreateOrConnectWithoutStockPostionInput
+    connect?: MemberWhereUniqueInput
+  }
+
+  export type StockSymbolCreateNestedOneWithoutStockPostionInput = {
+    create?: XOR<StockSymbolCreateWithoutStockPostionInput, StockSymbolUncheckedCreateWithoutStockPostionInput>
+    connectOrCreate?: StockSymbolCreateOrConnectWithoutStockPostionInput
+    connect?: StockSymbolWhereUniqueInput
+  }
+
+  export type MemberUpdateOneRequiredWithoutStockPostionNestedInput = {
+    create?: XOR<MemberCreateWithoutStockPostionInput, MemberUncheckedCreateWithoutStockPostionInput>
+    connectOrCreate?: MemberCreateOrConnectWithoutStockPostionInput
+    upsert?: MemberUpsertWithoutStockPostionInput
+    connect?: MemberWhereUniqueInput
+    update?: XOR<XOR<MemberUpdateToOneWithWhereWithoutStockPostionInput, MemberUpdateWithoutStockPostionInput>, MemberUncheckedUpdateWithoutStockPostionInput>
+  }
+
+  export type StockSymbolUpdateOneRequiredWithoutStockPostionNestedInput = {
+    create?: XOR<StockSymbolCreateWithoutStockPostionInput, StockSymbolUncheckedCreateWithoutStockPostionInput>
+    connectOrCreate?: StockSymbolCreateOrConnectWithoutStockPostionInput
+    upsert?: StockSymbolUpsertWithoutStockPostionInput
+    connect?: StockSymbolWhereUniqueInput
+    update?: XOR<XOR<StockSymbolUpdateToOneWithWhereWithoutStockPostionInput, StockSymbolUpdateWithoutStockPostionInput>, StockSymbolUncheckedUpdateWithoutStockPostionInput>
+  }
+
+  export type MemberCreateNestedOneWithoutMemberDetailInput = {
+    create?: XOR<MemberCreateWithoutMemberDetailInput, MemberUncheckedCreateWithoutMemberDetailInput>
+    connectOrCreate?: MemberCreateOrConnectWithoutMemberDetailInput
+    connect?: MemberWhereUniqueInput
+  }
+
+  export type MemberUpdateOneRequiredWithoutMemberDetailNestedInput = {
+    create?: XOR<MemberCreateWithoutMemberDetailInput, MemberUncheckedCreateWithoutMemberDetailInput>
+    connectOrCreate?: MemberCreateOrConnectWithoutMemberDetailInput
+    upsert?: MemberUpsertWithoutMemberDetailInput
+    connect?: MemberWhereUniqueInput
+    update?: XOR<XOR<MemberUpdateToOneWithWhereWithoutMemberDetailInput, MemberUpdateWithoutMemberDetailInput>, MemberUncheckedUpdateWithoutMemberDetailInput>
   }
 
   export type NestedBigIntFilter<$PrismaModel = never> = {
@@ -9119,6 +24474,44 @@ export namespace Prisma {
     _min?: NestedDateTimeNullableFilter<$PrismaModel>
     _max?: NestedDateTimeNullableFilter<$PrismaModel>
   }
+  export type NestedJsonNullableFilter<$PrismaModel = never> = 
+    | PatchUndefined<
+        Either<Required<NestedJsonNullableFilterBase<$PrismaModel>>, Exclude<keyof Required<NestedJsonNullableFilterBase<$PrismaModel>>, 'path'>>,
+        Required<NestedJsonNullableFilterBase<$PrismaModel>>
+      >
+    | OptionalFlat<Omit<Required<NestedJsonNullableFilterBase<$PrismaModel>>, 'path'>>
+
+  export type NestedJsonNullableFilterBase<$PrismaModel = never> = {
+    equals?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | JsonNullValueFilter
+    path?: string
+    string_contains?: string | StringFieldRefInput<$PrismaModel>
+    string_starts_with?: string | StringFieldRefInput<$PrismaModel>
+    string_ends_with?: string | StringFieldRefInput<$PrismaModel>
+    array_contains?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
+    array_starts_with?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
+    array_ends_with?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
+    lt?: InputJsonValue
+    lte?: InputJsonValue
+    gt?: InputJsonValue
+    gte?: InputJsonValue
+    not?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | JsonNullValueFilter
+  }
+
+  export type NestedIntWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel>
+    in?: number[]
+    notIn?: number[]
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntWithAggregatesFilter<$PrismaModel> | number
+    _count?: NestedIntFilter<$PrismaModel>
+    _avg?: NestedFloatFilter<$PrismaModel>
+    _sum?: NestedIntFilter<$PrismaModel>
+    _min?: NestedIntFilter<$PrismaModel>
+    _max?: NestedIntFilter<$PrismaModel>
+  }
 
   export type NestedBoolFilter<$PrismaModel = never> = {
     equals?: boolean | BooleanFieldRefInput<$PrismaModel>
@@ -9149,98 +24542,443 @@ export namespace Prisma {
     _min?: NestedEnumSTOCK_STATUSFilter<$PrismaModel>
     _max?: NestedEnumSTOCK_STATUSFilter<$PrismaModel>
   }
+  export type NestedJsonFilter<$PrismaModel = never> = 
+    | PatchUndefined<
+        Either<Required<NestedJsonFilterBase<$PrismaModel>>, Exclude<keyof Required<NestedJsonFilterBase<$PrismaModel>>, 'path'>>,
+        Required<NestedJsonFilterBase<$PrismaModel>>
+      >
+    | OptionalFlat<Omit<Required<NestedJsonFilterBase<$PrismaModel>>, 'path'>>
 
-  export type StockOnMembersCreateWithoutMemberInput = {
+  export type NestedJsonFilterBase<$PrismaModel = never> = {
+    equals?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | JsonNullValueFilter
+    path?: string
+    string_contains?: string | StringFieldRefInput<$PrismaModel>
+    string_starts_with?: string | StringFieldRefInput<$PrismaModel>
+    string_ends_with?: string | StringFieldRefInput<$PrismaModel>
+    array_contains?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
+    array_starts_with?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
+    array_ends_with?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
+    lt?: InputJsonValue
+    lte?: InputJsonValue
+    gt?: InputJsonValue
+    gte?: InputJsonValue
+    not?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | JsonNullValueFilter
+  }
+
+  export type NestedIntNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel> | null
+    in?: number[] | null
+    notIn?: number[] | null
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntNullableWithAggregatesFilter<$PrismaModel> | number | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _avg?: NestedFloatNullableFilter<$PrismaModel>
+    _sum?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedIntNullableFilter<$PrismaModel>
+    _max?: NestedIntNullableFilter<$PrismaModel>
+  }
+
+  export type NestedFloatNullableFilter<$PrismaModel = never> = {
+    equals?: number | FloatFieldRefInput<$PrismaModel> | null
+    in?: number[] | null
+    notIn?: number[] | null
+    lt?: number | FloatFieldRefInput<$PrismaModel>
+    lte?: number | FloatFieldRefInput<$PrismaModel>
+    gt?: number | FloatFieldRefInput<$PrismaModel>
+    gte?: number | FloatFieldRefInput<$PrismaModel>
+    not?: NestedFloatNullableFilter<$PrismaModel> | number | null
+  }
+
+  export type NestedDecimalFilter<$PrismaModel = never> = {
+    equals?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
+    in?: Decimal[] | DecimalJsLike[] | number[] | string[]
+    notIn?: Decimal[] | DecimalJsLike[] | number[] | string[]
+    lt?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
+    lte?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
+    gt?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
+    gte?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
+    not?: NestedDecimalFilter<$PrismaModel> | Decimal | DecimalJsLike | number | string
+  }
+
+  export type NestedDecimalWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
+    in?: Decimal[] | DecimalJsLike[] | number[] | string[]
+    notIn?: Decimal[] | DecimalJsLike[] | number[] | string[]
+    lt?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
+    lte?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
+    gt?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
+    gte?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
+    not?: NestedDecimalWithAggregatesFilter<$PrismaModel> | Decimal | DecimalJsLike | number | string
+    _count?: NestedIntFilter<$PrismaModel>
+    _avg?: NestedDecimalFilter<$PrismaModel>
+    _sum?: NestedDecimalFilter<$PrismaModel>
+    _min?: NestedDecimalFilter<$PrismaModel>
+    _max?: NestedDecimalFilter<$PrismaModel>
+  }
+
+  export type NestedDecimalNullableFilter<$PrismaModel = never> = {
+    equals?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel> | null
+    in?: Decimal[] | DecimalJsLike[] | number[] | string[] | null
+    notIn?: Decimal[] | DecimalJsLike[] | number[] | string[] | null
+    lt?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
+    lte?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
+    gt?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
+    gte?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
+    not?: NestedDecimalNullableFilter<$PrismaModel> | Decimal | DecimalJsLike | number | string | null
+  }
+
+  export type NestedDecimalNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel> | null
+    in?: Decimal[] | DecimalJsLike[] | number[] | string[] | null
+    notIn?: Decimal[] | DecimalJsLike[] | number[] | string[] | null
+    lt?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
+    lte?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
+    gt?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
+    gte?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
+    not?: NestedDecimalNullableWithAggregatesFilter<$PrismaModel> | Decimal | DecimalJsLike | number | string | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _avg?: NestedDecimalNullableFilter<$PrismaModel>
+    _sum?: NestedDecimalNullableFilter<$PrismaModel>
+    _min?: NestedDecimalNullableFilter<$PrismaModel>
+    _max?: NestedDecimalNullableFilter<$PrismaModel>
+  }
+
+  export type StockPositionCreateWithoutMemberInput = {
     id?: bigint | number
+    amount: number
+    blast: string
+    price: string
+    mode: number
+    status: number
+    bond?: string | null
+    identifier?: string | null
+    lever?: string | null
+    stopLoss?: string | null
+    takeProfit?: string | null
+    market?: string | null
+    pl?: string | null
+    rate?: string | null
+    currentPrice?: string | null
     createdAt?: Date | string
-    stock: StockCreateNestedOneWithoutMembersInput
+    updatedAt?: Date | string | null
+    stockSymbol: StockSymbolCreateNestedOneWithoutStockPostionInput
   }
 
-  export type StockOnMembersUncheckedCreateWithoutMemberInput = {
+  export type StockPositionUncheckedCreateWithoutMemberInput = {
     id?: bigint | number
-    stockId: bigint | number
+    amount: number
+    blast: string
+    price: string
+    mode: number
+    status: number
+    bond?: string | null
+    identifier?: string | null
+    lever?: string | null
+    stopLoss?: string | null
+    takeProfit?: string | null
+    market?: string | null
+    pl?: string | null
+    rate?: string | null
+    currentPrice?: string | null
+    stockSymbolId: bigint | number
     createdAt?: Date | string
+    updatedAt?: Date | string | null
   }
 
-  export type StockOnMembersCreateOrConnectWithoutMemberInput = {
-    where: StockOnMembersWhereUniqueInput
-    create: XOR<StockOnMembersCreateWithoutMemberInput, StockOnMembersUncheckedCreateWithoutMemberInput>
+  export type StockPositionCreateOrConnectWithoutMemberInput = {
+    where: StockPositionWhereUniqueInput
+    create: XOR<StockPositionCreateWithoutMemberInput, StockPositionUncheckedCreateWithoutMemberInput>
   }
 
-  export type StockOnMembersCreateManyMemberInputEnvelope = {
-    data: StockOnMembersCreateManyMemberInput | StockOnMembersCreateManyMemberInput[]
+  export type StockPositionCreateManyMemberInputEnvelope = {
+    data: StockPositionCreateManyMemberInput | StockPositionCreateManyMemberInput[]
     skipDuplicates?: boolean
   }
 
-  export type StockOnMembersUpsertWithWhereUniqueWithoutMemberInput = {
-    where: StockOnMembersWhereUniqueInput
-    update: XOR<StockOnMembersUpdateWithoutMemberInput, StockOnMembersUncheckedUpdateWithoutMemberInput>
-    create: XOR<StockOnMembersCreateWithoutMemberInput, StockOnMembersUncheckedCreateWithoutMemberInput>
-  }
-
-  export type StockOnMembersUpdateWithWhereUniqueWithoutMemberInput = {
-    where: StockOnMembersWhereUniqueInput
-    data: XOR<StockOnMembersUpdateWithoutMemberInput, StockOnMembersUncheckedUpdateWithoutMemberInput>
-  }
-
-  export type StockOnMembersUpdateManyWithWhereWithoutMemberInput = {
-    where: StockOnMembersScalarWhereInput
-    data: XOR<StockOnMembersUpdateManyMutationInput, StockOnMembersUncheckedUpdateManyWithoutMemberInput>
-  }
-
-  export type StockOnMembersScalarWhereInput = {
-    AND?: StockOnMembersScalarWhereInput | StockOnMembersScalarWhereInput[]
-    OR?: StockOnMembersScalarWhereInput[]
-    NOT?: StockOnMembersScalarWhereInput | StockOnMembersScalarWhereInput[]
-    id?: BigIntFilter<"StockOnMembers"> | bigint | number
-    memberId?: BigIntFilter<"StockOnMembers"> | bigint | number
-    stockId?: BigIntFilter<"StockOnMembers"> | bigint | number
-    createdAt?: DateTimeFilter<"StockOnMembers"> | Date | string
-  }
-
-  export type StockOnMembersCreateWithoutStockInput = {
+  export type MemberDetailCreateWithoutMemberInput = {
     id?: bigint | number
+    after?: string | null
+    amount?: string | null
+    before?: string | null
+    market?: string | null
+    type: number
+    remark?: string | null
+  }
+
+  export type MemberDetailUncheckedCreateWithoutMemberInput = {
+    id?: bigint | number
+    after?: string | null
+    amount?: string | null
+    before?: string | null
+    market?: string | null
+    type: number
+    remark?: string | null
+  }
+
+  export type MemberDetailCreateOrConnectWithoutMemberInput = {
+    where: MemberDetailWhereUniqueInput
+    create: XOR<MemberDetailCreateWithoutMemberInput, MemberDetailUncheckedCreateWithoutMemberInput>
+  }
+
+  export type MemberDetailCreateManyMemberInputEnvelope = {
+    data: MemberDetailCreateManyMemberInput | MemberDetailCreateManyMemberInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type MemberSubscribeCreateWithoutMemberInput = {
+    id?: bigint | number
+    market: string
+    code: string
+    name: string
+    amount: number
+    money: Decimal | DecimalJsLike | number | string
+    no: string
+    winningAmount?: number | null
+    winningPrice?: Decimal | DecimalJsLike | number | string | null
+    totalWinningPrice?: Decimal | DecimalJsLike | number | string | null
+    actualAmount?: Decimal | DecimalJsLike | number | string | null
+    status?: number
+    type?: number
     createdAt?: Date | string
-    member: MemberCreateNestedOneWithoutStocksInput
+    updatedAt?: Date | string | null
+    stockSubscribeId: bigint | number
   }
 
-  export type StockOnMembersUncheckedCreateWithoutStockInput = {
+  export type MemberSubscribeUncheckedCreateWithoutMemberInput = {
     id?: bigint | number
+    market: string
+    code: string
+    name: string
+    amount: number
+    money: Decimal | DecimalJsLike | number | string
+    no: string
+    winningAmount?: number | null
+    winningPrice?: Decimal | DecimalJsLike | number | string | null
+    totalWinningPrice?: Decimal | DecimalJsLike | number | string | null
+    actualAmount?: Decimal | DecimalJsLike | number | string | null
+    status?: number
+    type?: number
+    createdAt?: Date | string
+    updatedAt?: Date | string | null
+    stockSubscribeId: bigint | number
+  }
+
+  export type MemberSubscribeCreateOrConnectWithoutMemberInput = {
+    where: MemberSubscribeWhereUniqueInput
+    create: XOR<MemberSubscribeCreateWithoutMemberInput, MemberSubscribeUncheckedCreateWithoutMemberInput>
+  }
+
+  export type MemberSubscribeCreateManyMemberInputEnvelope = {
+    data: MemberSubscribeCreateManyMemberInput | MemberSubscribeCreateManyMemberInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type StockPositionUpsertWithWhereUniqueWithoutMemberInput = {
+    where: StockPositionWhereUniqueInput
+    update: XOR<StockPositionUpdateWithoutMemberInput, StockPositionUncheckedUpdateWithoutMemberInput>
+    create: XOR<StockPositionCreateWithoutMemberInput, StockPositionUncheckedCreateWithoutMemberInput>
+  }
+
+  export type StockPositionUpdateWithWhereUniqueWithoutMemberInput = {
+    where: StockPositionWhereUniqueInput
+    data: XOR<StockPositionUpdateWithoutMemberInput, StockPositionUncheckedUpdateWithoutMemberInput>
+  }
+
+  export type StockPositionUpdateManyWithWhereWithoutMemberInput = {
+    where: StockPositionScalarWhereInput
+    data: XOR<StockPositionUpdateManyMutationInput, StockPositionUncheckedUpdateManyWithoutMemberInput>
+  }
+
+  export type StockPositionScalarWhereInput = {
+    AND?: StockPositionScalarWhereInput | StockPositionScalarWhereInput[]
+    OR?: StockPositionScalarWhereInput[]
+    NOT?: StockPositionScalarWhereInput | StockPositionScalarWhereInput[]
+    id?: BigIntFilter<"StockPosition"> | bigint | number
+    amount?: IntFilter<"StockPosition"> | number
+    blast?: StringFilter<"StockPosition"> | string
+    price?: StringFilter<"StockPosition"> | string
+    mode?: IntFilter<"StockPosition"> | number
+    status?: IntFilter<"StockPosition"> | number
+    bond?: StringNullableFilter<"StockPosition"> | string | null
+    identifier?: StringNullableFilter<"StockPosition"> | string | null
+    lever?: StringNullableFilter<"StockPosition"> | string | null
+    stopLoss?: StringNullableFilter<"StockPosition"> | string | null
+    takeProfit?: StringNullableFilter<"StockPosition"> | string | null
+    market?: StringNullableFilter<"StockPosition"> | string | null
+    pl?: StringNullableFilter<"StockPosition"> | string | null
+    rate?: StringNullableFilter<"StockPosition"> | string | null
+    currentPrice?: StringNullableFilter<"StockPosition"> | string | null
+    memberId?: BigIntFilter<"StockPosition"> | bigint | number
+    stockSymbolId?: BigIntFilter<"StockPosition"> | bigint | number
+    createdAt?: DateTimeFilter<"StockPosition"> | Date | string
+    updatedAt?: DateTimeNullableFilter<"StockPosition"> | Date | string | null
+  }
+
+  export type MemberDetailUpsertWithWhereUniqueWithoutMemberInput = {
+    where: MemberDetailWhereUniqueInput
+    update: XOR<MemberDetailUpdateWithoutMemberInput, MemberDetailUncheckedUpdateWithoutMemberInput>
+    create: XOR<MemberDetailCreateWithoutMemberInput, MemberDetailUncheckedCreateWithoutMemberInput>
+  }
+
+  export type MemberDetailUpdateWithWhereUniqueWithoutMemberInput = {
+    where: MemberDetailWhereUniqueInput
+    data: XOR<MemberDetailUpdateWithoutMemberInput, MemberDetailUncheckedUpdateWithoutMemberInput>
+  }
+
+  export type MemberDetailUpdateManyWithWhereWithoutMemberInput = {
+    where: MemberDetailScalarWhereInput
+    data: XOR<MemberDetailUpdateManyMutationInput, MemberDetailUncheckedUpdateManyWithoutMemberInput>
+  }
+
+  export type MemberDetailScalarWhereInput = {
+    AND?: MemberDetailScalarWhereInput | MemberDetailScalarWhereInput[]
+    OR?: MemberDetailScalarWhereInput[]
+    NOT?: MemberDetailScalarWhereInput | MemberDetailScalarWhereInput[]
+    id?: BigIntFilter<"MemberDetail"> | bigint | number
+    after?: StringNullableFilter<"MemberDetail"> | string | null
+    amount?: StringNullableFilter<"MemberDetail"> | string | null
+    before?: StringNullableFilter<"MemberDetail"> | string | null
+    market?: StringNullableFilter<"MemberDetail"> | string | null
+    type?: IntFilter<"MemberDetail"> | number
+    remark?: StringNullableFilter<"MemberDetail"> | string | null
+    memberId?: BigIntFilter<"MemberDetail"> | bigint | number
+  }
+
+  export type MemberSubscribeUpsertWithWhereUniqueWithoutMemberInput = {
+    where: MemberSubscribeWhereUniqueInput
+    update: XOR<MemberSubscribeUpdateWithoutMemberInput, MemberSubscribeUncheckedUpdateWithoutMemberInput>
+    create: XOR<MemberSubscribeCreateWithoutMemberInput, MemberSubscribeUncheckedCreateWithoutMemberInput>
+  }
+
+  export type MemberSubscribeUpdateWithWhereUniqueWithoutMemberInput = {
+    where: MemberSubscribeWhereUniqueInput
+    data: XOR<MemberSubscribeUpdateWithoutMemberInput, MemberSubscribeUncheckedUpdateWithoutMemberInput>
+  }
+
+  export type MemberSubscribeUpdateManyWithWhereWithoutMemberInput = {
+    where: MemberSubscribeScalarWhereInput
+    data: XOR<MemberSubscribeUpdateManyMutationInput, MemberSubscribeUncheckedUpdateManyWithoutMemberInput>
+  }
+
+  export type MemberSubscribeScalarWhereInput = {
+    AND?: MemberSubscribeScalarWhereInput | MemberSubscribeScalarWhereInput[]
+    OR?: MemberSubscribeScalarWhereInput[]
+    NOT?: MemberSubscribeScalarWhereInput | MemberSubscribeScalarWhereInput[]
+    id?: BigIntFilter<"MemberSubscribe"> | bigint | number
+    market?: StringFilter<"MemberSubscribe"> | string
+    code?: StringFilter<"MemberSubscribe"> | string
+    name?: StringFilter<"MemberSubscribe"> | string
+    amount?: IntFilter<"MemberSubscribe"> | number
+    money?: DecimalFilter<"MemberSubscribe"> | Decimal | DecimalJsLike | number | string
+    no?: StringFilter<"MemberSubscribe"> | string
+    winningAmount?: IntNullableFilter<"MemberSubscribe"> | number | null
+    winningPrice?: DecimalNullableFilter<"MemberSubscribe"> | Decimal | DecimalJsLike | number | string | null
+    totalWinningPrice?: DecimalNullableFilter<"MemberSubscribe"> | Decimal | DecimalJsLike | number | string | null
+    actualAmount?: DecimalNullableFilter<"MemberSubscribe"> | Decimal | DecimalJsLike | number | string | null
+    status?: IntFilter<"MemberSubscribe"> | number
+    type?: IntFilter<"MemberSubscribe"> | number
+    createdAt?: DateTimeFilter<"MemberSubscribe"> | Date | string
+    updatedAt?: DateTimeNullableFilter<"MemberSubscribe"> | Date | string | null
+    stockSubscribeId?: BigIntFilter<"MemberSubscribe"> | bigint | number
+    memberId?: BigIntFilter<"MemberSubscribe"> | bigint | number
+  }
+
+  export type StockPositionCreateWithoutStockSymbolInput = {
+    id?: bigint | number
+    amount: number
+    blast: string
+    price: string
+    mode: number
+    status: number
+    bond?: string | null
+    identifier?: string | null
+    lever?: string | null
+    stopLoss?: string | null
+    takeProfit?: string | null
+    market?: string | null
+    pl?: string | null
+    rate?: string | null
+    currentPrice?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string | null
+    member: MemberCreateNestedOneWithoutStockPostionInput
+  }
+
+  export type StockPositionUncheckedCreateWithoutStockSymbolInput = {
+    id?: bigint | number
+    amount: number
+    blast: string
+    price: string
+    mode: number
+    status: number
+    bond?: string | null
+    identifier?: string | null
+    lever?: string | null
+    stopLoss?: string | null
+    takeProfit?: string | null
+    market?: string | null
+    pl?: string | null
+    rate?: string | null
+    currentPrice?: string | null
     memberId: bigint | number
     createdAt?: Date | string
+    updatedAt?: Date | string | null
   }
 
-  export type StockOnMembersCreateOrConnectWithoutStockInput = {
-    where: StockOnMembersWhereUniqueInput
-    create: XOR<StockOnMembersCreateWithoutStockInput, StockOnMembersUncheckedCreateWithoutStockInput>
+  export type StockPositionCreateOrConnectWithoutStockSymbolInput = {
+    where: StockPositionWhereUniqueInput
+    create: XOR<StockPositionCreateWithoutStockSymbolInput, StockPositionUncheckedCreateWithoutStockSymbolInput>
   }
 
-  export type StockOnMembersCreateManyStockInputEnvelope = {
-    data: StockOnMembersCreateManyStockInput | StockOnMembersCreateManyStockInput[]
+  export type StockPositionCreateManyStockSymbolInputEnvelope = {
+    data: StockPositionCreateManyStockSymbolInput | StockPositionCreateManyStockSymbolInput[]
     skipDuplicates?: boolean
+  }
+
+  export type StockPositionUpsertWithWhereUniqueWithoutStockSymbolInput = {
+    where: StockPositionWhereUniqueInput
+    update: XOR<StockPositionUpdateWithoutStockSymbolInput, StockPositionUncheckedUpdateWithoutStockSymbolInput>
+    create: XOR<StockPositionCreateWithoutStockSymbolInput, StockPositionUncheckedCreateWithoutStockSymbolInput>
+  }
+
+  export type StockPositionUpdateWithWhereUniqueWithoutStockSymbolInput = {
+    where: StockPositionWhereUniqueInput
+    data: XOR<StockPositionUpdateWithoutStockSymbolInput, StockPositionUncheckedUpdateWithoutStockSymbolInput>
+  }
+
+  export type StockPositionUpdateManyWithWhereWithoutStockSymbolInput = {
+    where: StockPositionScalarWhereInput
+    data: XOR<StockPositionUpdateManyMutationInput, StockPositionUncheckedUpdateManyWithoutStockSymbolInput>
   }
 
   export type StockRecordCreateWithoutStockInput = {
     id?: bigint | number
-    price: string
+    newPrice: string
     open: string
     close: string
     high: string
     low: string
-    turnover: string
+    amount: string
     volume: string
+    date: string
+    extra: JsonNullValueInput | InputJsonValue
     createdAt?: Date | string
   }
 
   export type StockRecordUncheckedCreateWithoutStockInput = {
     id?: bigint | number
-    price: string
+    newPrice: string
     open: string
     close: string
     high: string
     low: string
-    turnover: string
+    amount: string
     volume: string
+    date: string
+    extra: JsonNullValueInput | InputJsonValue
     createdAt?: Date | string
   }
 
@@ -9249,55 +24987,43 @@ export namespace Prisma {
     create: XOR<StockRecordCreateWithoutStockInput, StockRecordUncheckedCreateWithoutStockInput>
   }
 
-  export type StockOnMembersUpsertWithWhereUniqueWithoutStockInput = {
-    where: StockOnMembersWhereUniqueInput
-    update: XOR<StockOnMembersUpdateWithoutStockInput, StockOnMembersUncheckedUpdateWithoutStockInput>
-    create: XOR<StockOnMembersCreateWithoutStockInput, StockOnMembersUncheckedCreateWithoutStockInput>
+  export type StockRecordCreateManyStockInputEnvelope = {
+    data: StockRecordCreateManyStockInput | StockRecordCreateManyStockInput[]
+    skipDuplicates?: boolean
   }
 
-  export type StockOnMembersUpdateWithWhereUniqueWithoutStockInput = {
-    where: StockOnMembersWhereUniqueInput
-    data: XOR<StockOnMembersUpdateWithoutStockInput, StockOnMembersUncheckedUpdateWithoutStockInput>
-  }
-
-  export type StockOnMembersUpdateManyWithWhereWithoutStockInput = {
-    where: StockOnMembersScalarWhereInput
-    data: XOR<StockOnMembersUpdateManyMutationInput, StockOnMembersUncheckedUpdateManyWithoutStockInput>
-  }
-
-  export type StockRecordUpsertWithoutStockInput = {
+  export type StockRecordUpsertWithWhereUniqueWithoutStockInput = {
+    where: StockRecordWhereUniqueInput
     update: XOR<StockRecordUpdateWithoutStockInput, StockRecordUncheckedUpdateWithoutStockInput>
     create: XOR<StockRecordCreateWithoutStockInput, StockRecordUncheckedCreateWithoutStockInput>
-    where?: StockRecordWhereInput
   }
 
-  export type StockRecordUpdateToOneWithWhereWithoutStockInput = {
-    where?: StockRecordWhereInput
+  export type StockRecordUpdateWithWhereUniqueWithoutStockInput = {
+    where: StockRecordWhereUniqueInput
     data: XOR<StockRecordUpdateWithoutStockInput, StockRecordUncheckedUpdateWithoutStockInput>
   }
 
-  export type StockRecordUpdateWithoutStockInput = {
-    id?: BigIntFieldUpdateOperationsInput | bigint | number
-    price?: StringFieldUpdateOperationsInput | string
-    open?: StringFieldUpdateOperationsInput | string
-    close?: StringFieldUpdateOperationsInput | string
-    high?: StringFieldUpdateOperationsInput | string
-    low?: StringFieldUpdateOperationsInput | string
-    turnover?: StringFieldUpdateOperationsInput | string
-    volume?: StringFieldUpdateOperationsInput | string
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  export type StockRecordUpdateManyWithWhereWithoutStockInput = {
+    where: StockRecordScalarWhereInput
+    data: XOR<StockRecordUpdateManyMutationInput, StockRecordUncheckedUpdateManyWithoutStockInput>
   }
 
-  export type StockRecordUncheckedUpdateWithoutStockInput = {
-    id?: BigIntFieldUpdateOperationsInput | bigint | number
-    price?: StringFieldUpdateOperationsInput | string
-    open?: StringFieldUpdateOperationsInput | string
-    close?: StringFieldUpdateOperationsInput | string
-    high?: StringFieldUpdateOperationsInput | string
-    low?: StringFieldUpdateOperationsInput | string
-    turnover?: StringFieldUpdateOperationsInput | string
-    volume?: StringFieldUpdateOperationsInput | string
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  export type StockRecordScalarWhereInput = {
+    AND?: StockRecordScalarWhereInput | StockRecordScalarWhereInput[]
+    OR?: StockRecordScalarWhereInput[]
+    NOT?: StockRecordScalarWhereInput | StockRecordScalarWhereInput[]
+    id?: BigIntFilter<"StockRecord"> | bigint | number
+    newPrice?: StringFilter<"StockRecord"> | string
+    open?: StringFilter<"StockRecord"> | string
+    close?: StringFilter<"StockRecord"> | string
+    high?: StringFilter<"StockRecord"> | string
+    low?: StringFilter<"StockRecord"> | string
+    amount?: StringFilter<"StockRecord"> | string
+    volume?: StringFilter<"StockRecord"> | string
+    date?: StringFilter<"StockRecord"> | string
+    extra?: JsonFilter<"StockRecord">
+    createdAt?: DateTimeFilter<"StockRecord"> | Date | string
+    stockId?: BigIntFilter<"StockRecord"> | bigint | number
   }
 
   export type StockCreateWithoutStockRecordInput = {
@@ -9310,10 +25036,20 @@ export namespace Prisma {
     logo?: string | null
     sok?: string | null
     optional?: boolean
+    newPrice?: string | null
+    open?: string | null
+    close?: string | null
+    high?: string | null
+    low?: string | null
+    amount?: string | null
+    volume?: string | null
     status?: $Enums.STOCK_STATUS
+    change?: string | null
+    changePercent?: string | null
+    date?: string | null
+    extra?: NullableJsonNullValueInput | InputJsonValue
     createdAt?: Date | string
     updatedAt?: Date | string | null
-    members?: StockOnMembersCreateNestedManyWithoutStockInput
   }
 
   export type StockUncheckedCreateWithoutStockRecordInput = {
@@ -9326,10 +25062,20 @@ export namespace Prisma {
     logo?: string | null
     sok?: string | null
     optional?: boolean
+    newPrice?: string | null
+    open?: string | null
+    close?: string | null
+    high?: string | null
+    low?: string | null
+    amount?: string | null
+    volume?: string | null
     status?: $Enums.STOCK_STATUS
+    change?: string | null
+    changePercent?: string | null
+    date?: string | null
+    extra?: NullableJsonNullValueInput | InputJsonValue
     createdAt?: Date | string
     updatedAt?: Date | string | null
-    members?: StockOnMembersUncheckedCreateNestedManyWithoutStockInput
   }
 
   export type StockCreateOrConnectWithoutStockRecordInput = {
@@ -9358,10 +25104,20 @@ export namespace Prisma {
     logo?: NullableStringFieldUpdateOperationsInput | string | null
     sok?: NullableStringFieldUpdateOperationsInput | string | null
     optional?: BoolFieldUpdateOperationsInput | boolean
+    newPrice?: NullableStringFieldUpdateOperationsInput | string | null
+    open?: NullableStringFieldUpdateOperationsInput | string | null
+    close?: NullableStringFieldUpdateOperationsInput | string | null
+    high?: NullableStringFieldUpdateOperationsInput | string | null
+    low?: NullableStringFieldUpdateOperationsInput | string | null
+    amount?: NullableStringFieldUpdateOperationsInput | string | null
+    volume?: NullableStringFieldUpdateOperationsInput | string | null
     status?: EnumSTOCK_STATUSFieldUpdateOperationsInput | $Enums.STOCK_STATUS
+    change?: NullableStringFieldUpdateOperationsInput | string | null
+    changePercent?: NullableStringFieldUpdateOperationsInput | string | null
+    date?: NullableStringFieldUpdateOperationsInput | string | null
+    extra?: NullableJsonNullValueInput | InputJsonValue
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    members?: StockOnMembersUpdateManyWithoutStockNestedInput
   }
 
   export type StockUncheckedUpdateWithoutStockRecordInput = {
@@ -9374,193 +25130,735 @@ export namespace Prisma {
     logo?: NullableStringFieldUpdateOperationsInput | string | null
     sok?: NullableStringFieldUpdateOperationsInput | string | null
     optional?: BoolFieldUpdateOperationsInput | boolean
+    newPrice?: NullableStringFieldUpdateOperationsInput | string | null
+    open?: NullableStringFieldUpdateOperationsInput | string | null
+    close?: NullableStringFieldUpdateOperationsInput | string | null
+    high?: NullableStringFieldUpdateOperationsInput | string | null
+    low?: NullableStringFieldUpdateOperationsInput | string | null
+    amount?: NullableStringFieldUpdateOperationsInput | string | null
+    volume?: NullableStringFieldUpdateOperationsInput | string | null
     status?: EnumSTOCK_STATUSFieldUpdateOperationsInput | $Enums.STOCK_STATUS
+    change?: NullableStringFieldUpdateOperationsInput | string | null
+    changePercent?: NullableStringFieldUpdateOperationsInput | string | null
+    date?: NullableStringFieldUpdateOperationsInput | string | null
+    extra?: NullableJsonNullValueInput | InputJsonValue
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    members?: StockOnMembersUncheckedUpdateManyWithoutStockNestedInput
   }
 
-  export type MemberCreateWithoutStocksInput = {
+  export type MemberCreateWithoutMemberSubscribeInput = {
     id?: bigint | number
     email: string
     name?: string | null
     avatar?: string | null
+    password: string
     gender?: $Enums.GENDER
+    address?: string | null
+    accountBalance?: NullableJsonNullValueInput | InputJsonValue
+    status?: number
+    type?: number
     createdAt?: Date | string
     updatedAt?: Date | string | null
+    stockPostion?: StockPositionCreateNestedManyWithoutMemberInput
+    memberDetail?: MemberDetailCreateNestedManyWithoutMemberInput
   }
 
-  export type MemberUncheckedCreateWithoutStocksInput = {
+  export type MemberUncheckedCreateWithoutMemberSubscribeInput = {
     id?: bigint | number
     email: string
     name?: string | null
     avatar?: string | null
+    password: string
     gender?: $Enums.GENDER
+    address?: string | null
+    accountBalance?: NullableJsonNullValueInput | InputJsonValue
+    status?: number
+    type?: number
     createdAt?: Date | string
     updatedAt?: Date | string | null
+    stockPostion?: StockPositionUncheckedCreateNestedManyWithoutMemberInput
+    memberDetail?: MemberDetailUncheckedCreateNestedManyWithoutMemberInput
   }
 
-  export type MemberCreateOrConnectWithoutStocksInput = {
+  export type MemberCreateOrConnectWithoutMemberSubscribeInput = {
     where: MemberWhereUniqueInput
-    create: XOR<MemberCreateWithoutStocksInput, MemberUncheckedCreateWithoutStocksInput>
+    create: XOR<MemberCreateWithoutMemberSubscribeInput, MemberUncheckedCreateWithoutMemberSubscribeInput>
   }
 
-  export type StockCreateWithoutMembersInput = {
-    id?: bigint | number
-    code: string
-    symbol: string
-    name: string
-    cname?: string | null
-    type: string
-    logo?: string | null
-    sok?: string | null
-    optional?: boolean
-    status?: $Enums.STOCK_STATUS
-    createdAt?: Date | string
-    updatedAt?: Date | string | null
-    stockRecord?: StockRecordCreateNestedOneWithoutStockInput
-  }
-
-  export type StockUncheckedCreateWithoutMembersInput = {
-    id?: bigint | number
-    code: string
-    symbol: string
-    name: string
-    cname?: string | null
-    type: string
-    logo?: string | null
-    sok?: string | null
-    optional?: boolean
-    status?: $Enums.STOCK_STATUS
-    createdAt?: Date | string
-    updatedAt?: Date | string | null
-    stockRecord?: StockRecordUncheckedCreateNestedOneWithoutStockInput
-  }
-
-  export type StockCreateOrConnectWithoutMembersInput = {
-    where: StockWhereUniqueInput
-    create: XOR<StockCreateWithoutMembersInput, StockUncheckedCreateWithoutMembersInput>
-  }
-
-  export type MemberUpsertWithoutStocksInput = {
-    update: XOR<MemberUpdateWithoutStocksInput, MemberUncheckedUpdateWithoutStocksInput>
-    create: XOR<MemberCreateWithoutStocksInput, MemberUncheckedCreateWithoutStocksInput>
+  export type MemberUpsertWithoutMemberSubscribeInput = {
+    update: XOR<MemberUpdateWithoutMemberSubscribeInput, MemberUncheckedUpdateWithoutMemberSubscribeInput>
+    create: XOR<MemberCreateWithoutMemberSubscribeInput, MemberUncheckedCreateWithoutMemberSubscribeInput>
     where?: MemberWhereInput
   }
 
-  export type MemberUpdateToOneWithWhereWithoutStocksInput = {
+  export type MemberUpdateToOneWithWhereWithoutMemberSubscribeInput = {
     where?: MemberWhereInput
-    data: XOR<MemberUpdateWithoutStocksInput, MemberUncheckedUpdateWithoutStocksInput>
+    data: XOR<MemberUpdateWithoutMemberSubscribeInput, MemberUncheckedUpdateWithoutMemberSubscribeInput>
   }
 
-  export type MemberUpdateWithoutStocksInput = {
+  export type MemberUpdateWithoutMemberSubscribeInput = {
     id?: BigIntFieldUpdateOperationsInput | bigint | number
     email?: StringFieldUpdateOperationsInput | string
     name?: NullableStringFieldUpdateOperationsInput | string | null
     avatar?: NullableStringFieldUpdateOperationsInput | string | null
+    password?: StringFieldUpdateOperationsInput | string
     gender?: EnumGENDERFieldUpdateOperationsInput | $Enums.GENDER
+    address?: NullableStringFieldUpdateOperationsInput | string | null
+    accountBalance?: NullableJsonNullValueInput | InputJsonValue
+    status?: IntFieldUpdateOperationsInput | number
+    type?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    stockPostion?: StockPositionUpdateManyWithoutMemberNestedInput
+    memberDetail?: MemberDetailUpdateManyWithoutMemberNestedInput
   }
 
-  export type MemberUncheckedUpdateWithoutStocksInput = {
+  export type MemberUncheckedUpdateWithoutMemberSubscribeInput = {
     id?: BigIntFieldUpdateOperationsInput | bigint | number
     email?: StringFieldUpdateOperationsInput | string
     name?: NullableStringFieldUpdateOperationsInput | string | null
     avatar?: NullableStringFieldUpdateOperationsInput | string | null
+    password?: StringFieldUpdateOperationsInput | string
     gender?: EnumGENDERFieldUpdateOperationsInput | $Enums.GENDER
+    address?: NullableStringFieldUpdateOperationsInput | string | null
+    accountBalance?: NullableJsonNullValueInput | InputJsonValue
+    status?: IntFieldUpdateOperationsInput | number
+    type?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    stockPostion?: StockPositionUncheckedUpdateManyWithoutMemberNestedInput
+    memberDetail?: MemberDetailUncheckedUpdateManyWithoutMemberNestedInput
   }
 
-  export type StockUpsertWithoutMembersInput = {
-    update: XOR<StockUpdateWithoutMembersInput, StockUncheckedUpdateWithoutMembersInput>
-    create: XOR<StockCreateWithoutMembersInput, StockUncheckedCreateWithoutMembersInput>
-    where?: StockWhereInput
-  }
-
-  export type StockUpdateToOneWithWhereWithoutMembersInput = {
-    where?: StockWhereInput
-    data: XOR<StockUpdateWithoutMembersInput, StockUncheckedUpdateWithoutMembersInput>
-  }
-
-  export type StockUpdateWithoutMembersInput = {
-    id?: BigIntFieldUpdateOperationsInput | bigint | number
-    code?: StringFieldUpdateOperationsInput | string
-    symbol?: StringFieldUpdateOperationsInput | string
-    name?: StringFieldUpdateOperationsInput | string
-    cname?: NullableStringFieldUpdateOperationsInput | string | null
-    type?: StringFieldUpdateOperationsInput | string
-    logo?: NullableStringFieldUpdateOperationsInput | string | null
-    sok?: NullableStringFieldUpdateOperationsInput | string | null
-    optional?: BoolFieldUpdateOperationsInput | boolean
-    status?: EnumSTOCK_STATUSFieldUpdateOperationsInput | $Enums.STOCK_STATUS
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    stockRecord?: StockRecordUpdateOneWithoutStockNestedInput
-  }
-
-  export type StockUncheckedUpdateWithoutMembersInput = {
-    id?: BigIntFieldUpdateOperationsInput | bigint | number
-    code?: StringFieldUpdateOperationsInput | string
-    symbol?: StringFieldUpdateOperationsInput | string
-    name?: StringFieldUpdateOperationsInput | string
-    cname?: NullableStringFieldUpdateOperationsInput | string | null
-    type?: StringFieldUpdateOperationsInput | string
-    logo?: NullableStringFieldUpdateOperationsInput | string | null
-    sok?: NullableStringFieldUpdateOperationsInput | string | null
-    optional?: BoolFieldUpdateOperationsInput | boolean
-    status?: EnumSTOCK_STATUSFieldUpdateOperationsInput | $Enums.STOCK_STATUS
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    stockRecord?: StockRecordUncheckedUpdateOneWithoutStockNestedInput
-  }
-
-  export type StockOnMembersCreateManyMemberInput = {
+  export type MemberCreateWithoutStockPostionInput = {
     id?: bigint | number
-    stockId: bigint | number
+    email: string
+    name?: string | null
+    avatar?: string | null
+    password: string
+    gender?: $Enums.GENDER
+    address?: string | null
+    accountBalance?: NullableJsonNullValueInput | InputJsonValue
+    status?: number
+    type?: number
     createdAt?: Date | string
+    updatedAt?: Date | string | null
+    memberDetail?: MemberDetailCreateNestedManyWithoutMemberInput
+    memberSubscribe?: MemberSubscribeCreateNestedManyWithoutMemberInput
   }
 
-  export type StockOnMembersUpdateWithoutMemberInput = {
-    id?: BigIntFieldUpdateOperationsInput | bigint | number
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    stock?: StockUpdateOneRequiredWithoutMembersNestedInput
-  }
-
-  export type StockOnMembersUncheckedUpdateWithoutMemberInput = {
-    id?: BigIntFieldUpdateOperationsInput | bigint | number
-    stockId?: BigIntFieldUpdateOperationsInput | bigint | number
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-  }
-
-  export type StockOnMembersUncheckedUpdateManyWithoutMemberInput = {
-    id?: BigIntFieldUpdateOperationsInput | bigint | number
-    stockId?: BigIntFieldUpdateOperationsInput | bigint | number
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-  }
-
-  export type StockOnMembersCreateManyStockInput = {
+  export type MemberUncheckedCreateWithoutStockPostionInput = {
     id?: bigint | number
+    email: string
+    name?: string | null
+    avatar?: string | null
+    password: string
+    gender?: $Enums.GENDER
+    address?: string | null
+    accountBalance?: NullableJsonNullValueInput | InputJsonValue
+    status?: number
+    type?: number
+    createdAt?: Date | string
+    updatedAt?: Date | string | null
+    memberDetail?: MemberDetailUncheckedCreateNestedManyWithoutMemberInput
+    memberSubscribe?: MemberSubscribeUncheckedCreateNestedManyWithoutMemberInput
+  }
+
+  export type MemberCreateOrConnectWithoutStockPostionInput = {
+    where: MemberWhereUniqueInput
+    create: XOR<MemberCreateWithoutStockPostionInput, MemberUncheckedCreateWithoutStockPostionInput>
+  }
+
+  export type StockSymbolCreateWithoutStockPostionInput = {
+    id?: bigint | number
+    code: string
+    market: string
+    online?: number
+    symbol: string
+    showName: string
+    name?: string | null
+    symbolShowName?: string | null
+    trade?: number
+    type?: number
+    newPrice?: string | null
+    open?: string | null
+    close?: string | null
+    high?: string | null
+    low?: string | null
+    amount?: string | null
+    volume?: string | null
+    change?: string | null
+    changePercent?: string | null
+    date?: string | null
+    sync?: NullableJsonNullValueInput | InputJsonValue
+    syncMarket: string
+    createdAt?: Date | string
+    updatedAt?: Date | string | null
+  }
+
+  export type StockSymbolUncheckedCreateWithoutStockPostionInput = {
+    id?: bigint | number
+    code: string
+    market: string
+    online?: number
+    symbol: string
+    showName: string
+    name?: string | null
+    symbolShowName?: string | null
+    trade?: number
+    type?: number
+    newPrice?: string | null
+    open?: string | null
+    close?: string | null
+    high?: string | null
+    low?: string | null
+    amount?: string | null
+    volume?: string | null
+    change?: string | null
+    changePercent?: string | null
+    date?: string | null
+    sync?: NullableJsonNullValueInput | InputJsonValue
+    syncMarket: string
+    createdAt?: Date | string
+    updatedAt?: Date | string | null
+  }
+
+  export type StockSymbolCreateOrConnectWithoutStockPostionInput = {
+    where: StockSymbolWhereUniqueInput
+    create: XOR<StockSymbolCreateWithoutStockPostionInput, StockSymbolUncheckedCreateWithoutStockPostionInput>
+  }
+
+  export type MemberUpsertWithoutStockPostionInput = {
+    update: XOR<MemberUpdateWithoutStockPostionInput, MemberUncheckedUpdateWithoutStockPostionInput>
+    create: XOR<MemberCreateWithoutStockPostionInput, MemberUncheckedCreateWithoutStockPostionInput>
+    where?: MemberWhereInput
+  }
+
+  export type MemberUpdateToOneWithWhereWithoutStockPostionInput = {
+    where?: MemberWhereInput
+    data: XOR<MemberUpdateWithoutStockPostionInput, MemberUncheckedUpdateWithoutStockPostionInput>
+  }
+
+  export type MemberUpdateWithoutStockPostionInput = {
+    id?: BigIntFieldUpdateOperationsInput | bigint | number
+    email?: StringFieldUpdateOperationsInput | string
+    name?: NullableStringFieldUpdateOperationsInput | string | null
+    avatar?: NullableStringFieldUpdateOperationsInput | string | null
+    password?: StringFieldUpdateOperationsInput | string
+    gender?: EnumGENDERFieldUpdateOperationsInput | $Enums.GENDER
+    address?: NullableStringFieldUpdateOperationsInput | string | null
+    accountBalance?: NullableJsonNullValueInput | InputJsonValue
+    status?: IntFieldUpdateOperationsInput | number
+    type?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    memberDetail?: MemberDetailUpdateManyWithoutMemberNestedInput
+    memberSubscribe?: MemberSubscribeUpdateManyWithoutMemberNestedInput
+  }
+
+  export type MemberUncheckedUpdateWithoutStockPostionInput = {
+    id?: BigIntFieldUpdateOperationsInput | bigint | number
+    email?: StringFieldUpdateOperationsInput | string
+    name?: NullableStringFieldUpdateOperationsInput | string | null
+    avatar?: NullableStringFieldUpdateOperationsInput | string | null
+    password?: StringFieldUpdateOperationsInput | string
+    gender?: EnumGENDERFieldUpdateOperationsInput | $Enums.GENDER
+    address?: NullableStringFieldUpdateOperationsInput | string | null
+    accountBalance?: NullableJsonNullValueInput | InputJsonValue
+    status?: IntFieldUpdateOperationsInput | number
+    type?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    memberDetail?: MemberDetailUncheckedUpdateManyWithoutMemberNestedInput
+    memberSubscribe?: MemberSubscribeUncheckedUpdateManyWithoutMemberNestedInput
+  }
+
+  export type StockSymbolUpsertWithoutStockPostionInput = {
+    update: XOR<StockSymbolUpdateWithoutStockPostionInput, StockSymbolUncheckedUpdateWithoutStockPostionInput>
+    create: XOR<StockSymbolCreateWithoutStockPostionInput, StockSymbolUncheckedCreateWithoutStockPostionInput>
+    where?: StockSymbolWhereInput
+  }
+
+  export type StockSymbolUpdateToOneWithWhereWithoutStockPostionInput = {
+    where?: StockSymbolWhereInput
+    data: XOR<StockSymbolUpdateWithoutStockPostionInput, StockSymbolUncheckedUpdateWithoutStockPostionInput>
+  }
+
+  export type StockSymbolUpdateWithoutStockPostionInput = {
+    id?: BigIntFieldUpdateOperationsInput | bigint | number
+    code?: StringFieldUpdateOperationsInput | string
+    market?: StringFieldUpdateOperationsInput | string
+    online?: IntFieldUpdateOperationsInput | number
+    symbol?: StringFieldUpdateOperationsInput | string
+    showName?: StringFieldUpdateOperationsInput | string
+    name?: NullableStringFieldUpdateOperationsInput | string | null
+    symbolShowName?: NullableStringFieldUpdateOperationsInput | string | null
+    trade?: IntFieldUpdateOperationsInput | number
+    type?: IntFieldUpdateOperationsInput | number
+    newPrice?: NullableStringFieldUpdateOperationsInput | string | null
+    open?: NullableStringFieldUpdateOperationsInput | string | null
+    close?: NullableStringFieldUpdateOperationsInput | string | null
+    high?: NullableStringFieldUpdateOperationsInput | string | null
+    low?: NullableStringFieldUpdateOperationsInput | string | null
+    amount?: NullableStringFieldUpdateOperationsInput | string | null
+    volume?: NullableStringFieldUpdateOperationsInput | string | null
+    change?: NullableStringFieldUpdateOperationsInput | string | null
+    changePercent?: NullableStringFieldUpdateOperationsInput | string | null
+    date?: NullableStringFieldUpdateOperationsInput | string | null
+    sync?: NullableJsonNullValueInput | InputJsonValue
+    syncMarket?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  }
+
+  export type StockSymbolUncheckedUpdateWithoutStockPostionInput = {
+    id?: BigIntFieldUpdateOperationsInput | bigint | number
+    code?: StringFieldUpdateOperationsInput | string
+    market?: StringFieldUpdateOperationsInput | string
+    online?: IntFieldUpdateOperationsInput | number
+    symbol?: StringFieldUpdateOperationsInput | string
+    showName?: StringFieldUpdateOperationsInput | string
+    name?: NullableStringFieldUpdateOperationsInput | string | null
+    symbolShowName?: NullableStringFieldUpdateOperationsInput | string | null
+    trade?: IntFieldUpdateOperationsInput | number
+    type?: IntFieldUpdateOperationsInput | number
+    newPrice?: NullableStringFieldUpdateOperationsInput | string | null
+    open?: NullableStringFieldUpdateOperationsInput | string | null
+    close?: NullableStringFieldUpdateOperationsInput | string | null
+    high?: NullableStringFieldUpdateOperationsInput | string | null
+    low?: NullableStringFieldUpdateOperationsInput | string | null
+    amount?: NullableStringFieldUpdateOperationsInput | string | null
+    volume?: NullableStringFieldUpdateOperationsInput | string | null
+    change?: NullableStringFieldUpdateOperationsInput | string | null
+    changePercent?: NullableStringFieldUpdateOperationsInput | string | null
+    date?: NullableStringFieldUpdateOperationsInput | string | null
+    sync?: NullableJsonNullValueInput | InputJsonValue
+    syncMarket?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  }
+
+  export type MemberCreateWithoutMemberDetailInput = {
+    id?: bigint | number
+    email: string
+    name?: string | null
+    avatar?: string | null
+    password: string
+    gender?: $Enums.GENDER
+    address?: string | null
+    accountBalance?: NullableJsonNullValueInput | InputJsonValue
+    status?: number
+    type?: number
+    createdAt?: Date | string
+    updatedAt?: Date | string | null
+    stockPostion?: StockPositionCreateNestedManyWithoutMemberInput
+    memberSubscribe?: MemberSubscribeCreateNestedManyWithoutMemberInput
+  }
+
+  export type MemberUncheckedCreateWithoutMemberDetailInput = {
+    id?: bigint | number
+    email: string
+    name?: string | null
+    avatar?: string | null
+    password: string
+    gender?: $Enums.GENDER
+    address?: string | null
+    accountBalance?: NullableJsonNullValueInput | InputJsonValue
+    status?: number
+    type?: number
+    createdAt?: Date | string
+    updatedAt?: Date | string | null
+    stockPostion?: StockPositionUncheckedCreateNestedManyWithoutMemberInput
+    memberSubscribe?: MemberSubscribeUncheckedCreateNestedManyWithoutMemberInput
+  }
+
+  export type MemberCreateOrConnectWithoutMemberDetailInput = {
+    where: MemberWhereUniqueInput
+    create: XOR<MemberCreateWithoutMemberDetailInput, MemberUncheckedCreateWithoutMemberDetailInput>
+  }
+
+  export type MemberUpsertWithoutMemberDetailInput = {
+    update: XOR<MemberUpdateWithoutMemberDetailInput, MemberUncheckedUpdateWithoutMemberDetailInput>
+    create: XOR<MemberCreateWithoutMemberDetailInput, MemberUncheckedCreateWithoutMemberDetailInput>
+    where?: MemberWhereInput
+  }
+
+  export type MemberUpdateToOneWithWhereWithoutMemberDetailInput = {
+    where?: MemberWhereInput
+    data: XOR<MemberUpdateWithoutMemberDetailInput, MemberUncheckedUpdateWithoutMemberDetailInput>
+  }
+
+  export type MemberUpdateWithoutMemberDetailInput = {
+    id?: BigIntFieldUpdateOperationsInput | bigint | number
+    email?: StringFieldUpdateOperationsInput | string
+    name?: NullableStringFieldUpdateOperationsInput | string | null
+    avatar?: NullableStringFieldUpdateOperationsInput | string | null
+    password?: StringFieldUpdateOperationsInput | string
+    gender?: EnumGENDERFieldUpdateOperationsInput | $Enums.GENDER
+    address?: NullableStringFieldUpdateOperationsInput | string | null
+    accountBalance?: NullableJsonNullValueInput | InputJsonValue
+    status?: IntFieldUpdateOperationsInput | number
+    type?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    stockPostion?: StockPositionUpdateManyWithoutMemberNestedInput
+    memberSubscribe?: MemberSubscribeUpdateManyWithoutMemberNestedInput
+  }
+
+  export type MemberUncheckedUpdateWithoutMemberDetailInput = {
+    id?: BigIntFieldUpdateOperationsInput | bigint | number
+    email?: StringFieldUpdateOperationsInput | string
+    name?: NullableStringFieldUpdateOperationsInput | string | null
+    avatar?: NullableStringFieldUpdateOperationsInput | string | null
+    password?: StringFieldUpdateOperationsInput | string
+    gender?: EnumGENDERFieldUpdateOperationsInput | $Enums.GENDER
+    address?: NullableStringFieldUpdateOperationsInput | string | null
+    accountBalance?: NullableJsonNullValueInput | InputJsonValue
+    status?: IntFieldUpdateOperationsInput | number
+    type?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    stockPostion?: StockPositionUncheckedUpdateManyWithoutMemberNestedInput
+    memberSubscribe?: MemberSubscribeUncheckedUpdateManyWithoutMemberNestedInput
+  }
+
+  export type StockPositionCreateManyMemberInput = {
+    id?: bigint | number
+    amount: number
+    blast: string
+    price: string
+    mode: number
+    status: number
+    bond?: string | null
+    identifier?: string | null
+    lever?: string | null
+    stopLoss?: string | null
+    takeProfit?: string | null
+    market?: string | null
+    pl?: string | null
+    rate?: string | null
+    currentPrice?: string | null
+    stockSymbolId: bigint | number
+    createdAt?: Date | string
+    updatedAt?: Date | string | null
+  }
+
+  export type MemberDetailCreateManyMemberInput = {
+    id?: bigint | number
+    after?: string | null
+    amount?: string | null
+    before?: string | null
+    market?: string | null
+    type: number
+    remark?: string | null
+  }
+
+  export type MemberSubscribeCreateManyMemberInput = {
+    id?: bigint | number
+    market: string
+    code: string
+    name: string
+    amount: number
+    money: Decimal | DecimalJsLike | number | string
+    no: string
+    winningAmount?: number | null
+    winningPrice?: Decimal | DecimalJsLike | number | string | null
+    totalWinningPrice?: Decimal | DecimalJsLike | number | string | null
+    actualAmount?: Decimal | DecimalJsLike | number | string | null
+    status?: number
+    type?: number
+    createdAt?: Date | string
+    updatedAt?: Date | string | null
+    stockSubscribeId: bigint | number
+  }
+
+  export type StockPositionUpdateWithoutMemberInput = {
+    id?: BigIntFieldUpdateOperationsInput | bigint | number
+    amount?: IntFieldUpdateOperationsInput | number
+    blast?: StringFieldUpdateOperationsInput | string
+    price?: StringFieldUpdateOperationsInput | string
+    mode?: IntFieldUpdateOperationsInput | number
+    status?: IntFieldUpdateOperationsInput | number
+    bond?: NullableStringFieldUpdateOperationsInput | string | null
+    identifier?: NullableStringFieldUpdateOperationsInput | string | null
+    lever?: NullableStringFieldUpdateOperationsInput | string | null
+    stopLoss?: NullableStringFieldUpdateOperationsInput | string | null
+    takeProfit?: NullableStringFieldUpdateOperationsInput | string | null
+    market?: NullableStringFieldUpdateOperationsInput | string | null
+    pl?: NullableStringFieldUpdateOperationsInput | string | null
+    rate?: NullableStringFieldUpdateOperationsInput | string | null
+    currentPrice?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    stockSymbol?: StockSymbolUpdateOneRequiredWithoutStockPostionNestedInput
+  }
+
+  export type StockPositionUncheckedUpdateWithoutMemberInput = {
+    id?: BigIntFieldUpdateOperationsInput | bigint | number
+    amount?: IntFieldUpdateOperationsInput | number
+    blast?: StringFieldUpdateOperationsInput | string
+    price?: StringFieldUpdateOperationsInput | string
+    mode?: IntFieldUpdateOperationsInput | number
+    status?: IntFieldUpdateOperationsInput | number
+    bond?: NullableStringFieldUpdateOperationsInput | string | null
+    identifier?: NullableStringFieldUpdateOperationsInput | string | null
+    lever?: NullableStringFieldUpdateOperationsInput | string | null
+    stopLoss?: NullableStringFieldUpdateOperationsInput | string | null
+    takeProfit?: NullableStringFieldUpdateOperationsInput | string | null
+    market?: NullableStringFieldUpdateOperationsInput | string | null
+    pl?: NullableStringFieldUpdateOperationsInput | string | null
+    rate?: NullableStringFieldUpdateOperationsInput | string | null
+    currentPrice?: NullableStringFieldUpdateOperationsInput | string | null
+    stockSymbolId?: BigIntFieldUpdateOperationsInput | bigint | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  }
+
+  export type StockPositionUncheckedUpdateManyWithoutMemberInput = {
+    id?: BigIntFieldUpdateOperationsInput | bigint | number
+    amount?: IntFieldUpdateOperationsInput | number
+    blast?: StringFieldUpdateOperationsInput | string
+    price?: StringFieldUpdateOperationsInput | string
+    mode?: IntFieldUpdateOperationsInput | number
+    status?: IntFieldUpdateOperationsInput | number
+    bond?: NullableStringFieldUpdateOperationsInput | string | null
+    identifier?: NullableStringFieldUpdateOperationsInput | string | null
+    lever?: NullableStringFieldUpdateOperationsInput | string | null
+    stopLoss?: NullableStringFieldUpdateOperationsInput | string | null
+    takeProfit?: NullableStringFieldUpdateOperationsInput | string | null
+    market?: NullableStringFieldUpdateOperationsInput | string | null
+    pl?: NullableStringFieldUpdateOperationsInput | string | null
+    rate?: NullableStringFieldUpdateOperationsInput | string | null
+    currentPrice?: NullableStringFieldUpdateOperationsInput | string | null
+    stockSymbolId?: BigIntFieldUpdateOperationsInput | bigint | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  }
+
+  export type MemberDetailUpdateWithoutMemberInput = {
+    id?: BigIntFieldUpdateOperationsInput | bigint | number
+    after?: NullableStringFieldUpdateOperationsInput | string | null
+    amount?: NullableStringFieldUpdateOperationsInput | string | null
+    before?: NullableStringFieldUpdateOperationsInput | string | null
+    market?: NullableStringFieldUpdateOperationsInput | string | null
+    type?: IntFieldUpdateOperationsInput | number
+    remark?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
+  export type MemberDetailUncheckedUpdateWithoutMemberInput = {
+    id?: BigIntFieldUpdateOperationsInput | bigint | number
+    after?: NullableStringFieldUpdateOperationsInput | string | null
+    amount?: NullableStringFieldUpdateOperationsInput | string | null
+    before?: NullableStringFieldUpdateOperationsInput | string | null
+    market?: NullableStringFieldUpdateOperationsInput | string | null
+    type?: IntFieldUpdateOperationsInput | number
+    remark?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
+  export type MemberDetailUncheckedUpdateManyWithoutMemberInput = {
+    id?: BigIntFieldUpdateOperationsInput | bigint | number
+    after?: NullableStringFieldUpdateOperationsInput | string | null
+    amount?: NullableStringFieldUpdateOperationsInput | string | null
+    before?: NullableStringFieldUpdateOperationsInput | string | null
+    market?: NullableStringFieldUpdateOperationsInput | string | null
+    type?: IntFieldUpdateOperationsInput | number
+    remark?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
+  export type MemberSubscribeUpdateWithoutMemberInput = {
+    id?: BigIntFieldUpdateOperationsInput | bigint | number
+    market?: StringFieldUpdateOperationsInput | string
+    code?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    amount?: IntFieldUpdateOperationsInput | number
+    money?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    no?: StringFieldUpdateOperationsInput | string
+    winningAmount?: NullableIntFieldUpdateOperationsInput | number | null
+    winningPrice?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    totalWinningPrice?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    actualAmount?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    status?: IntFieldUpdateOperationsInput | number
+    type?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    stockSubscribeId?: BigIntFieldUpdateOperationsInput | bigint | number
+  }
+
+  export type MemberSubscribeUncheckedUpdateWithoutMemberInput = {
+    id?: BigIntFieldUpdateOperationsInput | bigint | number
+    market?: StringFieldUpdateOperationsInput | string
+    code?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    amount?: IntFieldUpdateOperationsInput | number
+    money?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    no?: StringFieldUpdateOperationsInput | string
+    winningAmount?: NullableIntFieldUpdateOperationsInput | number | null
+    winningPrice?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    totalWinningPrice?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    actualAmount?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    status?: IntFieldUpdateOperationsInput | number
+    type?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    stockSubscribeId?: BigIntFieldUpdateOperationsInput | bigint | number
+  }
+
+  export type MemberSubscribeUncheckedUpdateManyWithoutMemberInput = {
+    id?: BigIntFieldUpdateOperationsInput | bigint | number
+    market?: StringFieldUpdateOperationsInput | string
+    code?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    amount?: IntFieldUpdateOperationsInput | number
+    money?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    no?: StringFieldUpdateOperationsInput | string
+    winningAmount?: NullableIntFieldUpdateOperationsInput | number | null
+    winningPrice?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    totalWinningPrice?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    actualAmount?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    status?: IntFieldUpdateOperationsInput | number
+    type?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    stockSubscribeId?: BigIntFieldUpdateOperationsInput | bigint | number
+  }
+
+  export type StockPositionCreateManyStockSymbolInput = {
+    id?: bigint | number
+    amount: number
+    blast: string
+    price: string
+    mode: number
+    status: number
+    bond?: string | null
+    identifier?: string | null
+    lever?: string | null
+    stopLoss?: string | null
+    takeProfit?: string | null
+    market?: string | null
+    pl?: string | null
+    rate?: string | null
+    currentPrice?: string | null
     memberId: bigint | number
     createdAt?: Date | string
+    updatedAt?: Date | string | null
   }
 
-  export type StockOnMembersUpdateWithoutStockInput = {
+  export type StockPositionUpdateWithoutStockSymbolInput = {
     id?: BigIntFieldUpdateOperationsInput | bigint | number
+    amount?: IntFieldUpdateOperationsInput | number
+    blast?: StringFieldUpdateOperationsInput | string
+    price?: StringFieldUpdateOperationsInput | string
+    mode?: IntFieldUpdateOperationsInput | number
+    status?: IntFieldUpdateOperationsInput | number
+    bond?: NullableStringFieldUpdateOperationsInput | string | null
+    identifier?: NullableStringFieldUpdateOperationsInput | string | null
+    lever?: NullableStringFieldUpdateOperationsInput | string | null
+    stopLoss?: NullableStringFieldUpdateOperationsInput | string | null
+    takeProfit?: NullableStringFieldUpdateOperationsInput | string | null
+    market?: NullableStringFieldUpdateOperationsInput | string | null
+    pl?: NullableStringFieldUpdateOperationsInput | string | null
+    rate?: NullableStringFieldUpdateOperationsInput | string | null
+    currentPrice?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    member?: MemberUpdateOneRequiredWithoutStocksNestedInput
+    updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    member?: MemberUpdateOneRequiredWithoutStockPostionNestedInput
   }
 
-  export type StockOnMembersUncheckedUpdateWithoutStockInput = {
+  export type StockPositionUncheckedUpdateWithoutStockSymbolInput = {
     id?: BigIntFieldUpdateOperationsInput | bigint | number
+    amount?: IntFieldUpdateOperationsInput | number
+    blast?: StringFieldUpdateOperationsInput | string
+    price?: StringFieldUpdateOperationsInput | string
+    mode?: IntFieldUpdateOperationsInput | number
+    status?: IntFieldUpdateOperationsInput | number
+    bond?: NullableStringFieldUpdateOperationsInput | string | null
+    identifier?: NullableStringFieldUpdateOperationsInput | string | null
+    lever?: NullableStringFieldUpdateOperationsInput | string | null
+    stopLoss?: NullableStringFieldUpdateOperationsInput | string | null
+    takeProfit?: NullableStringFieldUpdateOperationsInput | string | null
+    market?: NullableStringFieldUpdateOperationsInput | string | null
+    pl?: NullableStringFieldUpdateOperationsInput | string | null
+    rate?: NullableStringFieldUpdateOperationsInput | string | null
+    currentPrice?: NullableStringFieldUpdateOperationsInput | string | null
     memberId?: BigIntFieldUpdateOperationsInput | bigint | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
 
-  export type StockOnMembersUncheckedUpdateManyWithoutStockInput = {
+  export type StockPositionUncheckedUpdateManyWithoutStockSymbolInput = {
     id?: BigIntFieldUpdateOperationsInput | bigint | number
+    amount?: IntFieldUpdateOperationsInput | number
+    blast?: StringFieldUpdateOperationsInput | string
+    price?: StringFieldUpdateOperationsInput | string
+    mode?: IntFieldUpdateOperationsInput | number
+    status?: IntFieldUpdateOperationsInput | number
+    bond?: NullableStringFieldUpdateOperationsInput | string | null
+    identifier?: NullableStringFieldUpdateOperationsInput | string | null
+    lever?: NullableStringFieldUpdateOperationsInput | string | null
+    stopLoss?: NullableStringFieldUpdateOperationsInput | string | null
+    takeProfit?: NullableStringFieldUpdateOperationsInput | string | null
+    market?: NullableStringFieldUpdateOperationsInput | string | null
+    pl?: NullableStringFieldUpdateOperationsInput | string | null
+    rate?: NullableStringFieldUpdateOperationsInput | string | null
+    currentPrice?: NullableStringFieldUpdateOperationsInput | string | null
     memberId?: BigIntFieldUpdateOperationsInput | bigint | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  }
+
+  export type StockRecordCreateManyStockInput = {
+    id?: bigint | number
+    newPrice: string
+    open: string
+    close: string
+    high: string
+    low: string
+    amount: string
+    volume: string
+    date: string
+    extra: JsonNullValueInput | InputJsonValue
+    createdAt?: Date | string
+  }
+
+  export type StockRecordUpdateWithoutStockInput = {
+    id?: BigIntFieldUpdateOperationsInput | bigint | number
+    newPrice?: StringFieldUpdateOperationsInput | string
+    open?: StringFieldUpdateOperationsInput | string
+    close?: StringFieldUpdateOperationsInput | string
+    high?: StringFieldUpdateOperationsInput | string
+    low?: StringFieldUpdateOperationsInput | string
+    amount?: StringFieldUpdateOperationsInput | string
+    volume?: StringFieldUpdateOperationsInput | string
+    date?: StringFieldUpdateOperationsInput | string
+    extra?: JsonNullValueInput | InputJsonValue
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type StockRecordUncheckedUpdateWithoutStockInput = {
+    id?: BigIntFieldUpdateOperationsInput | bigint | number
+    newPrice?: StringFieldUpdateOperationsInput | string
+    open?: StringFieldUpdateOperationsInput | string
+    close?: StringFieldUpdateOperationsInput | string
+    high?: StringFieldUpdateOperationsInput | string
+    low?: StringFieldUpdateOperationsInput | string
+    amount?: StringFieldUpdateOperationsInput | string
+    volume?: StringFieldUpdateOperationsInput | string
+    date?: StringFieldUpdateOperationsInput | string
+    extra?: JsonNullValueInput | InputJsonValue
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type StockRecordUncheckedUpdateManyWithoutStockInput = {
+    id?: BigIntFieldUpdateOperationsInput | bigint | number
+    newPrice?: StringFieldUpdateOperationsInput | string
+    open?: StringFieldUpdateOperationsInput | string
+    close?: StringFieldUpdateOperationsInput | string
+    high?: StringFieldUpdateOperationsInput | string
+    low?: StringFieldUpdateOperationsInput | string
+    amount?: StringFieldUpdateOperationsInput | string
+    volume?: StringFieldUpdateOperationsInput | string
+    date?: StringFieldUpdateOperationsInput | string
+    extra?: JsonNullValueInput | InputJsonValue
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
@@ -9574,6 +25872,10 @@ export namespace Prisma {
      */
     export type MemberCountOutputTypeArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = MemberCountOutputTypeDefaultArgs<ExtArgs>
     /**
+     * @deprecated Use StockSymbolCountOutputTypeDefaultArgs instead
+     */
+    export type StockSymbolCountOutputTypeArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = StockSymbolCountOutputTypeDefaultArgs<ExtArgs>
+    /**
      * @deprecated Use StockCountOutputTypeDefaultArgs instead
      */
     export type StockCountOutputTypeArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = StockCountOutputTypeDefaultArgs<ExtArgs>
@@ -9586,6 +25888,10 @@ export namespace Prisma {
      */
     export type MemberArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = MemberDefaultArgs<ExtArgs>
     /**
+     * @deprecated Use StockSymbolDefaultArgs instead
+     */
+    export type StockSymbolArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = StockSymbolDefaultArgs<ExtArgs>
+    /**
      * @deprecated Use StockDefaultArgs instead
      */
     export type StockArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = StockDefaultArgs<ExtArgs>
@@ -9594,13 +25900,49 @@ export namespace Prisma {
      */
     export type StockRecordArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = StockRecordDefaultArgs<ExtArgs>
     /**
-     * @deprecated Use StockOnMembersDefaultArgs instead
+     * @deprecated Use StockMarketDefaultArgs instead
      */
-    export type StockOnMembersArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = StockOnMembersDefaultArgs<ExtArgs>
+    export type StockMarketArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = StockMarketDefaultArgs<ExtArgs>
+    /**
+     * @deprecated Use StockFavoriteDefaultArgs instead
+     */
+    export type StockFavoriteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = StockFavoriteDefaultArgs<ExtArgs>
+    /**
+     * @deprecated Use StockSubscribeDefaultArgs instead
+     */
+    export type StockSubscribeArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = StockSubscribeDefaultArgs<ExtArgs>
+    /**
+     * @deprecated Use MemberSubscribeDefaultArgs instead
+     */
+    export type MemberSubscribeArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = MemberSubscribeDefaultArgs<ExtArgs>
+    /**
+     * @deprecated Use StockPositionDefaultArgs instead
+     */
+    export type StockPositionArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = StockPositionDefaultArgs<ExtArgs>
+    /**
+     * @deprecated Use MemberDetailDefaultArgs instead
+     */
+    export type MemberDetailArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = MemberDetailDefaultArgs<ExtArgs>
+    /**
+     * @deprecated Use CountryDefaultArgs instead
+     */
+    export type CountryArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = CountryDefaultArgs<ExtArgs>
     /**
      * @deprecated Use SettingDefaultArgs instead
      */
     export type SettingArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = SettingDefaultArgs<ExtArgs>
+    /**
+     * @deprecated Use StockResourceDefaultArgs instead
+     */
+    export type StockResourceArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = StockResourceDefaultArgs<ExtArgs>
+    /**
+     * @deprecated Use StockResourceRecordDefaultArgs instead
+     */
+    export type StockResourceRecordArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = StockResourceRecordDefaultArgs<ExtArgs>
+    /**
+     * @deprecated Use ArticleDefaultArgs instead
+     */
+    export type ArticleArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = ArticleDefaultArgs<ExtArgs>
 
   /**
    * Batch Payload for updateMany & deleteMany & createMany

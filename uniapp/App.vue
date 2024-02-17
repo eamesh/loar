@@ -1,7 +1,24 @@
 <script>
+	import { mapState, mapActions } from 'pinia'
+import { useAppStore } from './store/app'
+
 export default {
-	onLaunch: function () {
-		console.log('App Launch')
+	computed: {
+		...mapState(useAppStore, {
+			language: 'language'
+		}),
+		
+	},
+	methods: {
+		...mapActions(useAppStore, [
+			'getMarkets'
+		])
+	},
+	onLaunch: async function () {
+		await this.getMarkets()
+		console.log('App Launch', this.language)
+		this.$i18n.locale = this.language.key
+		uni.setLocale(this.language.key)
 	},
 	onShow: function () {
 		console.log('App Show')

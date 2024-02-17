@@ -3,16 +3,21 @@
 		<view class="border-solid border-[#eee] border-b-[1rpx] border-x-0 border-t-0 flex flex-row justify-between items-center px-4 py-4" :key="item.key"
 			v-for="item in languages" @tap="changeLocale(item)">
 			<view class="text-md text-black">{{ item.title }}</view>
-			<gui-radio-custom :checked="item.key === defaultLocale" />
+			<gui-radio-custom :checked="item.key === language.key" />
 		</view>
 	</view>
 </template>
 
 <script>
+	import { mapState, mapActions } from 'pinia'
+import { useAppStore } from '../../../store/app'
 	export default {
 		data() {
 			return {
-				defaultLocale: 'zh-Hant',
+				// defaultLocale: {
+				// 	key: 'en',
+				// 	title: 'English'
+				// },
 				languages: [{
 						key: 'en',
 						title: 'English'
@@ -24,9 +29,18 @@
 				]
 			}
 		},
+		computed: {
+			...mapState(useAppStore, {
+				language: 'language'
+			})
+		},
 		methods: {
+			...mapActions(useAppStore, ['setLanguage']),
 			changeLocale(locale) {
-				this.defaultLocale = locale.key
+				// this.defaultLocale = locale
+				this.setLanguage(locale)
+				this.$i18n.locale = this.language.key
+				uni.setLocale(this.language.key)
 			}
 		}
 	}

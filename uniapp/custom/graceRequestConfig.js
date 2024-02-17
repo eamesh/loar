@@ -1,7 +1,7 @@
 export default{
 	
 	// api 基础 url
-	apiBaseUrl        : 'http://192.168.0.185/API/',
+	apiBaseUrl        : 'http://localhost:3000/api/v1',
 	
 	// 调试模式 [ false 关闭调试输出，项目发包时请设置此项为 false ]
 	debug             : true,

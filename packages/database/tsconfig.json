@@ -4,7 +4,8 @@
     "strict": true,
     "rootDir": "src",
     "noEmit": true,
-    "module": "NodeNext"
+    "module": "NodeNext",
+    "resolveJsonModule": true
   },
   "include": ["src/**/*"]
 }

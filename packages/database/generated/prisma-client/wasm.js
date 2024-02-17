@@ -112,6 +112,7 @@ exports.Prisma.UserScalarFieldEnum = {
   email: 'email',
   name: 'name',
   avatar: 'avatar',
+  password: 'password',
   gender: 'gender',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt'
@@ -122,7 +123,39 @@ exports.Prisma.MemberScalarFieldEnum = {
   email: 'email',
   name: 'name',
   avatar: 'avatar',
+  password: 'password',
   gender: 'gender',
+  address: 'address',
+  accountBalance: 'accountBalance',
+  status: 'status',
+  type: 'type',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+};
+
+exports.Prisma.StockSymbolScalarFieldEnum = {
+  id: 'id',
+  code: 'code',
+  market: 'market',
+  online: 'online',
+  symbol: 'symbol',
+  showName: 'showName',
+  name: 'name',
+  symbolShowName: 'symbolShowName',
+  trade: 'trade',
+  type: 'type',
+  newPrice: 'newPrice',
+  open: 'open',
+  close: 'close',
+  high: 'high',
+  low: 'low',
+  amount: 'amount',
+  volume: 'volume',
+  change: 'change',
+  changePercent: 'changePercent',
+  date: 'date',
+  sync: 'sync',
+  syncMarket: 'syncMarket',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt'
 };
@@ -137,29 +170,156 @@ exports.Prisma.StockScalarFieldEnum = {
   logo: 'logo',
   sok: 'sok',
   optional: 'optional',
+  newPrice: 'newPrice',
+  open: 'open',
+  close: 'close',
+  high: 'high',
+  low: 'low',
+  amount: 'amount',
+  volume: 'volume',
   status: 'status',
+  change: 'change',
+  changePercent: 'changePercent',
+  date: 'date',
+  extra: 'extra',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt'
 };
 
 exports.Prisma.StockRecordScalarFieldEnum = {
   id: 'id',
-  price: 'price',
+  newPrice: 'newPrice',
   open: 'open',
   close: 'close',
   high: 'high',
   low: 'low',
-  turnover: 'turnover',
+  amount: 'amount',
   volume: 'volume',
+  date: 'date',
+  extra: 'extra',
   createdAt: 'createdAt',
   stockId: 'stockId'
 };
 
-exports.Prisma.StockOnMembersScalarFieldEnum = {
+exports.Prisma.StockMarketScalarFieldEnum = {
   id: 'id',
+  code: 'code',
+  currency: 'currency',
+  maxWithdrawal: 'maxWithdrawal',
+  minWithdrawal: 'minWithdrawal',
+  feeRate: 'feeRate',
+  minFee: 'minFee',
+  lever: 'lever',
+  mmr: 'mmr',
+  allocationRate: 'allocationRate',
+  frequency: 'frequency',
+  bindingHours: 'bindingHours',
+  headSymbols: 'headSymbols',
+  sort: 'sort',
+  online: 'online',
+  conline: 'conline',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+};
+
+exports.Prisma.StockFavoriteScalarFieldEnum = {
+  id: 'id',
+  newPrice: 'newPrice',
+  open: 'open',
+  close: 'close',
+  high: 'high',
+  low: 'low',
+  amount: 'amount',
+  volume: 'volume',
+  date: 'date',
+  extra: 'extra',
   memberId: 'memberId',
-  stockId: 'stockId',
+  stockSymbolId: 'stockSymbolId',
   createdAt: 'createdAt'
+};
+
+exports.Prisma.StockSubscribeScalarFieldEnum = {
+  id: 'id',
+  market: 'market',
+  name: 'name',
+  code: 'code',
+  startAt: 'startAt',
+  endAt: 'endAt',
+  upAt: 'upAt',
+  circulation: 'circulation',
+  remainCirculation: 'remainCirculation',
+  ipoPrice: 'ipoPrice',
+  issuePrice: 'issuePrice',
+  resultAt: 'resultAt',
+  subAmount: 'subAmount',
+  status: 'status',
+  type: 'type',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+};
+
+exports.Prisma.MemberSubscribeScalarFieldEnum = {
+  id: 'id',
+  market: 'market',
+  code: 'code',
+  name: 'name',
+  amount: 'amount',
+  money: 'money',
+  no: 'no',
+  winningAmount: 'winningAmount',
+  winningPrice: 'winningPrice',
+  totalWinningPrice: 'totalWinningPrice',
+  actualAmount: 'actualAmount',
+  status: 'status',
+  type: 'type',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt',
+  stockSubscribeId: 'stockSubscribeId',
+  memberId: 'memberId'
+};
+
+exports.Prisma.StockPositionScalarFieldEnum = {
+  id: 'id',
+  amount: 'amount',
+  blast: 'blast',
+  price: 'price',
+  mode: 'mode',
+  status: 'status',
+  bond: 'bond',
+  identifier: 'identifier',
+  lever: 'lever',
+  stopLoss: 'stopLoss',
+  takeProfit: 'takeProfit',
+  market: 'market',
+  pl: 'pl',
+  rate: 'rate',
+  currentPrice: 'currentPrice',
+  memberId: 'memberId',
+  stockSymbolId: 'stockSymbolId',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+};
+
+exports.Prisma.MemberDetailScalarFieldEnum = {
+  id: 'id',
+  after: 'after',
+  amount: 'amount',
+  before: 'before',
+  market: 'market',
+  type: 'type',
+  remark: 'remark',
+  memberId: 'memberId'
+};
+
+exports.Prisma.CountryScalarFieldEnum = {
+  id: 'id',
+  code: 'code',
+  name: 'name',
+  en: 'en',
+  tel: 'tel',
+  py: 'py',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
 };
 
 exports.Prisma.SettingScalarFieldEnum = {
@@ -170,14 +330,63 @@ exports.Prisma.SettingScalarFieldEnum = {
   updatedAt: 'updatedAt'
 };
 
+exports.Prisma.StockResourceScalarFieldEnum = {
+  id: 'id',
+  amountScope: 'amountScope',
+  frequencyScope: 'frequencyScope',
+  market: 'market',
+  spreadScope: 'spreadScope',
+  endAt: 'endAt',
+  startAt: 'startAt',
+  symbol: 'symbol',
+  type: 'type',
+  status: 'status',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+};
+
+exports.Prisma.StockResourceRecordScalarFieldEnum = {
+  id: 'id',
+  open: 'open',
+  high: 'high',
+  close: 'close',
+  low: 'low',
+  time: 'time',
+  stockResourceId: 'stockResourceId'
+};
+
+exports.Prisma.ArticleScalarFieldEnum = {
+  id: 'id',
+  thumb: 'thumb',
+  title: 'title',
+  content: 'content',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+};
+
 exports.Prisma.SortOrder = {
   asc: 'asc',
   desc: 'desc'
 };
 
+exports.Prisma.NullableJsonNullValueInput = {
+  DbNull: Prisma.DbNull,
+  JsonNull: Prisma.JsonNull
+};
+
+exports.Prisma.JsonNullValueInput = {
+  JsonNull: Prisma.JsonNull
+};
+
 exports.Prisma.NullsOrder = {
   first: 'first',
   last: 'last'
+};
+
+exports.Prisma.JsonNullValueFilter = {
+  DbNull: Prisma.DbNull,
+  JsonNull: Prisma.JsonNull,
+  AnyNull: Prisma.AnyNull
 };
 exports.GENDER = exports.$Enums.GENDER = {
   UNKNOWN: 'UNKNOWN',
@@ -194,10 +403,20 @@ exports.STOCK_STATUS = exports.$Enums.STOCK_STATUS = {
 exports.Prisma.ModelName = {
   User: 'User',
   Member: 'Member',
+  StockSymbol: 'StockSymbol',
   Stock: 'Stock',
   StockRecord: 'StockRecord',
-  StockOnMembers: 'StockOnMembers',
-  Setting: 'Setting'
+  StockMarket: 'StockMarket',
+  StockFavorite: 'StockFavorite',
+  StockSubscribe: 'StockSubscribe',
+  MemberSubscribe: 'MemberSubscribe',
+  StockPosition: 'StockPosition',
+  MemberDetail: 'MemberDetail',
+  Country: 'Country',
+  Setting: 'Setting',
+  StockResource: 'StockResource',
+  StockResourceRecord: 'StockResourceRecord',
+  Article: 'Article'
 };
 
 /**

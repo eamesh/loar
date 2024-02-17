@@ -5,32 +5,32 @@
 				<gui-image src="/static/img/avatar.png" :width="140" :height="140" borderRadius="140rpx"></gui-image>
 				<view v-if="token" class="flex flex-col gap-y-2 justify-center">
 					<view class="font-mono text-[26rpx]">
-						123@gmail.com
+						{{ user.email }}
 					</view>
-					<view class="font-mono text-[24rpx]">ID:00000001</view>
+					<view class="font-mono text-[24rpx]">ID:{{ `${user.id}`.padStart(10, '0') }}</view>
 				</view>
 				<view v-else class="flex flex-col gap-y-2 justify-center" @click="$go('/pages/auth/signin/signin')">
 					<view class="font-mono text-[34rpx] font-semibold">
-						登入/註冊
+						{{ $t("signin") }}/{{ $t("signup") }}
 					</view>
 				</view>
 			</view>
 		</view>
 		<view class="px-4 flex flex-col mt-2 gap-y-3">
 			<view class="flex flex-row justify-between items-center px-4 py-2 bg-white rounded-lg"
-				@click="$go('/pages/user/detail/detail', 'navigateTo')">
+				@click="$go(token ? '/pages/user/detail/detail' : '/pages/auth/signin/signin', 'navigateTo')">
 				<view class="flex flex-row items-center gap-x-2">
 					<image src="/static/img/icon_white01.png" class="w-[50rpx] h-[50rpx]"></image>
-					<view class="text-md">帳號資訊</view>
+					<view class="text-md">{{ $t("account_info") }}</view>
 				</view>
 				<text class="gui-icons gui-block text-[32rpx] text-[#999]">&#xe601;</text>
 			</view>
 
 			<view class="flex flex-row justify-between items-center px-4 py-2 bg-white rounded-lg"
-				@click="$go('/pages/user/password/password')">
+				@click="$go(token ? '/pages/user/password/password' : '/pages/auth/signin/signin', 'navigateTo')">
 				<view class="flex flex-row items-center gap-x-2">
 					<image src="/static/img/icon_white02.png" class="w-[50rpx] h-[50rpx]"></image>
-					<view class="text-md">密碼</view>
+					<view class="text-md">{{ $t("password") }}</view>
 				</view>
 				<text class="gui-icons gui-block text-[32rpx] text-[#999]">&#xe601;</text>
 			</view>
@@ -39,7 +39,7 @@
 				@click="$go('/pages/setting/language/language')">
 				<view class="flex flex-row items-center gap-x-2">
 					<image src="/static/img/icon_white03.png" class="w-[50rpx] h-[50rpx]"></image>
-					<view class="text-md">語言</view>
+					<view class="text-md">{{ $t("language") }}</view>
 				</view>
 				<text class="gui-icons gui-block text-[32rpx] text-[#999]">&#xe601;</text>
 			</view>
@@ -56,14 +56,14 @@
 				@click="$go('/pages/about/about')">
 				<view class="flex flex-row items-center gap-x-2">
 					<image src="/static/img/icon_white05.png" class="w-[50rpx] h-[50rpx]"></image>
-					<view class="text-md">關於我們</view>
+					<view class="text-md">{{ $t("about_us") }}</view>
 				</view>
 				<text class="gui-icons gui-block text-[32rpx] text-[#999]">&#xe601;</text>
 			</view>
 
 			<view v-if="token" class="flex flex-row justify-between items-center mt-3">
 				<button type="default" class="gui-bg-primary gui-noborder w-full rounded-3xl" @tap="open">
-					<text class="gui-color-white gui-button-text">登出</text>
+					<text class="gui-color-white gui-button-text">{{ $t('logout') }}</text>
 				</button>
 			</view>
 		</view>
@@ -102,7 +102,8 @@
 		},
 		computed: {
 			...mapState(useAppStore, {
-				token: 'token'
+				token: 'token',
+				user: 'user'
 			})
 		},
 		methods: {

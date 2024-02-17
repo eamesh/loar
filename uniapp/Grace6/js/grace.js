@@ -1,4 +1,5 @@
 import md5 from '@/Grace6/js/md5.js';
+import config from '@/config/index.js'
 export default {
 	// 版本检查
 	verson: function() {
@@ -69,6 +70,7 @@ export default {
 	// --- 网络请求 ---
 	// get
 	get: function(url, data, headers, success, fail) {
+		url = `${config.api}${url}`
 		if (!fail) {
 			fail = () => {
 				this.msg("网络请求失败");
@@ -101,6 +103,7 @@ export default {
 	},
 	// post
 	post: function(url, data, contentType, headers, success, fail) {
+		url = `${config.api}${url}`
 		if (!fail) {
 			fail = () => {
 				this.msg("网络请求失败");

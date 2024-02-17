@@ -36,7 +36,7 @@ export class HkStockTask implements ScheduleTask {
     timeZone: HK_TIMEZONE,
   })
   every2Hours(): void {
-    this.eventEmitter.emit(HK_EVERY_2_HOURS);
+    // this.eventEmitter.emit(HK_EVERY_2_HOURS);
   }
 
   @Cron(CronExpression.EVERY_MINUTE, {
@@ -44,7 +44,7 @@ export class HkStockTask implements ScheduleTask {
     timeZone: HK_TIMEZONE,
   })
   everyMinute(): void {
-    this.eventEmitter.emit(HK_EVERY_MINUTE);
+    // this.eventEmitter.emit(HK_EVERY_MINUTE);
   }
 
   @Cron(CronExpression.EVERY_5_MINUTES, {
@@ -52,6 +52,6 @@ export class HkStockTask implements ScheduleTask {
     timeZone: HK_TIMEZONE,
   })
   every5Minutes(): void {
-    // throw new Error('Method not implemented.');
+    // this.eventEmitter.emit(HK_EVERY_5_MINUTES);
   }
 }

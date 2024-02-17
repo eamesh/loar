@@ -12,13 +12,15 @@
     "build": "tsup",
     "db:generate": "prisma generate",
     "db:push": "prisma db push --skip-generate",
-    "db:format": "prisma format"
+    "db:format": "prisma format",
+    "db:seed": "ts-node src/seed.ts"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@prisma/client": "5.9.1"
+    "@prisma/client": "5.9.1",
+    "ts-node": "^10.9.2"
   },
   "devDependencies": {
     "prisma": "^5.9.1",

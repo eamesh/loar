@@ -3,7 +3,7 @@
 		{
 			"path": "pages/main/home/home",
 			"style": {
-				"navigationBarTitleText": "",
+				"navigationBarTitleText": "Home",
 				"enablePullDownRefresh": false,
 				"navigationStyle": "custom"
 			}
@@ -11,7 +11,7 @@
 		{
 			"path": "pages/main/ipo/ipo",
 			"style": {
-				"navigationBarTitleText": "",
+				"navigationBarTitleText": "IPO",
 				"enablePullDownRefresh": false,
 				"navigationStyle": "custom"
 			}
@@ -19,7 +19,7 @@
 		{
 			"path": "pages/main/trade/trade",
 			"style": {
-				"navigationBarTitleText": "",
+				"navigationBarTitleText": "Trade",
 				"enablePullDownRefresh": false,
 				"navigationStyle": "custom"
 			}
@@ -27,7 +27,7 @@
 		{
 			"path": "pages/main/news/news",
 			"style": {
-				"navigationBarTitleText": "新闻",
+				"navigationBarTitleText": "%tabbar.news%",
 				"enablePullDownRefresh": false,
 				"navigationBarBackgroundColor": "#fff"
 			}
@@ -35,7 +35,7 @@
 		{
 			"path": "pages/main/profile/profile",
 			"style": {
-				"navigationBarTitleText": "",
+				"navigationBarTitleText": "%tabbar.profile%",
 				"enablePullDownRefresh": false,
 				"navigationStyle": "custom"
 			}
@@ -43,16 +43,16 @@
 		{
 			"path": "pages/search/search",
 			"style": {
-				"navigationBarTitleText": "搜索",
+				"navigationBarTitleText": "%search%",
 				"enablePullDownRefresh": false,
 				"navigationBarBackgroundColor": "#fff",
 				"backgroundColor": "#fff"
 			}
 		},
 		{
-			"path": "pages/gainers/gainers",
+			"path": "pages/rank/rank",
 			"style": {
-				"navigationBarTitleText": "Gainers",
+				"navigationBarTitleText": "Rank",
 				"enablePullDownRefresh": false,
 				"navigationBarBackgroundColor": "#fff"
 			}
@@ -60,7 +60,7 @@
 		{
 			"path": "pages/kline/kline",
 			"style": {
-				"navigationBarTitleText": "行情",
+				"navigationBarTitleText": "kLine",
 				"enablePullDownRefresh": false,
 				"navigationBarBackgroundColor": "#fff"
 			}
@@ -69,7 +69,7 @@
 			"path" : "pages/auth/signin/signin",
 			"style" : 
 			{
-				"navigationBarTitleText" : "",
+				"navigationBarTitleText" : "%signin%",
 				"enablePullDownRefresh" : false,
 				"navigationStyle": "custom",
 				"navigationBarBackgroundColor": "#fff"
@@ -79,7 +79,7 @@
 			"path" : "pages/auth/signup/signup",
 			"style" : 
 			{
-				"navigationBarTitleText" : "註冊",
+				"navigationBarTitleText" : "%signup%",
 				"enablePullDownRefresh" : false,
 				"navigationBarBackgroundColor": "#fff"
 			}
@@ -88,7 +88,7 @@
 			"path" : "pages/setting/language/language",
 			"style" : 
 			{
-				"navigationBarTitleText" : "語言設定",
+				"navigationBarTitleText" : "%language_settings%",
 				"enablePullDownRefresh" : false,
 				"navigationBarBackgroundColor": "#fff"
 			}
@@ -97,7 +97,7 @@
 			"path" : "pages/user/password/password",
 			"style" : 
 			{
-				"navigationBarTitleText" : "重置密碼",
+				"navigationBarTitleText" : "%reset_password%",
 				"enablePullDownRefresh" : false,
 				"navigationBarBackgroundColor": "#fff"
 			}
@@ -106,7 +106,7 @@
 			"path" : "pages/user/detail/detail",
 			"style" : 
 			{
-				"navigationBarTitleText" : "帳號資訊",
+				"navigationBarTitleText" : "%account_info%",
 				"enablePullDownRefresh" : false,
 				"navigationBarBackgroundColor": "#fff"
 			}
@@ -115,7 +115,7 @@
 			"path" : "pages/about/about",
 			"style" : 
 			{
-				"navigationBarTitleText" : "關於我們",
+				"navigationBarTitleText" : "%about_us%",
 				"enablePullDownRefresh" : false,
 				"navigationBarBackgroundColor": "#fff"
 			}
@@ -124,7 +124,7 @@
 			"path" : "pages/article/article",
 			"style" : 
 			{
-				"navigationBarTitleText" : "内容",
+				"navigationBarTitleText" : "%article%",
 				"enablePullDownRefresh" : false,
 				"navigationBarBackgroundColor": "#fff"
 			}
@@ -133,7 +133,7 @@
 			"path" : "pages/stock/ipo/record/record",
 			"style" : 
 			{
-				"navigationBarTitleText" : "首次公開發行歷史",
+				"navigationBarTitleText" : "%ipo_history%",
 				"enablePullDownRefresh" : false,
 				"navigationBarBackgroundColor": "#fff"
 			}
@@ -142,7 +142,7 @@
 			"path" : "pages/auth/reset/reset",
 			"style" : 
 			{
-				"navigationBarTitleText" : "重設密碼",
+				"navigationBarTitleText" : "%reset_password%",
 				"enablePullDownRefresh" : false,
 				"navigationBarBackgroundColor": "#fff"
 			}
@@ -151,7 +151,7 @@
 			"path" : "pages/setting/country/country",
 			"style" : 
 			{
-				"navigationBarTitleText" : "國家名單",
+				"navigationBarTitleText" : "%country%",
 				"enablePullDownRefresh" : false,
 				"navigationBarBackgroundColor": "#fff"
 			}
@@ -160,7 +160,7 @@
 			"path" : "pages/recharge/card/card",
 			"style" : 
 			{
-				"navigationBarTitleText" : "銀行卡儲值",
+				"navigationBarTitleText" : "%wise.deposit%",
 				"enablePullDownRefresh" : false,
 				"navigationBarBackgroundColor": "#fff"
 			}
@@ -169,7 +169,7 @@
 			"path" : "pages/recharge/usdt/usdt",
 			"style" : 
 			{
-				"navigationBarTitleText" : "USDT儲值",
+				"navigationBarTitleText" : "%usdt.deposit%",
 				"enablePullDownRefresh" : false,
 				"navigationBarBackgroundColor": "#fff"
 			}
@@ -178,7 +178,7 @@
 			"path" : "pages/recharge/card/withdraw",
 			"style" : 
 			{
-				"navigationBarTitleText" : "提現",
+				"navigationBarTitleText" : "%wise.withdraw%",
 				"enablePullDownRefresh" : false,
 				"navigationBarBackgroundColor": "#fff"
 			}
@@ -187,7 +187,7 @@
 			"path" : "pages/recharge/usdt/withdraw",
 			"style" : 
 			{
-				"navigationBarTitleText" : "USDT提現",
+				"navigationBarTitleText" : "%usdt.withdraw%",
 				"enablePullDownRefresh" : false,
 				"navigationBarBackgroundColor": "#fff"
 			}
@@ -196,7 +196,7 @@
 			"path" : "pages/wallet/records/records",
 			"style" : 
 			{
-				"navigationBarTitleText" : "現金流量",
+				"navigationBarTitleText" : "%cash.flow%",
 				"enablePullDownRefresh" : false,
 				"navigationBarBackgroundColor": "#fff"
 			}
@@ -205,7 +205,7 @@
 			"path" : "pages/market/order/history",
 			"style" : 
 			{
-				"navigationBarTitleText" : "持倉歷史記錄",
+				"navigationBarTitleText" : "%position.history%",
 				"enablePullDownRefresh" : false,
 				"navigationBarBackgroundColor": "#fff"
 			}
@@ -214,9 +214,26 @@
 			"path" : "pages/wallet/fundRecords/fundRecords",
 			"style" : 
 			{
-				"navigationBarTitleText" : "提幣歷史",
+				"navigationBarTitleText" : "%withdrawal.history%",
 				"enablePullDownRefresh" : false,
 				"navigationBarBackgroundColor": "#fff"
+			}
+		},
+		{
+			"path" : "pages/main/ipo/confirm",
+			"style" : 
+			{
+				"navigationBarTitleText" : "IPO",
+				"enablePullDownRefresh" : false,
+				"navigationBarBackgroundColor": "#fff"
+			}
+		},
+		{
+			"path" : "pages/article/setting",
+			"style" : 
+			{
+				"navigationBarTitleText" : "",
+				"enablePullDownRefresh" : false
 			}
 		}
 	],

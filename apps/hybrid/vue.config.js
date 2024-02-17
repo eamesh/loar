@@ -8,13 +8,13 @@ module.exports = defineConfig({
   publicPath: '',
   outputDir: resolve(__dirname, '..', '..', 'uniapp/hybrid/html'),
   devServer: {
-    port: 8082,
+    port: 8082
   },
   configureWebpack: {
     plugins: [
       ComponentsPlugin.default({
-        resolvers: [VantResolver()],
-      }),
-    ],
-  },
+        resolvers: [VantResolver()]
+      })
+    ]
+  }
 })
