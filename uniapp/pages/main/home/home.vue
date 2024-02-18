@@ -18,11 +18,13 @@
 							<view class="truncate w-full text-center">{{ item.name || item.showName }}</view>
 							<view class="truncate w-full text-center font-mono"
 								:class="[+(item.change) > 0 ? 'text-[#00c537]' : 'text-[#e60101]']">
-								{{ parseFloat(item.newPrice).toFixed(3) }}</view>
+								{{ parseFloat(item.newPrice).toFixed(3) }}
+							</view>
 							<view class="w-full flex flex-row justify-between items-center text-[#00c537] font-mono"
 								:class="[+(item.change) > 0 ? 'text-[#00c537]' : 'text-[#e60101]']">
 								<view class="text-[18rpx]">
-									{{ +(item.change) > 0 ? '+' : '' }}{{ parseFloat(item.change).toFixed(3) }}</view>
+									{{ +(item.change) > 0 ? '+' : '' }}{{ parseFloat(item.change).toFixed(3) }}
+								</view>
 								<view class="text-[18rpx]">
 									{{ +(item.change) > 0 ? '+' : '' }}{{ parseFloat(item.changePercent || 0).toFixed(3) }}%
 								</view>
@@ -38,7 +40,8 @@
 							<view class="truncate w-full text-center">{{ $t(`rank.${item.key}`) }}</view>
 							<view class="truncate w-full text-center font-mono"
 								:class="[+(item.data.change) > 0 ? 'text-[#00c537]' : 'text-[#e60101]']">
-								{{ parseFloat(item.data.newPrice).toFixed(3) }}</view>
+								{{ parseFloat(item.data.newPrice).toFixed(3) }}
+							</view>
 							<view class="truncate w-full text-[#999] text-xs text-center">{{ item.data.name }}</view>
 							<view class="w-full flex flex-row justify-between items-center font-mono"
 								:class="[+(item.data.change) > 0 ? 'text-[#00c537]' : 'text-[#e60101]']">
@@ -61,21 +64,27 @@
 							<view class="basis-1/3 text-right">{{ $t("table.chg") }}</view>
 						</view>
 
-						<view v-for="(item,index) in stocks.data" :key="item.id" class="flex flex-row flex-nowrap justify-between items-center font-medium mt-6"
+						<view v-for="(item,index) in stocks.data" :key="item.id"
+							class="flex flex-row flex-nowrap justify-between items-center font-medium mt-6"
 							@click="$go(`/pages/kline/kline?id=${item.id}`, 'navigateTo')">
 							<view class="basis-1/2 overflow-hidden">
 								<view class="flex flex-col">
 									<view class="truncate text-[22rpx]">{{ item.name }}</view>
 									<view class="flex flex-row items-center gap-x-1 mt-2">
-										<view class="bg-[#3395FF] text-white text-[18rpx] px-[10rpx] py-[3px] rounded-sm">{{ item.market.toUpperCase() }}</view>
+										<view class="bg-[#3395FF] text-white text-[18rpx] px-[10rpx] py-[3px] rounded-sm">
+											{{ item.market.toUpperCase() }}</view>
 										<view class="text-[#999] text-[20rpx]">{{ item.code }}</view>
 									</view>
 								</view>
 							</view>
-							<view class="basis-1/3 text-right text-xs font-mono" :class="[+(item.change) >= 0 ? 'text-[#00c537]' : 'text-[#e60101]']">{{ (+item.newPrice)?.toFixed(3) }}</view>
-							<view class="basis-1/3 text-right text-xs font-mono" :class="[+(item.change) >= 0 ? 'text-[#00c537]' : 'text-[#e60101]']">{{ +(item.change) >= 0 ? '+' : '' }}{{ item.changePercent }}</view>
+							<view class="basis-1/3 text-right text-xs font-mono"
+								:class="[+(item.change) >= 0 ? 'text-[#00c537]' : 'text-[#e60101]']">{{ (+item.newPrice)?.toFixed(3) }}
+							</view>
+							<view class="basis-1/3 text-right text-xs font-mono"
+								:class="[+(item.change) >= 0 ? 'text-[#00c537]' : 'text-[#e60101]']">
+								{{ +(item.change) >= 0 ? '+' : '' }}{{ item.changePercent }}</view>
 						</view>
-						
+
 					</view>
 				</view>
 
@@ -84,14 +93,16 @@
 			<view v-else>
 				<view class="px-4 pt-4 font-semibold font-sans">{{ $t("index.all_stocks") }}</view>
 				<view class="px-4 py-3">
-					<view class="bg-white rounded-md px-3 py-4 custom-stock font-sans" v-if="favorite.length" >
+					<view class="bg-white rounded-md px-3 py-4 custom-stock font-sans" v-if="favorite.length">
 						<view class="flex flex-row flex-nowrap justify-between items-center text-[#999] font-medium pb-1">
 							<view class="basis-1/2">{{ $t("table.symbol_name") }}</view>
 							<view class="basis-1/3 text-right">{{ $t("table.price") }}</view>
 							<view class="basis-1/3 text-right">{{ $t("table.chg") }}</view>
 						</view>
 
-						<view v-for="(item,index) in favorite" :key="item.id" class="flex flex-row flex-nowrap justify-between items-center font-medium mt-6" @click="handleClickCustom(item, index)">
+						<view v-for="(item,index) in favorite" :key="item.id"
+							class="flex flex-row flex-nowrap justify-between items-center font-medium mt-6"
+							@click="handleClickCustom(item, index)">
 							<view class="basis-1/2 overflow-hidden">
 								<view class="flex flex-row items-center gap-x-2">
 									<gui-radio v-if="editCustom" @change="(e) => changeCustom(e[0], index)" :checked="item.checked" />
@@ -101,15 +112,20 @@
 										</view>
 
 										<view class="flex flex-row items-center gap-x-1 mt-2">
-											<view class="bg-[#3395FF] text-white text-[18rpx] px-[10rpx] py-[3px] rounded-sm">{{ `${item.market}`.toUpperCase() }}</view>
+											<view class="bg-[#3395FF] text-white text-[18rpx] px-[10rpx] py-[3px] rounded-sm">
+												{{ `${item.market}`.toUpperCase() }}</view>
 											<view class="text-[#999] text-[20rpx]">{{ item.code }}</view>
 										</view>
 									</view>
 								</view>
 							</view>
-							<view class="basis-1/3 text-right text-xs font-mono" :class="[+(item.change) >= 0 ? 'text-[#00c537]' : 'text-[#e60101]']">{{ (+item.newPrice)?.toFixed(3) }}</view>
-							<view class="basis-1/3 text-right text-xs font-mono" :class="[+(item.change) >= 0 ? 'text-[#00c537]' : 'text-[#e60101]']">{{ +(item.change) >= 0 ? '+' : '' }}{{ item.changePercent }}</view>
-							
+							<view class="basis-1/3 text-right text-xs font-mono"
+								:class="[+(item.change) >= 0 ? 'text-[#00c537]' : 'text-[#e60101]']">{{ (+item.newPrice)?.toFixed(3) }}
+							</view>
+							<view class="basis-1/3 text-right text-xs font-mono"
+								:class="[+(item.change) >= 0 ? 'text-[#00c537]' : 'text-[#e60101]']">
+								{{ +(item.change) >= 0 ? '+' : '' }}{{ item.changePercent }}</view>
+
 						</view>
 
 					</view>
@@ -207,7 +223,7 @@
 				},
 				favorite: [],
 				tmpIndexData: {
-					
+
 				},
 				tmpStocks: {}
 			}
@@ -235,7 +251,7 @@
 						...item
 					})
 				})
-				console.log(1231,data)
+				console.log(1231, data)
 				return data
 			},
 
@@ -256,7 +272,7 @@
 						data: this.indexData.turnover
 					}
 				]
-				
+
 				return data
 			}
 		},
@@ -266,7 +282,7 @@
 				this.indexRequest()
 				this.indexStocks()
 			},
-	
+
 			currentIndex() {
 				if (this.currentIndex === 0) {
 					this.editCustom = false
@@ -282,10 +298,10 @@
 				console.log(this.currentIndex)
 				this.setMarket(market)
 			},
-			
+
 			indexData() {
 				this.handleUnSubIndexData()
-				
+
 				this.handleSubIndexData()
 			},
 			stocks() {
@@ -308,11 +324,11 @@
 				this.favorite[idx].checked = false
 			},
 			handleClickCustom(item, index) {
-			 if (this.editCustom) {
-				 this.favorite[index].checked = !this.favorite[index].checked
-			 } else {
-				 this.$go(`/pages/kline/kline?id=${item.id}`, 'navigateTo')
-			 }
+				if (this.editCustom) {
+					this.favorite[index].checked = !this.favorite[index].checked
+				} else {
+					this.$go(`/pages/kline/kline?id=${item.id}`, 'navigateTo')
+				}
 			},
 			setEditCustom() {
 				this.editCustom = true
@@ -323,28 +339,28 @@
 				this.setCurrent(index)
 			},
 			async deleteCustom() {
-				
+
 				const ids = this.favorite.filter(item => item.checked).map(item => item.id)
-				
-				try{
+
+				try {
 					await deleteFavorite(ids)
 					graceJS.msg("删除成功")
 					this.indexFavorite()
-				}catch(e){
+				} catch (e) {
 					//TODO handle the exception
 					graceJS.msg("删除失败")
 				}
 			},
-			
+
 			async indexFavorite() {
-				try{
+				try {
 					const result = await getFavorite()
 					console.log(result)
 					this.favorite = result.map(item => {
 						item.checked = false
 						return item
 					})
-				}catch(e){
+				} catch (e) {
 					//TODO handle the exception
 				}
 			},
@@ -360,7 +376,7 @@
 						losers: result.losers.length ? result.losers[0] : {},
 						turnover: result.turnover.length ? result.turnover[0] : {},
 					}
-					
+
 					console.log(this.indexData)
 				} catch (e) {
 					//TODO handle the exception
@@ -385,8 +401,8 @@
 					this.currentIndex = this.navBars.find(item => item.market === this.market)?.id;
 				}
 			},
-			
-			handleSubIndexData () {
+
+			handleSubIndexData() {
 				Object.keys(this.indexData).forEach(key => {
 					console.log(key, this.indexData)
 					if (Array.isArray(this.indexData[key])) {
@@ -401,8 +417,8 @@
 					}
 				})
 			},
-			
-			handleUnSubIndexData () {
+
+			handleUnSubIndexData() {
 				// 缓存不为空 先退订
 				Object.keys(this.tmpIndexData).length && Object.keys(this.tmpIndexData).forEach(key => {
 					const current = this.tmpIndexData[key]
@@ -410,7 +426,7 @@
 					delete this.tmpIndexData[key]
 				})
 			},
-			
+
 			handleSubStocks() {
 				this.stocks?.data && this.stocks.data.forEach(item => {
 					this.tmpStocks[item.code] = item
@@ -428,26 +444,32 @@
 		},
 
 		created() {
-			console.log(this.navbars)
-			this.setCurrentIndex()
-			this.indexRequest()
-			this.indexStocks()
-			
-			uni.$ws.messageCallback = ({ data }) => {
-				try{
+
+
+			uni.$ws.messageCallback = ({
+				data
+			}) => {
+				try {
 					const key = data.code
 					if (this.tmpIndexData[key]) {
 						this.tmpIndexData[key] = Object.assign(this.tmpIndexData[key], data)
 					}
-					
+
 					if (this.tmpStocks[key]) {
 						this.tmpStocks[key] = Object.assign(this.tmpStocks[key], data)
 					}
-				}catch(e){
+				} catch (e) {
 					//TODO handle the exception
 				}
 			}
-			
+
+			uni.onNetworkStatusChange(res => {
+				console.log(this.navbars)
+				this.setCurrentIndex()
+				this.indexRequest()
+				this.indexStocks()
+			});
+
 			window.tmp = this.tmpIndexData
 		},
 		onHide() {
@@ -455,7 +477,7 @@
 			this.handleUnSubIndexData()
 			this.handleUnsubStocks()
 		},
-		
+
 		onShow() {
 			this.indexRequest()
 			this.indexStocks()

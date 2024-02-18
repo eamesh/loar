@@ -3,7 +3,7 @@
 		<view class="border-solid border-[#eee] border-b-[1rpx] border-x-0 border-t-0 flex flex-row justify-between items-center px-4 py-4" :key="item.key"
 			v-for="item in languages" @tap="changeLocale(item)">
 			<view class="text-md text-black">{{ item.title }}</view>
-			<gui-radio-custom :checked="item.key === language.key" />
+			<gui-radio-custom :checked="item.key === key" />
 		</view>
 	</view>
 </template>
@@ -32,7 +32,10 @@ import { useAppStore } from '../../../store/app'
 		computed: {
 			...mapState(useAppStore, {
 				language: 'language'
-			})
+			}),
+			key() {
+				return this.language.key || ''
+			}
 		},
 		methods: {
 			...mapActions(useAppStore, ['setLanguage']),

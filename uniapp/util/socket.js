@@ -1,5 +1,4 @@
 import io from 'socket.io-client'
-const socket = io('http://localhost:3000');
 
 export class Ws {
 	ws
@@ -16,7 +15,8 @@ export class Ws {
 	}
 
 	connect() {
-		this.ws = socket.on('connect', function() {
+		const socket = this.ws = io(this.wsUrl);
+		socket.on('connect', function() {
 			console.log('Connected');
 		});
 		socket.on('events', this.onEvents.bind(this));

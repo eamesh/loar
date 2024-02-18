@@ -1,7 +1,6 @@
 <template>
 	<view 
-	class="gui-flex gui-row gui-nowrap gui-align-items-center" 
-	@tap.stop="changeStatus">
+	class="gui-flex gui-row gui-nowrap gui-align-items-center">
 		<text
 		v-if="status" 
 		class="gui-icons gui-block gui-text-center" 
@@ -74,9 +73,9 @@ export default {
 	},
 	methods:{
 		changeStatus : function(){
-			if (this.status) return
-			this.status = !this.status;
-			this.$emit('change', [this.status, this.parameter]);
+			// if (this.status) return
+			// this.status = !this.status;
+			// this.$emit('change', [this.status, this.parameter]);
 		}
 	},
 	emits : ['change']
