@@ -89,7 +89,9 @@ export class MemberController {
       pageSize: meta.perPage,
       pageCount: meta.lastPage,
       itemCount: meta.total,
-      list: data,
+      list: data.map((item: any) => {
+        return new MemberEntity(item);
+      }),
     };
   }
 
@@ -164,10 +166,98 @@ export class MemberController {
     return await this.member.getWithdrawy(req.user as Member);
   }
 
-  @Post('withdraw/admin')
+  @Post('withdraw/:id/status')
+  @HttpCode(HttpStatus.NO_CONTENT)
+  @UseGuards(UserGuard)
+  async updateWithdrawStatus(@Param('id') id: number, @Body() payload: any) {
+    return await this.member.updateWithdrawStatus(id, payload);
+  }
+
+  @Post('withdraw/list/admin')
   @HttpCode(HttpStatus.OK)
   @UseGuards(UserGuard)
-  async getWithdrawAdmin() {
-    return await this.member.getWithdrawByAdmin();
+  async getWithdrawListAdmin(@Body() payload: any) {
+    const { page, id, email, pageSize } = payload;
+
+    const where: any = {};
+    const params = { id };
+    Object.keys(params).forEach((key) => {
+      if (params[key] !== '' && params[key] !== undefined)
+        where[key] = params[key];
+    });
+
+    if (email !== '' && email !== undefined) {
+      where.member = {
+        email,
+      };
+    }
+
+    const { data, meta } = await this.member.getWithdrawListByAdmin({
+      where: where,
+      orderBy: {
+        createdAt: 'desc',
+      },
+      page,
+      perPage: pageSize,
+    });
+
+    return {
+      page: meta.currentPage,
+      pageSize: meta.perPage,
+      pageCount: meta.lastPage,
+      itemCount: meta.total,
+      list: data.map((item: any) => {
+        const { email } = item.member;
+        return {
+          ...item,
+          email,
+          money: item.money.toNumber(),
+        };
+      }),
+    };
+  }
+
+  @Post('recharge/list/admin')
+  @UseGuards(UserGuard)
+  async getRechargeListAdmin(@Body() payload: any) {
+    const { page, id, email, pageSize } = payload;
+
+    const where: any = {};
+    const params = { id };
+    Object.keys(params).forEach((key) => {
+      if (params[key] !== '' && params[key] !== undefined)
+        where[key] = params[key];
+    });
+
+    if (email !== '' && email !== undefined) {
+      where.member = {
+        email,
+      };
+    }
+
+    const { data, meta } = await this.member.getRechageListByAdmin({
+      where: where,
+      orderBy: {
+        createdAt: 'desc',
+      },
+      page,
+      perPage: pageSize,
+    });
+
+    return {
+      page: meta.currentPage,
+      pageSize: meta.perPage,
+      pageCount: meta.lastPage,
+      itemCount: meta.total,
+      list: data.map((item: any) => {
+        const { email } = item.member;
+        return {
+          ...item,
+          email,
+          money: item.money.toNumber(),
+          rechargeMoney: item.rechargeMoney.toNumber(),
+        };
+      }),
+    };
   }
 }

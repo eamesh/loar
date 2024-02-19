@@ -142,14 +142,14 @@
       return h(TableAction as any, {
         style: 'button',
         actions: [
-          {
-            label: '删除',
-            onClick: handleDelete.bind(null, record),
-            // 根据业务控制是否显示 isShow 和 auth 是并且关系
-            ifShow: () => {
-              return true;
-            },
-          },
+          // {
+          //   label: '删除',
+          //   onClick: handleDelete.bind(null, record),
+          //   // 根据业务控制是否显示 isShow 和 auth 是并且关系
+          //   ifShow: () => {
+          //     return true;
+          //   },
+          // },
           {
             label: '编辑',
             onClick: handleEdit.bind(null, record),

@@ -40,11 +40,12 @@ export class StockService {
   }
 
   // 获取用户持仓
-  async getMemberPositions(member: Member, market: string) {
+  async getMemberPositions(member: Member, market: string, status = 0) {
+    console.log(status);
     const result = await this.prisma.stockPosition.findMany({
       where: {
         memberId: member.id,
-        status: 0,
+        status,
         market,
       },
       orderBy: {

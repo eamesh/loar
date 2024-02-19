@@ -3,12 +3,12 @@
 		<template v-slot:gBody>
 			<view class="px-4 py-2">
 				<view class="mt-3">
-					<text class="text-xs text-gray-500">連鎖名稱</text>
+					<text class="text-xs text-gray-500">USDT地址</text>
 				</view>
 				<view class="mt-3 gui-bg-gray rounded-md px-3">
-					<view class="flex flex-row justify-between items-center">
-						<text class="gui-icons gui-block gui-color-gray text-lg">&#xe601;</text>
-						<input type="password" class="gui-form-input" placeholder="" disabled="" />
+					<view class="flex flex-row gap-x-1 items-center">
+						<!-- <text class="gui-icons gui-block gui-color-gray text-lg">&#xe601;</text> -->
+						<input class="gui-form-input" :value="address" placeholder="" disabled="" />
 					</view>
 
 				</view>
@@ -17,7 +17,8 @@
 				</view>
 				<view class="mt-3 gui-bg-gray rounded-md px-3">
 					<view class="flex flex-row justify-between items-center">
-						<input type="password" class="gui-form-input" placeholder="" />
+						<input type="number" v-model="money" class="gui-form-input" placeholder="" />
+						<view>USDT</view>
 					</view>
 
 				</view>
@@ -26,8 +27,8 @@
 					<text class="text-xs text-gray-500">上傳截圖</text>
 				</view>
 				<view class="mt-3 w-full">
-					<gui-upload-images @change="change" ref="uploadimgcom" @uploaded="uploaded"
-						uploadServerUrl="https://您的域名/地址"></gui-upload-images>
+					<gui-upload-images :header="header" @change="change" ref="uploadimgcom" @uploaded="uploaded"
+						uploadServerUrl="http://localhost:3000/api/v1/member/upload"></gui-upload-images>
 				</view>
 			</view>
 		</template>
@@ -35,9 +36,9 @@
 		<template v-slot:gFooter>
 			<view class="h-[220rpx] bg-white footer flex flex-col justify-center ">
 				<view class="flex flex-col justify-between items-center gap-3 px-4">
-					<view class="text-xs text-[#3395ff]"  @click="$go('/pages/wallet/fundRecords/fundRecords', 'navigateTo')">存款歷史記錄</view>
-					<button type="default" class="gui-bg-primary gui-noborder w-full rounded-3xl">
-						<text class="gui-color-white gui-button-text font-semibold font-sans">確認</text>
+					<view class="text-xs text-[#3395ff]"  @click="$go('/pages/wallet/rechargeRecords/rechargeRecords', 'navigateTo')">存款歷史記錄</view>
+					<button type="default" class="gui-bg-primary gui-noborder w-full rounded-3xl" @click="submit">
+						<text class="gui-color-white gui-button-text font-semibold font-sans" >確認</text>
 					</button>
 				</view>
 			</view>
@@ -46,6 +47,9 @@
 </template>
 
 <script>
+	import { getSettingBykey } from '@/api/setting.js'
+	import {getToken,removeToken} from '@/util/auth.js';
+	import { requestRecharge } from '@/api/member.js'
 	export default {
 		data() {
 			return {
@@ -54,20 +58,30 @@
 				// 文本框输入内容记录
 				textareaVal: ' ',
 				// 上传按钮名称
-				subtxt: "+ 发布"
+				subtxt: "+ 发布",
+				address: '',
+				money: ''
 			}
 		},
 		onLoad: function() {
 			// 模拟 api 加载默认图片
 			// 不需要默认值删除此函数即可
-			setTimeout(() => {
-				this.$refs.uploadimgcom.setItems(
-					[
-						'https://images.unsplash.com/photo-1663524789630-b18292c8de6e?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHwyMTN8fHxlbnwwfHx8fA%3D%3D&auto=format&fit=crop&w=200&q=80',
-						'https://images.unsplash.com/photo-1663623483427-3d9b5d35cc61?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHwxOTl8fHxlbnwwfHx8fA%3D%3D&auto=format&fit=crop&w=200&q=80',
-						'https://images.unsplash.com/photo-1663593675908-ccb95d32b644?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHwyMDR8fHxlbnwwfHx8fA%3D%3D&auto=format&fit=crop&w=200&q=80'
-					]);
-			}, 1000);
+			// setTimeout(() => {
+			// 	this.$refs.uploadimgcom.setItems(
+			// 		[
+			// 			'https://images.unsplash.com/photo-1663524789630-b18292c8de6e?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHwyMTN8fHxlbnwwfHx8fA%3D%3D&auto=format&fit=crop&w=200&q=80',
+			// 			'https://images.unsplash.com/photo-1663623483427-3d9b5d35cc61?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHwxOTl8fHxlbnwwfHx8fA%3D%3D&auto=format&fit=crop&w=200&q=80',
+			// 			'https://images.unsplash.com/photo-1663593675908-ccb95d32b644?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHwyMDR8fHxlbnwwfHx8fA%3D%3D&auto=format&fit=crop&w=200&q=80'
+			// 		]);
+			// }, 1000);
+		},
+		computed: {
+			header() {
+				return {
+						'content-type': 'application/json',
+						'Authorization': `Bearer ${getToken()}`
+					}
+			}
 		},
 		methods: {
 			change: function(e) {
@@ -76,7 +90,25 @@
 			// 提交动态
 			// 过程说明 : 
 			// 点击提交按钮 > 首先执行组件的上传函数 > 上传成功后获得已经上传的图片数据 > 提交给后端 api 记录整个内容 
-			submit: function() {
+			submit: async function() {
+				try{
+					await requestRecharge({
+						money: this.money,
+						screen: []
+					})
+					
+					uni.showToast({
+						title: 'Success',
+						icon: 'none'
+					})
+				}catch(e){
+					//TODO handle the exception
+					uni.showToast({
+						title: 'Failed',
+						icon: 'none'
+					})
+				}
+				return;
 				// 阻止重复提交
 				if (this.subtxt != '+ 发布') {
 					return;
@@ -112,7 +144,19 @@
 				console.log(sendData);
 				// 至此数据以及收集完毕
 				// 请自己完成数据提交工作
+			},
+			async requestSetting() {
+				try{
+					const { value } = await getSettingBykey('usdt')
+					this.address = value.value
+				}catch(e){
+					console.log(e)
+					//TODO handle the exception
+				}
 			}
+		},
+		onShow() {
+			this.requestSetting()
 		}
 	}
 </script>

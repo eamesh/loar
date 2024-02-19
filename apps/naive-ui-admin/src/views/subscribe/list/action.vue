@@ -39,12 +39,12 @@
             <n-form-item label="发行量" path="circulation">
               <n-input-number placeholder="输入发行量" v-model:value="formValue.circulation" />
             </n-form-item>
-            <n-form-item label="剩余发行量" path="remainCirculation">
+            <!-- <n-form-item label="剩余发行量" path="remainCirculation">
               <n-input-number
                 placeholder="输入剩余发行量"
                 v-model:value="formValue.remainCirculation"
               />
-            </n-form-item>
+            </n-form-item> -->
             <n-form-item label="发行价（已上市）" path="ipoPrice">
               <n-input-number placeholder="" v-model:value="formValue.ipoPrice" />
             </n-form-item>
@@ -177,12 +177,12 @@
       message: '请输入发行量',
       trigger: 'change',
     },
-    remainCirculation: {
-      required: true,
-      type: 'number',
-      message: '请输入剩余发行量',
-      trigger: 'change',
-    },
+    // remainCirculation: {
+    //   required: true,
+    //   type: 'number',
+    //   message: '请输入剩余发行量',
+    //   trigger: 'change',
+    // },
     subAmount: {
       trigger: 'input',
       validator(_, value: string) {
@@ -209,7 +209,7 @@
     endAt: null,
     upAt: null,
     circulation: '',
-    remainCirculation: '',
+    // remainCirculation: '',
     ipoPrice: '',
     issuePrice: '',
     resultAt: null,
@@ -241,7 +241,7 @@
         endAt: dayjs(result.endAt).unix() * 1000,
         upAt: dayjs(result.upAt).unix() * 1000,
         circulation: result.circulation,
-        remainCirculation: result.remainCirculation,
+        // remainCirculation: result.remainCirculation,
         ipoPrice: +result.ipoPrice,
         issuePrice: +result.issuePrice,
         resultAt: dayjs(result.resultAt).unix() * 1000,

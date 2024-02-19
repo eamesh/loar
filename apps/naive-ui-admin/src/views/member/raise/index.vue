@@ -13,19 +13,8 @@
       ref="actionRef"
       :actionColumn="actionColumn"
       @update:checked-row-keys="onCheckedRow"
-      :scroll-x="1090"
+      :scroll-x="2000"
     >
-      <template #tableTitle>
-        <n-button type="primary" @click="addTable">
-          <template #icon>
-            <n-icon>
-              <PlusOutlined />
-            </n-icon>
-          </template>
-          新建
-        </n-button>
-      </template>
-
       <template #toolbar>
         <n-button type="primary" @click="reloadTable">刷新数据</n-button>
       </template>
@@ -66,37 +55,37 @@
   import { BasicTable, TableAction } from '@/components/Table';
   import { BasicForm, FormSchema, useForm } from '@/components/Form/index';
   // import { getTableList } from '@/api/table/list';
+  import { getRechargeListAdmin, passMemberRecharge } from '@/api/member';
   import { columns } from './columns';
-  import { PlusOutlined } from '@vicons/antd';
   import { useRouter } from 'vue-router';
   import { type FormRules } from 'naive-ui';
 
   const rules: FormRules = {};
 
   const schemas: FormSchema[] = [
+    // {
+    //   field: 'type',
+    //   component: 'NSelect',
+    //   label: '类型',
+    //   componentProps: {
+    //     placeholder: '请选择类型',
+    //     options: [
+    //       {
+    //         label: '入金',
+    //         value: 1,
+    //       },
+    //       {
+    //         label: '出金',
+    //         value: 2,
+    //       },
+    //     ],
+    //     onUpdateValue: (e: any) => {
+    //       console.log(e);
+    //     },
+    //   },
+    // },
     {
-      field: 'type',
-      component: 'NSelect',
-      label: '类型',
-      componentProps: {
-        placeholder: '请选择类型',
-        options: [
-          {
-            label: '入金',
-            value: 1,
-          },
-          {
-            label: '出金',
-            value: 2,
-          },
-        ],
-        onUpdateValue: (e: any) => {
-          console.log(e);
-        },
-      },
-    },
-    {
-      field: 'memberId',
+      field: 'id',
       component: 'NInput',
       label: '用户ID',
       componentProps: {
@@ -108,7 +97,7 @@
     },
     {
       field: 'email',
-      component: 'NInputNumber',
+      component: 'NInput',
       label: '邮箱',
       componentProps: {
         placeholder: '',
@@ -118,76 +107,76 @@
         },
       },
     },
-    {
-      field: 'status',
-      component: 'NSelect',
-      label: '状态',
-      componentProps: {
-        placeholder: '请选择类型',
-        options: [
-          {
-            label: '带转账',
-            value: 1,
-          },
-          {
-            label: '已成功',
-            value: 2,
-          },
-          {
-            label: '已取消',
-            value: 3,
-          },
-          {
-            label: '已上传回单',
-            value: 4,
-          },
-          {
-            label: '入金待审核',
-            value: 5,
-          },
-        ],
-        onUpdateValue: (e: any) => {
-          console.log(e);
-        },
-      },
-    },
-    {
-      field: 'type',
-      component: 'NSelect',
-      label: '分类状态',
-      componentProps: {
-        placeholder: '请选择用户审核状态',
-        options: [
-          {
-            label: '客户入金',
-            value: 1,
-          },
-          {
-            label: '手动入金',
-            value: 2,
-          },
-          {
-            label: '虚拟加金',
-            value: 3,
-          },
-          {
-            label: '其它',
-            value: 4,
-          },
-          {
-            label: '客户出金',
-            value: 5,
-          },
-          {
-            label: '客户入金',
-            value: 5,
-          },
-        ],
-        onUpdateValue: (e: any) => {
-          console.log(e);
-        },
-      },
-    },
+    // {
+    //   field: 'status',
+    //   component: 'NSelect',
+    //   label: '状态',
+    //   componentProps: {
+    //     placeholder: '请选择类型',
+    //     options: [
+    //       {
+    //         label: '带转账',
+    //         value: 1,
+    //       },
+    //       {
+    //         label: '已成功',
+    //         value: 2,
+    //       },
+    //       {
+    //         label: '已取消',
+    //         value: 3,
+    //       },
+    //       {
+    //         label: '已上传回单',
+    //         value: 4,
+    //       },
+    //       {
+    //         label: '入金待审核',
+    //         value: 5,
+    //       },
+    //     ],
+    //     onUpdateValue: (e: any) => {
+    //       console.log(e);
+    //     },
+    //   },
+    // },
+    // {
+    //   field: 'type',
+    //   component: 'NSelect',
+    //   label: '分类状态',
+    //   componentProps: {
+    //     placeholder: '请选择用户审核状态',
+    //     options: [
+    //       {
+    //         label: '客户入金',
+    //         value: 1,
+    //       },
+    //       {
+    //         label: '手动入金',
+    //         value: 2,
+    //       },
+    //       {
+    //         label: '虚拟加金',
+    //         value: 3,
+    //       },
+    //       {
+    //         label: '其它',
+    //         value: 4,
+    //       },
+    //       {
+    //         label: '客户出金',
+    //         value: 5,
+    //       },
+    //       {
+    //         label: '客户入金',
+    //         value: 5,
+    //       },
+    //     ],
+    //     onUpdateValue: (e: any) => {
+    //       console.log(e);
+    //     },
+    //   },
+    // },
   ];
 
   const router = useRouter();
@@ -203,7 +192,7 @@
   });
 
   const actionColumn = reactive({
-    width: 220,
+    width: 300,
     title: '操作',
     key: 'action',
     fixed: 'right',
@@ -212,42 +201,45 @@
         style: 'button',
         actions: [
           {
-            label: '删除',
-            onClick: handleDelete.bind(null, record),
-            // 根据业务控制是否显示 isShow 和 auth 是并且关系
+            label: '同意',
+            onClick: handlePass.bind(null, {
+              record,
+              status: 1,
+            }),
+            type: 'success',
             ifShow: () => {
-              return true;
+              return record.status === 0;
             },
-            // 根据权限控制是否显示: 有权限，会显示，支持多个
           },
           {
-            label: '编辑',
-            onClick: handleEdit.bind(null, record),
+            label: '拒绝',
+            type: 'error',
+            onClick: handlePass.bind(null, {
+              record,
+              status: -1,
+            }),
             ifShow: () => {
-              return true;
+              return record.status === 0;
+            },
+          },
+          {
+            label: '自定义审核金额',
+            onClick: handleCustom.bind(null, {
+              record,
+              status: 2,
+            }),
+            ifShow: () => {
+              return record.status === 0;
+            },
+          },
+          {
+            label: '已处理',
+            type: 'primary',
+            ifShow: () => {
+              return record.status === 1 || record.status === -1 || record.status === 2;
             },
           },
         ],
-        dropDownActions: [
-          {
-            label: '启用',
-            key: 'enabled',
-            // 根据业务控制是否显示: 非enable状态的不显示启用按钮
-            ifShow: () => {
-              return true;
-            },
-          },
-          {
-            label: '禁用',
-            key: 'disabled',
-            ifShow: () => {
-              return true;
-            },
-          },
-        ],
-        select: (key) => {
-          window['$message'].info(`您点击了，${key} 按钮`);
-        },
       });
     },
   });
@@ -258,11 +250,8 @@
     schemas,
   });
 
-  function addTable() {
-    showModal.value = true;
-  }
-
   const loadDataTable = async (res) => {
+    return await getRechargeListAdmin({ ...getFieldsValue(), ...res });
     // return await getTableList({ ...getFieldsValue(), ...res });
   };
 
@@ -291,14 +280,22 @@
     });
   }
 
-  function handleEdit(record: Recordable) {
-    console.log('点击了编辑', record);
-    router.push({ name: 'basic-info', params: { id: record.id } });
-  }
+  // function handleEdit(record: Recordable) {
+  //   console.log('点击了编辑', record);
+  //   router.push({ name: 'basic-info', params: { id: record.id } });
+  // }
 
-  function handleDelete(record: Recordable) {
-    console.log('点击了删除', record);
-    window['$message'].info('点击了删除');
+  async function handlePass({ record, status }: { record: Recordable; status: number }) {
+    try {
+      await passMemberRecharge(record.id, {
+        status,
+      });
+
+      reloadTable();
+      window['$message'].success('操作成功');
+    } catch (error) {
+      window['$message'].fail('操作失败');
+    }
   }
 
   function handleSubmit(values: Recordable) {
@@ -309,6 +306,8 @@
   function handleReset(values: Recordable) {
     console.log(values);
   }
+
+  function handleCustom(record: Recordable) {}
 </script>
 
 <style lang="less" scoped></style>

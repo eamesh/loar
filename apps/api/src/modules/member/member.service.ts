@@ -241,6 +241,7 @@ export class MemberService {
   async passMemberRecharge(id: number, payload: any) {
     const { status } = payload;
 
+    // 拒绝
     if (status < 0) {
       return await this.prisma.memberRecharge.update({
         where: {
@@ -251,6 +252,9 @@ export class MemberService {
         },
       });
     }
+
+    // 审核
+    // 1 全额 2 自定义金额
     const record = await this.prisma.memberRecharge.findFirst({
       where: {
         id,
@@ -262,12 +266,30 @@ export class MemberService {
 
     const member = record.member;
 
+    let money = new Decimal(record.money);
+    if (status === 2) {
+      money = new Decimal(payload.money);
+    }
+
+    // 修改用户余额
+    const balance = member.balance.add(money);
     await this.prisma.member.update({
       where: {
         id: member.id,
       },
       data: {
-        balance: member.balance.add(record.money),
+        balance,
+      },
+    });
+
+    // 保存记录
+    await this.prisma.memberRecharge.update({
+      where: {
+        id,
+      },
+      data: {
+        status,
+        rechargeMoney: money,
       },
     });
   }
@@ -369,6 +391,7 @@ export class MemberService {
   }
 
   async uploadRecharge(payload: any, member: Member) {
+    console.log(payload);
     const { money, screen } = payload;
     const result = await this.prisma.memberRecharge.create({
       data: {
@@ -393,8 +416,36 @@ export class MemberService {
       : [];
   }
 
+  async getRechageListByAdmin({
+    where,
+    orderBy,
+    page,
+    perPage = 20,
+  }: {
+    where?: Prisma.MemberRechargeWhereInput;
+    orderBy?: Prisma.MemberRechargeOrderByWithRelationInput;
+    page?: number;
+    perPage?: number;
+  }) {
+    const paginate: PaginateFunction = paginator({ perPage });
+
+    return await paginate(
+      this.prisma.memberRecharge,
+      {
+        where,
+        orderBy,
+        include: {
+          member: true,
+        },
+      },
+      {
+        page,
+      },
+    );
+  }
+
   async requestWithdraw(payload: any, member: Member) {
-    const { money } = payload;
+    const { money, address } = payload;
 
     if (member.balance.lt(money)) {
       throw new BadRequestException('余额不足');
@@ -404,6 +455,7 @@ export class MemberService {
       data: {
         memberId: member.id,
         money,
+        address,
       },
     });
   }
@@ -420,5 +472,67 @@ export class MemberService {
       : [];
   }
 
-  async getWithdrawByAdmin() {}
+  async getWithdrawListByAdmin({
+    where,
+    orderBy,
+    page,
+    perPage = 20,
+  }: {
+    where?: Prisma.MemberWithdrawWhereInput;
+    orderBy?: Prisma.MemberWithdrawOrderByWithRelationInput;
+    page?: number;
+    perPage?: number;
+  }) {
+    const paginate: PaginateFunction = paginator({ perPage });
+
+    return await paginate(
+      this.prisma.memberWithdraw,
+      {
+        where,
+        orderBy,
+        include: {
+          member: true,
+        },
+      },
+      {
+        page,
+      },
+    );
+  }
+
+  async updateWithdrawStatus(id: number, payload: any) {
+    if (payload.status === 1) {
+      // 扣除用户余额
+      const withdraw = await this.prisma.memberWithdraw.findFirst({
+        where: {
+          id,
+        },
+      });
+
+      const member = await this.prisma.member.findFirst({
+        where: {
+          id: withdraw.memberId,
+        },
+      });
+
+      await this.prisma.member.update({
+        where: {
+          id: withdraw.memberId,
+        },
+        data: {
+          balance: member.balance.sub(withdraw.money),
+        },
+      });
+    }
+
+    await this.prisma.memberWithdraw.update({
+      where: {
+        id,
+      },
+
+      data: {
+        status: payload.status,
+      },
+    });
+  }
 }

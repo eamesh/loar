@@ -2,12 +2,13 @@ import { createApp } from 'vue'
 import 'vant/lib/index.css'
 import './styles/app.scss'
 import { ConfigProvider } from 'vant'
-import VueI18n from 'vue-i18n'
+import { createI18n } from 'vue-i18n'
 import App from './App.vue'
 import router from './router'
 import store from './store'
+import messages from './locales'
 
-const i18n = VueI18n.createI18n({
+const i18n = createI18n({
   locale: 'zh-Hant', // set locale
   fallbackLocale: 'zh-Hant', // set fallback locale
   messages // set locale messages

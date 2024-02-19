@@ -11,9 +11,9 @@
             ref="formRef"
             class="py-8"
           >
-            <n-form-item label="用户名" path="name">
+            <!-- <n-form-item label="用户名" path="name">
               <n-input v-model:value="formValue.name" placeholder="请输入用户名" />
-            </n-form-item>
+            </n-form-item> -->
             <n-form-item label="用户邮箱" path="email">
               <n-input v-model:value="formValue.email" placeholder="请输入用户邮箱" />
             </n-form-item>

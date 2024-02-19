@@ -235,6 +235,15 @@
 				"navigationBarTitleText" : "",
 				"enablePullDownRefresh" : false
 			}
+		},
+		{
+			"path" : "pages/wallet/rechargeRecords/rechargeRecords",
+			"style" : 
+			{
+				"navigationBarTitleText" : "儲值历史",
+				"enablePullDownRefresh" : false,
+				"navigationBarBackgroundColor": "#fff"
+			}
 		}
 	],
 	"tabBar": {

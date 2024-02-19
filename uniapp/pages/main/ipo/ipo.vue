@@ -36,7 +36,7 @@
 					</view>
 					<view class="flex flex-row text-[22rpx] text-[#999] font-sans">
 						<view class="basis-1/3">截止日期</view>
-						<view class="basis-1/3 text-black">{{ dayjs(item.endAt).format("YYYY-MM-DD HH:mm:ss") }}</view>
+						<view class="basis-1/3 text-black">{{ dayjs(item.endAt).format("YYYY-MM-DD") }}</view>
 						<view class="basis-1/3 text-black flex justify-end">
 							<view class="text-[#3395FF] pr-1">{{ dayjs(item.endAt).diff(dayjs(), 'day') }}</view>
 							days left

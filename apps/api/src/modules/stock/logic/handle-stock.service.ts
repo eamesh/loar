@@ -44,15 +44,16 @@ export class HandleStockService {
 
     if (symbol.market !== 'US') {
       bondDecimal = await this.setting.handleToUSDT(bondDecimal, symbol.market);
-      unBalance = unBalance.add(bondDecimal);
     }
+    console.log('冻结余额', unBalance);
+    unBalance = unBalance.add(bondDecimal);
 
     // 判断用户可用余额
 
     if (member.balance.lt(bond)) {
-      throw new BadRequestException('余额不足');
+      throw new BadRequestException('保证金余额不足');
     }
-
+    console.log(12313);
     // 插入持仓
     await this.prisma.stockPosition.create({
       data: {
@@ -67,7 +68,7 @@ export class HandleStockService {
         status: 0,
         memberId: member.id,
         stockSymbolId: symbol.id,
-        currentPrice: `${detail.price}`,
+        // currentPrice: `${detail.price}`,
         pl: '0',
         rate: '0',
       },
@@ -127,18 +128,23 @@ export class HandleStockService {
       profitLoss = allBuyPrice - allSellPrice;
     }
     // 获取市场费率
-    const market = await this.prisma.stockMarket.findFirst({
-      where: {
-        code: stockSymbol.market,
-      },
-    });
+    // const market = await this.prisma.stockMarket.findFirst({
+    //   where: {
+    //     code: stockSymbol.market,
+    //   },
+    // });
 
-    const feeRate = +market.feeRate || 0;
+    const { value } = await this.setting.getKey('fee_rate');
+
+    const feeRate = new Decimal(value.value || 0);
 
     // 计算手续费
-    const buyFee = feeRate * allBuyPrice;
+    const buyFee = feeRate.mul(new Decimal(allBuyPrice));
     // 计算总盈亏
-    const allProfit = (profitLoss - buyFee).toFixed(3);
+    const allProfit = new Decimal(profitLoss)
+      .sub(new Decimal(buyFee))
+      .toNumber()
+      .toFixed(3);
     // 用户余额不足取消平仓
     // 修改用户余额
     const member = await this.prisma.member.findFirst({
@@ -161,7 +167,7 @@ export class HandleStockService {
     }
 
     // 可用余额
-    const balance = member.balance.add(allProfitDecimal);
+    const balance = member.balance.add(allProfitDecimal).add(bondDecimal);
     // 冻结余额
     const unBalance = member.unBalance.sub(bondDecimal);
 
@@ -178,7 +184,7 @@ export class HandleStockService {
         status: 1,
       },
     });
-
+    console.log('可用余额', balance, allProfitDecimal);
     // 修改用户余额
     await this.prisma.member.update({
       where: {

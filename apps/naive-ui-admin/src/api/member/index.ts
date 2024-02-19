@@ -49,3 +49,35 @@ export function getMemberDetail(id) {
     method: 'get',
   });
 }
+
+export function getRechargeListAdmin(params) {
+  return http.request({
+    url: `/member/recharge/list/admin`,
+    method: 'post',
+    params,
+  });
+}
+
+export function passMemberRecharge(id, params) {
+  return http.request({
+    url: `/member/recharge/${id}/status`,
+    method: 'post',
+    params,
+  });
+}
+
+export function getWithdrawListAdmin(params) {
+  return http.request({
+    url: `/member/withdraw/list/admin`,
+    method: 'post',
+    params,
+  });
+}
+
+export function updateWithdrawStatus(id, params) {
+  return http.request({
+    url: `/member/withdraw/${id}/status`,
+    method: 'post',
+    params,
+  });
+}

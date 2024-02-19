@@ -169,55 +169,55 @@
   });
 
   const actionColumn = reactive({
-    width: 320,
-    title: '操作',
-    key: 'action',
-    fixed: 'right',
-    render(record) {
-      return h(TableAction as any, {
-        style: 'button',
-        actions: [
-          {
-            label: '删除',
-            onClick: handleDelete.bind(null, record),
-            // 根据业务控制是否显示 isShow 和 auth 是并且关系
-            ifShow: () => {
-              return true;
-            },
-            // 根据权限控制是否显示: 有权限，会显示，支持多个
-            auth: ['basic_list'],
-          },
-          {
-            label: '编辑',
-            onClick: handleEdit.bind(null, record),
-            ifShow: () => {
-              return true;
-            },
-            auth: ['basic_list'],
-          },
-        ],
-        dropDownActions: [
-          {
-            label: '启用',
-            key: 'enabled',
-            // 根据业务控制是否显示: 非enable状态的不显示启用按钮
-            ifShow: () => {
-              return true;
-            },
-          },
-          {
-            label: '禁用',
-            key: 'disabled',
-            ifShow: () => {
-              return true;
-            },
-          },
-        ],
-        select: (key) => {
-          window['$message'].info(`您点击了，${key} 按钮`);
-        },
-      });
-    },
+    // width: 320,
+    // title: '操作',
+    // key: 'action',
+    // fixed: 'right',
+    // render(record) {
+    //   return h(TableAction as any, {
+    //     style: 'button',
+    //     actions: [
+    //       {
+    //         label: '删除',
+    //         onClick: handleDelete.bind(null, record),
+    //         // 根据业务控制是否显示 isShow 和 auth 是并且关系
+    //         ifShow: () => {
+    //           return true;
+    //         },
+    //         // 根据权限控制是否显示: 有权限，会显示，支持多个
+    //         auth: ['basic_list'],
+    //       },
+    //       {
+    //         label: '编辑',
+    //         onClick: handleEdit.bind(null, record),
+    //         ifShow: () => {
+    //           return true;
+    //         },
+    //         auth: ['basic_list'],
+    //       },
+    //     ],
+    //     dropDownActions: [
+    //       {
+    //         label: '启用',
+    //         key: 'enabled',
+    //         // 根据业务控制是否显示: 非enable状态的不显示启用按钮
+    //         ifShow: () => {
+    //           return true;
+    //         },
+    //       },
+    //       {
+    //         label: '禁用',
+    //         key: 'disabled',
+    //         ifShow: () => {
+    //           return true;
+    //         },
+    //       },
+    //     ],
+    //     select: (key) => {
+    //       window['$message'].info(`您点击了，${key} 按钮`);
+    //     },
+    //   });
+    // },
   });
 
   const [register, { getFieldsValue }] = useForm({

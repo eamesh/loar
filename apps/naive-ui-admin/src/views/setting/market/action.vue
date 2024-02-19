@@ -54,33 +54,33 @@
       },
       rules: [{ required: true, message: '请输入货币', trigger: ['blur'] }],
     },
-    {
-      field: 'maxWithdrawal',
-      component: 'NInput',
-      label: '最大出金',
-      componentProps: {
-        placeholder: '请输入最大出金',
-      },
-      rules: [{ required: true, message: '请输入最大出金', trigger: ['blur'] }],
-    },
-    {
-      field: 'minWithdrawal',
-      component: 'NInput',
-      label: '最小出金',
-      componentProps: {
-        placeholder: '请输入最小出金',
-      },
-      rules: [{ required: true, message: '请输入最小出金', trigger: ['blur'] }],
-    },
-    {
-      field: 'feeRate',
-      component: 'NInput',
-      label: '手续费率',
-      componentProps: {
-        placeholder: '请输入手续费率',
-      },
-      rules: [{ required: true, message: '请输入手续费率', trigger: ['blur'] }],
-    },
+    // {
+    //   field: 'maxWithdrawal',
+    //   component: 'NInput',
+    //   label: '最大出金',
+    //   componentProps: {
+    //     placeholder: '请输入最大出金',
+    //   },
+    //   rules: [{ required: true, message: '请输入最大出金', trigger: ['blur'] }],
+    // },
+    // {
+    //   field: 'minWithdrawal',
+    //   component: 'NInput',
+    //   label: '最小出金',
+    //   componentProps: {
+    //     placeholder: '请输入最小出金',
+    //   },
+    //   rules: [{ required: true, message: '请输入最小出金', trigger: ['blur'] }],
+    // },
+    // {
+    //   field: 'feeRate',
+    //   component: 'NInput',
+    //   label: '手续费率',
+    //   componentProps: {
+    //     placeholder: '请输入手续费率',
+    //   },
+    //   rules: [{ required: true, message: '请输入手续费率', trigger: ['blur'] }],
+    // },
     {
       field: 'headSymbols',
       component: 'NInput',

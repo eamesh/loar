@@ -139,6 +139,7 @@ exports.Prisma.MemberScalarFieldEnum = {
 exports.Prisma.MemberRechargeScalarFieldEnum = {
   id: 'id',
   money: 'money',
+  rechargeMoney: 'rechargeMoney',
   screen: 'screen',
   status: 'status',
   memberId: 'memberId',
@@ -151,6 +152,7 @@ exports.Prisma.MemberWithdrawScalarFieldEnum = {
   money: 'money',
   remark: 'remark',
   status: 'status',
+  address: 'address',
   memberId: 'memberId',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt'

@@ -1,4 +1,5 @@
 import { BasicColumn } from '@/components/Table';
+import dayjs from 'dayjs';
 import { NTag } from 'naive-ui';
 import { h } from 'vue';
 
@@ -37,6 +38,13 @@ export const columns: BasicColumn<any>[] = [
         },
         types[row.type].title
       );
+    },
+  },
+  {
+    title: '提交日期',
+    key: 'createdAt',
+    render(row) {
+      return dayjs(row.createdAt).format('YYYY-MM-DD HH:mm:ss');
     },
   },
 ];

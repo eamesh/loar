@@ -1,7 +1,8 @@
-import { Exclude } from 'class-transformer';
-import { $Enums, User } from '@loar/database';
+import { Exclude, Transform } from 'class-transformer';
+import { $Enums, Member, Prisma } from '@loar/database';
+import { Decimal } from '@loar/database/generated/prisma-client/runtime/library';
 
-export class MemberEntity implements User {
+export class MemberEntity implements Member {
   id: bigint;
   email: string;
   name: string;
@@ -15,4 +16,15 @@ export class MemberEntity implements User {
   constructor(partial: Partial<MemberEntity>) {
     Object.assign(this, partial);
   }
+  address: string;
+  accountBalance: Prisma.JsonValue;
+  status: number;
+  type: number;
+
+  @Transform(({ value }) => value.toNumber())
+  balance: Decimal;
+  @Transform(({ value }) => value.toNumber())
+  unBalance: Decimal;
+  @Transform(({ value }) => value.toNumber())
+  lockBalance: Decimal;
 }

@@ -4579,6 +4579,7 @@ export namespace Prisma {
   export type MemberRechargeAvgAggregateOutputType = {
     id: number | null
     money: Decimal | null
+    rechargeMoney: Decimal | null
     status: number | null
     memberId: number | null
   }
@@ -4586,6 +4587,7 @@ export namespace Prisma {
   export type MemberRechargeSumAggregateOutputType = {
     id: bigint | null
     money: Decimal | null
+    rechargeMoney: Decimal | null
     status: number | null
     memberId: bigint | null
   }
@@ -4593,6 +4595,7 @@ export namespace Prisma {
   export type MemberRechargeMinAggregateOutputType = {
     id: bigint | null
     money: Decimal | null
+    rechargeMoney: Decimal | null
     status: number | null
     memberId: bigint | null
     createdAt: Date | null
@@ -4602,6 +4605,7 @@ export namespace Prisma {
   export type MemberRechargeMaxAggregateOutputType = {
     id: bigint | null
     money: Decimal | null
+    rechargeMoney: Decimal | null
     status: number | null
     memberId: bigint | null
     createdAt: Date | null
@@ -4611,6 +4615,7 @@ export namespace Prisma {
   export type MemberRechargeCountAggregateOutputType = {
     id: number
     money: number
+    rechargeMoney: number
     screen: number
     status: number
     memberId: number
@@ -4623,6 +4628,7 @@ export namespace Prisma {
   export type MemberRechargeAvgAggregateInputType = {
     id?: true
     money?: true
+    rechargeMoney?: true
     status?: true
     memberId?: true
   }
@@ -4630,6 +4636,7 @@ export namespace Prisma {
   export type MemberRechargeSumAggregateInputType = {
     id?: true
     money?: true
+    rechargeMoney?: true
     status?: true
     memberId?: true
   }
@@ -4637,6 +4644,7 @@ export namespace Prisma {
   export type MemberRechargeMinAggregateInputType = {
     id?: true
     money?: true
+    rechargeMoney?: true
     status?: true
     memberId?: true
     createdAt?: true
@@ -4646,6 +4654,7 @@ export namespace Prisma {
   export type MemberRechargeMaxAggregateInputType = {
     id?: true
     money?: true
+    rechargeMoney?: true
     status?: true
     memberId?: true
     createdAt?: true
@@ -4655,6 +4664,7 @@ export namespace Prisma {
   export type MemberRechargeCountAggregateInputType = {
     id?: true
     money?: true
+    rechargeMoney?: true
     screen?: true
     status?: true
     memberId?: true
@@ -4752,6 +4762,7 @@ export namespace Prisma {
   export type MemberRechargeGroupByOutputType = {
     id: bigint
     money: Decimal
+    rechargeMoney: Decimal
     screen: JsonValue
     status: number
     memberId: bigint
@@ -4781,6 +4792,7 @@ export namespace Prisma {
   export type MemberRechargeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     money?: boolean
+    rechargeMoney?: boolean
     screen?: boolean
     status?: boolean
     memberId?: boolean
@@ -4792,6 +4804,7 @@ export namespace Prisma {
   export type MemberRechargeSelectScalar = {
     id?: boolean
     money?: boolean
+    rechargeMoney?: boolean
     screen?: boolean
     status?: boolean
     memberId?: boolean
@@ -4812,6 +4825,7 @@ export namespace Prisma {
     scalars: $Extensions.GetPayloadResult<{
       id: bigint
       money: Prisma.Decimal
+      rechargeMoney: Prisma.Decimal
       screen: Prisma.JsonValue
       status: number
       memberId: bigint
@@ -5214,6 +5228,7 @@ export namespace Prisma {
   interface MemberRechargeFieldRefs {
     readonly id: FieldRef<"MemberRecharge", 'BigInt'>
     readonly money: FieldRef<"MemberRecharge", 'Decimal'>
+    readonly rechargeMoney: FieldRef<"MemberRecharge", 'Decimal'>
     readonly screen: FieldRef<"MemberRecharge", 'Json'>
     readonly status: FieldRef<"MemberRecharge", 'Int'>
     readonly memberId: FieldRef<"MemberRecharge", 'BigInt'>
@@ -5577,6 +5592,7 @@ export namespace Prisma {
     money: Decimal | null
     remark: string | null
     status: number | null
+    address: string | null
     memberId: bigint | null
     createdAt: Date | null
     updatedAt: Date | null
@@ -5587,6 +5603,7 @@ export namespace Prisma {
     money: Decimal | null
     remark: string | null
     status: number | null
+    address: string | null
     memberId: bigint | null
     createdAt: Date | null
     updatedAt: Date | null
@@ -5597,6 +5614,7 @@ export namespace Prisma {
     money: number
     remark: number
     status: number
+    address: number
     memberId: number
     createdAt: number
     updatedAt: number
@@ -5623,6 +5641,7 @@ export namespace Prisma {
     money?: true
     remark?: true
     status?: true
+    address?: true
     memberId?: true
     createdAt?: true
     updatedAt?: true
@@ -5633,6 +5652,7 @@ export namespace Prisma {
     money?: true
     remark?: true
     status?: true
+    address?: true
     memberId?: true
     createdAt?: true
     updatedAt?: true
@@ -5643,6 +5663,7 @@ export namespace Prisma {
     money?: true
     remark?: true
     status?: true
+    address?: true
     memberId?: true
     createdAt?: true
     updatedAt?: true
@@ -5740,6 +5761,7 @@ export namespace Prisma {
     money: Decimal
     remark: string | null
     status: number
+    address: string | null
     memberId: bigint
     createdAt: Date
     updatedAt: Date | null
@@ -5769,6 +5791,7 @@ export namespace Prisma {
     money?: boolean
     remark?: boolean
     status?: boolean
+    address?: boolean
     memberId?: boolean
     createdAt?: boolean
     updatedAt?: boolean
@@ -5780,6 +5803,7 @@ export namespace Prisma {
     money?: boolean
     remark?: boolean
     status?: boolean
+    address?: boolean
     memberId?: boolean
     createdAt?: boolean
     updatedAt?: boolean
@@ -5800,6 +5824,7 @@ export namespace Prisma {
       money: Prisma.Decimal
       remark: string | null
       status: number
+      address: string | null
       memberId: bigint
       createdAt: Date
       updatedAt: Date | null
@@ -6202,6 +6227,7 @@ export namespace Prisma {
     readonly money: FieldRef<"MemberWithdraw", 'Decimal'>
     readonly remark: FieldRef<"MemberWithdraw", 'String'>
     readonly status: FieldRef<"MemberWithdraw", 'Int'>
+    readonly address: FieldRef<"MemberWithdraw", 'String'>
     readonly memberId: FieldRef<"MemberWithdraw", 'BigInt'>
     readonly createdAt: FieldRef<"MemberWithdraw", 'DateTime'>
     readonly updatedAt: FieldRef<"MemberWithdraw", 'DateTime'>
@@ -21016,6 +21042,7 @@ export namespace Prisma {
   export const MemberRechargeScalarFieldEnum: {
     id: 'id',
     money: 'money',
+    rechargeMoney: 'rechargeMoney',
     screen: 'screen',
     status: 'status',
     memberId: 'memberId',
@@ -21031,6 +21058,7 @@ export namespace Prisma {
     money: 'money',
     remark: 'remark',
     status: 'status',
+    address: 'address',
     memberId: 'memberId',
     createdAt: 'createdAt',
     updatedAt: 'updatedAt'
@@ -21624,6 +21652,7 @@ export namespace Prisma {
     NOT?: MemberRechargeWhereInput | MemberRechargeWhereInput[]
     id?: BigIntFilter<"MemberRecharge"> | bigint | number
     money?: DecimalFilter<"MemberRecharge"> | Decimal | DecimalJsLike | number | string
+    rechargeMoney?: DecimalFilter<"MemberRecharge"> | Decimal | DecimalJsLike | number | string
     screen?: JsonFilter<"MemberRecharge">
     status?: IntFilter<"MemberRecharge"> | number
     memberId?: BigIntFilter<"MemberRecharge"> | bigint | number
@@ -21635,6 +21664,7 @@ export namespace Prisma {
   export type MemberRechargeOrderByWithRelationInput = {
     id?: SortOrder
     money?: SortOrder
+    rechargeMoney?: SortOrder
     screen?: SortOrder
     status?: SortOrder
     memberId?: SortOrder
@@ -21649,6 +21679,7 @@ export namespace Prisma {
     OR?: MemberRechargeWhereInput[]
     NOT?: MemberRechargeWhereInput | MemberRechargeWhereInput[]
     money?: DecimalFilter<"MemberRecharge"> | Decimal | DecimalJsLike | number | string
+    rechargeMoney?: DecimalFilter<"MemberRecharge"> | Decimal | DecimalJsLike | number | string
     screen?: JsonFilter<"MemberRecharge">
     status?: IntFilter<"MemberRecharge"> | number
     memberId?: BigIntFilter<"MemberRecharge"> | bigint | number
@@ -21660,6 +21691,7 @@ export namespace Prisma {
   export type MemberRechargeOrderByWithAggregationInput = {
     id?: SortOrder
     money?: SortOrder
+    rechargeMoney?: SortOrder
     screen?: SortOrder
     status?: SortOrder
     memberId?: SortOrder
@@ -21678,6 +21710,7 @@ export namespace Prisma {
     NOT?: MemberRechargeScalarWhereWithAggregatesInput | MemberRechargeScalarWhereWithAggregatesInput[]
     id?: BigIntWithAggregatesFilter<"MemberRecharge"> | bigint | number
     money?: DecimalWithAggregatesFilter<"MemberRecharge"> | Decimal | DecimalJsLike | number | string
+    rechargeMoney?: DecimalWithAggregatesFilter<"MemberRecharge"> | Decimal | DecimalJsLike | number | string
     screen?: JsonWithAggregatesFilter<"MemberRecharge">
     status?: IntWithAggregatesFilter<"MemberRecharge"> | number
     memberId?: BigIntWithAggregatesFilter<"MemberRecharge"> | bigint | number
@@ -21693,6 +21726,7 @@ export namespace Prisma {
     money?: DecimalFilter<"MemberWithdraw"> | Decimal | DecimalJsLike | number | string
     remark?: StringNullableFilter<"MemberWithdraw"> | string | null
     status?: IntFilter<"MemberWithdraw"> | number
+    address?: StringNullableFilter<"MemberWithdraw"> | string | null
     memberId?: BigIntFilter<"MemberWithdraw"> | bigint | number
     createdAt?: DateTimeFilter<"MemberWithdraw"> | Date | string
     updatedAt?: DateTimeNullableFilter<"MemberWithdraw"> | Date | string | null
@@ -21704,6 +21738,7 @@ export namespace Prisma {
     money?: SortOrder
     remark?: SortOrderInput | SortOrder
     status?: SortOrder
+    address?: SortOrderInput | SortOrder
     memberId?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrderInput | SortOrder
@@ -21718,6 +21753,7 @@ export namespace Prisma {
     money?: DecimalFilter<"MemberWithdraw"> | Decimal | DecimalJsLike | number | string
     remark?: StringNullableFilter<"MemberWithdraw"> | string | null
     status?: IntFilter<"MemberWithdraw"> | number
+    address?: StringNullableFilter<"MemberWithdraw"> | string | null
     memberId?: BigIntFilter<"MemberWithdraw"> | bigint | number
     createdAt?: DateTimeFilter<"MemberWithdraw"> | Date | string
     updatedAt?: DateTimeNullableFilter<"MemberWithdraw"> | Date | string | null
@@ -21729,6 +21765,7 @@ export namespace Prisma {
     money?: SortOrder
     remark?: SortOrderInput | SortOrder
     status?: SortOrder
+    address?: SortOrderInput | SortOrder
     memberId?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrderInput | SortOrder
@@ -21747,6 +21784,7 @@ export namespace Prisma {
     money?: DecimalWithAggregatesFilter<"MemberWithdraw"> | Decimal | DecimalJsLike | number | string
     remark?: StringNullableWithAggregatesFilter<"MemberWithdraw"> | string | null
     status?: IntWithAggregatesFilter<"MemberWithdraw"> | number
+    address?: StringNullableWithAggregatesFilter<"MemberWithdraw"> | string | null
     memberId?: BigIntWithAggregatesFilter<"MemberWithdraw"> | bigint | number
     createdAt?: DateTimeWithAggregatesFilter<"MemberWithdraw"> | Date | string
     updatedAt?: DateTimeNullableWithAggregatesFilter<"MemberWithdraw"> | Date | string | null
@@ -23353,6 +23391,7 @@ export namespace Prisma {
   export type MemberRechargeCreateInput = {
     id?: bigint | number
     money: Decimal | DecimalJsLike | number | string
+    rechargeMoney?: Decimal | DecimalJsLike | number | string
     screen: JsonNullValueInput | InputJsonValue
     status?: number
     createdAt?: Date | string
@@ -23363,6 +23402,7 @@ export namespace Prisma {
   export type MemberRechargeUncheckedCreateInput = {
     id?: bigint | number
     money: Decimal | DecimalJsLike | number | string
+    rechargeMoney?: Decimal | DecimalJsLike | number | string
     screen: JsonNullValueInput | InputJsonValue
     status?: number
     memberId: bigint | number
@@ -23373,6 +23413,7 @@ export namespace Prisma {
   export type MemberRechargeUpdateInput = {
     id?: BigIntFieldUpdateOperationsInput | bigint | number
     money?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    rechargeMoney?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
     screen?: JsonNullValueInput | InputJsonValue
     status?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -23383,6 +23424,7 @@ export namespace Prisma {
   export type MemberRechargeUncheckedUpdateInput = {
     id?: BigIntFieldUpdateOperationsInput | bigint | number
     money?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    rechargeMoney?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
     screen?: JsonNullValueInput | InputJsonValue
     status?: IntFieldUpdateOperationsInput | number
     memberId?: BigIntFieldUpdateOperationsInput | bigint | number
@@ -23393,6 +23435,7 @@ export namespace Prisma {
   export type MemberRechargeCreateManyInput = {
     id?: bigint | number
     money: Decimal | DecimalJsLike | number | string
+    rechargeMoney?: Decimal | DecimalJsLike | number | string
     screen: JsonNullValueInput | InputJsonValue
     status?: number
     memberId: bigint | number
@@ -23403,6 +23446,7 @@ export namespace Prisma {
   export type MemberRechargeUpdateManyMutationInput = {
     id?: BigIntFieldUpdateOperationsInput | bigint | number
     money?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    rechargeMoney?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
     screen?: JsonNullValueInput | InputJsonValue
     status?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -23412,6 +23456,7 @@ export namespace Prisma {
   export type MemberRechargeUncheckedUpdateManyInput = {
     id?: BigIntFieldUpdateOperationsInput | bigint | number
     money?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    rechargeMoney?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
     screen?: JsonNullValueInput | InputJsonValue
     status?: IntFieldUpdateOperationsInput | number
     memberId?: BigIntFieldUpdateOperationsInput | bigint | number
@@ -23424,6 +23469,7 @@ export namespace Prisma {
     money: Decimal | DecimalJsLike | number | string
     remark?: string | null
     status?: number
+    address?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string | null
     member: MemberCreateNestedOneWithoutMemberWithdrawsInput
@@ -23434,6 +23480,7 @@ export namespace Prisma {
     money: Decimal | DecimalJsLike | number | string
     remark?: string | null
     status?: number
+    address?: string | null
     memberId: bigint | number
     createdAt?: Date | string
     updatedAt?: Date | string | null
@@ -23444,6 +23491,7 @@ export namespace Prisma {
     money?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
     remark?: NullableStringFieldUpdateOperationsInput | string | null
     status?: IntFieldUpdateOperationsInput | number
+    address?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     member?: MemberUpdateOneRequiredWithoutMemberWithdrawsNestedInput
@@ -23454,6 +23502,7 @@ export namespace Prisma {
     money?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
     remark?: NullableStringFieldUpdateOperationsInput | string | null
     status?: IntFieldUpdateOperationsInput | number
+    address?: NullableStringFieldUpdateOperationsInput | string | null
     memberId?: BigIntFieldUpdateOperationsInput | bigint | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -23464,6 +23513,7 @@ export namespace Prisma {
     money: Decimal | DecimalJsLike | number | string
     remark?: string | null
     status?: number
+    address?: string | null
     memberId: bigint | number
     createdAt?: Date | string
     updatedAt?: Date | string | null
@@ -23474,6 +23524,7 @@ export namespace Prisma {
     money?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
     remark?: NullableStringFieldUpdateOperationsInput | string | null
     status?: IntFieldUpdateOperationsInput | number
+    address?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
@@ -23483,6 +23534,7 @@ export namespace Prisma {
     money?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
     remark?: NullableStringFieldUpdateOperationsInput | string | null
     status?: IntFieldUpdateOperationsInput | number
+    address?: NullableStringFieldUpdateOperationsInput | string | null
     memberId?: BigIntFieldUpdateOperationsInput | bigint | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -25561,6 +25613,7 @@ export namespace Prisma {
   export type MemberRechargeCountOrderByAggregateInput = {
     id?: SortOrder
     money?: SortOrder
+    rechargeMoney?: SortOrder
     screen?: SortOrder
     status?: SortOrder
     memberId?: SortOrder
@@ -25571,6 +25624,7 @@ export namespace Prisma {
   export type MemberRechargeAvgOrderByAggregateInput = {
     id?: SortOrder
     money?: SortOrder
+    rechargeMoney?: SortOrder
     status?: SortOrder
     memberId?: SortOrder
   }
@@ -25578,6 +25632,7 @@ export namespace Prisma {
   export type MemberRechargeMaxOrderByAggregateInput = {
     id?: SortOrder
     money?: SortOrder
+    rechargeMoney?: SortOrder
     status?: SortOrder
     memberId?: SortOrder
     createdAt?: SortOrder
@@ -25587,6 +25642,7 @@ export namespace Prisma {
   export type MemberRechargeMinOrderByAggregateInput = {
     id?: SortOrder
     money?: SortOrder
+    rechargeMoney?: SortOrder
     status?: SortOrder
     memberId?: SortOrder
     createdAt?: SortOrder
@@ -25596,6 +25652,7 @@ export namespace Prisma {
   export type MemberRechargeSumOrderByAggregateInput = {
     id?: SortOrder
     money?: SortOrder
+    rechargeMoney?: SortOrder
     status?: SortOrder
     memberId?: SortOrder
   }
@@ -25630,6 +25687,7 @@ export namespace Prisma {
     money?: SortOrder
     remark?: SortOrder
     status?: SortOrder
+    address?: SortOrder
     memberId?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
@@ -25647,6 +25705,7 @@ export namespace Prisma {
     money?: SortOrder
     remark?: SortOrder
     status?: SortOrder
+    address?: SortOrder
     memberId?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
@@ -25657,6 +25716,7 @@ export namespace Prisma {
     money?: SortOrder
     remark?: SortOrder
     status?: SortOrder
+    address?: SortOrder
     memberId?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
@@ -27612,6 +27672,7 @@ export namespace Prisma {
   export type MemberRechargeCreateWithoutMemberInput = {
     id?: bigint | number
     money: Decimal | DecimalJsLike | number | string
+    rechargeMoney?: Decimal | DecimalJsLike | number | string
     screen: JsonNullValueInput | InputJsonValue
     status?: number
     createdAt?: Date | string
@@ -27621,6 +27682,7 @@ export namespace Prisma {
   export type MemberRechargeUncheckedCreateWithoutMemberInput = {
     id?: bigint | number
     money: Decimal | DecimalJsLike | number | string
+    rechargeMoney?: Decimal | DecimalJsLike | number | string
     screen: JsonNullValueInput | InputJsonValue
     status?: number
     createdAt?: Date | string
@@ -27642,6 +27704,7 @@ export namespace Prisma {
     money: Decimal | DecimalJsLike | number | string
     remark?: string | null
     status?: number
+    address?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string | null
   }
@@ -27651,6 +27714,7 @@ export namespace Prisma {
     money: Decimal | DecimalJsLike | number | string
     remark?: string | null
     status?: number
+    address?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string | null
   }
@@ -27797,6 +27861,7 @@ export namespace Prisma {
     NOT?: MemberRechargeScalarWhereInput | MemberRechargeScalarWhereInput[]
     id?: BigIntFilter<"MemberRecharge"> | bigint | number
     money?: DecimalFilter<"MemberRecharge"> | Decimal | DecimalJsLike | number | string
+    rechargeMoney?: DecimalFilter<"MemberRecharge"> | Decimal | DecimalJsLike | number | string
     screen?: JsonFilter<"MemberRecharge">
     status?: IntFilter<"MemberRecharge"> | number
     memberId?: BigIntFilter<"MemberRecharge"> | bigint | number
@@ -27828,6 +27893,7 @@ export namespace Prisma {
     money?: DecimalFilter<"MemberWithdraw"> | Decimal | DecimalJsLike | number | string
     remark?: StringNullableFilter<"MemberWithdraw"> | string | null
     status?: IntFilter<"MemberWithdraw"> | number
+    address?: StringNullableFilter<"MemberWithdraw"> | string | null
     memberId?: BigIntFilter<"MemberWithdraw"> | bigint | number
     createdAt?: DateTimeFilter<"MemberWithdraw"> | Date | string
     updatedAt?: DateTimeNullableFilter<"MemberWithdraw"> | Date | string | null
@@ -28790,6 +28856,7 @@ export namespace Prisma {
   export type MemberRechargeCreateManyMemberInput = {
     id?: bigint | number
     money: Decimal | DecimalJsLike | number | string
+    rechargeMoney?: Decimal | DecimalJsLike | number | string
     screen: JsonNullValueInput | InputJsonValue
     status?: number
     createdAt?: Date | string
@@ -28801,6 +28868,7 @@ export namespace Prisma {
     money: Decimal | DecimalJsLike | number | string
     remark?: string | null
     status?: number
+    address?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string | null
   }
@@ -28958,6 +29026,7 @@ export namespace Prisma {
   export type MemberRechargeUpdateWithoutMemberInput = {
     id?: BigIntFieldUpdateOperationsInput | bigint | number
     money?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    rechargeMoney?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
     screen?: JsonNullValueInput | InputJsonValue
     status?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -28967,6 +29036,7 @@ export namespace Prisma {
   export type MemberRechargeUncheckedUpdateWithoutMemberInput = {
     id?: BigIntFieldUpdateOperationsInput | bigint | number
     money?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    rechargeMoney?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
     screen?: JsonNullValueInput | InputJsonValue
     status?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -28976,6 +29046,7 @@ export namespace Prisma {
   export type MemberRechargeUncheckedUpdateManyWithoutMemberInput = {
     id?: BigIntFieldUpdateOperationsInput | bigint | number
     money?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    rechargeMoney?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
     screen?: JsonNullValueInput | InputJsonValue
     status?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -28987,6 +29058,7 @@ export namespace Prisma {
     money?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
     remark?: NullableStringFieldUpdateOperationsInput | string | null
     status?: IntFieldUpdateOperationsInput | number
+    address?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
@@ -28996,6 +29068,7 @@ export namespace Prisma {
     money?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
     remark?: NullableStringFieldUpdateOperationsInput | string | null
     status?: IntFieldUpdateOperationsInput | number
+    address?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
@@ -29005,6 +29078,7 @@ export namespace Prisma {
     money?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
     remark?: NullableStringFieldUpdateOperationsInput | string | null
     status?: IntFieldUpdateOperationsInput | number
+    address?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }

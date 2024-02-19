@@ -94,6 +94,7 @@ export class StockController {
     return await this.stockService.getMemberPositions(
       req.user as Member,
       payload.market,
+      payload.status,
     );
   }
 

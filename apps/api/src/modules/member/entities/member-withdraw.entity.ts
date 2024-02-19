@@ -5,6 +5,7 @@ export class MemberWithdrawEntity implements MemberWithdraw {
   constructor(partial: Partial<MemberWithdrawEntity>) {
     Object.assign(this, partial);
   }
+  address: string;
   id: bigint;
   @Transform(({ value }) => value.toNumber())
   money: Prisma.Decimal;

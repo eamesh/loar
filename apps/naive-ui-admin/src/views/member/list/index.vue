@@ -13,7 +13,7 @@
       ref="actionRef"
       :actionColumn="actionColumn"
       @update:checked-row-keys="onCheckedRow"
-      :scroll-x="2400"
+      :scroll-x="1090"
     >
       <template #tableTitle>
         <n-button type="primary" @click="addTable">
@@ -68,9 +68,9 @@
         :label-width="80"
         class="py-4"
       >
-        <n-form-item label="证券市场" path="market">
+        <!-- <n-form-item label="证券市场" path="market">
           <n-select :options="markets" v-model:value="formParamsRecharge.market" name="market" />
-        </n-form-item>
+        </n-form-item> -->
         <n-form-item label="类型" path="type">
           <n-radio
             :checked="formParamsRecharge.type === '0'"
@@ -112,7 +112,7 @@
   import { BasicForm, FormSchema, useForm } from '@/components/Form/index';
   // import { getTableList } from '@/api/table/list';
   import { getMembers, changeMemberRecharge } from '@/api/member';
-  import { getMarkets } from '@/api/market/list';
+  // import { getMarkets } from '@/api/market/list';
   import { PlusOutlined } from '@vicons/antd';
   import { useRouter } from 'vue-router';
   import { type FormRules } from 'naive-ui';
@@ -132,6 +132,14 @@
       {
         title: '邮箱',
         key: 'email',
+      },
+      {
+        title: 'USDT余额',
+        key: 'balance',
+      },
+      {
+        title: 'USDT冻结余额',
+        key: 'unBalance',
       },
       {
         title: '用户状态',
@@ -184,21 +192,21 @@
         },
       },
     ];
-    const result = await getMarkets();
-    markets.value = result.map((item) => {
-      columns.value.push({
-        title: `可用余额${item.code}`,
-        key: `accountBalance.${item.code}.balance`,
-      });
-      columns.value.push({
-        title: `冻结余额${item.code}`,
-        key: `accountBalance.${item.code}.unBalance`,
-      });
-      return {
-        label: item.code,
-        value: item.code,
-      };
-    });
+    // const result = await getMarkets();
+    // markets.value = result.map((item) => {
+    //   columns.value.push({
+    //     title: `可用余额${item.code}`,
+    //     key: `accountBalance.${item.code}.balance`,
+    //   });
+    //   columns.value.push({
+    //     title: `冻结余额${item.code}`,
+    //     key: `accountBalance.${item.code}.unBalance`,
+    //   });
+    //   return {
+    //     label: item.code,
+    //     value: item.code,
+    //   };
+    // });
 
     // columns.value = Object.assign(columns.value, [
     //   {

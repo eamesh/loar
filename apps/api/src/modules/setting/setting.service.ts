@@ -52,7 +52,8 @@ export class SettingService {
 
   async handleToUSDT(money: Decimal, currency: string) {
     // 获取兑换比例
-    const { value } = await this.getKey('echange_rate');
+    const { value } = await this.getKey('exchange_rate');
+    console.log(value);
 
     const current = new Decimal(value[currency]);
 
@@ -62,11 +63,34 @@ export class SettingService {
 
   async handleUSDTto(money: Decimal, currency: string) {
     // 获取兑换比例
-    const { value } = await this.getKey('echange_rate');
+    const { value } = await this.getKey('exchange_rate');
 
     const current = new Decimal(value[currency]);
 
     // 计算港币兑换USDT
     return money.div(current);
+  }
+
+  async save(payload: any) {
+    const data = payload.data as any[];
+    console.log(data);
+    try {
+      await Promise.all(
+        data.map(async (item) => {
+          return await this.upsert(item);
+        }),
+      );
+    } catch (error) {}
+  }
+
+  async getSystem() {
+    const results = await this.prisma.setting.findMany();
+    console.log(results);
+    return results.map((item) => {
+      return {
+        ...item,
+        value: JSON.parse(item.value),
+      };
+    });
   }
 }

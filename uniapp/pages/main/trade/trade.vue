@@ -21,8 +21,9 @@
 								<view class="font-medium text-[38rpx] font-mono">{{ totalPrice }}</view>
 							</view>
 							<view class="flex flex-col justify-between items-end h-12 text-xs">
-								<view>{{ $t('daily.pl') }}</view>
-								<view class="mt-3 text-[#e60101] font-mono">-0.820</view>
+						<!-- 		<view>{{ $t('daily.pl') }}</view>
+								<view class="mt-3 text-[#e60101] font-mono">-0.820</view> -->
+								<image src="/static/img/card.png" class="w-[80rpx] h-[80rpx]"></image>
 							</view>
 						</view>
 				
@@ -37,7 +38,7 @@
 				
 									<view class="flex flex-col gap-y-2">
 										<view class="text-[#999]">{{ $t('cash.balance') }}</view>
-										<view class="font-mono">{{ (+account.balance).toFixed(3) }}</view>
+										<view class="font-mono">{{ profileBalance.balance }}</view>
 									</view>
 								</view>
 							</view>
@@ -50,7 +51,7 @@
 				
 									<view class="flex flex-col gap-y-2">
 										<view class="text-[#999]">{{ $t('froze.funds') }}</view>
-										<view class="font-mono">{{ (+account.lockAccount).toFixed(3) }}</view>
+										<view class="font-mono">{{ profileBalance.unBalance }}</view>
 									</view>
 								</view>
 							</view>
@@ -63,7 +64,7 @@
 				
 									<view class="flex flex-col gap-y-2">
 										<view class="text-[#999]">{{ $t('risk.rate') }}</view>
-										<view>{{ (+account.lockAccount).toFixed(3) }}%</view>
+										<view class="font-mono">0.000%</view>
 									</view>
 								</view>
 							</view>
@@ -84,7 +85,7 @@
 								<view class="text-[20rpx] mt-1">{{ $t('cash.flow') }}</view>
 							</view> -->
 							<view class="basis-1/3 flex justify-center items-center flex-col"
-								@click="$go('/pages/market/order/history', 'navigateTo')">
+								@click="$go(`/pages/market/order/history?market=${current.code}`, 'navigateTo')">
 								<gui-image src="/static/img/history.png" :width="40" :height="50"></gui-image>
 								<view class="text-[20rpx] mt-1">{{ $t('position.history') }}</view>
 							</view>
@@ -330,6 +331,8 @@
 		getPositions,
 		positionSell
 	} from '@/api/trade.js'
+	import { getProfile } from '@/api/member.js'
+	import { getSettingBykey } from '@/api/setting.js'
 
 	export default {
 		data() {
@@ -339,7 +342,13 @@
 				account: {},
 				positions: [],
 				closeItem: {},
-				tmpPostions: {}
+				tmpPostions: {},
+				profile: {
+					balance: 0,
+					unBalance: 0,
+					lockBalance: 0
+				},
+				settings: {}
 			}
 		},
 		components: {
@@ -369,22 +378,41 @@
 				let sum = 0;
 
 				this.positions?.map((p) => {
-					sum += +p.currentPrice * +p.amount
+					sum += +p.stockSymbol.newPrice * +p.amount
 				})
-
+				
 				return sum.toFixed(3)
 			},
 			totalPrice() {
-				return this.totalStockPrice
+				let sum = this.totalStockPrice
+				console.log(this.profileBalance.balance)
+				sum = parseFloat(sum) + parseFloat(this.profileBalance.balance)
+				return sum
+			},
+			profileBalance() {
+				const { balance, unBalance } = this.profile
+				let balanceConvert = balance
+				let unBalanceConvert = unBalance
+				console.log(this.settings)
+				if (this.current.code !== 'US') {
+					const rate = this.settings[this.current.code]
+					balanceConvert = (parseFloat(balanceConvert) / parseFloat(rate)).toFixed(3)
+					unBalanceConvert = (parseFloat(unBalanceConvert) / parseFloat(rate)).toFixed(3)
+				}
+				return {
+					balance: balanceConvert,
+					unBalance: unBalanceConvert
+				}
 			},
 			market() {
 				const market = this.navTabs.find((_, idx) => idx === this.currentIndex)
 				return market
 			},
 			isFunds() {
-				const current = this.navTabs.find((_, index) => this.currentIndex === index)
+				return false
+				// const current = this.navTabs.find((_, index) => this.currentIndex === index)
 
-				return current.key === 'funds';
+				// return current.key === 'funds';
 			},
 			navTabs() {
 				const data = this.markets.map(item => {
@@ -488,7 +516,7 @@
 			async requestSell() {
 				try {
 					await positionSell(this.closeItem.id)
-					await this.requestAccountList(this.market.code)
+					await this.init()
 				} catch (e) {
 					uni.showToast({
 						title: 'error',
@@ -507,11 +535,38 @@
 				} catch (e) {
 					console.log(e)
 				}
+			},
+			async getProfile() {
+				try{
+					const member = await getProfile()
+					this.profile.balance = member.balance
+					this.profile.unBalance = member.unBalance
+					this.profile.lockBalance = member.lockBalance
+				}catch(e){
+					console.log(e)
+					//TODO handle the exception
+				}
+			},
+			
+			async getSettingBykey() {
+				try{
+					const result = await getSettingBykey('exchange_rate');
+					console.log(result)
+					this.settings = result.value
+				}catch(e){
+					//TODO handle the exception
+					console.log(e)
+				}
+			},
+			
+			async init() {
+				this.requestAccountList(this.market.code)
+				this.getProfile()
+				this.getSettingBykey()
 			}
 		},
 		onShow() {
-			console.log('on show')
-			this.requestAccountList(this.market.code)
+			this.init()
 		},
 		
 		onHide() {
@@ -532,7 +587,7 @@
 			}
 
 			window.tmp = this.tmpPostions
-		}
+		},
 	}
 </script>
 

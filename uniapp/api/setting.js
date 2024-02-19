@@ -6,3 +6,10 @@ export const getSettingBykey = function (key) {
 		method: 'GET',
 	})
 }
+
+export const getSettings = function () {
+	return http({
+		url: `/setting/system`,
+		method: 'GET',
+	})
+}

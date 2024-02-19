@@ -1,4 +1,7 @@
 import { BasicColumn } from '@/components/Table';
+import dayjs from 'dayjs';
+import { NTag } from 'naive-ui';
+import { h } from 'vue';
 
 export const columns: BasicColumn<any>[] = [
   {
@@ -7,51 +10,54 @@ export const columns: BasicColumn<any>[] = [
     width: 100,
   },
   {
-    title: '订单编号',
-    key: 'no',
-  },
-  {
     title: '邮箱',
     key: 'email',
   },
   {
-    title: '姓名',
-    key: 'username',
-  },
-  {
-    title: '姓名',
-    key: 'username',
-  },
-  {
-    title: 'USDT入金地址',
-    key: 'usdtAddress',
-  },
-  {
-    title: '证券市场',
-    key: 'market',
-  },
-  {
-    title: '收款商户名称',
-    key: 'mallName',
+    title: '上传凭证',
+    key: 'screen',
   },
   {
     title: '入金金额',
-    key: 'incomme',
+    key: 'money',
+  },
+  {
+    title: '已审核金额',
+    key: 'rechargeMoney',
   },
   {
     title: '状态',
     key: 'status',
-  },
-  {
-    title: '入金分类',
-    key: 'type',
-  },
-  {
-    title: '入金备注',
-    key: 'remark',
+    render(row) {
+      const types: any = {
+        0: {
+          title: '待审核',
+          type: '',
+        },
+        1: {
+          title: '已审核',
+          type: 'success',
+        },
+        '-1': {
+          title: '已拒绝',
+          type: 'error',
+        },
+      };
+
+      return h(
+        NTag,
+        {
+          type: types[row.status].type,
+        },
+        [types[row.status].title]
+      );
+    },
   },
   {
     title: '提交日期',
     key: 'createdAt',
+    render(row) {
+      return dayjs(row.createdAt).format('YYYY-MM-DD HH:mm:ss');
+    },
   },
 ];

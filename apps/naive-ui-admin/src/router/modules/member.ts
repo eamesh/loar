@@ -64,18 +64,26 @@ const routes: Array<RouteRecordRaw> = [
         path: 'raise',
         name: 'member-raise',
         meta: {
-          title: '会员出入金',
+          title: '会员入金',
         },
         component: () => import('@/views/member/raise/index.vue'),
       },
       {
-        path: 'follow',
-        name: 'member-follow',
+        path: 'withdraw',
+        name: 'member-withdraw',
         meta: {
-          title: '流水记录',
+          title: '会员出金',
         },
-        component: () => import('@/views/member/follow/index.vue'),
+        component: () => import('@/views/member/withdraw/index.vue'),
       },
+      // {
+      //   path: 'follow',
+      //   name: 'member-follow',
+      //   meta: {
+      //     title: '流水记录',
+      //   },
+      //   component: () => import('@/views/member/follow/index.vue'),
+      // },
     ],
   },
 ];

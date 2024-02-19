@@ -15,3 +15,18 @@ export function getSetting(key) {
     method: 'get',
   });
 }
+
+export function saveSetting(params) {
+  return http.request({
+    url: `/setting/save`,
+    method: 'post',
+    params,
+  });
+}
+
+export function getSystemSettings() {
+  return http.request({
+    url: `/setting/system`,
+    method: 'get',
+  });
+}

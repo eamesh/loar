@@ -82,7 +82,7 @@
 					await orderSubscribe(this.id, {
 						market: this.detail.market.code,
 						amount: +current.amount,
-						money: current.price,
+						money: parseFloat(current.price),
 						type: 0
 					})
 					

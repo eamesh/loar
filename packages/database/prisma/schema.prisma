@@ -38,11 +38,11 @@ model Member {
   createdAt      DateTime  @default(now()) @map("created_at")
   updatedAt      DateTime? @map("updated_at")
   // 余额
-  balance        Decimal   @default(0) @db.Decimal(10, 5)
+  balance        Decimal   @default(0) @db.Decimal(20, 5)
   // 冻结余额
-  unBalance      Decimal   @default(0) @map("un_balance") @db.Decimal(10, 5)
+  unBalance      Decimal   @default(0) @map("un_balance") @db.Decimal(20, 5)
   // 锁定余额
-  lockBalance    Decimal   @default(0) @map("lock_balance") @db.Decimal(10, 5)
+  lockBalance    Decimal   @default(0) @map("lock_balance") @db.Decimal(20, 5)
 
   stockPostion    StockPosition[]
   memberDetail    MemberDetail[]
@@ -54,13 +54,14 @@ model Member {
 }
 
 model MemberRecharge {
-  id     BigInt  @id @default(autoincrement())
-  money  Decimal @db.Decimal(10, 5)
-  screen Json
+  id            BigInt  @id @default(autoincrement())
+  money         Decimal @db.Decimal(20, 5)
+  rechargeMoney Decimal @default(0) @map("recharge_money") @db.Decimal(20, 5)
+  screen        Json
 
   status Int @default(0)
 
-  memberId  BigInt
+  memberId  BigInt    @map("member_id")
   createdAt DateTime  @default(now()) @map("created_at")
   updatedAt DateTime? @map("updated_at")
 
@@ -70,12 +71,12 @@ model MemberRecharge {
 }
 
 model MemberWithdraw {
-  id     BigInt  @id @default(autoincrement())
-  money  Decimal @db.Decimal(10, 5)
-  remark String?
-  status Int     @default(0)
-
-  memberId  BigInt
+  id        BigInt    @id @default(autoincrement())
+  money     Decimal   @db.Decimal(20, 5)
+  remark    String?
+  status    Int       @default(0)
+  address   String?
+  memberId  BigInt    @map("member_id")
   createdAt DateTime  @default(now()) @map("created_at")
   updatedAt DateTime? @map("updated_at")
 
@@ -283,9 +284,9 @@ model StockSubscribe {
   // 剩余发行量
   remainCirculation Int?      @map("remain_circulation")
   // 发行价
-  ipoPrice          Decimal   @map("ipo_price") @db.Decimal(10, 5)
+  ipoPrice          Decimal   @map("ipo_price") @db.Decimal(20, 5)
   // 招股价
-  issuePrice        Decimal   @map("issue_price") @db.Decimal(10, 5)
+  issuePrice        Decimal   @map("issue_price") @db.Decimal(20, 5)
   // 公布结果时间
   resultAt          DateTime? @map("result_at")
   // 认购数量价格
@@ -307,17 +308,17 @@ model MemberSubscribe {
   // 申购数量
   amount            Int
   // 申购金额
-  money             Decimal  @db.Decimal(10, 5)
+  money             Decimal  @db.Decimal(20, 5)
   // 申购单号
   no                String
   // 中签数量
   winningAmount     Int?     @map("winning_amount")
   // 中签价格
-  winningPrice      Decimal? @map("winning_price") @db.Decimal(10, 5)
+  winningPrice      Decimal? @map("winning_price") @db.Decimal(20, 5)
   // 中签总额
-  totalWinningPrice Decimal? @map("total_winning_price") @db.Decimal(10, 5)
+  totalWinningPrice Decimal? @map("total_winning_price") @db.Decimal(20, 5)
   // 实际金额
-  actualAmount      Decimal? @map("actual_amount") @db.Decimal(10, 5)
+  actualAmount      Decimal? @map("actual_amount") @db.Decimal(20, 5)
   // 订单状态
   status            Int      @default(1)
   // 中间状态

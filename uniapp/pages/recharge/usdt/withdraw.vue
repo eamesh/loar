@@ -11,37 +11,30 @@
 						<view class="gui-form-input flex">
 							<view class="flex flex-row items-center justify-center gap-4 text-xs text-gray-500">
 								<view>USD</view>
-								<view>211.19554</view>
+								<view>{{ balance }}</view>
 							</view>
 						</view>
-						<text class="gui-icons gui-block gui-color-gray text-lg">&#xe601;</text>
 					</view>
 				</view>
 				
 				<view class="mt-3 gui-bg-gray rounded-md px-3">
 					<view class="flex flex-row justify-between items-center">
-						<view>選擇收款賬戶</view>
-						<view class="gui-form-input flex">
-							<view class="flex flex-row items-center justify-center gap-4 text-xs text-gray-500">
-							</view>
-						</view>
-						<text class="gui-icons gui-block gui-color-gray text-lg">&#xe601;</text>
+						<input class="gui-form-input" placeholder="USDT 地址" v-model="address" />
 					</view>
 				</view>
 				
 				<view class="mt-3 gui-bg-gray rounded-md px-3">
 					<view class="flex flex-row justify-between items-center">
-						<input type="password" class="gui-form-input" placeholder="請輸入提現金額" disabled="" />
-						<text class="gui-icons gui-block gui-color-gray text-lg">&#xe601;</text>
+						<input type="number" class="gui-form-input" placeholder="請輸入提現金額" v-model="money" />
 					</view>
 				</view>
 				
 				<view class="text-[20rpx] text-gray-400 mt-4">
-					最低金額：<text class="text-black">100</text>
+					最低金額：<text class="text-black">{{ min }}</text>
 				</view>
 				
 				<view class="text-[20rpx] text-gray-400 mt-4">
-					最大金額：<text class="text-black">10000</text>
+					最大金額：<text class="text-black">{{ max }}</text>
 				</view>
 			</view>
 		</template>
@@ -50,7 +43,7 @@
 			<view class="h-[220rpx] bg-white footer flex flex-col justify-center ">
 				<view class="flex flex-col justify-between items-center gap-3 px-4">
 					<view class="text-xs text-[#3395ff]"  @click="$go('/pages/wallet/fundRecords/fundRecords', 'navigateTo')">提幣歷史</view>
-					<button type="default" class="gui-bg-primary gui-noborder w-full rounded-3xl">
+					<button type="default" class="gui-bg-primary gui-noborder w-full rounded-3xl" @click="submit">
 						<text class="gui-color-white gui-button-text font-semibold font-sans">確認</text>
 					</button>
 				</view>
@@ -60,6 +53,8 @@
 </template>
 
 <script>
+	import { requestWithdraw, getProfile } from '@/api/member.js'
+	import { getSettings } from '@/api/setting.js'
 	export default {
 		data() {
 			return {
@@ -68,20 +63,24 @@
 				// 文本框输入内容记录
 				textareaVal: ' ',
 				// 上传按钮名称
-				subtxt: "+ 发布"
+				subtxt: "+ 发布",
+				address: '',
+				money: '',
+				balance: 0,
+				settings: {}
 			}
 		},
 		onLoad: function() {
-			// 模拟 api 加载默认图片
-			// 不需要默认值删除此函数即可
-			setTimeout(() => {
-				this.$refs.uploadimgcom.setItems(
-					[
-						'https://images.unsplash.com/photo-1663524789630-b18292c8de6e?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHwyMTN8fHxlbnwwfHx8fA%3D%3D&auto=format&fit=crop&w=200&q=80',
-						'https://images.unsplash.com/photo-1663623483427-3d9b5d35cc61?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHwxOTl8fHxlbnwwfHx8fA%3D%3D&auto=format&fit=crop&w=200&q=80',
-						'https://images.unsplash.com/photo-1663593675908-ccb95d32b644?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHwyMDR8fHxlbnwwfHx8fA%3D%3D&auto=format&fit=crop&w=200&q=80'
-					]);
-			}, 1000);
+			
+		},
+		
+		computed: {
+			min() {
+				return this.settings?.min_withdraw?.value || 0
+			},
+			max() {
+				return this.settings?.max_withdraw?.value || 0
+			}
 		},
 		methods: {
 			change: function(e) {
@@ -90,43 +89,74 @@
 			// 提交动态
 			// 过程说明 : 
 			// 点击提交按钮 > 首先执行组件的上传函数 > 上传成功后获得已经上传的图片数据 > 提交给后端 api 记录整个内容 
-			submit: function() {
-				// 阻止重复提交
-				if (this.subtxt != '+ 发布') {
-					return;
-				}
-				// 判断图片选择数量
-				if (this.needPploadedImgs.length < 1) {
+			submit: async function() {
+				if (!this.address || !this.money) {
 					uni.showToast({
-						title: "请选择图片",
-						icon: "none"
-					});
-					return;
+						title: '表单验证失败',
+						icon: 'none'
+					})
+					return
 				}
-				this.subtxt = '提交中，请稍候 ...';
-				this.$refs.uploadimgcom.upload();
-				// 代码执行到这里，组件开始执行上传工作
-				// uni-app 上传api 一次上传一个图片
-				// 组件会一个一个循环上传
-				// 上传完毕后会触发组件的 uploaded 事件
-				// uploaded 事件意味着上传工作完毕
-				// 事件会携带上传完成的图片数据 [数组格式] 
+				
+				if (this.money > this.balance || this.money < this.min || this.money > this.max ) {
+					uni.showToast({
+						title: '表单验证失败',
+						icon: 'none'
+					})
+					return
+				}
+				
+				uni.showLoading({
+					title: 'Wait'
+				})
+				try{
+					await requestWithdraw({
+						address: this.address,
+						money: this.money
+					})
+					uni.showToast({
+						title: 'Success',
+						icon: 'none'
+					})
+				}catch(e){
+					uni.showToast({
+						title: 'Fail',
+						icon: 'none'
+					})
+					//TODO handle the exception
+				}
+				
+				uni.hideLoading()
 			},
-			// 图片上传完毕执行 uploaded 函数
-			uploaded: function(uploadedImgs) {
-				console.log('图片上传完毕，开始提交数据');
-				console.log(uploadedImgs);
-				// 组合数据给后端 api 提交
-				var sendData = {
-					imgs: uploadedImgs,
-					// 其他表单数据
-					content: this.textareaVal
-				};
-				console.log('全部数据 :');
-				console.log(sendData);
-				// 至此数据以及收集完毕
-				// 请自己完成数据提交工作
+			
+			async getSettings() {
+				try{
+					const result = await getSettings()
+					const obj = {}
+					result.forEach((item) => {
+						obj[item.key] = item.value;
+					});
+					
+					this.settings = obj
+					
+				}catch(e){
+					//TODO handle the exception
+				}
+			},
+			
+			async getProfile() {
+				try{
+					const member = await getProfile()
+					this.balance = member.balance
+				}catch(e){
+					console.log(e)
+					//TODO handle the exception
+				}
 			}
+		},
+		created() {
+			this.getProfile()
+			this.getSettings()
 		}
 	}
 </script>

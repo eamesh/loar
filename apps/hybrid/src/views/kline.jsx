@@ -37,6 +37,9 @@ export default defineComponent({
     })
     const favoriteRef = ref(false)
     const modeRef = computed(() => formData.mode)
+    const memberRef = ref({
+      balance: 0
+    })
 
     function reciveApp (data) {
       alert(123)
@@ -58,6 +61,17 @@ export default defineComponent({
     async function getStock () {
       console.log(route.query, route.params)
       return await axios.get(`${process.env.VUE_APP_KLINE_HOST}/api/v1/stock/${route.query.id}/panel`)
+    }
+
+    async function getProfile () {
+      const result = await axios.get(`${process.env.VUE_APP_KLINE_HOST}/api/v1/member`, {
+        headers: {
+          'content-type': 'application/json',
+          Authorization: `Bearer ${decodeURIComponent(route.query.token)}`
+        }
+      })
+
+      memberRef.value.balance = result.data.balance
     }
 
     async function checkFavorite () {
@@ -110,6 +124,7 @@ export default defineComponent({
     })
 
     async function init () {
+      await getProfile()
       const result = await getStock()
       const stock = stockRef.value = result.data
       formData.price = stock.detail?.price
@@ -167,7 +182,9 @@ export default defineComponent({
 
         showSuccessToast('下单成功')
       } catch (error) {
-        showFailToast('下单失败')
+        console.log(error)
+        const message = error.response.data?.message || '下单失败'
+        showFailToast(message)
       }
     }
 
@@ -193,11 +210,12 @@ export default defineComponent({
       formData,
       switchMode,
       modeRef,
-      priceComputed
+      priceComputed,
+      memberRef
     }
   },
   render () {
-    const { themeVars, openPopup, stockRef, favoriteRef, favorite, switchMode, priceComputed } = this
+    const { themeVars, openPopup, stockRef, favoriteRef, favorite, switchMode, priceComputed, memberRef } = this
     return (
       <div className="w-screen h-screen bg-white overflow-hidden flex flex-col">
         <div className="flex-1 w-full overflow-auto">
@@ -413,7 +431,7 @@ export default defineComponent({
                   }}/>
                 </Cell>
                 <Cell border={false} center title="餘額">
-                  <div className="text-black">221.2313213USD</div>
+                  <div className="text-black">{memberRef.balance} USDT</div>
                 </Cell>
                 <div className="pt-6 px-4">
                   <Button round block color={this.modeRef === 0 ? '#00c537' : '#e60101'} nativeType="submit">

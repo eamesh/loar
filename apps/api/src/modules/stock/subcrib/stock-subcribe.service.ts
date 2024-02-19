@@ -83,70 +83,70 @@ export class StockSubscribeService {
     payload: OrderSubscribeDto,
     member: Member,
   ) {
-    await prisma.$transaction(async (prisma) => {
-      // 获取新股
-      const subscribe = await prisma.stockSubscribe.findFirst({
-        where: {
-          id,
-        },
-      });
-
-      // 剩余数量
-      // if (subscribe.remainCirculation <= payload.amount) {
-      //   throw new BadRequestException('申请数量过多或过少');
-      // }
-
-      // 获取市场
-      const market = await prisma.stockMarket.findFirst({
-        where: {
-          code: subscribe.market,
-        },
-      });
-
-      // 获取用户余额
-      // 冻结余额
-      const unBalanceWait = new Decimal(payload.money);
-      const balance = member.balance.sub(unBalanceWait);
-      const unBalance = member.unBalance.add(unBalanceWait);
-
-      // 缩减剩余
-      // await prisma.stockSubscribe.update({
-      //   where: {
-      //     id,
-      //   },
-      //   data: {
-      //     remainCirculation: subscribe.remainCirculation - payload.amount,
-      //   },
-      // });
-
-      // 下单
-      const result = await prisma.memberSubscribe.create({
-        data: {
-          market: market.code,
-          name: subscribe.name,
-          code: subscribe.code,
-          amount: +payload.amount,
-          money: payload.money,
-          no: uuidv4(),
-          memberId: member.id,
-          stockSubscribeId: subscribe.id,
-          status: 1,
-        },
-      });
-
-      // 修改用户资金
-      await this.prisma.member.update({
-        where: {
-          id: member.id,
-        },
-        data: {
-          balance,
-          unBalance,
-        },
-      });
-
-      return result;
+    // await prisma.$transaction(async (prisma) => {
+    // 获取新股
+    const subscribe = await prisma.stockSubscribe.findFirst({
+      where: {
+        id,
+      },
     });
+
+    // 剩余数量
+    // if (subscribe.remainCirculation <= payload.amount) {
+    //   throw new BadRequestException('申请数量过多或过少');
+    // }
+
+    // 获取市场
+    const market = await prisma.stockMarket.findFirst({
+      where: {
+        code: subscribe.market,
+      },
+    });
+
+    // 获取用户余额
+    // 冻结余额
+    const unBalanceWait = new Decimal(payload.money);
+    const balance = member.balance.sub(unBalanceWait);
+    const unBalance = member.unBalance.add(unBalanceWait);
+
+    // 缩减剩余
+    // await prisma.stockSubscribe.update({
+    //   where: {
+    //     id,
+    //   },
+    //   data: {
+    //     remainCirculation: subscribe.remainCirculation - payload.amount,
+    //   },
+    // });
+
+    // 下单
+    const result = await prisma.memberSubscribe.create({
+      data: {
+        market: market.code,
+        name: subscribe.name,
+        code: subscribe.code,
+        amount: +payload.amount,
+        money: payload.money,
+        no: uuidv4(),
+        memberId: member.id,
+        stockSubscribeId: subscribe.id,
+        status: 1,
+      },
+    });
+
+    // 修改用户资金
+    await this.prisma.member.update({
+      where: {
+        id: member.id,
+      },
+      data: {
+        balance,
+        unBalance,
+      },
+    });
+
+    return result;
+    // });
   }
 
   async updateMemberSubscribeType(id: number, payload: any) {

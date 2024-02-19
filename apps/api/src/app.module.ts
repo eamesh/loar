@@ -25,10 +25,18 @@ import { ShuhaiModule } from './providers/shuhai/shuhai.module';
 import { ServeStaticModule } from '@nestjs/serve-static';
 import { join } from 'path';
 import { AcceptLanguageResolver, I18nModule, QueryResolver } from 'nestjs-i18n';
+import { MulterModule } from '@nestjs/platform-express';
 
 const envFilePath = [`env.${process.env.NODE_ENV}`, '.env'];
 
 const imports = [
+  MulterModule.registerAsync({
+    useFactory: async () => ({
+      limits: {
+        fileSize: 10000000000000,
+      },
+    }),
+  }),
   I18nModule.forRoot({
     fallbackLanguage: 'en',
     loaderOptions: {

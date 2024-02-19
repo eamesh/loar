@@ -18,54 +18,13 @@ export class KlineDatafeed {
    * 返回标的k线数据数组
    */
   async getHistoryKLineData (symbol, period, from, to) {
-    console.log(symbol, period, from, to)
-    const now = dayjs()
-    const start = now.subtract(30, 'day').unix()
-    const end = now.unix()
-    // 完成数据请求
-    const response = await fetch(`${process.env.VUE_APP_KLINE_HOST}/api/v1/kline/symbol`, {
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({
-        id: symbol.id,
-        level: period.multiplier,
-        start,
-        end
-      }),
-      method: 'POST'
-    })
-
-    console.log(response)
-
-    const results = await response.json()
-    console.log(results)
-    return await (results || []).map((data) => ({
-      timestamp: +data.Date * 1000,
-      open: +data.Open,
-      high: +data.High,
-      low: +data.Low,
-      close: +data.Close,
-      volume: +data.Volume,
-      turnover: +data.Amount
-    }))
-  }
-
-  /**
-   * 订阅标的在某个周期的实时数据
-   * 当标的和周期发生变化的时候触发
-   *
-   * 通过callback告知图表接收数据
-   */
-  subscribe (symbol, period, callback) {
-    // 完成ws订阅或者http轮询
-    setInterval(async function () {
-      console.log(symbol, period)
+    try {
+      console.log(symbol, period, from, to)
       const now = dayjs()
       const start = now.subtract(30, 'day').unix()
       const end = now.unix()
       // 完成数据请求
-      const response = await fetch(`${process.env.VUE_APP_KLINE_HOST}/api/v1/kline/symbol?num=1`, {
+      const response = await fetch(`${process.env.VUE_APP_KLINE_HOST}/api/v1/kline/symbol`, {
         headers: {
           'Content-Type': 'application/json'
         },
@@ -81,19 +40,67 @@ export class KlineDatafeed {
       console.log(response)
 
       const results = await response.json()
-      console.log(results);
-      (results || []).forEach(data => {
-        // eslint-disable-next-line node/no-callback-literal
-        callback({
-          timestamp: +data.Date * 1000,
-          open: +data.Open,
-          high: +data.High,
-          low: +data.Low,
-          close: +data.Close,
-          volume: +data.Volume,
-          turnover: +data.Amount
+      console.log(results)
+      return await (results || []).map((data) => ({
+        timestamp: +data.Date * 1000,
+        open: +data.Open,
+        high: +data.High,
+        low: +data.Low,
+        close: +data.Close,
+        volume: +data.Volume,
+        turnover: +data.Amount
+      }))
+    } catch (error) {
+
+    }
+  }
+
+  /**
+   * 订阅标的在某个周期的实时数据
+   * 当标的和周期发生变化的时候触发
+   *
+   * 通过callback告知图表接收数据
+   */
+  subscribe (symbol, period, callback) {
+    try {
+      // 完成ws订阅或者http轮询
+      setInterval(async function () {
+        console.log(symbol, period)
+        const now = dayjs()
+        const start = now.subtract(30, 'day').unix()
+        const end = now.unix()
+        // 完成数据请求
+        const response = await fetch(`${process.env.VUE_APP_KLINE_HOST}/api/v1/kline/symbol?num=1`, {
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({
+            id: symbol.id,
+            level: period.multiplier,
+            start,
+            end
+          }),
+          method: 'POST'
         })
-      })
+
+        console.log(response)
+
+        const results = await response.json()
+        console.log(results)
+        if (Array.isArray(results)) {
+          (results || []).forEach(data => {
+            // eslint-disable-next-line node/no-callback-literal
+            callback({
+              timestamp: +data.Date * 1000,
+              open: +data.Open,
+              high: +data.High,
+              low: +data.Low,
+              close: +data.Close,
+              volume: +data.Volume,
+              turnover: +data.Amount
+            })
+          })
+        }
 
       // (results || []).map((data) => {
       //   callback({
@@ -106,7 +113,10 @@ export class KlineDatafeed {
       //     turnover: +data.Amount
       //   })
       // })
-    }, 3000)
+      }, 3000)
+    } catch (error) {
+
+    }
   }
 
   /**

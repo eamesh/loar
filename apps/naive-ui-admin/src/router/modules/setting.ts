@@ -27,6 +27,14 @@ const routes: Array<RouteRecordRaw> = [
     },
     children: [
       {
+        path: 'keys',
+        name: 'setting-keys',
+        meta: {
+          title: '参数配置',
+        },
+        component: () => import('@/views/setting/keys/index.vue'),
+      },
+      {
         path: 'market',
         name: 'setting-market',
         meta: {
@@ -52,14 +60,14 @@ const routes: Array<RouteRecordRaw> = [
         },
         component: () => import('@/views/setting/market/action.vue'),
       },
-      {
-        path: 'gathering',
-        name: 'setting-gathering',
-        meta: {
-          title: '收款商户',
-        },
-        component: () => import('@/views/setting/gathering/index.vue'),
-      },
+      // {
+      //   path: 'gathering',
+      //   name: 'setting-gathering',
+      //   meta: {
+      //     title: '收款商户',
+      //   },
+      //   component: () => import('@/views/setting/gathering/index.vue'),
+      // },
       {
         path: 'upgrade',
         name: 'setting-upgrade',
