@@ -25,6 +25,7 @@ coverage
 .next/
 out/
 build
+!apps/naive-ui-admin/build
 dist
 
 
