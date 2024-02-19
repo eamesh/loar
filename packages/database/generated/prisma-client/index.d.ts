@@ -24,6 +24,16 @@ export type User = $Result.DefaultSelection<Prisma.$UserPayload>
  */
 export type Member = $Result.DefaultSelection<Prisma.$MemberPayload>
 /**
+ * Model MemberRecharge
+ * 
+ */
+export type MemberRecharge = $Result.DefaultSelection<Prisma.$MemberRechargePayload>
+/**
+ * Model MemberWithdraw
+ * 
+ */
+export type MemberWithdraw = $Result.DefaultSelection<Prisma.$MemberWithdrawPayload>
+/**
  * Model StockSymbol
  * 
  */
@@ -266,6 +276,26 @@ export class PrismaClient<
     * ```
     */
   get member(): Prisma.MemberDelegate<ExtArgs>;
+
+  /**
+   * `prisma.memberRecharge`: Exposes CRUD operations for the **MemberRecharge** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more MemberRecharges
+    * const memberRecharges = await prisma.memberRecharge.findMany()
+    * ```
+    */
+  get memberRecharge(): Prisma.MemberRechargeDelegate<ExtArgs>;
+
+  /**
+   * `prisma.memberWithdraw`: Exposes CRUD operations for the **MemberWithdraw** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more MemberWithdraws
+    * const memberWithdraws = await prisma.memberWithdraw.findMany()
+    * ```
+    */
+  get memberWithdraw(): Prisma.MemberWithdrawDelegate<ExtArgs>;
 
   /**
    * `prisma.stockSymbol`: Exposes CRUD operations for the **StockSymbol** model.
@@ -878,6 +908,8 @@ export namespace Prisma {
   export const ModelName: {
     User: 'User',
     Member: 'Member',
+    MemberRecharge: 'MemberRecharge',
+    MemberWithdraw: 'MemberWithdraw',
     StockSymbol: 'StockSymbol',
     Stock: 'Stock',
     StockRecord: 'StockRecord',
@@ -908,7 +940,7 @@ export namespace Prisma {
 
   export type TypeMap<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     meta: {
-      modelProps: 'user' | 'member' | 'stockSymbol' | 'stock' | 'stockRecord' | 'stockMarket' | 'stockFavorite' | 'stockSubscribe' | 'memberSubscribe' | 'stockPosition' | 'memberDetail' | 'country' | 'setting' | 'stockResource' | 'stockResourceRecord' | 'article'
+      modelProps: 'user' | 'member' | 'memberRecharge' | 'memberWithdraw' | 'stockSymbol' | 'stock' | 'stockRecord' | 'stockMarket' | 'stockFavorite' | 'stockSubscribe' | 'memberSubscribe' | 'stockPosition' | 'memberDetail' | 'country' | 'setting' | 'stockResource' | 'stockResourceRecord' | 'article'
       txIsolationLevel: Prisma.TransactionIsolationLevel
     },
     model: {
@@ -1041,6 +1073,138 @@ export namespace Prisma {
           count: {
             args: Prisma.MemberCountArgs<ExtArgs>,
             result: $Utils.Optional<MemberCountAggregateOutputType> | number
+          }
+        }
+      }
+      MemberRecharge: {
+        payload: Prisma.$MemberRechargePayload<ExtArgs>
+        fields: Prisma.MemberRechargeFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.MemberRechargeFindUniqueArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$MemberRechargePayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.MemberRechargeFindUniqueOrThrowArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$MemberRechargePayload>
+          }
+          findFirst: {
+            args: Prisma.MemberRechargeFindFirstArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$MemberRechargePayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.MemberRechargeFindFirstOrThrowArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$MemberRechargePayload>
+          }
+          findMany: {
+            args: Prisma.MemberRechargeFindManyArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$MemberRechargePayload>[]
+          }
+          create: {
+            args: Prisma.MemberRechargeCreateArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$MemberRechargePayload>
+          }
+          createMany: {
+            args: Prisma.MemberRechargeCreateManyArgs<ExtArgs>,
+            result: Prisma.BatchPayload
+          }
+          delete: {
+            args: Prisma.MemberRechargeDeleteArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$MemberRechargePayload>
+          }
+          update: {
+            args: Prisma.MemberRechargeUpdateArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$MemberRechargePayload>
+          }
+          deleteMany: {
+            args: Prisma.MemberRechargeDeleteManyArgs<ExtArgs>,
+            result: Prisma.BatchPayload
+          }
+          updateMany: {
+            args: Prisma.MemberRechargeUpdateManyArgs<ExtArgs>,
+            result: Prisma.BatchPayload
+          }
+          upsert: {
+            args: Prisma.MemberRechargeUpsertArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$MemberRechargePayload>
+          }
+          aggregate: {
+            args: Prisma.MemberRechargeAggregateArgs<ExtArgs>,
+            result: $Utils.Optional<AggregateMemberRecharge>
+          }
+          groupBy: {
+            args: Prisma.MemberRechargeGroupByArgs<ExtArgs>,
+            result: $Utils.Optional<MemberRechargeGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.MemberRechargeCountArgs<ExtArgs>,
+            result: $Utils.Optional<MemberRechargeCountAggregateOutputType> | number
+          }
+        }
+      }
+      MemberWithdraw: {
+        payload: Prisma.$MemberWithdrawPayload<ExtArgs>
+        fields: Prisma.MemberWithdrawFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.MemberWithdrawFindUniqueArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$MemberWithdrawPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.MemberWithdrawFindUniqueOrThrowArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$MemberWithdrawPayload>
+          }
+          findFirst: {
+            args: Prisma.MemberWithdrawFindFirstArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$MemberWithdrawPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.MemberWithdrawFindFirstOrThrowArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$MemberWithdrawPayload>
+          }
+          findMany: {
+            args: Prisma.MemberWithdrawFindManyArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$MemberWithdrawPayload>[]
+          }
+          create: {
+            args: Prisma.MemberWithdrawCreateArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$MemberWithdrawPayload>
+          }
+          createMany: {
+            args: Prisma.MemberWithdrawCreateManyArgs<ExtArgs>,
+            result: Prisma.BatchPayload
+          }
+          delete: {
+            args: Prisma.MemberWithdrawDeleteArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$MemberWithdrawPayload>
+          }
+          update: {
+            args: Prisma.MemberWithdrawUpdateArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$MemberWithdrawPayload>
+          }
+          deleteMany: {
+            args: Prisma.MemberWithdrawDeleteManyArgs<ExtArgs>,
+            result: Prisma.BatchPayload
+          }
+          updateMany: {
+            args: Prisma.MemberWithdrawUpdateManyArgs<ExtArgs>,
+            result: Prisma.BatchPayload
+          }
+          upsert: {
+            args: Prisma.MemberWithdrawUpsertArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$MemberWithdrawPayload>
+          }
+          aggregate: {
+            args: Prisma.MemberWithdrawAggregateArgs<ExtArgs>,
+            result: $Utils.Optional<AggregateMemberWithdraw>
+          }
+          groupBy: {
+            args: Prisma.MemberWithdrawGroupByArgs<ExtArgs>,
+            result: $Utils.Optional<MemberWithdrawGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.MemberWithdrawCountArgs<ExtArgs>,
+            result: $Utils.Optional<MemberWithdrawCountAggregateOutputType> | number
           }
         }
       }
@@ -2120,12 +2284,16 @@ export namespace Prisma {
     stockPostion: number
     memberDetail: number
     memberSubscribe: number
+    memberRecharges: number
+    memberWithdraws: number
   }
 
   export type MemberCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     stockPostion?: boolean | MemberCountOutputTypeCountStockPostionArgs
     memberDetail?: boolean | MemberCountOutputTypeCountMemberDetailArgs
     memberSubscribe?: boolean | MemberCountOutputTypeCountMemberSubscribeArgs
+    memberRecharges?: boolean | MemberCountOutputTypeCountMemberRechargesArgs
+    memberWithdraws?: boolean | MemberCountOutputTypeCountMemberWithdrawsArgs
   }
 
   // Custom InputTypes
@@ -2162,6 +2330,22 @@ export namespace Prisma {
    */
   export type MemberCountOutputTypeCountMemberSubscribeArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     where?: MemberSubscribeWhereInput
+  }
+
+
+  /**
+   * MemberCountOutputType without action
+   */
+  export type MemberCountOutputTypeCountMemberRechargesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: MemberRechargeWhereInput
+  }
+
+
+  /**
+   * MemberCountOutputType without action
+   */
+  export type MemberCountOutputTypeCountMemberWithdrawsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: MemberWithdrawWhereInput
   }
 
 
@@ -3191,12 +3375,18 @@ export namespace Prisma {
     id: number | null
     status: number | null
     type: number | null
+    balance: Decimal | null
+    unBalance: Decimal | null
+    lockBalance: Decimal | null
   }
 
   export type MemberSumAggregateOutputType = {
     id: bigint | null
     status: number | null
     type: number | null
+    balance: Decimal | null
+    unBalance: Decimal | null
+    lockBalance: Decimal | null
   }
 
   export type MemberMinAggregateOutputType = {
@@ -3211,6 +3401,9 @@ export namespace Prisma {
     type: number | null
     createdAt: Date | null
     updatedAt: Date | null
+    balance: Decimal | null
+    unBalance: Decimal | null
+    lockBalance: Decimal | null
   }
 
   export type MemberMaxAggregateOutputType = {
@@ -3225,6 +3418,9 @@ export namespace Prisma {
     type: number | null
     createdAt: Date | null
     updatedAt: Date | null
+    balance: Decimal | null
+    unBalance: Decimal | null
+    lockBalance: Decimal | null
   }
 
   export type MemberCountAggregateOutputType = {
@@ -3240,6 +3436,9 @@ export namespace Prisma {
     type: number
     createdAt: number
     updatedAt: number
+    balance: number
+    unBalance: number
+    lockBalance: number
     _all: number
   }
 
@@ -3248,12 +3447,18 @@ export namespace Prisma {
     id?: true
     status?: true
     type?: true
+    balance?: true
+    unBalance?: true
+    lockBalance?: true
   }
 
   export type MemberSumAggregateInputType = {
     id?: true
     status?: true
     type?: true
+    balance?: true
+    unBalance?: true
+    lockBalance?: true
   }
 
   export type MemberMinAggregateInputType = {
@@ -3268,6 +3473,9 @@ export namespace Prisma {
     type?: true
     createdAt?: true
     updatedAt?: true
+    balance?: true
+    unBalance?: true
+    lockBalance?: true
   }
 
   export type MemberMaxAggregateInputType = {
@@ -3282,6 +3490,9 @@ export namespace Prisma {
     type?: true
     createdAt?: true
     updatedAt?: true
+    balance?: true
+    unBalance?: true
+    lockBalance?: true
   }
 
   export type MemberCountAggregateInputType = {
@@ -3297,6 +3508,9 @@ export namespace Prisma {
     type?: true
     createdAt?: true
     updatedAt?: true
+    balance?: true
+    unBalance?: true
+    lockBalance?: true
     _all?: true
   }
 
@@ -3399,6 +3613,9 @@ export namespace Prisma {
     type: number
     createdAt: Date
     updatedAt: Date | null
+    balance: Decimal
+    unBalance: Decimal
+    lockBalance: Decimal
     _count: MemberCountAggregateOutputType | null
     _avg: MemberAvgAggregateOutputType | null
     _sum: MemberSumAggregateOutputType | null
@@ -3433,9 +3650,14 @@ export namespace Prisma {
     type?: boolean
     createdAt?: boolean
     updatedAt?: boolean
+    balance?: boolean
+    unBalance?: boolean
+    lockBalance?: boolean
     stockPostion?: boolean | Member$stockPostionArgs<ExtArgs>
     memberDetail?: boolean | Member$memberDetailArgs<ExtArgs>
     memberSubscribe?: boolean | Member$memberSubscribeArgs<ExtArgs>
+    memberRecharges?: boolean | Member$memberRechargesArgs<ExtArgs>
+    memberWithdraws?: boolean | Member$memberWithdrawsArgs<ExtArgs>
     _count?: boolean | MemberCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["member"]>
 
@@ -3452,12 +3674,17 @@ export namespace Prisma {
     type?: boolean
     createdAt?: boolean
     updatedAt?: boolean
+    balance?: boolean
+    unBalance?: boolean
+    lockBalance?: boolean
   }
 
   export type MemberInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     stockPostion?: boolean | Member$stockPostionArgs<ExtArgs>
     memberDetail?: boolean | Member$memberDetailArgs<ExtArgs>
     memberSubscribe?: boolean | Member$memberSubscribeArgs<ExtArgs>
+    memberRecharges?: boolean | Member$memberRechargesArgs<ExtArgs>
+    memberWithdraws?: boolean | Member$memberWithdrawsArgs<ExtArgs>
     _count?: boolean | MemberCountOutputTypeDefaultArgs<ExtArgs>
   }
 
@@ -3468,6 +3695,8 @@ export namespace Prisma {
       stockPostion: Prisma.$StockPositionPayload<ExtArgs>[]
       memberDetail: Prisma.$MemberDetailPayload<ExtArgs>[]
       memberSubscribe: Prisma.$MemberSubscribePayload<ExtArgs>[]
+      memberRecharges: Prisma.$MemberRechargePayload<ExtArgs>[]
+      memberWithdraws: Prisma.$MemberWithdrawPayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
       id: bigint
@@ -3482,6 +3711,9 @@ export namespace Prisma {
       type: number
       createdAt: Date
       updatedAt: Date | null
+      balance: Prisma.Decimal
+      unBalance: Prisma.Decimal
+      lockBalance: Prisma.Decimal
     }, ExtArgs["result"]["member"]>
     composites: {}
   }
@@ -3853,6 +4085,10 @@ export namespace Prisma {
 
     memberSubscribe<T extends Member$memberSubscribeArgs<ExtArgs> = {}>(args?: Subset<T, Member$memberSubscribeArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$MemberSubscribePayload<ExtArgs>, T, 'findMany'> | Null>;
 
+    memberRecharges<T extends Member$memberRechargesArgs<ExtArgs> = {}>(args?: Subset<T, Member$memberRechargesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$MemberRechargePayload<ExtArgs>, T, 'findMany'> | Null>;
+
+    memberWithdraws<T extends Member$memberWithdrawsArgs<ExtArgs> = {}>(args?: Subset<T, Member$memberWithdrawsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$MemberWithdrawPayload<ExtArgs>, T, 'findMany'> | Null>;
+
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -3893,6 +4129,9 @@ export namespace Prisma {
     readonly type: FieldRef<"Member", 'Int'>
     readonly createdAt: FieldRef<"Member", 'DateTime'>
     readonly updatedAt: FieldRef<"Member", 'DateTime'>
+    readonly balance: FieldRef<"Member", 'Decimal'>
+    readonly unBalance: FieldRef<"Member", 'Decimal'>
+    readonly lockBalance: FieldRef<"Member", 'Decimal'>
   }
     
 
@@ -4268,6 +4507,48 @@ export namespace Prisma {
 
 
   /**
+   * Member.memberRecharges
+   */
+  export type Member$memberRechargesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the MemberRecharge
+     */
+    select?: MemberRechargeSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well.
+     */
+    include?: MemberRechargeInclude<ExtArgs> | null
+    where?: MemberRechargeWhereInput
+    orderBy?: MemberRechargeOrderByWithRelationInput | MemberRechargeOrderByWithRelationInput[]
+    cursor?: MemberRechargeWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: MemberRechargeScalarFieldEnum | MemberRechargeScalarFieldEnum[]
+  }
+
+
+  /**
+   * Member.memberWithdraws
+   */
+  export type Member$memberWithdrawsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the MemberWithdraw
+     */
+    select?: MemberWithdrawSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well.
+     */
+    include?: MemberWithdrawInclude<ExtArgs> | null
+    where?: MemberWithdrawWhereInput
+    orderBy?: MemberWithdrawOrderByWithRelationInput | MemberWithdrawOrderByWithRelationInput[]
+    cursor?: MemberWithdrawWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: MemberWithdrawScalarFieldEnum | MemberWithdrawScalarFieldEnum[]
+  }
+
+
+  /**
    * Member without action
    */
   export type MemberDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -4279,6 +4560,1974 @@ export namespace Prisma {
      * Choose, which related nodes to fetch as well.
      */
     include?: MemberInclude<ExtArgs> | null
+  }
+
+
+
+  /**
+   * Model MemberRecharge
+   */
+
+  export type AggregateMemberRecharge = {
+    _count: MemberRechargeCountAggregateOutputType | null
+    _avg: MemberRechargeAvgAggregateOutputType | null
+    _sum: MemberRechargeSumAggregateOutputType | null
+    _min: MemberRechargeMinAggregateOutputType | null
+    _max: MemberRechargeMaxAggregateOutputType | null
+  }
+
+  export type MemberRechargeAvgAggregateOutputType = {
+    id: number | null
+    money: Decimal | null
+    status: number | null
+    memberId: number | null
+  }
+
+  export type MemberRechargeSumAggregateOutputType = {
+    id: bigint | null
+    money: Decimal | null
+    status: number | null
+    memberId: bigint | null
+  }
+
+  export type MemberRechargeMinAggregateOutputType = {
+    id: bigint | null
+    money: Decimal | null
+    status: number | null
+    memberId: bigint | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type MemberRechargeMaxAggregateOutputType = {
+    id: bigint | null
+    money: Decimal | null
+    status: number | null
+    memberId: bigint | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type MemberRechargeCountAggregateOutputType = {
+    id: number
+    money: number
+    screen: number
+    status: number
+    memberId: number
+    createdAt: number
+    updatedAt: number
+    _all: number
+  }
+
+
+  export type MemberRechargeAvgAggregateInputType = {
+    id?: true
+    money?: true
+    status?: true
+    memberId?: true
+  }
+
+  export type MemberRechargeSumAggregateInputType = {
+    id?: true
+    money?: true
+    status?: true
+    memberId?: true
+  }
+
+  export type MemberRechargeMinAggregateInputType = {
+    id?: true
+    money?: true
+    status?: true
+    memberId?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type MemberRechargeMaxAggregateInputType = {
+    id?: true
+    money?: true
+    status?: true
+    memberId?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type MemberRechargeCountAggregateInputType = {
+    id?: true
+    money?: true
+    screen?: true
+    status?: true
+    memberId?: true
+    createdAt?: true
+    updatedAt?: true
+    _all?: true
+  }
+
+  export type MemberRechargeAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which MemberRecharge to aggregate.
+     */
+    where?: MemberRechargeWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of MemberRecharges to fetch.
+     */
+    orderBy?: MemberRechargeOrderByWithRelationInput | MemberRechargeOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: MemberRechargeWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` MemberRecharges from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` MemberRecharges.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned MemberRecharges
+    **/
+    _count?: true | MemberRechargeCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: MemberRechargeAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: MemberRechargeSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: MemberRechargeMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: MemberRechargeMaxAggregateInputType
+  }
+
+  export type GetMemberRechargeAggregateType<T extends MemberRechargeAggregateArgs> = {
+        [P in keyof T & keyof AggregateMemberRecharge]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateMemberRecharge[P]>
+      : GetScalarType<T[P], AggregateMemberRecharge[P]>
+  }
+
+
+
+
+  export type MemberRechargeGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: MemberRechargeWhereInput
+    orderBy?: MemberRechargeOrderByWithAggregationInput | MemberRechargeOrderByWithAggregationInput[]
+    by: MemberRechargeScalarFieldEnum[] | MemberRechargeScalarFieldEnum
+    having?: MemberRechargeScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: MemberRechargeCountAggregateInputType | true
+    _avg?: MemberRechargeAvgAggregateInputType
+    _sum?: MemberRechargeSumAggregateInputType
+    _min?: MemberRechargeMinAggregateInputType
+    _max?: MemberRechargeMaxAggregateInputType
+  }
+
+  export type MemberRechargeGroupByOutputType = {
+    id: bigint
+    money: Decimal
+    screen: JsonValue
+    status: number
+    memberId: bigint
+    createdAt: Date
+    updatedAt: Date | null
+    _count: MemberRechargeCountAggregateOutputType | null
+    _avg: MemberRechargeAvgAggregateOutputType | null
+    _sum: MemberRechargeSumAggregateOutputType | null
+    _min: MemberRechargeMinAggregateOutputType | null
+    _max: MemberRechargeMaxAggregateOutputType | null
+  }
+
+  type GetMemberRechargeGroupByPayload<T extends MemberRechargeGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<MemberRechargeGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof MemberRechargeGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], MemberRechargeGroupByOutputType[P]>
+            : GetScalarType<T[P], MemberRechargeGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type MemberRechargeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    money?: boolean
+    screen?: boolean
+    status?: boolean
+    memberId?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    member?: boolean | MemberDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["memberRecharge"]>
+
+  export type MemberRechargeSelectScalar = {
+    id?: boolean
+    money?: boolean
+    screen?: boolean
+    status?: boolean
+    memberId?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+  }
+
+  export type MemberRechargeInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    member?: boolean | MemberDefaultArgs<ExtArgs>
+  }
+
+
+  export type $MemberRechargePayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "MemberRecharge"
+    objects: {
+      member: Prisma.$MemberPayload<ExtArgs>
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: bigint
+      money: Prisma.Decimal
+      screen: Prisma.JsonValue
+      status: number
+      memberId: bigint
+      createdAt: Date
+      updatedAt: Date | null
+    }, ExtArgs["result"]["memberRecharge"]>
+    composites: {}
+  }
+
+
+  type MemberRechargeGetPayload<S extends boolean | null | undefined | MemberRechargeDefaultArgs> = $Result.GetResult<Prisma.$MemberRechargePayload, S>
+
+  type MemberRechargeCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = 
+    Omit<MemberRechargeFindManyArgs, 'select' | 'include' | 'distinct'> & {
+      select?: MemberRechargeCountAggregateInputType | true
+    }
+
+  export interface MemberRechargeDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['MemberRecharge'], meta: { name: 'MemberRecharge' } }
+    /**
+     * Find zero or one MemberRecharge that matches the filter.
+     * @param {MemberRechargeFindUniqueArgs} args - Arguments to find a MemberRecharge
+     * @example
+     * // Get one MemberRecharge
+     * const memberRecharge = await prisma.memberRecharge.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+    **/
+    findUnique<T extends MemberRechargeFindUniqueArgs<ExtArgs>>(
+      args: SelectSubset<T, MemberRechargeFindUniqueArgs<ExtArgs>>
+    ): Prisma__MemberRechargeClient<$Result.GetResult<Prisma.$MemberRechargePayload<ExtArgs>, T, 'findUnique'> | null, null, ExtArgs>
+
+    /**
+     * Find one MemberRecharge that matches the filter or throw an error  with `error.code='P2025'` 
+     *     if no matches were found.
+     * @param {MemberRechargeFindUniqueOrThrowArgs} args - Arguments to find a MemberRecharge
+     * @example
+     * // Get one MemberRecharge
+     * const memberRecharge = await prisma.memberRecharge.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+    **/
+    findUniqueOrThrow<T extends MemberRechargeFindUniqueOrThrowArgs<ExtArgs>>(
+      args?: SelectSubset<T, MemberRechargeFindUniqueOrThrowArgs<ExtArgs>>
+    ): Prisma__MemberRechargeClient<$Result.GetResult<Prisma.$MemberRechargePayload<ExtArgs>, T, 'findUniqueOrThrow'>, never, ExtArgs>
+
+    /**
+     * Find the first MemberRecharge that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {MemberRechargeFindFirstArgs} args - Arguments to find a MemberRecharge
+     * @example
+     * // Get one MemberRecharge
+     * const memberRecharge = await prisma.memberRecharge.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+    **/
+    findFirst<T extends MemberRechargeFindFirstArgs<ExtArgs>>(
+      args?: SelectSubset<T, MemberRechargeFindFirstArgs<ExtArgs>>
+    ): Prisma__MemberRechargeClient<$Result.GetResult<Prisma.$MemberRechargePayload<ExtArgs>, T, 'findFirst'> | null, null, ExtArgs>
+
+    /**
+     * Find the first MemberRecharge that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {MemberRechargeFindFirstOrThrowArgs} args - Arguments to find a MemberRecharge
+     * @example
+     * // Get one MemberRecharge
+     * const memberRecharge = await prisma.memberRecharge.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+    **/
+    findFirstOrThrow<T extends MemberRechargeFindFirstOrThrowArgs<ExtArgs>>(
+      args?: SelectSubset<T, MemberRechargeFindFirstOrThrowArgs<ExtArgs>>
+    ): Prisma__MemberRechargeClient<$Result.GetResult<Prisma.$MemberRechargePayload<ExtArgs>, T, 'findFirstOrThrow'>, never, ExtArgs>
+
+    /**
+     * Find zero or more MemberRecharges that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {MemberRechargeFindManyArgs=} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all MemberRecharges
+     * const memberRecharges = await prisma.memberRecharge.findMany()
+     * 
+     * // Get first 10 MemberRecharges
+     * const memberRecharges = await prisma.memberRecharge.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const memberRechargeWithIdOnly = await prisma.memberRecharge.findMany({ select: { id: true } })
+     * 
+    **/
+    findMany<T extends MemberRechargeFindManyArgs<ExtArgs>>(
+      args?: SelectSubset<T, MemberRechargeFindManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<$Result.GetResult<Prisma.$MemberRechargePayload<ExtArgs>, T, 'findMany'>>
+
+    /**
+     * Create a MemberRecharge.
+     * @param {MemberRechargeCreateArgs} args - Arguments to create a MemberRecharge.
+     * @example
+     * // Create one MemberRecharge
+     * const MemberRecharge = await prisma.memberRecharge.create({
+     *   data: {
+     *     // ... data to create a MemberRecharge
+     *   }
+     * })
+     * 
+    **/
+    create<T extends MemberRechargeCreateArgs<ExtArgs>>(
+      args: SelectSubset<T, MemberRechargeCreateArgs<ExtArgs>>
+    ): Prisma__MemberRechargeClient<$Result.GetResult<Prisma.$MemberRechargePayload<ExtArgs>, T, 'create'>, never, ExtArgs>
+
+    /**
+     * Create many MemberRecharges.
+     *     @param {MemberRechargeCreateManyArgs} args - Arguments to create many MemberRecharges.
+     *     @example
+     *     // Create many MemberRecharges
+     *     const memberRecharge = await prisma.memberRecharge.createMany({
+     *       data: {
+     *         // ... provide data here
+     *       }
+     *     })
+     *     
+    **/
+    createMany<T extends MemberRechargeCreateManyArgs<ExtArgs>>(
+      args?: SelectSubset<T, MemberRechargeCreateManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Delete a MemberRecharge.
+     * @param {MemberRechargeDeleteArgs} args - Arguments to delete one MemberRecharge.
+     * @example
+     * // Delete one MemberRecharge
+     * const MemberRecharge = await prisma.memberRecharge.delete({
+     *   where: {
+     *     // ... filter to delete one MemberRecharge
+     *   }
+     * })
+     * 
+    **/
+    delete<T extends MemberRechargeDeleteArgs<ExtArgs>>(
+      args: SelectSubset<T, MemberRechargeDeleteArgs<ExtArgs>>
+    ): Prisma__MemberRechargeClient<$Result.GetResult<Prisma.$MemberRechargePayload<ExtArgs>, T, 'delete'>, never, ExtArgs>
+
+    /**
+     * Update one MemberRecharge.
+     * @param {MemberRechargeUpdateArgs} args - Arguments to update one MemberRecharge.
+     * @example
+     * // Update one MemberRecharge
+     * const memberRecharge = await prisma.memberRecharge.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+    **/
+    update<T extends MemberRechargeUpdateArgs<ExtArgs>>(
+      args: SelectSubset<T, MemberRechargeUpdateArgs<ExtArgs>>
+    ): Prisma__MemberRechargeClient<$Result.GetResult<Prisma.$MemberRechargePayload<ExtArgs>, T, 'update'>, never, ExtArgs>
+
+    /**
+     * Delete zero or more MemberRecharges.
+     * @param {MemberRechargeDeleteManyArgs} args - Arguments to filter MemberRecharges to delete.
+     * @example
+     * // Delete a few MemberRecharges
+     * const { count } = await prisma.memberRecharge.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+    **/
+    deleteMany<T extends MemberRechargeDeleteManyArgs<ExtArgs>>(
+      args?: SelectSubset<T, MemberRechargeDeleteManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more MemberRecharges.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {MemberRechargeUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many MemberRecharges
+     * const memberRecharge = await prisma.memberRecharge.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+    **/
+    updateMany<T extends MemberRechargeUpdateManyArgs<ExtArgs>>(
+      args: SelectSubset<T, MemberRechargeUpdateManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create or update one MemberRecharge.
+     * @param {MemberRechargeUpsertArgs} args - Arguments to update or create a MemberRecharge.
+     * @example
+     * // Update or create a MemberRecharge
+     * const memberRecharge = await prisma.memberRecharge.upsert({
+     *   create: {
+     *     // ... data to create a MemberRecharge
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the MemberRecharge we want to update
+     *   }
+     * })
+    **/
+    upsert<T extends MemberRechargeUpsertArgs<ExtArgs>>(
+      args: SelectSubset<T, MemberRechargeUpsertArgs<ExtArgs>>
+    ): Prisma__MemberRechargeClient<$Result.GetResult<Prisma.$MemberRechargePayload<ExtArgs>, T, 'upsert'>, never, ExtArgs>
+
+    /**
+     * Count the number of MemberRecharges.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {MemberRechargeCountArgs} args - Arguments to filter MemberRecharges to count.
+     * @example
+     * // Count the number of MemberRecharges
+     * const count = await prisma.memberRecharge.count({
+     *   where: {
+     *     // ... the filter for the MemberRecharges we want to count
+     *   }
+     * })
+    **/
+    count<T extends MemberRechargeCountArgs>(
+      args?: Subset<T, MemberRechargeCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], MemberRechargeCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a MemberRecharge.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {MemberRechargeAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends MemberRechargeAggregateArgs>(args: Subset<T, MemberRechargeAggregateArgs>): Prisma.PrismaPromise<GetMemberRechargeAggregateType<T>>
+
+    /**
+     * Group by MemberRecharge.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {MemberRechargeGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends MemberRechargeGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: MemberRechargeGroupByArgs['orderBy'] }
+        : { orderBy?: MemberRechargeGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, MemberRechargeGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetMemberRechargeGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the MemberRecharge model
+   */
+  readonly fields: MemberRechargeFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for MemberRecharge.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__MemberRechargeClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: 'PrismaPromise';
+
+    member<T extends MemberDefaultArgs<ExtArgs> = {}>(args?: Subset<T, MemberDefaultArgs<ExtArgs>>): Prisma__MemberClient<$Result.GetResult<Prisma.$MemberPayload<ExtArgs>, T, 'findUniqueOrThrow'> | Null, Null, ExtArgs>;
+
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>;
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>;
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>;
+  }
+
+
+
+  /**
+   * Fields of the MemberRecharge model
+   */ 
+  interface MemberRechargeFieldRefs {
+    readonly id: FieldRef<"MemberRecharge", 'BigInt'>
+    readonly money: FieldRef<"MemberRecharge", 'Decimal'>
+    readonly screen: FieldRef<"MemberRecharge", 'Json'>
+    readonly status: FieldRef<"MemberRecharge", 'Int'>
+    readonly memberId: FieldRef<"MemberRecharge", 'BigInt'>
+    readonly createdAt: FieldRef<"MemberRecharge", 'DateTime'>
+    readonly updatedAt: FieldRef<"MemberRecharge", 'DateTime'>
+  }
+    
+
+  // Custom InputTypes
+
+  /**
+   * MemberRecharge findUnique
+   */
+  export type MemberRechargeFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the MemberRecharge
+     */
+    select?: MemberRechargeSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well.
+     */
+    include?: MemberRechargeInclude<ExtArgs> | null
+    /**
+     * Filter, which MemberRecharge to fetch.
+     */
+    where: MemberRechargeWhereUniqueInput
+  }
+
+
+  /**
+   * MemberRecharge findUniqueOrThrow
+   */
+  export type MemberRechargeFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the MemberRecharge
+     */
+    select?: MemberRechargeSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well.
+     */
+    include?: MemberRechargeInclude<ExtArgs> | null
+    /**
+     * Filter, which MemberRecharge to fetch.
+     */
+    where: MemberRechargeWhereUniqueInput
+  }
+
+
+  /**
+   * MemberRecharge findFirst
+   */
+  export type MemberRechargeFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the MemberRecharge
+     */
+    select?: MemberRechargeSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well.
+     */
+    include?: MemberRechargeInclude<ExtArgs> | null
+    /**
+     * Filter, which MemberRecharge to fetch.
+     */
+    where?: MemberRechargeWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of MemberRecharges to fetch.
+     */
+    orderBy?: MemberRechargeOrderByWithRelationInput | MemberRechargeOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for MemberRecharges.
+     */
+    cursor?: MemberRechargeWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` MemberRecharges from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` MemberRecharges.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of MemberRecharges.
+     */
+    distinct?: MemberRechargeScalarFieldEnum | MemberRechargeScalarFieldEnum[]
+  }
+
+
+  /**
+   * MemberRecharge findFirstOrThrow
+   */
+  export type MemberRechargeFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the MemberRecharge
+     */
+    select?: MemberRechargeSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well.
+     */
+    include?: MemberRechargeInclude<ExtArgs> | null
+    /**
+     * Filter, which MemberRecharge to fetch.
+     */
+    where?: MemberRechargeWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of MemberRecharges to fetch.
+     */
+    orderBy?: MemberRechargeOrderByWithRelationInput | MemberRechargeOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for MemberRecharges.
+     */
+    cursor?: MemberRechargeWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` MemberRecharges from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` MemberRecharges.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of MemberRecharges.
+     */
+    distinct?: MemberRechargeScalarFieldEnum | MemberRechargeScalarFieldEnum[]
+  }
+
+
+  /**
+   * MemberRecharge findMany
+   */
+  export type MemberRechargeFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the MemberRecharge
+     */
+    select?: MemberRechargeSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well.
+     */
+    include?: MemberRechargeInclude<ExtArgs> | null
+    /**
+     * Filter, which MemberRecharges to fetch.
+     */
+    where?: MemberRechargeWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of MemberRecharges to fetch.
+     */
+    orderBy?: MemberRechargeOrderByWithRelationInput | MemberRechargeOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing MemberRecharges.
+     */
+    cursor?: MemberRechargeWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` MemberRecharges from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` MemberRecharges.
+     */
+    skip?: number
+    distinct?: MemberRechargeScalarFieldEnum | MemberRechargeScalarFieldEnum[]
+  }
+
+
+  /**
+   * MemberRecharge create
+   */
+  export type MemberRechargeCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the MemberRecharge
+     */
+    select?: MemberRechargeSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well.
+     */
+    include?: MemberRechargeInclude<ExtArgs> | null
+    /**
+     * The data needed to create a MemberRecharge.
+     */
+    data: XOR<MemberRechargeCreateInput, MemberRechargeUncheckedCreateInput>
+  }
+
+
+  /**
+   * MemberRecharge createMany
+   */
+  export type MemberRechargeCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many MemberRecharges.
+     */
+    data: MemberRechargeCreateManyInput | MemberRechargeCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+
+  /**
+   * MemberRecharge update
+   */
+  export type MemberRechargeUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the MemberRecharge
+     */
+    select?: MemberRechargeSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well.
+     */
+    include?: MemberRechargeInclude<ExtArgs> | null
+    /**
+     * The data needed to update a MemberRecharge.
+     */
+    data: XOR<MemberRechargeUpdateInput, MemberRechargeUncheckedUpdateInput>
+    /**
+     * Choose, which MemberRecharge to update.
+     */
+    where: MemberRechargeWhereUniqueInput
+  }
+
+
+  /**
+   * MemberRecharge updateMany
+   */
+  export type MemberRechargeUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update MemberRecharges.
+     */
+    data: XOR<MemberRechargeUpdateManyMutationInput, MemberRechargeUncheckedUpdateManyInput>
+    /**
+     * Filter which MemberRecharges to update
+     */
+    where?: MemberRechargeWhereInput
+  }
+
+
+  /**
+   * MemberRecharge upsert
+   */
+  export type MemberRechargeUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the MemberRecharge
+     */
+    select?: MemberRechargeSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well.
+     */
+    include?: MemberRechargeInclude<ExtArgs> | null
+    /**
+     * The filter to search for the MemberRecharge to update in case it exists.
+     */
+    where: MemberRechargeWhereUniqueInput
+    /**
+     * In case the MemberRecharge found by the `where` argument doesn't exist, create a new MemberRecharge with this data.
+     */
+    create: XOR<MemberRechargeCreateInput, MemberRechargeUncheckedCreateInput>
+    /**
+     * In case the MemberRecharge was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<MemberRechargeUpdateInput, MemberRechargeUncheckedUpdateInput>
+  }
+
+
+  /**
+   * MemberRecharge delete
+   */
+  export type MemberRechargeDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the MemberRecharge
+     */
+    select?: MemberRechargeSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well.
+     */
+    include?: MemberRechargeInclude<ExtArgs> | null
+    /**
+     * Filter which MemberRecharge to delete.
+     */
+    where: MemberRechargeWhereUniqueInput
+  }
+
+
+  /**
+   * MemberRecharge deleteMany
+   */
+  export type MemberRechargeDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which MemberRecharges to delete
+     */
+    where?: MemberRechargeWhereInput
+  }
+
+
+  /**
+   * MemberRecharge without action
+   */
+  export type MemberRechargeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the MemberRecharge
+     */
+    select?: MemberRechargeSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well.
+     */
+    include?: MemberRechargeInclude<ExtArgs> | null
+  }
+
+
+
+  /**
+   * Model MemberWithdraw
+   */
+
+  export type AggregateMemberWithdraw = {
+    _count: MemberWithdrawCountAggregateOutputType | null
+    _avg: MemberWithdrawAvgAggregateOutputType | null
+    _sum: MemberWithdrawSumAggregateOutputType | null
+    _min: MemberWithdrawMinAggregateOutputType | null
+    _max: MemberWithdrawMaxAggregateOutputType | null
+  }
+
+  export type MemberWithdrawAvgAggregateOutputType = {
+    id: number | null
+    money: Decimal | null
+    status: number | null
+    memberId: number | null
+  }
+
+  export type MemberWithdrawSumAggregateOutputType = {
+    id: bigint | null
+    money: Decimal | null
+    status: number | null
+    memberId: bigint | null
+  }
+
+  export type MemberWithdrawMinAggregateOutputType = {
+    id: bigint | null
+    money: Decimal | null
+    remark: string | null
+    status: number | null
+    memberId: bigint | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type MemberWithdrawMaxAggregateOutputType = {
+    id: bigint | null
+    money: Decimal | null
+    remark: string | null
+    status: number | null
+    memberId: bigint | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type MemberWithdrawCountAggregateOutputType = {
+    id: number
+    money: number
+    remark: number
+    status: number
+    memberId: number
+    createdAt: number
+    updatedAt: number
+    _all: number
+  }
+
+
+  export type MemberWithdrawAvgAggregateInputType = {
+    id?: true
+    money?: true
+    status?: true
+    memberId?: true
+  }
+
+  export type MemberWithdrawSumAggregateInputType = {
+    id?: true
+    money?: true
+    status?: true
+    memberId?: true
+  }
+
+  export type MemberWithdrawMinAggregateInputType = {
+    id?: true
+    money?: true
+    remark?: true
+    status?: true
+    memberId?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type MemberWithdrawMaxAggregateInputType = {
+    id?: true
+    money?: true
+    remark?: true
+    status?: true
+    memberId?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type MemberWithdrawCountAggregateInputType = {
+    id?: true
+    money?: true
+    remark?: true
+    status?: true
+    memberId?: true
+    createdAt?: true
+    updatedAt?: true
+    _all?: true
+  }
+
+  export type MemberWithdrawAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which MemberWithdraw to aggregate.
+     */
+    where?: MemberWithdrawWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of MemberWithdraws to fetch.
+     */
+    orderBy?: MemberWithdrawOrderByWithRelationInput | MemberWithdrawOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: MemberWithdrawWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` MemberWithdraws from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` MemberWithdraws.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned MemberWithdraws
+    **/
+    _count?: true | MemberWithdrawCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: MemberWithdrawAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: MemberWithdrawSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: MemberWithdrawMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: MemberWithdrawMaxAggregateInputType
+  }
+
+  export type GetMemberWithdrawAggregateType<T extends MemberWithdrawAggregateArgs> = {
+        [P in keyof T & keyof AggregateMemberWithdraw]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateMemberWithdraw[P]>
+      : GetScalarType<T[P], AggregateMemberWithdraw[P]>
+  }
+
+
+
+
+  export type MemberWithdrawGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: MemberWithdrawWhereInput
+    orderBy?: MemberWithdrawOrderByWithAggregationInput | MemberWithdrawOrderByWithAggregationInput[]
+    by: MemberWithdrawScalarFieldEnum[] | MemberWithdrawScalarFieldEnum
+    having?: MemberWithdrawScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: MemberWithdrawCountAggregateInputType | true
+    _avg?: MemberWithdrawAvgAggregateInputType
+    _sum?: MemberWithdrawSumAggregateInputType
+    _min?: MemberWithdrawMinAggregateInputType
+    _max?: MemberWithdrawMaxAggregateInputType
+  }
+
+  export type MemberWithdrawGroupByOutputType = {
+    id: bigint
+    money: Decimal
+    remark: string | null
+    status: number
+    memberId: bigint
+    createdAt: Date
+    updatedAt: Date | null
+    _count: MemberWithdrawCountAggregateOutputType | null
+    _avg: MemberWithdrawAvgAggregateOutputType | null
+    _sum: MemberWithdrawSumAggregateOutputType | null
+    _min: MemberWithdrawMinAggregateOutputType | null
+    _max: MemberWithdrawMaxAggregateOutputType | null
+  }
+
+  type GetMemberWithdrawGroupByPayload<T extends MemberWithdrawGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<MemberWithdrawGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof MemberWithdrawGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], MemberWithdrawGroupByOutputType[P]>
+            : GetScalarType<T[P], MemberWithdrawGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type MemberWithdrawSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    money?: boolean
+    remark?: boolean
+    status?: boolean
+    memberId?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    member?: boolean | MemberDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["memberWithdraw"]>
+
+  export type MemberWithdrawSelectScalar = {
+    id?: boolean
+    money?: boolean
+    remark?: boolean
+    status?: boolean
+    memberId?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+  }
+
+  export type MemberWithdrawInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    member?: boolean | MemberDefaultArgs<ExtArgs>
+  }
+
+
+  export type $MemberWithdrawPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "MemberWithdraw"
+    objects: {
+      member: Prisma.$MemberPayload<ExtArgs>
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: bigint
+      money: Prisma.Decimal
+      remark: string | null
+      status: number
+      memberId: bigint
+      createdAt: Date
+      updatedAt: Date | null
+    }, ExtArgs["result"]["memberWithdraw"]>
+    composites: {}
+  }
+
+
+  type MemberWithdrawGetPayload<S extends boolean | null | undefined | MemberWithdrawDefaultArgs> = $Result.GetResult<Prisma.$MemberWithdrawPayload, S>
+
+  type MemberWithdrawCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = 
+    Omit<MemberWithdrawFindManyArgs, 'select' | 'include' | 'distinct'> & {
+      select?: MemberWithdrawCountAggregateInputType | true
+    }
+
+  export interface MemberWithdrawDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['MemberWithdraw'], meta: { name: 'MemberWithdraw' } }
+    /**
+     * Find zero or one MemberWithdraw that matches the filter.
+     * @param {MemberWithdrawFindUniqueArgs} args - Arguments to find a MemberWithdraw
+     * @example
+     * // Get one MemberWithdraw
+     * const memberWithdraw = await prisma.memberWithdraw.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+    **/
+    findUnique<T extends MemberWithdrawFindUniqueArgs<ExtArgs>>(
+      args: SelectSubset<T, MemberWithdrawFindUniqueArgs<ExtArgs>>
+    ): Prisma__MemberWithdrawClient<$Result.GetResult<Prisma.$MemberWithdrawPayload<ExtArgs>, T, 'findUnique'> | null, null, ExtArgs>
+
+    /**
+     * Find one MemberWithdraw that matches the filter or throw an error  with `error.code='P2025'` 
+     *     if no matches were found.
+     * @param {MemberWithdrawFindUniqueOrThrowArgs} args - Arguments to find a MemberWithdraw
+     * @example
+     * // Get one MemberWithdraw
+     * const memberWithdraw = await prisma.memberWithdraw.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+    **/
+    findUniqueOrThrow<T extends MemberWithdrawFindUniqueOrThrowArgs<ExtArgs>>(
+      args?: SelectSubset<T, MemberWithdrawFindUniqueOrThrowArgs<ExtArgs>>
+    ): Prisma__MemberWithdrawClient<$Result.GetResult<Prisma.$MemberWithdrawPayload<ExtArgs>, T, 'findUniqueOrThrow'>, never, ExtArgs>
+
+    /**
+     * Find the first MemberWithdraw that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {MemberWithdrawFindFirstArgs} args - Arguments to find a MemberWithdraw
+     * @example
+     * // Get one MemberWithdraw
+     * const memberWithdraw = await prisma.memberWithdraw.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+    **/
+    findFirst<T extends MemberWithdrawFindFirstArgs<ExtArgs>>(
+      args?: SelectSubset<T, MemberWithdrawFindFirstArgs<ExtArgs>>
+    ): Prisma__MemberWithdrawClient<$Result.GetResult<Prisma.$MemberWithdrawPayload<ExtArgs>, T, 'findFirst'> | null, null, ExtArgs>
+
+    /**
+     * Find the first MemberWithdraw that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {MemberWithdrawFindFirstOrThrowArgs} args - Arguments to find a MemberWithdraw
+     * @example
+     * // Get one MemberWithdraw
+     * const memberWithdraw = await prisma.memberWithdraw.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+    **/
+    findFirstOrThrow<T extends MemberWithdrawFindFirstOrThrowArgs<ExtArgs>>(
+      args?: SelectSubset<T, MemberWithdrawFindFirstOrThrowArgs<ExtArgs>>
+    ): Prisma__MemberWithdrawClient<$Result.GetResult<Prisma.$MemberWithdrawPayload<ExtArgs>, T, 'findFirstOrThrow'>, never, ExtArgs>
+
+    /**
+     * Find zero or more MemberWithdraws that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {MemberWithdrawFindManyArgs=} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all MemberWithdraws
+     * const memberWithdraws = await prisma.memberWithdraw.findMany()
+     * 
+     * // Get first 10 MemberWithdraws
+     * const memberWithdraws = await prisma.memberWithdraw.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const memberWithdrawWithIdOnly = await prisma.memberWithdraw.findMany({ select: { id: true } })
+     * 
+    **/
+    findMany<T extends MemberWithdrawFindManyArgs<ExtArgs>>(
+      args?: SelectSubset<T, MemberWithdrawFindManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<$Result.GetResult<Prisma.$MemberWithdrawPayload<ExtArgs>, T, 'findMany'>>
+
+    /**
+     * Create a MemberWithdraw.
+     * @param {MemberWithdrawCreateArgs} args - Arguments to create a MemberWithdraw.
+     * @example
+     * // Create one MemberWithdraw
+     * const MemberWithdraw = await prisma.memberWithdraw.create({
+     *   data: {
+     *     // ... data to create a MemberWithdraw
+     *   }
+     * })
+     * 
+    **/
+    create<T extends MemberWithdrawCreateArgs<ExtArgs>>(
+      args: SelectSubset<T, MemberWithdrawCreateArgs<ExtArgs>>
+    ): Prisma__MemberWithdrawClient<$Result.GetResult<Prisma.$MemberWithdrawPayload<ExtArgs>, T, 'create'>, never, ExtArgs>
+
+    /**
+     * Create many MemberWithdraws.
+     *     @param {MemberWithdrawCreateManyArgs} args - Arguments to create many MemberWithdraws.
+     *     @example
+     *     // Create many MemberWithdraws
+     *     const memberWithdraw = await prisma.memberWithdraw.createMany({
+     *       data: {
+     *         // ... provide data here
+     *       }
+     *     })
+     *     
+    **/
+    createMany<T extends MemberWithdrawCreateManyArgs<ExtArgs>>(
+      args?: SelectSubset<T, MemberWithdrawCreateManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Delete a MemberWithdraw.
+     * @param {MemberWithdrawDeleteArgs} args - Arguments to delete one MemberWithdraw.
+     * @example
+     * // Delete one MemberWithdraw
+     * const MemberWithdraw = await prisma.memberWithdraw.delete({
+     *   where: {
+     *     // ... filter to delete one MemberWithdraw
+     *   }
+     * })
+     * 
+    **/
+    delete<T extends MemberWithdrawDeleteArgs<ExtArgs>>(
+      args: SelectSubset<T, MemberWithdrawDeleteArgs<ExtArgs>>
+    ): Prisma__MemberWithdrawClient<$Result.GetResult<Prisma.$MemberWithdrawPayload<ExtArgs>, T, 'delete'>, never, ExtArgs>
+
+    /**
+     * Update one MemberWithdraw.
+     * @param {MemberWithdrawUpdateArgs} args - Arguments to update one MemberWithdraw.
+     * @example
+     * // Update one MemberWithdraw
+     * const memberWithdraw = await prisma.memberWithdraw.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+    **/
+    update<T extends MemberWithdrawUpdateArgs<ExtArgs>>(
+      args: SelectSubset<T, MemberWithdrawUpdateArgs<ExtArgs>>
+    ): Prisma__MemberWithdrawClient<$Result.GetResult<Prisma.$MemberWithdrawPayload<ExtArgs>, T, 'update'>, never, ExtArgs>
+
+    /**
+     * Delete zero or more MemberWithdraws.
+     * @param {MemberWithdrawDeleteManyArgs} args - Arguments to filter MemberWithdraws to delete.
+     * @example
+     * // Delete a few MemberWithdraws
+     * const { count } = await prisma.memberWithdraw.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+    **/
+    deleteMany<T extends MemberWithdrawDeleteManyArgs<ExtArgs>>(
+      args?: SelectSubset<T, MemberWithdrawDeleteManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more MemberWithdraws.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {MemberWithdrawUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many MemberWithdraws
+     * const memberWithdraw = await prisma.memberWithdraw.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+    **/
+    updateMany<T extends MemberWithdrawUpdateManyArgs<ExtArgs>>(
+      args: SelectSubset<T, MemberWithdrawUpdateManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create or update one MemberWithdraw.
+     * @param {MemberWithdrawUpsertArgs} args - Arguments to update or create a MemberWithdraw.
+     * @example
+     * // Update or create a MemberWithdraw
+     * const memberWithdraw = await prisma.memberWithdraw.upsert({
+     *   create: {
+     *     // ... data to create a MemberWithdraw
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the MemberWithdraw we want to update
+     *   }
+     * })
+    **/
+    upsert<T extends MemberWithdrawUpsertArgs<ExtArgs>>(
+      args: SelectSubset<T, MemberWithdrawUpsertArgs<ExtArgs>>
+    ): Prisma__MemberWithdrawClient<$Result.GetResult<Prisma.$MemberWithdrawPayload<ExtArgs>, T, 'upsert'>, never, ExtArgs>
+
+    /**
+     * Count the number of MemberWithdraws.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {MemberWithdrawCountArgs} args - Arguments to filter MemberWithdraws to count.
+     * @example
+     * // Count the number of MemberWithdraws
+     * const count = await prisma.memberWithdraw.count({
+     *   where: {
+     *     // ... the filter for the MemberWithdraws we want to count
+     *   }
+     * })
+    **/
+    count<T extends MemberWithdrawCountArgs>(
+      args?: Subset<T, MemberWithdrawCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], MemberWithdrawCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a MemberWithdraw.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {MemberWithdrawAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends MemberWithdrawAggregateArgs>(args: Subset<T, MemberWithdrawAggregateArgs>): Prisma.PrismaPromise<GetMemberWithdrawAggregateType<T>>
+
+    /**
+     * Group by MemberWithdraw.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {MemberWithdrawGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends MemberWithdrawGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: MemberWithdrawGroupByArgs['orderBy'] }
+        : { orderBy?: MemberWithdrawGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, MemberWithdrawGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetMemberWithdrawGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the MemberWithdraw model
+   */
+  readonly fields: MemberWithdrawFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for MemberWithdraw.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__MemberWithdrawClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: 'PrismaPromise';
+
+    member<T extends MemberDefaultArgs<ExtArgs> = {}>(args?: Subset<T, MemberDefaultArgs<ExtArgs>>): Prisma__MemberClient<$Result.GetResult<Prisma.$MemberPayload<ExtArgs>, T, 'findUniqueOrThrow'> | Null, Null, ExtArgs>;
+
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>;
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>;
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>;
+  }
+
+
+
+  /**
+   * Fields of the MemberWithdraw model
+   */ 
+  interface MemberWithdrawFieldRefs {
+    readonly id: FieldRef<"MemberWithdraw", 'BigInt'>
+    readonly money: FieldRef<"MemberWithdraw", 'Decimal'>
+    readonly remark: FieldRef<"MemberWithdraw", 'String'>
+    readonly status: FieldRef<"MemberWithdraw", 'Int'>
+    readonly memberId: FieldRef<"MemberWithdraw", 'BigInt'>
+    readonly createdAt: FieldRef<"MemberWithdraw", 'DateTime'>
+    readonly updatedAt: FieldRef<"MemberWithdraw", 'DateTime'>
+  }
+    
+
+  // Custom InputTypes
+
+  /**
+   * MemberWithdraw findUnique
+   */
+  export type MemberWithdrawFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the MemberWithdraw
+     */
+    select?: MemberWithdrawSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well.
+     */
+    include?: MemberWithdrawInclude<ExtArgs> | null
+    /**
+     * Filter, which MemberWithdraw to fetch.
+     */
+    where: MemberWithdrawWhereUniqueInput
+  }
+
+
+  /**
+   * MemberWithdraw findUniqueOrThrow
+   */
+  export type MemberWithdrawFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the MemberWithdraw
+     */
+    select?: MemberWithdrawSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well.
+     */
+    include?: MemberWithdrawInclude<ExtArgs> | null
+    /**
+     * Filter, which MemberWithdraw to fetch.
+     */
+    where: MemberWithdrawWhereUniqueInput
+  }
+
+
+  /**
+   * MemberWithdraw findFirst
+   */
+  export type MemberWithdrawFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the MemberWithdraw
+     */
+    select?: MemberWithdrawSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well.
+     */
+    include?: MemberWithdrawInclude<ExtArgs> | null
+    /**
+     * Filter, which MemberWithdraw to fetch.
+     */
+    where?: MemberWithdrawWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of MemberWithdraws to fetch.
+     */
+    orderBy?: MemberWithdrawOrderByWithRelationInput | MemberWithdrawOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for MemberWithdraws.
+     */
+    cursor?: MemberWithdrawWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` MemberWithdraws from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` MemberWithdraws.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of MemberWithdraws.
+     */
+    distinct?: MemberWithdrawScalarFieldEnum | MemberWithdrawScalarFieldEnum[]
+  }
+
+
+  /**
+   * MemberWithdraw findFirstOrThrow
+   */
+  export type MemberWithdrawFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the MemberWithdraw
+     */
+    select?: MemberWithdrawSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well.
+     */
+    include?: MemberWithdrawInclude<ExtArgs> | null
+    /**
+     * Filter, which MemberWithdraw to fetch.
+     */
+    where?: MemberWithdrawWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of MemberWithdraws to fetch.
+     */
+    orderBy?: MemberWithdrawOrderByWithRelationInput | MemberWithdrawOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for MemberWithdraws.
+     */
+    cursor?: MemberWithdrawWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` MemberWithdraws from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` MemberWithdraws.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of MemberWithdraws.
+     */
+    distinct?: MemberWithdrawScalarFieldEnum | MemberWithdrawScalarFieldEnum[]
+  }
+
+
+  /**
+   * MemberWithdraw findMany
+   */
+  export type MemberWithdrawFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the MemberWithdraw
+     */
+    select?: MemberWithdrawSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well.
+     */
+    include?: MemberWithdrawInclude<ExtArgs> | null
+    /**
+     * Filter, which MemberWithdraws to fetch.
+     */
+    where?: MemberWithdrawWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of MemberWithdraws to fetch.
+     */
+    orderBy?: MemberWithdrawOrderByWithRelationInput | MemberWithdrawOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing MemberWithdraws.
+     */
+    cursor?: MemberWithdrawWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` MemberWithdraws from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` MemberWithdraws.
+     */
+    skip?: number
+    distinct?: MemberWithdrawScalarFieldEnum | MemberWithdrawScalarFieldEnum[]
+  }
+
+
+  /**
+   * MemberWithdraw create
+   */
+  export type MemberWithdrawCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the MemberWithdraw
+     */
+    select?: MemberWithdrawSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well.
+     */
+    include?: MemberWithdrawInclude<ExtArgs> | null
+    /**
+     * The data needed to create a MemberWithdraw.
+     */
+    data: XOR<MemberWithdrawCreateInput, MemberWithdrawUncheckedCreateInput>
+  }
+
+
+  /**
+   * MemberWithdraw createMany
+   */
+  export type MemberWithdrawCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many MemberWithdraws.
+     */
+    data: MemberWithdrawCreateManyInput | MemberWithdrawCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+
+  /**
+   * MemberWithdraw update
+   */
+  export type MemberWithdrawUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the MemberWithdraw
+     */
+    select?: MemberWithdrawSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well.
+     */
+    include?: MemberWithdrawInclude<ExtArgs> | null
+    /**
+     * The data needed to update a MemberWithdraw.
+     */
+    data: XOR<MemberWithdrawUpdateInput, MemberWithdrawUncheckedUpdateInput>
+    /**
+     * Choose, which MemberWithdraw to update.
+     */
+    where: MemberWithdrawWhereUniqueInput
+  }
+
+
+  /**
+   * MemberWithdraw updateMany
+   */
+  export type MemberWithdrawUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update MemberWithdraws.
+     */
+    data: XOR<MemberWithdrawUpdateManyMutationInput, MemberWithdrawUncheckedUpdateManyInput>
+    /**
+     * Filter which MemberWithdraws to update
+     */
+    where?: MemberWithdrawWhereInput
+  }
+
+
+  /**
+   * MemberWithdraw upsert
+   */
+  export type MemberWithdrawUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the MemberWithdraw
+     */
+    select?: MemberWithdrawSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well.
+     */
+    include?: MemberWithdrawInclude<ExtArgs> | null
+    /**
+     * The filter to search for the MemberWithdraw to update in case it exists.
+     */
+    where: MemberWithdrawWhereUniqueInput
+    /**
+     * In case the MemberWithdraw found by the `where` argument doesn't exist, create a new MemberWithdraw with this data.
+     */
+    create: XOR<MemberWithdrawCreateInput, MemberWithdrawUncheckedCreateInput>
+    /**
+     * In case the MemberWithdraw was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<MemberWithdrawUpdateInput, MemberWithdrawUncheckedUpdateInput>
+  }
+
+
+  /**
+   * MemberWithdraw delete
+   */
+  export type MemberWithdrawDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the MemberWithdraw
+     */
+    select?: MemberWithdrawSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well.
+     */
+    include?: MemberWithdrawInclude<ExtArgs> | null
+    /**
+     * Filter which MemberWithdraw to delete.
+     */
+    where: MemberWithdrawWhereUniqueInput
+  }
+
+
+  /**
+   * MemberWithdraw deleteMany
+   */
+  export type MemberWithdrawDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which MemberWithdraws to delete
+     */
+    where?: MemberWithdrawWhereInput
+  }
+
+
+  /**
+   * MemberWithdraw without action
+   */
+  export type MemberWithdrawDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the MemberWithdraw
+     */
+    select?: MemberWithdrawSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well.
+     */
+    include?: MemberWithdrawInclude<ExtArgs> | null
   }
 
 
@@ -18755,10 +21004,39 @@ export namespace Prisma {
     status: 'status',
     type: 'type',
     createdAt: 'createdAt',
-    updatedAt: 'updatedAt'
+    updatedAt: 'updatedAt',
+    balance: 'balance',
+    unBalance: 'unBalance',
+    lockBalance: 'lockBalance'
   };
 
   export type MemberScalarFieldEnum = (typeof MemberScalarFieldEnum)[keyof typeof MemberScalarFieldEnum]
+
+
+  export const MemberRechargeScalarFieldEnum: {
+    id: 'id',
+    money: 'money',
+    screen: 'screen',
+    status: 'status',
+    memberId: 'memberId',
+    createdAt: 'createdAt',
+    updatedAt: 'updatedAt'
+  };
+
+  export type MemberRechargeScalarFieldEnum = (typeof MemberRechargeScalarFieldEnum)[keyof typeof MemberRechargeScalarFieldEnum]
+
+
+  export const MemberWithdrawScalarFieldEnum: {
+    id: 'id',
+    money: 'money',
+    remark: 'remark',
+    status: 'status',
+    memberId: 'memberId',
+    createdAt: 'createdAt',
+    updatedAt: 'updatedAt'
+  };
+
+  export type MemberWithdrawScalarFieldEnum = (typeof MemberWithdrawScalarFieldEnum)[keyof typeof MemberWithdrawScalarFieldEnum]
 
 
   export const StockSymbolScalarFieldEnum: {
@@ -19122,6 +21400,13 @@ export namespace Prisma {
 
 
   /**
+   * Reference to a field of type 'Decimal'
+   */
+  export type DecimalFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Decimal'>
+    
+
+
+  /**
    * Reference to a field of type 'Boolean'
    */
   export type BooleanFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Boolean'>
@@ -19132,13 +21417,6 @@ export namespace Prisma {
    * Reference to a field of type 'STOCK_STATUS'
    */
   export type EnumSTOCK_STATUSFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'STOCK_STATUS'>
-    
-
-
-  /**
-   * Reference to a field of type 'Decimal'
-   */
-  export type DecimalFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Decimal'>
     
 
 
@@ -19237,9 +21515,14 @@ export namespace Prisma {
     type?: IntFilter<"Member"> | number
     createdAt?: DateTimeFilter<"Member"> | Date | string
     updatedAt?: DateTimeNullableFilter<"Member"> | Date | string | null
+    balance?: DecimalFilter<"Member"> | Decimal | DecimalJsLike | number | string
+    unBalance?: DecimalFilter<"Member"> | Decimal | DecimalJsLike | number | string
+    lockBalance?: DecimalFilter<"Member"> | Decimal | DecimalJsLike | number | string
     stockPostion?: StockPositionListRelationFilter
     memberDetail?: MemberDetailListRelationFilter
     memberSubscribe?: MemberSubscribeListRelationFilter
+    memberRecharges?: MemberRechargeListRelationFilter
+    memberWithdraws?: MemberWithdrawListRelationFilter
   }
 
   export type MemberOrderByWithRelationInput = {
@@ -19255,9 +21538,14 @@ export namespace Prisma {
     type?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrderInput | SortOrder
+    balance?: SortOrder
+    unBalance?: SortOrder
+    lockBalance?: SortOrder
     stockPostion?: StockPositionOrderByRelationAggregateInput
     memberDetail?: MemberDetailOrderByRelationAggregateInput
     memberSubscribe?: MemberSubscribeOrderByRelationAggregateInput
+    memberRecharges?: MemberRechargeOrderByRelationAggregateInput
+    memberWithdraws?: MemberWithdrawOrderByRelationAggregateInput
   }
 
   export type MemberWhereUniqueInput = Prisma.AtLeast<{
@@ -19276,9 +21564,14 @@ export namespace Prisma {
     type?: IntFilter<"Member"> | number
     createdAt?: DateTimeFilter<"Member"> | Date | string
     updatedAt?: DateTimeNullableFilter<"Member"> | Date | string | null
+    balance?: DecimalFilter<"Member"> | Decimal | DecimalJsLike | number | string
+    unBalance?: DecimalFilter<"Member"> | Decimal | DecimalJsLike | number | string
+    lockBalance?: DecimalFilter<"Member"> | Decimal | DecimalJsLike | number | string
     stockPostion?: StockPositionListRelationFilter
     memberDetail?: MemberDetailListRelationFilter
     memberSubscribe?: MemberSubscribeListRelationFilter
+    memberRecharges?: MemberRechargeListRelationFilter
+    memberWithdraws?: MemberWithdrawListRelationFilter
   }, "id" | "email">
 
   export type MemberOrderByWithAggregationInput = {
@@ -19294,6 +21587,9 @@ export namespace Prisma {
     type?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrderInput | SortOrder
+    balance?: SortOrder
+    unBalance?: SortOrder
+    lockBalance?: SortOrder
     _count?: MemberCountOrderByAggregateInput
     _avg?: MemberAvgOrderByAggregateInput
     _max?: MemberMaxOrderByAggregateInput
@@ -19317,6 +21613,143 @@ export namespace Prisma {
     type?: IntWithAggregatesFilter<"Member"> | number
     createdAt?: DateTimeWithAggregatesFilter<"Member"> | Date | string
     updatedAt?: DateTimeNullableWithAggregatesFilter<"Member"> | Date | string | null
+    balance?: DecimalWithAggregatesFilter<"Member"> | Decimal | DecimalJsLike | number | string
+    unBalance?: DecimalWithAggregatesFilter<"Member"> | Decimal | DecimalJsLike | number | string
+    lockBalance?: DecimalWithAggregatesFilter<"Member"> | Decimal | DecimalJsLike | number | string
+  }
+
+  export type MemberRechargeWhereInput = {
+    AND?: MemberRechargeWhereInput | MemberRechargeWhereInput[]
+    OR?: MemberRechargeWhereInput[]
+    NOT?: MemberRechargeWhereInput | MemberRechargeWhereInput[]
+    id?: BigIntFilter<"MemberRecharge"> | bigint | number
+    money?: DecimalFilter<"MemberRecharge"> | Decimal | DecimalJsLike | number | string
+    screen?: JsonFilter<"MemberRecharge">
+    status?: IntFilter<"MemberRecharge"> | number
+    memberId?: BigIntFilter<"MemberRecharge"> | bigint | number
+    createdAt?: DateTimeFilter<"MemberRecharge"> | Date | string
+    updatedAt?: DateTimeNullableFilter<"MemberRecharge"> | Date | string | null
+    member?: XOR<MemberRelationFilter, MemberWhereInput>
+  }
+
+  export type MemberRechargeOrderByWithRelationInput = {
+    id?: SortOrder
+    money?: SortOrder
+    screen?: SortOrder
+    status?: SortOrder
+    memberId?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrderInput | SortOrder
+    member?: MemberOrderByWithRelationInput
+  }
+
+  export type MemberRechargeWhereUniqueInput = Prisma.AtLeast<{
+    id?: bigint | number
+    AND?: MemberRechargeWhereInput | MemberRechargeWhereInput[]
+    OR?: MemberRechargeWhereInput[]
+    NOT?: MemberRechargeWhereInput | MemberRechargeWhereInput[]
+    money?: DecimalFilter<"MemberRecharge"> | Decimal | DecimalJsLike | number | string
+    screen?: JsonFilter<"MemberRecharge">
+    status?: IntFilter<"MemberRecharge"> | number
+    memberId?: BigIntFilter<"MemberRecharge"> | bigint | number
+    createdAt?: DateTimeFilter<"MemberRecharge"> | Date | string
+    updatedAt?: DateTimeNullableFilter<"MemberRecharge"> | Date | string | null
+    member?: XOR<MemberRelationFilter, MemberWhereInput>
+  }, "id">
+
+  export type MemberRechargeOrderByWithAggregationInput = {
+    id?: SortOrder
+    money?: SortOrder
+    screen?: SortOrder
+    status?: SortOrder
+    memberId?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrderInput | SortOrder
+    _count?: MemberRechargeCountOrderByAggregateInput
+    _avg?: MemberRechargeAvgOrderByAggregateInput
+    _max?: MemberRechargeMaxOrderByAggregateInput
+    _min?: MemberRechargeMinOrderByAggregateInput
+    _sum?: MemberRechargeSumOrderByAggregateInput
+  }
+
+  export type MemberRechargeScalarWhereWithAggregatesInput = {
+    AND?: MemberRechargeScalarWhereWithAggregatesInput | MemberRechargeScalarWhereWithAggregatesInput[]
+    OR?: MemberRechargeScalarWhereWithAggregatesInput[]
+    NOT?: MemberRechargeScalarWhereWithAggregatesInput | MemberRechargeScalarWhereWithAggregatesInput[]
+    id?: BigIntWithAggregatesFilter<"MemberRecharge"> | bigint | number
+    money?: DecimalWithAggregatesFilter<"MemberRecharge"> | Decimal | DecimalJsLike | number | string
+    screen?: JsonWithAggregatesFilter<"MemberRecharge">
+    status?: IntWithAggregatesFilter<"MemberRecharge"> | number
+    memberId?: BigIntWithAggregatesFilter<"MemberRecharge"> | bigint | number
+    createdAt?: DateTimeWithAggregatesFilter<"MemberRecharge"> | Date | string
+    updatedAt?: DateTimeNullableWithAggregatesFilter<"MemberRecharge"> | Date | string | null
+  }
+
+  export type MemberWithdrawWhereInput = {
+    AND?: MemberWithdrawWhereInput | MemberWithdrawWhereInput[]
+    OR?: MemberWithdrawWhereInput[]
+    NOT?: MemberWithdrawWhereInput | MemberWithdrawWhereInput[]
+    id?: BigIntFilter<"MemberWithdraw"> | bigint | number
+    money?: DecimalFilter<"MemberWithdraw"> | Decimal | DecimalJsLike | number | string
+    remark?: StringNullableFilter<"MemberWithdraw"> | string | null
+    status?: IntFilter<"MemberWithdraw"> | number
+    memberId?: BigIntFilter<"MemberWithdraw"> | bigint | number
+    createdAt?: DateTimeFilter<"MemberWithdraw"> | Date | string
+    updatedAt?: DateTimeNullableFilter<"MemberWithdraw"> | Date | string | null
+    member?: XOR<MemberRelationFilter, MemberWhereInput>
+  }
+
+  export type MemberWithdrawOrderByWithRelationInput = {
+    id?: SortOrder
+    money?: SortOrder
+    remark?: SortOrderInput | SortOrder
+    status?: SortOrder
+    memberId?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrderInput | SortOrder
+    member?: MemberOrderByWithRelationInput
+  }
+
+  export type MemberWithdrawWhereUniqueInput = Prisma.AtLeast<{
+    id?: bigint | number
+    AND?: MemberWithdrawWhereInput | MemberWithdrawWhereInput[]
+    OR?: MemberWithdrawWhereInput[]
+    NOT?: MemberWithdrawWhereInput | MemberWithdrawWhereInput[]
+    money?: DecimalFilter<"MemberWithdraw"> | Decimal | DecimalJsLike | number | string
+    remark?: StringNullableFilter<"MemberWithdraw"> | string | null
+    status?: IntFilter<"MemberWithdraw"> | number
+    memberId?: BigIntFilter<"MemberWithdraw"> | bigint | number
+    createdAt?: DateTimeFilter<"MemberWithdraw"> | Date | string
+    updatedAt?: DateTimeNullableFilter<"MemberWithdraw"> | Date | string | null
+    member?: XOR<MemberRelationFilter, MemberWhereInput>
+  }, "id">
+
+  export type MemberWithdrawOrderByWithAggregationInput = {
+    id?: SortOrder
+    money?: SortOrder
+    remark?: SortOrderInput | SortOrder
+    status?: SortOrder
+    memberId?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrderInput | SortOrder
+    _count?: MemberWithdrawCountOrderByAggregateInput
+    _avg?: MemberWithdrawAvgOrderByAggregateInput
+    _max?: MemberWithdrawMaxOrderByAggregateInput
+    _min?: MemberWithdrawMinOrderByAggregateInput
+    _sum?: MemberWithdrawSumOrderByAggregateInput
+  }
+
+  export type MemberWithdrawScalarWhereWithAggregatesInput = {
+    AND?: MemberWithdrawScalarWhereWithAggregatesInput | MemberWithdrawScalarWhereWithAggregatesInput[]
+    OR?: MemberWithdrawScalarWhereWithAggregatesInput[]
+    NOT?: MemberWithdrawScalarWhereWithAggregatesInput | MemberWithdrawScalarWhereWithAggregatesInput[]
+    id?: BigIntWithAggregatesFilter<"MemberWithdraw"> | bigint | number
+    money?: DecimalWithAggregatesFilter<"MemberWithdraw"> | Decimal | DecimalJsLike | number | string
+    remark?: StringNullableWithAggregatesFilter<"MemberWithdraw"> | string | null
+    status?: IntWithAggregatesFilter<"MemberWithdraw"> | number
+    memberId?: BigIntWithAggregatesFilter<"MemberWithdraw"> | bigint | number
+    createdAt?: DateTimeWithAggregatesFilter<"MemberWithdraw"> | Date | string
+    updatedAt?: DateTimeNullableWithAggregatesFilter<"MemberWithdraw"> | Date | string | null
   }
 
   export type StockSymbolWhereInput = {
@@ -20784,9 +23217,14 @@ export namespace Prisma {
     type?: number
     createdAt?: Date | string
     updatedAt?: Date | string | null
+    balance?: Decimal | DecimalJsLike | number | string
+    unBalance?: Decimal | DecimalJsLike | number | string
+    lockBalance?: Decimal | DecimalJsLike | number | string
     stockPostion?: StockPositionCreateNestedManyWithoutMemberInput
     memberDetail?: MemberDetailCreateNestedManyWithoutMemberInput
     memberSubscribe?: MemberSubscribeCreateNestedManyWithoutMemberInput
+    memberRecharges?: MemberRechargeCreateNestedManyWithoutMemberInput
+    memberWithdraws?: MemberWithdrawCreateNestedManyWithoutMemberInput
   }
 
   export type MemberUncheckedCreateInput = {
@@ -20802,9 +23240,14 @@ export namespace Prisma {
     type?: number
     createdAt?: Date | string
     updatedAt?: Date | string | null
+    balance?: Decimal | DecimalJsLike | number | string
+    unBalance?: Decimal | DecimalJsLike | number | string
+    lockBalance?: Decimal | DecimalJsLike | number | string
     stockPostion?: StockPositionUncheckedCreateNestedManyWithoutMemberInput
     memberDetail?: MemberDetailUncheckedCreateNestedManyWithoutMemberInput
     memberSubscribe?: MemberSubscribeUncheckedCreateNestedManyWithoutMemberInput
+    memberRecharges?: MemberRechargeUncheckedCreateNestedManyWithoutMemberInput
+    memberWithdraws?: MemberWithdrawUncheckedCreateNestedManyWithoutMemberInput
   }
 
   export type MemberUpdateInput = {
@@ -20820,9 +23263,14 @@ export namespace Prisma {
     type?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    balance?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    unBalance?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    lockBalance?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
     stockPostion?: StockPositionUpdateManyWithoutMemberNestedInput
     memberDetail?: MemberDetailUpdateManyWithoutMemberNestedInput
     memberSubscribe?: MemberSubscribeUpdateManyWithoutMemberNestedInput
+    memberRecharges?: MemberRechargeUpdateManyWithoutMemberNestedInput
+    memberWithdraws?: MemberWithdrawUpdateManyWithoutMemberNestedInput
   }
 
   export type MemberUncheckedUpdateInput = {
@@ -20838,9 +23286,14 @@ export namespace Prisma {
     type?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    balance?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    unBalance?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    lockBalance?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
     stockPostion?: StockPositionUncheckedUpdateManyWithoutMemberNestedInput
     memberDetail?: MemberDetailUncheckedUpdateManyWithoutMemberNestedInput
     memberSubscribe?: MemberSubscribeUncheckedUpdateManyWithoutMemberNestedInput
+    memberRecharges?: MemberRechargeUncheckedUpdateManyWithoutMemberNestedInput
+    memberWithdraws?: MemberWithdrawUncheckedUpdateManyWithoutMemberNestedInput
   }
 
   export type MemberCreateManyInput = {
@@ -20856,6 +23309,9 @@ export namespace Prisma {
     type?: number
     createdAt?: Date | string
     updatedAt?: Date | string | null
+    balance?: Decimal | DecimalJsLike | number | string
+    unBalance?: Decimal | DecimalJsLike | number | string
+    lockBalance?: Decimal | DecimalJsLike | number | string
   }
 
   export type MemberUpdateManyMutationInput = {
@@ -20871,6 +23327,9 @@ export namespace Prisma {
     type?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    balance?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    unBalance?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    lockBalance?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
   }
 
   export type MemberUncheckedUpdateManyInput = {
@@ -20884,6 +23343,147 @@ export namespace Prisma {
     accountBalance?: NullableJsonNullValueInput | InputJsonValue
     status?: IntFieldUpdateOperationsInput | number
     type?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    balance?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    unBalance?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    lockBalance?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+  }
+
+  export type MemberRechargeCreateInput = {
+    id?: bigint | number
+    money: Decimal | DecimalJsLike | number | string
+    screen: JsonNullValueInput | InputJsonValue
+    status?: number
+    createdAt?: Date | string
+    updatedAt?: Date | string | null
+    member: MemberCreateNestedOneWithoutMemberRechargesInput
+  }
+
+  export type MemberRechargeUncheckedCreateInput = {
+    id?: bigint | number
+    money: Decimal | DecimalJsLike | number | string
+    screen: JsonNullValueInput | InputJsonValue
+    status?: number
+    memberId: bigint | number
+    createdAt?: Date | string
+    updatedAt?: Date | string | null
+  }
+
+  export type MemberRechargeUpdateInput = {
+    id?: BigIntFieldUpdateOperationsInput | bigint | number
+    money?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    screen?: JsonNullValueInput | InputJsonValue
+    status?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    member?: MemberUpdateOneRequiredWithoutMemberRechargesNestedInput
+  }
+
+  export type MemberRechargeUncheckedUpdateInput = {
+    id?: BigIntFieldUpdateOperationsInput | bigint | number
+    money?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    screen?: JsonNullValueInput | InputJsonValue
+    status?: IntFieldUpdateOperationsInput | number
+    memberId?: BigIntFieldUpdateOperationsInput | bigint | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  }
+
+  export type MemberRechargeCreateManyInput = {
+    id?: bigint | number
+    money: Decimal | DecimalJsLike | number | string
+    screen: JsonNullValueInput | InputJsonValue
+    status?: number
+    memberId: bigint | number
+    createdAt?: Date | string
+    updatedAt?: Date | string | null
+  }
+
+  export type MemberRechargeUpdateManyMutationInput = {
+    id?: BigIntFieldUpdateOperationsInput | bigint | number
+    money?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    screen?: JsonNullValueInput | InputJsonValue
+    status?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  }
+
+  export type MemberRechargeUncheckedUpdateManyInput = {
+    id?: BigIntFieldUpdateOperationsInput | bigint | number
+    money?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    screen?: JsonNullValueInput | InputJsonValue
+    status?: IntFieldUpdateOperationsInput | number
+    memberId?: BigIntFieldUpdateOperationsInput | bigint | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  }
+
+  export type MemberWithdrawCreateInput = {
+    id?: bigint | number
+    money: Decimal | DecimalJsLike | number | string
+    remark?: string | null
+    status?: number
+    createdAt?: Date | string
+    updatedAt?: Date | string | null
+    member: MemberCreateNestedOneWithoutMemberWithdrawsInput
+  }
+
+  export type MemberWithdrawUncheckedCreateInput = {
+    id?: bigint | number
+    money: Decimal | DecimalJsLike | number | string
+    remark?: string | null
+    status?: number
+    memberId: bigint | number
+    createdAt?: Date | string
+    updatedAt?: Date | string | null
+  }
+
+  export type MemberWithdrawUpdateInput = {
+    id?: BigIntFieldUpdateOperationsInput | bigint | number
+    money?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    remark?: NullableStringFieldUpdateOperationsInput | string | null
+    status?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    member?: MemberUpdateOneRequiredWithoutMemberWithdrawsNestedInput
+  }
+
+  export type MemberWithdrawUncheckedUpdateInput = {
+    id?: BigIntFieldUpdateOperationsInput | bigint | number
+    money?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    remark?: NullableStringFieldUpdateOperationsInput | string | null
+    status?: IntFieldUpdateOperationsInput | number
+    memberId?: BigIntFieldUpdateOperationsInput | bigint | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  }
+
+  export type MemberWithdrawCreateManyInput = {
+    id?: bigint | number
+    money: Decimal | DecimalJsLike | number | string
+    remark?: string | null
+    status?: number
+    memberId: bigint | number
+    createdAt?: Date | string
+    updatedAt?: Date | string | null
+  }
+
+  export type MemberWithdrawUpdateManyMutationInput = {
+    id?: BigIntFieldUpdateOperationsInput | bigint | number
+    money?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    remark?: NullableStringFieldUpdateOperationsInput | string | null
+    status?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  }
+
+  export type MemberWithdrawUncheckedUpdateManyInput = {
+    id?: BigIntFieldUpdateOperationsInput | bigint | number
+    money?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    remark?: NullableStringFieldUpdateOperationsInput | string | null
+    status?: IntFieldUpdateOperationsInput | number
+    memberId?: BigIntFieldUpdateOperationsInput | bigint | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
@@ -22743,6 +25343,17 @@ export namespace Prisma {
     not?: NestedIntFilter<$PrismaModel> | number
   }
 
+  export type DecimalFilter<$PrismaModel = never> = {
+    equals?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
+    in?: Decimal[] | DecimalJsLike[] | number[] | string[]
+    notIn?: Decimal[] | DecimalJsLike[] | number[] | string[]
+    lt?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
+    lte?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
+    gt?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
+    gte?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
+    not?: NestedDecimalFilter<$PrismaModel> | Decimal | DecimalJsLike | number | string
+  }
+
   export type StockPositionListRelationFilter = {
     every?: StockPositionWhereInput
     some?: StockPositionWhereInput
@@ -22761,6 +25372,18 @@ export namespace Prisma {
     none?: MemberSubscribeWhereInput
   }
 
+  export type MemberRechargeListRelationFilter = {
+    every?: MemberRechargeWhereInput
+    some?: MemberRechargeWhereInput
+    none?: MemberRechargeWhereInput
+  }
+
+  export type MemberWithdrawListRelationFilter = {
+    every?: MemberWithdrawWhereInput
+    some?: MemberWithdrawWhereInput
+    none?: MemberWithdrawWhereInput
+  }
+
   export type StockPositionOrderByRelationAggregateInput = {
     _count?: SortOrder
   }
@@ -22770,6 +25393,14 @@ export namespace Prisma {
   }
 
   export type MemberSubscribeOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type MemberRechargeOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type MemberWithdrawOrderByRelationAggregateInput = {
     _count?: SortOrder
   }
 
@@ -22786,12 +25417,18 @@ export namespace Prisma {
     type?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
+    balance?: SortOrder
+    unBalance?: SortOrder
+    lockBalance?: SortOrder
   }
 
   export type MemberAvgOrderByAggregateInput = {
     id?: SortOrder
     status?: SortOrder
     type?: SortOrder
+    balance?: SortOrder
+    unBalance?: SortOrder
+    lockBalance?: SortOrder
   }
 
   export type MemberMaxOrderByAggregateInput = {
@@ -22806,6 +25443,9 @@ export namespace Prisma {
     type?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
+    balance?: SortOrder
+    unBalance?: SortOrder
+    lockBalance?: SortOrder
   }
 
   export type MemberMinOrderByAggregateInput = {
@@ -22820,12 +25460,18 @@ export namespace Prisma {
     type?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
+    balance?: SortOrder
+    unBalance?: SortOrder
+    lockBalance?: SortOrder
   }
 
   export type MemberSumOrderByAggregateInput = {
     id?: SortOrder
     status?: SortOrder
     type?: SortOrder
+    balance?: SortOrder
+    unBalance?: SortOrder
+    lockBalance?: SortOrder
   }
   export type JsonNullableWithAggregatesFilter<$PrismaModel = never> = 
     | PatchUndefined<
@@ -22867,6 +25513,160 @@ export namespace Prisma {
     _sum?: NestedIntFilter<$PrismaModel>
     _min?: NestedIntFilter<$PrismaModel>
     _max?: NestedIntFilter<$PrismaModel>
+  }
+
+  export type DecimalWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
+    in?: Decimal[] | DecimalJsLike[] | number[] | string[]
+    notIn?: Decimal[] | DecimalJsLike[] | number[] | string[]
+    lt?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
+    lte?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
+    gt?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
+    gte?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
+    not?: NestedDecimalWithAggregatesFilter<$PrismaModel> | Decimal | DecimalJsLike | number | string
+    _count?: NestedIntFilter<$PrismaModel>
+    _avg?: NestedDecimalFilter<$PrismaModel>
+    _sum?: NestedDecimalFilter<$PrismaModel>
+    _min?: NestedDecimalFilter<$PrismaModel>
+    _max?: NestedDecimalFilter<$PrismaModel>
+  }
+  export type JsonFilter<$PrismaModel = never> = 
+    | PatchUndefined<
+        Either<Required<JsonFilterBase<$PrismaModel>>, Exclude<keyof Required<JsonFilterBase<$PrismaModel>>, 'path'>>,
+        Required<JsonFilterBase<$PrismaModel>>
+      >
+    | OptionalFlat<Omit<Required<JsonFilterBase<$PrismaModel>>, 'path'>>
+
+  export type JsonFilterBase<$PrismaModel = never> = {
+    equals?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | JsonNullValueFilter
+    path?: string
+    string_contains?: string | StringFieldRefInput<$PrismaModel>
+    string_starts_with?: string | StringFieldRefInput<$PrismaModel>
+    string_ends_with?: string | StringFieldRefInput<$PrismaModel>
+    array_contains?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
+    array_starts_with?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
+    array_ends_with?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
+    lt?: InputJsonValue
+    lte?: InputJsonValue
+    gt?: InputJsonValue
+    gte?: InputJsonValue
+    not?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | JsonNullValueFilter
+  }
+
+  export type MemberRelationFilter = {
+    is?: MemberWhereInput
+    isNot?: MemberWhereInput
+  }
+
+  export type MemberRechargeCountOrderByAggregateInput = {
+    id?: SortOrder
+    money?: SortOrder
+    screen?: SortOrder
+    status?: SortOrder
+    memberId?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type MemberRechargeAvgOrderByAggregateInput = {
+    id?: SortOrder
+    money?: SortOrder
+    status?: SortOrder
+    memberId?: SortOrder
+  }
+
+  export type MemberRechargeMaxOrderByAggregateInput = {
+    id?: SortOrder
+    money?: SortOrder
+    status?: SortOrder
+    memberId?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type MemberRechargeMinOrderByAggregateInput = {
+    id?: SortOrder
+    money?: SortOrder
+    status?: SortOrder
+    memberId?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type MemberRechargeSumOrderByAggregateInput = {
+    id?: SortOrder
+    money?: SortOrder
+    status?: SortOrder
+    memberId?: SortOrder
+  }
+  export type JsonWithAggregatesFilter<$PrismaModel = never> = 
+    | PatchUndefined<
+        Either<Required<JsonWithAggregatesFilterBase<$PrismaModel>>, Exclude<keyof Required<JsonWithAggregatesFilterBase<$PrismaModel>>, 'path'>>,
+        Required<JsonWithAggregatesFilterBase<$PrismaModel>>
+      >
+    | OptionalFlat<Omit<Required<JsonWithAggregatesFilterBase<$PrismaModel>>, 'path'>>
+
+  export type JsonWithAggregatesFilterBase<$PrismaModel = never> = {
+    equals?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | JsonNullValueFilter
+    path?: string
+    string_contains?: string | StringFieldRefInput<$PrismaModel>
+    string_starts_with?: string | StringFieldRefInput<$PrismaModel>
+    string_ends_with?: string | StringFieldRefInput<$PrismaModel>
+    array_contains?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
+    array_starts_with?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
+    array_ends_with?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
+    lt?: InputJsonValue
+    lte?: InputJsonValue
+    gt?: InputJsonValue
+    gte?: InputJsonValue
+    not?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | JsonNullValueFilter
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedJsonFilter<$PrismaModel>
+    _max?: NestedJsonFilter<$PrismaModel>
+  }
+
+  export type MemberWithdrawCountOrderByAggregateInput = {
+    id?: SortOrder
+    money?: SortOrder
+    remark?: SortOrder
+    status?: SortOrder
+    memberId?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type MemberWithdrawAvgOrderByAggregateInput = {
+    id?: SortOrder
+    money?: SortOrder
+    status?: SortOrder
+    memberId?: SortOrder
+  }
+
+  export type MemberWithdrawMaxOrderByAggregateInput = {
+    id?: SortOrder
+    money?: SortOrder
+    remark?: SortOrder
+    status?: SortOrder
+    memberId?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type MemberWithdrawMinOrderByAggregateInput = {
+    id?: SortOrder
+    money?: SortOrder
+    remark?: SortOrder
+    status?: SortOrder
+    memberId?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type MemberWithdrawSumOrderByAggregateInput = {
+    id?: SortOrder
+    money?: SortOrder
+    status?: SortOrder
+    memberId?: SortOrder
   }
 
   export type StockSymbolSymbolMarketCompoundUniqueInput = {
@@ -23096,28 +25896,6 @@ export namespace Prisma {
     _min?: NestedEnumSTOCK_STATUSFilter<$PrismaModel>
     _max?: NestedEnumSTOCK_STATUSFilter<$PrismaModel>
   }
-  export type JsonFilter<$PrismaModel = never> = 
-    | PatchUndefined<
-        Either<Required<JsonFilterBase<$PrismaModel>>, Exclude<keyof Required<JsonFilterBase<$PrismaModel>>, 'path'>>,
-        Required<JsonFilterBase<$PrismaModel>>
-      >
-    | OptionalFlat<Omit<Required<JsonFilterBase<$PrismaModel>>, 'path'>>
-
-  export type JsonFilterBase<$PrismaModel = never> = {
-    equals?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | JsonNullValueFilter
-    path?: string
-    string_contains?: string | StringFieldRefInput<$PrismaModel>
-    string_starts_with?: string | StringFieldRefInput<$PrismaModel>
-    string_ends_with?: string | StringFieldRefInput<$PrismaModel>
-    array_contains?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
-    array_starts_with?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
-    array_ends_with?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
-    lt?: InputJsonValue
-    lte?: InputJsonValue
-    gt?: InputJsonValue
-    gte?: InputJsonValue
-    not?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | JsonNullValueFilter
-  }
 
   export type StockRelationFilter = {
     is?: StockWhereInput
@@ -23175,31 +25953,6 @@ export namespace Prisma {
   export type StockRecordSumOrderByAggregateInput = {
     id?: SortOrder
     stockId?: SortOrder
-  }
-  export type JsonWithAggregatesFilter<$PrismaModel = never> = 
-    | PatchUndefined<
-        Either<Required<JsonWithAggregatesFilterBase<$PrismaModel>>, Exclude<keyof Required<JsonWithAggregatesFilterBase<$PrismaModel>>, 'path'>>,
-        Required<JsonWithAggregatesFilterBase<$PrismaModel>>
-      >
-    | OptionalFlat<Omit<Required<JsonWithAggregatesFilterBase<$PrismaModel>>, 'path'>>
-
-  export type JsonWithAggregatesFilterBase<$PrismaModel = never> = {
-    equals?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | JsonNullValueFilter
-    path?: string
-    string_contains?: string | StringFieldRefInput<$PrismaModel>
-    string_starts_with?: string | StringFieldRefInput<$PrismaModel>
-    string_ends_with?: string | StringFieldRefInput<$PrismaModel>
-    array_contains?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
-    array_starts_with?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
-    array_ends_with?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
-    lt?: InputJsonValue
-    lte?: InputJsonValue
-    gt?: InputJsonValue
-    gte?: InputJsonValue
-    not?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | JsonNullValueFilter
-    _count?: NestedIntFilter<$PrismaModel>
-    _min?: NestedJsonFilter<$PrismaModel>
-    _max?: NestedJsonFilter<$PrismaModel>
   }
 
   export type IntNullableFilter<$PrismaModel = never> = {
@@ -23368,17 +26121,6 @@ export namespace Prisma {
     stockSymbolId?: SortOrder
   }
 
-  export type DecimalFilter<$PrismaModel = never> = {
-    equals?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
-    in?: Decimal[] | DecimalJsLike[] | number[] | string[]
-    notIn?: Decimal[] | DecimalJsLike[] | number[] | string[]
-    lt?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
-    lte?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
-    gt?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
-    gte?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
-    not?: NestedDecimalFilter<$PrismaModel> | Decimal | DecimalJsLike | number | string
-  }
-
   export type StockSubscribeCountOrderByAggregateInput = {
     id?: SortOrder
     market?: SortOrder
@@ -23457,22 +26199,6 @@ export namespace Prisma {
     type?: SortOrder
   }
 
-  export type DecimalWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
-    in?: Decimal[] | DecimalJsLike[] | number[] | string[]
-    notIn?: Decimal[] | DecimalJsLike[] | number[] | string[]
-    lt?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
-    lte?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
-    gt?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
-    gte?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
-    not?: NestedDecimalWithAggregatesFilter<$PrismaModel> | Decimal | DecimalJsLike | number | string
-    _count?: NestedIntFilter<$PrismaModel>
-    _avg?: NestedDecimalFilter<$PrismaModel>
-    _sum?: NestedDecimalFilter<$PrismaModel>
-    _min?: NestedDecimalFilter<$PrismaModel>
-    _max?: NestedDecimalFilter<$PrismaModel>
-  }
-
   export type DecimalNullableFilter<$PrismaModel = never> = {
     equals?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel> | null
     in?: Decimal[] | DecimalJsLike[] | number[] | string[] | null
@@ -23482,11 +26208,6 @@ export namespace Prisma {
     gt?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
     gte?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
     not?: NestedDecimalNullableFilter<$PrismaModel> | Decimal | DecimalJsLike | number | string | null
-  }
-
-  export type MemberRelationFilter = {
-    is?: MemberWhereInput
-    isNot?: MemberWhereInput
   }
 
   export type MemberSubscribeCountOrderByAggregateInput = {
@@ -23987,6 +26708,20 @@ export namespace Prisma {
     connect?: MemberSubscribeWhereUniqueInput | MemberSubscribeWhereUniqueInput[]
   }
 
+  export type MemberRechargeCreateNestedManyWithoutMemberInput = {
+    create?: XOR<MemberRechargeCreateWithoutMemberInput, MemberRechargeUncheckedCreateWithoutMemberInput> | MemberRechargeCreateWithoutMemberInput[] | MemberRechargeUncheckedCreateWithoutMemberInput[]
+    connectOrCreate?: MemberRechargeCreateOrConnectWithoutMemberInput | MemberRechargeCreateOrConnectWithoutMemberInput[]
+    createMany?: MemberRechargeCreateManyMemberInputEnvelope
+    connect?: MemberRechargeWhereUniqueInput | MemberRechargeWhereUniqueInput[]
+  }
+
+  export type MemberWithdrawCreateNestedManyWithoutMemberInput = {
+    create?: XOR<MemberWithdrawCreateWithoutMemberInput, MemberWithdrawUncheckedCreateWithoutMemberInput> | MemberWithdrawCreateWithoutMemberInput[] | MemberWithdrawUncheckedCreateWithoutMemberInput[]
+    connectOrCreate?: MemberWithdrawCreateOrConnectWithoutMemberInput | MemberWithdrawCreateOrConnectWithoutMemberInput[]
+    createMany?: MemberWithdrawCreateManyMemberInputEnvelope
+    connect?: MemberWithdrawWhereUniqueInput | MemberWithdrawWhereUniqueInput[]
+  }
+
   export type StockPositionUncheckedCreateNestedManyWithoutMemberInput = {
     create?: XOR<StockPositionCreateWithoutMemberInput, StockPositionUncheckedCreateWithoutMemberInput> | StockPositionCreateWithoutMemberInput[] | StockPositionUncheckedCreateWithoutMemberInput[]
     connectOrCreate?: StockPositionCreateOrConnectWithoutMemberInput | StockPositionCreateOrConnectWithoutMemberInput[]
@@ -24008,12 +26743,34 @@ export namespace Prisma {
     connect?: MemberSubscribeWhereUniqueInput | MemberSubscribeWhereUniqueInput[]
   }
 
+  export type MemberRechargeUncheckedCreateNestedManyWithoutMemberInput = {
+    create?: XOR<MemberRechargeCreateWithoutMemberInput, MemberRechargeUncheckedCreateWithoutMemberInput> | MemberRechargeCreateWithoutMemberInput[] | MemberRechargeUncheckedCreateWithoutMemberInput[]
+    connectOrCreate?: MemberRechargeCreateOrConnectWithoutMemberInput | MemberRechargeCreateOrConnectWithoutMemberInput[]
+    createMany?: MemberRechargeCreateManyMemberInputEnvelope
+    connect?: MemberRechargeWhereUniqueInput | MemberRechargeWhereUniqueInput[]
+  }
+
+  export type MemberWithdrawUncheckedCreateNestedManyWithoutMemberInput = {
+    create?: XOR<MemberWithdrawCreateWithoutMemberInput, MemberWithdrawUncheckedCreateWithoutMemberInput> | MemberWithdrawCreateWithoutMemberInput[] | MemberWithdrawUncheckedCreateWithoutMemberInput[]
+    connectOrCreate?: MemberWithdrawCreateOrConnectWithoutMemberInput | MemberWithdrawCreateOrConnectWithoutMemberInput[]
+    createMany?: MemberWithdrawCreateManyMemberInputEnvelope
+    connect?: MemberWithdrawWhereUniqueInput | MemberWithdrawWhereUniqueInput[]
+  }
+
   export type IntFieldUpdateOperationsInput = {
     set?: number
     increment?: number
     decrement?: number
     multiply?: number
     divide?: number
+  }
+
+  export type DecimalFieldUpdateOperationsInput = {
+    set?: Decimal | DecimalJsLike | number | string
+    increment?: Decimal | DecimalJsLike | number | string
+    decrement?: Decimal | DecimalJsLike | number | string
+    multiply?: Decimal | DecimalJsLike | number | string
+    divide?: Decimal | DecimalJsLike | number | string
   }
 
   export type StockPositionUpdateManyWithoutMemberNestedInput = {
@@ -24058,6 +26815,34 @@ export namespace Prisma {
     deleteMany?: MemberSubscribeScalarWhereInput | MemberSubscribeScalarWhereInput[]
   }
 
+  export type MemberRechargeUpdateManyWithoutMemberNestedInput = {
+    create?: XOR<MemberRechargeCreateWithoutMemberInput, MemberRechargeUncheckedCreateWithoutMemberInput> | MemberRechargeCreateWithoutMemberInput[] | MemberRechargeUncheckedCreateWithoutMemberInput[]
+    connectOrCreate?: MemberRechargeCreateOrConnectWithoutMemberInput | MemberRechargeCreateOrConnectWithoutMemberInput[]
+    upsert?: MemberRechargeUpsertWithWhereUniqueWithoutMemberInput | MemberRechargeUpsertWithWhereUniqueWithoutMemberInput[]
+    createMany?: MemberRechargeCreateManyMemberInputEnvelope
+    set?: MemberRechargeWhereUniqueInput | MemberRechargeWhereUniqueInput[]
+    disconnect?: MemberRechargeWhereUniqueInput | MemberRechargeWhereUniqueInput[]
+    delete?: MemberRechargeWhereUniqueInput | MemberRechargeWhereUniqueInput[]
+    connect?: MemberRechargeWhereUniqueInput | MemberRechargeWhereUniqueInput[]
+    update?: MemberRechargeUpdateWithWhereUniqueWithoutMemberInput | MemberRechargeUpdateWithWhereUniqueWithoutMemberInput[]
+    updateMany?: MemberRechargeUpdateManyWithWhereWithoutMemberInput | MemberRechargeUpdateManyWithWhereWithoutMemberInput[]
+    deleteMany?: MemberRechargeScalarWhereInput | MemberRechargeScalarWhereInput[]
+  }
+
+  export type MemberWithdrawUpdateManyWithoutMemberNestedInput = {
+    create?: XOR<MemberWithdrawCreateWithoutMemberInput, MemberWithdrawUncheckedCreateWithoutMemberInput> | MemberWithdrawCreateWithoutMemberInput[] | MemberWithdrawUncheckedCreateWithoutMemberInput[]
+    connectOrCreate?: MemberWithdrawCreateOrConnectWithoutMemberInput | MemberWithdrawCreateOrConnectWithoutMemberInput[]
+    upsert?: MemberWithdrawUpsertWithWhereUniqueWithoutMemberInput | MemberWithdrawUpsertWithWhereUniqueWithoutMemberInput[]
+    createMany?: MemberWithdrawCreateManyMemberInputEnvelope
+    set?: MemberWithdrawWhereUniqueInput | MemberWithdrawWhereUniqueInput[]
+    disconnect?: MemberWithdrawWhereUniqueInput | MemberWithdrawWhereUniqueInput[]
+    delete?: MemberWithdrawWhereUniqueInput | MemberWithdrawWhereUniqueInput[]
+    connect?: MemberWithdrawWhereUniqueInput | MemberWithdrawWhereUniqueInput[]
+    update?: MemberWithdrawUpdateWithWhereUniqueWithoutMemberInput | MemberWithdrawUpdateWithWhereUniqueWithoutMemberInput[]
+    updateMany?: MemberWithdrawUpdateManyWithWhereWithoutMemberInput | MemberWithdrawUpdateManyWithWhereWithoutMemberInput[]
+    deleteMany?: MemberWithdrawScalarWhereInput | MemberWithdrawScalarWhereInput[]
+  }
+
   export type StockPositionUncheckedUpdateManyWithoutMemberNestedInput = {
     create?: XOR<StockPositionCreateWithoutMemberInput, StockPositionUncheckedCreateWithoutMemberInput> | StockPositionCreateWithoutMemberInput[] | StockPositionUncheckedCreateWithoutMemberInput[]
     connectOrCreate?: StockPositionCreateOrConnectWithoutMemberInput | StockPositionCreateOrConnectWithoutMemberInput[]
@@ -24098,6 +26883,62 @@ export namespace Prisma {
     update?: MemberSubscribeUpdateWithWhereUniqueWithoutMemberInput | MemberSubscribeUpdateWithWhereUniqueWithoutMemberInput[]
     updateMany?: MemberSubscribeUpdateManyWithWhereWithoutMemberInput | MemberSubscribeUpdateManyWithWhereWithoutMemberInput[]
     deleteMany?: MemberSubscribeScalarWhereInput | MemberSubscribeScalarWhereInput[]
+  }
+
+  export type MemberRechargeUncheckedUpdateManyWithoutMemberNestedInput = {
+    create?: XOR<MemberRechargeCreateWithoutMemberInput, MemberRechargeUncheckedCreateWithoutMemberInput> | MemberRechargeCreateWithoutMemberInput[] | MemberRechargeUncheckedCreateWithoutMemberInput[]
+    connectOrCreate?: MemberRechargeCreateOrConnectWithoutMemberInput | MemberRechargeCreateOrConnectWithoutMemberInput[]
+    upsert?: MemberRechargeUpsertWithWhereUniqueWithoutMemberInput | MemberRechargeUpsertWithWhereUniqueWithoutMemberInput[]
+    createMany?: MemberRechargeCreateManyMemberInputEnvelope
+    set?: MemberRechargeWhereUniqueInput | MemberRechargeWhereUniqueInput[]
+    disconnect?: MemberRechargeWhereUniqueInput | MemberRechargeWhereUniqueInput[]
+    delete?: MemberRechargeWhereUniqueInput | MemberRechargeWhereUniqueInput[]
+    connect?: MemberRechargeWhereUniqueInput | MemberRechargeWhereUniqueInput[]
+    update?: MemberRechargeUpdateWithWhereUniqueWithoutMemberInput | MemberRechargeUpdateWithWhereUniqueWithoutMemberInput[]
+    updateMany?: MemberRechargeUpdateManyWithWhereWithoutMemberInput | MemberRechargeUpdateManyWithWhereWithoutMemberInput[]
+    deleteMany?: MemberRechargeScalarWhereInput | MemberRechargeScalarWhereInput[]
+  }
+
+  export type MemberWithdrawUncheckedUpdateManyWithoutMemberNestedInput = {
+    create?: XOR<MemberWithdrawCreateWithoutMemberInput, MemberWithdrawUncheckedCreateWithoutMemberInput> | MemberWithdrawCreateWithoutMemberInput[] | MemberWithdrawUncheckedCreateWithoutMemberInput[]
+    connectOrCreate?: MemberWithdrawCreateOrConnectWithoutMemberInput | MemberWithdrawCreateOrConnectWithoutMemberInput[]
+    upsert?: MemberWithdrawUpsertWithWhereUniqueWithoutMemberInput | MemberWithdrawUpsertWithWhereUniqueWithoutMemberInput[]
+    createMany?: MemberWithdrawCreateManyMemberInputEnvelope
+    set?: MemberWithdrawWhereUniqueInput | MemberWithdrawWhereUniqueInput[]
+    disconnect?: MemberWithdrawWhereUniqueInput | MemberWithdrawWhereUniqueInput[]
+    delete?: MemberWithdrawWhereUniqueInput | MemberWithdrawWhereUniqueInput[]
+    connect?: MemberWithdrawWhereUniqueInput | MemberWithdrawWhereUniqueInput[]
+    update?: MemberWithdrawUpdateWithWhereUniqueWithoutMemberInput | MemberWithdrawUpdateWithWhereUniqueWithoutMemberInput[]
+    updateMany?: MemberWithdrawUpdateManyWithWhereWithoutMemberInput | MemberWithdrawUpdateManyWithWhereWithoutMemberInput[]
+    deleteMany?: MemberWithdrawScalarWhereInput | MemberWithdrawScalarWhereInput[]
+  }
+
+  export type MemberCreateNestedOneWithoutMemberRechargesInput = {
+    create?: XOR<MemberCreateWithoutMemberRechargesInput, MemberUncheckedCreateWithoutMemberRechargesInput>
+    connectOrCreate?: MemberCreateOrConnectWithoutMemberRechargesInput
+    connect?: MemberWhereUniqueInput
+  }
+
+  export type MemberUpdateOneRequiredWithoutMemberRechargesNestedInput = {
+    create?: XOR<MemberCreateWithoutMemberRechargesInput, MemberUncheckedCreateWithoutMemberRechargesInput>
+    connectOrCreate?: MemberCreateOrConnectWithoutMemberRechargesInput
+    upsert?: MemberUpsertWithoutMemberRechargesInput
+    connect?: MemberWhereUniqueInput
+    update?: XOR<XOR<MemberUpdateToOneWithWhereWithoutMemberRechargesInput, MemberUpdateWithoutMemberRechargesInput>, MemberUncheckedUpdateWithoutMemberRechargesInput>
+  }
+
+  export type MemberCreateNestedOneWithoutMemberWithdrawsInput = {
+    create?: XOR<MemberCreateWithoutMemberWithdrawsInput, MemberUncheckedCreateWithoutMemberWithdrawsInput>
+    connectOrCreate?: MemberCreateOrConnectWithoutMemberWithdrawsInput
+    connect?: MemberWhereUniqueInput
+  }
+
+  export type MemberUpdateOneRequiredWithoutMemberWithdrawsNestedInput = {
+    create?: XOR<MemberCreateWithoutMemberWithdrawsInput, MemberUncheckedCreateWithoutMemberWithdrawsInput>
+    connectOrCreate?: MemberCreateOrConnectWithoutMemberWithdrawsInput
+    upsert?: MemberUpsertWithoutMemberWithdrawsInput
+    connect?: MemberWhereUniqueInput
+    update?: XOR<XOR<MemberUpdateToOneWithWhereWithoutMemberWithdrawsInput, MemberUpdateWithoutMemberWithdrawsInput>, MemberUncheckedUpdateWithoutMemberWithdrawsInput>
   }
 
   export type StockPositionCreateNestedManyWithoutStockSymbolInput = {
@@ -24212,14 +27053,6 @@ export namespace Prisma {
     decrement?: number
     multiply?: number
     divide?: number
-  }
-
-  export type DecimalFieldUpdateOperationsInput = {
-    set?: Decimal | DecimalJsLike | number | string
-    increment?: Decimal | DecimalJsLike | number | string
-    decrement?: Decimal | DecimalJsLike | number | string
-    multiply?: Decimal | DecimalJsLike | number | string
-    divide?: Decimal | DecimalJsLike | number | string
   }
 
   export type MemberCreateNestedOneWithoutMemberSubscribeInput = {
@@ -24474,6 +27307,17 @@ export namespace Prisma {
     _min?: NestedDateTimeNullableFilter<$PrismaModel>
     _max?: NestedDateTimeNullableFilter<$PrismaModel>
   }
+
+  export type NestedDecimalFilter<$PrismaModel = never> = {
+    equals?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
+    in?: Decimal[] | DecimalJsLike[] | number[] | string[]
+    notIn?: Decimal[] | DecimalJsLike[] | number[] | string[]
+    lt?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
+    lte?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
+    gt?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
+    gte?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
+    not?: NestedDecimalFilter<$PrismaModel> | Decimal | DecimalJsLike | number | string
+  }
   export type NestedJsonNullableFilter<$PrismaModel = never> = 
     | PatchUndefined<
         Either<Required<NestedJsonNullableFilterBase<$PrismaModel>>, Exclude<keyof Required<NestedJsonNullableFilterBase<$PrismaModel>>, 'path'>>,
@@ -24513,6 +27357,44 @@ export namespace Prisma {
     _max?: NestedIntFilter<$PrismaModel>
   }
 
+  export type NestedDecimalWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
+    in?: Decimal[] | DecimalJsLike[] | number[] | string[]
+    notIn?: Decimal[] | DecimalJsLike[] | number[] | string[]
+    lt?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
+    lte?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
+    gt?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
+    gte?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
+    not?: NestedDecimalWithAggregatesFilter<$PrismaModel> | Decimal | DecimalJsLike | number | string
+    _count?: NestedIntFilter<$PrismaModel>
+    _avg?: NestedDecimalFilter<$PrismaModel>
+    _sum?: NestedDecimalFilter<$PrismaModel>
+    _min?: NestedDecimalFilter<$PrismaModel>
+    _max?: NestedDecimalFilter<$PrismaModel>
+  }
+  export type NestedJsonFilter<$PrismaModel = never> = 
+    | PatchUndefined<
+        Either<Required<NestedJsonFilterBase<$PrismaModel>>, Exclude<keyof Required<NestedJsonFilterBase<$PrismaModel>>, 'path'>>,
+        Required<NestedJsonFilterBase<$PrismaModel>>
+      >
+    | OptionalFlat<Omit<Required<NestedJsonFilterBase<$PrismaModel>>, 'path'>>
+
+  export type NestedJsonFilterBase<$PrismaModel = never> = {
+    equals?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | JsonNullValueFilter
+    path?: string
+    string_contains?: string | StringFieldRefInput<$PrismaModel>
+    string_starts_with?: string | StringFieldRefInput<$PrismaModel>
+    string_ends_with?: string | StringFieldRefInput<$PrismaModel>
+    array_contains?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
+    array_starts_with?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
+    array_ends_with?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
+    lt?: InputJsonValue
+    lte?: InputJsonValue
+    gt?: InputJsonValue
+    gte?: InputJsonValue
+    not?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | JsonNullValueFilter
+  }
+
   export type NestedBoolFilter<$PrismaModel = never> = {
     equals?: boolean | BooleanFieldRefInput<$PrismaModel>
     not?: NestedBoolFilter<$PrismaModel> | boolean
@@ -24542,28 +27424,6 @@ export namespace Prisma {
     _min?: NestedEnumSTOCK_STATUSFilter<$PrismaModel>
     _max?: NestedEnumSTOCK_STATUSFilter<$PrismaModel>
   }
-  export type NestedJsonFilter<$PrismaModel = never> = 
-    | PatchUndefined<
-        Either<Required<NestedJsonFilterBase<$PrismaModel>>, Exclude<keyof Required<NestedJsonFilterBase<$PrismaModel>>, 'path'>>,
-        Required<NestedJsonFilterBase<$PrismaModel>>
-      >
-    | OptionalFlat<Omit<Required<NestedJsonFilterBase<$PrismaModel>>, 'path'>>
-
-  export type NestedJsonFilterBase<$PrismaModel = never> = {
-    equals?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | JsonNullValueFilter
-    path?: string
-    string_contains?: string | StringFieldRefInput<$PrismaModel>
-    string_starts_with?: string | StringFieldRefInput<$PrismaModel>
-    string_ends_with?: string | StringFieldRefInput<$PrismaModel>
-    array_contains?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
-    array_starts_with?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
-    array_ends_with?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
-    lt?: InputJsonValue
-    lte?: InputJsonValue
-    gt?: InputJsonValue
-    gte?: InputJsonValue
-    not?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | JsonNullValueFilter
-  }
 
   export type NestedIntNullableWithAggregatesFilter<$PrismaModel = never> = {
     equals?: number | IntFieldRefInput<$PrismaModel> | null
@@ -24590,33 +27450,6 @@ export namespace Prisma {
     gt?: number | FloatFieldRefInput<$PrismaModel>
     gte?: number | FloatFieldRefInput<$PrismaModel>
     not?: NestedFloatNullableFilter<$PrismaModel> | number | null
-  }
-
-  export type NestedDecimalFilter<$PrismaModel = never> = {
-    equals?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
-    in?: Decimal[] | DecimalJsLike[] | number[] | string[]
-    notIn?: Decimal[] | DecimalJsLike[] | number[] | string[]
-    lt?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
-    lte?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
-    gt?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
-    gte?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
-    not?: NestedDecimalFilter<$PrismaModel> | Decimal | DecimalJsLike | number | string
-  }
-
-  export type NestedDecimalWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
-    in?: Decimal[] | DecimalJsLike[] | number[] | string[]
-    notIn?: Decimal[] | DecimalJsLike[] | number[] | string[]
-    lt?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
-    lte?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
-    gt?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
-    gte?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
-    not?: NestedDecimalWithAggregatesFilter<$PrismaModel> | Decimal | DecimalJsLike | number | string
-    _count?: NestedIntFilter<$PrismaModel>
-    _avg?: NestedDecimalFilter<$PrismaModel>
-    _sum?: NestedDecimalFilter<$PrismaModel>
-    _min?: NestedDecimalFilter<$PrismaModel>
-    _max?: NestedDecimalFilter<$PrismaModel>
   }
 
   export type NestedDecimalNullableFilter<$PrismaModel = never> = {
@@ -24776,6 +27609,62 @@ export namespace Prisma {
     skipDuplicates?: boolean
   }
 
+  export type MemberRechargeCreateWithoutMemberInput = {
+    id?: bigint | number
+    money: Decimal | DecimalJsLike | number | string
+    screen: JsonNullValueInput | InputJsonValue
+    status?: number
+    createdAt?: Date | string
+    updatedAt?: Date | string | null
+  }
+
+  export type MemberRechargeUncheckedCreateWithoutMemberInput = {
+    id?: bigint | number
+    money: Decimal | DecimalJsLike | number | string
+    screen: JsonNullValueInput | InputJsonValue
+    status?: number
+    createdAt?: Date | string
+    updatedAt?: Date | string | null
+  }
+
+  export type MemberRechargeCreateOrConnectWithoutMemberInput = {
+    where: MemberRechargeWhereUniqueInput
+    create: XOR<MemberRechargeCreateWithoutMemberInput, MemberRechargeUncheckedCreateWithoutMemberInput>
+  }
+
+  export type MemberRechargeCreateManyMemberInputEnvelope = {
+    data: MemberRechargeCreateManyMemberInput | MemberRechargeCreateManyMemberInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type MemberWithdrawCreateWithoutMemberInput = {
+    id?: bigint | number
+    money: Decimal | DecimalJsLike | number | string
+    remark?: string | null
+    status?: number
+    createdAt?: Date | string
+    updatedAt?: Date | string | null
+  }
+
+  export type MemberWithdrawUncheckedCreateWithoutMemberInput = {
+    id?: bigint | number
+    money: Decimal | DecimalJsLike | number | string
+    remark?: string | null
+    status?: number
+    createdAt?: Date | string
+    updatedAt?: Date | string | null
+  }
+
+  export type MemberWithdrawCreateOrConnectWithoutMemberInput = {
+    where: MemberWithdrawWhereUniqueInput
+    create: XOR<MemberWithdrawCreateWithoutMemberInput, MemberWithdrawUncheckedCreateWithoutMemberInput>
+  }
+
+  export type MemberWithdrawCreateManyMemberInputEnvelope = {
+    data: MemberWithdrawCreateManyMemberInput | MemberWithdrawCreateManyMemberInput[]
+    skipDuplicates?: boolean
+  }
+
   export type StockPositionUpsertWithWhereUniqueWithoutMemberInput = {
     where: StockPositionWhereUniqueInput
     update: XOR<StockPositionUpdateWithoutMemberInput, StockPositionUncheckedUpdateWithoutMemberInput>
@@ -24884,6 +27773,272 @@ export namespace Prisma {
     updatedAt?: DateTimeNullableFilter<"MemberSubscribe"> | Date | string | null
     stockSubscribeId?: BigIntFilter<"MemberSubscribe"> | bigint | number
     memberId?: BigIntFilter<"MemberSubscribe"> | bigint | number
+  }
+
+  export type MemberRechargeUpsertWithWhereUniqueWithoutMemberInput = {
+    where: MemberRechargeWhereUniqueInput
+    update: XOR<MemberRechargeUpdateWithoutMemberInput, MemberRechargeUncheckedUpdateWithoutMemberInput>
+    create: XOR<MemberRechargeCreateWithoutMemberInput, MemberRechargeUncheckedCreateWithoutMemberInput>
+  }
+
+  export type MemberRechargeUpdateWithWhereUniqueWithoutMemberInput = {
+    where: MemberRechargeWhereUniqueInput
+    data: XOR<MemberRechargeUpdateWithoutMemberInput, MemberRechargeUncheckedUpdateWithoutMemberInput>
+  }
+
+  export type MemberRechargeUpdateManyWithWhereWithoutMemberInput = {
+    where: MemberRechargeScalarWhereInput
+    data: XOR<MemberRechargeUpdateManyMutationInput, MemberRechargeUncheckedUpdateManyWithoutMemberInput>
+  }
+
+  export type MemberRechargeScalarWhereInput = {
+    AND?: MemberRechargeScalarWhereInput | MemberRechargeScalarWhereInput[]
+    OR?: MemberRechargeScalarWhereInput[]
+    NOT?: MemberRechargeScalarWhereInput | MemberRechargeScalarWhereInput[]
+    id?: BigIntFilter<"MemberRecharge"> | bigint | number
+    money?: DecimalFilter<"MemberRecharge"> | Decimal | DecimalJsLike | number | string
+    screen?: JsonFilter<"MemberRecharge">
+    status?: IntFilter<"MemberRecharge"> | number
+    memberId?: BigIntFilter<"MemberRecharge"> | bigint | number
+    createdAt?: DateTimeFilter<"MemberRecharge"> | Date | string
+    updatedAt?: DateTimeNullableFilter<"MemberRecharge"> | Date | string | null
+  }
+
+  export type MemberWithdrawUpsertWithWhereUniqueWithoutMemberInput = {
+    where: MemberWithdrawWhereUniqueInput
+    update: XOR<MemberWithdrawUpdateWithoutMemberInput, MemberWithdrawUncheckedUpdateWithoutMemberInput>
+    create: XOR<MemberWithdrawCreateWithoutMemberInput, MemberWithdrawUncheckedCreateWithoutMemberInput>
+  }
+
+  export type MemberWithdrawUpdateWithWhereUniqueWithoutMemberInput = {
+    where: MemberWithdrawWhereUniqueInput
+    data: XOR<MemberWithdrawUpdateWithoutMemberInput, MemberWithdrawUncheckedUpdateWithoutMemberInput>
+  }
+
+  export type MemberWithdrawUpdateManyWithWhereWithoutMemberInput = {
+    where: MemberWithdrawScalarWhereInput
+    data: XOR<MemberWithdrawUpdateManyMutationInput, MemberWithdrawUncheckedUpdateManyWithoutMemberInput>
+  }
+
+  export type MemberWithdrawScalarWhereInput = {
+    AND?: MemberWithdrawScalarWhereInput | MemberWithdrawScalarWhereInput[]
+    OR?: MemberWithdrawScalarWhereInput[]
+    NOT?: MemberWithdrawScalarWhereInput | MemberWithdrawScalarWhereInput[]
+    id?: BigIntFilter<"MemberWithdraw"> | bigint | number
+    money?: DecimalFilter<"MemberWithdraw"> | Decimal | DecimalJsLike | number | string
+    remark?: StringNullableFilter<"MemberWithdraw"> | string | null
+    status?: IntFilter<"MemberWithdraw"> | number
+    memberId?: BigIntFilter<"MemberWithdraw"> | bigint | number
+    createdAt?: DateTimeFilter<"MemberWithdraw"> | Date | string
+    updatedAt?: DateTimeNullableFilter<"MemberWithdraw"> | Date | string | null
+  }
+
+  export type MemberCreateWithoutMemberRechargesInput = {
+    id?: bigint | number
+    email: string
+    name?: string | null
+    avatar?: string | null
+    password: string
+    gender?: $Enums.GENDER
+    address?: string | null
+    accountBalance?: NullableJsonNullValueInput | InputJsonValue
+    status?: number
+    type?: number
+    createdAt?: Date | string
+    updatedAt?: Date | string | null
+    balance?: Decimal | DecimalJsLike | number | string
+    unBalance?: Decimal | DecimalJsLike | number | string
+    lockBalance?: Decimal | DecimalJsLike | number | string
+    stockPostion?: StockPositionCreateNestedManyWithoutMemberInput
+    memberDetail?: MemberDetailCreateNestedManyWithoutMemberInput
+    memberSubscribe?: MemberSubscribeCreateNestedManyWithoutMemberInput
+    memberWithdraws?: MemberWithdrawCreateNestedManyWithoutMemberInput
+  }
+
+  export type MemberUncheckedCreateWithoutMemberRechargesInput = {
+    id?: bigint | number
+    email: string
+    name?: string | null
+    avatar?: string | null
+    password: string
+    gender?: $Enums.GENDER
+    address?: string | null
+    accountBalance?: NullableJsonNullValueInput | InputJsonValue
+    status?: number
+    type?: number
+    createdAt?: Date | string
+    updatedAt?: Date | string | null
+    balance?: Decimal | DecimalJsLike | number | string
+    unBalance?: Decimal | DecimalJsLike | number | string
+    lockBalance?: Decimal | DecimalJsLike | number | string
+    stockPostion?: StockPositionUncheckedCreateNestedManyWithoutMemberInput
+    memberDetail?: MemberDetailUncheckedCreateNestedManyWithoutMemberInput
+    memberSubscribe?: MemberSubscribeUncheckedCreateNestedManyWithoutMemberInput
+    memberWithdraws?: MemberWithdrawUncheckedCreateNestedManyWithoutMemberInput
+  }
+
+  export type MemberCreateOrConnectWithoutMemberRechargesInput = {
+    where: MemberWhereUniqueInput
+    create: XOR<MemberCreateWithoutMemberRechargesInput, MemberUncheckedCreateWithoutMemberRechargesInput>
+  }
+
+  export type MemberUpsertWithoutMemberRechargesInput = {
+    update: XOR<MemberUpdateWithoutMemberRechargesInput, MemberUncheckedUpdateWithoutMemberRechargesInput>
+    create: XOR<MemberCreateWithoutMemberRechargesInput, MemberUncheckedCreateWithoutMemberRechargesInput>
+    where?: MemberWhereInput
+  }
+
+  export type MemberUpdateToOneWithWhereWithoutMemberRechargesInput = {
+    where?: MemberWhereInput
+    data: XOR<MemberUpdateWithoutMemberRechargesInput, MemberUncheckedUpdateWithoutMemberRechargesInput>
+  }
+
+  export type MemberUpdateWithoutMemberRechargesInput = {
+    id?: BigIntFieldUpdateOperationsInput | bigint | number
+    email?: StringFieldUpdateOperationsInput | string
+    name?: NullableStringFieldUpdateOperationsInput | string | null
+    avatar?: NullableStringFieldUpdateOperationsInput | string | null
+    password?: StringFieldUpdateOperationsInput | string
+    gender?: EnumGENDERFieldUpdateOperationsInput | $Enums.GENDER
+    address?: NullableStringFieldUpdateOperationsInput | string | null
+    accountBalance?: NullableJsonNullValueInput | InputJsonValue
+    status?: IntFieldUpdateOperationsInput | number
+    type?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    balance?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    unBalance?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    lockBalance?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    stockPostion?: StockPositionUpdateManyWithoutMemberNestedInput
+    memberDetail?: MemberDetailUpdateManyWithoutMemberNestedInput
+    memberSubscribe?: MemberSubscribeUpdateManyWithoutMemberNestedInput
+    memberWithdraws?: MemberWithdrawUpdateManyWithoutMemberNestedInput
+  }
+
+  export type MemberUncheckedUpdateWithoutMemberRechargesInput = {
+    id?: BigIntFieldUpdateOperationsInput | bigint | number
+    email?: StringFieldUpdateOperationsInput | string
+    name?: NullableStringFieldUpdateOperationsInput | string | null
+    avatar?: NullableStringFieldUpdateOperationsInput | string | null
+    password?: StringFieldUpdateOperationsInput | string
+    gender?: EnumGENDERFieldUpdateOperationsInput | $Enums.GENDER
+    address?: NullableStringFieldUpdateOperationsInput | string | null
+    accountBalance?: NullableJsonNullValueInput | InputJsonValue
+    status?: IntFieldUpdateOperationsInput | number
+    type?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    balance?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    unBalance?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    lockBalance?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    stockPostion?: StockPositionUncheckedUpdateManyWithoutMemberNestedInput
+    memberDetail?: MemberDetailUncheckedUpdateManyWithoutMemberNestedInput
+    memberSubscribe?: MemberSubscribeUncheckedUpdateManyWithoutMemberNestedInput
+    memberWithdraws?: MemberWithdrawUncheckedUpdateManyWithoutMemberNestedInput
+  }
+
+  export type MemberCreateWithoutMemberWithdrawsInput = {
+    id?: bigint | number
+    email: string
+    name?: string | null
+    avatar?: string | null
+    password: string
+    gender?: $Enums.GENDER
+    address?: string | null
+    accountBalance?: NullableJsonNullValueInput | InputJsonValue
+    status?: number
+    type?: number
+    createdAt?: Date | string
+    updatedAt?: Date | string | null
+    balance?: Decimal | DecimalJsLike | number | string
+    unBalance?: Decimal | DecimalJsLike | number | string
+    lockBalance?: Decimal | DecimalJsLike | number | string
+    stockPostion?: StockPositionCreateNestedManyWithoutMemberInput
+    memberDetail?: MemberDetailCreateNestedManyWithoutMemberInput
+    memberSubscribe?: MemberSubscribeCreateNestedManyWithoutMemberInput
+    memberRecharges?: MemberRechargeCreateNestedManyWithoutMemberInput
+  }
+
+  export type MemberUncheckedCreateWithoutMemberWithdrawsInput = {
+    id?: bigint | number
+    email: string
+    name?: string | null
+    avatar?: string | null
+    password: string
+    gender?: $Enums.GENDER
+    address?: string | null
+    accountBalance?: NullableJsonNullValueInput | InputJsonValue
+    status?: number
+    type?: number
+    createdAt?: Date | string
+    updatedAt?: Date | string | null
+    balance?: Decimal | DecimalJsLike | number | string
+    unBalance?: Decimal | DecimalJsLike | number | string
+    lockBalance?: Decimal | DecimalJsLike | number | string
+    stockPostion?: StockPositionUncheckedCreateNestedManyWithoutMemberInput
+    memberDetail?: MemberDetailUncheckedCreateNestedManyWithoutMemberInput
+    memberSubscribe?: MemberSubscribeUncheckedCreateNestedManyWithoutMemberInput
+    memberRecharges?: MemberRechargeUncheckedCreateNestedManyWithoutMemberInput
+  }
+
+  export type MemberCreateOrConnectWithoutMemberWithdrawsInput = {
+    where: MemberWhereUniqueInput
+    create: XOR<MemberCreateWithoutMemberWithdrawsInput, MemberUncheckedCreateWithoutMemberWithdrawsInput>
+  }
+
+  export type MemberUpsertWithoutMemberWithdrawsInput = {
+    update: XOR<MemberUpdateWithoutMemberWithdrawsInput, MemberUncheckedUpdateWithoutMemberWithdrawsInput>
+    create: XOR<MemberCreateWithoutMemberWithdrawsInput, MemberUncheckedCreateWithoutMemberWithdrawsInput>
+    where?: MemberWhereInput
+  }
+
+  export type MemberUpdateToOneWithWhereWithoutMemberWithdrawsInput = {
+    where?: MemberWhereInput
+    data: XOR<MemberUpdateWithoutMemberWithdrawsInput, MemberUncheckedUpdateWithoutMemberWithdrawsInput>
+  }
+
+  export type MemberUpdateWithoutMemberWithdrawsInput = {
+    id?: BigIntFieldUpdateOperationsInput | bigint | number
+    email?: StringFieldUpdateOperationsInput | string
+    name?: NullableStringFieldUpdateOperationsInput | string | null
+    avatar?: NullableStringFieldUpdateOperationsInput | string | null
+    password?: StringFieldUpdateOperationsInput | string
+    gender?: EnumGENDERFieldUpdateOperationsInput | $Enums.GENDER
+    address?: NullableStringFieldUpdateOperationsInput | string | null
+    accountBalance?: NullableJsonNullValueInput | InputJsonValue
+    status?: IntFieldUpdateOperationsInput | number
+    type?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    balance?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    unBalance?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    lockBalance?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    stockPostion?: StockPositionUpdateManyWithoutMemberNestedInput
+    memberDetail?: MemberDetailUpdateManyWithoutMemberNestedInput
+    memberSubscribe?: MemberSubscribeUpdateManyWithoutMemberNestedInput
+    memberRecharges?: MemberRechargeUpdateManyWithoutMemberNestedInput
+  }
+
+  export type MemberUncheckedUpdateWithoutMemberWithdrawsInput = {
+    id?: BigIntFieldUpdateOperationsInput | bigint | number
+    email?: StringFieldUpdateOperationsInput | string
+    name?: NullableStringFieldUpdateOperationsInput | string | null
+    avatar?: NullableStringFieldUpdateOperationsInput | string | null
+    password?: StringFieldUpdateOperationsInput | string
+    gender?: EnumGENDERFieldUpdateOperationsInput | $Enums.GENDER
+    address?: NullableStringFieldUpdateOperationsInput | string | null
+    accountBalance?: NullableJsonNullValueInput | InputJsonValue
+    status?: IntFieldUpdateOperationsInput | number
+    type?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    balance?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    unBalance?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    lockBalance?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    stockPostion?: StockPositionUncheckedUpdateManyWithoutMemberNestedInput
+    memberDetail?: MemberDetailUncheckedUpdateManyWithoutMemberNestedInput
+    memberSubscribe?: MemberSubscribeUncheckedUpdateManyWithoutMemberNestedInput
+    memberRecharges?: MemberRechargeUncheckedUpdateManyWithoutMemberNestedInput
   }
 
   export type StockPositionCreateWithoutStockSymbolInput = {
@@ -25159,8 +28314,13 @@ export namespace Prisma {
     type?: number
     createdAt?: Date | string
     updatedAt?: Date | string | null
+    balance?: Decimal | DecimalJsLike | number | string
+    unBalance?: Decimal | DecimalJsLike | number | string
+    lockBalance?: Decimal | DecimalJsLike | number | string
     stockPostion?: StockPositionCreateNestedManyWithoutMemberInput
     memberDetail?: MemberDetailCreateNestedManyWithoutMemberInput
+    memberRecharges?: MemberRechargeCreateNestedManyWithoutMemberInput
+    memberWithdraws?: MemberWithdrawCreateNestedManyWithoutMemberInput
   }
 
   export type MemberUncheckedCreateWithoutMemberSubscribeInput = {
@@ -25176,8 +28336,13 @@ export namespace Prisma {
     type?: number
     createdAt?: Date | string
     updatedAt?: Date | string | null
+    balance?: Decimal | DecimalJsLike | number | string
+    unBalance?: Decimal | DecimalJsLike | number | string
+    lockBalance?: Decimal | DecimalJsLike | number | string
     stockPostion?: StockPositionUncheckedCreateNestedManyWithoutMemberInput
     memberDetail?: MemberDetailUncheckedCreateNestedManyWithoutMemberInput
+    memberRecharges?: MemberRechargeUncheckedCreateNestedManyWithoutMemberInput
+    memberWithdraws?: MemberWithdrawUncheckedCreateNestedManyWithoutMemberInput
   }
 
   export type MemberCreateOrConnectWithoutMemberSubscribeInput = {
@@ -25209,8 +28374,13 @@ export namespace Prisma {
     type?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    balance?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    unBalance?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    lockBalance?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
     stockPostion?: StockPositionUpdateManyWithoutMemberNestedInput
     memberDetail?: MemberDetailUpdateManyWithoutMemberNestedInput
+    memberRecharges?: MemberRechargeUpdateManyWithoutMemberNestedInput
+    memberWithdraws?: MemberWithdrawUpdateManyWithoutMemberNestedInput
   }
 
   export type MemberUncheckedUpdateWithoutMemberSubscribeInput = {
@@ -25226,8 +28396,13 @@ export namespace Prisma {
     type?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    balance?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    unBalance?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    lockBalance?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
     stockPostion?: StockPositionUncheckedUpdateManyWithoutMemberNestedInput
     memberDetail?: MemberDetailUncheckedUpdateManyWithoutMemberNestedInput
+    memberRecharges?: MemberRechargeUncheckedUpdateManyWithoutMemberNestedInput
+    memberWithdraws?: MemberWithdrawUncheckedUpdateManyWithoutMemberNestedInput
   }
 
   export type MemberCreateWithoutStockPostionInput = {
@@ -25243,8 +28418,13 @@ export namespace Prisma {
     type?: number
     createdAt?: Date | string
     updatedAt?: Date | string | null
+    balance?: Decimal | DecimalJsLike | number | string
+    unBalance?: Decimal | DecimalJsLike | number | string
+    lockBalance?: Decimal | DecimalJsLike | number | string
     memberDetail?: MemberDetailCreateNestedManyWithoutMemberInput
     memberSubscribe?: MemberSubscribeCreateNestedManyWithoutMemberInput
+    memberRecharges?: MemberRechargeCreateNestedManyWithoutMemberInput
+    memberWithdraws?: MemberWithdrawCreateNestedManyWithoutMemberInput
   }
 
   export type MemberUncheckedCreateWithoutStockPostionInput = {
@@ -25260,8 +28440,13 @@ export namespace Prisma {
     type?: number
     createdAt?: Date | string
     updatedAt?: Date | string | null
+    balance?: Decimal | DecimalJsLike | number | string
+    unBalance?: Decimal | DecimalJsLike | number | string
+    lockBalance?: Decimal | DecimalJsLike | number | string
     memberDetail?: MemberDetailUncheckedCreateNestedManyWithoutMemberInput
     memberSubscribe?: MemberSubscribeUncheckedCreateNestedManyWithoutMemberInput
+    memberRecharges?: MemberRechargeUncheckedCreateNestedManyWithoutMemberInput
+    memberWithdraws?: MemberWithdrawUncheckedCreateNestedManyWithoutMemberInput
   }
 
   export type MemberCreateOrConnectWithoutStockPostionInput = {
@@ -25352,8 +28537,13 @@ export namespace Prisma {
     type?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    balance?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    unBalance?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    lockBalance?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
     memberDetail?: MemberDetailUpdateManyWithoutMemberNestedInput
     memberSubscribe?: MemberSubscribeUpdateManyWithoutMemberNestedInput
+    memberRecharges?: MemberRechargeUpdateManyWithoutMemberNestedInput
+    memberWithdraws?: MemberWithdrawUpdateManyWithoutMemberNestedInput
   }
 
   export type MemberUncheckedUpdateWithoutStockPostionInput = {
@@ -25369,8 +28559,13 @@ export namespace Prisma {
     type?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    balance?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    unBalance?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    lockBalance?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
     memberDetail?: MemberDetailUncheckedUpdateManyWithoutMemberNestedInput
     memberSubscribe?: MemberSubscribeUncheckedUpdateManyWithoutMemberNestedInput
+    memberRecharges?: MemberRechargeUncheckedUpdateManyWithoutMemberNestedInput
+    memberWithdraws?: MemberWithdrawUncheckedUpdateManyWithoutMemberNestedInput
   }
 
   export type StockSymbolUpsertWithoutStockPostionInput = {
@@ -25451,8 +28646,13 @@ export namespace Prisma {
     type?: number
     createdAt?: Date | string
     updatedAt?: Date | string | null
+    balance?: Decimal | DecimalJsLike | number | string
+    unBalance?: Decimal | DecimalJsLike | number | string
+    lockBalance?: Decimal | DecimalJsLike | number | string
     stockPostion?: StockPositionCreateNestedManyWithoutMemberInput
     memberSubscribe?: MemberSubscribeCreateNestedManyWithoutMemberInput
+    memberRecharges?: MemberRechargeCreateNestedManyWithoutMemberInput
+    memberWithdraws?: MemberWithdrawCreateNestedManyWithoutMemberInput
   }
 
   export type MemberUncheckedCreateWithoutMemberDetailInput = {
@@ -25468,8 +28668,13 @@ export namespace Prisma {
     type?: number
     createdAt?: Date | string
     updatedAt?: Date | string | null
+    balance?: Decimal | DecimalJsLike | number | string
+    unBalance?: Decimal | DecimalJsLike | number | string
+    lockBalance?: Decimal | DecimalJsLike | number | string
     stockPostion?: StockPositionUncheckedCreateNestedManyWithoutMemberInput
     memberSubscribe?: MemberSubscribeUncheckedCreateNestedManyWithoutMemberInput
+    memberRecharges?: MemberRechargeUncheckedCreateNestedManyWithoutMemberInput
+    memberWithdraws?: MemberWithdrawUncheckedCreateNestedManyWithoutMemberInput
   }
 
   export type MemberCreateOrConnectWithoutMemberDetailInput = {
@@ -25501,8 +28706,13 @@ export namespace Prisma {
     type?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    balance?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    unBalance?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    lockBalance?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
     stockPostion?: StockPositionUpdateManyWithoutMemberNestedInput
     memberSubscribe?: MemberSubscribeUpdateManyWithoutMemberNestedInput
+    memberRecharges?: MemberRechargeUpdateManyWithoutMemberNestedInput
+    memberWithdraws?: MemberWithdrawUpdateManyWithoutMemberNestedInput
   }
 
   export type MemberUncheckedUpdateWithoutMemberDetailInput = {
@@ -25518,8 +28728,13 @@ export namespace Prisma {
     type?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    balance?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    unBalance?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    lockBalance?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
     stockPostion?: StockPositionUncheckedUpdateManyWithoutMemberNestedInput
     memberSubscribe?: MemberSubscribeUncheckedUpdateManyWithoutMemberNestedInput
+    memberRecharges?: MemberRechargeUncheckedUpdateManyWithoutMemberNestedInput
+    memberWithdraws?: MemberWithdrawUncheckedUpdateManyWithoutMemberNestedInput
   }
 
   export type StockPositionCreateManyMemberInput = {
@@ -25570,6 +28785,24 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string | null
     stockSubscribeId: bigint | number
+  }
+
+  export type MemberRechargeCreateManyMemberInput = {
+    id?: bigint | number
+    money: Decimal | DecimalJsLike | number | string
+    screen: JsonNullValueInput | InputJsonValue
+    status?: number
+    createdAt?: Date | string
+    updatedAt?: Date | string | null
+  }
+
+  export type MemberWithdrawCreateManyMemberInput = {
+    id?: bigint | number
+    money: Decimal | DecimalJsLike | number | string
+    remark?: string | null
+    status?: number
+    createdAt?: Date | string
+    updatedAt?: Date | string | null
   }
 
   export type StockPositionUpdateWithoutMemberInput = {
@@ -25720,6 +28953,60 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     stockSubscribeId?: BigIntFieldUpdateOperationsInput | bigint | number
+  }
+
+  export type MemberRechargeUpdateWithoutMemberInput = {
+    id?: BigIntFieldUpdateOperationsInput | bigint | number
+    money?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    screen?: JsonNullValueInput | InputJsonValue
+    status?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  }
+
+  export type MemberRechargeUncheckedUpdateWithoutMemberInput = {
+    id?: BigIntFieldUpdateOperationsInput | bigint | number
+    money?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    screen?: JsonNullValueInput | InputJsonValue
+    status?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  }
+
+  export type MemberRechargeUncheckedUpdateManyWithoutMemberInput = {
+    id?: BigIntFieldUpdateOperationsInput | bigint | number
+    money?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    screen?: JsonNullValueInput | InputJsonValue
+    status?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  }
+
+  export type MemberWithdrawUpdateWithoutMemberInput = {
+    id?: BigIntFieldUpdateOperationsInput | bigint | number
+    money?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    remark?: NullableStringFieldUpdateOperationsInput | string | null
+    status?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  }
+
+  export type MemberWithdrawUncheckedUpdateWithoutMemberInput = {
+    id?: BigIntFieldUpdateOperationsInput | bigint | number
+    money?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    remark?: NullableStringFieldUpdateOperationsInput | string | null
+    status?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  }
+
+  export type MemberWithdrawUncheckedUpdateManyWithoutMemberInput = {
+    id?: BigIntFieldUpdateOperationsInput | bigint | number
+    money?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    remark?: NullableStringFieldUpdateOperationsInput | string | null
+    status?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
 
   export type StockPositionCreateManyStockSymbolInput = {
@@ -25887,6 +29174,14 @@ export namespace Prisma {
      * @deprecated Use MemberDefaultArgs instead
      */
     export type MemberArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = MemberDefaultArgs<ExtArgs>
+    /**
+     * @deprecated Use MemberRechargeDefaultArgs instead
+     */
+    export type MemberRechargeArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = MemberRechargeDefaultArgs<ExtArgs>
+    /**
+     * @deprecated Use MemberWithdrawDefaultArgs instead
+     */
+    export type MemberWithdrawArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = MemberWithdrawDefaultArgs<ExtArgs>
     /**
      * @deprecated Use StockSymbolDefaultArgs instead
      */

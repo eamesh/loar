@@ -37,12 +37,51 @@ model Member {
   type           Int       @default(0)
   createdAt      DateTime  @default(now()) @map("created_at")
   updatedAt      DateTime? @map("updated_at")
+  // 余额
+  balance        Decimal   @default(0) @db.Decimal(10, 5)
+  // 冻结余额
+  unBalance      Decimal   @default(0) @map("un_balance") @db.Decimal(10, 5)
+  // 锁定余额
+  lockBalance    Decimal   @default(0) @map("lock_balance") @db.Decimal(10, 5)
 
   stockPostion    StockPosition[]
   memberDetail    MemberDetail[]
   memberSubscribe MemberSubscribe[]
+  memberRecharges MemberRecharge[]
+  memberWithdraws MemberWithdraw[]
 
   @@map("members")
+}
+
+model MemberRecharge {
+  id     BigInt  @id @default(autoincrement())
+  money  Decimal @db.Decimal(10, 5)
+  screen Json
+
+  status Int @default(0)
+
+  memberId  BigInt
+  createdAt DateTime  @default(now()) @map("created_at")
+  updatedAt DateTime? @map("updated_at")
+
+  member Member @relation(fields: [memberId], references: [id])
+
+  @@map("member_recharges")
+}
+
+model MemberWithdraw {
+  id     BigInt  @id @default(autoincrement())
+  money  Decimal @db.Decimal(10, 5)
+  remark String?
+  status Int     @default(0)
+
+  memberId  BigInt
+  createdAt DateTime  @default(now()) @map("created_at")
+  updatedAt DateTime? @map("updated_at")
+
+  member Member @relation(fields: [memberId], references: [id])
+
+  @@map("member_withdraws")
 }
 
 model StockSymbol {

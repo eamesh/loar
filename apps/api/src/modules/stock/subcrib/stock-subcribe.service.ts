@@ -1,9 +1,10 @@
 import { Member, Prisma } from '@loar/database';
-import { BadRequestException, Injectable } from '@nestjs/common';
+import { Injectable } from '@nestjs/common';
 import { PrismaService } from 'src/providers/prisma/prisma.service';
 import * as dayjs from 'dayjs';
 import { OrderSubscribeDto } from './dto/order-subscribe.dto';
 import { v4 as uuidv4 } from 'uuid';
+import Decimal from 'decimal.js';
 
 @Injectable()
 export class StockSubscribeService {
@@ -91,9 +92,9 @@ export class StockSubscribeService {
       });
 
       // 剩余数量
-      if (subscribe.remainCirculation <= payload.amount) {
-        throw new BadRequestException('申请数量过多或过少');
-      }
+      // if (subscribe.remainCirculation <= payload.amount) {
+      //   throw new BadRequestException('申请数量过多或过少');
+      // }
 
       // 获取市场
       const market = await prisma.stockMarket.findFirst({
@@ -103,21 +104,23 @@ export class StockSubscribeService {
       });
 
       // 获取用户余额
-
       // 冻结余额
+      const unBalanceWait = new Decimal(payload.money);
+      const balance = member.balance.sub(unBalanceWait);
+      const unBalance = member.unBalance.add(unBalanceWait);
 
       // 缩减剩余
-      await prisma.stockSubscribe.update({
-        where: {
-          id,
-        },
-        data: {
-          remainCirculation: subscribe.remainCirculation - payload.amount,
-        },
-      });
+      // await prisma.stockSubscribe.update({
+      //   where: {
+      //     id,
+      //   },
+      //   data: {
+      //     remainCirculation: subscribe.remainCirculation - payload.amount,
+      //   },
+      // });
 
       // 下单
-      return await prisma.memberSubscribe.create({
+      const result = await prisma.memberSubscribe.create({
         data: {
           market: market.code,
           name: subscribe.name,
@@ -130,11 +133,25 @@ export class StockSubscribeService {
           status: 1,
         },
       });
+
+      // 修改用户资金
+      await this.prisma.member.update({
+        where: {
+          id: member.id,
+        },
+        data: {
+          balance,
+          unBalance,
+        },
+      });
+
+      return result;
     });
   }
 
   async updateMemberSubscribeType(id: number, payload: any) {
-    const type = payload.type;
+    const { type } = payload;
+    // 中签
     if (type === 1) {
       const subscribe = await this.prisma.memberSubscribe.findFirst({
         where: {

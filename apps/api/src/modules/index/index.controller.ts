@@ -10,6 +10,7 @@ export class IndexController {
   @Get()
   async index(@Headers('stock-type') type: IFinanceType) {
     type = type ?? DEFAULT_TYPE;
+    console.log(type);
     return await this.indexService.home(type);
   }
 

@@ -19,6 +19,9 @@ import { Member, PaginateFunction, Prisma, paginator } from '@loar/database';
 import { MemberJwtPayload } from './interfaces/member-jwt.interface';
 import { MemberEntity } from './entities/member.entity';
 import { PasswordDto } from './dto/password.dto';
+import Decimal from 'decimal.js';
+import { MemberRechargeEntity } from './entities/member-recharge.entity';
+import { MemberWithdrawEntity } from './entities/member-withdraw.entity';
 
 @Injectable()
 export class MemberService {
@@ -234,6 +237,42 @@ export class MemberService {
     }
   }
 
+  // 修改用户充值状态, 自动修改余额
+  async passMemberRecharge(id: number, payload: any) {
+    const { status } = payload;
+
+    if (status < 0) {
+      return await this.prisma.memberRecharge.update({
+        where: {
+          id,
+        },
+        data: {
+          status,
+        },
+      });
+    }
+    const record = await this.prisma.memberRecharge.findFirst({
+      where: {
+        id,
+      },
+      include: {
+        member: true,
+      },
+    });
+
+    const member = record.member;
+
+    await this.prisma.member.update({
+      where: {
+        id: member.id,
+      },
+      data: {
+        balance: member.balance.add(record.money),
+      },
+    });
+  }
+
+  // 修改用户余额
   async changeRecharge(id: number, payload: any) {
     const member = await this.prisma.member.findFirst({
       where: {
@@ -241,19 +280,19 @@ export class MemberService {
       },
     });
 
-    const { type, market, money } = payload;
-    const accountBalance = member.accountBalance;
-    const current = accountBalance[market].balance;
-    const total = +type === 0 ? current + +money : current - +money;
+    const { money } = payload;
+    // const { type, market, money } = payload;
+    // const accountBalance = member.accountBalance;
+    // const current = accountBalance[market].balance;
+    // const total = +type === 0 ? current + +money : current - +money;
 
-    accountBalance[market].balance = total;
-    console.log(accountBalance);
+    // accountBalance[market].balance = total;
     await this.prisma.member.update({
       where: {
         id,
       },
       data: {
-        accountBalance,
+        balance: member.balance.add(money),
       },
     });
   }
@@ -328,4 +367,58 @@ export class MemberService {
       },
     });
   }
+
+  async uploadRecharge(payload: any, member: Member) {
+    const { money, screen } = payload;
+    const result = await this.prisma.memberRecharge.create({
+      data: {
+        money: new Decimal(money),
+        screen,
+        memberId: member.id,
+      },
+    });
+
+    return new MemberRechargeEntity(result);
+  }
+
+  async getRechargeList(member: Member) {
+    const result = await this.prisma.memberRecharge.findMany({
+      where: {
+        id: member.id,
+      },
+    });
+
+    return result.length
+      ? result.map((item) => new MemberRechargeEntity(item))
+      : [];
+  }
+
+  async requestWithdraw(payload: any, member: Member) {
+    const { money } = payload;
+
+    if (member.balance.lt(money)) {
+      throw new BadRequestException('余额不足');
+    }
+
+    await this.prisma.memberWithdraw.create({
+      data: {
+        memberId: member.id,
+        money,
+      },
+    });
+  }
+
+  async getWithdrawy(member: Member) {
+    const result = await this.prisma.memberWithdraw.findMany({
+      where: {
+        id: member.id,
+      },
+    });
+
+    return result.length
+      ? result.map((item) => new MemberWithdrawEntity(item))
+      : [];
+  }
+
+  async getWithdrawByAdmin() {}
 }

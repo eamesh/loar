@@ -13,8 +13,8 @@ async function bootstrap() {
 
   app.enableCors({
     origin: '*',
-    allowedHeaders: ['Authorization', 'content-type'],
-    methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
+    // allowedHeaders: ['Authorization', 'content-type'],
+    // methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
   });
   app.use(helmet());
 
@@ -25,8 +25,8 @@ async function bootstrap() {
   });
 
   app.useGlobalPipes(new ValidationPipe());
-  await app.listen(3000, () => {
-    Logger.log(`应用已启动: http://localhost:3000`, bootstrap.name);
+  await app.listen(3000, async () => {
+    Logger.log(`应用已启动: ${await app.getUrl()}`, bootstrap.name);
   });
 }
 bootstrap();

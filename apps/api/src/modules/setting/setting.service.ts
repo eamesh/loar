@@ -1,3 +1,4 @@
+import { Decimal } from '@loar/database/generated/prisma-client/runtime/library';
 import { Injectable } from '@nestjs/common';
 import { PrismaService } from 'src/providers/prisma/prisma.service';
 
@@ -47,5 +48,25 @@ export class SettingService {
         value: JSON.parse(result.value),
       };
     }
+  }
+
+  async handleToUSDT(money: Decimal, currency: string) {
+    // 获取兑换比例
+    const { value } = await this.getKey('echange_rate');
+
+    const current = new Decimal(value[currency]);
+
+    // 计算港币兑换USDT
+    return money.mul(current);
+  }
+
+  async handleUSDTto(money: Decimal, currency: string) {
+    // 获取兑换比例
+    const { value } = await this.getKey('echange_rate');
+
+    const current = new Decimal(value[currency]);
+
+    // 计算港币兑换USDT
+    return money.div(current);
   }
 }

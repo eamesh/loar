@@ -70,20 +70,20 @@
 						</view>
 				
 						<view class="flex flex-row flex-nowrap my-5">
-							<view class="basis-1/4 flex justify-center items-center flex-col" @click="open">
+							<view class="basis-1/3 flex justify-center items-center flex-col" @click="$go('/pages/recharge/usdt/usdt?market=')">
 								<gui-image src="/static/img/deposit.png" :width="40" :height="50"></gui-image>
 								<view class="text-[20rpx] mt-1">{{ $t('deposit') }}</view>
 							</view>
-							<view class="basis-1/4 flex justify-center items-center flex-col" @click="openDown">
+							<view class="basis-1/3 flex justify-center items-center flex-col" @click="$go('/pages/recharge/usdt/withdraw')">
 								<gui-image src="/static/img/reflect.png" :width="40" :height="50"></gui-image>
 								<view class="text-[20rpx] mt-1">{{ $t('withdraw') }}</view>
 							</view>
-							<view class="basis-1/4 flex justify-center items-center flex-col"
+						<!-- 	<view class="basis-1/3 flex justify-center items-center flex-col"
 								@click="$go('/pages/wallet/records/records', 'navigateTo')">
 								<gui-image src="/static/img/cash.png" :width="40" :height="50"></gui-image>
 								<view class="text-[20rpx] mt-1">{{ $t('cash.flow') }}</view>
-							</view>
-							<view class="basis-1/4 flex justify-center items-center flex-col"
+							</view> -->
+							<view class="basis-1/3 flex justify-center items-center flex-col"
 								@click="$go('/pages/market/order/history', 'navigateTo')">
 								<gui-image src="/static/img/history.png" :width="40" :height="50"></gui-image>
 								<view class="text-[20rpx] mt-1">{{ $t('position.history') }}</view>
@@ -394,10 +394,10 @@
 					}
 				})
 
-				data.push({
-					key: 'funds',
-					name: this.$t('funds')
-				})
+				// data.push({
+				// 	key: 'funds',
+				// 	name: this.$t('funds')
+				// })
 
 				// this.requestAccountList(this.markets[0].code)
 				return data
@@ -406,10 +406,12 @@
 				return [{
 					id: 0,
 					name: this.$t("my.holdings")
-				}, {
-					id: 1,
-					name: this.$t("orders")
-				}]
+				}, 
+				// {
+				// 	id: 1,
+				// 	name: this.$t("orders")
+				// },
+				]
 			},
 		},
 		watch: {

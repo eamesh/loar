@@ -7,6 +7,7 @@ import { ConfigService } from '@nestjs/config';
 import { JWT_EXPIRES_IN, JWT_USER_SECRET } from 'src/constants/env';
 import { UserJwtStrategy } from './strategy/member-jwt.strategy';
 import { UserGuard } from './guard/user.guard';
+import { UploadController } from './upload/upload.controller';
 
 @Module({
   imports: [
@@ -23,7 +24,7 @@ import { UserGuard } from './guard/user.guard';
       inject: [ConfigService],
     }),
   ],
-  controllers: [UserController],
+  controllers: [UserController, UploadController],
   providers: [UserService, UserJwtStrategy, UserGuard],
   exports: [UserJwtStrategy, UserGuard],
 })

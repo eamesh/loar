@@ -75,7 +75,6 @@ export class MemberController {
       if (params[key] !== '' && params[key] !== undefined)
         where[key] = params[key];
     });
-    console.log(where);
     const { data, meta } = await this.member.getMembers({
       where: where,
       orderBy: {
@@ -108,6 +107,13 @@ export class MemberController {
     return await this.member.changeRecharge(id, payload);
   }
 
+  @Post('recharge/:id/status')
+  @UseGuards(UserGuard)
+  @HttpCode(HttpStatus.NO_CONTENT)
+  async passMemberRecharge(@Param('id') id: number, @Body() payload: any) {
+    return await this.member.passMemberRecharge(id, payload);
+  }
+
   @Post('admin')
   @HttpCode(HttpStatus.CREATED)
   @UseGuards(UserGuard)
@@ -127,5 +133,41 @@ export class MemberController {
   @UseGuards(UserGuard)
   async getMemberDetail(@Param('id') id: number) {
     return await this.member.getMemberDetail(id);
+  }
+
+  @Post('recharge')
+  @HttpCode(HttpStatus.CREATED)
+  @UseGuards(MemberGuard)
+  async recharge(@Body() payload: any, @Req() req) {
+    console.log(123);
+    return await this.member.uploadRecharge(payload, req.user as Member);
+  }
+
+  @Get('recharge')
+  @HttpCode(HttpStatus.OK)
+  @UseGuards(MemberGuard)
+  async getRecharge(@Req() req) {
+    return await this.member.getRechargeList(req.user as Member);
+  }
+
+  @Post('withdraw')
+  @HttpCode(HttpStatus.CREATED)
+  @UseGuards(MemberGuard)
+  async withdraw(@Body() payload: any, @Req() req) {
+    return await this.member.requestWithdraw(payload, req.user as Member);
+  }
+
+  @Get('withdraw')
+  @HttpCode(HttpStatus.CREATED)
+  @UseGuards(MemberGuard)
+  async getWithdraw(@Body() payload: any, @Req() req) {
+    return await this.member.getWithdrawy(req.user as Member);
+  }
+
+  @Post('withdraw/admin')
+  @HttpCode(HttpStatus.OK)
+  @UseGuards(UserGuard)
+  async getWithdrawAdmin() {
+    return await this.member.getWithdrawByAdmin();
   }
 }

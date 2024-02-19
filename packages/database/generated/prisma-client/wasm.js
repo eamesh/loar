@@ -130,6 +130,29 @@ exports.Prisma.MemberScalarFieldEnum = {
   status: 'status',
   type: 'type',
   createdAt: 'createdAt',
+  updatedAt: 'updatedAt',
+  balance: 'balance',
+  unBalance: 'unBalance',
+  lockBalance: 'lockBalance'
+};
+
+exports.Prisma.MemberRechargeScalarFieldEnum = {
+  id: 'id',
+  money: 'money',
+  screen: 'screen',
+  status: 'status',
+  memberId: 'memberId',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+};
+
+exports.Prisma.MemberWithdrawScalarFieldEnum = {
+  id: 'id',
+  money: 'money',
+  remark: 'remark',
+  status: 'status',
+  memberId: 'memberId',
+  createdAt: 'createdAt',
   updatedAt: 'updatedAt'
 };
 
@@ -403,6 +426,8 @@ exports.STOCK_STATUS = exports.$Enums.STOCK_STATUS = {
 exports.Prisma.ModelName = {
   User: 'User',
   Member: 'Member',
+  MemberRecharge: 'MemberRecharge',
+  MemberWithdraw: 'MemberWithdraw',
   StockSymbol: 'StockSymbol',
   Stock: 'Stock',
   StockRecord: 'StockRecord',

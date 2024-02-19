@@ -22,10 +22,28 @@ import { FinanceModule } from './providers/finance/finance.module';
 import { CryptoModule } from './providers/crypto/crypto.module';
 import { KlineModule } from './modules/kline/kline.module';
 import { ShuhaiModule } from './providers/shuhai/shuhai.module';
+import { ServeStaticModule } from '@nestjs/serve-static';
+import { join } from 'path';
+import { AcceptLanguageResolver, I18nModule, QueryResolver } from 'nestjs-i18n';
 
 const envFilePath = [`env.${process.env.NODE_ENV}`, '.env'];
 
 const imports = [
+  I18nModule.forRoot({
+    fallbackLanguage: 'en',
+    loaderOptions: {
+      path: join(__dirname, '/i18n/'),
+      watch: true,
+    },
+    resolvers: [
+      { use: QueryResolver, options: ['lang'] },
+      AcceptLanguageResolver,
+    ],
+  }),
+  ServeStaticModule.forRoot({
+    rootPath: join(__dirname, '..', 'static'),
+    serveRoot: '/static',
+  }),
   ConfigModule.forRoot({
     envFilePath,
     isGlobal: true,

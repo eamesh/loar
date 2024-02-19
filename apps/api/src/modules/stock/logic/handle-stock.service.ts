@@ -1,14 +1,21 @@
-import { Injectable, NotFoundException } from '@nestjs/common';
+import {
+  BadRequestException,
+  Injectable,
+  NotFoundException,
+} from '@nestjs/common';
 import { PrismaService } from 'src/providers/prisma/prisma.service';
 import { BuyDto } from './dto/buy.dto';
 import { ShuhaiService } from 'src/providers/shuhai/shuhai.service';
 import { Member } from '@loar/database';
+import { Decimal } from '@loar/database/generated/prisma-client/runtime/library';
+import { SettingService } from 'src/modules/setting/setting.service';
 
 @Injectable()
 export class HandleStockService {
   constructor(
     private readonly prisma: PrismaService,
     private readonly shuhai: ShuhaiService,
+    private setting: SettingService,
   ) {}
 
   async buy(payload: BuyDto, member: Member) {
@@ -26,11 +33,25 @@ export class HandleStockService {
     );
 
     // 保证金
-    const bond = (+detail.price * +payload.amount).toFixed(3);
+    const bond = new Decimal(detail.price).mul(new Decimal(payload.amount));
     // 预估爆仓价
-    const blast = (+detail.price * 2).toFixed(3);
+    const blast = new Decimal(detail.price).mul(2).toFixed(3);
 
-    // 判断用户余额
+    let bondDecimal = bond;
+
+    // 当前市场不是US
+    let unBalance = member.unBalance;
+
+    if (symbol.market !== 'US') {
+      bondDecimal = await this.setting.handleToUSDT(bondDecimal, symbol.market);
+      unBalance = unBalance.add(bondDecimal);
+    }
+
+    // 判断用户可用余额
+
+    if (member.balance.lt(bond)) {
+      throw new BadRequestException('余额不足');
+    }
 
     // 插入持仓
     await this.prisma.stockPosition.create({
@@ -40,7 +61,7 @@ export class HandleStockService {
         takeProfit: `${takeProfit}`,
         price: `${detail.price}`,
         mode,
-        bond: `${bond}`,
+        bond: `${bond.toFixed(3)}`,
         blast: `${blast}`,
         market: symbol.market,
         status: 0,
@@ -49,6 +70,17 @@ export class HandleStockService {
         currentPrice: `${detail.price}`,
         pl: '0',
         rate: '0',
+      },
+    });
+
+    // 修改用户余额
+    await this.prisma.member.update({
+      where: {
+        id: member.id,
+      },
+      data: {
+        balance: member.balance.sub(bond),
+        unBalance,
       },
     });
   }
@@ -109,6 +141,29 @@ export class HandleStockService {
     const allProfit = (profitLoss - buyFee).toFixed(3);
     // 用户余额不足取消平仓
     // 修改用户余额
+    const member = await this.prisma.member.findFirst({
+      where: {
+        id: position.memberId,
+      },
+    });
+
+    let allProfitDecimal = new Decimal(allProfit);
+    let bondDecimal = new Decimal(position.bond);
+    if (stockSymbol.market !== 'US') {
+      allProfitDecimal = await this.setting.handleToUSDT(
+        allProfitDecimal,
+        stockSymbol.market,
+      );
+      bondDecimal = await this.setting.handleToUSDT(
+        bondDecimal,
+        stockSymbol.market,
+      );
+    }
+
+    // 可用余额
+    const balance = member.balance.add(allProfitDecimal);
+    // 冻结余额
+    const unBalance = member.unBalance.sub(bondDecimal);
 
     // 平仓
     const rate = `${((+allProfit / allBuyPrice) * 100).toFixed(3)}`;
@@ -121,6 +176,17 @@ export class HandleStockService {
         pl: `${allProfit}`,
         rate,
         status: 1,
+      },
+    });
+
+    // 修改用户余额
+    await this.prisma.member.update({
+      where: {
+        id: member.id,
+      },
+      data: {
+        balance,
+        unBalance: unBalance.lt(0) ? 0 : unBalance,
       },
     });
   }

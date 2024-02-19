@@ -8,6 +8,7 @@ import { CryptoModule } from 'src/providers/crypto/crypto.module';
 import { MemberJwtStrategy } from './strategy/member-jwt.strategy';
 import { MemberGuard } from './guard/member.guard';
 import { AccountService } from './account/account.service';
+import { UploadController } from './upload/upload.controller';
 
 @Module({
   imports: [
@@ -25,7 +26,7 @@ import { AccountService } from './account/account.service';
     }),
   ],
   providers: [MemberService, MemberJwtStrategy, MemberGuard, AccountService],
-  controllers: [MemberController],
+  controllers: [MemberController, UploadController],
   exports: [MemberService, MemberJwtStrategy, MemberGuard, AccountService],
 })
 export class MemberModule {}
