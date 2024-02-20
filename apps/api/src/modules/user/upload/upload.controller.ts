@@ -12,9 +12,8 @@ import { diskStorage } from 'multer';
 import * as crypto from 'crypto';
 import { extname } from 'path';
 import { UserGuard } from '../guard/user.guard';
-import { MemberGuard } from 'src/modules/member/guard/member.guard';
 
-@Controller('member/upload')
+@Controller('user/upload')
 export class UploadController {
   @Post()
   @UseGuards(UserGuard)
@@ -25,11 +24,14 @@ export class UploadController {
     }),
   )
   upload(@UploadedFile() file: Express.Multer.File) {
-    return file;
+    return {
+      status: 'ok',
+      file,
+    };
   }
 
   @Post('files')
-  @UseGuards(MemberGuard)
+  @UseGuards(UserGuard)
   @UseInterceptors(
     FilesInterceptor('files', 10, {
       storage: diskStorage({

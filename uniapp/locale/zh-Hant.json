@@ -55,7 +55,7 @@
 	"to_be_listed": "待上市",
 	"listed": "已列出",
 	"empty": "暂无数据",
-	"ipo_history": "首次公開發行歷史",
+	"ipo_history": "申購記錄",
 	"est.total.assets": "預計總資產",
 	"daily.pl": "每日 損益",
 	"total.stocks.value": "股票總價值",
@@ -123,5 +123,12 @@
 	"deadline": "截止日期",
 	"subscribe": "訂閱",
 	"subscribe_amount": "購買數量",
-	"unbalance": "凍結資金"
+	"unbalance": "凍結資金",
+	"quantity": "申購數量",
+	"sub_amount": "申購金額",
+	"win_quantity": "中簽數量",
+	"win_amount": "中簽金額",
+	"time": "時間",
+	"partial": "部分審核",
+	"recharge_history": "儲值历史"
 }

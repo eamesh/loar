@@ -323,6 +323,8 @@ model MemberSubscribe {
   status            Int      @default(1)
   // 中间状态
   type              Int      @default(0)
+  // 是否已持仓
+  position          Int      @default(0)
 
   createdAt DateTime  @default(now()) @map("created_at")
   updatedAt DateTime? @map("updated_at")

@@ -1,4 +1,5 @@
 import { BasicColumn } from '@/components/Table';
+import dayjs from 'dayjs';
 import { NTag } from 'naive-ui';
 import { h } from 'vue';
 
@@ -8,15 +9,15 @@ export const columns: BasicColumn<any>[] = [
     key: 'memberId',
     width: 100,
   },
-  {
-    title: '申购编号',
-    key: 'no',
-    width: 100,
-  },
+  // {
+  //   title: '申购编号',
+  //   key: 'no',
+  //   width: 100,
+  // },
   {
     title: '邮箱',
     key: 'member.email',
-    width: 100,
+    width: 200,
   },
   {
     title: '持仓市场',
@@ -39,6 +40,14 @@ export const columns: BasicColumn<any>[] = [
     key: 'money',
   },
   {
+    title: '中签数量',
+    key: 'winningAmount',
+  },
+  {
+    title: '中签金额',
+    key: 'winningPrice',
+  },
+  {
     title: '状态',
     key: 'type',
     render(row) {
@@ -58,6 +67,10 @@ export const columns: BasicColumn<any>[] = [
         {
           title: '已取消',
           type: 'error',
+        },
+        {
+          title: '部分中签',
+          type: 'success',
         },
       ];
       return h(
@@ -88,6 +101,9 @@ export const columns: BasicColumn<any>[] = [
   {
     title: '创建时间',
     key: 'createdAt',
-    width: 160,
+    width: 200,
+    render(row) {
+      return dayjs(row.createdAt).format('YYYY-MM-DD HH:mm:ss');
+    },
   },
 ];

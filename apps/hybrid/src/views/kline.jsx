@@ -8,13 +8,18 @@ import { KlineDatafeed } from './kline-datafeed'
 import { useRoute } from 'vue-router'
 import axios from 'axios'
 import classNames from 'classnames'
+// import { useI18n } from 'vue-i18n'
 
 export default defineComponent({
   created () {
     window.getWebviewData = this.reciveApp
   },
   setup () {
+    // const i18n = useI18n()
     const route = useRoute()
+
+    console.log(route.query.lang)
+
     const env = ref()
     const chart = ref()
     const popupStatus = ref(false)
@@ -212,11 +217,14 @@ export default defineComponent({
       switchMode,
       modeRef,
       priceComputed,
-      memberRef
+      memberRef,
+      route
     }
   },
   render () {
     const { themeVars, openPopup, stockRef, favoriteRef, favorite, switchMode, priceComputed, memberRef } = this
+    console.log(this.$i18n, this.route)
+    this.$i18n.locale = this.route.query.lang
     return (
       <div className="w-screen h-screen bg-white overflow-hidden flex flex-col">
         <div className="flex-1 w-full overflow-auto">
@@ -244,14 +252,14 @@ export default defineComponent({
             <div className="flex flex-row text-[12px] text-[#999] w-full mt-2">
               <div className="basis-1/3">
                 <div className="flex flex-col justify-between items-start gap-y-3">
-                  <div>开 {(+stockRef.detail?.open).toFixed(3)}</div>
-                  <div>昨收 {(+stockRef.detail?.lastClose).toFixed(3)}</div>
+                  <div>{this.$t('open')} {(+stockRef.detail?.open).toFixed(3)}</div>
+                  <div>{this.$t('close')} {(+stockRef.detail?.lastClose).toFixed(3)}</div>
                 </div>
               </div>
               <div className="basis-1/3">
                 <div className="flex flex-col justify-between items-center gap-y-3">
-                  <div>高 {(+stockRef.detail?.high).toFixed(3)}</div>
-                  <div>低 {(+stockRef.detail?.low).toFixed(3)}</div>
+                  <div>{this.$t('high')} {(+stockRef.detail?.high).toFixed(3)}</div>
+                  <div>{this.$t('low')} {(+stockRef.detail?.low).toFixed(3)}</div>
                 </div>
               </div>
               <div className="basis-1/3">
@@ -367,8 +375,8 @@ export default defineComponent({
           }}
         >
           <div className="flex flex-row justify-between items-center gap-x-3 w-full px-4">
-            <Button round color="#00c537" block onClick={() => openPopup(0)}>開多</Button>
-            <Button round color="#e60101" block onClick={() => openPopup(1)}>開空</Button>
+            <Button round color="#00c537" block onClick={() => openPopup(0)}>{this.$t('long')}</Button>
+            <Button round color="#e60101" block onClick={() => openPopup(1)}>{this.$t('short')}</Button>
           </div>
         </div>
 
@@ -376,16 +384,16 @@ export default defineComponent({
           <div className="flex py-4 bg-white w-full">
             <ConfigProvider themeVars={themeVars} className="w-full">
               <Form className="w-full" onSubmit={this.onSubmit}>
-                <Cell border={false} center title="股票">
+                <Cell border={false} center title={this.$t('stock')}>
                   <div className="text-lg text-black">{ stockRef.name }</div>
                 </Cell>
-                <Cell border={false} center title="側面">
+                <Cell border={false} center title={this.$t('mode')}>
                   <div className="flex flex-row gap-x-2 justify-end">
                     <div className={classNames(['w-[50px] text-sm py-1 rounded text-center', this.modeRef === 0 ? 'bg-[#00c537] text-white ' : 'bg-[#f9f9f9] text-[#999]]'])} onClick={() => switchMode(0)}>開多</div>
                     <div className={classNames(['w-[50px] text-sm py-1 rounded text-center', this.modeRef === 1 ? 'bg-[#e60101] text-white ' : 'bg-[#f9f9f9] text-[#999]]'])} onClick={() => switchMode(1)}>開空</div>
                   </div>
                 </Cell>
-                <Cell border={false} center title="型别">
+                <Cell border={false} center title={this.$t('type')}>
                   <div className="flex flex-row gap-x-2 justify-end">
                     <div className={classNames(['w-[50px] text-sm py-1  rounded text-center', this.formData.type === 0 ? 'text-white bg-[#3395FF]' : 'text-[#999] bg-[#f9f9f9]'])} onClick={() => {
                       this.formData.type = 0
@@ -395,21 +403,21 @@ export default defineComponent({
                     }}>限制</div>
                   </div>
                 </Cell>
-                <Cell border={false} center title="數量">
+                <Cell border={false} center title={this.$t('amount')}>
                   <Field size="small" inputAlign="right" type="number" name="amount" v-model={this.formData.amount} placeholder="最小單位1" />
                 </Cell>
                 {
-                  this.formData.type === 1 && <Cell border={false} center title="订单价格">
+                  this.formData.type === 1 && <Cell border={false} center title={this.$t('order_price')}>
                   <Field size="small" inputAlign="right" type="number" name="price" v-model={this.formData.price} placeholder="最小單位1" />
                 </Cell>
                 }
-                <Cell border={false} center title="價格">
+                <Cell border={false} center title={this.$t('money')}>
                   <div className="text-black">{ priceComputed.price }</div>
                 </Cell>
-                <Cell border={false} center title="費用">
+                <Cell border={false} center title={this.$t('fee')}>
                   <div className="text-black">{ priceComputed.fee }</div>
                 </Cell>
-                <Cell border={false} center title="止盈">
+                <Cell border={false} center title={this.$t('stop_surplus')}>
                   <Stepper input-width="100px" button-size="22px" v-model={this.formData.takeProfit} min={0} allowEmpty step="0.001" onPlus={() => {
                     if (this.formData.takeProfit === '') {
                       this.formData.takeProfit = this.stockRef.detail.price
@@ -420,7 +428,7 @@ export default defineComponent({
                     }
                   }}/>
                 </Cell>
-                <Cell border={false} center title="停損">
+                <Cell border={false} center title={this.$t('stop_loss')}>
                   <Stepper input-width="100px" button-size="22px" v-model={this.formData.stopLoss} min={0} allowEmpty step="0.001" onPlus={() => {
                     if (this.formData.stopLoss === '') {
                       this.formData.stopLoss = this.stockRef.detail.price
@@ -431,12 +439,12 @@ export default defineComponent({
                     }
                   }}/>
                 </Cell>
-                <Cell border={false} center title="餘額">
+                <Cell border={false} center title={this.$t('balance')}>
                   <div className="text-black">{memberRef.balance} USDT</div>
                 </Cell>
                 <div className="pt-6 px-4">
                   <Button round block color={this.modeRef === 0 ? '#00c537' : '#e60101'} nativeType="submit">
-                    <div className="text-md">下買單</div>
+                    <div className="text-md">{this.$t('confirm')}</div>
                   </Button>
                 </div>
               </Form>

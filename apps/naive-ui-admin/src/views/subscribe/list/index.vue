@@ -13,7 +13,7 @@
       ref="actionRef"
       :actionColumn="actionColumn"
       @update:checked-row-keys="onCheckedRow"
-      :scroll-x="2000"
+      :scroll-x="1400"
     >
       <template #tableTitle>
         <n-button type="primary" @click="addTable">
@@ -217,11 +217,6 @@
   function handleEdit(record: Recordable) {
     console.log('点击了编辑', record);
     router.push({ name: 'update-subscribe', params: { id: record.id } });
-  }
-
-  function handleDelete(record: Recordable) {
-    console.log('点击了删除', record);
-    window['$message'].info('点击了删除');
   }
 
   function handleSubmit(values: Recordable) {

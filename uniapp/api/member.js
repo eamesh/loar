@@ -44,3 +44,10 @@ export const requestMemberPositionsHistory = function(data) {
 		data
 	})
 }
+
+export const getSubscribeMemberList = function() {
+	return http({
+		url: `/stock/subscribe/member`,
+		method: 'POST',
+	})
+}

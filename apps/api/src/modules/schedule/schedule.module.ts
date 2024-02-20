@@ -6,10 +6,19 @@ import { StockModule } from '../stock/stock.module';
 import { HkStockTask } from './task/stock/hk/hk-stock.task';
 import { HkStockEvent } from './event/stock/hk/hk-stock.event';
 import { FinanceModule } from 'src/providers/finance/finance.module';
+import { IpoTask } from './ipo.task';
+import { NewsTask } from './news.task';
 
 @Module({
-  imports: [HttpModule, StockModule, FinanceModule],
-  providers: [UsStockTask, UsStockEvent, HkStockTask, HkStockEvent],
+  imports: [HttpModule, StockModule, FinanceModule, StockModule],
+  providers: [
+    UsStockTask,
+    UsStockEvent,
+    HkStockTask,
+    HkStockEvent,
+    IpoTask,
+    NewsTask,
+  ],
   exports: [],
 })
 export class ScheduleModule {}

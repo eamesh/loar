@@ -75,7 +75,6 @@
 		methods: {
 			async submit() {
 				uni.showLoading({
-					title: 'Wait'
 				})
 				try{
 					const current = this.currentSelect
@@ -104,6 +103,9 @@
 				this.current = e
 			},
 			async requestDetail() {
+				uni.showLoading({
+					
+				})
 				try{
 					const result = await getSubscribeDetail(this.id)
 					this.detail = result
@@ -121,6 +123,8 @@
 					console.log(e)
 					//TODO handle the exception
 				}
+				
+				uni.hideLoading()
 			}
 		},
 		

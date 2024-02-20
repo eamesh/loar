@@ -48,9 +48,9 @@
             <n-form-item label="发行价（已上市）" path="ipoPrice">
               <n-input-number placeholder="" v-model:value="formValue.ipoPrice" />
             </n-form-item>
-            <n-form-item label="公布结果日" path="resultAt">
+            <!-- <n-form-item label="公布结果日" path="resultAt">
               <n-date-picker type="date" v-model:value="formValue.resultAt" />
-            </n-form-item>
+            </n-form-item> -->
             <n-form-item label="认购数量价格" path="subAmount">
               <n-dynamic-input
                 v-model:value="formValue.subAmount"
@@ -165,12 +165,12 @@
       message: '请选择上市日期',
       trigger: ['blur', 'change'],
     },
-    resultAt: {
-      required: true,
-      type: 'date',
-      message: '请选择公布结果日',
-      trigger: ['blur', 'change'],
-    },
+    // resultAt: {
+    //   required: true,
+    //   type: 'date',
+    //   message: '请选择公布结果日',
+    //   trigger: ['blur', 'change'],
+    // },
     circulation: {
       required: true,
       type: 'number',
@@ -212,7 +212,7 @@
     // remainCirculation: '',
     ipoPrice: '',
     issuePrice: '',
-    resultAt: null,
+    // resultAt: null,
     subAmount: [{ amount: '', price: '' }],
   });
 

@@ -13,14 +13,14 @@
       ref="actionRef"
       :actionColumn="actionColumn"
       @update:checked-row-keys="onCheckedRow"
-      :scroll-x="2400"
+      :scroll-x="1400"
     >
       <template #toolbar>
         <n-button type="primary" @click="reloadTable">刷新数据</n-button>
       </template>
     </BasicTable>
 
-    <n-modal v-model:show="showModal" :show-icon="false" preset="dialog" title="新建">
+    <n-modal v-model:show="showModal" :show-icon="false" preset="dialog" title="设置中签">
       <n-form
         :model="formParams"
         :rules="rules"
@@ -29,20 +29,17 @@
         :label-width="80"
         class="py-4"
       >
-        <n-form-item label="名称" path="name">
-          <n-input placeholder="请输入名称" v-model:value="formParams.name" />
+        <n-form-item label="中签数量" path="amount">
+          <n-input-number placeholder="请输入数量" v-model:value="formParams.amount" />
         </n-form-item>
-        <n-form-item label="地址" path="address">
-          <n-input type="textarea" placeholder="请输入地址" v-model:value="formParams.address" />
-        </n-form-item>
-        <n-form-item label="日期" path="date">
-          <n-date-picker type="datetime" placeholder="请选择日期" v-model:value="formParams.date" />
+        <n-form-item label="中签价格" path="money">
+          <n-input-number placeholder="请输入价格" v-model:value="formParams.money" />
         </n-form-item>
       </n-form>
 
       <template #action>
         <n-space>
-          <n-button @click="() => (showModal = false)">取消</n-button>
+          <n-button @click="handleClose">取消</n-button>
           <n-button type="info" :loading="formBtnLoading" @click="confirmForm">确定</n-button>
         </n-space>
       </template>
@@ -61,23 +58,20 @@
   import { columns } from './columns';
   import { useRouter } from 'vue-router';
   import { type FormRules } from 'naive-ui';
+  import { unref } from 'vue';
 
   const rules: FormRules = {
-    name: {
+    amount: {
       required: true,
       trigger: ['blur', 'input'],
-      message: '请输入名称',
-    },
-    address: {
-      required: true,
-      trigger: ['blur', 'input'],
-      message: '请输入地址',
-    },
-    date: {
       type: 'number',
+      message: '请输入数量',
+    },
+    money: {
       required: true,
-      trigger: ['blur', 'change'],
-      message: '请选择日期',
+      trigger: ['blur', 'input'],
+      type: 'number',
+      message: '请输入价格',
     },
   };
 
@@ -168,14 +162,13 @@
 
   const showModal = ref(false);
   const formBtnLoading = ref(false);
-  const formParams = reactive({
-    name: '',
-    address: '',
-    date: null,
+  let formParams = reactive({
+    money: 0,
+    amount: 0,
   });
 
   const actionColumn = reactive({
-    width: 220,
+    width: 320,
     title: '操作',
     key: 'action',
     fixed: 'right',
@@ -189,9 +182,19 @@
               record,
               type: 1,
             }),
+            type: 'success',
             // 根据业务控制是否显示 isShow 和 auth 是并且关系
             ifShow: () => {
-              return true;
+              return record.type === 0;
+            },
+          },
+          {
+            label: '部分中签',
+            onClick: handleSubscribeSom.bind(null, record),
+            type: 'success',
+            // 根据业务控制是否显示 isShow 和 auth 是并且关系
+            ifShow: () => {
+              return record.type === 0;
             },
           },
           {
@@ -200,8 +203,9 @@
               record,
               type: 2,
             }),
+            type: 'default',
             ifShow: () => {
-              return true;
+              return record.type === 0;
             },
           },
           {
@@ -210,9 +214,18 @@
               record,
               type: 3,
             }),
+            type: 'warning',
             // 根据业务控制是否显示 isShow 和 auth 是并且关系
             ifShow: () => {
-              return true;
+              return record.type === 0;
+            },
+          },
+          {
+            label: '已处理',
+            type: 'primary',
+            // 根据业务控制是否显示 isShow 和 auth 是并且关系
+            ifShow: () => {
+              return record.type !== 0;
             },
           },
         ],
@@ -239,18 +252,27 @@
     actionRef.value.reload();
   }
 
+  const currentId = ref();
+
   function confirmForm(e) {
     e.preventDefault();
     formBtnLoading.value = true;
-    formRef.value.validate((errors) => {
+    formRef.value.validate(async (errors) => {
       if (!errors) {
-        window['$message'].success('新建成功');
-        setTimeout(() => {
-          showModal.value = false;
+        if (formParams.amount <= 0 || formParams.money <= 0) {
+          window['$message'].error('请填写完整信息');
+          return;
+        }
+
+        try {
+          await updateMemberSubscribeType(currentId.value, {
+            type: 4,
+            ...formParams,
+          });
           reloadTable();
-        });
+        } catch (error) {}
+        window['$message'].success('新建成功');
       } else {
-        window['$message'].error('请填写完整信息');
       }
       formBtnLoading.value = false;
     });
@@ -258,7 +280,9 @@
 
   async function handleEdit({ record, type }) {
     try {
-      await updateMemberSubscribeType(record.id, type);
+      await updateMemberSubscribeType(record.id, {
+        type,
+      });
       reloadTable();
     } catch (error) {}
   }
@@ -268,8 +292,22 @@
     reloadTable();
   }
 
+  function handleSubscribeSom(record) {
+    showModal.value = true;
+    currentId.value = record.id;
+  }
+
   function handleReset(values: Recordable) {
     console.log(values);
+  }
+
+  function handleClose() {
+    showModal.value = false;
+    formRef.value.restoreValidation();
+    formParams = Object.assign(unref(formParams), () => ({
+      money: 0,
+      amount: 0,
+    }));
   }
 </script>
 

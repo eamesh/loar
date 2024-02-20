@@ -54,7 +54,7 @@
 	"to_be_listed": "To be listed",
 	"listed": "Listed",
 	"empty": "No Data",
-	"ipo_history": "IPO History",
+	"ipo_history": "Subscription records",
 	"est.total.assets": "Total Stocks Value",
 	"daily.pl": "Daily P&L",
 	"total.stocks.value": "Total Stocks Value",
@@ -122,5 +122,13 @@
 	"deadline": "deadline",
 	"subscribe": "Subscribe",
 	"subscribe_amount": "Subscribe amount",
-	"unbalance": "Freeze funds"
+	"unbalance": "Freeze funds",
+	"subscribe.record": "Subscription records",
+	"quantity": "quantity",
+	"sub_amount": "amount",
+	"win_quantity": "win quantity",
+	"win_amount": "win amount",
+	"time": "Time",
+	"partial": "partial",
+	"recharge_history": "Stored value history"
 }

@@ -4,6 +4,16 @@
     <br />
     <br />
 
+    <n-image width="100" :src="thumbComputed" v-if="!!thumbRef" />
+    <n-upload
+      :action="uploadUrl"
+      :headers="{
+        Authorization: `Bearer ${token}`,
+      }"
+      @finish="handleUpload"
+    >
+      <n-button>上传图片</n-button>
+    </n-upload>
     <n-input v-model:value="mainTitleRef" placeholder="主标题" style="width: 400px" />
 
     <h1 class="mt-4">繁体中文</h1>
@@ -41,9 +51,11 @@
   import '@vueup/vue-quill/dist/vue-quill.snow.css';
   import { useRoute } from 'vue-router';
   import { getAricleById, updateArticle, createArticle } from '@/api/article';
+  import { useUser } from '@/store/modules/user';
   const quillEditorHant = ref();
   const quillEditorEn = ref();
   import { useMessage } from 'naive-ui';
+  import { computed } from 'vue';
   const message = useMessage();
   const route = useRoute();
   const titleRef = ref({
@@ -51,6 +63,10 @@
     'zh-Hant': '',
   });
   const mainTitleRef = ref('');
+  const uploadUrl = ref(`${import.meta.env.VITE_GLOB_API_URL}/api/v1/user/upload`);
+
+  const userStore = useUser();
+  const token = userStore.getToken;
 
   const content = ref({
     'zh-Hant': '',
@@ -59,6 +75,20 @@
   // const myContentHtml = ref(
   //   '<h4>Naive Ui Admin 是一个基于 vue3,vite2,TypeScript 的中后台解决方案</h4>'
   // );
+
+  const thumbRef = ref('');
+
+  const thumbComputed = computed(() => {
+    return `${import.meta.env.VITE_GLOB_API_URL}/${thumbRef.value}`;
+  });
+
+  function handleUpload({ event }: any) {
+    const data = JSON.parse(event.target.response);
+    console.log(data);
+    const file = data.file.path;
+
+    thumbRef.value = `${file}`;
+  }
 
   const options = reactive({
     modules: {
@@ -103,13 +133,13 @@
         if (route.params.id) {
           await updateArticle(route.params.id, {
             title: mainTitleRef.value,
-            thumb: '',
+            thumb: thumbRef.value,
             content,
           });
         } else {
           await createArticle({
             title: mainTitleRef.value,
-            thumb: '',
+            thumb: thumbRef.value,
             content,
           });
         }
@@ -135,6 +165,7 @@
           en: content.en.title,
           'zh-Hant': content['zh-Hant'].title,
         };
+        thumbRef.value = result.thumb;
         quillEditorEn.value.setHTML(content.en.content);
         quillEditorHant.value.setHTML(content['zh-Hant'].content);
       }

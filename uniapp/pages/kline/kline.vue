@@ -18,13 +18,14 @@
 		computed: {
 			...mapState(useAppStore, {
 				user: 'user',
-				token: 'token'
+				token: 'token',
+				language: 'language'
 			}),
 			webviewUrl() {
 				// return '/hybrid/html/index.html'
 				// const symbol = this.query.symbol.split('.')[0]
 				const url = process.env.NODE_ENV === 'development' ? 'http://localhost:8082' : 'https://kline.loar.cc'
-				let target = `${url}/#/?uid=${this.user.id}&id=${this.query.id}`
+				let target = `${url}/#/?uid=${this.user.id}&id=${this.query.id}&lang=${this.language.key}`
 				
 				if (this.token) {
 					target += `&token=${encodeURIComponent(this.token)}`

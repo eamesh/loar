@@ -1,9 +1,11 @@
 const config = {
 	development: {
-		api: 'http://localhost:3000/api/v1'
+		api: 'http://localhost:3000/api/v1',
+		host: 'http://localhost:3000'
 	},
 	production: {
-		api: 'https://api.loar.cc/api/v1'
+		api: 'https://api.loar.cc/api/v1',
+		host: 'https://api.loar.cc'
 	}
 }
 

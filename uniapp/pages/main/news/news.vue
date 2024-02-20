@@ -12,7 +12,7 @@
 						</view>
 					</view>
 					<view class="basis-1/2">
-						<gui-image src="/static/img/article_01.jpg" border-radius="20rpx" :width="340" :height="242"
+						<gui-image :src="`${config.host}/${item.thumb}`" border-radius="20rpx" :width="340" :height="242"
 							mode="cover"></gui-image>
 					</view>
 				</view>
@@ -44,6 +44,7 @@
 	import { mapState } from 'pinia'
 import { useAppStore } from '../../../store/app';
 import dayjs from 'dayjs'
+import config from '@/config'
 	// 模拟页码
 	export default {
 		data() {
@@ -54,7 +55,8 @@ import dayjs from 'dayjs'
 				apiLoadingStatus: false,
 				page: 1,
 				lists: [],
-				dayjs
+				dayjs,
+				config
 			}
 		},
 		computed: {

@@ -24,12 +24,10 @@ export function updateSubscribeDetail(id, params) {
   });
 }
 
-export function updateMemberSubscribeType(id, type) {
+export function updateMemberSubscribeType(id, params) {
   return http.request({
     url: `/stock/update/${id}/subscribe`,
     method: 'post',
-    params: {
-      type,
-    },
+    params,
   });
 }

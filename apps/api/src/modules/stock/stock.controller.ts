@@ -213,7 +213,7 @@ export class StockController {
 
   @Get('subscribe')
   @HttpCode(HttpStatus.OK)
-  async getNews(@Query('market') market: string, @Query('type') type: number) {
+  async getNews(@Query('market') market: string, @Query('type') type: string) {
     return await this.stockSubscribe.getNews(market, type);
   }
 
@@ -267,5 +267,15 @@ export class StockController {
     @Body() payload: any,
   ) {
     return await this.stockSubscribe.updateMemberSubscribeType(id, payload);
+  }
+
+  @Post('subscribe/member')
+  @HttpCode(HttpStatus.OK)
+  @UseGuards(MemberGuard)
+  async getSubscribeMemberList(@Req() req, @Body() payload: any) {
+    return await this.stockSubscribe.getMemberSubscribeList(
+      req.user as Member,
+      payload,
+    );
   }
 }

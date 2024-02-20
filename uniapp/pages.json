@@ -240,7 +240,7 @@
 			"path" : "pages/wallet/rechargeRecords/rechargeRecords",
 			"style" : 
 			{
-				"navigationBarTitleText" : "儲值历史",
+				"navigationBarTitleText" : "%recharge_history%",
 				"enablePullDownRefresh" : false,
 				"navigationBarBackgroundColor": "#fff"
 			}

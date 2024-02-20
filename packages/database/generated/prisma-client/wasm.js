@@ -297,6 +297,7 @@ exports.Prisma.MemberSubscribeScalarFieldEnum = {
   actualAmount: 'actualAmount',
   status: 'status',
   type: 'type',
+  position: 'position',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt',
   stockSubscribeId: 'stockSubscribeId',

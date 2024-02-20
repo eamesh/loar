@@ -28,7 +28,9 @@
 								<view class="text-[#999] text-[20rpx]">{{ item.code }}</view>
 							</view>
 						</view>
-						<view class="px-5 py-1 bg-[#3395FF] text-white text-xs font-semibold rounded-md" @click="$go(`/pages/main/ipo/confirm?id=${item.id}`, 'navigateTo')">{{ $t('subscribe') }}</view>
+						<view class="px-5 py-1  text-white text-xs font-semibold rounded-md" :class="[item.isEnable ? 'bg-[#3395FF]' : 'bg-gray-600']" @click="() => {
+							item.isEnable && $go(`/pages/main/ipo/confirm?id=${item.id}`, 'navigateTo')
+						}">{{ $t('subscribe') }}</view>
 					</view>
 					<view class="flex flex-row text-[22rpx] text-[#999] font-sans">
 						<view class="basis-1/3">{{ $t('ipo_price') }}</view>

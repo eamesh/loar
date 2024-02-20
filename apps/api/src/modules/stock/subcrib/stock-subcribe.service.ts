@@ -1,14 +1,18 @@
 import { Member, Prisma } from '@loar/database';
-import { Injectable } from '@nestjs/common';
+import { BadRequestException, Injectable } from '@nestjs/common';
 import { PrismaService } from 'src/providers/prisma/prisma.service';
 import * as dayjs from 'dayjs';
 import { OrderSubscribeDto } from './dto/order-subscribe.dto';
 import { v4 as uuidv4 } from 'uuid';
 import Decimal from 'decimal.js';
+import { SettingService } from 'src/modules/setting/setting.service';
 
 @Injectable()
 export class StockSubscribeService {
-  constructor(private readonly prisma: PrismaService) {}
+  constructor(
+    private readonly prisma: PrismaService,
+    private readonly setting: SettingService,
+  ) {}
 
   async createNew(payload: Prisma.StockSubscribeUncheckedCreateInput) {
     const { startAt, endAt, upAt, resultAt } = payload;
@@ -25,21 +29,53 @@ export class StockSubscribeService {
     });
   }
 
-  async getNews(market: string, type: number) {
+  async getNews(market: string, type: string) {
+    // type 1 未到认购时间 或
+
+    const where: any = {
+      market,
+      status: 1,
+    };
+
+    switch (type) {
+      case '1':
+        // 已开启订阅或未到订阅时间
+        where.endAt = {
+          gte: dayjs().toDate(),
+        };
+        break;
+
+      case '4':
+        where.endAt = {
+          lte: dayjs().toDate(),
+        };
+
+        where.upAt = {
+          gte: dayjs().toDate(),
+        };
+        break;
+      case '5':
+        where.upAt = {
+          lte: dayjs().toDate(),
+        };
+        break;
+    }
+    console.log(where, typeof type);
+
     const markets = await this.prisma.stockMarket.findMany();
     const result = await this.prisma.stockSubscribe.findMany({
-      where: {
-        market,
-        type: +type,
-      },
+      where,
     });
 
     return result.map((item) => {
       const market = markets.find((market) => market.code === item.market);
-
+      const start = item.startAt;
+      const end = item.endAt;
+      const isEnable = dayjs().isAfter(start) && dayjs().isBefore(end);
       return {
         ...item,
         market,
+        isEnable,
       };
     });
   }
@@ -103,11 +139,21 @@ export class StockSubscribeService {
       },
     });
 
+    let money = new Decimal(payload.money);
+
+    if (market.code !== 'US') {
+      money = await this.setting.handleToUSDT(money, market.code);
+    }
+
     // 获取用户余额
     // 冻结余额
-    const unBalanceWait = new Decimal(payload.money);
+    const unBalanceWait = money;
     const balance = member.balance.sub(unBalanceWait);
     const unBalance = member.unBalance.add(unBalanceWait);
+
+    if (balance.lt(0)) {
+      throw new BadRequestException();
+    }
 
     // 缩减剩余
     // await this.prisma.stockSubscribe.update({
@@ -151,26 +197,36 @@ export class StockSubscribeService {
 
   async updateMemberSubscribeType(id: number, payload: any) {
     const { type } = payload;
-    // 中签
-    if (type === 1) {
-      const subscribe = await this.prisma.memberSubscribe.findFirst({
-        where: {
-          id,
-        },
-      });
 
+    if ([2, 3].includes(type)) {
       return await this.prisma.memberSubscribe.update({
         where: {
           id,
         },
         data: {
           type,
-          winningAmount: subscribe.amount,
-          winningPrice: subscribe.money,
-          totalWinningPrice: subscribe.money,
-          actualAmount: subscribe.amount,
         },
       });
+    }
+
+    // 中签
+    const subscribe = await this.prisma.memberSubscribe.findFirst({
+      where: {
+        id,
+      },
+    });
+
+    let winningAmount = subscribe.amount;
+    let winningPrice = subscribe.money;
+    let totalWinningPrice = subscribe.money;
+    let actualAmount = subscribe.money;
+
+    if (type === 4) {
+      // 中签数量
+      winningAmount = payload.amount;
+      winningPrice = payload.money;
+      totalWinningPrice = payload.money;
+      actualAmount = payload.money;
     }
 
     return await this.prisma.memberSubscribe.update({
@@ -179,6 +235,20 @@ export class StockSubscribeService {
       },
       data: {
         type,
+        winningAmount,
+        winningPrice,
+        totalWinningPrice,
+        actualAmount,
+      },
+    });
+  }
+
+  async getMemberSubscribeList(member: Member, payload: any) {
+    const { market } = payload;
+    console.log(market);
+    return await this.prisma.memberSubscribe.findMany({
+      where: {
+        memberId: member.id,
       },
     });
   }

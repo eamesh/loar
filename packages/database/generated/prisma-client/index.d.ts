@@ -13089,6 +13089,7 @@ export namespace Prisma {
     actualAmount: Decimal | null
     status: number | null
     type: number | null
+    position: number | null
     stockSubscribeId: number | null
     memberId: number | null
   }
@@ -13103,6 +13104,7 @@ export namespace Prisma {
     actualAmount: Decimal | null
     status: number | null
     type: number | null
+    position: number | null
     stockSubscribeId: bigint | null
     memberId: bigint | null
   }
@@ -13121,6 +13123,7 @@ export namespace Prisma {
     actualAmount: Decimal | null
     status: number | null
     type: number | null
+    position: number | null
     createdAt: Date | null
     updatedAt: Date | null
     stockSubscribeId: bigint | null
@@ -13141,6 +13144,7 @@ export namespace Prisma {
     actualAmount: Decimal | null
     status: number | null
     type: number | null
+    position: number | null
     createdAt: Date | null
     updatedAt: Date | null
     stockSubscribeId: bigint | null
@@ -13161,6 +13165,7 @@ export namespace Prisma {
     actualAmount: number
     status: number
     type: number
+    position: number
     createdAt: number
     updatedAt: number
     stockSubscribeId: number
@@ -13179,6 +13184,7 @@ export namespace Prisma {
     actualAmount?: true
     status?: true
     type?: true
+    position?: true
     stockSubscribeId?: true
     memberId?: true
   }
@@ -13193,6 +13199,7 @@ export namespace Prisma {
     actualAmount?: true
     status?: true
     type?: true
+    position?: true
     stockSubscribeId?: true
     memberId?: true
   }
@@ -13211,6 +13218,7 @@ export namespace Prisma {
     actualAmount?: true
     status?: true
     type?: true
+    position?: true
     createdAt?: true
     updatedAt?: true
     stockSubscribeId?: true
@@ -13231,6 +13239,7 @@ export namespace Prisma {
     actualAmount?: true
     status?: true
     type?: true
+    position?: true
     createdAt?: true
     updatedAt?: true
     stockSubscribeId?: true
@@ -13251,6 +13260,7 @@ export namespace Prisma {
     actualAmount?: true
     status?: true
     type?: true
+    position?: true
     createdAt?: true
     updatedAt?: true
     stockSubscribeId?: true
@@ -13358,6 +13368,7 @@ export namespace Prisma {
     actualAmount: Decimal | null
     status: number
     type: number
+    position: number
     createdAt: Date
     updatedAt: Date | null
     stockSubscribeId: bigint
@@ -13397,6 +13408,7 @@ export namespace Prisma {
     actualAmount?: boolean
     status?: boolean
     type?: boolean
+    position?: boolean
     createdAt?: boolean
     updatedAt?: boolean
     stockSubscribeId?: boolean
@@ -13418,6 +13430,7 @@ export namespace Prisma {
     actualAmount?: boolean
     status?: boolean
     type?: boolean
+    position?: boolean
     createdAt?: boolean
     updatedAt?: boolean
     stockSubscribeId?: boolean
@@ -13448,6 +13461,7 @@ export namespace Prisma {
       actualAmount: Prisma.Decimal | null
       status: number
       type: number
+      position: number
       createdAt: Date
       updatedAt: Date | null
       stockSubscribeId: bigint
@@ -13860,6 +13874,7 @@ export namespace Prisma {
     readonly actualAmount: FieldRef<"MemberSubscribe", 'Decimal'>
     readonly status: FieldRef<"MemberSubscribe", 'Int'>
     readonly type: FieldRef<"MemberSubscribe", 'Int'>
+    readonly position: FieldRef<"MemberSubscribe", 'Int'>
     readonly createdAt: FieldRef<"MemberSubscribe", 'DateTime'>
     readonly updatedAt: FieldRef<"MemberSubscribe", 'DateTime'>
     readonly stockSubscribeId: FieldRef<"MemberSubscribe", 'BigInt'>
@@ -21224,6 +21239,7 @@ export namespace Prisma {
     actualAmount: 'actualAmount',
     status: 'status',
     type: 'type',
+    position: 'position',
     createdAt: 'createdAt',
     updatedAt: 'updatedAt',
     stockSubscribeId: 'stockSubscribeId',
@@ -22527,6 +22543,7 @@ export namespace Prisma {
     actualAmount?: DecimalNullableFilter<"MemberSubscribe"> | Decimal | DecimalJsLike | number | string | null
     status?: IntFilter<"MemberSubscribe"> | number
     type?: IntFilter<"MemberSubscribe"> | number
+    position?: IntFilter<"MemberSubscribe"> | number
     createdAt?: DateTimeFilter<"MemberSubscribe"> | Date | string
     updatedAt?: DateTimeNullableFilter<"MemberSubscribe"> | Date | string | null
     stockSubscribeId?: BigIntFilter<"MemberSubscribe"> | bigint | number
@@ -22548,6 +22565,7 @@ export namespace Prisma {
     actualAmount?: SortOrderInput | SortOrder
     status?: SortOrder
     type?: SortOrder
+    position?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrderInput | SortOrder
     stockSubscribeId?: SortOrder
@@ -22572,6 +22590,7 @@ export namespace Prisma {
     actualAmount?: DecimalNullableFilter<"MemberSubscribe"> | Decimal | DecimalJsLike | number | string | null
     status?: IntFilter<"MemberSubscribe"> | number
     type?: IntFilter<"MemberSubscribe"> | number
+    position?: IntFilter<"MemberSubscribe"> | number
     createdAt?: DateTimeFilter<"MemberSubscribe"> | Date | string
     updatedAt?: DateTimeNullableFilter<"MemberSubscribe"> | Date | string | null
     stockSubscribeId?: BigIntFilter<"MemberSubscribe"> | bigint | number
@@ -22593,6 +22612,7 @@ export namespace Prisma {
     actualAmount?: SortOrderInput | SortOrder
     status?: SortOrder
     type?: SortOrder
+    position?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrderInput | SortOrder
     stockSubscribeId?: SortOrder
@@ -22621,6 +22641,7 @@ export namespace Prisma {
     actualAmount?: DecimalNullableWithAggregatesFilter<"MemberSubscribe"> | Decimal | DecimalJsLike | number | string | null
     status?: IntWithAggregatesFilter<"MemberSubscribe"> | number
     type?: IntWithAggregatesFilter<"MemberSubscribe"> | number
+    position?: IntWithAggregatesFilter<"MemberSubscribe"> | number
     createdAt?: DateTimeWithAggregatesFilter<"MemberSubscribe"> | Date | string
     updatedAt?: DateTimeNullableWithAggregatesFilter<"MemberSubscribe"> | Date | string | null
     stockSubscribeId?: BigIntWithAggregatesFilter<"MemberSubscribe"> | bigint | number
@@ -24436,6 +24457,7 @@ export namespace Prisma {
     actualAmount?: Decimal | DecimalJsLike | number | string | null
     status?: number
     type?: number
+    position?: number
     createdAt?: Date | string
     updatedAt?: Date | string | null
     stockSubscribeId: bigint | number
@@ -24456,6 +24478,7 @@ export namespace Prisma {
     actualAmount?: Decimal | DecimalJsLike | number | string | null
     status?: number
     type?: number
+    position?: number
     createdAt?: Date | string
     updatedAt?: Date | string | null
     stockSubscribeId: bigint | number
@@ -24476,6 +24499,7 @@ export namespace Prisma {
     actualAmount?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
     status?: IntFieldUpdateOperationsInput | number
     type?: IntFieldUpdateOperationsInput | number
+    position?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     stockSubscribeId?: BigIntFieldUpdateOperationsInput | bigint | number
@@ -24496,6 +24520,7 @@ export namespace Prisma {
     actualAmount?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
     status?: IntFieldUpdateOperationsInput | number
     type?: IntFieldUpdateOperationsInput | number
+    position?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     stockSubscribeId?: BigIntFieldUpdateOperationsInput | bigint | number
@@ -24516,6 +24541,7 @@ export namespace Prisma {
     actualAmount?: Decimal | DecimalJsLike | number | string | null
     status?: number
     type?: number
+    position?: number
     createdAt?: Date | string
     updatedAt?: Date | string | null
     stockSubscribeId: bigint | number
@@ -24536,6 +24562,7 @@ export namespace Prisma {
     actualAmount?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
     status?: IntFieldUpdateOperationsInput | number
     type?: IntFieldUpdateOperationsInput | number
+    position?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     stockSubscribeId?: BigIntFieldUpdateOperationsInput | bigint | number
@@ -24555,6 +24582,7 @@ export namespace Prisma {
     actualAmount?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
     status?: IntFieldUpdateOperationsInput | number
     type?: IntFieldUpdateOperationsInput | number
+    position?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     stockSubscribeId?: BigIntFieldUpdateOperationsInput | bigint | number
@@ -26284,6 +26312,7 @@ export namespace Prisma {
     actualAmount?: SortOrder
     status?: SortOrder
     type?: SortOrder
+    position?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
     stockSubscribeId?: SortOrder
@@ -26300,6 +26329,7 @@ export namespace Prisma {
     actualAmount?: SortOrder
     status?: SortOrder
     type?: SortOrder
+    position?: SortOrder
     stockSubscribeId?: SortOrder
     memberId?: SortOrder
   }
@@ -26318,6 +26348,7 @@ export namespace Prisma {
     actualAmount?: SortOrder
     status?: SortOrder
     type?: SortOrder
+    position?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
     stockSubscribeId?: SortOrder
@@ -26338,6 +26369,7 @@ export namespace Prisma {
     actualAmount?: SortOrder
     status?: SortOrder
     type?: SortOrder
+    position?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
     stockSubscribeId?: SortOrder
@@ -26354,6 +26386,7 @@ export namespace Prisma {
     actualAmount?: SortOrder
     status?: SortOrder
     type?: SortOrder
+    position?: SortOrder
     stockSubscribeId?: SortOrder
     memberId?: SortOrder
   }
@@ -27635,6 +27668,7 @@ export namespace Prisma {
     actualAmount?: Decimal | DecimalJsLike | number | string | null
     status?: number
     type?: number
+    position?: number
     createdAt?: Date | string
     updatedAt?: Date | string | null
     stockSubscribeId: bigint | number
@@ -27654,6 +27688,7 @@ export namespace Prisma {
     actualAmount?: Decimal | DecimalJsLike | number | string | null
     status?: number
     type?: number
+    position?: number
     createdAt?: Date | string
     updatedAt?: Date | string | null
     stockSubscribeId: bigint | number
@@ -27833,6 +27868,7 @@ export namespace Prisma {
     actualAmount?: DecimalNullableFilter<"MemberSubscribe"> | Decimal | DecimalJsLike | number | string | null
     status?: IntFilter<"MemberSubscribe"> | number
     type?: IntFilter<"MemberSubscribe"> | number
+    position?: IntFilter<"MemberSubscribe"> | number
     createdAt?: DateTimeFilter<"MemberSubscribe"> | Date | string
     updatedAt?: DateTimeNullableFilter<"MemberSubscribe"> | Date | string | null
     stockSubscribeId?: BigIntFilter<"MemberSubscribe"> | bigint | number
@@ -28848,6 +28884,7 @@ export namespace Prisma {
     actualAmount?: Decimal | DecimalJsLike | number | string | null
     status?: number
     type?: number
+    position?: number
     createdAt?: Date | string
     updatedAt?: Date | string | null
     stockSubscribeId: bigint | number
@@ -28980,6 +29017,7 @@ export namespace Prisma {
     actualAmount?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
     status?: IntFieldUpdateOperationsInput | number
     type?: IntFieldUpdateOperationsInput | number
+    position?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     stockSubscribeId?: BigIntFieldUpdateOperationsInput | bigint | number
@@ -28999,6 +29037,7 @@ export namespace Prisma {
     actualAmount?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
     status?: IntFieldUpdateOperationsInput | number
     type?: IntFieldUpdateOperationsInput | number
+    position?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     stockSubscribeId?: BigIntFieldUpdateOperationsInput | bigint | number
@@ -29018,6 +29057,7 @@ export namespace Prisma {
     actualAmount?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
     status?: IntFieldUpdateOperationsInput | number
     type?: IntFieldUpdateOperationsInput | number
+    position?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     stockSubscribeId?: BigIntFieldUpdateOperationsInput | bigint | number

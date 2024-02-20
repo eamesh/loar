@@ -140,31 +140,35 @@ export class StockService {
   }
 
   async stockPanel(id: number) {
-    // 获取股票
-    const symboldResult = await this.prisma.stockSymbol.findFirst({
-      where: {
-        id,
-      },
-    });
+    try {
+      // 获取股票
+      const symboldResult = await this.prisma.stockSymbol.findFirst({
+        where: {
+          id,
+        },
+      });
 
-    // 获取市场
-    const marketResult = await this.prisma.stockMarket.findFirst({
-      where: {
-        code: symboldResult.market,
-      },
-    });
+      // 获取市场
+      const marketResult = await this.prisma.stockMarket.findFirst({
+        where: {
+          code: symboldResult.market,
+        },
+      });
 
-    // 获取当前股票价格
-    const detail = await this.shuhai.getSymbolDetail(
-      symboldResult.code,
-      symboldResult.syncMarket,
-    );
+      // 获取当前股票价格
+      const detail = await this.shuhai.getSymbolDetail(
+        symboldResult.code,
+        symboldResult.syncMarket,
+      );
 
-    return {
-      ...symboldResult,
-      marketResult,
-      detail,
-    };
+      return {
+        ...symboldResult,
+        marketResult,
+        detail,
+      };
+    } catch (error) {
+      console.log(error);
+    }
   }
 
   async createStock(stock: CreateStockDto) {

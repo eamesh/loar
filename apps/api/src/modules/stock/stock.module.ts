@@ -29,6 +29,6 @@ import { StockResourceService } from './resource/stock-resource.service';
     SymbolController,
     StockResourceController,
   ],
-  exports: [StockService, UsStockService],
+  exports: [StockService, UsStockService, HandleStockService],
 })
 export class StockModule {}
