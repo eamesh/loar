@@ -1,13 +1,13 @@
 <template>
 	<view class="p-4">
 		<view class="flex flex-row text-gray-400 font-sans text-[22rpx]">
-			<view class="basis-1/4">金额</view>
-			<view class="basis-1/4">实际金额</view>
-			<view class="basis-1/4 text-center">状态</view>
+			<view class="basis-1/4">{{$t('money')}}</view>
+			<view class="basis-1/4">{{$t('real_money')}}</view>
+			<view class="basis-1/4 text-center">{{ $t('status') }}</view>
 			<view class="basis-1/4 text-right">{{ $t('table.time') }}</view>
 		</view>
 		
-		<view v-if="lists.length" class="flex flex-row items-center font-sans text-xs mt-5" v-for="(item,index) in lists">
+		<view v-if="lists.length" class="flex flex-row items-center font-sans text-xs mt-5" v-for="(item,index) in lists" :key="item.id">
 			<view class="basis-1/4">{{ item.money }}</view>
 			<view class="basis-1/4">{{ item.rechargeMoney }}</view>
 			<view class="basis-1/4 text-center">{{ status[item.status] }}</view>
@@ -35,10 +35,10 @@
 		computed: {
 			status() {
 				return {
-					'01': '拒绝',
-					0: '待审很',
-					1: '已审核',
-					2: '已审核',
+					'01': this.$t("refuse"),
+					0: this.$t("audit"),
+					1: this.$t("audited"),
+					2: this.$t("audited"),
 				}
 			}
 		},

@@ -15,8 +15,8 @@ import { MemberGuard } from '../guard/member.guard';
 
 @Controller('member/upload')
 export class UploadController {
-  @Post()
-  @UseGuards(MemberGuard)
+  @Post('file')
+  // @UseGuards(MemberGuard)
   @UseInterceptors(
     LocalFilesInterceptor({
       fieldName: 'file',
@@ -24,7 +24,10 @@ export class UploadController {
     }),
   )
   upload(@UploadedFile() file: Express.Multer.File) {
-    return file;
+    return {
+      status: 'ok',
+      file,
+    };
   }
 
   @Post('files')

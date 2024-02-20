@@ -28,14 +28,14 @@
 								<view class="text-[#999] text-[20rpx]">{{ item.code }}</view>
 							</view>
 						</view>
-						<view class="px-5 py-1 bg-[#3395FF] text-white text-xs font-semibold rounded-md" @click="$go(`/pages/main/ipo/confirm?id=${item.id}`, 'navigateTo')">订阅</view>
+						<view class="px-5 py-1 bg-[#3395FF] text-white text-xs font-semibold rounded-md" @click="$go(`/pages/main/ipo/confirm?id=${item.id}`, 'navigateTo')">{{ $t('subscribe') }}</view>
 					</view>
 					<view class="flex flex-row text-[22rpx] text-[#999] font-sans">
-						<view class="basis-1/3">發行價</view>
+						<view class="basis-1/3">{{ $t('ipo_price') }}</view>
 						<view class="basis-2/3 text-black">{{ item.ipoPrice }} {{ item.market.currency }}</view>
 					</view>
 					<view class="flex flex-row text-[22rpx] text-[#999] font-sans">
-						<view class="basis-1/3">截止日期</view>
+						<view class="basis-1/3">{{ $t('deadline') }}</view>
 						<view class="basis-1/3 text-black">{{ dayjs(item.endAt).format("YYYY-MM-DD") }}</view>
 						<view class="basis-1/3 text-black flex justify-end">
 							<view class="text-[#3395FF] pr-1">{{ dayjs(item.endAt).diff(dayjs(), 'day') }}</view>

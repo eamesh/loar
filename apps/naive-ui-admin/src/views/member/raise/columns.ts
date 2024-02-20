@@ -1,6 +1,6 @@
 import { BasicColumn } from '@/components/Table';
 import dayjs from 'dayjs';
-import { NTag } from 'naive-ui';
+import { NImage, NTag } from 'naive-ui';
 import { h } from 'vue';
 
 export const columns: BasicColumn<any>[] = [
@@ -16,6 +16,15 @@ export const columns: BasicColumn<any>[] = [
   {
     title: '上传凭证',
     key: 'screen',
+    render(row) {
+      console.log(row.screen);
+      return row.screen.map((item) => {
+        return h(NImage, {
+          src: `${import.meta.env.VITE_IMAGE_HOST}/${item}`,
+          width: 40,
+        });
+      });
+    },
   },
   {
     title: '入金金额',

@@ -23,7 +23,7 @@
 			<view class="gui-add-list-reup gui-flex gui-columns gui-justify-content-center gui-align-items-center" 
 			@tap.stop="retry" :data-index="index" v-if="item.error">
 				<text class="gui-add-list-reup-icon gui-icons icon-retry gui-color-white">&#xe635;</text>
-				<text class="gui-add-list-reup-text gui-color-white">失败重试</text>
+				<!-- <text class="gui-add-list-reup-text gui-color-white">失败重试</text> -->
 			</view>
 			<!-- 删除 -->
 			<text class="gui-add-list-remove gui-icons" 

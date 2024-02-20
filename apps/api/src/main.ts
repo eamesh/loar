@@ -17,7 +17,11 @@ async function bootstrap() {
     // allowedHeaders: ['Authorization', 'content-type'],
     // methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
   });
-  app.use(helmet());
+  app.use(
+    helmet({
+      crossOriginResourcePolicy: false,
+    }),
+  );
 
   app.setGlobalPrefix('api');
   app.enableVersioning({

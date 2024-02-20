@@ -3,11 +3,11 @@
 		<template v-slot:gBody>
 			<view class="px-4 py-2 font-sans">
 				<view class="mt-3">
-					<text class="text-xs text-gray-500">帳戶類型</text>
+					<!-- <text class="text-xs text-gray-500">帳戶類型</text> -->
 				</view>
 				<view class="mt-3 gui-bg-gray rounded-md px-3">
 					<view class="flex flex-row justify-between items-center">
-						<view>可提金額</view>
+						<view>{{ $t('withdraw.enter_address') }}</view>
 						<view class="gui-form-input flex">
 							<view class="flex flex-row items-center justify-center gap-4 text-xs text-gray-500">
 								<view>USD</view>
@@ -19,22 +19,22 @@
 				
 				<view class="mt-3 gui-bg-gray rounded-md px-3">
 					<view class="flex flex-row justify-between items-center">
-						<input class="gui-form-input" placeholder="USDT 地址" v-model="address" />
+						<input class="gui-form-input" :placeholder="$t('usdt.address')" v-model="address" />
 					</view>
 				</view>
 				
 				<view class="mt-3 gui-bg-gray rounded-md px-3">
 					<view class="flex flex-row justify-between items-center">
-						<input type="number" class="gui-form-input" placeholder="請輸入提現金額" v-model="money" />
+						<input type="number" class="gui-form-input" :placeholder="$t('withdraw.enter_money')" v-model="money" />
 					</view>
 				</view>
 				
 				<view class="text-[20rpx] text-gray-400 mt-4">
-					最低金額：<text class="text-black">{{ min }}</text>
+					{{ $t('max_withdraw') }}：<text class="text-black">{{ min }}</text>
 				</view>
 				
 				<view class="text-[20rpx] text-gray-400 mt-4">
-					最大金額：<text class="text-black">{{ max }}</text>
+					{{ $t('max_withdraw') }}：<text class="text-black">{{ max }}</text>
 				</view>
 			</view>
 		</template>
@@ -42,9 +42,9 @@
 		<template v-slot:gFooter>
 			<view class="h-[220rpx] bg-white footer flex flex-col justify-center ">
 				<view class="flex flex-col justify-between items-center gap-3 px-4">
-					<view class="text-xs text-[#3395ff]"  @click="$go('/pages/wallet/fundRecords/fundRecords', 'navigateTo')">提幣歷史</view>
+					<view class="text-xs text-[#3395ff]"  @click="$go('/pages/wallet/fundRecords/fundRecords', 'navigateTo')">{{ $t('withdraw.history') }}</view>
 					<button type="default" class="gui-bg-primary gui-noborder w-full rounded-3xl" @click="submit">
-						<text class="gui-color-white gui-button-text font-semibold font-sans">確認</text>
+						<text class="gui-color-white gui-button-text font-semibold font-sans">{{ $t('confirm') }}</text>
 					</button>
 				</view>
 			</view>
@@ -92,7 +92,7 @@
 			submit: async function() {
 				if (!this.address || !this.money) {
 					uni.showToast({
-						title: '表单验证失败',
+						title: this.$t('form.validate_error'),
 						icon: 'none'
 					})
 					return
@@ -100,7 +100,7 @@
 				
 				if (this.money > this.balance || this.money < this.min || this.money > this.max ) {
 					uni.showToast({
-						title: '表单验证失败',
+						title: this.$t('form.validate_error'),
 						icon: 'none'
 					})
 					return
@@ -117,6 +117,10 @@
 					uni.showToast({
 						title: 'Success',
 						icon: 'none'
+					})
+					
+					uni.switchTab({
+						url: "/pages/main/trade/trade"
 					})
 				}catch(e){
 					uni.showToast({

@@ -7,29 +7,29 @@
 				<view class="text-[#999] text-[22rpx]">{{ detail.code }}</view>
 			</view>
 			<view class="flex flex-row text-[#999] justify-between items-center">
-				<view>發行價</view>
+				<view>{{ $t('ipo_price') }}</view>
 				<view class="text-black">{{ detail.ipoPrice }} {{ detail.market?.currency }}</view>
 			</view>
 			<view class="flex flex-row text-[#999] justify-between items-center">
-				<view>截止日期</view>
+				<view>{{ $t('deadline') }}</view>
 				<view class="text-black flex justify-end">
 					{{ dayjs(detail.endAt).format("YYYY-MM-DD HH:mm:ss") }}
 				</view>
 			</view>
 			<view class="flex flex-col text-[#999] gap-y-3">
-				<view>購買數量</view>
+				<view></view>
 				<view class="px-4 gui-bg-gray rounded-md">
 					<gui-select-list @change="handleChange" :items="select"></gui-select-list>
 				</view>
 			</view>
 			<view class="flex flex-row text-[#999] justify-between items-center">
-				<view>金額</view>
+				<view>{{ $t('money') }}</view>
 				<view class="text-black flex justify-end">
 					{{ money }}
 				</view>
 			</view>
 			<view class="flex flex-row text-[#999] justify-between items-center">
-				<view>凍結資金</view>
+				<view>{{ $t('unbalance') }}</view>
 				<view class="text-black flex justify-end">
 					{{ money }}
 				</view>
@@ -89,6 +89,10 @@
 					uni.showToast({
 						title: 'Success'
 					})
+					
+					uni.switchTab({
+						url: "/pages/main/ipo/ipo"
+					})
 				}catch(e){
 					//TODO handle the exception
 				}
@@ -107,8 +111,8 @@
 						const checked = idx === 0
 						return {
 							...item,
-							title: `数量: ${item.amount}`,
-							desc: `金额: ${item.price}`,
+							title: `${this.$t('amount')}: ${item.amount}`,
+							desc: `${this.$t('money')}: ${item.price}`,
 							checked
 						}
 					})
