@@ -64,14 +64,15 @@ export default defineComponent({
     }
 
     async function getProfile () {
-      const result = await axios.get(`${process.env.VUE_APP_KLINE_HOST}/api/v1/member`, {
-        headers: {
-          'content-type': 'application/json',
-          Authorization: `Bearer ${decodeURIComponent(route.query.token)}`
-        }
-      })
-
-      memberRef.value.balance = result.data.balance
+      if (route.query.token) {
+        const result = await axios.get(`${process.env.VUE_APP_KLINE_HOST}/api/v1/member`, {
+          headers: {
+            'content-type': 'application/json',
+            Authorization: `Bearer ${decodeURIComponent(route.query.token)}`
+          }
+        })
+        memberRef.value.balance = result.data.balance
+      }
     }
 
     async function checkFavorite () {
