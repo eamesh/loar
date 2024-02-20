@@ -83,9 +83,9 @@ export class StockSubscribeService {
     payload: OrderSubscribeDto,
     member: Member,
   ) {
-    // await prisma.$transaction(async (prisma) => {
+    // await this.prisma.$transaction(async (prisma) => {
     // 获取新股
-    const subscribe = await prisma.stockSubscribe.findFirst({
+    const subscribe = await this.prisma.stockSubscribe.findFirst({
       where: {
         id,
       },
@@ -97,7 +97,7 @@ export class StockSubscribeService {
     // }
 
     // 获取市场
-    const market = await prisma.stockMarket.findFirst({
+    const market = await this.prisma.stockMarket.findFirst({
       where: {
         code: subscribe.market,
       },
@@ -110,7 +110,7 @@ export class StockSubscribeService {
     const unBalance = member.unBalance.add(unBalanceWait);
 
     // 缩减剩余
-    // await prisma.stockSubscribe.update({
+    // await this.prisma.stockSubscribe.update({
     //   where: {
     //     id,
     //   },
@@ -120,7 +120,7 @@ export class StockSubscribeService {
     // });
 
     // 下单
-    const result = await prisma.memberSubscribe.create({
+    const result = await this.prisma.memberSubscribe.create({
       data: {
         market: market.code,
         name: subscribe.name,
