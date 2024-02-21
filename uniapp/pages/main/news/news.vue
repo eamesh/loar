@@ -93,7 +93,7 @@ export default {
 			page++;
 			this.apiLoadingStatus = false;
 			if(isReload){
-				this.$refs.guipage.toast('数据已刷新');
+				this.$refs.guipage.toast(this.$t('refresh.completed'));
 			}
 		}
 	}

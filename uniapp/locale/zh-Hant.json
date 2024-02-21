@@ -130,5 +130,8 @@
 	"win_amount": "中簽金額",
 	"time": "時間",
 	"partial": "部分審核",
-	"recharge_history": "儲值历史"
+	"recharge_history": "儲值历史",
+	"refresh.completed": "數據已刷新",
+	"loading": "加載中",
+	"loading_success": "已加載全部數據"
 }

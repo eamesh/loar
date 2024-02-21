@@ -246,6 +246,9 @@ let page = 1;
 			// 	return this.navBars.find(item => this.currentIndex === item.id).type
 			// },
 
+			loarTexts() {
+				return ['',this.$t('loading'), this.$t('loading_success'), this.$t('empty')]
+			},
 			navBars() {
 				const data = [{
 					id: 0,
@@ -352,11 +355,11 @@ let page = 1;
 
 				try {
 					await deleteFavorite(ids)
-					graceJS.msg("删除成功")
+					graceJS.msg("Success")
 					this.indexFavorite()
 				} catch (e) {
 					//TODO handle the exception
-					graceJS.msg("删除失败")
+					graceJS.msg("Fail")
 				}
 			},
 

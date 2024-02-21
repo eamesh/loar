@@ -73,7 +73,7 @@ export default {
 		url = `${config.api}${url}`
 		if (!fail) {
 			fail = () => {
-				this.msg("网络请求失败");
+				this.msg("Network Error");
 			}
 		}
 		if (!headers) {
@@ -106,7 +106,7 @@ export default {
 		url = `${config.api}${url}`
 		if (!fail) {
 			fail = () => {
-				this.msg("网络请求失败");
+				this.msg("Network Failed");
 			}
 		}
 		if (!headers) {
