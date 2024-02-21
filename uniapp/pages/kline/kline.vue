@@ -11,7 +11,7 @@
 		data() {
 			return {
 				currentWebview: null,
-				query: {}
+				query: {},
 			}
 		},
 
