@@ -164,6 +164,7 @@ export default defineComponent({
             priceCurrency: stock.marketResult.currency,
             id: stock.id
           },
+          locale: 'en',
           watermark: '',
           // styles: 'candle_solid',
           drawingBarVisible: false,
