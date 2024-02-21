@@ -5,7 +5,8 @@
 	:loadmore="true" 
 	@loadmorefun="getdata" 
 	:refresh="true" 
-		@reload="reload" 
+	@reload="reload"
+	:loadMoreText="loadTexts"
 	ref="guipage">
 		<template v-slot:gBody>
 			<view class="p-4 flex flex-col gap-y-4">
@@ -58,7 +59,10 @@ export default {
 	computed: {
 		...mapState(useAppStore, {
 			language: 'language',
-		})
+		}),
+		loadTexts() {
+			return ['',this.$t('loading'), this.$t('loading_success'), this.$t('empty')]
+		},
 	},
 	methods: {
 		reload : function(){

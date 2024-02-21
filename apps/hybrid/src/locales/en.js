@@ -15,5 +15,9 @@ export default {
   stop_loss: 'Stop Loss',
   balance: 'Balance',
   confirm: 'Confirm',
-  order_price: 'Order Price'
+  order_price: 'Order Price',
+  order_success: 'Success',
+  order_fail: 'Fail',
+  order_ing: 'Ordering',
+  min_num: 'Min 1'
 }

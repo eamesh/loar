@@ -15,5 +15,9 @@ export default {
   stop_loss: '止損',
   balance: '余額',
   confirm: '下買單',
-  order_price: '訂單價格'
+  order_price: '訂單價格',
+  order_success: '下單成功',
+  order_fail: '下單失敗',
+  order_ing: '下單中',
+  min_num: '最小單位1'
 }

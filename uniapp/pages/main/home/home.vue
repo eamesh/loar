@@ -2,6 +2,7 @@
 	<gui-page customHeader isSwitchPage :statusBarClass="['bg-white']" :apiLoadingStatus="apiLoadingStatus" 
 	:loadmore="true" 
 	@loadmorefun="indexStocks" 
+	:loadMoreText="loadTexts"
 	ref="guipage">
 		<template v-slot:gFixedTop>
 			<view class="flex justify-center items-end bg-white h-[80rpx] font-sans">
@@ -246,7 +247,7 @@ let page = 1;
 			// 	return this.navBars.find(item => this.currentIndex === item.id).type
 			// },
 
-			loarTexts() {
+			loadTexts() {
 				return ['',this.$t('loading'), this.$t('loading_success'), this.$t('empty')]
 			},
 			navBars() {

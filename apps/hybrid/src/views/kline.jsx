@@ -8,14 +8,15 @@ import { KlineDatafeed } from './kline-datafeed'
 import { useRoute } from 'vue-router'
 import axios from 'axios'
 import classNames from 'classnames'
-// import { useI18n } from 'vue-i18n'
+import { useI18n } from 'vue-i18n'
 
 export default defineComponent({
   created () {
     window.getWebviewData = this.reciveApp
   },
   setup () {
-    // const i18n = useI18n()
+    const i18n = useI18n()
+    console.log(i18n)
     const route = useRoute()
     const feeRate = ref(0)
     const loading = ref(false)
@@ -25,7 +26,8 @@ export default defineComponent({
     const chart = ref()
     const popupStatus = ref(false)
     const stockRef = ref({})
-    const formData = reactive({
+
+    const defaultValue = {
       price: '',
       code: '',
       amount: '',
@@ -34,7 +36,8 @@ export default defineComponent({
       type: 0,
       stopLoss: '',
       takeProfit: ''
-    })
+    }
+    const formData = reactive(defaultValue)
     const themeVars = reactive({
       CellGroupInsetPadding: 0,
       CellFontSize: '14rpx'
@@ -192,11 +195,11 @@ export default defineComponent({
     async function onSubmit (value) {
       console.log(value)
       if (!value.amount || value.amount < 1) {
-        showToast('最小單位1')
+        showToast(i18n.t('min_num'))
         return
       }
       showLoadingToast({
-        message: '下单中...',
+        message: i18n.t('order_ing'),
         forbidClick: true
       })
       try {
@@ -207,10 +210,14 @@ export default defineComponent({
           }
         })
 
-        showSuccessToast('下单成功')
+        showSuccessToast(i18n.t('order_success'))
+        popupStatus.value = false
+        formData.amount = ''
+        formData.stopLoss = ''
+        formData.takeProfit = ''
       } catch (error) {
         console.log(error)
-        const message = error.response.data?.message || '下单失败'
+        const message = error.response.data?.message || i18n.t('order_fail')
         showFailToast(message)
       }
     }
@@ -220,6 +227,9 @@ export default defineComponent({
     })
 
     function openPopup (mode) {
+      formData.amount = ''
+      formData.stopLoss = ''
+      formData.takeProfit = ''
       popupStatus.value = true
       switchMode(mode)
     }
