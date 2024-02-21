@@ -47,6 +47,9 @@ export default {
 		}
 	},
 	onLoad: function() {
+		
+	},
+	onShow() {
 		// 页码加载时第一次加载数据
 		page = 1;
 		this.lists = [];

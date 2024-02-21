@@ -1,5 +1,8 @@
 <template>
-	<gui-page customHeader isSwitchPage :statusBarClass="['bg-white']">
+	<gui-page customHeader isSwitchPage :statusBarClass="['bg-white']" :apiLoadingStatus="apiLoadingStatus" 
+	:loadmore="true" 
+	@loadmorefun="indexStocks" 
+	ref="guipage">
 		<template v-slot:gFixedTop>
 			<view class="flex justify-center items-end bg-white h-[80rpx] font-sans">
 				<gui-switch-navigation :items="navBars" :currentIndex="currentIndex" @change="navchange" textAlign="center"
@@ -9,7 +12,7 @@
 		</template>
 
 		<template v-slot:gBody>
-			<view class="h-[80rpx]"></view>
+			<!-- <view class="h-[80rpx]"></view> -->
 			<view v-if="currentIndex !== 0">
 				<view class="flex justify-between items-center pt-4 px-4 gap-3 font-sans">
 					<template v-for="(item,index) in indexData.hot" :key="index">
@@ -64,7 +67,7 @@
 							<view class="basis-1/3 text-right">{{ $t("table.chg") }}</view>
 						</view>
 
-						<view v-for="(item,index) in stocks.data" :key="item.id"
+						<view v-for="(item,index) in stocks" :key="item.id"
 							class="flex flex-row flex-nowrap justify-between items-center font-medium mt-6"
 							@click="$go(`/pages/kline/kline?id=${item.id}`, 'navigateTo')">
 							<view class="basis-1/2 overflow-hidden">
@@ -72,7 +75,7 @@
 									<view class="truncate text-[22rpx]">{{ item.name }}</view>
 									<view class="flex flex-row items-center gap-x-1 mt-2">
 										<view class="bg-[#3395FF] text-white text-[18rpx] px-[10rpx] py-[3px] rounded-sm">
-											{{ item.market.toUpperCase() }}</view>
+											{{ item.market }}</view>
 										<view class="text-[#999] text-[20rpx]">{{ item.code }}</view>
 									</view>
 								</view>
@@ -205,7 +208,7 @@
 		getFavorite,
 		deleteFavorite
 	} from '@/api/stock.js'
-
+let page = 1;
 	export default {
 		data() {
 			return {
@@ -225,7 +228,10 @@
 				tmpIndexData: {
 
 				},
-				tmpStocks: {}
+				tmpStocks: {},
+				pageLoading      : true,
+				// 用于记录是否有 api 请求正在执行
+				apiLoadingStatus : false
 			}
 		},
 		computed: {
@@ -279,6 +285,8 @@
 
 		watch: {
 			market() {
+				this.$refs.guipage.toTop();
+				page = 1
 				this.indexRequest()
 				this.indexStocks()
 			},
@@ -304,10 +312,10 @@
 
 				this.handleSubIndexData()
 			},
-			stocks() {
-				this.handleUnsubStocks()
-				this.handleSubStocks()
-			}
+			// stocks() {
+			// 	this.handleUnsubStocks()
+			// 	this.handleSubStocks()
+			// }
 		},
 
 		methods: {
@@ -386,12 +394,29 @@
 			async indexStocks() {
 				try {
 					console.log(123)
-					const page = 1;
 					const result = await getStocks(this.market, page);
+					
+					if (page >= 2) {
+						this.stocks = this.stocks.concat(result.data)
+						this.handleSubStocks(result.data)
+						if(page >= result.lastPage){
+							this.$refs.guipage.nomore();
+						}
+					} else {
+						this.handleUnsubStocks()
+						this.handleSubStocks(result.data)
+						this.pageLoading = false;
+						this.stocks = result.data
+					}
+					this.$refs.guipage.stopLoadmore();
+					
+					page++;
+					this.apiLoadingStatus = false;
 					console.log(result)
-					this.stocks = result
+					
 				} catch (e) {
 					console.log(e)
+					this.$refs.guipage.stopLoadmore();
 					//TODO handle the exception
 				}
 			},
@@ -427,8 +452,8 @@
 				})
 			},
 
-			handleSubStocks() {
-				this.stocks?.data && this.stocks.data.forEach(item => {
+			handleSubStocks(stocks) {
+				stocks.forEach(item => {
 					this.tmpStocks[item.code] = item
 					uni.$ws.ws.emit('sub', `ws.market.${this.market}.${item.code}`)
 				})
@@ -479,6 +504,7 @@
 		},
 
 		onShow() {
+			page = 1;
 			this.indexRequest()
 			this.indexStocks()
 		}
