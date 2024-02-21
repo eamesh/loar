@@ -282,9 +282,11 @@ export default defineComponent({
                 <div className="flex flex-row justify-start items-center">
                   <div className="text-[#00c537] text-md font-semibold font-mono">{ stockRef.detail?.price }</div>
                 </div>
-                <div className="flex flex-row justify-start items-center gap-x-3">
-                  <div className={classNames(['text-[10px] font-mono', parseFloat(stockRef.detail?.chg) >= 0 ? 'text-[#00c537] ' : 'text-[#e60101]'])}>{parseFloat(stockRef.detail?.chg) > 0 ? '+' : ''}{stockRef.detail?.chg}</div>
-                  <div className={classNames(['text-[10px] font-mono', parseFloat(stockRef.detail?.chg) >= 0 ? 'text-[#00c537] ' : 'text-[#e60101]'])}>{parseFloat(stockRef.detail?.chg) > 0 ? '+' : ''}{stockRef.detail?.chgV}</div>
+                <div className="flex flex-row justify-start items-center gap-x-3" style={{
+                  fontFamily: 'PingFang SC'
+                }}>
+                  <div className={classNames(['text-[10px]', parseFloat(stockRef.detail?.chg) >= 0 ? 'text-[#00c537] ' : 'text-[#e60101]'])}>{parseFloat(stockRef.detail?.chg) > 0 ? '+' : ''}{stockRef.detail?.chg}</div>
+                  <div className={classNames(['text-[10px]', parseFloat(stockRef.detail?.chg) >= 0 ? 'text-[#00c537] ' : 'text-[#e60101]'])}>{parseFloat(stockRef.detail?.chg) > 0 ? '+' : ''}{stockRef.detail?.chgV}</div>
                 </div>
 
                 <div className="flex flex-row text-[12px] text-[#999] w-full mt-2">
