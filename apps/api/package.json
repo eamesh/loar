@@ -21,6 +21,7 @@
     "test:e2e": "jest --config ./test/jest-e2e.json"
   },
   "dependencies": {
+    "@google-cloud/translate": "^8.1.0",
     "@nestjs/axios": "^3.0.1",
     "@nestjs/cache-manager": "^2.2.0",
     "@nestjs/common": "^10.0.0",
@@ -58,6 +59,7 @@
     "passport-custom": "^1.1.1",
     "passport-jwt": "^4.0.1",
     "passport-local": "^1.0.0",
+    "puppeteer": "^22.0.0",
     "qs": "^6.11.2",
     "reflect-metadata": "^0.1.13",
     "rxjs": "^7.8.1",

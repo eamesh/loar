@@ -20114,6 +20114,9 @@ export namespace Prisma {
     id: bigint | null
     thumb: string | null
     title: string | null
+    market: string | null
+    crawlerThumb: string | null
+    source: string | null
     content: string | null
     createdAt: Date | null
     updatedAt: Date | null
@@ -20123,6 +20126,9 @@ export namespace Prisma {
     id: bigint | null
     thumb: string | null
     title: string | null
+    market: string | null
+    crawlerThumb: string | null
+    source: string | null
     content: string | null
     createdAt: Date | null
     updatedAt: Date | null
@@ -20132,6 +20138,9 @@ export namespace Prisma {
     id: number
     thumb: number
     title: number
+    market: number
+    crawlerThumb: number
+    source: number
     content: number
     createdAt: number
     updatedAt: number
@@ -20151,6 +20160,9 @@ export namespace Prisma {
     id?: true
     thumb?: true
     title?: true
+    market?: true
+    crawlerThumb?: true
+    source?: true
     content?: true
     createdAt?: true
     updatedAt?: true
@@ -20160,6 +20172,9 @@ export namespace Prisma {
     id?: true
     thumb?: true
     title?: true
+    market?: true
+    crawlerThumb?: true
+    source?: true
     content?: true
     createdAt?: true
     updatedAt?: true
@@ -20169,6 +20184,9 @@ export namespace Prisma {
     id?: true
     thumb?: true
     title?: true
+    market?: true
+    crawlerThumb?: true
+    source?: true
     content?: true
     createdAt?: true
     updatedAt?: true
@@ -20265,6 +20283,9 @@ export namespace Prisma {
     id: bigint
     thumb: string
     title: string
+    market: string | null
+    crawlerThumb: string | null
+    source: string | null
     content: string
     createdAt: Date
     updatedAt: Date | null
@@ -20293,6 +20314,9 @@ export namespace Prisma {
     id?: boolean
     thumb?: boolean
     title?: boolean
+    market?: boolean
+    crawlerThumb?: boolean
+    source?: boolean
     content?: boolean
     createdAt?: boolean
     updatedAt?: boolean
@@ -20302,6 +20326,9 @@ export namespace Prisma {
     id?: boolean
     thumb?: boolean
     title?: boolean
+    market?: boolean
+    crawlerThumb?: boolean
+    source?: boolean
     content?: boolean
     createdAt?: boolean
     updatedAt?: boolean
@@ -20315,6 +20342,9 @@ export namespace Prisma {
       id: bigint
       thumb: string
       title: string
+      market: string | null
+      crawlerThumb: string | null
+      source: string | null
       content: string
       createdAt: Date
       updatedAt: Date | null
@@ -20715,6 +20745,9 @@ export namespace Prisma {
     readonly id: FieldRef<"Article", 'BigInt'>
     readonly thumb: FieldRef<"Article", 'String'>
     readonly title: FieldRef<"Article", 'String'>
+    readonly market: FieldRef<"Article", 'String'>
+    readonly crawlerThumb: FieldRef<"Article", 'String'>
+    readonly source: FieldRef<"Article", 'String'>
     readonly content: FieldRef<"Article", 'String'>
     readonly createdAt: FieldRef<"Article", 'DateTime'>
     readonly updatedAt: FieldRef<"Article", 'DateTime'>
@@ -21348,6 +21381,9 @@ export namespace Prisma {
     id: 'id',
     thumb: 'thumb',
     title: 'title',
+    market: 'market',
+    crawlerThumb: 'crawlerThumb',
+    source: 'source',
     content: 'content',
     createdAt: 'createdAt',
     updatedAt: 'updatedAt'
@@ -23134,6 +23170,9 @@ export namespace Prisma {
     id?: BigIntFilter<"Article"> | bigint | number
     thumb?: StringFilter<"Article"> | string
     title?: StringFilter<"Article"> | string
+    market?: StringNullableFilter<"Article"> | string | null
+    crawlerThumb?: StringNullableFilter<"Article"> | string | null
+    source?: StringNullableFilter<"Article"> | string | null
     content?: StringFilter<"Article"> | string
     createdAt?: DateTimeFilter<"Article"> | Date | string
     updatedAt?: DateTimeNullableFilter<"Article"> | Date | string | null
@@ -23143,6 +23182,9 @@ export namespace Prisma {
     id?: SortOrder
     thumb?: SortOrder
     title?: SortOrder
+    market?: SortOrderInput | SortOrder
+    crawlerThumb?: SortOrderInput | SortOrder
+    source?: SortOrderInput | SortOrder
     content?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrderInput | SortOrder
@@ -23155,6 +23197,9 @@ export namespace Prisma {
     NOT?: ArticleWhereInput | ArticleWhereInput[]
     thumb?: StringFilter<"Article"> | string
     title?: StringFilter<"Article"> | string
+    market?: StringNullableFilter<"Article"> | string | null
+    crawlerThumb?: StringNullableFilter<"Article"> | string | null
+    source?: StringNullableFilter<"Article"> | string | null
     content?: StringFilter<"Article"> | string
     createdAt?: DateTimeFilter<"Article"> | Date | string
     updatedAt?: DateTimeNullableFilter<"Article"> | Date | string | null
@@ -23164,6 +23209,9 @@ export namespace Prisma {
     id?: SortOrder
     thumb?: SortOrder
     title?: SortOrder
+    market?: SortOrderInput | SortOrder
+    crawlerThumb?: SortOrderInput | SortOrder
+    source?: SortOrderInput | SortOrder
     content?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrderInput | SortOrder
@@ -23181,6 +23229,9 @@ export namespace Prisma {
     id?: BigIntWithAggregatesFilter<"Article"> | bigint | number
     thumb?: StringWithAggregatesFilter<"Article"> | string
     title?: StringWithAggregatesFilter<"Article"> | string
+    market?: StringNullableWithAggregatesFilter<"Article"> | string | null
+    crawlerThumb?: StringNullableWithAggregatesFilter<"Article"> | string | null
+    source?: StringNullableWithAggregatesFilter<"Article"> | string | null
     content?: StringWithAggregatesFilter<"Article"> | string
     createdAt?: DateTimeWithAggregatesFilter<"Article"> | Date | string
     updatedAt?: DateTimeNullableWithAggregatesFilter<"Article"> | Date | string | null
@@ -25129,6 +25180,9 @@ export namespace Prisma {
     id?: bigint | number
     thumb: string
     title: string
+    market?: string | null
+    crawlerThumb?: string | null
+    source?: string | null
     content: string
     createdAt?: Date | string
     updatedAt?: Date | string | null
@@ -25138,6 +25192,9 @@ export namespace Prisma {
     id?: bigint | number
     thumb: string
     title: string
+    market?: string | null
+    crawlerThumb?: string | null
+    source?: string | null
     content: string
     createdAt?: Date | string
     updatedAt?: Date | string | null
@@ -25147,6 +25204,9 @@ export namespace Prisma {
     id?: BigIntFieldUpdateOperationsInput | bigint | number
     thumb?: StringFieldUpdateOperationsInput | string
     title?: StringFieldUpdateOperationsInput | string
+    market?: NullableStringFieldUpdateOperationsInput | string | null
+    crawlerThumb?: NullableStringFieldUpdateOperationsInput | string | null
+    source?: NullableStringFieldUpdateOperationsInput | string | null
     content?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -25156,6 +25216,9 @@ export namespace Prisma {
     id?: BigIntFieldUpdateOperationsInput | bigint | number
     thumb?: StringFieldUpdateOperationsInput | string
     title?: StringFieldUpdateOperationsInput | string
+    market?: NullableStringFieldUpdateOperationsInput | string | null
+    crawlerThumb?: NullableStringFieldUpdateOperationsInput | string | null
+    source?: NullableStringFieldUpdateOperationsInput | string | null
     content?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -25165,6 +25228,9 @@ export namespace Prisma {
     id?: bigint | number
     thumb: string
     title: string
+    market?: string | null
+    crawlerThumb?: string | null
+    source?: string | null
     content: string
     createdAt?: Date | string
     updatedAt?: Date | string | null
@@ -25174,6 +25240,9 @@ export namespace Prisma {
     id?: BigIntFieldUpdateOperationsInput | bigint | number
     thumb?: StringFieldUpdateOperationsInput | string
     title?: StringFieldUpdateOperationsInput | string
+    market?: NullableStringFieldUpdateOperationsInput | string | null
+    crawlerThumb?: NullableStringFieldUpdateOperationsInput | string | null
+    source?: NullableStringFieldUpdateOperationsInput | string | null
     content?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -25183,6 +25252,9 @@ export namespace Prisma {
     id?: BigIntFieldUpdateOperationsInput | bigint | number
     thumb?: StringFieldUpdateOperationsInput | string
     title?: StringFieldUpdateOperationsInput | string
+    market?: NullableStringFieldUpdateOperationsInput | string | null
+    crawlerThumb?: NullableStringFieldUpdateOperationsInput | string | null
+    source?: NullableStringFieldUpdateOperationsInput | string | null
     content?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -26721,6 +26793,9 @@ export namespace Prisma {
     id?: SortOrder
     thumb?: SortOrder
     title?: SortOrder
+    market?: SortOrder
+    crawlerThumb?: SortOrder
+    source?: SortOrder
     content?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
@@ -26734,6 +26809,9 @@ export namespace Prisma {
     id?: SortOrder
     thumb?: SortOrder
     title?: SortOrder
+    market?: SortOrder
+    crawlerThumb?: SortOrder
+    source?: SortOrder
     content?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
@@ -26743,6 +26821,9 @@ export namespace Prisma {
     id?: SortOrder
     thumb?: SortOrder
     title?: SortOrder
+    market?: SortOrder
+    crawlerThumb?: SortOrder
+    source?: SortOrder
     content?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder

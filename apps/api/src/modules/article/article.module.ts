@@ -5,5 +5,6 @@ import { ArticleController } from './article.controller';
 @Module({
   providers: [ArticleService],
   controllers: [ArticleController],
+  exports: [ArticleService],
 })
 export class ArticleModule {}

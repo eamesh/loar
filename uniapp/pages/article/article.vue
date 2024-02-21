@@ -1,7 +1,7 @@
 <template>
 	<gui-page>
 		<template v-slot:gBody>
-			<view class="gui-bg-white gui-dark-bg-level-3">
+			<view class="gui-bg-white gui-dark-bg-level-3 p-4">
 				<view v-html="content">
 				</view>
 			</view>
@@ -26,12 +26,12 @@ import { useAppStore } from '../../store/app'
 		},
 		computed: {
 			...mapState(useAppStore, {
-				language: 'language'
+				language: 'language',
 			}),
 			
 			content () {
 				try{
-					return this.detail.content[this.language.key].content
+					return this.detail.content
 				}catch(e){
 					//TODO handle the exception
 					return ''
@@ -42,7 +42,7 @@ import { useAppStore } from '../../store/app'
 		watch: {
 			content() {
 				uni.setNavigationBarTitle({
-					title: this.detail.content[this.language.key].title
+					title: this.detail.title
 				})
 			}
 		},

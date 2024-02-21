@@ -11,20 +11,8 @@
       :request="loadDataTable"
       :row-key="(row:any) => row.id"
       ref="actionRef"
-      :actionColumn="actionColumn"
       @update:checked-row-keys="onCheckedRow"
     >
-      <template #tableTitle>
-        <n-button type="primary" @click="addTable">
-          <template #icon>
-            <n-icon>
-              <PlusOutlined />
-            </n-icon>
-          </template>
-          新建
-        </n-button>
-      </template>
-
       <template #toolbar>
         <n-button type="primary" @click="reloadTable">刷新数据</n-button>
       </template>
@@ -67,9 +55,12 @@
   // import { getTableList } from '@/api/table/list';
   import { getArticles } from '@/api/article';
   import { columns } from './columns';
-  import { PlusOutlined } from '@vicons/antd';
+  // import { PlusOutlined } from '@vicons/antd';
   import { useRouter } from 'vue-router';
   import { type FormRules } from 'naive-ui';
+  import { getMarkets } from '@/api/market/list';
+
+  const markets = ref([]);
 
   const rules: FormRules = {
     // name: {
@@ -92,21 +83,12 @@
 
   const schemas: FormSchema[] = [
     {
-      field: 'status',
+      field: 'market',
       component: 'NSelect',
-      label: '状态',
+      label: '市场',
       componentProps: {
-        placeholder: '请选择新闻状态',
-        options: [
-          {
-            label: '禁用',
-            value: 0,
-          },
-          {
-            label: '启用',
-            value: 1,
-          },
-        ],
+        placeholder: '请选择市场',
+        options: markets,
         onUpdateValue: (e: any) => {
           console.log(e);
         },
@@ -126,34 +108,34 @@
     date: null,
   });
 
-  const actionColumn = reactive({
-    width: 100,
-    title: '操作',
-    key: 'action',
-    fixed: 'right',
-    render(record) {
-      return h(TableAction as any, {
-        style: 'button',
-        actions: [
-          // {
-          //   label: '删除',
-          //   onClick: handleDelete.bind(null, record),
-          //   // 根据业务控制是否显示 isShow 和 auth 是并且关系
-          //   ifShow: () => {
-          //     return true;
-          //   },
-          // },
-          {
-            label: '编辑',
-            onClick: handleEdit.bind(null, record),
-            ifShow: () => {
-              return true;
-            },
-          },
-        ],
-      });
-    },
-  });
+  // const actionColumn = reactive({
+  //   width: 100,
+  //   title: '操作',
+  //   key: 'action',
+  //   fixed: 'right',
+  //   render(record) {
+  //     return h(TableAction as any, {
+  //       style: 'button',
+  //       actions: [
+  //         // {
+  //         //   label: '删除',
+  //         //   onClick: handleDelete.bind(null, record),
+  //         //   // 根据业务控制是否显示 isShow 和 auth 是并且关系
+  //         //   ifShow: () => {
+  //         //     return true;
+  //         //   },
+  //         // },
+  //         {
+  //           label: '编辑',
+  //           onClick: handleEdit.bind(null, record),
+  //           ifShow: () => {
+  //             return true;
+  //           },
+  //         },
+  //       ],
+  //     });
+  //   },
+  // });
 
   const [register, { getFieldsValue }] = useForm({
     gridProps: { cols: '1 s:1 m:2 l:3 xl:4 2xl:4' },
@@ -164,6 +146,18 @@
   function addTable() {
     router.push('/news/create');
   }
+
+  const loadMarkets = async () => {
+    const result = await getMarkets();
+    markets.value = result.map((item) => {
+      return {
+        label: item.code,
+        value: item.code,
+      };
+    });
+  };
+
+  loadMarkets();
 
   const loadDataTable = async (res) => {
     return await getArticles({ ...getFieldsValue(), ...res });

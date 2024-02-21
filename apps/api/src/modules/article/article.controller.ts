@@ -8,10 +8,20 @@ export class ArticleController {
 
   @Post('list')
   async getList(@Body() payload: any) {
-    const { page, pageSize } = payload;
+    // eslint-disable-next-line prefer-const
+    let { page, pageSize, lang, market } = payload;
+
+    const maps = {
+      en: 'US',
+      'zh-Hant': 'HKEX',
+    };
+
+    if (lang) {
+      market = maps[lang];
+    }
 
     const where: any = {};
-    const params = {};
+    const params = { market };
     Object.keys(params).forEach((key) => {
       if (params[key] !== '' && params[key] !== undefined)
         where[key] = params[key];

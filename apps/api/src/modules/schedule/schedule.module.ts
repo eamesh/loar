@@ -7,17 +7,20 @@ import { HkStockTask } from './task/stock/hk/hk-stock.task';
 import { HkStockEvent } from './event/stock/hk/hk-stock.event';
 import { FinanceModule } from 'src/providers/finance/finance.module';
 import { IpoTask } from './ipo.task';
-import { NewsTask } from './news.task';
+import { UsNewsTask } from './news/us-news.task';
+import { HkNewsTask } from './news/hk-news.task';
+import { ArticleModule } from '../article/article.module';
 
 @Module({
-  imports: [HttpModule, StockModule, FinanceModule, StockModule],
+  imports: [HttpModule, StockModule, FinanceModule, StockModule, ArticleModule],
   providers: [
     UsStockTask,
     UsStockEvent,
     HkStockTask,
     HkStockEvent,
     IpoTask,
-    NewsTask,
+    UsNewsTask,
+    HkNewsTask,
   ],
   exports: [],
 })

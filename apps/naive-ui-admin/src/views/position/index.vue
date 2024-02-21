@@ -51,8 +51,8 @@
 </template>
 
 <script lang="ts" setup>
-  import { h, reactive, ref } from 'vue';
-  import { BasicTable, TableAction } from '@/components/Table';
+  import { reactive, ref } from 'vue';
+  import { BasicTable } from '@/components/Table';
   import { BasicForm, FormSchema, useForm } from '@/components/Form/index';
   import { getPostions } from '@/api/stock';
   import { getMarkets } from '@/api/market/list';

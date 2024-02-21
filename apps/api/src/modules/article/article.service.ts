@@ -58,9 +58,34 @@ export class ArticleService {
       },
     });
 
-    return {
-      ...result,
-      content: JSON.parse(result.content),
-    };
+    return result;
+  }
+
+  async createCrawler(articles: any[], market: string) {
+    console.log(articles);
+    for (let index = 0; index < articles.length; index++) {
+      const article = articles[index];
+
+      // 判断是否已经添加
+      const is = await this.prisma.article.findFirst({
+        where: {
+          source: article.source,
+          market,
+        },
+      });
+
+      if (!is) {
+        await this.prisma.article.create({
+          data: {
+            market,
+            title: article.title,
+            content: article.content,
+            thumb: '',
+            crawlerThumb: article.thumb,
+            source: article.source,
+          },
+        });
+      }
+    }
   }
 }

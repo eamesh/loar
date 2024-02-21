@@ -10,7 +10,8 @@
     "admin": "pnpm --filter @loar/admin",
     "app": "pnpm --filter @loar/app",
     "hybrid": "pnpm --filter @loar/hybrid",
-    "locale": "pnpm --filter @loar/locale"
+    "locale": "pnpm --filter @loar/locale",
+    "news": "pnpm --filter @loar/news"
   },
   "devDependencies": {
     "@types/node": "^20.3.1",
