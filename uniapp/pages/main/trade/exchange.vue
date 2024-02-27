@@ -7,13 +7,13 @@
 				<view class="basis-1/2">
 					<view class="flex flex-col gap-y-2">
 						<view>USD</view>
-						<view>0</view>
+						<view>{{ accountBalance.US.balance }}</view>
 					</view>
 				</view>
 				<view class="basis-1/2">
 					<view class="flex flex-col gap-y-2">
 						<view>HKD</view>
-						<view>0</view>
+						<view>{{ accountBalance.HKEX.balance }}</view>
 					</view>
 				</view>
 				<!-- 	<view class="basis-1/2">
