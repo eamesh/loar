@@ -71,11 +71,11 @@
 						</view>
 				
 						<view class="flex flex-row flex-nowrap my-5">
-							<view class="basis-1/3 flex justify-center items-center flex-col" @click="$go('/pages/recharge/usdt/usdt?market=')">
+							<view class="basis-1/3 flex justify-center items-center flex-col" @click="open">
 								<gui-image src="/static/img/deposit.png" :width="40" :height="50"></gui-image>
 								<view class="text-[20rpx] mt-1">{{ $t('deposit') }}</view>
 							</view>
-							<view class="basis-1/3 flex justify-center items-center flex-col" @click="$go('/pages/recharge/usdt/withdraw')">
+							<view class="basis-1/3 flex justify-center items-center flex-col" @click="openDown">
 								<gui-image src="/static/img/reflect.png" :width="40" :height="50"></gui-image>
 								<view class="text-[20rpx] mt-1">{{ $t('withdraw') }}</view>
 							</view>
@@ -169,7 +169,7 @@
 					<view class="gui-relative gui-box-shadow">
 						<view class="bg-white rounded-xl px-4 py-5 flex flex-col gap-y-3 font-sans">
 							<view class="flex flex-row justify-between items-center bg-[#F9F9F9] rounded p-2"
-								@tap="() => { close(); $go('/pages/recharge/card/card', 'navigateTo') }">
+								@tap="openCardWithdraw">
 								<view class="flex flex-row items-center justify-start gap-x-2">
 									<gui-image src="/static/img/card.png" :width="44" :height="46"></gui-image>
 									<view class="text-[#333] text-[24rpx]">{{ $t('wise.deposit') }}</view>
@@ -195,7 +195,7 @@
 					<view class="gui-relative gui-box-shadow">
 						<view class="bg-white rounded-xl px-4 py-5 flex flex-col gap-y-3 font-sans">
 							<view class="flex flex-row justify-between items-center bg-[#F9F9F9] rounded p-2"
-								@tap="() => { closeDown(); $go('/pages/recharge/card/withdraw', 'navigateTo') }">
+								@tap="() => { closeDown(); $go(`/pages/recharge/card/withdraw?market=${current.code}`, 'navigateTo') }">
 								<view class="flex flex-row items-center justify-start gap-x-2">
 									<gui-image src="/static/img/card.png" :width="44" :height="46"></gui-image>
 									<view class="text-[#333] text-[24rpx]">{{ $t('wise.withdraw') }}</view>
@@ -372,6 +372,13 @@
 		},
 		methods: {
 			...mapActions(useAppStore, ['setToken']),
+			openCardWithdraw() {
+				this.close(); 
+				uni.showToast({
+					title: '请联系VIP客服',
+					icon: 'none'
+				})
+			},
 			navchange: function(index) {
 				console.log(index);
 				this.currentIndex = index
@@ -393,6 +400,11 @@
 				this.$refs.positionModal.close();
 			},
 			open: function() {
+				// console.log(this.current)
+				// if (this.current.code !== 'US') {
+				// 	this.$go(`/pages/recharge/card/card?market=${this.current.code}`)
+				// 	return
+				// }
 				this.$refs.guipopup.open();
 			},
 			close: function() {
