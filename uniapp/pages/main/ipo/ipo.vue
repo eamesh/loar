@@ -39,7 +39,7 @@
 					<view class="flex flex-row text-[22rpx] text-[#999] font-sans">
 						<view class="basis-1/3">{{ $t('deadline') }}</view>
 						<view class="basis-1/3 text-black">{{ dayjs(item.endAt).format("YYYY-MM-DD") }}</view>
-						<view class="basis-1/3 text-black flex justify-end">
+						<view class="basis-1/3 text-black flex justify-end" v-if="+dayjs(item.endAt).diff(dayjs(), 'day') >= 0">
 							<view class="text-[#3395FF] pr-1">{{ dayjs(item.endAt).diff(dayjs(), 'day') }}</view>
 							days left
 						</view>

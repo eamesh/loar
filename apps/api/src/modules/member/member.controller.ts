@@ -54,6 +54,12 @@ export class MemberController {
     return await this.member.exchange(body);
   }
 
+  @Post('transer')
+  @UseGuards(MemberGuard)
+  async transer(@Body() payload: any, @Req() req) {
+    return await this.member.transer(payload, req.user as Member);
+  }
+
   @Post('account/list')
   @UseGuards(MemberGuard)
   @HttpCode(HttpStatus.OK)
@@ -264,5 +270,11 @@ export class MemberController {
         };
       }),
     };
+  }
+
+  @Post('type_order')
+  @UseGuards(MemberGuard)
+  async getTypeOrder(@Body() payload: any, @Req() req) {
+    return await this.member.getTypeOrder(payload, req.user as Member);
   }
 }

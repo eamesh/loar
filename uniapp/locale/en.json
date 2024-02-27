@@ -133,5 +133,9 @@
 	"recharge_history": "Stored value history",
 	"refresh.completed": "Already refresh",
 	"loading": "Loading",
-	"loading_success": "Load Sucess"
+	"loading_success": "Load Sucess",
+	"add_stock": "Add Stock",
+	"edit_list": "Edit List",
+	"delete": "Delete",
+	"cancel": "Cancel"
 }

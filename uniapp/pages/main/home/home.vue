@@ -5,10 +5,14 @@
 	:loadMoreText="loadTexts"
 	ref="guipage">
 		<template v-slot:gFixedTop>
-			<view class="flex justify-center items-end bg-white h-[80rpx] font-sans">
+			<view class="flex justify-center items-end bg-white h-[80rpx] font-sans relative">
 				<gui-switch-navigation :items="navBars" :currentIndex="currentIndex" @change="navchange" textAlign="center"
 					:isCenter="true" activeDirection="center" :size="0" :margin="20" padding="30rpx"
 					activeLineHeight="4rpx"></gui-switch-navigation>
+				
+				<view class="h-full flex justify-center items-center absolute" style="right: 40rpx" @click="$go('/pages/search/search', 'navigateTo')">
+					<text class="gui-icons gui-block gui-color-gray gui-text">&#xe604;</text>
+				</view>
 			</view>
 		</template>
 
@@ -86,7 +90,7 @@
 							</view>
 							<view class="basis-1/3 text-right text-xs font-mono"
 								:class="[+(item.change) >= 0 ? 'text-[#00c537]' : 'text-[#e60101]']">
-								{{ +(item.change) >= 0 ? '+' : '' }}{{ item.changePercent }}</view>
+								{{ +(item.change) >= 0 ? '+' : '' }}{{ item.changePercent }}%</view>
 						</view>
 
 					</view>
@@ -142,21 +146,21 @@
 					<view v-if="editCustom" class="flex flex-row justify-between items-center gap-x-5">
 						<button type="default" :plain="true" class="gui-button flex-1"
 							style="border-radius: 50rpx; border: 1px solid #999 !important;" @tap="handleCancel">
-							<view class="text-gray-500 gui-button-text font-sans font-semibold">取消</view>
+							<view class="text-gray-500 gui-button-text font-sans font-semibold">{{ $t('cancel') }}</view>
 						</button>
 						<button type="default" class="gui-button gui-bg-red gui-noborder flex-1" style="border-radius: 50rpx;"
 							@tap="setEditCustom">
-							<view class="text-white font-sans font-semibold" @click="deleteCustom">删除</view>
+							<view class="text-white font-sans font-semibold" @click="deleteCustom">{{ $t('delete') }}</view>
 						</button>
 					</view>
 					<view v-else class="flex flex-row justify-between items-center gap-x-5">
 						<button type="default" :plain="true" class="gui-button flex-1" style="border-radius: 50rpx;"
 							@tap="$go('/pages/search/search', 'navigateTo')">
-							<view class="gui-primary-color gui-button-text font-sans font-semibold">+新增股票</view>
+							<view class="gui-primary-color gui-button-text font-sans font-semibold">+{{ $t('add_stock') }}</view>
 						</button>
 						<button type="default" class="gui-button gui-bg-primary gui-noborder flex-1" style="border-radius: 50rpx;"
 							@tap="setEditCustom">
-							<view class="text-white font-sans font-semibold">編輯清單</view>
+							<view class="text-white font-sans font-semibold">{{ $t('edit_list') }}</view>
 						</button>
 					</view>
 
@@ -168,23 +172,6 @@
 				</view>
 
 			</view>
-
-			<gui-right-menus>
-				<!-- 扩展按钮 -->
-				<template v-slot:menus-more>
-					<view hover-class="gui-tap" @click="$go('/pages/search/search', 'navigateTo')"
-						class="menu-items gui-bg-primary gui-flex gui-columns gui-justify-content-center">
-						<text class="menu-icon gui-block gui-text-center gui-icons gui-color-white">&#xe604;</text>
-					</view>
-				</template>
-				<!-- 核心按钮 -->
-				<template v-slot:menus-primary>
-					<view class="menu-items gui-bg-primary gui-flex gui-columns gui-justify-content-center">
-						<text class="menu-icon gui-color-white gui-block gui-text-center gui-icons">&#xe614;</text>
-					</view>
-				</template>
-			</gui-right-menus>
-
 
 		</template>
 

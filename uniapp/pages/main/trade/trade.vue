@@ -1,6 +1,6 @@
 <template>
-	<gui-page customHeader isSwitchPage :statusBarClass="[token ? 'bg-white' : '']"
-		:class="[currentIndex === 3 ? 'resource' : '']" :isHeaderSized="!!token">
+	<gui-page customHeader fullPage isSwitchPage :statusBarClass="[token ? 'bg-white' : '']"
+		:class="[currentIndex === 2 ? 'resource' : '']" :isHeaderSized="!!token">
 		<template v-slot:gFixedTop>
 			<view class="flex justify-center items-end bg-white h-[80rpx] font-sans" v-if="token">
 				<gui-switch-navigation :items="navTabs" @change="navchange" textAlign="center" :activeFontWeight="500"
@@ -92,8 +92,13 @@
 						</view>
 				
 						<view class="p-4 bg-white rounded-lg font-sans">
-							<gui-switch-navigation :items="navSecondTabs" @change="navSecondChange" :size="0" activeDirection="center"
-								:margin="20" padding="0rpx" textAlign="center"></gui-switch-navigation>
+							<view class="flex flex-row items-center">
+								<gui-switch-navigation width="160" :items="navSecondTabs" @change="navSecondChange" :size="0" activeDirection="center"
+									:margin="20" padding="0rpx" textAlign="center"></gui-switch-navigation>
+									<view class="pb-1 text-sm" @click="$go(`/pages/stock/order/order?market=${current.code}`, 'navigateTo')">
+										{{$t("orders")}}
+									</view>
+							</view>
 				
 							<view class="flex flex-row items-center justify-between text-[20rpx] text-[#999] mt-5">
 								<view class="basis-2/6 overflow-hidden">
@@ -159,107 +164,7 @@
 					</view>
 				
 				</view>
-				<view v-else>
-					<view class="px-4 pt-4">
-						<view
-							class="w-full text-white font-semibold font-sans px-4 pt-5 text-xs box-border aspect-[1/0.43] bg-red-100 rounded-xl bg-cover bg-no-repeat bg-center flex flex-row flex-wrap"
-							style="background-image: url('/static/img/trade_03.png');">
-							<view class="basis-1/2">
-								<view class="flex flex-col gap-y-2">
-									<view>INR</view>
-									<view>0</view>
-								</view>
-							</view>
-							<view class="basis-1/2">
-								<view class="flex flex-col gap-y-2">
-									<view>HKD</view>
-									<view>0</view>
-								</view>
-							</view>
-						<!-- 	<view class="basis-1/2">
-								<view class="flex flex-col gap-y-2">
-									<view>AUD</view>
-									<view>0</view>
-								</view>
-							</view>
-							<view class="basis-1/2">
-								<view class="flex flex-col gap-y-2">
-									<view>USD</view>
-									<view>0</view>
-								</view>
-							</view> -->
-						</view>
-					</view>
-				
-					<view class="px-4 my-4">
-						<view class="text-sm font-sans font-semibold">{{ $t('fund.transfer') }}:</view>
-				
-						<view class="bg-[#F9F9F9] flex flex-row justify-between items-center px-3 py-3 rounded-full mt-4">
-							<view class="flex flex-row rounded-full bg-[#f5f5f5] px-3 py-2 gap-3 items-center" @click="openResource">
-								<image src="/static/country/BSE.png" class="w-[50rpx] h-[50rpx] rounded-full" mode=""></image>
-								<view class="text-[#3395ff]">INR</view>
-								<text class="gui-icons gui-block gui-color-gray gui-text">&#xe603;</text>
-							</view>
-				
-							<view class="flex flex-col items-end justify-between gap-y-1 pr-3">
-								<view class="text-xs text-gray-500">{{ $t('account') }}:0</view>
-								<view class="text-sm">0</view>
-							</view>
-						</view>
-						<view class="flex justify-center items-center py-6">
-							<image src="/static/country/transform02.png" class="w-[60rpx] h-[60rpx]"></image>
-						</view>
-						<view class="bg-[#F9F9F9] flex flex-row justify-between items-center px-3 py-3 rounded-full">
-							<view class="flex flex-row rounded-full bg-[#f5f5f5] px-3 py-2 gap-3 items-center" @click="openResource">
-								<image src="/static/country/HKEX.png" class="w-[50rpx] h-[50rpx] rounded-full" mode=""></image>
-								<view class="text-[#3395ff]">HKD</view>
-								<text class="gui-icons gui-block gui-color-gray gui-text">&#xe603;</text>
-							</view>
-				
-							<view class="flex flex-col items-end justify-between gap-y-1 pr-3">
-								<view class="text-xs text-gray-500">{{ $t('account') }}:0</view>
-								<view class="text-sm">0</view>
-							</view>
-						</view>
-				
-						<view class="flex flex-row justify-between items-center mt-5 font-sans">
-							<view class="text-xs">{{ $t('exchange.rate') }}</view>
-							<view class="flex flex-row items-center gap-x-3 font-mono text-xs">
-								<view>
-									0 INR
-								</view>
-								<image src="/static/country/transform_mini02.png" class="w-[24rpx] h-[24rpx]"></image>
-								<view>
-									0 HKD
-								</view>
-							</view>
-						</view>
-				
-						<view class="h-[220rpx] bg-white footer flex flex-col justify-center mt-14 ">
-							<view class="flex flex-col justify-between items-center gap-3">
-								<view class="text-xs text-[#3395ff]" @click="$go('/pages/wallet/fundRecords/fundRecords', 'navigateTo')">
-									{{ $t('trasfer.record') }}
-								</view>
-								<button type="default" class="gui-bg-primary gui-noborder w-full rounded-3xl">
-									<text class="gui-color-white gui-button-text font-semibold font-sans">{{ $t('confirm') }}</text>
-								</button>
-							</view>
-						</view>
-				
-						<gui-popup ref="resource" position="bottom">
-							<view class="bg-white rounded-t-lg h-[780rpx]">
-								<view class="px-4 pt-3">
-									<view class="flex flex-row justify-between items-center">
-										<view class="font-semibold text-sm" @tap="">{{ $t('cancel') }}</view>
-										<view class="font-semibold text-sm text-[#3395FF]">{{ $t('confirm') }}</view>
-									</view>
-								</view>
-								<!-- iphone 底部适配 -->
-								<gui-iphone-bottom :customClass="['gui-bg-white', 'gui-dark-bg-level-3']"></gui-iphone-bottom>
-							</view>
-						</gui-popup>
-					</view>
-				</view>
+				<Exchange v-else />
 				<gui-popup ref="guipopup">
 					<view class="gui-relative gui-box-shadow">
 						<view class="bg-white rounded-xl px-4 py-5 flex flex-col gap-y-3 font-sans">
@@ -333,7 +238,7 @@
 	} from '@/api/trade.js'
 	import { getProfile } from '@/api/member.js'
 	import { getSettingBykey } from '@/api/setting.js'
-
+	import Exchange from './exchange.vue'
 	export default {
 		data() {
 			return {
@@ -353,7 +258,8 @@
 			}
 		},
 		components: {
-			Blank
+			Blank,
+			Exchange
 		},
 		computed: {
 			...mapState(useAppStore, {
@@ -445,10 +351,10 @@
 					id: 0,
 					name: this.$t("my.holdings")
 				}, 
-				{
-					id: 1,
-					name: this.$t("orders")
-				},
+				// {
+				// 	id: 1,
+				// 	name: this.$t("orders")
+				// },
 				]
 			},
 		},
@@ -456,6 +362,7 @@
 			currentIndex() {
 				console.log(1122)
 				this.requestAccountList(this.market.code)
+				this.getProfile()
 			},
 			positions() {
 				console.log('watch po')
@@ -470,7 +377,6 @@
 				this.currentIndex = index
 			},
 			navSecondChange: function(index) {
-
 			},
 			positionOpen: function(item) {
 				this.closeItem = item
@@ -624,4 +530,8 @@
 		text-align: center;
 		width: 200rpx;
 	}
+/* 	
+	:deep(#guiPageBody) {
+		background-color: white;
+	} */
 </style>

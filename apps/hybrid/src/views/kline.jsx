@@ -9,6 +9,13 @@ import { useRoute } from 'vue-router'
 import axios from 'axios'
 import classNames from 'classnames'
 import { useI18n } from 'vue-i18n'
+import { io } from 'socket.io-client'
+
+const socket = io('ws://localhost:3000')
+
+socket.on('connect', function () {
+  console.log('Connected')
+})
 
 export default defineComponent({
   created () {
@@ -26,6 +33,7 @@ export default defineComponent({
     const chart = ref()
     const popupStatus = ref(false)
     const stockRef = ref({})
+    const accountBalanceRef = ref({})
 
     const defaultValue = {
       price: '',
@@ -48,6 +56,10 @@ export default defineComponent({
     const modeRef = computed(() => formData.mode)
     const memberRef = ref({
       balance: 0
+    })
+
+    const balanceRef = computed(() => {
+      return accountBalanceRef.value[stockRef.value.market]?.balance || 0
     })
 
     function reciveApp (data) {
@@ -86,13 +98,20 @@ export default defineComponent({
 
     async function getProfile () {
       if (route.query.token) {
-        const result = await axios.get(`${process.env.VUE_APP_KLINE_HOST}/api/v1/member`, {
-          headers: {
-            'content-type': 'application/json',
-            Authorization: `Bearer ${decodeURIComponent(route.query.token)}`
-          }
-        })
-        memberRef.value.balance = result.data.balance
+        try {
+          const result = await axios.get(`${process.env.VUE_APP_KLINE_HOST}/api/v1/member`, {
+            headers: {
+              'content-type': 'application/json',
+              Authorization: `Bearer ${decodeURIComponent(route.query.token)}`
+            }
+          })
+
+          accountBalanceRef.value = result.data.accountBalance
+          console.log(accountBalanceRef.value)
+          memberRef.value.balance = result.data.balance
+        } catch (error) {
+          console.log(error)
+        }
       }
     }
 
@@ -152,6 +171,8 @@ export default defineComponent({
       const result = await getStock()
       const stock = stockRef.value = result.data
       loading.value = false
+      console.log(socket)
+      socket.emit('sub', `ws.market.${stock.market}.${stock.code}`)
 
       formData.price = stock.detail?.price
       formData.market = stock.market
@@ -172,7 +193,7 @@ export default defineComponent({
           // styles: 'candle_solid',
           drawingBarVisible: false,
           // 初始化周期
-          period: { multiplier: 1, timespan: 'minute', text: '1m' },
+          period: { multiplier: 'day', timespan: 'day', text: 'D' },
           periods: [
             { multiplier: 1, timespan: 'minute', text: '1m' },
             { multiplier: 5, timespan: 'minute', text: '5m' },
@@ -181,7 +202,8 @@ export default defineComponent({
             { multiplier: 120, timespan: 'minute', text: '2H' },
             { multiplier: 'day', timespan: 'day', text: 'D' }
           ],
-          subIndicators: ['VOL', 'MACD'],
+          mainIndicators: [],
+          subIndicators: [],
           // 这里使用默认的数据接入，如果实际使用中也使用默认数据，需要去 https://polygon.io/ 申请 API key
           datafeed: new KlineDatafeed()
         })
@@ -222,8 +244,21 @@ export default defineComponent({
       }
     }
 
+    function handleEvents (data) {
+      console.log('evvvvv', data)
+      if (typeof data !== 'object') return
+
+      try {
+        stockRef.value = data
+      } catch (error) {
+        console.log(error)
+      }
+    }
+
     onMounted(() => {
       init()
+
+      socket.on('events', handleEvents.bind(this))
     })
 
     function openPopup (mode) {
@@ -250,11 +285,12 @@ export default defineComponent({
       priceComputed,
       memberRef,
       route,
-      loading
+      loading,
+      balanceRef
     }
   },
   render () {
-    const { themeVars, openPopup, stockRef, favoriteRef, favorite, switchMode, priceComputed, memberRef, loading } = this
+    const { themeVars, openPopup, stockRef, favoriteRef, favorite, switchMode, priceComputed, loading, balanceRef } = this
     console.log(this.$i18n, this.route)
     this.$i18n.locale = this.route.query.lang
     return (
@@ -480,7 +516,7 @@ export default defineComponent({
                       }}/>
                     </Cell>
                     <Cell border={false} center title={this.$t('balance')}>
-                      <div className="text-black">{memberRef.balance} USDT</div>
+                      <div className="text-black">{balanceRef} {stockRef.marketResult.currency}</div>
                     </Cell>
                     <div className="pt-6 px-4">
                       <Button round block color={this.modeRef === 0 ? '#00c537' : '#e60101'} nativeType="submit">

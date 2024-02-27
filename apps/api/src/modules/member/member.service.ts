@@ -565,10 +565,56 @@ export class MemberService {
     console.log(value);
 
     const current = new Decimal(value['HKEX']);
-
+    console.log(current);
     // 计算港币兑换USDT
     return from === 'USD'
-      ? new Decimal(money).div(current)
-      : new Decimal(money).mul(current);
+      ? new Decimal(money).div(current).toFixed(4)
+      : new Decimal(money).mul(current).toFixed(4);
+  }
+
+  async transer(payload: any, member: Member) {
+    const { from, to, money } = payload;
+    const map = { USD: 'US', HKD: 'HKEX' };
+
+    const accountBalance = member.accountBalance;
+
+    const fromAccount = accountBalance[map[from]];
+    const toAccount = accountBalance[map[to]];
+
+    const fromBalance = new Decimal(fromAccount.balance).sub(
+      new Decimal(money),
+    );
+
+    if (fromBalance.lt(0)) {
+      throw new BadRequestException('failed');
+    }
+
+    const exchange = await this.exchange({ from, money });
+    const toBalance = new Decimal(toAccount.balance).add(new Decimal(exchange));
+
+    accountBalance[map[from]].balance = fromBalance;
+    accountBalance[map[to]].balance = toBalance;
+
+    await this.prisma.member.update({
+      where: {
+        id: member.id,
+      },
+      data: {
+        accountBalance,
+      },
+    });
+  }
+
+  async getTypeOrder(payload: any, member: Member) {
+    return await this.prisma.stockPosition.findMany({
+      where: {
+        memberId: member.id,
+        type: 1,
+        market: payload.market,
+      },
+      include: {
+        stockSymbol: true,
+      },
+    });
   }
 }

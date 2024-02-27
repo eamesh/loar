@@ -4,7 +4,7 @@
 			
 			<view class="flex flex-row flex-nowrap justify-between items-center text-[#999] font-medium pb-1">
 				<view class="basis-1/2">{{ $t("table.symbol_name") }}</view>
-				<view class="basis-1/3 text-right">{{ $t("table.price") }}</view>
+				<view class="basis-1/3 text-right">{{ type !== 'turnover' ? $t("table.price") : $t('rank.turnover') }}</view>
 				<view class="basis-1/3 text-right">{{ $t("table.chg") }}</view>
 			</view>
 	
@@ -18,7 +18,8 @@
 						</view>
 					</view>
 				</view>
-				<view class="basis-1/3 text-right text-xs font-mono" :class="[+(item.change) > 0 ? 'text-[#00c537]' : 'text-[#e60101]']">{{ +(item.change) > 0 ? '+' : '' }}{{ parseFloat(item.newPrice)?.toFixed(3) }}</view>
+				<view class="basis-1/3 text-right text-xs font-mono" :class="[+(item.change) > 0 ? 'text-[#00c537]' : 'text-[#e60101]']" v-if="type === 'turnover'">{{ item.volume }}</view>
+				<view class="basis-1/3 text-right text-xs font-mono" :class="[+(item.change) > 0 ? 'text-[#00c537]' : 'text-[#e60101]']" v-else>{{ +(item.change) > 0 ? '+' : '' }}{{ parseFloat(item.newPrice)?.toFixed(3) }}</view>
 				<view class="basis-1/3 text-right text-xs font-mono" :class="[+(item.change) > 0 ? 'text-[#00c537]' : 'text-[#e60101]']">{{ +(item.change) > 0 ? '+' : '' }}{{ parseFloat(item.changePercent)?.toFixed(3) }}%</view>
 			</view>
 

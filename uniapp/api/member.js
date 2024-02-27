@@ -51,3 +51,27 @@ export const getSubscribeMemberList = function() {
 		method: 'POST',
 	})
 }
+
+export const exchange = function (data) {
+	return http({
+		url: '/member/exchange',
+		method: 'POST',
+		data
+	})
+}
+
+export const transer = function (data) {
+	return http({
+		url: '/member/transer',
+		method: 'POST',
+		data
+	})
+}
+
+export const getTypeOrder = function (data) {
+	return http({
+		url: '/member/type_order',
+		method: 'POST',
+		data
+	})
+}
