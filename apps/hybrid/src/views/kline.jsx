@@ -11,7 +11,7 @@ import classNames from 'classnames'
 import { useI18n } from 'vue-i18n'
 import { io } from 'socket.io-client'
 
-const socket = io(import.meta.env.VITE_WS)
+const socket = io(process.env.VUE_APP_WS)
 
 socket.on('connect', function () {
   console.log('Connected')
