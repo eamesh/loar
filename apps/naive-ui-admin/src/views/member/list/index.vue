@@ -68,9 +68,9 @@
         :label-width="80"
         class="py-4"
       >
-        <!-- <n-form-item label="证券市场" path="market">
+        <n-form-item label="证券市场" path="market">
           <n-select :options="markets" v-model:value="formParamsRecharge.market" name="market" />
-        </n-form-item> -->
+        </n-form-item>
         <n-form-item label="类型" path="type">
           <n-radio
             :checked="formParamsRecharge.type === '0'"
@@ -112,7 +112,7 @@
   import { BasicForm, FormSchema, useForm } from '@/components/Form/index';
   // import { getTableList } from '@/api/table/list';
   import { getMembers, changeMemberRecharge } from '@/api/member';
-  // import { getMarkets } from '@/api/market/list';
+  import { getMarkets } from '@/api/market/list';
   import { PlusOutlined } from '@vicons/antd';
   import { useRouter } from 'vue-router';
   import { type FormRules } from 'naive-ui';
@@ -120,7 +120,7 @@
   import { NTag } from 'naive-ui';
 
   const markets = ref([]);
-  const columns: BasicColumn<any>[] = ref([]);
+  const columns = ref<BasicColumn<any>[]>([]);
 
   const loadMarkets = async () => {
     columns.value = [
@@ -133,80 +133,82 @@
         title: '邮箱',
         key: 'email',
       },
-      {
-        title: 'USDT余额',
-        key: 'balance',
-      },
-      {
-        title: 'USDT冻结余额',
-        key: 'unBalance',
-      },
-      {
-        title: '用户状态',
-        key: 'status',
-        render(row) {
-          const types: any = [
-            {
-              title: '禁用',
-              type: 'error',
-            },
-            {
-              title: '启用',
-              type: 'success',
-            },
-          ];
-          return h(
-            NTag,
-            {
-              type: types[row.status].type,
-            },
-            types[row.status].title
-          );
-        },
-      },
-      {
-        title: '审核状态',
-        key: 'type',
-        render(row) {
-          const types: any = [
-            {
-              title: '待审核',
-              type: '',
-            },
-            {
-              title: '审核通过',
-              type: 'success',
-            },
-            {
-              title: '审核拒绝',
-              type: 'error',
-            },
-          ];
-          return h(
-            NTag,
-            {
-              type: types[row.type].type,
-            },
-            types[row.type].title
-          );
-        },
-      },
+      // {
+      //   title: 'USDT余额',
+      //   key: 'balance',
+      // },
+      // {
+      //   title: 'USDT冻结余额',
+      //   key: 'unBalance',
+      // },
     ];
-    // const result = await getMarkets();
-    // markets.value = result.map((item) => {
-    //   columns.value.push({
-    //     title: `可用余额${item.code}`,
-    //     key: `accountBalance.${item.code}.balance`,
-    //   });
-    //   columns.value.push({
-    //     title: `冻结余额${item.code}`,
-    //     key: `accountBalance.${item.code}.unBalance`,
-    //   });
-    //   return {
-    //     label: item.code,
-    //     value: item.code,
-    //   };
-    // });
+    const result = await getMarkets();
+    markets.value = result.map((item) => {
+      columns.value.push({
+        title: `可用余额${item.code}`,
+        key: `accountBalance.${item.code}.balance`,
+      });
+      columns.value.push({
+        title: `冻结余额${item.code}`,
+        key: `accountBalance.${item.code}.unBalance`,
+      });
+      return {
+        label: item.code,
+        value: item.code,
+      };
+    });
+
+    columns.value.push({
+      title: '用户状态',
+      key: 'status',
+      render(row) {
+        const types: any = [
+          {
+            title: '禁用',
+            type: 'error',
+          },
+          {
+            title: '启用',
+            type: 'success',
+          },
+        ];
+        return h(
+          NTag,
+          {
+            type: types[row.status].type,
+          },
+          types[row.status].title
+        );
+      },
+    });
+
+    columns.value.push({
+      title: '审核状态',
+      key: 'type',
+      render(row) {
+        const types: any = [
+          {
+            title: '待审核',
+            type: '',
+          },
+          {
+            title: '审核通过',
+            type: 'success',
+          },
+          {
+            title: '审核拒绝',
+            type: 'error',
+          },
+        ];
+        return h(
+          NTag,
+          {
+            type: types[row.type].type,
+          },
+          types[row.type].title
+        );
+      },
+    });
 
     // columns.value = Object.assign(columns.value, [
     //   {
@@ -409,7 +411,7 @@
           await changeMemberRecharge(recordId.value, formParamsRecharge);
           window['$message'].success('操作成功');
           reloadTable();
-          showModalRecharge.value = false;
+          handleCloseRecharge();
         } catch (error) {
           console.log(error);
           window['$message'].error('操作失败');

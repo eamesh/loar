@@ -4596,6 +4596,7 @@ export namespace Prisma {
     id: bigint | null
     money: Decimal | null
     rechargeMoney: Decimal | null
+    market: string | null
     status: number | null
     memberId: bigint | null
     createdAt: Date | null
@@ -4606,6 +4607,7 @@ export namespace Prisma {
     id: bigint | null
     money: Decimal | null
     rechargeMoney: Decimal | null
+    market: string | null
     status: number | null
     memberId: bigint | null
     createdAt: Date | null
@@ -4617,6 +4619,7 @@ export namespace Prisma {
     money: number
     rechargeMoney: number
     screen: number
+    market: number
     status: number
     memberId: number
     createdAt: number
@@ -4645,6 +4648,7 @@ export namespace Prisma {
     id?: true
     money?: true
     rechargeMoney?: true
+    market?: true
     status?: true
     memberId?: true
     createdAt?: true
@@ -4655,6 +4659,7 @@ export namespace Prisma {
     id?: true
     money?: true
     rechargeMoney?: true
+    market?: true
     status?: true
     memberId?: true
     createdAt?: true
@@ -4666,6 +4671,7 @@ export namespace Prisma {
     money?: true
     rechargeMoney?: true
     screen?: true
+    market?: true
     status?: true
     memberId?: true
     createdAt?: true
@@ -4764,6 +4770,7 @@ export namespace Prisma {
     money: Decimal
     rechargeMoney: Decimal
     screen: JsonValue
+    market: string
     status: number
     memberId: bigint
     createdAt: Date
@@ -4794,6 +4801,7 @@ export namespace Prisma {
     money?: boolean
     rechargeMoney?: boolean
     screen?: boolean
+    market?: boolean
     status?: boolean
     memberId?: boolean
     createdAt?: boolean
@@ -4806,6 +4814,7 @@ export namespace Prisma {
     money?: boolean
     rechargeMoney?: boolean
     screen?: boolean
+    market?: boolean
     status?: boolean
     memberId?: boolean
     createdAt?: boolean
@@ -4827,6 +4836,7 @@ export namespace Prisma {
       money: Prisma.Decimal
       rechargeMoney: Prisma.Decimal
       screen: Prisma.JsonValue
+      market: string
       status: number
       memberId: bigint
       createdAt: Date
@@ -5230,6 +5240,7 @@ export namespace Prisma {
     readonly money: FieldRef<"MemberRecharge", 'Decimal'>
     readonly rechargeMoney: FieldRef<"MemberRecharge", 'Decimal'>
     readonly screen: FieldRef<"MemberRecharge", 'Json'>
+    readonly market: FieldRef<"MemberRecharge", 'String'>
     readonly status: FieldRef<"MemberRecharge", 'Int'>
     readonly memberId: FieldRef<"MemberRecharge", 'BigInt'>
     readonly createdAt: FieldRef<"MemberRecharge", 'DateTime'>
@@ -5593,6 +5604,7 @@ export namespace Prisma {
     remark: string | null
     status: number | null
     address: string | null
+    market: string | null
     memberId: bigint | null
     createdAt: Date | null
     updatedAt: Date | null
@@ -5604,6 +5616,7 @@ export namespace Prisma {
     remark: string | null
     status: number | null
     address: string | null
+    market: string | null
     memberId: bigint | null
     createdAt: Date | null
     updatedAt: Date | null
@@ -5615,6 +5628,7 @@ export namespace Prisma {
     remark: number
     status: number
     address: number
+    market: number
     memberId: number
     createdAt: number
     updatedAt: number
@@ -5642,6 +5656,7 @@ export namespace Prisma {
     remark?: true
     status?: true
     address?: true
+    market?: true
     memberId?: true
     createdAt?: true
     updatedAt?: true
@@ -5653,6 +5668,7 @@ export namespace Prisma {
     remark?: true
     status?: true
     address?: true
+    market?: true
     memberId?: true
     createdAt?: true
     updatedAt?: true
@@ -5664,6 +5680,7 @@ export namespace Prisma {
     remark?: true
     status?: true
     address?: true
+    market?: true
     memberId?: true
     createdAt?: true
     updatedAt?: true
@@ -5762,6 +5779,7 @@ export namespace Prisma {
     remark: string | null
     status: number
     address: string | null
+    market: string
     memberId: bigint
     createdAt: Date
     updatedAt: Date | null
@@ -5792,6 +5810,7 @@ export namespace Prisma {
     remark?: boolean
     status?: boolean
     address?: boolean
+    market?: boolean
     memberId?: boolean
     createdAt?: boolean
     updatedAt?: boolean
@@ -5804,6 +5823,7 @@ export namespace Prisma {
     remark?: boolean
     status?: boolean
     address?: boolean
+    market?: boolean
     memberId?: boolean
     createdAt?: boolean
     updatedAt?: boolean
@@ -5825,6 +5845,7 @@ export namespace Prisma {
       remark: string | null
       status: number
       address: string | null
+      market: string
       memberId: bigint
       createdAt: Date
       updatedAt: Date | null
@@ -6228,6 +6249,7 @@ export namespace Prisma {
     readonly remark: FieldRef<"MemberWithdraw", 'String'>
     readonly status: FieldRef<"MemberWithdraw", 'Int'>
     readonly address: FieldRef<"MemberWithdraw", 'String'>
+    readonly market: FieldRef<"MemberWithdraw", 'String'>
     readonly memberId: FieldRef<"MemberWithdraw", 'BigInt'>
     readonly createdAt: FieldRef<"MemberWithdraw", 'DateTime'>
     readonly updatedAt: FieldRef<"MemberWithdraw", 'DateTime'>
@@ -14223,6 +14245,7 @@ export namespace Prisma {
     amount: number | null
     mode: number | null
     status: number | null
+    type: number | null
     memberId: number | null
     stockSymbolId: number | null
   }
@@ -14232,6 +14255,7 @@ export namespace Prisma {
     amount: number | null
     mode: number | null
     status: number | null
+    type: number | null
     memberId: bigint | null
     stockSymbolId: bigint | null
   }
@@ -14249,6 +14273,7 @@ export namespace Prisma {
     stopLoss: string | null
     takeProfit: string | null
     market: string | null
+    type: number | null
     pl: string | null
     rate: string | null
     currentPrice: string | null
@@ -14271,6 +14296,7 @@ export namespace Prisma {
     stopLoss: string | null
     takeProfit: string | null
     market: string | null
+    type: number | null
     pl: string | null
     rate: string | null
     currentPrice: string | null
@@ -14293,6 +14319,7 @@ export namespace Prisma {
     stopLoss: number
     takeProfit: number
     market: number
+    type: number
     pl: number
     rate: number
     currentPrice: number
@@ -14309,6 +14336,7 @@ export namespace Prisma {
     amount?: true
     mode?: true
     status?: true
+    type?: true
     memberId?: true
     stockSymbolId?: true
   }
@@ -14318,6 +14346,7 @@ export namespace Prisma {
     amount?: true
     mode?: true
     status?: true
+    type?: true
     memberId?: true
     stockSymbolId?: true
   }
@@ -14335,6 +14364,7 @@ export namespace Prisma {
     stopLoss?: true
     takeProfit?: true
     market?: true
+    type?: true
     pl?: true
     rate?: true
     currentPrice?: true
@@ -14357,6 +14387,7 @@ export namespace Prisma {
     stopLoss?: true
     takeProfit?: true
     market?: true
+    type?: true
     pl?: true
     rate?: true
     currentPrice?: true
@@ -14379,6 +14410,7 @@ export namespace Prisma {
     stopLoss?: true
     takeProfit?: true
     market?: true
+    type?: true
     pl?: true
     rate?: true
     currentPrice?: true
@@ -14488,6 +14520,7 @@ export namespace Prisma {
     stopLoss: string | null
     takeProfit: string | null
     market: string | null
+    type: number
     pl: string | null
     rate: string | null
     currentPrice: string | null
@@ -14529,6 +14562,7 @@ export namespace Prisma {
     stopLoss?: boolean
     takeProfit?: boolean
     market?: boolean
+    type?: boolean
     pl?: boolean
     rate?: boolean
     currentPrice?: boolean
@@ -14553,6 +14587,7 @@ export namespace Prisma {
     stopLoss?: boolean
     takeProfit?: boolean
     market?: boolean
+    type?: boolean
     pl?: boolean
     rate?: boolean
     currentPrice?: boolean
@@ -14587,6 +14622,7 @@ export namespace Prisma {
       stopLoss: string | null
       takeProfit: string | null
       market: string | null
+      type: number
       pl: string | null
       rate: string | null
       currentPrice: string | null
@@ -15003,6 +15039,7 @@ export namespace Prisma {
     readonly stopLoss: FieldRef<"StockPosition", 'String'>
     readonly takeProfit: FieldRef<"StockPosition", 'String'>
     readonly market: FieldRef<"StockPosition", 'String'>
+    readonly type: FieldRef<"StockPosition", 'Int'>
     readonly pl: FieldRef<"StockPosition", 'String'>
     readonly rate: FieldRef<"StockPosition", 'String'>
     readonly currentPrice: FieldRef<"StockPosition", 'String'>
@@ -21092,6 +21129,7 @@ export namespace Prisma {
     money: 'money',
     rechargeMoney: 'rechargeMoney',
     screen: 'screen',
+    market: 'market',
     status: 'status',
     memberId: 'memberId',
     createdAt: 'createdAt',
@@ -21107,6 +21145,7 @@ export namespace Prisma {
     remark: 'remark',
     status: 'status',
     address: 'address',
+    market: 'market',
     memberId: 'memberId',
     createdAt: 'createdAt',
     updatedAt: 'updatedAt'
@@ -21295,6 +21334,7 @@ export namespace Prisma {
     stopLoss: 'stopLoss',
     takeProfit: 'takeProfit',
     market: 'market',
+    type: 'type',
     pl: 'pl',
     rate: 'rate',
     currentPrice: 'currentPrice',
@@ -21706,6 +21746,7 @@ export namespace Prisma {
     money?: DecimalFilter<"MemberRecharge"> | Decimal | DecimalJsLike | number | string
     rechargeMoney?: DecimalFilter<"MemberRecharge"> | Decimal | DecimalJsLike | number | string
     screen?: JsonFilter<"MemberRecharge">
+    market?: StringFilter<"MemberRecharge"> | string
     status?: IntFilter<"MemberRecharge"> | number
     memberId?: BigIntFilter<"MemberRecharge"> | bigint | number
     createdAt?: DateTimeFilter<"MemberRecharge"> | Date | string
@@ -21718,6 +21759,7 @@ export namespace Prisma {
     money?: SortOrder
     rechargeMoney?: SortOrder
     screen?: SortOrder
+    market?: SortOrder
     status?: SortOrder
     memberId?: SortOrder
     createdAt?: SortOrder
@@ -21733,6 +21775,7 @@ export namespace Prisma {
     money?: DecimalFilter<"MemberRecharge"> | Decimal | DecimalJsLike | number | string
     rechargeMoney?: DecimalFilter<"MemberRecharge"> | Decimal | DecimalJsLike | number | string
     screen?: JsonFilter<"MemberRecharge">
+    market?: StringFilter<"MemberRecharge"> | string
     status?: IntFilter<"MemberRecharge"> | number
     memberId?: BigIntFilter<"MemberRecharge"> | bigint | number
     createdAt?: DateTimeFilter<"MemberRecharge"> | Date | string
@@ -21745,6 +21788,7 @@ export namespace Prisma {
     money?: SortOrder
     rechargeMoney?: SortOrder
     screen?: SortOrder
+    market?: SortOrder
     status?: SortOrder
     memberId?: SortOrder
     createdAt?: SortOrder
@@ -21764,6 +21808,7 @@ export namespace Prisma {
     money?: DecimalWithAggregatesFilter<"MemberRecharge"> | Decimal | DecimalJsLike | number | string
     rechargeMoney?: DecimalWithAggregatesFilter<"MemberRecharge"> | Decimal | DecimalJsLike | number | string
     screen?: JsonWithAggregatesFilter<"MemberRecharge">
+    market?: StringWithAggregatesFilter<"MemberRecharge"> | string
     status?: IntWithAggregatesFilter<"MemberRecharge"> | number
     memberId?: BigIntWithAggregatesFilter<"MemberRecharge"> | bigint | number
     createdAt?: DateTimeWithAggregatesFilter<"MemberRecharge"> | Date | string
@@ -21779,6 +21824,7 @@ export namespace Prisma {
     remark?: StringNullableFilter<"MemberWithdraw"> | string | null
     status?: IntFilter<"MemberWithdraw"> | number
     address?: StringNullableFilter<"MemberWithdraw"> | string | null
+    market?: StringFilter<"MemberWithdraw"> | string
     memberId?: BigIntFilter<"MemberWithdraw"> | bigint | number
     createdAt?: DateTimeFilter<"MemberWithdraw"> | Date | string
     updatedAt?: DateTimeNullableFilter<"MemberWithdraw"> | Date | string | null
@@ -21791,6 +21837,7 @@ export namespace Prisma {
     remark?: SortOrderInput | SortOrder
     status?: SortOrder
     address?: SortOrderInput | SortOrder
+    market?: SortOrder
     memberId?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrderInput | SortOrder
@@ -21806,6 +21853,7 @@ export namespace Prisma {
     remark?: StringNullableFilter<"MemberWithdraw"> | string | null
     status?: IntFilter<"MemberWithdraw"> | number
     address?: StringNullableFilter<"MemberWithdraw"> | string | null
+    market?: StringFilter<"MemberWithdraw"> | string
     memberId?: BigIntFilter<"MemberWithdraw"> | bigint | number
     createdAt?: DateTimeFilter<"MemberWithdraw"> | Date | string
     updatedAt?: DateTimeNullableFilter<"MemberWithdraw"> | Date | string | null
@@ -21818,6 +21866,7 @@ export namespace Prisma {
     remark?: SortOrderInput | SortOrder
     status?: SortOrder
     address?: SortOrderInput | SortOrder
+    market?: SortOrder
     memberId?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrderInput | SortOrder
@@ -21837,6 +21886,7 @@ export namespace Prisma {
     remark?: StringNullableWithAggregatesFilter<"MemberWithdraw"> | string | null
     status?: IntWithAggregatesFilter<"MemberWithdraw"> | number
     address?: StringNullableWithAggregatesFilter<"MemberWithdraw"> | string | null
+    market?: StringWithAggregatesFilter<"MemberWithdraw"> | string
     memberId?: BigIntWithAggregatesFilter<"MemberWithdraw"> | bigint | number
     createdAt?: DateTimeWithAggregatesFilter<"MemberWithdraw"> | Date | string
     updatedAt?: DateTimeNullableWithAggregatesFilter<"MemberWithdraw"> | Date | string | null
@@ -22700,6 +22750,7 @@ export namespace Prisma {
     stopLoss?: StringNullableFilter<"StockPosition"> | string | null
     takeProfit?: StringNullableFilter<"StockPosition"> | string | null
     market?: StringNullableFilter<"StockPosition"> | string | null
+    type?: IntFilter<"StockPosition"> | number
     pl?: StringNullableFilter<"StockPosition"> | string | null
     rate?: StringNullableFilter<"StockPosition"> | string | null
     currentPrice?: StringNullableFilter<"StockPosition"> | string | null
@@ -22724,6 +22775,7 @@ export namespace Prisma {
     stopLoss?: SortOrderInput | SortOrder
     takeProfit?: SortOrderInput | SortOrder
     market?: SortOrderInput | SortOrder
+    type?: SortOrder
     pl?: SortOrderInput | SortOrder
     rate?: SortOrderInput | SortOrder
     currentPrice?: SortOrderInput | SortOrder
@@ -22751,6 +22803,7 @@ export namespace Prisma {
     stopLoss?: StringNullableFilter<"StockPosition"> | string | null
     takeProfit?: StringNullableFilter<"StockPosition"> | string | null
     market?: StringNullableFilter<"StockPosition"> | string | null
+    type?: IntFilter<"StockPosition"> | number
     pl?: StringNullableFilter<"StockPosition"> | string | null
     rate?: StringNullableFilter<"StockPosition"> | string | null
     currentPrice?: StringNullableFilter<"StockPosition"> | string | null
@@ -22775,6 +22828,7 @@ export namespace Prisma {
     stopLoss?: SortOrderInput | SortOrder
     takeProfit?: SortOrderInput | SortOrder
     market?: SortOrderInput | SortOrder
+    type?: SortOrder
     pl?: SortOrderInput | SortOrder
     rate?: SortOrderInput | SortOrder
     currentPrice?: SortOrderInput | SortOrder
@@ -22805,6 +22859,7 @@ export namespace Prisma {
     stopLoss?: StringNullableWithAggregatesFilter<"StockPosition"> | string | null
     takeProfit?: StringNullableWithAggregatesFilter<"StockPosition"> | string | null
     market?: StringNullableWithAggregatesFilter<"StockPosition"> | string | null
+    type?: IntWithAggregatesFilter<"StockPosition"> | number
     pl?: StringNullableWithAggregatesFilter<"StockPosition"> | string | null
     rate?: StringNullableWithAggregatesFilter<"StockPosition"> | string | null
     currentPrice?: StringNullableWithAggregatesFilter<"StockPosition"> | string | null
@@ -23465,6 +23520,7 @@ export namespace Prisma {
     money: Decimal | DecimalJsLike | number | string
     rechargeMoney?: Decimal | DecimalJsLike | number | string
     screen: JsonNullValueInput | InputJsonValue
+    market: string
     status?: number
     createdAt?: Date | string
     updatedAt?: Date | string | null
@@ -23476,6 +23532,7 @@ export namespace Prisma {
     money: Decimal | DecimalJsLike | number | string
     rechargeMoney?: Decimal | DecimalJsLike | number | string
     screen: JsonNullValueInput | InputJsonValue
+    market: string
     status?: number
     memberId: bigint | number
     createdAt?: Date | string
@@ -23487,6 +23544,7 @@ export namespace Prisma {
     money?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
     rechargeMoney?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
     screen?: JsonNullValueInput | InputJsonValue
+    market?: StringFieldUpdateOperationsInput | string
     status?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -23498,6 +23556,7 @@ export namespace Prisma {
     money?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
     rechargeMoney?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
     screen?: JsonNullValueInput | InputJsonValue
+    market?: StringFieldUpdateOperationsInput | string
     status?: IntFieldUpdateOperationsInput | number
     memberId?: BigIntFieldUpdateOperationsInput | bigint | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -23509,6 +23568,7 @@ export namespace Prisma {
     money: Decimal | DecimalJsLike | number | string
     rechargeMoney?: Decimal | DecimalJsLike | number | string
     screen: JsonNullValueInput | InputJsonValue
+    market: string
     status?: number
     memberId: bigint | number
     createdAt?: Date | string
@@ -23520,6 +23580,7 @@ export namespace Prisma {
     money?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
     rechargeMoney?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
     screen?: JsonNullValueInput | InputJsonValue
+    market?: StringFieldUpdateOperationsInput | string
     status?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -23530,6 +23591,7 @@ export namespace Prisma {
     money?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
     rechargeMoney?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
     screen?: JsonNullValueInput | InputJsonValue
+    market?: StringFieldUpdateOperationsInput | string
     status?: IntFieldUpdateOperationsInput | number
     memberId?: BigIntFieldUpdateOperationsInput | bigint | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -23542,6 +23604,7 @@ export namespace Prisma {
     remark?: string | null
     status?: number
     address?: string | null
+    market: string
     createdAt?: Date | string
     updatedAt?: Date | string | null
     member: MemberCreateNestedOneWithoutMemberWithdrawsInput
@@ -23553,6 +23616,7 @@ export namespace Prisma {
     remark?: string | null
     status?: number
     address?: string | null
+    market: string
     memberId: bigint | number
     createdAt?: Date | string
     updatedAt?: Date | string | null
@@ -23564,6 +23628,7 @@ export namespace Prisma {
     remark?: NullableStringFieldUpdateOperationsInput | string | null
     status?: IntFieldUpdateOperationsInput | number
     address?: NullableStringFieldUpdateOperationsInput | string | null
+    market?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     member?: MemberUpdateOneRequiredWithoutMemberWithdrawsNestedInput
@@ -23575,6 +23640,7 @@ export namespace Prisma {
     remark?: NullableStringFieldUpdateOperationsInput | string | null
     status?: IntFieldUpdateOperationsInput | number
     address?: NullableStringFieldUpdateOperationsInput | string | null
+    market?: StringFieldUpdateOperationsInput | string
     memberId?: BigIntFieldUpdateOperationsInput | bigint | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -23586,6 +23652,7 @@ export namespace Prisma {
     remark?: string | null
     status?: number
     address?: string | null
+    market: string
     memberId: bigint | number
     createdAt?: Date | string
     updatedAt?: Date | string | null
@@ -23597,6 +23664,7 @@ export namespace Prisma {
     remark?: NullableStringFieldUpdateOperationsInput | string | null
     status?: IntFieldUpdateOperationsInput | number
     address?: NullableStringFieldUpdateOperationsInput | string | null
+    market?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
@@ -23607,6 +23675,7 @@ export namespace Prisma {
     remark?: NullableStringFieldUpdateOperationsInput | string | null
     status?: IntFieldUpdateOperationsInput | number
     address?: NullableStringFieldUpdateOperationsInput | string | null
+    market?: StringFieldUpdateOperationsInput | string
     memberId?: BigIntFieldUpdateOperationsInput | bigint | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -24653,6 +24722,7 @@ export namespace Prisma {
     stopLoss?: string | null
     takeProfit?: string | null
     market?: string | null
+    type: number
     pl?: string | null
     rate?: string | null
     currentPrice?: string | null
@@ -24675,6 +24745,7 @@ export namespace Prisma {
     stopLoss?: string | null
     takeProfit?: string | null
     market?: string | null
+    type: number
     pl?: string | null
     rate?: string | null
     currentPrice?: string | null
@@ -24697,6 +24768,7 @@ export namespace Prisma {
     stopLoss?: NullableStringFieldUpdateOperationsInput | string | null
     takeProfit?: NullableStringFieldUpdateOperationsInput | string | null
     market?: NullableStringFieldUpdateOperationsInput | string | null
+    type?: IntFieldUpdateOperationsInput | number
     pl?: NullableStringFieldUpdateOperationsInput | string | null
     rate?: NullableStringFieldUpdateOperationsInput | string | null
     currentPrice?: NullableStringFieldUpdateOperationsInput | string | null
@@ -24719,6 +24791,7 @@ export namespace Prisma {
     stopLoss?: NullableStringFieldUpdateOperationsInput | string | null
     takeProfit?: NullableStringFieldUpdateOperationsInput | string | null
     market?: NullableStringFieldUpdateOperationsInput | string | null
+    type?: IntFieldUpdateOperationsInput | number
     pl?: NullableStringFieldUpdateOperationsInput | string | null
     rate?: NullableStringFieldUpdateOperationsInput | string | null
     currentPrice?: NullableStringFieldUpdateOperationsInput | string | null
@@ -24741,6 +24814,7 @@ export namespace Prisma {
     stopLoss?: string | null
     takeProfit?: string | null
     market?: string | null
+    type: number
     pl?: string | null
     rate?: string | null
     currentPrice?: string | null
@@ -24763,6 +24837,7 @@ export namespace Prisma {
     stopLoss?: NullableStringFieldUpdateOperationsInput | string | null
     takeProfit?: NullableStringFieldUpdateOperationsInput | string | null
     market?: NullableStringFieldUpdateOperationsInput | string | null
+    type?: IntFieldUpdateOperationsInput | number
     pl?: NullableStringFieldUpdateOperationsInput | string | null
     rate?: NullableStringFieldUpdateOperationsInput | string | null
     currentPrice?: NullableStringFieldUpdateOperationsInput | string | null
@@ -24783,6 +24858,7 @@ export namespace Prisma {
     stopLoss?: NullableStringFieldUpdateOperationsInput | string | null
     takeProfit?: NullableStringFieldUpdateOperationsInput | string | null
     market?: NullableStringFieldUpdateOperationsInput | string | null
+    type?: IntFieldUpdateOperationsInput | number
     pl?: NullableStringFieldUpdateOperationsInput | string | null
     rate?: NullableStringFieldUpdateOperationsInput | string | null
     currentPrice?: NullableStringFieldUpdateOperationsInput | string | null
@@ -25715,6 +25791,7 @@ export namespace Prisma {
     money?: SortOrder
     rechargeMoney?: SortOrder
     screen?: SortOrder
+    market?: SortOrder
     status?: SortOrder
     memberId?: SortOrder
     createdAt?: SortOrder
@@ -25733,6 +25810,7 @@ export namespace Prisma {
     id?: SortOrder
     money?: SortOrder
     rechargeMoney?: SortOrder
+    market?: SortOrder
     status?: SortOrder
     memberId?: SortOrder
     createdAt?: SortOrder
@@ -25743,6 +25821,7 @@ export namespace Prisma {
     id?: SortOrder
     money?: SortOrder
     rechargeMoney?: SortOrder
+    market?: SortOrder
     status?: SortOrder
     memberId?: SortOrder
     createdAt?: SortOrder
@@ -25788,6 +25867,7 @@ export namespace Prisma {
     remark?: SortOrder
     status?: SortOrder
     address?: SortOrder
+    market?: SortOrder
     memberId?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
@@ -25806,6 +25886,7 @@ export namespace Prisma {
     remark?: SortOrder
     status?: SortOrder
     address?: SortOrder
+    market?: SortOrder
     memberId?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
@@ -25817,6 +25898,7 @@ export namespace Prisma {
     remark?: SortOrder
     status?: SortOrder
     address?: SortOrder
+    market?: SortOrder
     memberId?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
@@ -26497,6 +26579,7 @@ export namespace Prisma {
     stopLoss?: SortOrder
     takeProfit?: SortOrder
     market?: SortOrder
+    type?: SortOrder
     pl?: SortOrder
     rate?: SortOrder
     currentPrice?: SortOrder
@@ -26511,6 +26594,7 @@ export namespace Prisma {
     amount?: SortOrder
     mode?: SortOrder
     status?: SortOrder
+    type?: SortOrder
     memberId?: SortOrder
     stockSymbolId?: SortOrder
   }
@@ -26528,6 +26612,7 @@ export namespace Prisma {
     stopLoss?: SortOrder
     takeProfit?: SortOrder
     market?: SortOrder
+    type?: SortOrder
     pl?: SortOrder
     rate?: SortOrder
     currentPrice?: SortOrder
@@ -26550,6 +26635,7 @@ export namespace Prisma {
     stopLoss?: SortOrder
     takeProfit?: SortOrder
     market?: SortOrder
+    type?: SortOrder
     pl?: SortOrder
     rate?: SortOrder
     currentPrice?: SortOrder
@@ -26564,6 +26650,7 @@ export namespace Prisma {
     amount?: SortOrder
     mode?: SortOrder
     status?: SortOrder
+    type?: SortOrder
     memberId?: SortOrder
     stockSymbolId?: SortOrder
   }
@@ -27666,6 +27753,7 @@ export namespace Prisma {
     stopLoss?: string | null
     takeProfit?: string | null
     market?: string | null
+    type: number
     pl?: string | null
     rate?: string | null
     currentPrice?: string | null
@@ -27687,6 +27775,7 @@ export namespace Prisma {
     stopLoss?: string | null
     takeProfit?: string | null
     market?: string | null
+    type: number
     pl?: string | null
     rate?: string | null
     currentPrice?: string | null
@@ -27790,6 +27879,7 @@ export namespace Prisma {
     money: Decimal | DecimalJsLike | number | string
     rechargeMoney?: Decimal | DecimalJsLike | number | string
     screen: JsonNullValueInput | InputJsonValue
+    market: string
     status?: number
     createdAt?: Date | string
     updatedAt?: Date | string | null
@@ -27800,6 +27890,7 @@ export namespace Prisma {
     money: Decimal | DecimalJsLike | number | string
     rechargeMoney?: Decimal | DecimalJsLike | number | string
     screen: JsonNullValueInput | InputJsonValue
+    market: string
     status?: number
     createdAt?: Date | string
     updatedAt?: Date | string | null
@@ -27821,6 +27912,7 @@ export namespace Prisma {
     remark?: string | null
     status?: number
     address?: string | null
+    market: string
     createdAt?: Date | string
     updatedAt?: Date | string | null
   }
@@ -27831,6 +27923,7 @@ export namespace Prisma {
     remark?: string | null
     status?: number
     address?: string | null
+    market: string
     createdAt?: Date | string
     updatedAt?: Date | string | null
   }
@@ -27877,6 +27970,7 @@ export namespace Prisma {
     stopLoss?: StringNullableFilter<"StockPosition"> | string | null
     takeProfit?: StringNullableFilter<"StockPosition"> | string | null
     market?: StringNullableFilter<"StockPosition"> | string | null
+    type?: IntFilter<"StockPosition"> | number
     pl?: StringNullableFilter<"StockPosition"> | string | null
     rate?: StringNullableFilter<"StockPosition"> | string | null
     currentPrice?: StringNullableFilter<"StockPosition"> | string | null
@@ -27980,6 +28074,7 @@ export namespace Prisma {
     money?: DecimalFilter<"MemberRecharge"> | Decimal | DecimalJsLike | number | string
     rechargeMoney?: DecimalFilter<"MemberRecharge"> | Decimal | DecimalJsLike | number | string
     screen?: JsonFilter<"MemberRecharge">
+    market?: StringFilter<"MemberRecharge"> | string
     status?: IntFilter<"MemberRecharge"> | number
     memberId?: BigIntFilter<"MemberRecharge"> | bigint | number
     createdAt?: DateTimeFilter<"MemberRecharge"> | Date | string
@@ -28011,6 +28106,7 @@ export namespace Prisma {
     remark?: StringNullableFilter<"MemberWithdraw"> | string | null
     status?: IntFilter<"MemberWithdraw"> | number
     address?: StringNullableFilter<"MemberWithdraw"> | string | null
+    market?: StringFilter<"MemberWithdraw"> | string
     memberId?: BigIntFilter<"MemberWithdraw"> | bigint | number
     createdAt?: DateTimeFilter<"MemberWithdraw"> | Date | string
     updatedAt?: DateTimeNullableFilter<"MemberWithdraw"> | Date | string | null
@@ -28237,6 +28333,7 @@ export namespace Prisma {
     stopLoss?: string | null
     takeProfit?: string | null
     market?: string | null
+    type: number
     pl?: string | null
     rate?: string | null
     currentPrice?: string | null
@@ -28258,6 +28355,7 @@ export namespace Prisma {
     stopLoss?: string | null
     takeProfit?: string | null
     market?: string | null
+    type: number
     pl?: string | null
     rate?: string | null
     currentPrice?: string | null
@@ -28933,6 +29031,7 @@ export namespace Prisma {
     stopLoss?: string | null
     takeProfit?: string | null
     market?: string | null
+    type: number
     pl?: string | null
     rate?: string | null
     currentPrice?: string | null
@@ -28976,6 +29075,7 @@ export namespace Prisma {
     money: Decimal | DecimalJsLike | number | string
     rechargeMoney?: Decimal | DecimalJsLike | number | string
     screen: JsonNullValueInput | InputJsonValue
+    market: string
     status?: number
     createdAt?: Date | string
     updatedAt?: Date | string | null
@@ -28987,6 +29087,7 @@ export namespace Prisma {
     remark?: string | null
     status?: number
     address?: string | null
+    market: string
     createdAt?: Date | string
     updatedAt?: Date | string | null
   }
@@ -29004,6 +29105,7 @@ export namespace Prisma {
     stopLoss?: NullableStringFieldUpdateOperationsInput | string | null
     takeProfit?: NullableStringFieldUpdateOperationsInput | string | null
     market?: NullableStringFieldUpdateOperationsInput | string | null
+    type?: IntFieldUpdateOperationsInput | number
     pl?: NullableStringFieldUpdateOperationsInput | string | null
     rate?: NullableStringFieldUpdateOperationsInput | string | null
     currentPrice?: NullableStringFieldUpdateOperationsInput | string | null
@@ -29025,6 +29127,7 @@ export namespace Prisma {
     stopLoss?: NullableStringFieldUpdateOperationsInput | string | null
     takeProfit?: NullableStringFieldUpdateOperationsInput | string | null
     market?: NullableStringFieldUpdateOperationsInput | string | null
+    type?: IntFieldUpdateOperationsInput | number
     pl?: NullableStringFieldUpdateOperationsInput | string | null
     rate?: NullableStringFieldUpdateOperationsInput | string | null
     currentPrice?: NullableStringFieldUpdateOperationsInput | string | null
@@ -29046,6 +29149,7 @@ export namespace Prisma {
     stopLoss?: NullableStringFieldUpdateOperationsInput | string | null
     takeProfit?: NullableStringFieldUpdateOperationsInput | string | null
     market?: NullableStringFieldUpdateOperationsInput | string | null
+    type?: IntFieldUpdateOperationsInput | number
     pl?: NullableStringFieldUpdateOperationsInput | string | null
     rate?: NullableStringFieldUpdateOperationsInput | string | null
     currentPrice?: NullableStringFieldUpdateOperationsInput | string | null
@@ -29149,6 +29253,7 @@ export namespace Prisma {
     money?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
     rechargeMoney?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
     screen?: JsonNullValueInput | InputJsonValue
+    market?: StringFieldUpdateOperationsInput | string
     status?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -29159,6 +29264,7 @@ export namespace Prisma {
     money?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
     rechargeMoney?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
     screen?: JsonNullValueInput | InputJsonValue
+    market?: StringFieldUpdateOperationsInput | string
     status?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -29169,6 +29275,7 @@ export namespace Prisma {
     money?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
     rechargeMoney?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
     screen?: JsonNullValueInput | InputJsonValue
+    market?: StringFieldUpdateOperationsInput | string
     status?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -29180,6 +29287,7 @@ export namespace Prisma {
     remark?: NullableStringFieldUpdateOperationsInput | string | null
     status?: IntFieldUpdateOperationsInput | number
     address?: NullableStringFieldUpdateOperationsInput | string | null
+    market?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
@@ -29190,6 +29298,7 @@ export namespace Prisma {
     remark?: NullableStringFieldUpdateOperationsInput | string | null
     status?: IntFieldUpdateOperationsInput | number
     address?: NullableStringFieldUpdateOperationsInput | string | null
+    market?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
@@ -29200,6 +29309,7 @@ export namespace Prisma {
     remark?: NullableStringFieldUpdateOperationsInput | string | null
     status?: IntFieldUpdateOperationsInput | number
     address?: NullableStringFieldUpdateOperationsInput | string | null
+    market?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
@@ -29217,6 +29327,7 @@ export namespace Prisma {
     stopLoss?: string | null
     takeProfit?: string | null
     market?: string | null
+    type: number
     pl?: string | null
     rate?: string | null
     currentPrice?: string | null
@@ -29238,6 +29349,7 @@ export namespace Prisma {
     stopLoss?: NullableStringFieldUpdateOperationsInput | string | null
     takeProfit?: NullableStringFieldUpdateOperationsInput | string | null
     market?: NullableStringFieldUpdateOperationsInput | string | null
+    type?: IntFieldUpdateOperationsInput | number
     pl?: NullableStringFieldUpdateOperationsInput | string | null
     rate?: NullableStringFieldUpdateOperationsInput | string | null
     currentPrice?: NullableStringFieldUpdateOperationsInput | string | null
@@ -29259,6 +29371,7 @@ export namespace Prisma {
     stopLoss?: NullableStringFieldUpdateOperationsInput | string | null
     takeProfit?: NullableStringFieldUpdateOperationsInput | string | null
     market?: NullableStringFieldUpdateOperationsInput | string | null
+    type?: IntFieldUpdateOperationsInput | number
     pl?: NullableStringFieldUpdateOperationsInput | string | null
     rate?: NullableStringFieldUpdateOperationsInput | string | null
     currentPrice?: NullableStringFieldUpdateOperationsInput | string | null
@@ -29280,6 +29393,7 @@ export namespace Prisma {
     stopLoss?: NullableStringFieldUpdateOperationsInput | string | null
     takeProfit?: NullableStringFieldUpdateOperationsInput | string | null
     market?: NullableStringFieldUpdateOperationsInput | string | null
+    type?: IntFieldUpdateOperationsInput | number
     pl?: NullableStringFieldUpdateOperationsInput | string | null
     rate?: NullableStringFieldUpdateOperationsInput | string | null
     currentPrice?: NullableStringFieldUpdateOperationsInput | string | null

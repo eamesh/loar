@@ -105,10 +105,6 @@ export const columns: BasicColumn<any>[] = [
           title: '待审核',
           type: '',
         },
-        {
-          title: '已拒绝',
-          type: 'error',
-        },
       ];
 
       return h(

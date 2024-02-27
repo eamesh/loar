@@ -14,6 +14,10 @@ export const columns: BasicColumn<any>[] = [
     key: 'email',
   },
   {
+    title: '市场',
+    key: 'market',
+  },
+  {
     title: '上传凭证',
     key: 'screen',
     render(row) {

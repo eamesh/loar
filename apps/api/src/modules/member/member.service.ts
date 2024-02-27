@@ -22,6 +22,7 @@ import { PasswordDto } from './dto/password.dto';
 import Decimal from 'decimal.js';
 import { MemberRechargeEntity } from './entities/member-recharge.entity';
 import { MemberWithdrawEntity } from './entities/member-withdraw.entity';
+import { SettingService } from '../setting/setting.service';
 
 @Injectable()
 export class MemberService {
@@ -30,6 +31,7 @@ export class MemberService {
     private readonly cryptoService: CryptoService,
     private readonly jwtService: JwtService,
     private readonly configService: ConfigService,
+    private readonly setting: SettingService,
   ) {}
 
   async getMembers({
@@ -139,17 +141,17 @@ export class MemberService {
 
       const markets = await this.prisma.stockMarket.findMany();
 
-      // const accountBalance = markets.map((item) => {
-      //   const code = item.code;
+      const accountBalance = markets.map((item) => {
+        const code = item.code;
 
-      //   return {
-      //     [code]: 0,
-      //     [`${code}_LOCK`]: 0,
-      //     [`${code}_UNBALANCE`]: 0,
-      //   };
-      // });
+        return {
+          [code]: 0,
+          [`${code}_LOCK`]: 0,
+          [`${code}_UNBALANCE`]: 0,
+        };
+      });
 
-      const accountBalance = {};
+      // const accountBalance = {};
       markets.forEach((item) => {
         accountBalance[item.code] = {
           balance: 0,
@@ -267,18 +269,22 @@ export class MemberService {
     const member = record.member;
 
     let money = new Decimal(record.money);
+    // 自定义金额
     if (status === 2) {
       money = new Decimal(payload.money);
     }
 
     // 修改用户余额
-    const balance = member.balance.add(money);
+    const accountBalance = member.accountBalance;
+    const account = accountBalance[record.market];
+    const balance = new Decimal(account.balance).add(money);
+    accountBalance[record.market].balance = balance;
     await this.prisma.member.update({
       where: {
         id: member.id,
       },
       data: {
-        balance,
+        accountBalance,
       },
     });
 
@@ -302,19 +308,23 @@ export class MemberService {
       },
     });
 
-    const { money } = payload;
-    // const { type, market, money } = payload;
-    // const accountBalance = member.accountBalance;
-    // const current = accountBalance[market].balance;
-    // const total = +type === 0 ? current + +money : current - +money;
+    // const { money } = payload;
+    const { type, market, money } = payload;
+    const accountBalance = member.accountBalance;
+    console.log(accountBalance[market]);
+    const balance = new Decimal(accountBalance[market].balance);
+    const total =
+      +type === 0
+        ? balance.add(new Decimal(money))
+        : balance.sub(new Decimal(money));
 
-    // accountBalance[market].balance = total;
+    accountBalance[market].balance = total;
     await this.prisma.member.update({
       where: {
         id,
       },
       data: {
-        balance: member.balance.add(money),
+        accountBalance,
       },
     });
   }
@@ -392,12 +402,13 @@ export class MemberService {
 
   async uploadRecharge(payload: any, member: Member) {
     console.log(payload);
-    const { money, screen } = payload;
+    const { money, screen, market } = payload;
     const result = await this.prisma.memberRecharge.create({
       data: {
         money: new Decimal(money),
         screen,
         memberId: member.id,
+        market,
       },
     });
 
@@ -445,9 +456,11 @@ export class MemberService {
   }
 
   async requestWithdraw(payload: any, member: Member) {
-    const { money, address } = payload;
+    const { money, address, market } = payload;
 
-    if (member.balance.lt(money)) {
+    const account = member.accountBalance[market];
+    const balance = new Decimal(account.balance);
+    if (balance.lt(money)) {
       throw new BadRequestException('余额不足');
     }
 
@@ -456,6 +469,7 @@ export class MemberService {
         memberId: member.id,
         money,
         address,
+        market,
       },
     });
   }
@@ -515,12 +529,18 @@ export class MemberService {
         },
       });
 
+      const accountBalance = member.accountBalance;
+      console.log(accountBalance, withdraw.market);
+      const account = accountBalance[withdraw.market];
+      const balance = new Decimal(account.balance).sub(withdraw.money);
+
+      accountBalance[withdraw.market].balance = balance;
       await this.prisma.member.update({
         where: {
           id: withdraw.memberId,
         },
         data: {
-          balance: member.balance.sub(withdraw.money),
+          accountBalance,
         },
       });
     }
@@ -534,5 +554,21 @@ export class MemberService {
         status: payload.status,
       },
     });
+  }
+
+  async exchange(payload: any) {
+    const { from, money } = payload;
+    // const map = { USD: 'US', HKD: 'HKEX' };
+
+    // 获取兑换比例
+    const { value } = await this.setting.getKey('exchange_rate');
+    console.log(value);
+
+    const current = new Decimal(value['HKEX']);
+
+    // 计算港币兑换USDT
+    return from === 'USD'
+      ? new Decimal(money).div(current)
+      : new Decimal(money).mul(current);
   }
 }

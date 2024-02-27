@@ -354,6 +354,10 @@
 			current() {
 				return this.navTabs.find((_, idx) => idx === this.currentIndex)
 			},
+			currentAccount() {
+				// const account = this.account.accountBalance[]
+				return 0
+			},
 			unPl() {
 				if (!this.positions.length) return 0;
 				let sum = 0;

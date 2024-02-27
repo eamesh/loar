@@ -102,15 +102,23 @@ export class StockController {
   @HttpCode(HttpStatus.OK)
   @UseGuards(UserGuard)
   async getPostions(@Body() payload: any) {
-    const { page, memberId, code, status, mode, market, pageSize } = payload;
+    const { page, memberId, code, status, mode, market, pageSize, type } =
+      payload;
 
-    const where: any = {};
+    const where: any =
+      +type !== 2
+        ? {
+            status: {
+              not: 2,
+            },
+          }
+        : {};
     const params = { memberId, status, mode, market };
     Object.keys(params).forEach((key) => {
       if (params[key] !== '' && params[key] !== undefined)
         where[key] = params[key];
     });
-    console.log(where);
+
     if (code !== '' && code !== undefined) {
       where.stockSymbol = {
         code,
@@ -132,6 +140,13 @@ export class StockController {
       itemCount: meta.total,
       list: data,
     };
+  }
+
+  @Post('position/:id/type')
+  @UseGuards(UserGuard)
+  @HttpCode(HttpStatus.NO_CONTENT)
+  async updatePostionType(@Param('id') id: number, @Body() payload: any) {
+    return await this.stockService.updatePostionType(id, payload);
   }
 
   @Post('subscribe')

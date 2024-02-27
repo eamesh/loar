@@ -139,17 +139,19 @@ export class StockSubscribeService {
       },
     });
 
-    let money = new Decimal(payload.money);
+    const money = new Decimal(payload.money);
 
-    if (market.code !== 'US') {
-      money = await this.setting.handleToUSDT(money, market.code);
-    }
+    // if (market.code !== 'US') {
+    //   money = await this.setting.handleToUSDT(money, market.code);
+    // }
 
     // 获取用户余额
     // 冻结余额
+    const accountBalance = member.accountBalance;
+    const account = accountBalance[subscribe.market];
     const unBalanceWait = money;
-    const balance = member.balance.sub(unBalanceWait);
-    const unBalance = member.unBalance.add(unBalanceWait);
+    const balance = new Decimal(account.balance).sub(unBalanceWait);
+    const unBalance = new Decimal(account.unBalance).add(unBalanceWait);
 
     if (balance.lt(0)) {
       throw new BadRequestException();
@@ -181,13 +183,14 @@ export class StockSubscribeService {
     });
 
     // 修改用户资金
+    accountBalance[subscribe.market].balance = balance;
+    accountBalance[subscribe.market].unBalance = unBalance;
     await this.prisma.member.update({
       where: {
         id: member.id,
       },
       data: {
-        balance,
-        unBalance,
+        accountBalance,
       },
     });
 

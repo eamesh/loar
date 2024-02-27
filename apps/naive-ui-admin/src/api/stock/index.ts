@@ -32,3 +32,11 @@ export function createStockSymbol(params) {
     params,
   });
 }
+
+export function updateMemberPostionType(id, params) {
+  return http.request({
+    url: `/stock/position/${id}/type`,
+    method: 'post',
+    params,
+  });
+}

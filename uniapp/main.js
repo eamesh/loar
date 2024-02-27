@@ -3,7 +3,7 @@ import locale from './locale'
 import { Ws } from './util/socket.js'
 import * as dayjs from 'dayjs'
 
-const ws = new Ws('wss://api.loar.cc')
+const ws = new Ws('ws://localhost:3000')
 uni.$ws = ws
 /* 全局挂载请求库 */
 import GraceRequest from '@/Grace6/js/request.js'

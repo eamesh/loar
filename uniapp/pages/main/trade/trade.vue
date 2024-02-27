@@ -160,7 +160,7 @@
 				
 				</view>
 				<view v-else>
-					<view class="px-4 mt-4">
+					<view class="px-4 pt-4">
 						<view
 							class="w-full text-white font-semibold font-sans px-4 pt-5 text-xs box-border aspect-[1/0.43] bg-red-100 rounded-xl bg-cover bg-no-repeat bg-center flex flex-row flex-wrap"
 							style="background-image: url('/static/img/trade_03.png');">
@@ -176,7 +176,7 @@
 									<view>0</view>
 								</view>
 							</view>
-							<view class="basis-1/2">
+						<!-- 	<view class="basis-1/2">
 								<view class="flex flex-col gap-y-2">
 									<view>AUD</view>
 									<view>0</view>
@@ -187,7 +187,7 @@
 									<view>USD</view>
 									<view>0</view>
 								</view>
-							</view>
+							</view> -->
 						</view>
 					</view>
 				
@@ -348,7 +348,8 @@
 					unBalance: 0,
 					lockBalance: 0
 				},
-				settings: {}
+				settings: {},
+				accountBalance: {}
 			}
 		},
 		components: {
@@ -362,6 +363,15 @@
 			}),
 			current() {
 				return this.navTabs.find((_, idx) => idx === this.currentIndex)
+			},
+			userBalance() {
+				if (this.accountBalance[this.current.code]) {
+					return this.accountBalance[this.current.code]
+				}
+				return {
+					balance: 0,
+					unBalance: 0
+				}
 			},
 			unPl() {
 				if (!this.positions.length) return 0;
@@ -390,15 +400,15 @@
 				return sum.toFixed(4)
 			},
 			profileBalance() {
-				const { balance, unBalance } = this.profile
+				const { balance, unBalance } = this.userBalance
 				let balanceConvert = balance
 				let unBalanceConvert = unBalance
-				console.log(this.settings)
-				if (this.current.code !== 'US') {
-					const rate = this.settings[this.current.code]
-					balanceConvert = (parseFloat(balanceConvert) / parseFloat(rate)).toFixed(3)
-					unBalanceConvert = (parseFloat(unBalanceConvert) / parseFloat(rate)).toFixed(3)
-				}
+				// console.log(this.settings)
+				// if (this.current.code !== 'US') {
+				// 	const rate = this.settings[this.current.code]
+				// 	balanceConvert = (parseFloat(balanceConvert) / parseFloat(rate)).toFixed(3)
+				// 	unBalanceConvert = (parseFloat(unBalanceConvert) / parseFloat(rate)).toFixed(3)
+				// }
 				return {
 					balance: balanceConvert,
 					unBalance: unBalanceConvert
@@ -409,10 +419,10 @@
 				return market
 			},
 			isFunds() {
-				return false
-				// const current = this.navTabs.find((_, index) => this.currentIndex === index)
+				// return false
+				const current = this.navTabs.find((_, index) => this.currentIndex === index)
 
-				// return current.key === 'funds';
+				return current.key === 'funds';
 			},
 			navTabs() {
 				const data = this.markets.map(item => {
@@ -422,10 +432,10 @@
 					}
 				})
 
-				// data.push({
-				// 	key: 'funds',
-				// 	name: this.$t('funds')
-				// })
+				data.push({
+					key: 'funds',
+					name: this.$t('funds')
+				})
 
 				// this.requestAccountList(this.markets[0].code)
 				return data
@@ -435,10 +445,10 @@
 					id: 0,
 					name: this.$t("my.holdings")
 				}, 
-				// {
-				// 	id: 1,
-				// 	name: this.$t("orders")
-				// },
+				{
+					id: 1,
+					name: this.$t("orders")
+				},
 				]
 			},
 		},
@@ -539,6 +549,8 @@
 			async getProfile() {
 				try{
 					const member = await getProfile()
+					const accountBalance = member.accountBalance
+					this.accountBalance = accountBalance
 					this.profile.balance = member.balance
 					this.profile.unBalance = member.unBalance
 					this.profile.lockBalance = member.lockBalance

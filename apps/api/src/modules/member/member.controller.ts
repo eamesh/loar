@@ -49,6 +49,11 @@ export class MemberController {
     return new MemberEntity(request.user);
   }
 
+  @Post('exchange')
+  async exchange(@Body() body: any) {
+    return await this.member.exchange(body);
+  }
+
   @Post('account/list')
   @UseGuards(MemberGuard)
   @HttpCode(HttpStatus.OK)

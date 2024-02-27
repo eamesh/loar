@@ -21,7 +21,7 @@ const routes: Array<RouteRecordRaw> = [
     // redirect: '/system/menu',
     component: Layout,
     meta: {
-      title: '持仓记录',
+      title: '用户持仓',
       icon: renderIcon(OptionsSharp),
       sort: 6,
     },
@@ -33,6 +33,14 @@ const routes: Array<RouteRecordRaw> = [
           title: '持仓记录',
         },
         component: () => import('@/views/position/index.vue'),
+      },
+      {
+        path: 'type',
+        name: 'system-type',
+        meta: {
+          title: '限价订单',
+        },
+        component: () => import('@/views/position/type/index.vue'),
       },
     ],
   },

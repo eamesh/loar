@@ -58,8 +58,8 @@ model MemberRecharge {
   money         Decimal @db.Decimal(20, 5)
   rechargeMoney Decimal @default(0) @map("recharge_money") @db.Decimal(20, 5)
   screen        Json
-
-  status Int @default(0)
+  market        String
+  status        Int     @default(0)
 
   memberId  BigInt    @map("member_id")
   createdAt DateTime  @default(now()) @map("created_at")
@@ -76,6 +76,7 @@ model MemberWithdraw {
   remark    String?
   status    Int       @default(0)
   address   String?
+  market    String
   memberId  BigInt    @map("member_id")
   createdAt DateTime  @default(now()) @map("created_at")
   updatedAt DateTime? @map("updated_at")
@@ -361,6 +362,9 @@ model StockPosition {
   takeProfit String?
   // 市场
   market     String?
+
+  // 类型
+  type Int
 
   // 损益
   pl   String? @default("0")

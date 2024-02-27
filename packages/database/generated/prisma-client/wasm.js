@@ -141,6 +141,7 @@ exports.Prisma.MemberRechargeScalarFieldEnum = {
   money: 'money',
   rechargeMoney: 'rechargeMoney',
   screen: 'screen',
+  market: 'market',
   status: 'status',
   memberId: 'memberId',
   createdAt: 'createdAt',
@@ -153,6 +154,7 @@ exports.Prisma.MemberWithdrawScalarFieldEnum = {
   remark: 'remark',
   status: 'status',
   address: 'address',
+  market: 'market',
   memberId: 'memberId',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt'
@@ -317,6 +319,7 @@ exports.Prisma.StockPositionScalarFieldEnum = {
   stopLoss: 'stopLoss',
   takeProfit: 'takeProfit',
   market: 'market',
+  type: 'type',
   pl: 'pl',
   rate: 'rate',
   currentPrice: 'currentPrice',

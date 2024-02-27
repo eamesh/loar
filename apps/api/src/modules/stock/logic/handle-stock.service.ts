@@ -21,16 +21,18 @@ export class HandleStockService {
   async buy(payload: BuyDto, member: Member, isPosition = false) {
     // 判断市场状态
     // 组装数据
-    const { amount, code, stopLoss, takeProfit, mode } = payload;
+    const { amount, code, stopLoss, takeProfit, mode, type, price } = payload;
     const symbol = await this.prisma.stockSymbol.findFirst({
       where: {
         id: +code,
       },
     });
-    const detail = await this.shuhai.getSymbolDetail(
-      symbol.code,
-      symbol.syncMarket,
-    );
+    const detail =
+      +type !== 1
+        ? await this.shuhai.getSymbolDetail(symbol.code, symbol.syncMarket)
+        : {
+            price,
+          };
 
     // 保证金
     const bond = isPosition
@@ -39,23 +41,27 @@ export class HandleStockService {
     // 预估爆仓价
     const blast = new Decimal(detail.price).mul(2).toFixed(3);
 
-    let bondDecimal = bond;
+    const bondDecimal = bond;
 
-    // 当前市场不是US
-    let unBalance = member.unBalance;
+    const accountBalance = member.accountBalance;
 
-    if (symbol.market !== 'US') {
-      bondDecimal = await this.setting.handleToUSDT(bondDecimal, symbol.market);
-    }
+    const account = accountBalance[symbol.market];
+
+    let unBalance = new Decimal(account.unBalance);
+    const balance = new Decimal(account.balance);
+
+    // if (symbol.market !== 'US') {
+    //   bondDecimal = await this.setting.handleToUSDT(bondDecimal, symbol.market);
+    // }
     console.log('冻结余额', unBalance);
     unBalance = unBalance.add(bondDecimal);
 
     // 判断用户可用余额
 
-    if (member.balance.lt(bond)) {
+    if (balance.lt(bond)) {
       throw new BadRequestException('保证金余额不足');
     }
-    console.log(12313);
+
     // 插入持仓
     await this.prisma.stockPosition.create({
       data: {
@@ -67,14 +73,22 @@ export class HandleStockService {
         bond: `${bond.toFixed(3)}`,
         blast: `${blast}`,
         market: symbol.market,
-        status: 0,
+        // 0 持仓 1 平仓 2 限价审核
+        status: +type === 1 ? 2 : 0,
         memberId: member.id,
         stockSymbolId: symbol.id,
         // currentPrice: `${detail.price}`,
         pl: '0',
         rate: '0',
+        type,
       },
     });
+
+    accountBalance[symbol.market] = {
+      balance,
+      unBalance,
+      lock: 0,
+    };
 
     // 修改用户余额
     await this.prisma.member.update({
@@ -82,8 +96,7 @@ export class HandleStockService {
         id: member.id,
       },
       data: {
-        balance: member.balance.sub(bond),
-        unBalance,
+        accountBalance: accountBalance,
       },
     });
   }
@@ -130,15 +143,15 @@ export class HandleStockService {
       profitLoss = allBuyPrice - allSellPrice;
     }
     // 获取市场费率
-    // const market = await this.prisma.stockMarket.findFirst({
-    //   where: {
-    //     code: stockSymbol.market,
-    //   },
-    // });
+    const market = await this.prisma.stockMarket.findFirst({
+      where: {
+        code: stockSymbol.market,
+      },
+    });
 
-    const { value } = await this.setting.getKey('fee_rate');
+    // const { value } = await this.setting.getKey('fee_rate');
 
-    const feeRate = new Decimal(value.value || 0);
+    const feeRate = new Decimal(market.feeRate || 0);
 
     // 计算手续费
     const buyFee = feeRate.mul(new Decimal(allBuyPrice));
@@ -155,23 +168,28 @@ export class HandleStockService {
       },
     });
 
-    let allProfitDecimal = new Decimal(allProfit);
-    let bondDecimal = new Decimal(position.bond);
-    if (stockSymbol.market !== 'US') {
-      allProfitDecimal = await this.setting.handleToUSDT(
-        allProfitDecimal,
-        stockSymbol.market,
-      );
-      bondDecimal = await this.setting.handleToUSDT(
-        bondDecimal,
-        stockSymbol.market,
-      );
-    }
+    const allProfitDecimal = new Decimal(allProfit);
+    const bondDecimal = new Decimal(position.bond);
+    // if (stockSymbol.market !== 'US') {
+    //   allProfitDecimal = await this.setting.handleToUSDT(
+    //     allProfitDecimal,
+    //     stockSymbol.market,
+    //   );
+    //   bondDecimal = await this.setting.handleToUSDT(
+    //     bondDecimal,
+    //     stockSymbol.market,
+    //   );
+    // }
+
+    const accountBalance = member.accountBalance;
+    const account = accountBalance[stockSymbol.market];
 
     // 可用余额
-    const balance = member.balance.add(allProfitDecimal).add(bondDecimal);
+    const balance = new Decimal(account.balance)
+      .add(allProfitDecimal)
+      .add(bondDecimal);
     // 冻结余额
-    const unBalance = member.unBalance.sub(bondDecimal);
+    const unBalance = new Decimal(account.unBalance).sub(bondDecimal);
 
     // 平仓
     const rate = `${((+allProfit / allBuyPrice) * 100).toFixed(3)}`;
@@ -187,14 +205,19 @@ export class HandleStockService {
       },
     });
     console.log('可用余额', balance, allProfitDecimal);
+
+    accountBalance[stockSymbol.market] = {
+      balance,
+      unBalance,
+      lock: 0,
+    };
     // 修改用户余额
     await this.prisma.member.update({
       where: {
         id: member.id,
       },
       data: {
-        balance,
-        unBalance: unBalance.lt(0) ? 0 : unBalance,
+        accountBalance,
       },
     });
   }

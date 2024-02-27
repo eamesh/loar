@@ -10,6 +10,7 @@ import { Member, PaginateFunction, Prisma, paginator } from '@loar/database';
 import { FavoriteDto } from './dto/favorite.dto';
 import { DeleteFavoriteDto } from './dto/delete-favorite.dto';
 import { ShuhaiService } from 'src/providers/shuhai/shuhai.service';
+import Decimal from 'decimal.js';
 
 const paginate: PaginateFunction = paginator({ perPage: 20 });
 
@@ -370,5 +371,66 @@ export class StockService {
     });
 
     return stocks;
+  }
+
+  async updatePostionType(id: number, payload: any) {
+    const position = await this.prisma.stockPosition.findFirst({
+      where: {
+        id,
+      },
+    });
+
+    if (position.type !== 1) {
+      return;
+    }
+
+    const { amount, status } = payload;
+    console.log(123);
+
+    if (status && status === 3) {
+      await this.prisma.stockPosition.update({
+        where: {
+          id,
+        },
+        data: {
+          status: 3,
+        },
+      });
+    } else if (amount > 0 && amount <= position.amount) {
+      // 保证金
+      const newBond = new Decimal(position.price).mul(new Decimal(amount));
+      const bond = new Decimal(position.bond).sub(newBond);
+      await this.prisma.stockPosition.update({
+        where: {
+          id,
+        },
+        data: {
+          amount,
+          bond: newBond.toFixed(3),
+          status: 0,
+        },
+      });
+
+      const member = await this.prisma.member.findFirst({
+        where: {
+          id: position.memberId,
+        },
+      });
+
+      const accountBalance = member.accountBalance;
+      const account = accountBalance[position.market];
+      const unBalance = new Decimal(account.unBalance).sub(bond);
+
+      accountBalance[position.market].unBalance = unBalance;
+
+      await this.prisma.member.update({
+        where: {
+          id: member.id,
+        },
+        data: {
+          accountBalance,
+        },
+      });
+    }
   }
 }

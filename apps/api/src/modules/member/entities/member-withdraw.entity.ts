@@ -5,6 +5,7 @@ export class MemberWithdrawEntity implements MemberWithdraw {
   constructor(partial: Partial<MemberWithdrawEntity>) {
     Object.assign(this, partial);
   }
+  market: string;
   address: string;
   id: bigint;
   @Transform(({ value }) => value.toNumber())

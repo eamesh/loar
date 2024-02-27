@@ -15,6 +15,7 @@ export class MemberRechargeEntity implements MemberRecharge {
   constructor(partial: Partial<MemberRechargeEntity>) {
     Object.assign(this, partial);
   }
+  market: string;
 
   @Transform(({ value }) => value.toNumber())
   rechargeMoney: Prisma.Decimal;

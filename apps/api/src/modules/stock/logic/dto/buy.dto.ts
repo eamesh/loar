@@ -6,5 +6,5 @@ export class BuyDto {
   price: string;
   stopLoss: string;
   takeProfit: string;
-  type: 0;
+  type: number;
 }
