@@ -23,12 +23,12 @@
             <n-form-item label="每笔费率" path="fee_rate">
               <n-input-number placeholder="" v-model:value="formValue.fee_rate" />
             </n-form-item>
-            <n-form-item label="最大出金" path="max_withdraw">
+            <!-- <n-form-item label="最大出金" path="max_withdraw">
               <n-input-number placeholder="" v-model:value="formValue.max_withdraw" />
-            </n-form-item>
-            <n-form-item label="最小出金" path="min_withdraw">
+            </n-form-item> -->
+            <!-- <n-form-item label="最小出金" path="min_withdraw">
               <n-input-number placeholder="" v-model:value="formValue.min_withdraw" />
-            </n-form-item>
+            </n-form-item> -->
 
             <div style="margin-left: 80px">
               <n-space>

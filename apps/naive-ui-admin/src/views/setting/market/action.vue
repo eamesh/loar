@@ -54,42 +54,42 @@
       },
       rules: [{ required: true, message: '请输入货币', trigger: ['blur'] }],
     },
-    // {
-    //   field: 'maxWithdrawal',
-    //   component: 'NInput',
-    //   label: '最大出金',
-    //   componentProps: {
-    //     placeholder: '请输入最大出金',
-    //   },
-    //   rules: [{ required: true, message: '请输入最大出金', trigger: ['blur'] }],
-    // },
-    // {
-    //   field: 'minWithdrawal',
-    //   component: 'NInput',
-    //   label: '最小出金',
-    //   componentProps: {
-    //     placeholder: '请输入最小出金',
-    //   },
-    //   rules: [{ required: true, message: '请输入最小出金', trigger: ['blur'] }],
-    // },
-    // {
-    //   field: 'feeRate',
-    //   component: 'NInput',
-    //   label: '手续费率',
-    //   componentProps: {
-    //     placeholder: '请输入手续费率',
-    //   },
-    //   rules: [{ required: true, message: '请输入手续费率', trigger: ['blur'] }],
-    // },
     {
-      field: 'headSymbols',
+      field: 'maxWithdrawal',
       component: 'NInput',
-      label: '市场头部证券列表名称',
+      label: '最大出金',
       componentProps: {
-        placeholder: '请输入市场头部证券列表名称',
+        placeholder: '请输入最大出金',
       },
-      rules: [{ required: true, message: '请输入市场头部证券列表名称', trigger: ['blur'] }],
+      rules: [{ required: true, message: '请输入最大出金', trigger: ['blur'] }],
     },
+    {
+      field: 'minWithdrawal',
+      component: 'NInput',
+      label: '最小出金',
+      componentProps: {
+        placeholder: '请输入最小出金',
+      },
+      rules: [{ required: true, message: '请输入最小出金', trigger: ['blur'] }],
+    },
+    {
+      field: 'feeRate',
+      component: 'NInput',
+      label: '手续费率',
+      componentProps: {
+        placeholder: '请输入手续费率',
+      },
+      rules: [{ required: true, message: '请输入手续费率', trigger: ['blur'] }],
+    },
+    // {
+    //   field: 'headSymbols',
+    //   component: 'NInput',
+    //   label: '市场头部证券列表名称',
+    //   componentProps: {
+    //     placeholder: '请输入市场头部证券列表名称',
+    //   },
+    //   rules: [{ required: true, message: '请输入市场头部证券列表名称', trigger: ['blur'] }],
+    // },
     {
       field: 'online',
       component: 'NSwitch',
