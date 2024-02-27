@@ -28,6 +28,8 @@ export default defineComponent({
     const feeRate = ref(0)
     const loading = ref(false)
     console.log(route.query.lang)
+    console.log(route.query.id)
+    window.route = route
 
     const env = ref()
     const chart = ref()
@@ -256,9 +258,11 @@ export default defineComponent({
     }
 
     onMounted(() => {
-      init()
+      setTimeout(() => {
+        init()
 
-      socket.on('events', handleEvents.bind(this))
+        socket.on('events', handleEvents.bind(this))
+      }, 0)
     })
 
     function openPopup (mode) {
