@@ -1,50 +1,50 @@
 <template>
 	<gui-page customFooter>
 		<template v-slot:gBody>
-			<view class="px-4 py-2 font-sans">
+			<view class="px-4 py-2 ">
 				<view class="mt-3">
-					<!-- <text class="text-xs text-gray-500">帳戶類型</text> -->
+					<text class="text-xs text-gray-500">貨幣</text>
 				</view>
 				<view class="mt-3 gui-bg-gray rounded-md px-3">
 					<view class="flex flex-row justify-between items-center">
-						<view>{{ $t('withdraw.enter_address') }}</view>
-						<view class="gui-form-input flex">
-							<view class="flex flex-row items-center justify-center gap-4 text-xs text-gray-500">
-								<view>USD</view>
-								<view>{{ balance }}</view>
-							</view>
+						<view class="gui-form-input flex flex-row justify-between items-center w-full">
+							<view class="text-[20rpx] text-gray-500"> 可提金额</view>
+							<view class="text-[20rpx] text-gray-500"> {{ currentMarket?.showName }} {{ balance }}</view>
+							<text class="gui-icons gui-block gui-color-gray gui-text">&#xe601;</text>
+						</view>
+					</view>
+				</view>
+				<view class="mt-3 gui-bg-gray rounded-md px-3" @click="handleSelectCard">
+					<view class="flex flex-row justify-between items-center">
+						<view class="gui-form-input flex flex-row justify-between items-center w-full">
+							<view class="text-[20rpx] text-gray-500"> {{ card?.detail?.network ?? '请选择收款账户' }}</view>
+							<text class="gui-icons gui-block gui-color-gray gui-text">&#xe601;</text>
+						</view>
+					</view>
+				</view>
+				<view class="mt-3 gui-bg-gray rounded-md px-3">
+					<view class="flex flex-row justify-between items-center">
+						<view class="gui-form-input flex flex-row justify-between items-center w-full">
+							<input type="number" v-model="money" class="text-[22rpx] w-full" placeholder="请输入体现金额" />
+							<text class="gui-icons gui-block gui-color-gray gui-text">&#xe601;</text>
 						</view>
 					</view>
 				</view>
 				
-				<view class="mt-3 gui-bg-gray rounded-md px-3">
-					<view class="flex flex-row justify-between items-center">
-						<input class="gui-form-input" :placeholder="$t('usdt.address')" v-model="address" />
-					</view>
-				</view>
-				
-				<view class="mt-3 gui-bg-gray rounded-md px-3">
-					<view class="flex flex-row justify-between items-center">
-						<input type="number" class="gui-form-input" :placeholder="$t('withdraw.enter_money')" v-model="money" />
-					</view>
-				</view>
-				
-				<view class="text-[20rpx] text-gray-400 mt-4">
-					{{ $t('max_withdraw') }}：<text class="text-black">{{ min }}</text>
-				</view>
-				
-				<view class="text-[20rpx] text-gray-400 mt-4">
-					{{ $t('max_withdraw') }}：<text class="text-black">{{ max }}</text>
+				<view class="flex flex-col text-gray-500 text-[18rpx] gap-y-2 mt-3">
+					<view>最低金额: {{ currentMarket?.maxWithdrawal || 0 }}</view>
+					<view>最大金额: {{ currentMarket?.minWithdrawal || 0 }}</view>
+					<view>收款地址: {{ card?.detail?.address }}</view>
 				</view>
 			</view>
 		</template>
 
 		<template v-slot:gFooter>
-			<view class="h-[220rpx] bg-white footer flex flex-col justify-center ">
+			<view class="h-[200rpx] bg-white footer flex flex-col justify-center ">
 				<view class="flex flex-col justify-between items-center gap-3 px-4">
-					<view class="text-xs text-[#3395ff]"  @click="$go('/pages/wallet/fundRecords/fundRecords', 'navigateTo')">{{ $t('withdraw.history') }}</view>
+					<view class="text-xs text-[#3395ff]"  @click="$go('/pages/wallet/fundRecords/fundRecords', 'navigateTo')">提幣歷史</view>
 					<button type="default" class="gui-bg-primary gui-noborder w-full rounded-3xl" @click="submit">
-						<text class="gui-color-white gui-button-text font-semibold font-sans">{{ $t('confirm') }}</text>
+						<text class="gui-color-white gui-button-text font-semibold ">確認</text>
 					</button>
 				</view>
 			</view>
@@ -53,125 +53,117 @@
 </template>
 
 <script>
-	import { requestWithdraw, getProfile } from '@/api/member.js'
-	import { getSettings } from '@/api/setting.js'
+	import { getProfile } from '@/api/member.js'
+	import { getMarket } from '@/api/stock.js'
+	import { requestWithdraw } from '@/api/withdraw.js'
 	export default {
 		data() {
 			return {
-				// 记录需要上传的图片数据
-				needPploadedImgs: [],
-				// 文本框输入内容记录
-				textareaVal: ' ',
-				// 上传按钮名称
-				subtxt: "+ 发布",
-				address: '',
-				money: '',
-				balance: 0,
-				settings: {}
+				card: {},
+				accountBalance: [],
+				markets: [],
+				market: '',
+				money: ''
 			}
 		},
-		onLoad: function() {
-			
-		},
-		
 		computed: {
-			min() {
-				return this.settings?.min_withdraw?.value || 0
+			currentMarket() {
+				return this.markets.find(item => item.code === this.market)
 			},
-			max() {
-				return this.settings?.max_withdraw?.value || 0
+			balance () {
+				return this.accountBalance[this.market]?.balance
 			}
 		},
 		methods: {
-			change: function(e) {
-				this.needPploadedImgs = e;
+			handleSelectCard() {
+				uni.navigateTo({
+					url: '/pages/setting/crypto/crypto',
+					events: {
+						selectCard: (data) => {
+							console.log(data)
+							this.card = data
+						}
+					}
+				})
 			},
-			// 提交动态
-			// 过程说明 : 
-			// 点击提交按钮 > 首先执行组件的上传函数 > 上传成功后获得已经上传的图片数据 > 提交给后端 api 记录整个内容 
-			submit: async function() {
-				if (!this.address || !this.money) {
+			
+			async getProfile() {
+				uni.showLoading({
+					title: 'Loading',
+					mask: 'true'
+				})
+				try{
+					const result = await getProfile()
+					this.accountBalance = result.accountBalance
+					uni.hideLoading()
+				}catch(e){
+					//TODO handle the exception
+					uni.hideLoading()
+				}
+			},
+			
+			async getMarket() {
+				try{
+					this.markets = await getMarket()
+				}catch(e){
+					//TODO handle the exception
+				}
+			},
+			async submit() {
+				if (!this.card?.id) {
 					uni.showToast({
-						title: this.$t('form.validate_error'),
+						title: '请选择收款账户',
 						icon: 'none'
 					})
 					return
 				}
 				
-				if (this.money > this.balance || this.money < this.min || this.money > this.max ) {
+				if (this.money <= 0) {
 					uni.showToast({
-						title: this.$t('form.validate_error'),
+						title: '请输入提现金额',
 						icon: 'none'
 					})
 					return
 				}
 				
 				uni.showLoading({
-					title: 'Wait'
+					title: 'Loading',
+					mask: true
 				})
 				try{
 					await requestWithdraw({
-						address: this.address,
-						money: this.money
+						type: 'CRYPTO',
+						market: this.market,
+						money: this.money,
+						card: this.card.id,
+						currency: this.currentMarket.currency
 					})
+					uni.hideLoading()
 					uni.showToast({
 						title: 'Success',
 						icon: 'none'
 					})
-					
-					uni.switchTab({
-						url: "/pages/main/trade/trade"
-					})
-				}catch(e){
-					uni.showToast({
-						title: 'Fail',
-						icon: 'none'
-					})
-					//TODO handle the exception
-				}
-				
-				uni.hideLoading()
-			},
-			
-			async getSettings() {
-				try{
-					const result = await getSettings()
-					const obj = {}
-					result.forEach((item) => {
-						obj[item.key] = item.value;
-					});
-					
-					this.settings = obj
-					
+					uni.navigateBack()
 				}catch(e){
 					//TODO handle the exception
-				}
-			},
-			
-			async getProfile() {
-				try{
-					const member = await getProfile()
-					this.balance = member.balance
-				}catch(e){
-					console.log(e)
-					//TODO handle the exception
+					uni.hideLoading()
 				}
 			}
 		},
-		created() {
+		onShow() {
 			this.getProfile()
-			this.getSettings()
+			this.getMarket()
+		},
+		onLoad(e) {
+			this.market = e.market
+			uni.setNavigationBarTitle({
+				title: `${this.market}`
+			})
 		}
 	}
 </script>
 
 <style lang="scss">
-	page {
-		background-color: #fff;
-	}
-</style>
-
-<style lang="scss" scoped>
 	page {
 		background-color: #fff;
 	}

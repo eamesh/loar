@@ -1,5 +1,5 @@
 <template>
-	<view class="px-4 py-3 font-sans">
+	<view class="px-4 py-3 ">
 		<view class="bg-white rounded-md px-3 py-4">
 			
 			<view class="flex flex-row flex-nowrap justify-between items-center text-[#999] font-medium pb-1">

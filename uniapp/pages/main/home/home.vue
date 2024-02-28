@@ -5,7 +5,7 @@
 	:loadMoreText="loadTexts"
 	ref="guipage">
 		<template v-slot:gFixedTop>
-			<view class="flex justify-center items-end bg-white h-[80rpx] font-sans relative">
+			<view class="flex justify-center items-end bg-white h-[80rpx]  relative">
 				<gui-switch-navigation :items="navBars" :currentIndex="currentIndex" @change="navchange" textAlign="center"
 					:isCenter="true" activeDirection="center" :size="0" :margin="20" padding="30rpx"
 					activeLineHeight="4rpx"></gui-switch-navigation>
@@ -19,7 +19,7 @@
 		<template v-slot:gBody>
 			<!-- <view class="h-[80rpx]"></view> -->
 			<view v-if="currentIndex !== 0">
-				<view class="flex justify-between items-center pt-4 px-4 gap-3 font-sans">
+				<view class="flex justify-between items-center pt-4 px-4 gap-3 ">
 					<template v-for="(item,index) in indexData.hot" :key="index">
 						<view @click="$go(`/pages/kline/kline?id=${item.id}`, 'navigateTo')"
 							class="flex-1 flex-shrink-0 aspect-square bg-white rounded-md flex flex-col justify-between items-center px-3 py-4 box-border overflow-hidden">
@@ -40,8 +40,8 @@
 						</view>
 					</template>
 				</view>
-				<view class="mt-3 px-4 text-base font-sans">{{ $t("index.market_overview") }}</view>
-				<view class="flex justify-between items-center pt-3 px-4 gap-3 font-sans">
+				<view class="mt-3 px-4 text-base ">{{ $t("index.market_overview") }}</view>
+				<view class="flex justify-between items-center pt-3 px-4 gap-3 ">
 					<template v-for="(item,index) in rank" :key="index">
 						<view @click="$go(`/pages/rank/rank?type=${item.key}`, 'navigateTo')"
 							class="flex-1 flex-shrink-0 aspect-[3/3.5] bg-white rounded-md flex flex-col justify-between items-center px-3 py-4 box-border overflow-hidden">
@@ -63,8 +63,8 @@
 						</view>
 					</template>
 				</view>
-				<view class="mt-3 px-4 text-base font-sans">{{ $t("index.all_stocks") }}</view>
-				<view class="px-4 py-3 font-sans">
+				<view class="mt-3 px-4 text-base ">{{ $t("index.all_stocks") }}</view>
+				<view class="px-4 py-3 ">
 					<view class="bg-white rounded-md px-3 py-4">
 						<view class="flex flex-row flex-nowrap justify-between items-center text-[#999] font-medium pb-1">
 							<view class="basis-1/2">{{ $t("table.symbol_name") }}</view>
@@ -99,9 +99,9 @@
 			</view>
 
 			<view v-else>
-				<view class="px-4 pt-4 font-semibold font-sans">{{ $t("index.all_stocks") }}</view>
+				<view class="px-4 pt-4 font-semibold ">{{ $t("index.all_stocks") }}</view>
 				<view class="px-4 py-3">
-					<view class="bg-white rounded-md px-3 py-4 custom-stock font-sans" v-if="favorite.length">
+					<view class="bg-white rounded-md px-3 py-4 custom-stock " v-if="favorite.length">
 						<view class="flex flex-row flex-nowrap justify-between items-center text-[#999] font-medium pb-1">
 							<view class="basis-1/2">{{ $t("table.symbol_name") }}</view>
 							<view class="basis-1/3 text-right">{{ $t("table.price") }}</view>
@@ -146,21 +146,21 @@
 					<view v-if="editCustom" class="flex flex-row justify-between items-center gap-x-5">
 						<button type="default" :plain="true" class="gui-button flex-1"
 							style="border-radius: 50rpx; border: 1px solid #999 !important;" @tap="handleCancel">
-							<view class="text-gray-500 gui-button-text font-sans font-semibold">{{ $t('cancel') }}</view>
+							<view class="text-gray-500 gui-button-text  font-semibold">{{ $t('cancel') }}</view>
 						</button>
 						<button type="default" class="gui-button gui-bg-red gui-noborder flex-1" style="border-radius: 50rpx;"
 							@tap="setEditCustom">
-							<view class="text-white font-sans font-semibold" @click="deleteCustom">{{ $t('delete') }}</view>
+							<view class="text-white  font-semibold" @click="deleteCustom">{{ $t('delete') }}</view>
 						</button>
 					</view>
 					<view v-else class="flex flex-row justify-between items-center gap-x-5">
 						<button type="default" :plain="true" class="gui-button flex-1" style="border-radius: 50rpx;"
 							@tap="$go('/pages/search/search', 'navigateTo')">
-							<view class="gui-primary-color gui-button-text font-sans font-semibold">+{{ $t('add_stock') }}</view>
+							<view class="gui-primary-color gui-button-text  font-semibold">+{{ $t('add_stock') }}</view>
 						</button>
 						<button type="default" class="gui-button gui-bg-primary gui-noborder flex-1" style="border-radius: 50rpx;"
 							@tap="setEditCustom">
-							<view class="text-white font-sans font-semibold">{{ $t('edit_list') }}</view>
+							<view class="text-white  font-semibold">{{ $t('edit_list') }}</view>
 						</button>
 					</view>
 

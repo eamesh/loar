@@ -1,12 +1,12 @@
 <template>
 	<view class="p-4">
-		<view class="flex flex-row text-gray-400 font-sans text-[22rpx]">
+		<view class="flex flex-row text-gray-400  text-[22rpx]">
 			<view class="basis-1/3">{{ $t('money') }}</view>
 			<view class="basis-1/3 text-center">{{ $t('status') }}</view>
 			<view class="basis-1/3 text-right">{{ $t('table.time') }}</view>
 		</view>
 		
-		<view v-if="lists.length" class="flex flex-row items-center font-sans text-xs mt-5" v-for="(item,index) in lists" :key="item.id">
+		<view v-if="lists.length" class="flex flex-row items-center  text-xs mt-5" v-for="(item,index) in lists" :key="item.id">
 			<view class="basis-1/3">{{ item.money }}</view>
 			<view class="basis-1/3 text-center">{{ status[item.status] }}</view>
 			<view class="basis-1/3 text-right">

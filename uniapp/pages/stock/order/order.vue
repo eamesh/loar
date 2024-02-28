@@ -8,7 +8,7 @@
 		
 		<template v-slot:gBody>
 			<view class="h-[80rpx]"></view>
-			<view class="px-4 py-3 font-sans" v-if="currentLists.length">
+			<view class="px-4 py-3 " v-if="currentLists.length">
 				<view class="bg-white rounded-md px-3 py-4" >
 					<view class="flex flex-row flex-nowrap justify-between items-center text-[#999] font-medium pb-1">
 						<view class="basis-1/2">{{ $t("table.symbol_name") }}</view>

@@ -252,6 +252,66 @@
 				"navigationBarTitleText" : "",
 				"enablePullDownRefresh" : false
 			}
+		},
+		{
+			"path" : "pages/setting/card/card",
+			"style" : 
+			{
+				"navigationBarTitleText" : "%card%",
+				"enablePullDownRefresh" : false,
+				"app-plus": {
+					"bounce": "none",
+					"titleNView": { // 配置按钮
+						"buttons": [
+							{
+								"text": "编辑",
+								"fontSize": "24rpx",
+								"marginRight":"30rpx",
+								"color": "rgb(51, 149, 255)",
+								"float": "right"
+							}
+						]
+					}
+				}
+			}
+		},
+		{
+			"path" : "pages/setting/card/create",
+			"style" : 
+			{
+				"navigationBarTitleText" : "%add.card%",
+				"enablePullDownRefresh" : false
+			}
+		},
+		{
+			"path" : "pages/setting/crypto/crypto",
+			"style" : 
+			{
+				"navigationBarTitleText" : "%card%",
+				"enablePullDownRefresh" : false,
+				"app-plus": {
+					"bounce": "none",
+					"titleNView": { // 配置按钮
+						"buttons": [
+							{
+								"text": "编辑",
+								"fontSize": "24rpx",
+								"marginRight":"30rpx",
+								"color": "rgb(51, 149, 255)",
+								"float": "right"
+							}
+						]
+					}
+				}
+			}
+		},
+		{
+			"path" : "pages/setting/crypto/create",
+			"style" : 
+			{
+				"navigationBarTitleText" : "",
+				"enablePullDownRefresh" : false
+			}
 		}
 	],
 	"tabBar": {

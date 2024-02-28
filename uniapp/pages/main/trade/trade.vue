@@ -2,7 +2,7 @@
 	<gui-page customHeader fullPage isSwitchPage :statusBarClass="[token ? 'bg-white' : '']"
 		:class="[currentIndex === 2 ? 'resource' : '']" :isHeaderSized="!!token">
 		<template v-slot:gFixedTop>
-			<view class="flex justify-center items-end bg-white h-[80rpx] font-sans" v-if="token">
+			<view class="flex justify-center items-end bg-white h-[80rpx] " v-if="token">
 				<gui-switch-navigation :items="navTabs" @change="navchange" textAlign="center" :activeFontWeight="500"
 					:isCenter="true" activeDirection="center" :size="0" :margin="20" padding="30rpx" activeLineHeight="4rpx"
 					:currentIndex="currentIndex"></gui-switch-navigation>
@@ -14,7 +14,7 @@
 			<view v-else>
 				<view class="h-[80rpx]"></view>
 				<view v-if="!isFunds">
-					<view class="px-4 py-3 font-sans">
+					<view class="px-4 py-3 ">
 						<view class="p-4 bg-white rounded-lg flex flex-row flex-nowrap justify-between items-center">
 							<view class="flex flex-col justify-between h-14">
 								<view class="font-medium">{{ $t('est.total.assets') }}（{{current.currency}}）</view>
@@ -91,7 +91,7 @@
 							</view>
 						</view>
 				
-						<view class="p-4 bg-white rounded-lg font-sans">
+						<view class="p-4 bg-white rounded-lg ">
 							<view class="flex flex-row items-center">
 								<gui-switch-navigation width="160" :items="navSecondTabs" @change="navSecondChange" :size="0" activeDirection="center"
 									:margin="20" padding="0rpx" textAlign="center"></gui-switch-navigation>
@@ -167,7 +167,7 @@
 				<Exchange v-else />
 				<gui-popup ref="guipopup">
 					<view class="gui-relative gui-box-shadow">
-						<view class="bg-white rounded-xl px-4 py-5 flex flex-col gap-y-3 font-sans">
+						<view class="bg-white rounded-xl px-4 py-5 flex flex-col gap-y-3 ">
 							<view class="flex flex-row justify-between items-center bg-[#F9F9F9] rounded p-2"
 								@tap="openCardWithdraw">
 								<view class="flex flex-row items-center justify-start gap-x-2">
@@ -193,7 +193,7 @@
 				
 				<gui-popup ref="guipopupDown">
 					<view class="gui-relative gui-box-shadow">
-						<view class="bg-white rounded-xl px-4 py-5 flex flex-col gap-y-3 font-sans">
+						<view class="bg-white rounded-xl px-4 py-5 flex flex-col gap-y-3 ">
 							<view class="flex flex-row justify-between items-center bg-[#F9F9F9] rounded p-2"
 								@tap="() => { closeDown(); $go(`/pages/recharge/card/withdraw?market=${current.code}`, 'navigateTo') }">
 								<view class="flex flex-row items-center justify-start gap-x-2">
@@ -204,7 +204,7 @@
 							</view>
 				
 							<view class="flex flex-row justify-between items-center bg-[#F9F9F9] rounded p-2"
-								@tap="() => { closeDown(); $go('/pages/recharge/usdt/withdraw', 'navigateTo') }">
+								@tap="() => { closeDown(); $go(`/pages/recharge/usdt/withdraw?market=${current.code}`, 'navigateTo') }">
 								<view class="flex flex-row items-center justify-start gap-x-2">
 									<gui-image src="/static/img/card.png" :width="44" :height="46"></gui-image>
 									<view class="text-[#333] text-[24rpx]">{{ $t('usdt.withdraw') }}</view>

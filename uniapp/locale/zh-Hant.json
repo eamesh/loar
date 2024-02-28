@@ -137,5 +137,8 @@
 	"add_stock": "新增股票",
 	"edit_list": "編輯清單",
 	"delete": "删除",
-	"cancel": "取消"
+	"cancel": "取消",
+	"card": "銀行卡",
+	"add.card": "新增銀行卡",
+	"add": "新增"
 }

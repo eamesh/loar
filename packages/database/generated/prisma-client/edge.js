@@ -507,7 +507,7 @@ const config = {
       "value": "prisma-client-js"
     },
     "output": {
-      "value": "/Users/emesh/work/loar/packages/database/generated/prisma-client",
+      "value": "/Users/emesh/emesh/loar/packages/database/generated/prisma-client",
       "fromEnvVar": null
     },
     "config": {
@@ -516,7 +516,7 @@ const config = {
     "binaryTargets": [
       {
         "fromEnvVar": null,
-        "value": "darwin-arm64",
+        "value": "darwin",
         "native": true
       }
     ],

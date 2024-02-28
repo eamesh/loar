@@ -23,4 +23,12 @@ export class CardService {
       },
     });
   }
+
+  async delete(id: number) {
+    return await this.prisma.memberCard.delete({
+      where: {
+        id,
+      },
+    });
+  }
 }

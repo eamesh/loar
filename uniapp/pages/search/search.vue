@@ -1,16 +1,16 @@
 <template>
 	<gui-page>
 		<template v-slot:gFixedTop>
-			<view class="h-[88rpx] bg-white flex flex-row justify-between items-center gap-x-4 px-4 font-sans">
+			<view class="h-[88rpx] bg-white flex flex-row justify-between items-center gap-x-4 px-4 ">
 				<gui-search @inputting="inputting" @confirm="confirm" kwd=""
 					:placeholder="$t('search.stock_name_code')" @clear="clear"></gui-search>
-				<view class="font-semibold font-sans" @click="confirm">{{ $t('confirm') }}</view>
+				<view class="font-semibold " @click="confirm">{{ $t('confirm') }}</view>
 			</view>
 		</template>
 		<!-- 页面主体 -->
 		<template v-slot:gBody>
 			<view style="height:88rpx;"></view>
-			<view class="px-4 py-3 font-sans" v-if="lists.length">
+			<view class="px-4 py-3 " v-if="lists.length">
 				<view class="bg-white rounded-md px-3 py-4" >
 					<view class="flex flex-row flex-nowrap justify-between items-center text-[#999] font-medium pb-1">
 						<view class="basis-1/2">{{ $t("table.symbol_name") }}</view>

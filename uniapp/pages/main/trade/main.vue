@@ -2,7 +2,7 @@
 	<gui-page customHeader isSwitchPage :statusBarClass="[token ? 'bg-white' : '']"
 		:class="[currentIndex === 3 ? 'resource' : '']" :is-header-sized="token">
 		<template v-slot:gFixedTop>
-			<view class="flex justify-center items-end bg-white h-[80rpx] font-sans" v-if="token">
+			<view class="flex justify-center items-end bg-white h-[80rpx] " v-if="token">
 				<gui-switch-navigation :items="navTabs" @change="navchange" textAlign="center" :activeFontWeight="500"
 					:isCenter="true" activeDirection="center" :size="0" :margin="20" padding="30rpx" activeLineHeight="4rpx"
 					:currentIndex="currentIndex"></gui-switch-navigation>
@@ -14,7 +14,7 @@
 			<view v-else>
 				<view class="h-[80rpx]"></view>
 				<view v-if="!isFunds">
-					<view class="px-4 py-3 font-sans">
+					<view class="px-4 py-3 ">
 						<view class="p-4 bg-white rounded-lg flex flex-row flex-nowrap justify-between items-center">
 							<view class="flex flex-col justify-between h-14">
 								<view class="font-medium">{{ $t('est.total.assets') }}（{{current.currency}}）</view>
@@ -90,7 +90,7 @@
 							</view>
 						</view>
 				
-						<view class="p-4 bg-white rounded-lg font-sans">
+						<view class="p-4 bg-white rounded-lg ">
 							<gui-switch-navigation :items="navSecondTabs" @change="navSecondChange" :size="0" activeDirection="center"
 								:margin="20" padding="0rpx" textAlign="center"></gui-switch-navigation>
 				
@@ -161,7 +161,7 @@
 				<view v-else>
 					<view class="px-4 mt-4">
 						<view
-							class="w-full text-white font-semibold font-sans px-4 pt-5 text-xs box-border aspect-[1/0.43] bg-red-100 rounded-xl bg-cover bg-no-repeat bg-center flex flex-row flex-wrap"
+							class="w-full text-white font-semibold  px-4 pt-5 text-xs box-border aspect-[1/0.43] bg-red-100 rounded-xl bg-cover bg-no-repeat bg-center flex flex-row flex-wrap"
 							style="background-image: url('/static/img/trade_03.png');">
 							<view class="basis-1/2">
 								<view class="flex flex-col gap-y-2">
@@ -191,7 +191,7 @@
 					</view>
 				
 					<view class="px-4 my-4">
-						<view class="text-sm font-sans font-semibold">{{ $t('fund.transfer') }}:</view>
+						<view class="text-sm  font-semibold">{{ $t('fund.transfer') }}:</view>
 				
 						<view class="bg-[#F9F9F9] flex flex-row justify-between items-center px-3 py-3 rounded-full mt-4">
 							<view class="flex flex-row rounded-full bg-[#f5f5f5] px-3 py-2 gap-3 items-center" @click="openResource">
@@ -221,7 +221,7 @@
 							</view>
 						</view>
 				
-						<view class="flex flex-row justify-between items-center mt-5 font-sans">
+						<view class="flex flex-row justify-between items-center mt-5 ">
 							<view class="text-xs">{{ $t('exchange.rate') }}</view>
 							<view class="flex flex-row items-center gap-x-3 font-mono text-xs">
 								<view>
@@ -240,7 +240,7 @@
 									{{ $t('trasfer.record') }}
 								</view>
 								<button type="default" class="gui-bg-primary gui-noborder w-full rounded-3xl">
-									<text class="gui-color-white gui-button-text font-semibold font-sans">{{ $t('confirm') }}</text>
+									<text class="gui-color-white gui-button-text font-semibold ">{{ $t('confirm') }}</text>
 								</button>
 							</view>
 						</view>
@@ -261,7 +261,7 @@
 				</view>
 				<gui-popup ref="guipopup">
 					<view class="gui-relative gui-box-shadow">
-						<view class="bg-white rounded-xl px-4 py-5 flex flex-col gap-y-3 font-sans">
+						<view class="bg-white rounded-xl px-4 py-5 flex flex-col gap-y-3 ">
 							<view class="flex flex-row justify-between items-center bg-[#F9F9F9] rounded p-2"
 								@tap="() => { close(); $go('/pages/recharge/card/card', 'navigateTo') }">
 								<view class="flex flex-row items-center justify-start gap-x-2">
@@ -287,7 +287,7 @@
 				
 				<gui-popup ref="guipopupDown">
 					<view class="gui-relative gui-box-shadow">
-						<view class="bg-white rounded-xl px-4 py-5 flex flex-col gap-y-3 font-sans">
+						<view class="bg-white rounded-xl px-4 py-5 flex flex-col gap-y-3 ">
 							<view class="flex flex-row justify-between items-center bg-[#F9F9F9] rounded p-2"
 								@tap="() => { closeDown(); $go('/pages/recharge/card/withdraw', 'navigateTo') }">
 								<view class="flex flex-row items-center justify-start gap-x-2">

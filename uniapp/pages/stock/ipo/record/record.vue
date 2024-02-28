@@ -1,7 +1,7 @@
 <template>
 	<view class="p-4">
 		<view class="flex flex-col gap-y-4" v-if="lists.length">
-			<view class="flex bg-white p-4 rounded-lg flex-row flex-wrap text-gray-400 font-sans text-[22rpx] gap-y-3" v-for="(item,index) in lists" :key="item.id">
+			<view class="flex bg-white p-4 rounded-lg flex-row flex-wrap text-gray-400  text-[22rpx] gap-y-3" v-for="(item,index) in lists" :key="item.id">
 				<view class="basis-1/4">
 					<view class="flex flex-col gap-y-2">
 						<view class="font-semibold">{{ $t('market') }}</view>

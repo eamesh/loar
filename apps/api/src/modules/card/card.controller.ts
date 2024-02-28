@@ -1,4 +1,12 @@
-import { Body, Controller, Post, Req, UseGuards } from '@nestjs/common';
+import {
+  Body,
+  Controller,
+  Delete,
+  Param,
+  Post,
+  Req,
+  UseGuards,
+} from '@nestjs/common';
 import { CardService } from './card.service';
 import { Member } from '@loar/database';
 import { MemberGuard } from '../member/guard/member.guard';
@@ -17,5 +25,11 @@ export class CardController {
   @UseGuards(MemberGuard)
   async getList(@Body() payload: any, @Req() req) {
     return await this.card.getList(payload.type, req.user as Member);
+  }
+
+  @Delete(':id')
+  @UseGuards(MemberGuard)
+  async delete(@Param('id') id: number) {
+    return await this.card.delete(id);
   }
 }

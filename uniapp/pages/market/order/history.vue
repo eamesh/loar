@@ -1,6 +1,6 @@
 <template>
 	<view class="px-4 pt-5">
-		<view class="flex flex-row text-gray-400 font-sans text-[22rpx]">
+		<view class="flex flex-row text-gray-400  text-[22rpx]">
 			<view class="basis-1/4">{{ $t('market') }}</view>
 			<view class="basis-1/4">{{ $t('code') }}</view>
 			<view class="basis-1/4 text-center">{{ $t('mode') }}</view>
@@ -8,7 +8,7 @@
 			<view class="basis-1/4 text-right">{{ $t('table.time') }}</view>
 		</view>
 		
-		<view v-if="lists.length" class="flex flex-row items-center font-sans text-xs mt-5" v-for="(item,index) in lists" :key="item.id">
+		<view v-if="lists.length" class="flex flex-row items-center  text-xs mt-5" v-for="(item,index) in lists" :key="item.id">
 			<view class="basis-1/4">{{ item.stockSymbol.market }}</view>
 			<view class="basis-1/4">{{ item.stockSymbol.code }}</view>
 			<view class="basis-1/4 text-center">{{ types[item.mode].title }}

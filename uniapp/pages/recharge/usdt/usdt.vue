@@ -73,7 +73,7 @@
 						@click="$go('/pages/wallet/rechargeRecords/rechargeRecords', 'navigateTo')">{{ $t('recharge.history') }}
 					</view>
 					<button type="default" class="gui-bg-primary gui-noborder w-full rounded-3xl" @click="submit">
-						<text class="gui-color-white gui-button-text font-semibold font-sans">{{ $t('confirm') }}</text>
+						<text class="gui-color-white gui-button-text font-semibold ">{{ $t('confirm') }}</text>
 					</button>
 				</view>
 			</view>

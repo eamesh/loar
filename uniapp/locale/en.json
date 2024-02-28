@@ -137,5 +137,8 @@
 	"add_stock": "Add Stock",
 	"edit_list": "Edit List",
 	"delete": "Delete",
-	"cancel": "Cancel"
+	"cancel": "Cancel",
+	"card": "Bank Card",
+	"add.card": "Add Card",
+	"add": "Add"
 }

@@ -1,7 +1,7 @@
 <template>
 	<gui-page customHeader isSwitchPage :statusBarClass="['bg-white']">
 		<template v-slot:gFixedTop>
-			<view class="flex flex-col justify-between items-center bg-white h-[160rpx] pt-2 box-border pr-4 font-sans">
+			<view class="flex flex-col justify-between items-center bg-white h-[160rpx] pt-2 box-border pr-4 ">
 				<view class="flex justify-between items-center w-full">
 					<gui-switch-navigation :currentIndex="currentIndex" :items="navBars" textAlign="center" :size="80" activeDirection="center"
 						@change="navchange" :margin="30" :width="600" padding="10rpx"></gui-switch-navigation>
@@ -22,8 +22,8 @@
 				<view class="bg-white rounded-md py-4 px-3 flex flex-col gap-y-3" v-for="(item,index) in subscribes" :key="item.id">
 					<view class="flex flex-row justify-between items-center">
 						<view class="flex flex-col gap-y-2">
-							<view class="font-semibold font-sans">{{ item.name }}</view>
-							<view class="flex flex-row gap-x-1 items-center font-sans">
+							<view class="font-semibold ">{{ item.name }}</view>
+							<view class="flex flex-row gap-x-1 items-center ">
 								<view class="bg-[#3395FF] text-white text-[18rpx] px-[10rpx] py-[3px] rounded-sm">{{ item.market.code }}</view>
 								<view class="text-[#999] text-[20rpx]">{{ item.code }}</view>
 							</view>
@@ -32,11 +32,11 @@
 							item.isEnable && $go(`/pages/main/ipo/confirm?id=${item.id}`, 'navigateTo')
 						}">{{ $t('subscribe') }}</view>
 					</view>
-					<view class="flex flex-row text-[22rpx] text-[#999] font-sans">
+					<view class="flex flex-row text-[22rpx] text-[#999] ">
 						<view class="basis-1/3">{{ $t('ipo_price') }}</view>
 						<view class="basis-2/3 text-black">{{ item.ipoPrice }} {{ item.market.currency }}</view>
 					</view>
-					<view class="flex flex-row text-[22rpx] text-[#999] font-sans">
+					<view class="flex flex-row text-[22rpx] text-[#999] ">
 						<view class="basis-1/3">{{ $t('deadline') }}</view>
 						<view class="basis-1/3 text-black">{{ dayjs(item.endAt).format("YYYY-MM-DD") }}</view>
 						<view class="basis-1/3 text-black flex justify-end" v-if="+dayjs(item.endAt).diff(dayjs(), 'day') >= 0">
