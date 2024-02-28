@@ -12,4 +12,8 @@ export class WithdrawController {
   async createWithdraw(@Body() payload: any, @Req() req) {
     return await this.withdraw.createWithdraw(payload, req.user as Member);
   }
+
+  @Post(':id/pass')
+  @UseGuards(UseGuards)
+  async passWithdraw() {}
 }
