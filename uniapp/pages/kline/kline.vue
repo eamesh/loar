@@ -24,9 +24,9 @@
 			webviewUrl() {
 				// return '/hybrid/html/index.html'
 				// const symbol = this.query.symbol.split('.')[0]
-				// const url = process.env.NODE_ENV === 'development' ? 'http://localhost:8082' : 'https://kline.loar.cc'
-				// let target = `${url}/#/?uid=${this.user.id}&id=${this.query.id}&lang=${this.language.key}`
-				let target = `/hybrid/html/index.html?uid=${this.user.id}&id=${this.query.id}&lang=${this.language.key}`
+				const url = process.env.NODE_ENV === 'development' ? 'http://localhost:8082' : '/hybrid/html/index.html'
+				let target = `${url}?uid=${this.user.id}&id=${this.query.id}&lang=${this.language.key}`
+				// let target = `/hybrid/html/index.html?uid=${this.user.id}&id=${this.query.id}&lang=${this.language.key}`
 				if (this.token) {
 					target += `&token=${encodeURIComponent(this.token)}`
 				}

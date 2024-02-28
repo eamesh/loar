@@ -18,7 +18,7 @@ export const columns: BasicColumn<any>[] = [
     key: 'market',
   },
   {
-    title: 'USDT地址',
+    title: 'USD地址',
     key: 'address',
   },
   {

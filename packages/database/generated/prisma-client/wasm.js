@@ -232,6 +232,7 @@ exports.Prisma.StockMarketScalarFieldEnum = {
   id: 'id',
   code: 'code',
   currency: 'currency',
+  showName: 'showName',
   maxWithdrawal: 'maxWithdrawal',
   minWithdrawal: 'minWithdrawal',
   feeRate: 'feeRate',
@@ -340,6 +341,16 @@ exports.Prisma.MemberDetailScalarFieldEnum = {
   memberId: 'memberId'
 };
 
+exports.Prisma.MemberCardScalarFieldEnum = {
+  id: 'id',
+  name: 'name',
+  type: 'type',
+  detail: 'detail',
+  memberId: 'memberId',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+};
+
 exports.Prisma.CountryScalarFieldEnum = {
   id: 'id',
   code: 'code',
@@ -396,6 +407,50 @@ exports.Prisma.ArticleScalarFieldEnum = {
   updatedAt: 'updatedAt'
 };
 
+exports.Prisma.RechargeScalarFieldEnum = {
+  id: 'id',
+  market: 'market',
+  money: 'money',
+  type: 'type',
+  account: 'account',
+  accountNetwork: 'accountNetwork',
+  screens: 'screens',
+  status: 'status',
+  passMoney: 'passMoney',
+  convertMoney: 'convertMoney',
+  memberId: 'memberId',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+};
+
+exports.Prisma.WithdrawScalarFieldEnum = {
+  id: 'id',
+  market: 'market',
+  money: 'money',
+  type: 'type',
+  currency: 'currency',
+  cryptoType: 'cryptoType',
+  cryptoNetwork: 'cryptoNetwork',
+  card: 'card',
+  convertMoney: 'convertMoney',
+  status: 'status',
+  memberId: 'memberId',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+};
+
+exports.Prisma.RechargeAccountScalarFieldEnum = {
+  id: 'id',
+  account: 'account',
+  accountAddress: 'accountAddress',
+  currency: 'currency',
+  max: 'max',
+  min: 'min',
+  status: 'status',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+};
+
 exports.Prisma.SortOrder = {
   asc: 'asc',
   desc: 'desc'
@@ -432,6 +487,11 @@ exports.STOCK_STATUS = exports.$Enums.STOCK_STATUS = {
   DOWN: 'DOWN'
 };
 
+exports.RechargeType = exports.$Enums.RechargeType = {
+  CARD: 'CARD',
+  CRYPTO: 'CRYPTO'
+};
+
 exports.Prisma.ModelName = {
   User: 'User',
   Member: 'Member',
@@ -446,11 +506,15 @@ exports.Prisma.ModelName = {
   MemberSubscribe: 'MemberSubscribe',
   StockPosition: 'StockPosition',
   MemberDetail: 'MemberDetail',
+  MemberCard: 'MemberCard',
   Country: 'Country',
   Setting: 'Setting',
   StockResource: 'StockResource',
   StockResourceRecord: 'StockResourceRecord',
-  Article: 'Article'
+  Article: 'Article',
+  Recharge: 'Recharge',
+  Withdraw: 'Withdraw',
+  RechargeAccount: 'RechargeAccount'
 };
 
 /**

@@ -178,7 +178,7 @@
 							</view>
 				
 							<view class="flex flex-row justify-between items-center bg-[#F9F9F9] rounded p-2"
-								@tap="() => { close(); $go('/pages/recharge/usdt/usdt', 'navigateTo') }">
+								@tap="() => { close(); $go(`/pages/recharge/usdt/usdt?market=${current.code}`, 'navigateTo') }">
 								<view class="flex flex-row items-center justify-start gap-x-2">
 									<gui-image src="/static/img/card.png" :width="44" :height="46"></gui-image>
 									<view class="text-[#333] text-[24rpx]">{{ $t('usdt.deposit') }}</view>

@@ -142,7 +142,7 @@ export class StockSubscribeService {
     const money = new Decimal(payload.money);
 
     // if (market.code !== 'US') {
-    //   money = await this.setting.handleToUSDT(money, market.code);
+    //   money = await this.setting.handleToUSD(money, market.code);
     // }
 
     // 获取用户余额

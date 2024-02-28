@@ -51,7 +51,7 @@ export class HandleStockService {
     const balance = new Decimal(account.balance);
 
     // if (symbol.market !== 'US') {
-    //   bondDecimal = await this.setting.handleToUSDT(bondDecimal, symbol.market);
+    //   bondDecimal = await this.setting.handleToUSD(bondDecimal, symbol.market);
     // }
     console.log('冻结余额', unBalance);
     unBalance = unBalance.add(bondDecimal);
@@ -171,11 +171,11 @@ export class HandleStockService {
     const allProfitDecimal = new Decimal(allProfit);
     const bondDecimal = new Decimal(position.bond);
     // if (stockSymbol.market !== 'US') {
-    //   allProfitDecimal = await this.setting.handleToUSDT(
+    //   allProfitDecimal = await this.setting.handleToUSD(
     //     allProfitDecimal,
     //     stockSymbol.market,
     //   );
-    //   bondDecimal = await this.setting.handleToUSDT(
+    //   bondDecimal = await this.setting.handleToUSD(
     //     bondDecimal,
     //     stockSymbol.market,
     //   );

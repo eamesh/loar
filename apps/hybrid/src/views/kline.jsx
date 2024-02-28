@@ -81,17 +81,17 @@ export default defineComponent({
       })
     })
 
-    async function getSettingByKey () {
-      try {
-        const result = await axios.get(`${process.env.VUE_APP_KLINE_HOST}/api/v1/setting/fee_rate`)
-        console.log(result)
-        feeRate.value = result.data.value.value
-      } catch (error) {
+    // async function getSettingByKey () {
+    //   try {
+    //     const result = await axios.get(`${process.env.VUE_APP_KLINE_HOST}/api/v1/setting/fee_rate`)
+    //     console.log(result)
+    //     feeRate.value = result.data.value.value
+    //   } catch (error) {
 
-      }
-    }
+    //   }
+    // }
 
-    getSettingByKey()
+    // getSettingByKey()
 
     async function getStock () {
       console.log(route.query, route.params)
@@ -172,6 +172,8 @@ export default defineComponent({
       await getProfile()
       const result = await getStock()
       const stock = stockRef.value = result.data
+      console.log(stock)
+      feeRate.value = stock.marketResult?.feeRate || 0
       loading.value = false
       console.log(socket)
       socket.emit('sub', `ws.market.${stock.market}.${stock.code}`)

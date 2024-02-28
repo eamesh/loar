@@ -2,7 +2,7 @@ import { http } from '@/util/request.js'
 
 export const requestRecharge = function (data) {
 	return http({
-		url: `/member/recharge`,
+		url: `/recharge`,
 		method: 'POST',
 		data
 	})
@@ -73,5 +73,12 @@ export const getTypeOrder = function (data) {
 		url: '/member/type_order',
 		method: 'POST',
 		data
+	})
+}
+
+export const getAccountList = function (data) {
+	return http({
+		url: '/recharge-account/enable',
+		method: 'GET',
 	})
 }

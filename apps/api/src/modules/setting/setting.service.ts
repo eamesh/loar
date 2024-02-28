@@ -50,24 +50,24 @@ export class SettingService {
     }
   }
 
-  async handleToUSDT(money: Decimal, currency: string) {
+  async handleToUSD(money: Decimal, currency: string) {
     // 获取兑换比例
     const { value } = await this.getKey('exchange_rate');
     console.log(value);
 
     const current = new Decimal(value[currency]);
 
-    // 计算港币兑换USDT
+    // 计算港币兑换USD
     return money.mul(current);
   }
 
-  async handleUSDTto(money: Decimal, currency: string) {
+  async handleUSDto(money: Decimal, currency: string) {
     // 获取兑换比例
     const { value } = await this.getKey('exchange_rate');
 
     const current = new Decimal(value[currency]);
 
-    // 计算港币兑换USDT
+    // 计算港币兑换USD
     return money.div(current);
   }
 

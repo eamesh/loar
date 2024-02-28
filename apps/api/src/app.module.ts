@@ -26,6 +26,11 @@ import { ServeStaticModule } from '@nestjs/serve-static';
 import { join } from 'path';
 import { AcceptLanguageResolver, I18nModule, QueryResolver } from 'nestjs-i18n';
 import { MulterModule } from '@nestjs/platform-express';
+import { ToolModule } from './modules/tool/tool.module';
+import { RechargeAccountModule } from './modules/recharge-account/recharge-account.module';
+import { RechargeModule } from './modules/recharge/recharge.module';
+import { WithdrawModule } from './modules/withdraw/withdraw.module';
+import { CardModule } from './modules/card/card.module';
 
 const envFilePath = [`env.${process.env.NODE_ENV}`, '.env'];
 
@@ -73,9 +78,14 @@ const imports = [
     // disable throwing uncaughtException if an error event is emitted and it has no listeners
     ignoreErrors: false,
   }),
+  ToolModule,
+  CardModule,
   CryptoModule,
   CountryModule,
   FinanceModule,
+  RechargeAccountModule,
+  RechargeModule,
+  WithdrawModule,
   // AuthModule,
   ShuhaiModule,
   KlineModule,

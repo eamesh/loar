@@ -49,6 +49,9 @@ model Member {
   memberSubscribe MemberSubscribe[]
   memberRecharges MemberRecharge[]
   memberWithdraws MemberWithdraw[]
+  memberCards     MemberCard[]
+  recharges       Recharge[]
+  withdraws       Withdraw[]
 
   @@map("members")
 }
@@ -205,6 +208,7 @@ model StockMarket {
   code           String?
   // 市场交易货币
   currency       String?
+  showName       String?
   // 最大出金
   maxWithdrawal  String?   @map("max_withdrawal")
   // 最小出金
@@ -399,6 +403,19 @@ model MemberDetail {
   @@map("member_details")
 }
 
+model MemberCard {
+  id        BigInt       @id @default(autoincrement())
+  name      String?
+  type      RechargeType
+  detail    Json
+  memberId  BigInt       @map("member_id")
+  member    Member       @relation(fields: [memberId], references: [id])
+  createdAt DateTime     @default(now()) @map("created_at")
+  updatedAt DateTime?    @map("updated_at")
+
+  @@map("member_cards")
+}
+
 model Country {
   id        BigInt    @id @default(autoincrement())
   code      String?   @db.Char(30)
@@ -469,11 +486,83 @@ model Article {
   thumb        String    @db.VarChar(250)
   title        String    @db.VarChar(250)
   market       String?
-  crawlerThumb String?   @db.VarChar(250)
+  crawlerThumb String?   @map("crawler_thumb") @db.VarChar(250)
   source       String?   @db.VarChar(250)
   content      String    @db.LongText
   createdAt    DateTime  @default(now()) @map("created_at")
   updatedAt    DateTime? @map("updated_at")
 
   @@map("articles")
+}
+
+model Recharge {
+  id             BigInt       @id @default(autoincrement())
+  // 市场
+  market         String
+  // 金额
+  money          Decimal      @db.Decimal(20, 5)
+  // 充值类型
+  type           RechargeType
+  // 充值币种
+  account        String
+  // 充值网络
+  accountNetwork String       @map("account_network")
+  // 截图
+  screens        Json
+  // 审核状态
+  status         Int          @default(0)
+  passMoney      Decimal      @default(0) @map("pass_money") @db.Decimal(20, 5)
+  convertMoney   Decimal      @default(0) @map("convert_money") @db.Decimal(20, 5)
+
+  memberId  BigInt    @map("member_id")
+  createdAt DateTime  @default(now()) @map("created_at")
+  updatedAt DateTime? @map("updated_at")
+
+  member Member @relation(fields: [memberId], references: [id])
+
+  @@map("recharges")
+}
+
+model Withdraw {
+  id            BigInt       @id @default(autoincrement())
+  // 市场
+  market        String
+  // 金额
+  money         Decimal      @db.Decimal(20, 5)
+  // 提现类型
+  type          RechargeType
+  // 提现币种
+  currency      String
+  cryptoType    String?      @map("crypto_type")
+  cryptoNetwork String?      @map("crypto_network")
+  card          Json?
+  convertMoney  Decimal      @default(0) @map("convert_money") @db.Decimal(20, 5)
+  // 审核状态
+  status        Int          @default(0)
+  memberId      BigInt       @map("member_id")
+  createdAt     DateTime     @default(now()) @map("created_at")
+  updatedAt     DateTime?    @map("updated_at")
+
+  member Member @relation(fields: [memberId], references: [id])
+
+  @@map("withdraws")
+}
+
+enum RechargeType {
+  CARD
+  CRYPTO
+}
+
+model RechargeAccount {
+  id             BigInt    @id @default(autoincrement())
+  account        String
+  accountAddress String    @map("account_address")
+  currency       String
+  max            Decimal   @default(0) @db.Decimal(20, 5)
+  min            Decimal   @default(0) @db.Decimal(20, 5)
+  status         Int       @default(0)
+  createdAt      DateTime  @default(now()) @map("created_at")
+  updatedAt      DateTime? @map("updated_at")
+
+  @@map("recharge_accounts")
 }

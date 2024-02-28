@@ -566,7 +566,7 @@ export class MemberService {
 
     const current = new Decimal(value['HKEX']);
     console.log(current);
-    // 计算港币兑换USDT
+    // 计算港币兑换USD
     return from === 'USD'
       ? new Decimal(money).div(current).toFixed(4)
       : new Decimal(money).mul(current).toFixed(4);

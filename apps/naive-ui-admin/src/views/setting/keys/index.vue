@@ -14,11 +14,11 @@
             ref="formRef"
             class="py-8"
           >
-            <n-form-item label="HKD转USDT汇率" path="hkd">
+            <n-form-item label="HKD转USD汇率" path="hkd">
               <n-input-number v-model:value="formValue.hkd" placeholder="" />
             </n-form-item>
-            <n-form-item label="USDT充值地址" path="usdt">
-              <n-input placeholder="" v-model:value="formValue.usdt" />
+            <n-form-item label="USD充值地址" path="usd">
+              <n-input placeholder="" v-model:value="formValue.usd" />
             </n-form-item>
             <n-form-item label="每笔费率" path="fee_rate">
               <n-input-number placeholder="" v-model:value="formValue.fee_rate" />
@@ -55,7 +55,7 @@
       type: 'number',
       trigger: ['blur', 'change'],
     },
-    usdt: {
+    usd: {
       required: true,
       message: '请输入充值地址',
       trigger: 'blur',
@@ -88,7 +88,7 @@
 
   const defaultValueRef = () => ({
     hkd: 0,
-    usdt: '',
+    usd: '',
     min_withdraw: 0,
     max_withdraw: 0,
     fee_rate: 0,
@@ -107,7 +107,7 @@
       });
 
       formValue.hkd = obj?.exchange_rate.HKEX || 0;
-      formValue.usdt = obj?.usdt.value || 0;
+      formValue.usd = obj?.usd.value || 0;
       formValue.min_withdraw = obj?.min_withdraw.value || 0;
       formValue.max_withdraw = obj?.max_withdraw.value || 0;
       formValue.fee_rate = obj?.fee_rate.value || 0;
@@ -128,9 +128,9 @@
               },
             },
             {
-              key: 'usdt',
+              key: 'usd',
               value: {
-                value: formValue.usdt,
+                value: formValue.usd,
               },
             },
             {
