@@ -18,7 +18,9 @@
     "weapp-tailwindcss": "^3.0.5"
   },
   "dependencies": {
+    "@klinecharts/pro": "^0.1.1",
     "dayjs": "^1.11.10",
+    "klinecharts": "^9.7.2",
     "pinia-plugin-persist-uni": "^1.3.1",
     "socket.io-client": "^4.7.4"
   }

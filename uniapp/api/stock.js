@@ -40,3 +40,11 @@ export const searchStock = function (kwd) {
 		method: 'GET',
 	})
 }
+
+export const getStock = function (id) {
+	// /stock/${route.query.id}/panel
+	return http({
+		url: `/stock/${id}/panel`,
+		method: 'GET',
+	})
+}

@@ -156,5 +156,9 @@
 	"edit": "Edit",
 	"select.account": "Please select a receiving account",
 	"input.balance": "Please enter the withdrawal amount",
-	"type": "Type"
+	"type": "Type",
+	"kline.open": "Open",
+	"kline.close": "Prev Close",
+	"kline.high": "High",
+	"kline.low": "Low"
 }
