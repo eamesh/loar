@@ -140,5 +140,20 @@
 	"cancel": "取消",
 	"card": "銀行卡",
 	"add.card": "新增銀行卡",
-	"add": "新增"
+	"add": "新增",
+	"card.withdraw": "提現曆史",
+	"balance": "余額",
+	"currency": "貨幣",
+	"bank_account": "銀行帳戶",
+	"bank": "銀行分行",
+	"bank.branch": "帳號名稱",
+	"bank.name": "銀行帳戶",
+	"bank.bsb": "銀行代碼",
+	"crypto.type": "币种",
+	"address": "收貨地址",
+	"network": "網絡",
+	"edit": "编辑",
+	"select.account": "請選擇收款賬戶",
+	"input.balance": "請輸入提現金額",
+	"type": "提現類型"
 }

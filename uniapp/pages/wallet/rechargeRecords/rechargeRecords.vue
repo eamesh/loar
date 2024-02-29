@@ -1,17 +1,21 @@
 <template>
 	<view class="p-4">
 		<view class="flex flex-row text-gray-400  text-[22rpx]">
-			<view class="basis-1/4">{{$t('money')}}</view>
-			<view class="basis-1/4">{{$t('real_money')}}</view>
-			<view class="basis-1/4 text-center">{{ $t('status') }}</view>
-			<view class="basis-1/4 text-right">{{ $t('table.time') }}</view>
+			<view class="basis-1/6">{{ $t('market') }}</view>
+			<view class="basis-1/6">{{ $t('crypto.type') }}</view>
+			<view class="basis-1/6">{{$t('money')}}</view>
+			<view class="basis-1/6 text-left">{{$t('real_money')}}</view>
+			<view class="basis-1/6 text-center">{{ $t('status') }}</view>
+			<view class="basis-1/6 text-right">{{ $t('table.time') }}</view>
 		</view>
 		
-		<view v-if="lists.length" class="flex flex-row items-center  text-xs mt-5" v-for="(item,index) in lists" :key="item.id">
-			<view class="basis-1/4">{{ item.money }}</view>
-			<view class="basis-1/4">{{ item.rechargeMoney }}</view>
-			<view class="basis-1/4 text-center">{{ status[item.status] }}</view>
-			<view class="basis-1/4 text-right">
+		<view v-if="lists.length" class="flex flex-row items-center  text-[20rpx] mt-5" v-for="(item,index) in lists" :key="item.id">
+			<view class="basis-1/6">{{ item.market }}</view>
+			<view class="basis-1/6">{{ item.account }}</view>
+			<view class="basis-1/6">{{ item.passMoney }}</view>
+			<view class="basis-1/6 text-left">{{ item.convertMoney }}</view>
+			<view class="basis-1/6 text-center">{{ status[item.status] }}</view>
+			<view class="basis-1/6 text-right">
 				<view>{{ dayjs(item.createdAt).format("YYYY-MM-DD") }}</view>
 				<view>{{ dayjs(item.createdAt).format("HH:mm:ss") }}</view>
 			</view>
@@ -35,10 +39,9 @@
 		computed: {
 			status() {
 				return {
-					'01': this.$t("refuse"),
+					2: this.$t("refuse"),
 					0: this.$t("audit"),
 					1: this.$t("audited"),
-					2: this.$t("audited"),
 				}
 			}
 		},

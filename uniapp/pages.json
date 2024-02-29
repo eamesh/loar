@@ -264,7 +264,7 @@
 					"titleNView": { // 配置按钮
 						"buttons": [
 							{
-								"text": "编辑",
+								"text": "%edit%",
 								"fontSize": "24rpx",
 								"marginRight":"30rpx",
 								"color": "rgb(51, 149, 255)",
@@ -294,7 +294,7 @@
 					"titleNView": { // 配置按钮
 						"buttons": [
 							{
-								"text": "编辑",
+								"text": "%edit%",
 								"fontSize": "24rpx",
 								"marginRight":"30rpx",
 								"color": "rgb(51, 149, 255)",

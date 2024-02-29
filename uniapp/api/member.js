@@ -18,14 +18,14 @@ export const requestWithdraw = function (data) {
 
 export const requestRechargeRecord = function () {
 	return http({
-		url: `/member/recharge`,
+		url: `/recharge/member/list`,
 		method: 'GET'
 	})
 }
 
 export const requestWithdrawRecord = function () {
 	return http({
-		url: `/member/withdraw`,
+		url: `/withdraw/member/list`,
 		method: 'GET'
 	})
 }

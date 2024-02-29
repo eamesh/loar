@@ -3,7 +3,7 @@
 		<template v-slot:gBody>
 			<view class="px-4 py-2 ">
 				<view class="mt-3">
-					<text class="text-xs text-gray-500">貨幣</text>
+					<text class="text-xs text-gray-500">{{ $t('currency') }}</text>
 				</view>
 				<view class="mt-3 gui-bg-gray rounded-md px-3">
 					<gui-select-list @change="handleSelectMarket"
@@ -19,7 +19,7 @@
 				</view> -->
 				
 				<view class="mt-4">
-					<text class="text-xs text-gray-500">銀行帳戶</text>
+					<text class="text-xs text-gray-500">{{ $t('bank_account') }}</text>
 				</view>
 			
 				<view class="mt-3 gui-bg-gray rounded-md px-3">
@@ -31,7 +31,7 @@
 				</view>
 
 				<view class="mt-4">
-					<text class="text-xs text-gray-500">金額</text>
+					<text class="text-xs text-gray-500">{{ $t('money') }}</text>
 				</view>
 				<view class="mt-3 gui-bg-gray rounded-md px-3">
 					<view class="flex flex-row justify-between items-center">
@@ -41,11 +41,11 @@
 				</view>
 
 				<view class="text-[20rpx] text-gray-400 mt-4">
-					*最低金額：<text class="text-black">{{ currentMarket.minWithdrawal }} {{ currentMarket.showName }}</text>
+					*{{ $t('min_withdraw') }}：<text class="text-black">{{ currentMarket.minWithdrawal }} {{ currentMarket.showName }}</text>
 				</view>
 				
 				<view class="text-[20rpx] text-gray-400 mt-4">
-					*最大金額：<text class="text-black">{{ currentMarket.maxWithdrawal}} {{ currentMarket.showName }}</text>
+					*{{$t('max_withdraw')}}：<text class="text-black">{{ currentMarket.maxWithdrawal}} {{ currentMarket.showName }}</text>
 				</view>
 			</view>
 		</template>
@@ -53,9 +53,9 @@
 		<template v-slot:gFooter>
 			<view class="h-[220rpx] bg-white footer flex flex-col justify-center ">
 				<view class="flex flex-col justify-between items-center gap-3 px-4">
-					<view class="text-xs text-[#3395ff]"  @click="$go('/pages/wallet/fundRecords/fundRecords', 'navigateTo')">提幣歷史</view>
+					<view class="text-xs text-[#3395ff]"  @click="$go('/pages/wallet/fundRecords/fundRecords', 'navigateTo')">{{ $t('withdraw.history') }}</view>
 					<button type="default" class="gui-bg-primary gui-noborder w-full rounded-3xl" @click="submit">
-						<text class="gui-color-white gui-button-text font-semibold ">確認</text>
+						<text class="gui-color-white gui-button-text font-semibold ">{{ $t("confirm") }}</text>
 					</button>
 				</view>
 			</view>
@@ -163,8 +163,8 @@
 						checked && (this.selectIndex = index)
 						
 						return {
-							title: `市场 ${key}`,
-							desc: `可提現金額 ${item.balance}`,
+							title: `${this.$t('market')} ${key}`,
+							desc: `${this.$t('balance')} ${item.balance}`,
 							checked,
 							code: key,
 							...item

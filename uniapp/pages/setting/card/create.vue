@@ -2,36 +2,36 @@
 	<gui-page :customFooter="true">
 		<template v-slot:gBody>
 			<view class="p-4 flex flex-col gap-y-3">
-				<view>銀行帳戶</view>
+				<view>{{ $t('bank') }}</view>
 				<view class="mt-1 bg-gray-200 rounded-md px-3">
 					<view class="flex flex-row justify-between items-center">
-						<input class="gui-form-input w-full" v-model="formData.name" name="name" placeholder="銀行帳戶" />
+						<input class="gui-form-input w-full" v-model="formData.name" name="name" :placeholder="$t('bank')" />
 					</view>
 				</view>
 				
-				<view>帳號資訊</view>
+				<view>{{ $t('account_info') }}</view>
 				<view class="mt-1 bg-gray-200 rounded-md px-3">
 					<view class="flex flex-row justify-between items-center">
 						<view class="text-red-600">*</view>
-						<input class="gui-form-input w-full" v-model="formData.bank" name="bank" placeholder="銀行分行" />
+						<input class="gui-form-input w-full" v-model="formData.bank" name="bank" :placeholder="$t('bank.branch')" />
 					</view>
 				</view>
 				<view class="mt-1 bg-gray-200 rounded-md px-3">
 					<view class="flex flex-row justify-between items-center">
 						<view class="text-red-600">*</view>
-						<input class="gui-form-input w-full" v-model="formData.accountName" name="accountName" placeholder="帳號名稱" />
+						<input class="gui-form-input w-full" v-model="formData.accountName" name="accountName" :placeholder="$t('bank.name')" />
 					</view>
 				</view>
 				<view class="mt-1 bg-gray-200 rounded-md px-3">
 					<view class="flex flex-row justify-between items-center">
 						<view class="text-red-600">*</view>
-						<input class="gui-form-input w-full" v-model="formData.account" name="account" placeholder="銀行帳戶" />
+						<input class="gui-form-input w-full" v-model="formData.account" name="account" :placeholder="$t('bank')" />
 					</view>
 				</view>
 				<view class="mt-1 bg-gray-200 rounded-md px-3">
 					<view class="flex flex-row justify-between items-center">
 						<view class="text-red-600">*</view>
-						<input class="gui-form-input w-full" v-model="formData.code" name="code" placeholder="銀行代碼" />
+						<input class="gui-form-input w-full" v-model="formData.code" name="code" :placeholder="$t('bank.bsb')" />
 					</view>
 				</view>
 			</view>

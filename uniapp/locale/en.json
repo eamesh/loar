@@ -140,5 +140,21 @@
 	"cancel": "Cancel",
 	"card": "Bank Card",
 	"add.card": "Add Card",
-	"add": "Add"
+	"add": "Add",
+	"card.withdraw": "Withdrawal History",
+	"balance": "Balance",
+	"currency": "Currency",
+	"bank_account": "Bank Account",
+	"account_info": "Account Info",
+	"bank": "Bank ACC",
+	"bank.branch": "Bank Branch",
+	"bank.name": "Account Name",
+	"bank.bsb": "Bank BSB",
+	"crypto.type": "Crypto",
+	"address": "Address",
+	"network": "Network",
+	"edit": "Edit",
+	"select.account": "Please select a receiving account",
+	"input.balance": "Please enter the withdrawal amount",
+	"type": "Type"
 }

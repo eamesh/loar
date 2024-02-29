@@ -164,4 +164,12 @@ export class WithdrawService {
       },
     );
   }
+
+  async getListByMember(member: Member) {
+    return await this.prisma.withdraw.findMany({
+      where: {
+        memberId: member.id,
+      },
+    });
+  }
 }

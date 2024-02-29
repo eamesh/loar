@@ -3,12 +3,12 @@
 		<template v-slot:gBody>
 			<view class="px-4 py-2 ">
 				<view class="mt-3">
-					<text class="text-xs text-gray-500">貨幣</text>
+					<text class="text-xs text-gray-500">{{ $t('currency') }}</text>
 				</view>
 				<view class="mt-3 gui-bg-gray rounded-md px-3">
 					<view class="flex flex-row justify-between items-center">
 						<view class="gui-form-input flex flex-row justify-between items-center w-full">
-							<view class="text-[20rpx] text-gray-500"> 可提金额</view>
+							<view class="text-[20rpx] text-gray-500"> {{ $t('balance') }}</view>
 							<view class="text-[20rpx] text-gray-500"> {{ currentMarket?.showName }} {{ balance }}</view>
 							<text class="gui-icons gui-block gui-color-gray gui-text">&#xe601;</text>
 						</view>
@@ -17,7 +17,7 @@
 				<view class="mt-3 gui-bg-gray rounded-md px-3" @click="handleSelectCard">
 					<view class="flex flex-row justify-between items-center">
 						<view class="gui-form-input flex flex-row justify-between items-center w-full">
-							<view class="text-[20rpx] text-gray-500"> {{ card?.detail?.network ?? '请选择收款账户' }}</view>
+							<view class="text-[20rpx] text-gray-500"> {{ card?.detail?.network ?? $t('select.account') }}</view>
 							<text class="gui-icons gui-block gui-color-gray gui-text">&#xe601;</text>
 						</view>
 					</view>
@@ -25,16 +25,16 @@
 				<view class="mt-3 gui-bg-gray rounded-md px-3">
 					<view class="flex flex-row justify-between items-center">
 						<view class="gui-form-input flex flex-row justify-between items-center w-full">
-							<input type="number" v-model="money" class="text-[22rpx] w-full" placeholder="请输入体现金额" />
+							<input type="number" v-model="money" class="text-[22rpx] w-full" :placeholder="$t('input.balance')" />
 							<text class="gui-icons gui-block gui-color-gray gui-text">&#xe601;</text>
 						</view>
 					</view>
 				</view>
 				
 				<view class="flex flex-col text-gray-500 text-[18rpx] gap-y-2 mt-3">
-					<view>最低金额: {{ currentMarket?.maxWithdrawal || 0 }}</view>
-					<view>最大金额: {{ currentMarket?.minWithdrawal || 0 }}</view>
-					<view>收款地址: {{ card?.detail?.address }}</view>
+					<view>{{ $t('min_withdraw') }}: {{ currentMarket?.maxWithdrawal || 0 }}</view>
+					<view>{{ $t('max_withdraw') }}: {{ currentMarket?.minWithdrawal || 0 }}</view>
+					<view>{{ $t('address') }}: {{ card?.detail?.address }}</view>
 				</view>
 			</view>
 		</template>
@@ -42,9 +42,9 @@
 		<template v-slot:gFooter>
 			<view class="h-[200rpx] bg-white footer flex flex-col justify-center ">
 				<view class="flex flex-col justify-between items-center gap-3 px-4">
-					<view class="text-xs text-[#3395ff]"  @click="$go('/pages/wallet/fundRecords/fundRecords', 'navigateTo')">提幣歷史</view>
+					<view class="text-xs text-[#3395ff]"  @click="$go('/pages/wallet/fundRecords/fundRecords', 'navigateTo')">{{ $t('withdraw.history') }}</view>
 					<button type="default" class="gui-bg-primary gui-noborder w-full rounded-3xl" @click="submit">
-						<text class="gui-color-white gui-button-text font-semibold ">確認</text>
+						<text class="gui-color-white gui-button-text font-semibold ">{{ $t('confirm') }}</text>
 					</button>
 				</view>
 			</view>

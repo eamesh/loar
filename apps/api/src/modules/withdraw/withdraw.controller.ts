@@ -1,6 +1,7 @@
 import {
   Body,
   Controller,
+  Get,
   HttpCode,
   HttpStatus,
   Param,
@@ -74,5 +75,11 @@ export class WithdrawController {
   @UseGuards(UseGuards)
   async passWithdraw(@Param('id') id: number) {
     return await this.withdraw.passWithdraw(id);
+  }
+
+  @Get('member/list')
+  @UseGuards(MemberGuard)
+  async getListByMember(@Req() req) {
+    return await this.withdraw.getListByMember(req.user as Member);
   }
 }

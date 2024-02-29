@@ -8,7 +8,7 @@
 						<gui-stags :checkedClass="['checked-class']" :defaultClass="['default-class']" :tags="tags" @change="changeTag"></gui-stags>
 					</view>
 					<view class="flex flex-col gap-y-4">
-						<text class="text-xs text-gray-500">网络</text>
+						<text class="text-xs text-gray-500">{{ $t('network') }}</text>
 						<gui-stags :checkedClass="['checked-class']" :defaultClass="['default-class']" :tags="current?.children" @change="changeNetwork"></gui-stags>
 					</view>
 					<view class="flex flex-col justify-center items-center gap-y-3">
@@ -18,7 +18,7 @@
 													id="canvas" 
 													style="width:260rpx; height:260rpx;"></canvas>
 						</view>
-						<view class="font-semibold">收貨地址</view>
+						<view class="font-semibold">{{ $t('address') }}</view>
 						<view class="flex flex-row justify-center items-center gap-x-2" @click="copyAddress">
 							<view class="text-[22rpx]">{{ currentNetwork?.accountAddress }}</view>
 							<image class="w-[30rpx] h-[30rpx]" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAYAAAA7MK6iAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAKjSURBVHgB7VdNchJBFP56BlDLDZxA8AJi0I2rgY1LKQ8QQiwXVqKRCxi4gIZSzE6TC1icIJmtZWLhzpXBEziLLExgeH7dDHHCX6AgWGXlq5qZnpn3+nvv9evu1wp9SL+ReDSGpHQQx5RQFrwva6oxkWyY0LqODeXjJb9OTXoGgUf9un+KSqOkmhhHTNKkHcM+m8lA2eWfJqaFMFLsTnUNPyJ5bhS5Ic7U5MiQktC3UWw8G23pODj7dPc7knabUbOwEZAvkdzrl40s1WSlR3q4rrKYAW7W+NF8sC2lkw5usZ23YjQCKA8QK0FB++0rlEZ1eL8mad9HGhPid4s3G9/YbZ7Xi3tvxT14rtywjGKYOSzwDtdUor8DKjhiYZNNB7Pj3JhHgo8DY5B5LwWatGNeuslWRwc/1RDZcaDhd6ifp77DBP5BZ3La+57HTXqc6gkHWa4TjjmCIufmDmaA81FwfIxyEL1f9Py2NUzQjnaTgeNfmpVUwy0qRG+gwohV+ZrQCTeUmGEp8O4drKstzAkPn0CYoJVu91geIE5vSzJoTrT0TYoyV5VrN01+NHklLfwjXBFfEf+fxHpuxfWytlhiMQtFnGupgwXC4npsljGxsckNXP2twi6Z2GzQwnpL4JwIPqGFFBYAk1x+C48D8ke2hT3z55I9N8S6GGO9lWN6rRoDNFgxzjvh2h3z0BWod246feXeqw0wFQd3ECZctizzIXdqAmljJSBuDJ3HTLFd87Twul5FYlbPTdl7ihRH75XulsO4O3IkM+9kjwK63G2qDlYlBjcSMvPzU3WhNTpaNDwesXGXTnxA98CwxTKrNJJYH2lYd2nhPHSq0WhGYqpCT4PmxUNHIkNqvl+kqAt+Ki+HjiZnfWIC0GmPei6jVg3X1n8AjEz/0x6pE5sAAAAASUVORK5CYII=" mode=""></image>
@@ -47,11 +47,11 @@
 				</view>
 				
 				<view class="flex flex-row gap-2 text-[20rpx] text-gray-500 mt-5">
-					<view>*最低金額：</view>
+					<view>*{{ $t('min_withdraw') }}：</view>
 					<view>{{ currentNetwork.min }} {{ currentNetwork.currency }}</view>
 				</view>
 				<view class="flex flex-row gap-2 text-[20rpx] text-gray-500 mt-2">
-					<view>*最大金額：</view>
+					<view>*{{ $t('max_withdraw') }}：</view>
 					<view>{{ currentNetwork.max }} {{ currentNetwork.currency }}</view>
 				</view>
 
