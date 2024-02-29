@@ -50,6 +50,9 @@ export class RechargeService {
       {
         where,
         orderBy,
+        include: {
+          member: true,
+        },
       },
       {
         page,

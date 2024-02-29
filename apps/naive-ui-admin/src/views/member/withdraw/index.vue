@@ -55,7 +55,12 @@
   import { BasicTable, TableAction } from '@/components/Table';
   import { BasicForm, FormSchema, useForm } from '@/components/Form/index';
   // import { getTableList } from '@/api/table/list';
-  import { getWithdrawListAdmin, updateWithdrawStatus } from '@/api/member';
+  import {
+    requestWithdrawList,
+    // updateWithdrawStatus,
+    refuseWithdrawMoney,
+    passWithdrawMoney,
+  } from '@/api/member';
   import { columns } from './columns';
   import { useRouter } from 'vue-router';
   import { type FormRules } from 'naive-ui';
@@ -85,7 +90,7 @@
     //   },
     // },
     {
-      field: 'id',
+      field: 'memberId',
       component: 'NInput',
       label: '用户ID',
       componentProps: {
@@ -201,11 +206,8 @@
         style: 'button',
         actions: [
           {
-            label: '已放款',
-            onClick: handleStatus.bind(null, {
-              record,
-              status: 1,
-            }),
+            label: '放款',
+            onClick: handleStatus.bind(null, record),
             type: 'success',
             ifShow: () => {
               return record.status === 0;
@@ -214,10 +216,7 @@
           {
             label: '拒绝',
             type: 'error',
-            onClick: handleStatus.bind(null, {
-              record,
-              status: -1,
-            }),
+            onClick: handleRefuse.bind(null, record),
             ifShow: () => {
               return record.status === 0;
             },
@@ -226,7 +225,7 @@
             label: '已处理',
             type: 'primary',
             ifShow: () => {
-              return record.status === 1 || record.status === -1;
+              return record.status !== 0;
             },
           },
         ],
@@ -241,7 +240,7 @@
   });
 
   const loadDataTable = async (res) => {
-    return await getWithdrawListAdmin({ ...getFieldsValue(), ...res });
+    return await requestWithdrawList({ ...getFieldsValue(), ...res });
     // return await getTableList({ ...getFieldsValue(), ...res });
   };
 
@@ -270,22 +269,22 @@
     });
   }
 
-  function handleEdit(record: Recordable) {
-    console.log('点击了编辑', record);
-    router.push({ name: 'basic-info', params: { id: record.id } });
-  }
+  // function handleEdit(record: Recordable) {
+  //   console.log('点击了编辑', record);
+  //   router.push({ name: 'basic-info', params: { id: record.id } });
+  // }
 
-  async function handleStatus({ record, status }: { record: Recordable; status: number }) {
+  async function handleStatus(record: Recordable) {
+    actionRef.value.tableAction.setLoading(true);
     try {
-      await updateWithdrawStatus(record.id, {
-        status,
-      });
+      await passWithdrawMoney(record.id);
 
       reloadTable();
       window['$message'].success('操作成功');
     } catch (error) {
       window['$message'].fail('操作失败');
     }
+    actionRef.value.tableAction.setLoading(false);
   }
 
   function handleSubmit(values: Recordable) {
@@ -297,7 +296,15 @@
     console.log(values);
   }
 
-  function handleCustom(record: Recordable) {}
+  async function handleRefuse(record: Recordable) {
+    try {
+      await refuseWithdrawMoney(record.id);
+      window['$message'].success('操作成功');
+      reloadTable();
+    } catch (error) {
+      window['$message'].fail('操作失败');
+    }
+  }
 </script>
 
 <style lang="less" scoped></style>

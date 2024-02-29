@@ -90,16 +90,16 @@
     //   },
     //   rules: [{ required: true, message: '请输入市场头部证券列表名称', trigger: ['blur'] }],
     // },
-    {
-      field: 'online',
-      component: 'NSwitch',
-      label: '是否上线',
-      componentProps: {
-        defaultValue: 1,
-        checkedValue: 1,
-        uncheckedValue: 0,
-      },
-    },
+    // {
+    //   field: 'online',
+    //   component: 'NSwitch',
+    //   label: '是否上线',
+    //   componentProps: {
+    //     defaultValue: 1,
+    //     checkedValue: 1,
+    //     uncheckedValue: 0,
+    //   },
+    // },
     {
       field: 'sort',
       component: 'NInputNumber',

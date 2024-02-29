@@ -37,4 +37,15 @@ export class SettingController {
   async save(@Body() payload: any) {
     return await this.setting.save(payload);
   }
+
+  @Get('app/version')
+  async getVersion() {
+    const version = await this.setting.getKey('version');
+    const wgt = await this.setting.getKey('wgt');
+
+    return {
+      version: version.value.value,
+      wgt: wgt.value.value,
+    };
+  }
 }

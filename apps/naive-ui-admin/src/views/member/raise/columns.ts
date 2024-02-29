@@ -11,18 +11,49 @@ export const columns: BasicColumn<any>[] = [
   },
   {
     title: '邮箱',
-    key: 'email',
+    key: 'member.email',
   },
   {
     title: '市场',
     key: 'market',
   },
   {
+    title: '充值方式',
+    key: 'type',
+    render(row) {
+      const types = {
+        CRYPTO: {
+          type: 'success',
+          title: '加密货币',
+        },
+        CARD: {
+          type: 'primary',
+          title: '银行卡',
+        },
+      };
+      return h(
+        NTag,
+        {
+          type: types[row.type].type,
+        },
+        [types[row.type].title]
+      );
+    },
+  },
+  {
+    title: '虚拟币',
+    key: 'account',
+  },
+  {
+    title: '虚拟币网络',
+    key: 'accountNetwork',
+  },
+  {
     title: '上传凭证',
     key: 'screen',
     render(row) {
       console.log(row.screen);
-      return row.screen.map((item) => {
+      return row.screens.map((item) => {
         return h(NImage, {
           src: `${import.meta.env.VITE_IMAGE_HOST}/${item}`,
           width: 40,
@@ -36,7 +67,11 @@ export const columns: BasicColumn<any>[] = [
   },
   {
     title: '已审核金额',
-    key: 'rechargeMoney',
+    key: 'passMoney',
+  },
+  {
+    title: '换算金额',
+    key: 'convertMoney',
   },
   {
     title: '状态',
@@ -51,7 +86,7 @@ export const columns: BasicColumn<any>[] = [
           title: '已审核',
           type: 'success',
         },
-        '-1': {
+        2: {
           title: '已拒绝',
           type: 'error',
         },

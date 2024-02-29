@@ -14,7 +14,7 @@
       :actionColumn="actionColumn"
       @update:checked-row-keys="onCheckedRow"
     >
-      <template #tableTitle>
+      <!-- <template #tableTitle>
         <n-button type="primary" @click="addTable">
           <template #icon>
             <n-icon>
@@ -23,7 +23,7 @@
           </template>
           新建
         </n-button>
-      </template>
+      </template> -->
 
       <template #toolbar>
         <n-button type="primary" @click="reloadTable">刷新数据</n-button>

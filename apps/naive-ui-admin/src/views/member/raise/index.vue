@@ -55,7 +55,7 @@
   import { BasicTable, TableAction } from '@/components/Table';
   import { BasicForm, FormSchema, useForm } from '@/components/Form/index';
   // import { getTableList } from '@/api/table/list';
-  import { getRechargeListAdmin, passMemberRecharge } from '@/api/member';
+  import { requestRechargeList, passRechargeMoney, refuseRechargeMoney } from '@/api/member';
   import { columns } from './columns';
   import { useRouter } from 'vue-router';
   import { type FormRules } from 'naive-ui';
@@ -202,10 +202,7 @@
         actions: [
           {
             label: '同意',
-            onClick: handlePass.bind(null, {
-              record,
-              status: 1,
-            }),
+            onClick: handlePass.bind(null, record),
             type: 'success',
             ifShow: () => {
               return record.status === 0;
@@ -214,29 +211,26 @@
           {
             label: '拒绝',
             type: 'error',
-            onClick: handlePass.bind(null, {
-              record,
-              status: -1,
-            }),
+            onClick: handleRefuse.bind(null, record),
             ifShow: () => {
               return record.status === 0;
             },
           },
-          {
-            label: '自定义审核金额',
-            onClick: handleCustom.bind(null, {
-              record,
-              status: 2,
-            }),
-            ifShow: () => {
-              return record.status === 0;
-            },
-          },
+          // {
+          //   label: '自定义审核金额',
+          //   onClick: handleCustom.bind(null, {
+          //     record,
+          //     status: 2,
+          //   }),
+          //   ifShow: () => {
+          //     return record.status === 0;
+          //   },
+          // },
           {
             label: '已处理',
             type: 'primary',
             ifShow: () => {
-              return record.status === 1 || record.status === -1 || record.status === 2;
+              return record.status !== 0;
             },
           },
         ],
@@ -251,7 +245,7 @@
   });
 
   const loadDataTable = async (res) => {
-    return await getRechargeListAdmin({ ...getFieldsValue(), ...res });
+    return await requestRechargeList({ ...getFieldsValue(), ...res });
     // return await getTableList({ ...getFieldsValue(), ...res });
   };
 
@@ -285,10 +279,10 @@
   //   router.push({ name: 'basic-info', params: { id: record.id } });
   // }
 
-  async function handlePass({ record, status }: { record: Recordable; status: number }) {
+  async function handlePass(record: Recordable) {
     try {
-      await passMemberRecharge(record.id, {
-        status,
+      await passRechargeMoney(record.id, {
+        money: record.money,
       });
 
       reloadTable();
@@ -307,7 +301,18 @@
     console.log(values);
   }
 
-  function handleCustom(record: Recordable) {}
+  async function handleRefuse(record: Recordable) {
+    try {
+      await refuseRechargeMoney(record.id);
+
+      reloadTable();
+      window['$message'].success('操作成功');
+    } catch (error) {
+      window['$message'].fail('操作失败');
+    }
+  }
+
+  // function handleCustom(record: Recordable) {}
 </script>
 
 <style lang="less" scoped></style>

@@ -17,12 +17,12 @@
             <n-form-item label="HKD转USD汇率" path="hkd">
               <n-input-number v-model:value="formValue.hkd" placeholder="" />
             </n-form-item>
-            <n-form-item label="USD充值地址" path="usd">
+            <!-- <n-form-item label="USD充值地址" path="usd">
               <n-input placeholder="" v-model:value="formValue.usd" />
             </n-form-item>
             <n-form-item label="每笔费率" path="fee_rate">
               <n-input-number placeholder="" v-model:value="formValue.fee_rate" />
-            </n-form-item>
+            </n-form-item> -->
             <!-- <n-form-item label="最大出金" path="max_withdraw">
               <n-input-number placeholder="" v-model:value="formValue.max_withdraw" />
             </n-form-item> -->
@@ -88,10 +88,10 @@
 
   const defaultValueRef = () => ({
     hkd: 0,
-    usd: '',
-    min_withdraw: 0,
-    max_withdraw: 0,
-    fee_rate: 0,
+    // usd: '',
+    // min_withdraw: 0,
+    // max_withdraw: 0,
+    // fee_rate: 0,
   });
 
   let formValue = reactive(defaultValueRef());
@@ -107,10 +107,10 @@
       });
 
       formValue.hkd = obj?.exchange_rate.HKEX || 0;
-      formValue.usd = obj?.usd.value || 0;
-      formValue.min_withdraw = obj?.min_withdraw.value || 0;
-      formValue.max_withdraw = obj?.max_withdraw.value || 0;
-      formValue.fee_rate = obj?.fee_rate.value || 0;
+      // formValue.usd = obj?.usd.value || 0;
+      // formValue.min_withdraw = obj?.min_withdraw.value || 0;
+      // formValue.max_withdraw = obj?.max_withdraw.value || 0;
+      // formValue.fee_rate = obj?.fee_rate.value || 0;
     } catch (error) {}
   }
 
@@ -127,30 +127,30 @@
                 HKEX: formValue.hkd,
               },
             },
-            {
-              key: 'usd',
-              value: {
-                value: formValue.usd,
-              },
-            },
-            {
-              key: 'min_withdraw',
-              value: {
-                value: formValue.min_withdraw,
-              },
-            },
-            {
-              key: 'max_withdraw',
-              value: {
-                value: formValue.max_withdraw,
-              },
-            },
-            {
-              key: 'fee_rate',
-              value: {
-                value: formValue.fee_rate,
-              },
-            },
+            // {
+            //   key: 'usd',
+            //   value: {
+            //     value: formValue.usd,
+            //   },
+            // },
+            // {
+            //   key: 'min_withdraw',
+            //   value: {
+            //     value: formValue.min_withdraw,
+            //   },
+            // },
+            // {
+            //   key: 'max_withdraw',
+            //   value: {
+            //     value: formValue.max_withdraw,
+            //   },
+            // },
+            // {
+            //   key: 'fee_rate',
+            //   value: {
+            //     value: formValue.fee_rate,
+            //   },
+            // },
           ];
 
           await saveSetting({

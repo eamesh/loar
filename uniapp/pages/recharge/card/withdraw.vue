@@ -120,7 +120,7 @@
 						type: 'CARD',
 						market: this.currentMarket.code,
 						money: this.money,
-						card: this.card.id,
+						card: this.card,
 						currency: this.currentMarket.currency
 					})
 					uni.hideLoading()

@@ -135,7 +135,7 @@
 						type: 'CRYPTO',
 						market: this.market,
 						money: this.money,
-						card: this.card.id,
+						card: this.card,
 						currency: this.currentMarket.currency
 					})
 					uni.hideLoading()

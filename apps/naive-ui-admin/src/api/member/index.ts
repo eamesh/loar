@@ -81,3 +81,50 @@ export function updateWithdrawStatus(id, params) {
     params,
   });
 }
+
+export function requestRechargeList(params) {
+  // recharge/list
+  return http.request({
+    url: `/recharge/list`,
+    method: 'post',
+    params,
+  });
+}
+
+export function passRechargeMoney(id, params) {
+  return http.request({
+    url: `/recharge/${id}/pass`,
+    method: 'post',
+    params,
+  });
+}
+
+export function refuseRechargeMoney(id) {
+  return http.request({
+    url: `/recharge/${id}/refuse`,
+    method: 'post',
+  });
+}
+
+export function requestWithdrawList(params) {
+  // recharge/list
+  return http.request({
+    url: `/withdraw/list`,
+    method: 'post',
+    params,
+  });
+}
+
+export function refuseWithdrawMoney(id) {
+  return http.request({
+    url: `/withdraw/${id}/refuse`,
+    method: 'post',
+  });
+}
+
+export function passWithdrawMoney(id) {
+  return http.request({
+    url: `/withdraw/${id}/pass`,
+    method: 'post',
+  });
+}

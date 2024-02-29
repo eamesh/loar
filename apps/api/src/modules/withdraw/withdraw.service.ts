@@ -1,4 +1,10 @@
-import { Member, RechargeType } from '@loar/database';
+import {
+  Member,
+  PaginateFunction,
+  Prisma,
+  RechargeType,
+  paginator,
+} from '@loar/database';
 import { BadRequestException, Injectable } from '@nestjs/common';
 import { PrismaService } from 'src/providers/prisma/prisma.service';
 import { ToolService } from '../tool/tool.service';
@@ -51,13 +57,21 @@ export class WithdrawService {
       });
       if (withdraw.type === RechargeType.CRYPTO) {
         // 换算汇率
-        const { price } = await this.tool.priceConversion({
-          from: stockMarket.currency,
-          to: withdraw.cryptoType,
-          money,
-        });
+        let price = new Decimal(money);
 
-        const balance = new Decimal(account.balance).sub(new Decimal(price));
+        const card = withdraw.card as any;
+        console.log(stockMarket.currency, card.detail.account);
+        if (stockMarket.currency !== card.detail.account) {
+          const convertPrice = await this.tool.priceConversion({
+            from: stockMarket.currency,
+            to: card.detail.account,
+            money,
+          });
+
+          price = new Decimal(convertPrice.price);
+        }
+
+        const balance = new Decimal(account.balance).sub(new Decimal(money));
 
         if (balance.lt(0)) {
           throw new BadRequestException('Failed');
@@ -69,7 +83,7 @@ export class WithdrawService {
           },
           data: {
             status: 1,
-            convertMoney: new Decimal(price),
+            convertMoney: price,
           },
         });
 
@@ -84,8 +98,32 @@ export class WithdrawService {
           },
         });
       } else {
+        // 银行卡提现不需要换算 每个市场对应一个货币
+        const balance = new Decimal(account.balance).sub(new Decimal(money));
+        accountBalance[market].balance = balance;
+
+        await this.prisma.withdraw.update({
+          where: {
+            id: withdraw.id,
+          },
+          data: {
+            status: 1,
+            convertMoney: new Decimal(money),
+          },
+        });
+
+        await this.prisma.member.update({
+          where: {
+            id: member.id,
+          },
+          data: {
+            accountBalance,
+          },
+        });
       }
-    } catch (error) {}
+    } catch (error) {
+      console.log(error);
+    }
   }
 
   // 拒绝提现
@@ -98,5 +136,32 @@ export class WithdrawService {
         status: 2,
       },
     });
+  }
+
+  async getListByUser({
+    where,
+    orderBy,
+    page,
+    perPage = 20,
+  }: {
+    where?: Prisma.WithdrawCreateInput;
+    orderBy?: Prisma.WithdrawOrderByWithRelationInput;
+    page?: number;
+    perPage?: number;
+  }) {
+    const paginate: PaginateFunction = paginator({ perPage });
+    return await paginate(
+      this.prisma.withdraw,
+      {
+        where,
+        orderBy,
+        include: {
+          member: true,
+        },
+      },
+      {
+        page,
+      },
+    );
   }
 }
