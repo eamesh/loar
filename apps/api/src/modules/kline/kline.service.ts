@@ -37,14 +37,18 @@ export class KlineService {
       // st: +data.start / 1000,
       // et: +data.end / 1000,
       line,
-      num: num ?? 2000,
-      sort: 'Date desc',
-      stamp: dayjs().unix(),
+      // num: num ?? 2000,
+      // sort: 'Date desc',
+      // stamp: dayjs().unix(),
     };
 
-    if (query.st && query.et) {
+    if (data.start && data.end) {
       query.st = +data.start / 1000;
       query.et = +data.end / 1000;
+    }
+
+    if (num) {
+      query.num = num;
     }
 
     const params = qs.stringify(query);
