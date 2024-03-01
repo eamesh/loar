@@ -5,7 +5,7 @@ import { PrismaService } from 'src/providers/prisma/prisma.service';
 import { StockSymbol } from '@loar/database';
 import * as qs from 'qs';
 import { firstValueFrom } from 'rxjs';
-import * as dayjs from 'dayjs';
+// import * as dayjs from 'dayjs';
 import { StockDto } from './dto/stock.dto';
 import * as orderBy from 'lodash.orderby';
 
@@ -37,7 +37,7 @@ export class KlineService {
       // st: +data.start / 1000,
       // et: +data.end / 1000,
       line,
-      // num: num ?? 2000,
+      num: num ?? 2000,
       // sort: 'Date desc',
       // stamp: dayjs().unix(),
     };
@@ -47,9 +47,9 @@ export class KlineService {
       query.et = +data.end / 1000;
     }
 
-    if (num) {
-      query.num = num;
-    }
+    // if (num) {
+    //   query.num = num;
+    // }
 
     const params = qs.stringify(query);
     const target = url + '?' + params;
