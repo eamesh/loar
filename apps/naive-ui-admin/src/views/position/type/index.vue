@@ -233,6 +233,7 @@
           });
           reloadTable();
           window['$message'].success('操作成功');
+          showModal.value = false;
         } catch (error) {
           window['$message'].error('操作失败');
         }
