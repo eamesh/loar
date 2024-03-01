@@ -1,11 +1,13 @@
 const config = {
 	development: {
 		api: 'http://localhost:3000/api/v1',
-		host: 'http://localhost:3000'
+		host: 'http://localhost:3000',
+		ws: 'http://localhost:3000'
 	},
 	production: {
 		api: 'https://api.loar.cc/api/v1',
-		host: 'https://api.loar.cc'
+		host: 'https://api.loar.cc',
+		ws: 'wss://api.loar.cc'
 	}
 }
 
