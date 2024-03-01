@@ -80,61 +80,62 @@ export class KlineDatafeed {
    * 通过callback告知图表接收数据
    */
   subscribe (symbol, period, callback) {
-   //  try {
-   //    // 完成ws订阅或者http轮询
-   //    setInterval(async function () {
-   //      console.log(symbol, period)
-   //      const now = dayjs()
-   //      const start = now.subtract(30, 'day').unix()
-   //      const end = now.unix()
-   //      // 完成数据请求
-			// 	const response = await fetch(`${config.api}/kline/symbol?num=1`, {
-			// 	  headers: {
-			// 	    'Content-Type': 'application/json'
-			// 	  },
-			// 	  body: JSON.stringify({
-			// 	    id: symbol.id,
-			// 	    level: period.multiplier,
-			// 	    start,
-			// 	    end
-			// 	  }),
-			// 	  method: 'POST'
-			// 	})
+    try {
+      // 完成ws订阅或者http轮询
+      setInterval(async function () {
+        console.log(symbol, period)
+        // const now = dayjs()
+        // const start = now.subtract(30, 'day').unix()
+        // const end = now.unix()
+        // 完成数据请求
+				const response = await fetch(`${config.api}/kline/symbol?num=10`, {
+				  headers: {
+				    'Content-Type': 'application/json'
+				  },
+				  body: JSON.stringify({
+				    id: symbol.id,
+				    level: 'min',
+				    // start,
+				    // end,
+						min: 1
+				  }),
+				  method: 'POST'
+				})
 
-   //      // console.log(response)
+        // console.log(response)
 
-   //      const results = await response.json()
-   //      console.log(results)
-   //      if (Array.isArray(results)) {
-   //        (results || []).forEach(data => {
-   //          // eslint-disable-next-line node/no-callback-literal
-   //          callback({
-   //            timestamp: +data.Date * 1000,
-   //            open: +data.Open,
-   //            high: +data.High,
-   //            low: +data.Low,
-   //            close: +data.Close,
-   //            volume: +data.Volume,
-   //            turnover: +data.Amount
-   //          })
-   //        })
-   //      }
+        const results = await response.json()
+        console.log(results)
+        if (Array.isArray(results)) {
+          (results || []).forEach(data => {
+            // eslint-disable-next-line node/no-callback-literal
+            callback({
+              timestamp: +data.Date * 1000,
+              open: +data.Open,
+              high: +data.High,
+              low: +data.Low,
+              close: +data.Close,
+              volume: +data.Volume,
+              turnover: +data.Amount
+            })
+          })
+        }
 
-   //    // (results || []).map((data) => {
-   //    //   callback({
-   //    //     timestamp: +data.Date * 1000,
-   //    //     open: +data.Open,
-   //    //     high: +data.High,
-   //    //     low: +data.Low,
-   //    //     close: +data.Close,
-   //    //     volume: +data.Volume,
-   //    //     turnover: +data.Amount
-   //    //   })
-   //    // })
-   //    }, 3000)
-   //  } catch (error) {
-			// return []
-   //  }
+      // (results || []).map((data) => {
+      //   callback({
+      //     timestamp: +data.Date * 1000,
+      //     open: +data.Open,
+      //     high: +data.High,
+      //     low: +data.Low,
+      //     close: +data.Close,
+      //     volume: +data.Volume,
+      //     turnover: +data.Amount
+      //   })
+      // })
+      }, 3000)
+    } catch (error) {
+			return []
+    }
   }
 
   /**

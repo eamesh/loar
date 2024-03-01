@@ -15,27 +15,27 @@
 					<view class="text-[#00c537] text-md font-semibold font-mono">{{ stock.detail?.price }}</view>
 				</view>
 				<view class="flex flex-row justify-start items-center gap-x-3">
-					<view class="text-[#00c537]">{{ parseFloat(stock.detail?.chg) > 0 ? '+' : '' }}{{stock.detail?.chg}}</view>
-					<view class="text-[#e60101]">{{ parseFloat(stock.detail?.chg) > 0 ? '+' : '' }}{{stock.detail?.chgV}}%</view>
+					<view class="text-[#00c537]">{{ parseFloat(stock.detail?.chg) > 0 ? '+' : '' }}{{(+stock.change).toFixed(3)}}</view>
+					<view class="text-[#e60101]">{{ parseFloat(stock.detail?.chg) > 0 ? '+' : '' }}{{(+stock.changePercent).toFixed(3)}}%</view>
 				</view>
 
 				<view class="flex flex-row text-[12px] text-[#999] w-full mt-2">
 					<view class="basis-1/3">
 						<view class="flex flex-col justify-between items-start gap-y-3">
-							<view>{{$t('kline.open')}} 1111</view>
-							<view>{{$t('kline.close')}} 2222</view>
+							<view>{{$t('kline.open')}} {{ (+stock.open).toFixed(3) }}</view>
+							<view>{{$t('kline.close')}} {{ (+stock.close).toFixed(3) }}</view>
 						</view>
 					</view>
 					<view class="basis-1/3">
 						<view class="flex flex-col justify-between items-center gap-y-3">
-							<view>{{ $t('kline.high') }} 22</view>
-							<view>{{ $t('kline.low') }} 33</view>
+							<view>{{ $t('kline.high') }} {{ (+stock.high).toFixed(3) }}</view>
+							<view>{{ $t('kline.low') }} {{ (+stock.low).toFixed(3) }}</view>
 						</view>
 					</view>
 					<view class="basis-1/3">
 						<view class="flex flex-col justify-between items-end gap-y-3">
-							<view>Vol 11</view>
-							<view>T/O 22</view>
+							<view>Vol {{ stock.volume }}</view>
+							<view>T/O {{ stock.amount }}</view>
 						</view>
 					</view>
 
@@ -333,9 +333,15 @@
 			}) => {
 				try {
 					if (typeof data !== 'object') return
-		
-					this.stock = data
-					this.formData.price = data.detail?.price
+					const sync = JSON.parse(data.sync)
+					console.log(sync, data)
+					this.stock.open = sync.open
+					this.stock.detail.price = sync.newPrice.toFixed(3)
+					this.stock.high = sync.high
+					this.stock.low = sync.high
+					this.stock.change = data.change
+					this.stock.changePercent = data.changePercent
+					this.formData.price = sync.newPrice.toFixed(3)
 				} catch (e) {
 					//TODO handle the exception
 				}

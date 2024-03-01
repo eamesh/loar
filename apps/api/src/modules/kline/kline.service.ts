@@ -30,17 +30,22 @@ export class KlineService {
 
     const symbol = `${stock.syncMarket}${stock.code}`.toUpperCase();
     const line = data.level !== 'day' ? `min,${data.min}` : 'day';
-    const query = {
+    const query: any = {
       type: 'kline',
       u: 'emesh',
       symbol,
-      st: +data.start / 1000,
-      et: +data.end / 1000,
+      // st: +data.start / 1000,
+      // et: +data.end / 1000,
       line,
       num: num ?? 2000,
       sort: 'Date desc',
       stamp: dayjs().unix(),
     };
+
+    if (query.st && query.et) {
+      query.st = +data.start / 1000;
+      query.et = +data.end / 1000;
+    }
 
     const params = qs.stringify(query);
     const target = url + '?' + params;
