@@ -16,6 +16,23 @@ export const requestWithdraw = function (data) {
 	})
 }
 
+export const requestFavorite = function (id, data) {
+	// /stock/${stockRef.value.id}/favorite
+	return http({
+		url: `/stock/${id}/favorite`,
+		method: 'POST',
+		data
+	})
+}
+
+export const checkFaovorite = function (id) {
+	// stock/${stockRef.value.id}/favorite
+	return http({
+		url: `/stock/${id}/favorite`,
+		method: 'GET',
+	})
+}
+
 export const requestRechargeRecord = function () {
 	return http({
 		url: `/recharge/member/list`,

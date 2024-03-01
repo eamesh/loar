@@ -486,7 +486,7 @@ let page = 1;
 				this.indexStocks()
 			});
 
-			window.tmp = this.tmpIndexData
+			// window.tmp = this.tmpIndexData
 		},
 		onHide() {
 			console.log(22222)

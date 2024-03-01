@@ -29,13 +29,13 @@ export class KlineService {
     const url = 'http://ds.cnshuhai.com/stock.php';
 
     const symbol = `${stock.syncMarket}${stock.code}`.toUpperCase();
-    const line = data.level !== 'day' ? `min,${data.level}` : 'day';
+    const line = data.level !== 'day' ? `min,${data.min}` : 'day';
     const query = {
       type: 'kline',
       u: 'emesh',
       symbol,
-      // st: data.start,
-      // et: data.end,
+      st: +data.start / 1000,
+      et: +data.end / 1000,
       line,
       num: num ?? 2000,
       sort: 'Date desc',

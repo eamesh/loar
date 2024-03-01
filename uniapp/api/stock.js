@@ -10,6 +10,14 @@ export const getStocks = function (type, page = 1) {
 	})
 }
 
+export const buy = function (data) {
+	return http({
+		url: `/stock/buy`,
+		method: 'POST',
+		data
+	})
+}
+
 export const getFavorite = function (type, page = 1) {
 	return http({
 		url: `/stock/favorite`,

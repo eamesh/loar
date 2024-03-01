@@ -160,5 +160,20 @@
 	"kline.open": "Open",
 	"kline.close": "Prev Close",
 	"kline.high": "High",
-	"kline.low": "Low"
+	"kline.low": "Low",
+	"limit": "Limit",
+	"kline.stock": "Stock",
+	"kline.side": "Side",
+	"kline.type": "Types",
+	"kline.qty": "Qty",
+	"kline.price": "Prices",
+	"kline.fee": "Fees",
+	"kline.take_profit": "Take Profit",
+	"kline.stop_loss": "Stop Loss",
+	"kline.balance": "Balance",
+	"kline.buy_order": "Buy Order",
+	"kline.market": "Maket",
+	"kline.limit": "Limit",
+	"kline.min_num": "Min num 1",
+	"kline.order_price": "Order Price"
 }

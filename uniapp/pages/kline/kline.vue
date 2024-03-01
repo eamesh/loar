@@ -4,7 +4,8 @@
 			<view class="flex flex-col justify-start items-start w-full px-4 py-4 gap-y-3 box-border">
 				<view class="flex flex-row justify-between items-center w-full">
 					<view class="text-md font-mono">{{ stock.name }}</view>
-					<image src="/static/img/icon_01.png" class="w-6 h-6" />
+					<image v-if="!favorite" src="/static/img/icon_01.png" class="w-6 h-6" @click="handleFavorite"/>
+					<image v-else src="/static/img/icon_02.png" class="w-6 h-6" @click="handleFavorite"/>
 				</view>
 				<view class="flex flex-row justify-start items-center gap-x-2">
 					<view class="bg-[#3395FF] text-white text-[10px] px-[6px] py-[2px] rounded-sm">{{ stock.marketResult?.code }}</view>
@@ -40,6 +41,7 @@
 
 				</view>
 			</view>
+			<view :msg="stock" :change:msg="kline.handleLoad" type="default"></view>
 			<view id="container"></view>
 		</template>
 		<template v-slot:gFooter>
@@ -47,14 +49,101 @@
 				class="w-screen flex-shrink-0 bg-white flex justify-center items-center border-t h-[120rpx]"
 				style="box-shadow: 0 -.3125rem .4375rem rgba(128,128,128,.1);"
 			>			
-				<uni-popup ref="popup" type="bottom" class="rounded-2xl">
-					<view class="h-[100rpx] bg-white rounded-t-xl"></view>
+				<uni-popup ref="popup" type="bottom" class="rounded-2xl" @change="handleChange">
+					<view class="bg-white rounded-t-xl">
+						<view class="flex flex-col px-4 pt-4 gap-y-4">
+							<view>
+								<view class="text-black text-[28rpx] font-semibold">Order Details</view>
+								<view class=""></view>
+							</view>
+							<view class="flex flex-row justify-between item">
+								<view class="text-gray-400">{{ $t('kline.stock') }}</view>
+								<view class="">{{ stock.name }}</view>
+							</view>
+							<view class="flex flex-row justify-between items-center">
+								<view class="text-gray-400">{{ $t('kline.side') }}</view>
+								<view class="flex flex-row gap-x-3">
+									<view class="w-[50px] text-sm py-1 rounded text-center" :class="formData.mode === 0 ? 'bg-[#00c537] text-white' : 'bg-[#f9f9f9] text-[#999]'" @click="swithMode(0)">{{ $t('long') }}</view>
+									<view class="w-[50px] text-sm py-1 rounded text-center" :class="formData.mode === 1 ? 'bg-[#e60101] text-white ' : 'bg-[#f9f9f9] text-[#999]'" @click="swithMode(1)">{{ $t('short') }}</view>
+								</view>
+							</view>
+							<view class="flex flex-row justify-between items-center">
+								<view class="text-gray-400">{{ $t('kline.type') }}</view>
+								<view class="flex flex-row gap-x-3">
+									<view class="w-[50px] text-sm py-1 rounded text-center" :class="formData.type === 0 ? 'text-white bg-[#3395FF]' : 'text-[#999] bg-[#f9f9f9]'" @click="swithType(0)">{{ $t('market') }}</view>
+									<view class="w-[50px] text-sm py-1 rounded text-center" :class="formData.type === 1 ? 'text-white bg-[#3395FF]' : 'text-[#999] bg-[#f9f9f9]'" @click="swithType(1)">{{ $t('limit') }}</view>
+								</view>
+							</view>
+							<view class="flex flex-row justify-between items-center">
+								<view class="text-gray-400">{{ $t('kline.qty') }}</view>
+								<view class="bg-gray-100 rounded-md">
+									<input type="number" v-model="formData.amount" :placeholder="$t('kline.min_num')" class="gui-form-input" style="margin-top: 16rpx;margin-bottom: 16rpx; padding-left: 20rpx;padding-right: 20rpx;" name="amount" />
+								</view>
+							</view>
+							<view class="flex flex-row justify-between items-center" v-if="formData.type === 1">
+								<view class="text-gray-400">{{ $t('kline.order_price') }}</view>
+								<view class="bg-gray-100 rounded-md">
+									<input type="number" :placeholder="$t('kline.order_price')" v-model="formData.price" class="gui-form-input" style="margin-top: 16rpx;margin-bottom: 16rpx; padding-left: 20rpx;padding-right: 20rpx;" name="price" />
+								</view>
+							</view>
+							<view class="flex flex-row justify-between items-center">
+								<view class="text-gray-400">{{ $t('kline.price') }}</view>
+								<view class="">
+									{{ priceComputed.price }}
+								</view>
+							</view>
+							<view class="flex flex-row justify-between items-center">
+								<view class="text-gray-400">{{ $t('kline.fee') }}</view>
+								<view class="">
+									{{ priceComputed.fee }}
+								</view>
+							</view>
+							<view class="flex flex-row justify-between items-center">
+								<view class="text-gray-400">{{ $t('kline.take_profit') }}</view>
+								<view class="">
+									<gui-step-box 
+										:step="0.01"
+										width="400rpx"
+										:inputClass="['gui-step-box-input','gui-border-radius', 'gui-bg-gray', 'gui-dark-bg-level-2']" 
+										:minNum="0"
+										:value="formData.takeProfit" @change="changeTakeProfit"></gui-step-box>
+								</view>
+							</view>
+							
+							<view class="flex flex-row justify-between items-center">
+								<view class="text-gray-400">{{ $t('kline.stop_loss') }}</view>
+								<view class="">
+									<gui-step-box 
+										:step="0.01"
+										width="400rpx"
+										:inputClass="['gui-step-box-input','gui-border-radius', 'gui-bg-gray', 'gui-dark-bg-level-2']" 
+										:minNum="0"
+										:value="formData.stopLoss" @change="changeStoploss"></gui-step-box>
+								</view>
+							</view>
+							
+							<view class="flex flex-row justify-between items-center">
+								<view class="text-gray-400">{{ $t('kline.balance') }}</view>
+								<view class="">
+									{{balance}} {{ currency }}
+								</view>
+							</view>
+							
+							<view class="mt-4 pb-3">
+								<button class="bg-[#00c537] gui-noborder w-full rounded-3xl" :class="formData.mode === 0 ? 'bg-[#00c537]' : 'bg-[#e60101]'" style="border-radius: 80rpx;" @tap="submit">
+									<text class="gui-color-white gui-button-text">{{ $t('kline.buy_order') }}</text>
+								</button>
+							</view>
+						</view>
+						
+						
+					</view>
 				</uni-popup>
 				<view class="flex flex-row justify-between items-center gap-x-3 w-full px-4">
-					<button class="gui-button gui-bg-green gui-button-mini gui-noborder w-full rounded-3xl" style="border-radius: 80rpx;" @tap="open">
+					<button class="gui-button gui-bg-green gui-button-mini gui-noborder w-full rounded-3xl" style="border-radius: 80rpx;" @tap="open(0)">
 						<text class="gui-color-white gui-button-text-mini">{{ $t('long') }}</text>
 					</button>
-					<button class="gui-button gui-bg-red gui-button-mini gui-noborder w-full rounded-3xl" style="border-radius: 80rpx;" @tap="open">
+					<button class="gui-button gui-bg-red gui-button-mini gui-noborder w-full rounded-3xl" style="border-radius: 80rpx;" @tap="open(1)">
 						<text class="gui-color-white gui-button-text-mini">{{ $t('short') }}</text>
 					</button>
 				</view>
@@ -64,36 +153,196 @@
 </template>
 
 <script>
-	import { getStock } from '@/api/stock.js'
+	import { getStock, buy } from '@/api/stock.js'
+	import { getProfile, checkFaovorite, requestFavorite } from '@/api/member.js'
 	import './kline/klinecharts-pro.css'
 	export default {
 		data() {
 			return {
 				id: 0,
 				default: 'default',
-				stock: {}
+				favorite: false,
+				stock: {},
+				profile: {},
+				feeRate: 0,
+				formData: {
+					price: 0,
+					code: '',
+					amount: '',
+					market: '',
+					mode: 0,
+					type: 0,
+					stopLoss: 0,
+					takeProfit: 0
+				}
+			}
+		},
+		computed: {
+			priceComputed() {
+				const price = (+this.formData.amount * +this.formData.price).toFixed(3)
+				const fee = (price * +this.feeRate || 0).toFixed(3)
+				return {
+					price: price,
+					fee
+				}
+			},
+			balance() {
+				try{
+					return this.profile.accountBalance[this.stock.marketResult.code].balance || 0;
+				}catch(e){
+					return 0
+					//TODO handle the exception
+				}
+			},
+			currency() {
+				return this.stock.marketResult?.currency || ''
 			}
 		},
 		methods: {
+			handleChange(e) {
+				if (e.show) return
+				this.formData.amount = ''
+				this.formData.stopLoss = 0
+				this.formData.takeProfit = 0
+				// this.formData.price = 0
+				// this.formData = Object.assign({}, this.formData, {
+				// 	price: 0,
+				// 	code: '',
+				// 	amount: '',
+				// 	market: '',
+				// 	mode: 0,
+				// 	type: 0,
+				// 	stopLoss: 0,
+				// 	takeProfit: 0
+				// })
+			},
+			swithMode(mode) {
+				this.formData.mode = mode
+			},
+			swithType(type) {
+				this.formData.type = type
+			},
 			handleData() {
 				console.log(123)
+			},
+			
+			changeStoploss (e) {
+				console.log(e)
+				this.formData.stopLoss = e[0]
+			},
+			
+			changeTakeProfit (e) {
+				console.log(e)
+				this.formData.takeProfit = e[0]
+			},
+			
+			async handleFavorite() {
+				const status = this.favorite ? 0 : 1
+				uni.showLoading({
+					
+				})
+				try{
+					await requestFavorite(this.id, {
+						status
+					})
+					
+					await this.checkFavorite()
+					uni.hideLoading()
+				}catch(e){
+					//TODO handle the exception
+					uni.hideLoading()
+				}
+			},
+			
+			async checkFavorite() {
+				try{
+					const result = await checkFaovorite(this.id)
+					this.favorite = result
+				}catch(e){
+					//TODO handle the exception
+				}
 			},
 			
 			async getStock() {
 				const result = await getStock(this.id)
 				this.stock = result
-				console.log(this.renderScript, result)
-				this.renderScript.handleLoad(result)
+				this.feeRate = result.marketResult?.feeRate || 0
+				this.formData.price = result.detail?.price
+				this.formData.market = result.market
+				this.formData.code = result.id
+				console.log(this.kline, result)
+				// this.kline.handleLoad(result)
+				
+				uni.$ws.ws.emit('sub', `ws.market.${result.market}.${result.code}`)
 			},
 			
-			open () {
+			async getProfile() {
+				try{
+					const profile = await getProfile()
+					this.profile = profile
+					
+					await this.checkFavorite()
+				}catch(e){
+					//TODO handle the exception
+				}
+			},
+			
+			async submit() {
+				if (!this.formData.amount || this.formData.amount < 1) {
+						uni.showToast({
+							title: this.$t('amount'),
+							icon: 'none'
+						})
+						return
+					}
+				uni.showLoading({
+					title: "Loading",
+					mask: true
+				})
+				try{
+					await buy(this.formData)
+					uni.hideLoading()
+					uni.showToast({
+						title: "Success",
+						icon: 'none'
+					})
+					setTimeout(() => {
+						uni.navigateBack()
+					}, 500)
+				}catch(e){
+					//TODO handle the exception
+					uni.hideLoading()
+				}
+			},
+			
+			open (mode) {
+				if (Object.keys(this.profile).length === 0) {
+					this.$go('/pages/auth/signin/signin', 'navigateTo')
+					return
+				}
+				this.formData.mode = mode
 				this.$refs.popup.open('bottom')
 			}
 		},
 		onLoad(e) {
 			this.id = e.id
 		},
+		created() {
+			uni.$ws.messageCallback = ({
+				data
+			}) => {
+				try {
+					if (typeof data !== 'object') return
+		
+					this.stock = data
+					this.formData.price = data.detail?.price
+				} catch (e) {
+					//TODO handle the exception
+				}
+			}
+		},
 		onShow() {
+			this.getProfile()
 			this.getStock()
 		}
 	}
@@ -103,7 +352,7 @@
 
 </style>
 
-<script module="renderScript" lang="renderjs">
+<script module="kline" lang="renderjs">
 	// 引入js
 	import { KLineChartPro, DefaultDatafeed } from './kline/klinecharts-pro.js'
 	import { KlineDatafeed } from './kline-datafeed'
@@ -121,6 +370,8 @@
 			},
 			
 			handleLoad(stock) {
+				console.log(stock)
+				if (Object.keys(stock).length === 0) return
 				new KLineChartPro({
 					container: document.getElementById('container'),
 					// 初始化标的信息
@@ -128,22 +379,24 @@
 						name: stock.name,
 						shortName: stock.symbol,
 						ticker: stock.symbol,
-						priceCurrency: stock.marketResult.currency,
+						priceCurrency: stock.marketResult?.currency,
 						id: stock.id
+					},
+					styles: {
 					},
 					locale: 'en',
 					watermark: '',
 					// styles: 'candle_solid',
 					drawingBarVisible: false,
 					// 初始化周期
-					period: { multiplier: 'day', timespan: 'day', text: 'D' },
+					period: { multiplier: 1, timespan: 'minute', text: '1m' },
 					periods: [
 						{ multiplier: 1, timespan: 'minute', text: '1m' },
 						{ multiplier: 5, timespan: 'minute', text: '5m' },
 						{ multiplier: 15, timespan: 'minute', text: '15m' },
-						{ multiplier: 60, timespan: 'minute', text: '1H' },
-						{ multiplier: 120, timespan: 'minute', text: '2H' },
-						{ multiplier: 'day', timespan: 'day', text: 'D' }
+						// { multiplier: 60, timespan: 'minute', text: '1H' },
+						// { multiplier: 120, timespan: 'minute', text: '2H' },
+						{ multiplier: 1, timespan: 'day', text: 'D' },
 					],
 					mainIndicators: [],
 					subIndicators: [],
