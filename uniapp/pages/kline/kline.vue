@@ -15,8 +15,8 @@
 					<view class="text-[#00c537] text-md font-semibold font-mono">{{ stock.detail?.price }}</view>
 				</view>
 				<view class="flex flex-row justify-start items-center gap-x-3">
-					<view class="text-[#00c537]">{{ parseFloat(stock.detail?.chg) > 0 ? '+' : '' }}{{(+stock.change).toFixed(3)}}</view>
-					<view class="text-[#e60101]">{{ parseFloat(stock.detail?.chg) > 0 ? '+' : '' }}{{(+stock.changePercent).toFixed(3)}}%</view>
+					<view class="text-[#00c537]">{{ parseFloat(stock.change) > 0 ? '+' : '' }}{{(+stock.change).toFixed(3)}}</view>
+					<view class="text-[#e60101]">{{ parseFloat(stock.change) > 0 ? '+' : '' }}{{(+stock.changePercent).toFixed(3)}}%</view>
 				</view>
 
 				<view class="flex flex-row text-[12px] text-[#999] w-full mt-2">
@@ -332,7 +332,7 @@
 				data
 			}) => {
 				try {
-					if (typeof data !== 'object') return
+					if (typeof data !== 'object' && this.stock.code !== data.code) return
 					const sync = JSON.parse(data.sync)
 					console.log(sync, data)
 					this.stock.open = sync.open
@@ -346,6 +346,9 @@
 					//TODO handle the exception
 				}
 			}
+		},
+		onUnload() {
+			uni.$ws.ws.emit('unsub', `ws.market.${this.stock.market}.${this.stock.code}`)
 		},
 		onShow() {
 			this.getProfile()
@@ -395,7 +398,7 @@
 					// styles: 'candle_solid',
 					drawingBarVisible: false,
 					// 初始化周期
-					period: { multiplier: 1, timespan: 'minute', text: '1m' },
+					period: { multiplier: 1, timespan: 'day', text: 'D' },
 					periods: [
 						{ multiplier: 1, timespan: 'minute', text: '1m' },
 						{ multiplier: 5, timespan: 'minute', text: '5m' },
