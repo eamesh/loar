@@ -38,7 +38,7 @@ export class KlineService {
       // et: +data.end / 1000,
       line,
       num: 2000,
-      // sort: 'Date desc',
+      sort: 'Date desc',
       // stamp: dayjs().unix(),
     };
 
