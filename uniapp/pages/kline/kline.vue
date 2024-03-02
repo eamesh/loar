@@ -341,7 +341,7 @@
 					this.stock.low = sync.high
 					this.stock.change = data.change
 					this.stock.changePercent = data.changePercent
-					this.formData.price = sync.newPrice.toFixed(3)
+					// this.formData.price = sync.newPrice.toFixed(3)
 				} catch (e) {
 					//TODO handle the exception
 				}
