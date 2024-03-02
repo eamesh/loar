@@ -1,6 +1,7 @@
 import { Body, Controller, Get, Param, Post, UseGuards } from '@nestjs/common';
 import { SettingService } from './setting.service';
 import { UserGuard } from '../user/guard/user.guard';
+import * as semver from 'semver';
 
 @Controller('setting')
 export class SettingController {
@@ -38,14 +39,26 @@ export class SettingController {
     return await this.setting.save(payload);
   }
 
-  @Get('app/version')
-  async getVersion() {
+  @Post('app/version')
+  async getVersion(@Body() payload: any) {
+    console.log(payload);
     const version = await this.setting.getKey('version');
-    const wgt = await this.setting.getKey('wgt');
+
+    if (semver.gt(version.value.value, payload.version)) {
+      const platforms = ['ios', 'andriod'];
+      const wgt = await this.setting.getKey(platforms[payload.platform]);
+
+      return {
+        version: version.value.value,
+        wgt: wgt.value.value,
+        new: true,
+      };
+    }
 
     return {
       version: version.value.value,
-      wgt: wgt.value.value,
+      wgt: '',
+      new: false,
     };
   }
 }

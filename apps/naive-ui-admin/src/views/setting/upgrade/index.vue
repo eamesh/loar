@@ -17,7 +17,7 @@
             <n-form-item label="版本号" path="version">
               <n-input v-model:value="formValue.version" placeholder="输入版本号" />
             </n-form-item>
-            <n-form-item label="图片" path="wgt">
+            <n-form-item label="Andriod" path="andriod">
               <n-upload
                 :max="1"
                 :action="uploadUrl"
@@ -28,6 +28,22 @@
                 v-model:file-list="fileList"
                 @finish="handleUpload"
                 @remove="handleRemove"
+              >
+                <n-button>上传 wgt</n-button>
+              </n-upload>
+            </n-form-item>
+
+            <n-form-item label="IOS" path="ios">
+              <n-upload
+                :max="1"
+                :action="uploadUrl"
+                :multiple="false"
+                :headers="{
+                  Authorization: `Bearer ${token}`,
+                }"
+                v-model:file-list="fileListIos"
+                @finish="handleUploadIos"
+                @remove="handleRemoveIos"
               >
                 <n-button>上传 wgt</n-button>
               </n-upload>
@@ -55,6 +71,7 @@
   const userStore = useUser();
   const token = userStore.getToken;
   const fileList = ref<any[]>([]);
+  const fileListIos = ref<any[]>([]);
 
   const rules = {
     version: {
@@ -62,7 +79,12 @@
       message: '请输入版本号',
       trigger: ['blur', 'input'],
     },
-    wgt: {
+    andriod: {
+      required: true,
+      message: '请上传 wgt',
+      trigger: ['blur', 'input'],
+    },
+    ios: {
       required: true,
       message: '请上传 wgt',
       trigger: ['blur', 'input'],
@@ -74,7 +96,8 @@
 
   const defaultValueRef = () => ({
     version: '',
-    wgt: '',
+    andriod: '',
+    ios: '',
   });
 
   let formValue = reactive(defaultValueRef());
@@ -90,9 +113,15 @@
               },
             },
             {
-              key: 'wgt',
+              key: 'andriod',
               value: {
-                value: formValue.wgt,
+                value: formValue.andriod,
+              },
+            },
+            {
+              key: 'ios',
+              value: {
+                value: formValue.ios,
               },
             },
           ];
@@ -121,12 +150,23 @@
       });
 
       formValue.version = obj?.version.value || 0;
-      formValue.wgt = obj?.wgt.value || '';
-      const name = formValue.wgt.substring(formValue.wgt.lastIndexOf('/') + 1);
+      formValue.andriod = obj?.andriod.value || '';
+      formValue.ios = obj?.ios.value || '';
+
+      const name = formValue.andriod.substring(formValue.andriod.lastIndexOf('/') + 1);
       fileList.value = [
         {
           id: '1',
           name,
+          status: 'finished',
+        },
+      ];
+
+      const iosName = formValue.ios.substring(formValue.ios.lastIndexOf('/') + 1);
+      fileListIos.value = [
+        {
+          id: '1',
+          name: iosName,
           status: 'finished',
         },
       ];
@@ -146,12 +186,26 @@
     const file = data.file.path;
 
     console.log(file);
-    formValue.wgt = file;
+    formValue.andriod = file;
   }
 
   function handleRemove() {
-    formValue.wgt = '';
+    formValue.andriod = '';
     fileList.value = [];
+  }
+
+  function handleUploadIos({ event }: any) {
+    const data = JSON.parse(event.target.response);
+    console.log(data);
+    const file = data.file.path;
+
+    console.log(file);
+    formValue.ios = file;
+  }
+
+  function handleRemoveIos() {
+    formValue.ios = '';
+    fileListIos.value = [];
   }
 
   // function resetForm() {

@@ -196,6 +196,9 @@
 		getFavorite,
 		deleteFavorite
 	} from '@/api/stock.js'
+	import config from '@/config/index.js'
+	
+	import { requestUpgrade } from '@/api/upgrade.js'
 let page = 1;
 	export default {
 		data() {
@@ -456,6 +459,59 @@ let page = 1;
 					uni.$ws.ws.emit('unsub', `ws.market.${current.market}.${key}`)
 					delete this.tmpStocks[key]
 				})
+			},
+			
+			wgtUpgrade() {
+				plus.runtime.getProperty(plus.runtime.appid, async function(widgetInfo) {
+					try{
+						console.log('upgrade')
+						const result = await requestUpgrade({
+							version: widgetInfo.version,
+							name: widgetInfo.name,
+							platform: plus.os.name === 'iOS' ? 0 : 1
+						})
+						console.log(result)
+						
+						if (result.new) {
+							uni.showLoading({
+								title: '发现新版本, 更新中',
+								mask: true
+							})
+							
+							uni.downloadFile({
+								url: `${config.host}/${result.wgt}`,
+								success: (downloadResult) => {
+									console.log(downloadResult)
+									if (downloadResult.statusCode === 200) {
+										console.log('您的版本过老（'+widgetInfo.version+'），执行更新版本流程')
+										plus.runtime.install(downloadResult.tempFilePath, {
+											force: true
+										}, function() {
+											console.log('install success...');
+											plus.runtime.restart();
+										}, function(e) {
+											uni.hideLoading()
+											uni.showToast({
+												title: '更新失败',
+												icon: 'none'
+											})
+											console.error('install fail...');
+										});
+									}
+								},
+								fail: () => {
+									uni.hideLoading()
+									uni.showToast({
+										title: '下载失败',
+										icon: 'none'
+									})
+								}
+							})
+						}
+					}catch(e){
+						//TODO handle the exception
+					}
+				})
 			}
 		},
 
@@ -489,12 +545,14 @@ let page = 1;
 			// window.tmp = this.tmpIndexData
 		},
 		onHide() {
-			console.log(22222)
 			this.handleUnSubIndexData()
 			this.handleUnsubStocks()
 		},
 
 		onShow() {
+			// #ifdef APP
+			this.wgtUpgrade()
+			// #endif
 			page = 1;
 			this.indexRequest()
 			this.indexStocks()

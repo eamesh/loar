@@ -1,7 +1,7 @@
 <script>
 	import { mapState, mapActions } from 'pinia'
 import { useAppStore } from './store/app'
-
+import { requestUpgrade } from '@/api/upgrade.js'
 export default {
 	computed: {
 		...mapState(useAppStore, {
@@ -25,7 +25,8 @@ export default {
 	},
 	onHide: function () {
 		console.log('App Hide')
-	}
+	},
+	
 }
 </script>
 
