@@ -1,6 +1,7 @@
 import dayjs from '../../node_modules/dayjs/esm/index.js'
 import config from '../../config/index.js'
-
+let timer = null
+let first = "";
 export class KlineDatafeed {
   // eslint-disable-next-line no-useless-constructor
   constructor () {}
@@ -21,6 +22,8 @@ export class KlineDatafeed {
    */
   async getHistoryKLineData (symbol, period, from, to) {
 		console.log(period, from, to)
+		let key = `${period.multiplier}_${period.text}`
+		
 		// return []
    //  try {
    //    console.log(symbol, period, from, to)
@@ -40,23 +43,30 @@ export class KlineDatafeed {
 			// // })
 			
 			if (!symbol.id) return []
+			const data = {
+				id: symbol.id,
+				level: period.timespan,
+				// start: from,
+				// end: to,
+				min: period.multiplier
+			}
+			
+			if(first === key) {
+				data.start = from;
+				data.end = to;
+			}
       const response = await fetch(`${config.api}/kline/symbol`, {
         headers: {
           'Content-Type': 'application/json'
         },
-        body: JSON.stringify({
-          id: symbol.id,
-          level: period.timespan,
-          start: from,
-          end: to,
-					min: period.multiplier
-        }),
+        body: JSON.stringify(data),
         method: 'POST'
       })
 			console.log(response)
       // console.log(response)
       const results = await response.json()
 			console.log(results)
+			first = key
 	 // return [];
    //    // console.log(results)
       return await (results || []).map((data) => ({
@@ -81,8 +91,9 @@ export class KlineDatafeed {
    */
   subscribe (symbol, period, callback) {
     try {
+			clearInterval(timer)
       // 完成ws订阅或者http轮询
-      setInterval(async function () {
+      timer = setInterval(async function () {
         console.log(symbol, period)
         // const now = dayjs()
         // const start = now.subtract(30, 'day').unix()

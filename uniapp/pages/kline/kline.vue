@@ -42,7 +42,7 @@
 				</view>
 			</view>
 			<view :msg="stock" :change:msg="kline.handleLoad" type="default"></view>
-			<view id="container"></view>
+			<view id="container" style="height: 1000rpx"></view>
 		</template>
 		<template v-slot:gFooter>
 			<view
@@ -408,7 +408,7 @@
 						{ multiplier: 1, timespan: 'day', text: 'D' },
 					],
 					mainIndicators: [],
-					subIndicators: [],
+					// subIndicators: [],
 					// 这里使用默认的数据接入，如果实际使用中也使用默认数据，需要去 https://polygon.io/ 申请 API key
 					datafeed: new KlineDatafeed()
 				})
