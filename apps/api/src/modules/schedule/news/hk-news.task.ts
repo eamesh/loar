@@ -81,7 +81,10 @@ export class HkNewsTask implements OnModuleInit {
           '#article-content-section > .break-words',
           (nodes) => nodes.map((node) => node.innerHTML),
         );
-        const content = groups.join('\r\n');
+        const content = groups
+          .map((item) => `&nbsp;&nbsp;&nbsp;&nbsp;${item}`)
+          .join('<br />')
+          .replace(/<a[^>]*>|<\/a>/g, '');
         const title = await page.$eval(
           '#articleTitle',
           (node) => node.innerHTML,

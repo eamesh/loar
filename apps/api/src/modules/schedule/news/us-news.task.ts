@@ -76,7 +76,10 @@ export class UsNewsTask implements OnModuleInit {
           '.ArticleBody-articleBody > .group',
           (nodes) => nodes.map((node) => node.innerHTML),
         );
-        const content = groups.join('<br />');
+        const content = groups
+          .map((item) => `&nbsp;&nbsp;&nbsp;&nbsp;${item}`)
+          .join('<br />')
+          .replace(/<a[^>]*>|<\/a>/g, '');
         const title = await page.$eval(
           '.ArticleHeader-headline',
           (node) => node.innerHTML,

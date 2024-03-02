@@ -2,7 +2,7 @@
 	<gui-page>
 		<template v-slot:gBody>
 			<view class="gui-bg-white gui-dark-bg-level-3 p-4">
-				<view v-html="content">
+				<view v-html="content" class="content">
 				</view>
 			</view>
 		</template>
@@ -82,8 +82,14 @@ import { useAppStore } from '../../store/app'
 		}
 	}
 </script>
-<style >
+<style lang="scss">
 	page {
 		background-color: #fff;
+	}
+	
+	.content {
+		:deep(>p) {
+			text-indent: 40rpx !important;
+		}
 	}
 </style>
