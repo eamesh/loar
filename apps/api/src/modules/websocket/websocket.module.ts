@@ -2,7 +2,7 @@ import { Module } from '@nestjs/common';
 import { WebsocketGateway } from './websocket.gateway';
 import { TopicService } from './topic.service';
 import { StockModule } from '../stock/stock.module';
-import { SyncService } from './sync.service';
+// import { SyncService } from './sync.service';
 import { HandleEvent } from './event/handle.event';
 import { PositionEvent } from './event/position.event';
 
@@ -11,7 +11,7 @@ import { PositionEvent } from './event/position.event';
   providers: [
     WebsocketGateway,
     TopicService,
-    SyncService,
+    // SyncService,
     HandleEvent,
     PositionEvent,
   ],

@@ -42,7 +42,7 @@
 				</view>
 			</view>
 			<view :msg="stock" :change:msg="kline.handleLoad" type="default"></view>
-			<view id="container" style="height: 1000rpx"></view>
+			<view id="container" style="height: 800rpx"></view>
 		</template>
 		<template v-slot:gFooter>
 			<view
@@ -381,7 +381,7 @@
 			handleLoad(stock) {
 				console.log(stock)
 				if (Object.keys(stock).length === 0) return
-				new KLineChartPro({
+				const chart = new KLineChartPro({
 					container: document.getElementById('container'),
 					// 初始化标的信息
 					symbol: {
@@ -392,6 +392,10 @@
 						id: stock.id
 					},
 					styles: {
+						candle: {
+							area: 0.5
+						}
+						
 					},
 					locale: 'en',
 					watermark: '',
