@@ -31,6 +31,8 @@ export class UsEvent extends Base {
         amount: item.amount || 0,
         volume: item.volume,
         low: item.low,
+        change: item.change,
+        changePercent: item.change_percent,
         date: dayjs().unix(),
       };
 

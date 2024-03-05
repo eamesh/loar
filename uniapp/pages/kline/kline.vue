@@ -332,7 +332,7 @@
 				data
 			}) => {
 				try {
-					if (typeof data !== 'object' && this.stock.code !== data.code) return
+					if (typeof data !== 'object' && this.id !== data.id) return
 					const sync = JSON.parse(data.sync)
 					console.log(sync, data)
 					this.stock.open = sync.open

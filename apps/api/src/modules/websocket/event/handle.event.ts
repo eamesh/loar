@@ -13,8 +13,19 @@ export class HandleEvent {
 
   @OnEvent('HANDLE_STOCK')
   async handleStock(stock: any) {
-    const { symbol, newPrice, open, close, high, amount, volume, low, date } =
-      stock;
+    const {
+      symbol,
+      newPrice,
+      open,
+      close,
+      high,
+      amount,
+      volume,
+      low,
+      date,
+      change,
+      changePercent,
+    } = stock;
     // console.log('handle', symbol);
 
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
@@ -28,12 +39,12 @@ export class HandleEvent {
         },
       });
 
-      const change = +newPrice - +open;
+      // const change = +newPrice - +open;
 
-      let changePercent = '0';
-      if (open !== 0) {
-        changePercent = `${((change / +open) * 100).toFixed(3)}`;
-      }
+      // let changePercent = '0';
+      // if (open !== 0) {
+      //   changePercent = `${((change / +open) * 100).toFixed(3)}`;
+      // }
 
       const newStockSymbol = await this.prisma.stockSymbol.update({
         where: {
