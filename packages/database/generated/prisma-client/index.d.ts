@@ -7057,6 +7057,7 @@ export namespace Prisma {
   export type StockSymbolMinAggregateOutputType = {
     id: bigint | null
     code: string | null
+    cat: string | null
     market: string | null
     online: number | null
     symbol: string | null
@@ -7083,6 +7084,7 @@ export namespace Prisma {
   export type StockSymbolMaxAggregateOutputType = {
     id: bigint | null
     code: string | null
+    cat: string | null
     market: string | null
     online: number | null
     symbol: string | null
@@ -7109,6 +7111,7 @@ export namespace Prisma {
   export type StockSymbolCountAggregateOutputType = {
     id: number
     code: number
+    cat: number
     market: number
     online: number
     symbol: number
@@ -7152,6 +7155,7 @@ export namespace Prisma {
   export type StockSymbolMinAggregateInputType = {
     id?: true
     code?: true
+    cat?: true
     market?: true
     online?: true
     symbol?: true
@@ -7178,6 +7182,7 @@ export namespace Prisma {
   export type StockSymbolMaxAggregateInputType = {
     id?: true
     code?: true
+    cat?: true
     market?: true
     online?: true
     symbol?: true
@@ -7204,6 +7209,7 @@ export namespace Prisma {
   export type StockSymbolCountAggregateInputType = {
     id?: true
     code?: true
+    cat?: true
     market?: true
     online?: true
     symbol?: true
@@ -7318,6 +7324,7 @@ export namespace Prisma {
   export type StockSymbolGroupByOutputType = {
     id: bigint
     code: string
+    cat: string | null
     market: string
     online: number
     symbol: string
@@ -7364,6 +7371,7 @@ export namespace Prisma {
   export type StockSymbolSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     code?: boolean
+    cat?: boolean
     market?: boolean
     online?: boolean
     symbol?: boolean
@@ -7393,6 +7401,7 @@ export namespace Prisma {
   export type StockSymbolSelectScalar = {
     id?: boolean
     code?: boolean
+    cat?: boolean
     market?: boolean
     online?: boolean
     symbol?: boolean
@@ -7431,6 +7440,7 @@ export namespace Prisma {
     scalars: $Extensions.GetPayloadResult<{
       id: bigint
       code: string
+      cat: string | null
       market: string
       online: number
       symbol: string
@@ -7850,6 +7860,7 @@ export namespace Prisma {
   interface StockSymbolFieldRefs {
     readonly id: FieldRef<"StockSymbol", 'BigInt'>
     readonly code: FieldRef<"StockSymbol", 'String'>
+    readonly cat: FieldRef<"StockSymbol", 'String'>
     readonly market: FieldRef<"StockSymbol", 'String'>
     readonly online: FieldRef<"StockSymbol", 'Int'>
     readonly symbol: FieldRef<"StockSymbol", 'String'>
@@ -25658,6 +25669,7 @@ export namespace Prisma {
   export const StockSymbolScalarFieldEnum: {
     id: 'id',
     code: 'code',
+    cat: 'cat',
     market: 'market',
     online: 'online',
     symbol: 'symbol',
@@ -26482,6 +26494,7 @@ export namespace Prisma {
     NOT?: StockSymbolWhereInput | StockSymbolWhereInput[]
     id?: BigIntFilter<"StockSymbol"> | bigint | number
     code?: StringFilter<"StockSymbol"> | string
+    cat?: StringNullableFilter<"StockSymbol"> | string | null
     market?: StringFilter<"StockSymbol"> | string
     online?: IntFilter<"StockSymbol"> | number
     symbol?: StringFilter<"StockSymbol"> | string
@@ -26510,6 +26523,7 @@ export namespace Prisma {
   export type StockSymbolOrderByWithRelationInput = {
     id?: SortOrder
     code?: SortOrder
+    cat?: SortOrderInput | SortOrder
     market?: SortOrder
     online?: SortOrder
     symbol?: SortOrder
@@ -26542,6 +26556,7 @@ export namespace Prisma {
     OR?: StockSymbolWhereInput[]
     NOT?: StockSymbolWhereInput | StockSymbolWhereInput[]
     code?: StringFilter<"StockSymbol"> | string
+    cat?: StringNullableFilter<"StockSymbol"> | string | null
     market?: StringFilter<"StockSymbol"> | string
     online?: IntFilter<"StockSymbol"> | number
     symbol?: StringFilter<"StockSymbol"> | string
@@ -26570,6 +26585,7 @@ export namespace Prisma {
   export type StockSymbolOrderByWithAggregationInput = {
     id?: SortOrder
     code?: SortOrder
+    cat?: SortOrderInput | SortOrder
     market?: SortOrder
     online?: SortOrder
     symbol?: SortOrder
@@ -26605,6 +26621,7 @@ export namespace Prisma {
     NOT?: StockSymbolScalarWhereWithAggregatesInput | StockSymbolScalarWhereWithAggregatesInput[]
     id?: BigIntWithAggregatesFilter<"StockSymbol"> | bigint | number
     code?: StringWithAggregatesFilter<"StockSymbol"> | string
+    cat?: StringNullableWithAggregatesFilter<"StockSymbol"> | string | null
     market?: StringWithAggregatesFilter<"StockSymbol"> | string
     online?: IntWithAggregatesFilter<"StockSymbol"> | number
     symbol?: StringWithAggregatesFilter<"StockSymbol"> | string
@@ -28620,6 +28637,7 @@ export namespace Prisma {
   export type StockSymbolCreateInput = {
     id?: bigint | number
     code: string
+    cat?: string | null
     market: string
     online?: number
     symbol: string
@@ -28648,6 +28666,7 @@ export namespace Prisma {
   export type StockSymbolUncheckedCreateInput = {
     id?: bigint | number
     code: string
+    cat?: string | null
     market: string
     online?: number
     symbol: string
@@ -28676,6 +28695,7 @@ export namespace Prisma {
   export type StockSymbolUpdateInput = {
     id?: BigIntFieldUpdateOperationsInput | bigint | number
     code?: StringFieldUpdateOperationsInput | string
+    cat?: NullableStringFieldUpdateOperationsInput | string | null
     market?: StringFieldUpdateOperationsInput | string
     online?: IntFieldUpdateOperationsInput | number
     symbol?: StringFieldUpdateOperationsInput | string
@@ -28704,6 +28724,7 @@ export namespace Prisma {
   export type StockSymbolUncheckedUpdateInput = {
     id?: BigIntFieldUpdateOperationsInput | bigint | number
     code?: StringFieldUpdateOperationsInput | string
+    cat?: NullableStringFieldUpdateOperationsInput | string | null
     market?: StringFieldUpdateOperationsInput | string
     online?: IntFieldUpdateOperationsInput | number
     symbol?: StringFieldUpdateOperationsInput | string
@@ -28732,6 +28753,7 @@ export namespace Prisma {
   export type StockSymbolCreateManyInput = {
     id?: bigint | number
     code: string
+    cat?: string | null
     market: string
     online?: number
     symbol: string
@@ -28759,6 +28781,7 @@ export namespace Prisma {
   export type StockSymbolUpdateManyMutationInput = {
     id?: BigIntFieldUpdateOperationsInput | bigint | number
     code?: StringFieldUpdateOperationsInput | string
+    cat?: NullableStringFieldUpdateOperationsInput | string | null
     market?: StringFieldUpdateOperationsInput | string
     online?: IntFieldUpdateOperationsInput | number
     symbol?: StringFieldUpdateOperationsInput | string
@@ -28786,6 +28809,7 @@ export namespace Prisma {
   export type StockSymbolUncheckedUpdateManyInput = {
     id?: BigIntFieldUpdateOperationsInput | bigint | number
     code?: StringFieldUpdateOperationsInput | string
+    cat?: NullableStringFieldUpdateOperationsInput | string | null
     market?: StringFieldUpdateOperationsInput | string
     online?: IntFieldUpdateOperationsInput | number
     symbol?: StringFieldUpdateOperationsInput | string
@@ -31267,6 +31291,7 @@ export namespace Prisma {
   export type StockSymbolCountOrderByAggregateInput = {
     id?: SortOrder
     code?: SortOrder
+    cat?: SortOrder
     market?: SortOrder
     online?: SortOrder
     symbol?: SortOrder
@@ -31301,6 +31326,7 @@ export namespace Prisma {
   export type StockSymbolMaxOrderByAggregateInput = {
     id?: SortOrder
     code?: SortOrder
+    cat?: SortOrder
     market?: SortOrder
     online?: SortOrder
     symbol?: SortOrder
@@ -31327,6 +31353,7 @@ export namespace Prisma {
   export type StockSymbolMinOrderByAggregateInput = {
     id?: SortOrder
     code?: SortOrder
+    cat?: SortOrder
     market?: SortOrder
     online?: SortOrder
     symbol?: SortOrder
@@ -34758,6 +34785,7 @@ export namespace Prisma {
   export type StockSymbolCreateWithoutStockPostionInput = {
     id?: bigint | number
     code: string
+    cat?: string | null
     market: string
     online?: number
     symbol: string
@@ -34785,6 +34813,7 @@ export namespace Prisma {
   export type StockSymbolUncheckedCreateWithoutStockPostionInput = {
     id?: bigint | number
     code: string
+    cat?: string | null
     market: string
     online?: number
     symbol: string
@@ -34889,6 +34918,7 @@ export namespace Prisma {
   export type StockSymbolUpdateWithoutStockPostionInput = {
     id?: BigIntFieldUpdateOperationsInput | bigint | number
     code?: StringFieldUpdateOperationsInput | string
+    cat?: NullableStringFieldUpdateOperationsInput | string | null
     market?: StringFieldUpdateOperationsInput | string
     online?: IntFieldUpdateOperationsInput | number
     symbol?: StringFieldUpdateOperationsInput | string
@@ -34916,6 +34946,7 @@ export namespace Prisma {
   export type StockSymbolUncheckedUpdateWithoutStockPostionInput = {
     id?: BigIntFieldUpdateOperationsInput | bigint | number
     code?: StringFieldUpdateOperationsInput | string
+    cat?: NullableStringFieldUpdateOperationsInput | string | null
     market?: StringFieldUpdateOperationsInput | string
     online?: IntFieldUpdateOperationsInput | number
     symbol?: StringFieldUpdateOperationsInput | string

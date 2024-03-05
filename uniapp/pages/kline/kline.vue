@@ -3,7 +3,7 @@
 		<template v-slot:gBody>
 			<view class="flex flex-col justify-start items-start w-full px-4 py-4 gap-y-3 box-border">
 				<view class="flex flex-row justify-between items-center w-full">
-					<view class="text-md font-mono">{{ stock.name }}</view>
+					<view class="text-md font-mono font-semibold">{{ stock.name }}</view>
 					<image v-if="!favorite" src="/static/img/icon_01.png" class="w-6 h-6" @click="handleFavorite"/>
 					<image v-else src="/static/img/icon_02.png" class="w-6 h-6" @click="handleFavorite"/>
 				</view>
@@ -15,8 +15,8 @@
 					<view class="text-[#00c537] text-md font-semibold font-mono">{{ stock.detail?.price }}</view>
 				</view>
 				<view class="flex flex-row justify-start items-center gap-x-3">
-					<view class="text-[#00c537]">{{ parseFloat(stock.change) > 0 ? '+' : '' }}{{(+stock.change).toFixed(3)}}</view>
-					<view class="text-[#e60101]">{{ parseFloat(stock.change) > 0 ? '+' : '' }}{{(+stock.changePercent).toFixed(3)}}%</view>
+					<view class="text-[#00c537] text-[22rpx]">{{ parseFloat(stock.change) > 0 ? '+' : '' }}{{(+stock.change).toFixed(3)}}</view>
+					<view class="text-[#e60101] text-[22rpx]">{{ parseFloat(stock.change) > 0 ? '+' : '' }}{{(+stock.changePercent).toFixed(3)}}%</view>
 				</view>
 
 				<view class="flex flex-row text-[12px] text-[#999] w-full mt-2">
@@ -358,7 +358,9 @@
 </script>
 
 <style lang="scss">
-
+page {
+	background-color: #fff;
+}
 </style>
 
 <script module="kline" lang="renderjs">
@@ -402,14 +404,16 @@
 					// styles: 'candle_solid',
 					drawingBarVisible: false,
 					// 初始化周期
-					period: { multiplier: 1, timespan: 'day', text: 'D' },
+					period: { multiplier: 1, timespan: 'day', text: '1D' },
 					periods: [
 						{ multiplier: 1, timespan: 'minute', text: '1m' },
 						{ multiplier: 5, timespan: 'minute', text: '5m' },
-						{ multiplier: 15, timespan: 'minute', text: '15m' },
+						{ multiplier: 30, timespan: 'minute', text: '30m' },
+						{ multiplier: 1, timespan: 'day', text: '1D' },
+						{ multiplier: 1, timespan: 'week', text: '1W' },
+						{ multiplier: 1, timespan: 'month', text: '1M' },
 						// { multiplier: 60, timespan: 'minute', text: '1H' },
 						// { multiplier: 120, timespan: 'minute', text: '2H' },
-						{ multiplier: 1, timespan: 'day', text: 'D' },
 					],
 					mainIndicators: [],
 					// subIndicators: [],

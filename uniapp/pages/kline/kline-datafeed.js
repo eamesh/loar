@@ -22,7 +22,7 @@ export class KlineDatafeed {
    */
   async getHistoryKLineData (symbol, period, from, to) {
 		console.log(period, from, to)
-		let key = `${period.multiplier}_${period.text}`
+		// let key = `${period.multiplier}_${period.text}`
 		
 		// return []
    //  try {
@@ -46,15 +46,15 @@ export class KlineDatafeed {
 			const data = {
 				id: symbol.id,
 				level: period.timespan,
-				// start: from,
-				// end: to,
+				start: from,
+				end: to,
 				min: period.multiplier
 			}
 			
-			if(first === key) {
-				data.start = from;
-				data.end = to;
-			}
+			// if(first === key) {
+			// 	data.start = from;
+			// 	data.end = to;
+			// }
       const response = await fetch(`${config.api}/kline/symbol`, {
         headers: {
           'Content-Type': 'application/json'
@@ -62,22 +62,25 @@ export class KlineDatafeed {
         body: JSON.stringify(data),
         method: 'POST'
       })
-			console.log(response)
+			// console.log(response)
       // console.log(response)
       const results = await response.json()
-			console.log(results)
-			first = key
+			// console.log(results)
+			// first = key
 	 // return [];
    //    // console.log(results)
-      return await (results || []).map((data) => ({
-        timestamp: +data.Date * 1000,
-        open: +data.Open,
-        high: +data.High,
-        low: +data.Low,
-        close: +data.Close,
-        volume: +data.Volume,
-        turnover: +data.Amount
+      const tmp = await (results || []).map((data) => ({
+        timestamp: +data.time * 1000,
+        open: +data.open,
+        high: +data.high,
+        low: +data.low,
+        close: +data.close,
+        volume: +data.volume,
+        turnover: +data.amount
       }))
+			
+			console.log(tmp)
+			return tmp
    //  } catch (error) {
 			// return []
    //  }
@@ -89,64 +92,106 @@ export class KlineDatafeed {
    *
    * 通过callback告知图表接收数据
    */
-  subscribe (symbol, period, callback) {
-    try {
+  async subscribe (symbol, period, callback) {
+		try{
 			clearInterval(timer)
-      // 完成ws订阅或者http轮询
-      timer = setInterval(async function () {
-        console.log(symbol, period)
-        // const now = dayjs()
-        // const start = now.subtract(30, 'day').unix()
-        // const end = now.unix()
-        // 完成数据请求
-				const response = await fetch(`${config.api}/kline/symbol?num=10`, {
-				  headers: {
-				    'Content-Type': 'application/json'
-				  },
-				  body: JSON.stringify({
-				    id: symbol.id,
-				    level: 'min',
-				    // start,
-				    // end,
-						min: 1
-				  }),
-				  method: 'POST'
+			timer = setInterval(async () => {
+				console.log('sub', symbol, period, callback)
+				const data = {
+					id: symbol.id,
+					level: period.timespan,
+					// start: from,
+					// end: to,
+					min: period.multiplier
+				}
+				
+				const response = await fetch(`${config.api}/kline/symbol`, {
+					headers: {
+						'Content-Type': 'application/json'
+					},
+					body: JSON.stringify(data),
+					method: 'POST'
 				})
+				
+				const results = await response.json()
+						
+				if (Array.isArray(results)) {
+						 (results || []).forEach(data => {
+							 // eslint-disable-next-line node/no-callback-literal
+							 callback({
+								 timestamp: +data.time * 1000,
+								 open: +data.open,
+								 high: +data.high,
+								 low: +data.low,
+								 close: +data.close,
+								 volume: +data.volume,
+								 turnover: +data.amount
+							 })
+						 })
+				} else {
+					callback([])
+				}
+			}, 1000)
+		}catch(e){
+			//TODO handle the exception
+		}
+   //  try {
+			// clearInterval(timer)
+   //    // 完成ws订阅或者http轮询
+   //    timer = setInterval(async function () {
+   //      console.log(symbol, period)
+   //      // const now = dayjs()
+   //      // const start = now.subtract(30, 'day').unix()
+   //      // const end = now.unix()
+   //      // 完成数据请求
+			// 	const response = await fetch(`${config.api}/kline/symbol?num=10`, {
+			// 	  headers: {
+			// 	    'Content-Type': 'application/json'
+			// 	  },
+			// 	  body: JSON.stringify({
+			// 	    id: symbol.id,
+			// 	    level: 'min',
+			// 	    // start,
+			// 	    // end,
+			// 			min: 1
+			// 	  }),
+			// 	  method: 'POST'
+			// 	})
 
-        // console.log(response)
+   //      // console.log(response)
 
-        const results = await response.json()
-        console.log(results)
-        if (Array.isArray(results)) {
-          (results || []).forEach(data => {
-            // eslint-disable-next-line node/no-callback-literal
-            callback({
-              timestamp: +data.Date * 1000,
-              open: +data.Open,
-              high: +data.High,
-              low: +data.Low,
-              close: +data.Close,
-              volume: +data.Volume,
-              turnover: +data.Amount
-            })
-          })
-        }
+   //      const results = await response.json()
+   //      console.log(results)
+   //      if (Array.isArray(results)) {
+   //        (results || []).forEach(data => {
+   //          // eslint-disable-next-line node/no-callback-literal
+   //          callback({
+   //            timestamp: +data.Date * 1000,
+   //            open: +data.Open,
+   //            high: +data.High,
+   //            low: +data.Low,
+   //            close: +data.Close,
+   //            volume: +data.Volume,
+   //            turnover: +data.Amount
+   //          })
+   //        })
+   //      }
 
-      // (results || []).map((data) => {
-      //   callback({
-      //     timestamp: +data.Date * 1000,
-      //     open: +data.Open,
-      //     high: +data.High,
-      //     low: +data.Low,
-      //     close: +data.Close,
-      //     volume: +data.Volume,
-      //     turnover: +data.Amount
-      //   })
-      // })
-      }, 3000)
-    } catch (error) {
-			return []
-    }
+   //    // (results || []).map((data) => {
+   //    //   callback({
+   //    //     timestamp: +data.Date * 1000,
+   //    //     open: +data.Open,
+   //    //     high: +data.High,
+   //    //     low: +data.Low,
+   //    //     close: +data.Close,
+   //    //     volume: +data.Volume,
+   //    //     turnover: +data.Amount
+   //    //   })
+   //    // })
+   //    }, 3000)
+   //  } catch (error) {
+			// return []
+   //  }
   }
 
   /**

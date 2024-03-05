@@ -15,6 +15,7 @@ export class HandleEvent {
   async handleStock(stock: any) {
     const { symbol, newPrice, open, close, high, amount, volume, low, date } =
       stock;
+    // console.log('handle', symbol);
 
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const [_, market, code] = symbol.match(/^(HK|US)(.*)/i);
@@ -44,7 +45,7 @@ export class HandleEvent {
           close: `${close}`,
           high: `${high}`,
           low: `${low}`,
-          amount: `${amount}`,
+          amount: `${+amount.toFixed(3)}`,
           volume: `${volume}`,
           date: date.toString(),
           change: `${change}`,

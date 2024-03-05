@@ -5,6 +5,10 @@ import { StockModule } from '../stock/stock.module';
 // import { SyncService } from './sync.service';
 import { HandleEvent } from './event/handle.event';
 import { PositionEvent } from './event/position.event';
+import { GuguTask } from './gugu.task';
+import { HkexEvent } from './markets/hkex.event';
+import { UsEvent } from './markets/us.event';
+// import { UsTask } from './us.task';
 
 @Module({
   imports: [StockModule],
@@ -14,6 +18,10 @@ import { PositionEvent } from './event/position.event';
     // SyncService,
     HandleEvent,
     PositionEvent,
+    GuguTask,
+    HkexEvent,
+    UsEvent,
+    // UsTask,
   ],
 })
 export class WebsocketModule {}

@@ -93,6 +93,7 @@ model StockSymbol {
   id             BigInt  @id @default(autoincrement())
   // 系统CODE
   code           String
+  cat            String? @db.VarChar(20)
   // 证券市场
   market         String
   // 上线状态

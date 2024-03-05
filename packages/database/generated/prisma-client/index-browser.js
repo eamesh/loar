@@ -163,6 +163,7 @@ exports.Prisma.MemberWithdrawScalarFieldEnum = {
 exports.Prisma.StockSymbolScalarFieldEnum = {
   id: 'id',
   code: 'code',
+  cat: 'cat',
   market: 'market',
   online: 'online',
   symbol: 'symbol',
