@@ -34,7 +34,7 @@ export class KlineService {
 
     // const url = 'http://ds.cnshuhai.com/stock.php';
     const url = `http://101.200.133.133/t/luckday/${mapMarket[stock.market]}/index.php`;
-    console.log(url);
+    // console.log(url);
     const symbol = stock.cat ? `${stock.cat}.${stock.code}` : stock.code;
 
     let l = +data.min;
