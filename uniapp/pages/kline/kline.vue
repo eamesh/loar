@@ -12,11 +12,11 @@
 					<view class="text-[#999] text-[14px]">{{ stock.symbol }}</view>
 				</view>
 				<view class="flex flex-row justify-start items-center">
-					<view class="text-[#00c537] text-md font-semibold font-mono">{{ stock.detail?.price }}</view>
+					<view class="text-md font-semibold font-mono" :class="[+(stock.change) > 0 ? 'text-[#00c537]' : 'text-[#e60101]']">{{ stock.detail?.price }}</view>
 				</view>
 				<view class="flex flex-row justify-start items-center gap-x-3">
-					<view class="text-[#00c537] text-[22rpx]">{{ parseFloat(stock.change) > 0 ? '+' : '' }}{{(+stock.change).toFixed(3)}}</view>
-					<view class="text-[#e60101] text-[22rpx]">{{ parseFloat(stock.change) > 0 ? '+' : '' }}{{(+stock.changePercent).toFixed(3)}}%</view>
+					<view class="text-[22rpx]" :class="[+(stock.change) > 0 ? 'text-[#00c537]' : 'text-[#e60101]']">{{ parseFloat(stock.change) > 0 ? '+' : '' }}{{(+stock.change).toFixed(3)}}</view>
+					<view class="text-[22rpx]" :class="[+(stock.change) > 0 ? 'text-[#00c537]' : 'text-[#e60101]']">{{ parseFloat(stock.change) > 0 ? '+' : '' }}{{(+stock.changePercent).toFixed(3)}}%</view>
 				</view>
 
 				<view class="flex flex-row text-[12px] text-[#999] w-full mt-2">
