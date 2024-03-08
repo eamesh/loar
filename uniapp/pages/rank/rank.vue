@@ -2,7 +2,7 @@
 	<view class="px-4 py-3 ">
 		<view class="bg-white rounded-md px-3 py-4">
 			
-			<view class="flex flex-row flex-nowrap justify-between items-center text-[#999] font-medium pb-1">
+			<view class="flex flex-row flex-nowrap justify-between items-center text-[#999] font-medium pb-1 font-semibold">
 				<view class="basis-1/2">{{ $t("table.symbol_name") }}</view>
 				<view class="basis-1/3 text-right">{{ type !== 'turnover' ? $t("table.price") : $t('rank.turnover') }}</view>
 				<view class="basis-1/3 text-right">{{ $t("table.chg") }}</view>
@@ -11,7 +11,7 @@
 			<view v-for="(item,index) in current" :key="index" class="flex flex-row flex-nowrap justify-between items-center font-medium mt-6" @click="$go(`/pages/kline/kline?id=${item.id}`, 'navigateTo')">
 				<view class="basis-1/2 overflow-hidden">
 					<view class="flex flex-col">
-						<view class="truncate text-[22rpx]">{{ item.name }}</view>
+						<view class="truncate text-[22rpx] font-semibold">{{ item.name }}</view>
 						<view class="flex flex-row items-center gap-x-1 mt-2">
 							<view class="bg-[#3395FF] text-white text-[18rpx] px-[10rpx] py-[3px] rounded-sm">{{ item.market }}</view>
 							<view class="text-[#999] text-[20rpx]">{{ item.symbol }}</view>

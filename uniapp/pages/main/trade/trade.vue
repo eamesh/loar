@@ -17,7 +17,7 @@
 					<view class="px-4 py-3 ">
 						<view class="p-4 bg-white rounded-lg flex flex-row flex-nowrap justify-between items-center">
 							<view class="flex flex-col justify-between h-14">
-								<view class="font-medium">{{ $t('est.total.assets') }}（{{current.currency}}）</view>
+								<view class="font-medium">{{ $t('est.total.assets') }}（{{current.showName || current.currency}}）</view>
 								<view class="font-medium text-[38rpx] font-mono">{{ totalPrice }}</view>
 							</view>
 							<view class="flex flex-col justify-between items-end h-12 text-xs">

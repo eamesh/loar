@@ -23,7 +23,7 @@
 					<template v-for="(item,index) in indexData.hot" :key="index">
 						<view @click="$go(`/pages/kline/kline?id=${item.id}`, 'navigateTo')"
 							class="flex-1 flex-shrink-0 aspect-square bg-white rounded-md flex flex-col justify-between items-center px-3 py-4 box-border overflow-hidden">
-							<view class="truncate w-full text-center">{{ item.name || item.showName }}</view>
+							<view class="truncate w-full text-center font-semibold">{{ item.name || item.showName }}</view>
 							<view class="truncate w-full text-center font-mono"
 								:class="[+(item.change) > 0 ? 'text-[#00c537]' : 'text-[#e60101]']">
 								{{ parseFloat(item.newPrice).toFixed(3) }}
@@ -45,7 +45,7 @@
 					<template v-for="(item,index) in rank" :key="index">
 						<view @click="$go(`/pages/rank/rank?type=${item.key}`, 'navigateTo')"
 							class="flex-1 flex-shrink-0 aspect-[3/3.5] bg-white rounded-md flex flex-col justify-between items-center px-3 py-4 box-border overflow-hidden">
-							<view class="truncate w-full text-center">{{ $t(`rank.${item.key}`) }}</view>
+							<view class="truncate w-full text-center font-semibold">{{ $t(`rank.${item.key}`) }}</view>
 							<view class="truncate w-full text-center font-mono"
 								:class="[+(item.data.change) > 0 ? 'text-[#00c537]' : 'text-[#e60101]']">
 								{{ parseFloat(item.data.newPrice).toFixed(3) }}

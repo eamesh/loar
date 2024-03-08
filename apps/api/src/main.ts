@@ -33,7 +33,7 @@ async function bootstrap() {
   // app.use(urlencoded({ extended: false, limit: '50mb' }));
 
   app.useGlobalPipes(new ValidationPipe());
-  await app.listen(3000, async () => {
+  await app.listen(3001, async () => {
     Logger.log(`应用已启动: ${await app.getUrl()}`, bootstrap.name);
   });
 }

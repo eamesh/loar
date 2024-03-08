@@ -35,9 +35,17 @@ export class HandleStockService {
           };
 
     // 保证金
-    const bond = isPosition
-      ? new Decimal(0)
-      : new Decimal(detail.price).mul(new Decimal(payload.amount));
+    // const bond = isPosition
+    //   ? new Decimal(0)
+    //   : new Decimal(detail.price).mul(new Decimal(payload.amount));
+
+    let bond = new Decimal(0);
+
+    // 限价计算保证金
+    if (+type === 2) {
+      bond = new Decimal(detail.price).mul(new Decimal(payload.amount));
+    }
+
     // 预估爆仓价
     const blast = new Decimal(detail.price).mul(2).toFixed(3);
 

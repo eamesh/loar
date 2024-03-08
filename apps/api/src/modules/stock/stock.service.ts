@@ -373,6 +373,20 @@ export class StockService {
     return stocks;
   }
 
+  async cancelSubscribeMember(id: number, memberId: number) {
+    const position = await this.prisma.stockPosition.findFirst({
+      where: {
+        id,
+      },
+    });
+
+    if (position.type !== 1 && memberId !== position.memberId) {
+      return;
+    }
+
+    return await this.updatePostionType(id, { status: 3 });
+  }
+
   async updatePostionType(id: number, payload: any) {
     const position = await this.prisma.stockPosition.findFirst({
       where: {

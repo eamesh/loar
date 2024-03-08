@@ -62,6 +62,13 @@ export const requestMemberPositionsHistory = function(data) {
 	})
 }
 
+export const cancelPosition = function (id) {
+	return http({
+		url: `/stock/position/${id}/cancel`,
+		method: 'POST'
+	})
+}
+
 export const getSubscribeMemberList = function() {
 	return http({
 		url: `/stock/subscribe/member`,

@@ -149,6 +149,13 @@ export class StockController {
     return await this.stockService.updatePostionType(id, payload);
   }
 
+  @Post('position/:id/cancel')
+  @UseGuards(MemberGuard)
+  @HttpCode(HttpStatus.NO_CONTENT)
+  async updatePostionTypeByMember(@Param('id') id: number, @Req() req: any) {
+    return await this.stockService.cancelSubscribeMember(id, req.user.id);
+  }
+
   @Post('subscribe')
   @HttpCode(HttpStatus.CREATED)
   @UseGuards(UserGuard)

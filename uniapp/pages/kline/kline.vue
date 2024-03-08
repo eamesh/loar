@@ -361,6 +361,13 @@
 page {
 	background-color: #fff;
 }
+
+#container {
+	:deep(.klinecharts-pro-period-bar .item.period) {
+		font-weight: 700;
+	}
+}
+
 </style>
 
 <script module="kline" lang="renderjs">

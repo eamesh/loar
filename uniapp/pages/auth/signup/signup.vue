@@ -18,8 +18,8 @@
 					</view>
 					<input type="number" class="gui-form-input" name="phone" :placeholder="$t('your_phone')" value="" />
 				</view>
-				<view v-if="type === 'email'" class="mt-5 gui-bg-gray rounded-3xl flex flex-row items-center px-3">
-					<input type="email" class="gui-form-input" name="email" :placeholder="$t('your_email')" value="" />
+				<view v-if="type === 'email'" class="mt-5 gui-bg-gray rounded-3xl flex flex-row items-center px-3 w-full box-border">
+					<input type="email" class="gui-form-input w-full" name="email" :placeholder="$t('your_email')" value="" />
 				</view>
 
 <!-- 				<view class="gui-margin-top">
@@ -40,7 +40,7 @@
 				</view>
 				<view class="gui-bg-gray rounded-3xl flex flex-row items-center px-3 mt-5">
 					<view class="flex flex-row justify-between items-center w-full">
-						<view>
+						<view class="w-full">
 							<input type="password" class="gui-form-input" v-if="isPwd" v-model="formData.password" name="password"
 								@input="inputting" :placeholder="$t('your_password')" />
 							<input type="text" class="gui-form-input" v-if="!isPwd" :disabled="true" v-model="formData.password"
@@ -54,7 +54,7 @@
 
 				<view class="gui-bg-gray rounded-3xl flex flex-row items-center px-3 mt-5">
 					<view class="flex flex-row justify-between items-center w-full">
-						<view>
+						<view class="w-full">
 							<input type="password" class="gui-form-input" v-if="isConfirmPwd" v-model="formData.confirm_password"
 								name="confirm_password" @input="inputting" :placeholder="$t('repeat_password')" />
 							<input type="text" class="gui-form-input" v-if="!isConfirmPwd" :disabled="true"

@@ -1,9 +1,11 @@
 <template>
 	<gui-page>
 		<template v-slot:gFixedTop>
-			<gui-switch-navigation :items="navBars" :currentIndex="currentIndex" @change="navchange" textAlign="center"
-				:isCenter="true" activeDirection="center" :size="0" :margin="20" padding="50rpx"
-				activeLineHeight="4rpx"></gui-switch-navigation>
+			<view class="w-full flex justify-center">
+				<gui-switch-navigation :items="navBars" :currentIndex="currentIndex" @change="navchange" textAlign="center"
+					:isCenter="true" activeDirection="center" :size="0" :margin="20" padding="50rpx"
+					activeLineHeight="4rpx" class="w-full"></gui-switch-navigation>
+			</view>
 		</template>
 		
 		<template v-slot:gBody>
@@ -31,7 +33,15 @@
 							<view class="text-black">{{ item.amount }}</view>
 							<view class="text-gray-400 text-[22rpx]">{{ item.price }}</view>
 						</view>
-						<view class="basis-1/3 text-right text-xs font-mono" :class="[parseFloat(item.mode) === 0 ? 'text-[#00c537]' : 'text-[#e60101]']">{{ modeText[item.mode] }}</view>
+						<view class="basis-1/3 text-right text-xs font-mono">
+							<view class="flex flex-col gap-y-2 items-end">
+								<view :class="[parseFloat(item.mode) === 0 ? 'text-[#00c537]' : 'text-[#e60101]']" class="pr-1">
+									{{ modeText[item.mode] }}
+								</view>
+								<view v-if="currentIndex === 0" class="rounded-3xl bg-[#e60101] text-white text-[16rpx] px-2" @click.stop="handleCancelSubscribe(item.id)">取消</view>
+							</view>
+						</view>
+							
 					</view>
 			
 				</view>
@@ -46,7 +56,7 @@
 </template>
 
 <script>
-	import { getTypeOrder } from '@/api/member.js'
+	import { getTypeOrder, cancelPosition } from '@/api/member.js'
 	export default {
 		data() {
 			return {
@@ -106,6 +116,25 @@
 				}
 				
 				uni.hideLoading()
+			},
+			async handleCancelSubscribe(id) {
+				console.log(123)
+				uni.showLoading({
+					title: 'Loading',
+				})
+				try{
+					await cancelPosition(id)
+					uni.hideLoading()
+					uni.showToast({
+						title: 'Success',
+						icon: 'none'
+					})
+					await this.getTypeOrder()
+				}catch(e){
+					console.log(e)
+					//TODO handle the exception
+					uni.hideLoading()
+				}
 			}
 		},
 		
