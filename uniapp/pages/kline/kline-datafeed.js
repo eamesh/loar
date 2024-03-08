@@ -1,10 +1,14 @@
 import dayjs from '../../node_modules/dayjs/esm/index.js'
 import config from '../../config/index.js'
-let timer = null
+// let timer = null
 let first = "";
 export class KlineDatafeed {
+  timer = null
+  change
   // eslint-disable-next-line no-useless-constructor
-  constructor () {}
+  constructor (handleChange) {
+	this.change = handleChange
+  }
   /**
    * 模糊搜索标的
    * 在搜索框输入的时候触发
@@ -21,7 +25,7 @@ export class KlineDatafeed {
    * 返回标的k线数据数组
    */
   async getHistoryKLineData (symbol, period, from, to) {
-		console.log(period, from, to)
+		// console.log(period, from, to)
 		// let key = `${period.multiplier}_${period.text}`
 		
 		// return []
@@ -79,12 +83,16 @@ export class KlineDatafeed {
         turnover: +data.amount
       }))
 			
-			console.log(tmp)
+			// console.log(tmp)
 			return tmp
    //  } catch (error) {
 			// return []
    //  }
   }
+
+   clear () {
+	   clearInterval(this.timer)
+   }
 
   /**
    * 订阅标的在某个周期的实时数据
@@ -94,9 +102,10 @@ export class KlineDatafeed {
    */
   async subscribe (symbol, period, callback) {
 		try{
-			clearInterval(timer)
-			timer = setInterval(async () => {
-				console.log('sub', symbol, period, callback)
+			var that = this
+			clearInterval(this.timer)
+			this.timer = setInterval(async () => {
+				// console.log('sub', symbol, period, callback)
 				const data = {
 					id: symbol.id,
 					level: period.timespan,
@@ -114,20 +123,22 @@ export class KlineDatafeed {
 				})
 				
 				const results = await response.json()
-						
+				
 				if (Array.isArray(results)) {
-						 (results || []).forEach(data => {
-							 // eslint-disable-next-line node/no-callback-literal
-							 callback({
-								 timestamp: +data.time * 1000,
-								 open: +data.open,
-								 high: +data.high,
-								 low: +data.low,
-								 close: +data.close,
-								 volume: +data.volume,
-								 turnover: +data.amount
-							 })
+					results.length && this.change(results[0]);
+					
+					 (results || []).forEach(data => {
+						 // eslint-disable-next-line node/no-callback-literal
+						 callback({
+							 timestamp: +data.time * 1000,
+							 open: +data.open,
+							 high: +data.high,
+							 low: +data.low,
+							 close: +data.close,
+							 volume: +data.volume,
+							 turnover: +data.amount
 						 })
+					 })
 				} else {
 					callback([])
 				}

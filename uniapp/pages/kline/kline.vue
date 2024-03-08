@@ -322,6 +322,15 @@
 				}
 				this.formData.mode = mode
 				this.$refs.popup.open('bottom')
+			},
+			handleChangeStock(stock) {
+				// console.log('change', stock)
+				// this.stock.open = stock.open
+				// this.stock.detail.price = stock.close.toFixed(3)
+				// this.stock.high = stock.high
+				// this.stock.low = stock.low
+				// this.stock.change = data.change
+				// this.stock.changePercent = data.changePercent
 			}
 		},
 		onLoad(e) {
@@ -349,6 +358,7 @@
 		},
 		onUnload() {
 			uni.$ws.ws.emit('unsub', `ws.market.${this.stock.market}.${this.stock.code}`)
+			console.log(1111,this.kline)
 		},
 		onShow() {
 			this.getProfile()
@@ -378,7 +388,9 @@ page {
 	export default {
 		data() {
 			return {
-				render: 'render'
+				render: 'render',
+				datafeed: null
+				
 			}
 		},
 		methods: {
@@ -387,9 +399,17 @@ page {
 				instance.callMethod('handleData')
 			},
 			
+			changeSubscribe(data) {
+				this.$ownerInstance.callMethod('handleChangeStock', data)
+			},
+			
+			handleClear() {
+				this.datafeed.clear()
+			},
+			
 			handleLoad(stock) {
-				console.log(stock)
 				if (Object.keys(stock).length === 0) return
+				this.datafeed = new KlineDatafeed(this.changeSubscribe.bind(this))
 				const chart = new KLineChartPro({
 					container: document.getElementById('container'),
 					// 初始化标的信息
@@ -397,7 +417,7 @@ page {
 						name: stock.name,
 						shortName: stock.symbol,
 						ticker: stock.symbol,
-						priceCurrency: stock.marketResult?.currency,
+						priceCurrency: stock.marketResult?.showName || stock.marketResult?.currency,
 						id: stock.id
 					},
 					styles: {
@@ -425,13 +445,16 @@ page {
 					mainIndicators: [],
 					// subIndicators: [],
 					// 这里使用默认的数据接入，如果实际使用中也使用默认数据，需要去 https://polygon.io/ 申请 API key
-					datafeed: new KlineDatafeed()
+					datafeed: this.datafeed
 				})
 			}
 		},
 		mounted() {
 			
 			
+		},
+		onUnload() {
+			this.handleClear()
 		}
 	}
 </script>
