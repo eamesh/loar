@@ -380,7 +380,7 @@ export class StockService {
       },
     });
 
-    if (position.type !== 1 && memberId !== position.memberId) {
+    if (position.type !== 1 || BigInt(memberId) !== position.memberId) {
       return;
     }
 
