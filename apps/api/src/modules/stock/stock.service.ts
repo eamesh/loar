@@ -157,8 +157,11 @@ export class StockService {
       });
 
       // 获取当前股票价格
+      const symbol = symboldResult.cat
+        ? `${symboldResult.cat}.${symboldResult.code}`
+        : symboldResult.code;
       const detail = await this.shuhai.getSymbolDetail(
-        symboldResult.code,
+        symbol,
         symboldResult.syncMarket,
       );
 

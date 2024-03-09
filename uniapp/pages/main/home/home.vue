@@ -24,11 +24,11 @@
 						<view @click="$go(`/pages/kline/kline?id=${item.id}`, 'navigateTo')"
 							class="flex-1 flex-shrink-0 aspect-square bg-white rounded-md flex flex-col justify-between items-center px-3 py-4 box-border overflow-hidden">
 							<view class="truncate w-full text-center font-semibold">{{ item.name || item.showName }}</view>
-							<view class="truncate w-full text-center font-mono"
+							<view class="truncate w-full text-center font-semibold"
 								:class="[+(item.change) > 0 ? 'text-[#00c537]' : 'text-[#e60101]']">
 								{{ parseFloat(item.newPrice).toFixed(3) }}
 							</view>
-							<view class="w-full flex flex-row justify-between items-center text-[#00c537] font-mono"
+							<view class="w-full flex flex-row justify-between items-center text-[#00c537] font-"
 								:class="[+(item.change) > 0 ? 'text-[#00c537]' : 'text-[#e60101]']">
 								<view class="text-[18rpx]">
 									{{ +(item.change) > 0 ? '+' : '' }}{{ parseFloat(item.change).toFixed(3) }}
@@ -46,12 +46,12 @@
 						<view @click="$go(`/pages/rank/rank?type=${item.key}`, 'navigateTo')"
 							class="flex-1 flex-shrink-0 aspect-[3/3.5] bg-white rounded-md flex flex-col justify-between items-center px-3 py-4 box-border overflow-hidden">
 							<view class="truncate w-full text-center font-semibold">{{ $t(`rank.${item.key}`) }}</view>
-							<view class="truncate w-full text-center font-mono"
+							<view class="truncate w-full text-center font-semibold"
 								:class="[+(item.data.change) > 0 ? 'text-[#00c537]' : 'text-[#e60101]']">
 								{{ parseFloat(item.data.newPrice).toFixed(3) }}
 							</view>
 							<view class="truncate w-full text-[#999] text-xs text-center">{{ item.data.name }}</view>
-							<view class="w-full flex flex-row justify-between items-center font-mono"
+							<view class="w-full flex flex-row justify-between items-center"
 								:class="[+(item.data.change) > 0 ? 'text-[#00c537]' : 'text-[#e60101]']">
 								<view class="text-[18rpx]">
 									{{ +(item.data.change) > 0 ? '+' : '' }}{{ parseFloat(item.data.change).toFixed(3) }}
@@ -85,10 +85,10 @@
 									</view>
 								</view>
 							</view>
-							<view class="basis-1/3 text-right text-xs font-mono"
+							<view class="basis-1/3 text-right text-xs font-semibold"
 								:class="[+(item.change) >= 0 ? 'text-[#00c537]' : 'text-[#e60101]']">{{ (+item.newPrice)?.toFixed(3) }}
 							</view>
-							<view class="basis-1/3 text-right text-xs font-mono"
+							<view class="basis-1/3 text-right text-xs font-semibold"
 								:class="[+(item.change) >= 0 ? 'text-[#00c537]' : 'text-[#e60101]']">
 								{{ +(item.change) >= 0 ? '+' : '' }}{{ item.changePercent }}%</view>
 						</view>
@@ -127,10 +127,10 @@
 									</view>
 								</view>
 							</view>
-							<view class="basis-1/3 text-right text-xs font-mono"
+							<view class="basis-1/3 text-right text-xs"
 								:class="[+(item.change) >= 0 ? 'text-[#00c537]' : 'text-[#e60101]']">{{ (+item.newPrice)?.toFixed(3) }}
 							</view>
-							<view class="basis-1/3 text-right text-xs font-mono"
+							<view class="basis-1/3 text-right text-xs"
 								:class="[+(item.change) >= 0 ? 'text-[#00c537]' : 'text-[#e60101]']">
 								{{ +(item.change) >= 0 ? '+' : '' }}{{ item.changePercent }}</view>
 
