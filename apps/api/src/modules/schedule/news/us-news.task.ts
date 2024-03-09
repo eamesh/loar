@@ -16,7 +16,7 @@ export class UsNewsTask implements OnModuleInit {
     this.handle();
   }
 
-  @Cron(CronExpression.EVERY_30_MINUTES)
+  @Cron(CronExpression.EVERY_DAY_AT_10AM)
   async handle() {
     try {
       const articles = await this.crawler();
