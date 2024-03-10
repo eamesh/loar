@@ -23,7 +23,7 @@ import Decimal from 'decimal.js';
 import { MemberRechargeEntity } from './entities/member-recharge.entity';
 import { MemberWithdrawEntity } from './entities/member-withdraw.entity';
 import { SettingService } from '../setting/setting.service';
-import dayjs from 'dayjs';
+import * as dayjs from 'dayjs';
 
 @Injectable()
 export class MemberService {
