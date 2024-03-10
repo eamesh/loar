@@ -369,6 +369,10 @@ let page = 1;
 
 			async indexRequest() {
 				try {
+					uni.showLoading({
+						title: "Loading",
+						icon: "none"
+					})
 					const result = await index(this.market)
 					console.log(result)
 
@@ -378,10 +382,13 @@ let page = 1;
 						losers: result.losers.length ? result.losers[0] : {},
 						turnover: result.turnover.length ? result.turnover[0] : {},
 					}
+					
+					uni.hideLoading()
 
 					console.log(this.indexData)
 				} catch (e) {
 					//TODO handle the exception
+					uni.hideLoading()
 				}
 			},
 
