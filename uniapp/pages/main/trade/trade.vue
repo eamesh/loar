@@ -442,14 +442,28 @@
 			},
 
 			async requestSell() {
+				uni.hideLoading()
 				try {
 					await positionSell(this.closeItem.id)
 					await this.init()
-				} catch (e) {
+					uni.hideLoading()
 					uni.showToast({
-						title: 'error',
+						title: 'Success',
 						icon: "none"
 					})
+				} catch (e) {
+					console.log(e)
+					if (e.data.message === 5001) {
+						uni.showToast({
+							title: this.$t('market.close'),
+							icon: "none"
+						})
+					} else {
+						uni.showToast({
+							title: "Failed",
+							icon: "none"
+						})
+					}
 				}
 			},
 

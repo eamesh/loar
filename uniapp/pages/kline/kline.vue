@@ -310,8 +310,21 @@
 						uni.navigateBack()
 					}, 500)
 				}catch(e){
-					//TODO handle the exception
 					uni.hideLoading()
+					console.log(e)
+					if (e.data.message === 5001) {
+						uni.showToast({
+							title: this.$t('market.close'),
+							icon: "none"
+						})
+					} else {
+						uni.showToast({
+							title: "Failed",
+							icon: "none"
+						})
+					}
+					
+					//TODO handle the exception
 				}
 			},
 			
@@ -437,8 +450,8 @@ page {
 						{ multiplier: 5, timespan: 'minute', text: '5m' },
 						{ multiplier: 30, timespan: 'minute', text: '30m' },
 						{ multiplier: 1, timespan: 'day', text: '1D' },
-						{ multiplier: 1, timespan: 'week', text: '1W' },
-						{ multiplier: 1, timespan: 'month', text: '1M' },
+						{ multiplier: 7, timespan: 'day', text: '1W' },
+						{ multiplier: 30, timespan: 'day', text: '1M' },
 						// { multiplier: 60, timespan: 'minute', text: '1H' },
 						// { multiplier: 120, timespan: 'minute', text: '2H' },
 					],

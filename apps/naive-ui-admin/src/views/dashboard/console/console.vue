@@ -1,201 +1,29 @@
 <template>
   <div class="console">
+    <div class="w-[200px] py-4">
+      <n-select :options="markets" v-model:value="current" />
+    </div>
     <!--数据卡片-->
-    <n-grid cols="1 s:2 m:3 l:4 xl:4 2xl:4" responsive="screen" :x-gap="12" :y-gap="8">
-      <n-grid-item>
+    <n-grid cols="1 s:2 m:4 l:5 xl:5 2xl:5" responsive="screen" :x-gap="12" :y-gap="8">
+      <n-grid-item v-for="key in Object.keys(grids)" :key="key">
         <NCard
-          title="访问量"
+          :title="grids[key].label"
           :segmented="{ content: true, footer: true }"
           size="small"
           :bordered="false"
         >
           <template #header-extra>
-            <n-tag type="success">日</n-tag>
+            <n-tag :type="grids[key].type">{{ grids[key].tag }}</n-tag>
           </template>
           <div class="flex justify-between px-1 py-1">
-            <n-skeleton v-if="loading" :width="100" size="medium" />
-            <CountTo v-else :startVal="1" :endVal="visits.dayVisits" class="text-3xl" />
+            <div class="text-sn"> {{ grids[key].value }} </div>
           </div>
-          <div class="flex justify-between px-1 py-1">
-            <div class="text-sn">
-              <n-skeleton v-if="loading" :width="100" size="medium" />
-              <template v-else>
-                日同比
-                <CountTo :startVal="1" suffix="%" :endVal="visits.rise" />
-                <n-icon size="12" color="#00ff6f">
-                  <CaretUpOutlined />
-                </n-icon>
-              </template>
-            </div>
-            <div class="text-sn">
-              <n-skeleton v-if="loading" :width="100" size="medium" />
-              <template v-else>
-                周同比
-                <CountTo :startVal="1" suffix="%" :endVal="visits.decline" />
-                <n-icon size="12" color="#ffde66">
-                  <CaretDownOutlined />
-                </n-icon>
-              </template>
-            </div>
-          </div>
-          <template #footer>
-            <div class="flex justify-between">
-              <n-skeleton v-if="loading" text :repeat="2" />
-              <template v-else>
-                <div class="text-sn"> 总访问量： </div>
-                <div class="text-sn">
-                  <CountTo :startVal="1" :endVal="visits.amount" />
-                </div>
-              </template>
-            </div>
-          </template>
-        </NCard>
-      </n-grid-item>
-      <n-grid-item>
-        <NCard
-          title="销售额"
-          :segmented="{ content: true, footer: true }"
-          size="small"
-          :bordered="false"
-        >
-          <template #header-extra>
-            <n-tag type="info">周</n-tag>
-          </template>
-          <div class="flex justify-between px-1 py-1">
-            <n-skeleton v-if="loading" :width="100" size="medium" />
-            <CountTo
-              v-else
-              prefix="￥"
-              :startVal="1"
-              :endVal="saleroom.weekSaleroom"
-              class="text-3xl"
-            />
-          </div>
-          <div class="flex justify-between px-2 py-2">
-            <div class="flex-1 text-sn">
-              <n-progress
-                type="line"
-                :percentage="saleroom.degree"
-                :indicator-placement="'inside'"
-                processing
-              />
-            </div>
-          </div>
-          <template #footer>
-            <div class="flex justify-between">
-              <n-skeleton v-if="loading" :width="100" size="medium" />
-              <template v-else>
-                <div class="text-sn"> 总销售额： </div>
-                <div class="text-sn">
-                  <CountTo prefix="￥" :startVal="1" :endVal="saleroom.amount" />
-                </div>
-              </template>
-            </div>
-          </template>
-        </NCard>
-      </n-grid-item>
-      <n-grid-item>
-        <NCard
-          title="订单量"
-          :segmented="{ content: true, footer: true }"
-          size="small"
-          :bordered="false"
-        >
-          <template #header-extra>
-            <n-tag type="warning">周</n-tag>
-          </template>
-          <div class="flex justify-between px-1 py-1">
-            <n-skeleton v-if="loading" :width="100" size="medium" />
-            <CountTo v-else :startVal="1" :endVal="orderLarge.weekLarge" class="text-3xl" />
-          </div>
-          <div class="flex justify-between px-1 py-1">
-            <div class="text-sn">
-              <n-skeleton v-if="loading" :width="100" size="medium" />
-              <template v-else>
-                日同比
-                <CountTo :startVal="1" suffix="%" :endVal="orderLarge.rise" />
-                <n-icon size="12" color="#00ff6f">
-                  <CaretUpOutlined />
-                </n-icon>
-              </template>
-            </div>
-            <div class="text-sn">
-              <n-skeleton v-if="loading" :width="100" size="medium" />
-              <template v-else>
-                周同比
-                <CountTo :startVal="1" suffix="%" :endVal="orderLarge.rise" />
-                <n-icon size="12" color="#ffde66">
-                  <CaretDownOutlined />
-                </n-icon>
-              </template>
-            </div>
-          </div>
-          <template #footer>
-            <div class="flex justify-between">
-              <n-skeleton v-if="loading" :width="100" size="medium" />
-              <template v-else>
-                <div class="text-sn"> 转化率： </div>
-                <div class="text-sn">
-                  <CountTo :startVal="1" suffix="%" :endVal="orderLarge.amount" />
-                </div>
-              </template>
-            </div>
-          </template>
-        </NCard>
-      </n-grid-item>
-      <n-grid-item>
-        <NCard
-          title="成交额"
-          :segmented="{ content: true, footer: true }"
-          size="small"
-          :bordered="false"
-        >
-          <template #header-extra>
-            <n-tag type="error">月</n-tag>
-          </template>
-          <div class="flex justify-between px-1 py-1">
-            <n-skeleton v-if="loading" :width="100" size="medium" />
-            <CountTo v-else prefix="￥" :startVal="1" :endVal="volume.weekLarge" class="text-3xl" />
-          </div>
-          <div class="flex justify-between px-1 py-1">
-            <div class="text-sn">
-              <n-skeleton v-if="loading" :width="100" size="medium" />
-              <template v-else>
-                月同比
-                <CountTo :startVal="1" suffix="%" :endVal="volume.rise" />
-                <n-icon size="12" color="#00ff6f">
-                  <CaretUpOutlined />
-                </n-icon>
-              </template>
-            </div>
-            <div class="text-sn">
-              <n-skeleton v-if="loading" :width="100" size="medium" />
-              <template v-else>
-                月同比
-                <CountTo :startVal="1" suffix="%" :endVal="volume.decline" />
-                <n-icon size="12" color="#ffde66">
-                  <CaretDownOutlined />
-                </n-icon>
-              </template>
-            </div>
-          </div>
-          <template #footer>
-            <div class="flex justify-between">
-              <n-skeleton v-if="loading" :width="100" size="medium" />
-              <template v-else>
-                <div class="text-sn"> 总成交额： </div>
-                <div class="text-sn">
-                  <CountTo prefix="￥" :startVal="1" :endVal="volume.amount" />
-                </div>
-              </template>
-            </div>
-          </template>
         </NCard>
       </n-grid-item>
     </n-grid>
 
     <!--导航卡片-->
-    <div class="mt-4">
+    <!-- <div class="mt-4">
       <n-grid cols="1 s:2 m:3 l:8 xl:8 2xl:8" responsive="screen" :x-gap="16" :y-gap="8">
         <n-grid-item v-for="(item, index) in iconList" :key="index">
           <NCard content-style="padding-top: 0;" size="small" :bordered="false">
@@ -217,111 +45,144 @@
           </NCard>
         </n-grid-item>
       </n-grid>
-    </div>
-
-    <!--访问量 | 流量趋势-->
-    <VisiTab />
+    </div> -->
   </div>
 </template>
 <script lang="ts" setup>
-  import { ref, onMounted } from 'vue';
-  // import { getConsoleInfo } from '@/api/dashboard/console';
-  import VisiTab from './components/VisiTab.vue';
-  import { CountTo } from '@/components/CountTo/index';
-  import {
-    CaretUpOutlined,
-    CaretDownOutlined,
-    UsergroupAddOutlined,
-    BarChartOutlined,
-    ShoppingCartOutlined,
-    AccountBookOutlined,
-    CreditCardOutlined,
-    MailOutlined,
-    TagsOutlined,
-    SettingOutlined,
-  } from '@vicons/antd';
+  import { getInfo } from '@/api/dashboard/console';
+  import { onMounted, reactive, ref, watch } from 'vue';
+  import { getMarkets } from '@/api/market/list';
+  const markets = ref<any[]>([]);
+  const current = ref('');
+  const grids = reactive({
+    memberCount: {
+      label: '总用户量',
+      value: 0,
+      type: 'success',
+      tag: '总',
+    },
+    totalRecharge: {
+      label: '总入金',
+      value: 0,
+      type: 'success',
+      tag: '总',
+    },
+    totalWithdraw: {
+      label: '总出金',
+      value: 0,
+      type: 'success',
+      tag: '总',
+    },
+    todayRecharge: {
+      label: '今天入金量',
+      value: 0,
+      type: 'warning',
+      tag: '日',
+    },
+    todayRegisterCount: {
+      label: '今日新增用户',
+      value: 0,
+      type: 'warning',
+      tag: '日',
+    },
 
-  const loading = ref(true);
-  const visits = ref<any>({});
-  const saleroom = ref<any>({});
-  const orderLarge = ref<any>({});
-  const volume = ref(<any>{});
+    todayWithdraw: {
+      label: '今日出金',
+      value: 0,
+      type: 'warning',
+      tag: '日',
+    },
+    yesterdayMemberCount: {
+      label: '昨日新增用户',
+      value: 0,
+      type: 'warning',
+      tag: '日',
+    },
+    yesterdayRecharge: {
+      label: '昨日入金',
+      value: 0,
+      type: 'warning',
+      tag: '日',
+    },
+    yesterdayWithdraw: {
+      label: '昨日出金',
+      value: 0,
+      type: 'warning',
+      tag: '日',
+    },
+    weekRecharge: {
+      label: '本周入金',
+      value: 0,
+      type: 'error',
+      tag: '周',
+    },
+    weekRegisterCount: {
+      label: '本周新增用户',
+      value: 0,
+      type: 'error',
+      tag: '周',
+    },
+    weekWithdraw: {
+      label: '本周出金',
+      value: 0,
+      type: 'error',
+      tag: '周',
+    },
+    monthRecharge: {
+      label: '本月入金',
+      value: 0,
+      type: 'info',
+      tag: '月',
+    },
+    monthRegisterCount: {
+      label: '本月新增用户量',
+      value: 0,
+      type: 'info',
+      tag: '月',
+    },
+    monthWithdraw: {
+      label: '本月出金量',
+      value: 0,
+      type: 'info',
+      tag: '月',
+    },
+  });
 
-  // 图标列表
-  const iconList = [
-    {
-      icon: UsergroupAddOutlined,
-      size: '32',
-      title: '用户',
-      color: '#69c0ff',
-      eventObject: {
-        click: () => {},
-      },
-    },
-    {
-      icon: BarChartOutlined,
-      size: '32',
-      title: '分析',
-      color: '#69c0ff',
-      eventObject: {
-        click: () => {},
-      },
-    },
-    {
-      icon: ShoppingCartOutlined,
-      size: '32',
-      title: '商品',
-      color: '#ff9c6e',
-      eventObject: {
-        click: () => {},
-      },
-    },
-    {
-      icon: AccountBookOutlined,
-      size: '32',
-      title: '订单',
-      color: '#b37feb',
-      eventObject: {
-        click: () => {},
-      },
-    },
-    {
-      icon: CreditCardOutlined,
-      size: '32',
-      title: '票据',
-      color: '#ffd666',
-      eventObject: {
-        click: () => {},
-      },
-    },
-    {
-      icon: MailOutlined,
-      size: '32',
-      title: '消息',
-      color: '#5cdbd3',
-      eventObject: {
-        click: () => {},
-      },
-    },
-    {
-      icon: TagsOutlined,
-      size: '32',
-      title: '标签',
-      color: '#ff85c0',
-      eventObject: {
-        click: () => {},
-      },
-    },
-    {
-      icon: SettingOutlined,
-      size: '32',
-      title: '配置',
-      color: '#ffc069',
-      eventObject: {
-        click: () => {},
-      },
-    },
-  ];
+  async function requestInfo() {
+    const results = await getInfo({
+      market: current.value,
+    });
+    console.log(results);
+
+    Object.keys(results).length &&
+      Object.keys(results).forEach((key) => {
+        console.log(grids[key]);
+        grids[key].value = results[key];
+        console.log(results[key]);
+      });
+  }
+
+  const loadMarkets = async () => {
+    const result = await getMarkets();
+    markets.value = result.map((item) => {
+      return {
+        label: item.code,
+        value: item.code,
+      };
+    });
+
+    current.value = markets.value[0].value;
+    await requestInfo();
+  };
+
+  loadMarkets();
+
+  watch(
+    () => current.value,
+    () => {
+      requestInfo();
+    }
+  );
 
   onMounted(async () => {
     // const data = await getConsoleInfo();

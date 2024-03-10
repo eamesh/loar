@@ -31,3 +31,10 @@ export function getArticles(params) {
     params,
   });
 }
+
+export function deleteArticle(id) {
+  return http.request({
+    url: `/article/${id}`,
+    method: 'delete',
+  });
+}

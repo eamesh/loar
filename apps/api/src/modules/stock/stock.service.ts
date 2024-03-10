@@ -382,28 +382,33 @@ export class StockService {
         id,
       },
     });
+    console.log('quxiao', position);
 
-    if (position.type !== 1 || BigInt(memberId) !== position.memberId) {
+    if (BigInt(memberId) !== position.memberId) {
       return;
     }
-
+    console.log('quxiao');
     return await this.updatePostionType(id, { status: 3 });
   }
 
-  async updatePostionType(id: number, payload: any) {
+  async updatePostionType(id: number | bigint, payload: any) {
+    console.log(id, payload);
     const position = await this.prisma.stockPosition.findFirst({
       where: {
         id,
       },
     });
 
-    if (position.type !== 1) {
+    if (![0, 4].includes(position.status)) {
       return;
     }
 
     const { amount, status } = payload;
-    const bond = new Decimal(position.bond);
-    if (status && (status === 3 || status === 6)) {
+    let bond = new Decimal(position.bond);
+    let refundBond = new Decimal(0);
+    console.log(status);
+    if (status && +status === 3) {
+      console.log('cancel');
       await this.prisma.stockPosition.update({
         where: {
           id,
@@ -413,20 +418,23 @@ export class StockService {
           bond: '0',
         },
       });
+      refundBond = new Decimal(position.bond);
     } else if (amount > 0 && amount <= position.amount) {
-      // 保证金
       // const newBond = new Decimal(position.price).mul(new Decimal(amount));
+      // 保证金
+      bond = new Decimal(position.price).mul(new Decimal(amount));
       // 需要退还的保证金
-      // const bond = new Decimal(position.bond).sub(newBond);
-      // const bond = position.bond;
+      refundBond = new Decimal(position.bond).sub(bond);
+
       await this.prisma.stockPosition.update({
         where: {
           id,
         },
         data: {
           amount,
-          bond: '0',
-          status: 0,
+          bond: `${bond.toString()}`,
+          // 盘前订单或者限价订单 进入挂单 7
+          status: position.isBefore ? 4 : 0,
         },
       });
     }
@@ -440,12 +448,12 @@ export class StockService {
     // 返还保证金 增加余额
     const accountBalance = member.accountBalance;
     const account = accountBalance[position.market];
-    const unBalance = new Decimal(account.unBalance).sub(bond);
+    const unBalance = new Decimal(account.unBalance).sub(refundBond);
 
     accountBalance[position.market].unBalance = unBalance;
     accountBalance[position.market].balance = new Decimal(
       accountBalance[position.market].balance,
-    ).add(bond);
+    ).add(refundBond);
 
     await this.prisma.member.update({
       where: {

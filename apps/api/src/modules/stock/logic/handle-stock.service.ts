@@ -9,10 +9,10 @@ import { ShuhaiService } from 'src/providers/shuhai/shuhai.service';
 import { Member } from '@loar/database';
 import { Decimal } from '@loar/database/generated/prisma-client/runtime/library';
 import { SettingService } from 'src/modules/setting/setting.service';
-import dayjs from 'dayjs';
-import utc from 'dayjs/plugin/utc';
-import timezone from 'dayjs/plugin/timezone';
-import isBetween from 'dayjs/plugin/isBetween';
+import * as dayjs from 'dayjs';
+import * as utc from 'dayjs/plugin/utc';
+import * as timezone from 'dayjs/plugin/timezone';
+import * as isBetween from 'dayjs/plugin/isBetween';
 
 dayjs.extend(utc);
 dayjs.extend(timezone);
@@ -26,15 +26,13 @@ export class HandleStockService {
     private setting: SettingService,
   ) {}
 
-  async getTradingPhase(marketType: string, currentTime: string) {
-    let marketTime;
-    if (marketType === 'US') {
-      marketTime = dayjs(currentTime).tz('America/New_York');
-    } else if (marketType === 'HK') {
-      marketTime = dayjs(currentTime).tz('Asia/Hong_Kong');
-    } else {
-      return 0;
-    }
+  async getTradingPhase(code: string) {
+    const market = await this.prisma.stockMarket.findFirst({
+      where: {
+        code,
+      },
+    });
+    const marketTime = dayjs().tz(market.timezone);
 
     // Check if it's weekend
     const dayOfWeek = marketTime.day();
@@ -42,12 +40,17 @@ export class HandleStockService {
       return 0;
     }
 
-    const preMarketStartTime = marketTime.clone().hour(4).minute(0).second(0);
-    const preMarketEndTime = marketTime.clone().hour(9).minute(30).second(0);
-    const morningStartTime = marketTime.clone().hour(9).minute(30).second(0);
-    const morningEndTime = marketTime.clone().hour(12).minute(0).second(0);
-    const afternoonStartTime = marketTime.clone().hour(13).minute(0).second(0);
-    const afternoonEndTime = marketTime.clone().hour(16).minute(0).second(0);
+    const [[mStart, mEnd], [aStart, aEnd]] = market.openTime
+      .split(',')
+      .map((item) => item.split(':'));
+
+    const [pStart, pEnd] = market.beforeTime.split(':');
+    const preMarketStartTime = dayjs(pStart, 'HH:mm').tz(market.timezone);
+    const preMarketEndTime = dayjs(pEnd, 'HH:mm').tz(market.timezone);
+    const morningStartTime = dayjs(mStart, 'HH:mm').tz(market.timezone);
+    const morningEndTime = dayjs(mEnd, 'HH:mm').tz(market.timezone);
+    const afternoonStartTime = dayjs(aStart, 'HH:mm').tz(market.timezone);
+    const afternoonEndTime = dayjs(aEnd, 'HH:mm').tz(market.timezone);
 
     if (
       marketTime.isBetween(preMarketStartTime, preMarketEndTime, null, '[]')
@@ -74,18 +77,22 @@ export class HandleStockService {
       },
     });
 
-    const tradeStatus = await this.getTradingPhase(
-      symbol.syncMarket,
-      dayjs().toISOString(),
-    );
+    const tradeStatus = await this.getTradingPhase(symbol.syncMarket);
+
+    if (tradeStatus === 0) {
+      throw new BadRequestException(5001);
+    }
 
     let isBefore = false;
 
     if (tradeStatus === 2) isBefore = true;
 
+    const detailCode = symbol.cat
+      ? `${symbol.cat}.${symbol.code}`
+      : symbol.code;
     const detail =
       +type !== 1
-        ? await this.shuhai.getSymbolDetail(symbol.code, symbol.syncMarket)
+        ? await this.shuhai.getSymbolDetail(detailCode, symbol.syncMarket)
         : {
             price,
           };
@@ -98,11 +105,12 @@ export class HandleStockService {
     let bond = new Decimal(0);
 
     // 限价计算保证金
-    if (+type === 2) {
+    if (+type === 2 || isBefore) {
       bond = new Decimal(detail.price).mul(new Decimal(payload.amount));
     }
 
     // 预估爆仓价
+    console.log(detail);
     const blast = new Decimal(detail.price).mul(2).toFixed(3);
 
     const bondDecimal = bond;
@@ -112,18 +120,19 @@ export class HandleStockService {
     const account = accountBalance[symbol.market];
 
     let unBalance = new Decimal(account.unBalance);
-    const balance = new Decimal(account.balance);
+    let balance = new Decimal(account.balance);
 
     // if (symbol.market !== 'US') {
     //   bondDecimal = await this.setting.handleToUSD(bondDecimal, symbol.market);
     // }
     console.log('冻结余额', unBalance);
     unBalance = unBalance.add(bondDecimal);
+    balance = balance.sub(bondDecimal);
 
     // 判断用户可用余额
 
     if (balance.lt(bond)) {
-      throw new BadRequestException('保证金余额不足');
+      throw new BadRequestException('余额不足');
     }
 
     // 插入持仓
@@ -134,11 +143,12 @@ export class HandleStockService {
         takeProfit: `${takeProfit}`,
         price: `${detail.price}`,
         mode,
-        bond: `${bond.toFixed(3)}`,
+        bond: `${bond}`,
         blast: `${blast}`,
         market: symbol.market,
-        // 0 持仓 1 平仓 2 限价审核 4 盘前交易市价待审核 5 盘前交易限价待审核 6 盘前交易拒绝
-        status: isBefore ? (+type === 1 ? 5 : 4) : +type === 1 ? 2 : 0,
+        // 0 持仓 1 平仓 2 限价审核 4 盘前交易市价待审核 5 盘前交易限价待审核 6 盘前交易拒绝 7 挂单
+        // 0 持仓 1 平仓 2 限价审核 3 拒绝 4 挂单
+        status: +type === 1 || isBefore ? 2 : 0,
         memberId: member.id,
         stockSymbolId: symbol.id,
         // currentPrice: `${detail.price}`,
@@ -177,6 +187,14 @@ export class HandleStockService {
         member: true,
       },
     });
+
+    const tradeStatus = await this.getTradingPhase(
+      position.stockSymbol.syncMarket,
+    );
+
+    if (tradeStatus !== 1) {
+      throw new BadRequestException(5001);
+    }
 
     // 检查持仓状态
     if (position.status !== 0) {

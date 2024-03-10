@@ -7,3 +7,11 @@ export function getConsoleInfo() {
     method: 'get',
   });
 }
+
+export function getInfo(data) {
+  return http.request({
+    url: '/info',
+    method: 'post',
+    data,
+  });
+}

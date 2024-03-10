@@ -81,6 +81,33 @@
       },
       rules: [{ required: true, message: '请输入手续费率', trigger: ['blur'] }],
     },
+    {
+      field: 'openTime',
+      component: 'NInput',
+      label: '开盘时间',
+      componentProps: {
+        placeholder: '请输入开盘时间',
+      },
+      rules: [{ required: true, message: '请输入开盘时间', trigger: ['blur'] }],
+    },
+    {
+      field: 'beforeTime',
+      component: 'NInput',
+      label: '盘前时间',
+      componentProps: {
+        placeholder: '请输入盘前时间',
+      },
+      rules: [{ required: true, message: '请输入盘前时间', trigger: ['blur'] }],
+    },
+    {
+      field: 'timezone',
+      component: 'NInput',
+      label: '时区',
+      componentProps: {
+        placeholder: '请输入时区',
+      },
+      rules: [{ required: true, message: '请输入时区', trigger: ['blur'] }],
+    },
     // {
     //   field: 'headSymbols',
     //   component: 'NInput',
@@ -161,5 +188,13 @@
     margin: 0 auto;
     overflow: hidden;
     padding-top: 20px;
+  }
+</style>
+
+<style lang="less">
+  .BasicForm {
+    .n-input__input-el {
+      height: initial !important;
+    }
   }
 </style>

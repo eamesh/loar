@@ -109,6 +109,10 @@ export const columns: BasicColumn<any>[] = [
           title: '已拒绝',
           type: 'error',
         },
+        {
+          title: '挂单',
+          type: 'primary',
+        },
       ];
 
       return h(
@@ -123,6 +127,7 @@ export const columns: BasicColumn<any>[] = [
   {
     title: '开始日期',
     key: 'createdAt',
+    width: 170,
     render(row) {
       return dayjs(row.createdAt).format('YYYY-MM-DD HH:mm:ss');
     },

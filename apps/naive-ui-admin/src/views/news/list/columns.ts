@@ -19,7 +19,7 @@ export const columns: BasicColumn<any>[] = [
     width: 100,
     render(row) {
       return h(NImage, {
-        src: row.crawlerThumb ?? `${import.meta.env.VITE_GLOB_API_URL}/${row.thumb}`,
+        src: row.thumb ? `${import.meta.env.VITE_GLOB_API_URL}/${row.thumb}` : row.crawlerThumb,
         width: 50,
       });
     },

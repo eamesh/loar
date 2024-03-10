@@ -3,6 +3,8 @@ import { Injectable } from '@nestjs/common';
 import { EventEmitter2, OnEvent } from '@nestjs/event-emitter';
 import { PrismaService } from 'src/providers/prisma/prisma.service';
 import { WebsocketGateway } from '../websocket.gateway';
+import Decimal from 'decimal.js';
+import { StockService } from 'src/modules/stock/stock.service';
 
 @Injectable()
 export class PositionEvent {
@@ -10,10 +12,49 @@ export class PositionEvent {
     private readonly prisma: PrismaService,
     private readonly eventEmitter: EventEmitter2,
     private readonly socketGateway: WebsocketGateway,
+    private readonly stockService: StockService,
   ) {}
 
   @OnEvent('HANDLE_POSITION')
   async handlePosition(symbol: StockSymbol) {
+    this.handlePosition(symbol);
+    this.handleRegistration(symbol);
+  }
+
+  async handleRegistration(symbol: StockSymbol) {
+    console.log('处理挂单');
+    // 获取正在挂单
+    const positions = await this.prisma.stockPosition.findMany({
+      where: {
+        stockSymbolId: symbol.id,
+        status: 4,
+      },
+    });
+
+    if (!positions.length) return;
+
+    positions.forEach(async (item) => {
+      // 判断价格是否在范围内
+      if (new Decimal(symbol.newPrice).lte(item.price)) {
+        // 修改价格
+        await this.prisma.stockPosition.update({
+          where: {
+            id: item.id,
+          },
+          data: {
+            price: symbol.newPrice,
+          },
+        });
+
+        // 持仓
+        await this.stockService.updatePostionType(item.id, {});
+      }
+    });
+  }
+
+  async position(symbol: StockSymbol) {
+    console.log('处理持仓');
+
     // 获取正在持仓
     const positions = await this.prisma.stockPosition.findMany({
       where: {

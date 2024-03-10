@@ -133,7 +133,8 @@ exports.Prisma.MemberScalarFieldEnum = {
   updatedAt: 'updatedAt',
   balance: 'balance',
   unBalance: 'unBalance',
-  lockBalance: 'lockBalance'
+  lockBalance: 'lockBalance',
+  lastLoginTime: 'lastLoginTime'
 };
 
 exports.Prisma.MemberRechargeScalarFieldEnum = {
@@ -247,6 +248,9 @@ exports.Prisma.StockMarketScalarFieldEnum = {
   sort: 'sort',
   online: 'online',
   conline: 'conline',
+  openTime: 'openTime',
+  timezone: 'timezone',
+  beforeTime: 'beforeTime',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt'
 };

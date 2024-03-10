@@ -25,25 +25,25 @@ model User {
 }
 
 model Member {
-  id             BigInt    @id @default(autoincrement())
-  email          String    @unique
-  name           String?
-  avatar         String?
-  password       String
-  gender         GENDER    @default(UNKNOWN)
-  address        String?
-  accountBalance Json?
-  status         Int       @default(0)
-  type           Int       @default(0)
-  createdAt      DateTime  @default(now()) @map("created_at")
-  updatedAt      DateTime? @map("updated_at")
+  id              BigInt            @id @default(autoincrement())
+  email           String            @unique
+  name            String?
+  avatar          String?
+  password        String
+  gender          GENDER            @default(UNKNOWN)
+  address         String?
+  accountBalance  Json?
+  status          Int               @default(0)
+  type            Int               @default(0)
+  createdAt       DateTime          @default(now()) @map("created_at")
+  updatedAt       DateTime?         @map("updated_at")
   // 余额
-  balance        Decimal   @default(0) @db.Decimal(20, 5)
+  balance         Decimal           @default(0) @db.Decimal(20, 5)
   // 冻结余额
-  unBalance      Decimal   @default(0) @map("un_balance") @db.Decimal(20, 5)
+  unBalance       Decimal           @default(0) @map("un_balance") @db.Decimal(20, 5)
   // 锁定余额
-  lockBalance    Decimal   @default(0) @map("lock_balance") @db.Decimal(20, 5)
-
+  lockBalance     Decimal           @default(0) @map("lock_balance") @db.Decimal(20, 5)
+  lastLoginTime   DateTime?
   stockPostion    StockPosition[]
   memberDetail    MemberDetail[]
   memberSubscribe MemberSubscribe[]
@@ -236,6 +236,9 @@ model StockMarket {
   online         Int?      @default(1)
   // 货币是否上线
   conline        Int?      @default(1)
+  openTime       String?
+  timezone       String?
+  beforeTime     String?
   createdAt      DateTime  @default(now()) @map("created_at")
   updatedAt      DateTime? @map("updated_at")
 
@@ -387,7 +390,7 @@ model StockPosition {
   stockSymbol StockSymbol @relation(fields: [stockSymbolId], references: [id])
 
   createdAt DateTime  @default(now()) @map("created_at")
-  updatedAt DateTime? @map("updated_at")
+  updatedAt DateTime? @updatedAt @map("updated_at")
 
   @@map("stock_positions")
 }

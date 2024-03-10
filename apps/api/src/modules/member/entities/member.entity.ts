@@ -16,6 +16,7 @@ export class MemberEntity implements Member {
   constructor(partial: Partial<MemberEntity>) {
     Object.assign(this, partial);
   }
+  lastLoginTime: Date;
   address: string;
   accountBalance: Prisma.JsonValue;
   status: number;

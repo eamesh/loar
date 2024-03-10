@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="n-layout-page-header">
-      <n-card :bordered="false" title="工作台">
+      <!-- <n-card :bordered="false" title="工作台">
         <n-grid cols="2 s:1 m:1 l:2 xl:2 2xl:2" responsive="screen">
           <n-gi>
             <div class="flex items-center">
@@ -14,7 +14,7 @@
             </div>
           </n-gi>
           <n-gi>
-            <!-- <div class="flex justify-end w-full">
+            <div class="flex justify-end w-full">
               <div class="flex flex-col justify-center flex-1 text-right">
                 <span class="text-secondary">项目数</span>
                 <span class="text-2xl">16</span>
@@ -27,20 +27,37 @@
                 <span class="text-secondary">消息</span>
                 <span class="text-2xl">35</span>
               </div>
-            </div> -->
+            </div>
           </n-gi>
         </n-grid>
+      </n-card> -->
+
+      <n-card :bordered="false" title="统计信息">
+        <div class="flex"></div>
       </n-card>
     </div>
   </div>
 </template>
 
 <script lang="ts">
-  export default { name: 'DashboardWorkplace' };
+  import { getInfo } from '@/api/dashboard/console';
+  export default {
+    name: 'DashboardWorkplace',
+    mounted() {
+      this.requestInfo();
+    },
+    methods: {
+      async requestInfo() {
+        await getInfo({
+          market: 'US',
+        });
+      },
+    },
+  };
 </script>
 
 <script lang="ts" setup>
-  import schoolboy from '@/assets/images/schoolboy.png';
+  // import schoolboy from '@/assets/images/schoolboy.png';
 </script>
 
 <style lang="less" scoped>

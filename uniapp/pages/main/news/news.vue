@@ -19,7 +19,7 @@
 						</view>
 					</view>
 					<view class="basis-1/2">
-						<gui-image :src="item.crawlerThumb" border-radius="20rpx" :width="340" :height="242"
+						<gui-image :src="item.thumb ? `${config.host}/${item.thumb}` : item.crawlerThumb" border-radius="20rpx" :width="340" :height="242"
 							mode="cover"></gui-image>
 					</view>
 				</view>
@@ -35,6 +35,7 @@ import graceJS from '@/Grace6/js/grace.js';
 	import { mapState } from 'pinia'
 import { useAppStore } from '../../../store/app';
 import dayjs from 'dayjs'
+import config from '@/config/index.js'
 // 模拟页码
 var page = 1;
 export default {
@@ -44,7 +45,8 @@ export default {
 			pageLoading      : true,
 			// 用于记录是否有 api 请求正在执行
 			apiLoadingStatus : false,
-			dayjs
+			dayjs,
+			config
 		}
 	},
 	onLoad: function() {

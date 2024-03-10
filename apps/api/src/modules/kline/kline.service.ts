@@ -39,18 +39,33 @@ export class KlineService {
 
     let l = +data.min;
 
-    switch (data.level) {
-      case 'day':
-        l = 101;
-        break;
+    if (data.level === 'day') {
+      switch (+data.min) {
+        case 1:
+          l = 101;
+          break;
 
-      case 'week':
-        l = 102;
-        break;
-      case 'month':
-        l = 103;
-        break;
+        case 7:
+          l = 102;
+          break;
+        case 30:
+          l = 103;
+          break;
+      }
     }
+
+    // switch (data.level) {
+    //   case 'day':
+    //     l = 101;
+    //     break;
+
+    //   case 'week':
+    //     l = 102;
+    //     break;
+    //   case 'month':
+    //     l = 103;
+    //     break;
+    // }
 
     const query: any = {
       order: 0,

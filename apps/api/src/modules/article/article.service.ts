@@ -34,7 +34,6 @@ export class ArticleService {
     return await this.prisma.article.create({
       data: {
         ...payload,
-        content: JSON.stringify(payload.content),
       },
     });
   }
@@ -46,7 +45,6 @@ export class ArticleService {
       },
       data: {
         ...payload,
-        content: JSON.stringify(payload.content),
       },
     });
   }
@@ -87,5 +85,13 @@ export class ArticleService {
         });
       }
     }
+  }
+
+  async delete(id: number) {
+    return await this.prisma.article.delete({
+      where: {
+        id,
+      },
+    });
   }
 }

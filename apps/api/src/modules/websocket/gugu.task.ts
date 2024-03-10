@@ -95,7 +95,10 @@ export class GuguTask implements OnModuleInit {
     const positions = await this.prisma.stockPosition.groupBy({
       by: ['stockSymbolId'],
       where: {
-        status: 0,
+        status: {
+          // 已持仓 挂单
+          in: [0, 4],
+        },
       },
     });
 

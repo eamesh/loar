@@ -174,5 +174,7 @@
 	"kline.market": "市場",
 	"kline.limit": "限制",
 	"kline.min_num": "最小單位1",
-	"kline.order_price": "訂單價格"
+	"kline.order_price": "訂單價格",
+	"market.close": "市場暫未開放",
+	"table.num_price": "數量/價格"
 }

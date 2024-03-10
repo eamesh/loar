@@ -11,8 +11,13 @@
       :request="loadDataTable"
       :row-key="(row:any) => row.id"
       ref="actionRef"
+      :actionColumn="actionColumn"
       @update:checked-row-keys="onCheckedRow"
     >
+      <template #tableTitle>
+        <n-button type="primary" @click="addTable"> 新建 </n-button>
+      </template>
+
       <template #toolbar>
         <n-button type="primary" @click="reloadTable">刷新数据</n-button>
       </template>
@@ -53,7 +58,7 @@
   import { BasicTable, TableAction } from '@/components/Table';
   import { BasicForm, FormSchema, useForm } from '@/components/Form/index';
   // import { getTableList } from '@/api/table/list';
-  import { getArticles } from '@/api/article';
+  import { getArticles, deleteArticle } from '@/api/article';
   import { columns } from './columns';
   // import { PlusOutlined } from '@vicons/antd';
   import { useRouter } from 'vue-router';
@@ -108,34 +113,36 @@
     date: null,
   });
 
-  // const actionColumn = reactive({
-  //   width: 100,
-  //   title: '操作',
-  //   key: 'action',
-  //   fixed: 'right',
-  //   render(record) {
-  //     return h(TableAction as any, {
-  //       style: 'button',
-  //       actions: [
-  //         // {
-  //         //   label: '删除',
-  //         //   onClick: handleDelete.bind(null, record),
-  //         //   // 根据业务控制是否显示 isShow 和 auth 是并且关系
-  //         //   ifShow: () => {
-  //         //     return true;
-  //         //   },
-  //         // },
-  //         {
-  //           label: '编辑',
-  //           onClick: handleEdit.bind(null, record),
-  //           ifShow: () => {
-  //             return true;
-  //           },
-  //         },
-  //       ],
-  //     });
-  //   },
-  // });
+  const actionColumn = reactive({
+    width: 150,
+    title: '操作',
+    key: 'action',
+    fixed: 'right',
+    render(record) {
+      return h(TableAction as any, {
+        style: 'button',
+        actions: [
+          {
+            label: '删除',
+            onClick: handleDelete.bind(null, record),
+            type: 'error',
+            // 根据业务控制是否显示 isShow 和 auth 是并且关系
+            ifShow: () => {
+              return true;
+            },
+          },
+          {
+            label: '编辑',
+            onClick: handleEdit.bind(null, record),
+            type: 'info',
+            ifShow: () => {
+              return true;
+            },
+          },
+        ],
+      });
+    },
+  });
 
   const [register, { getFieldsValue }] = useForm({
     gridProps: { cols: '1 s:1 m:2 l:3 xl:4 2xl:4' },
@@ -194,9 +201,13 @@
     router.push(`/news/${record.id}`);
   }
 
-  function handleDelete(record: Recordable) {
+  async function handleDelete(record: Recordable) {
     // console.log('点击了删除', record);
-    window['$message'].info('点击了删除');
+    try {
+      await deleteArticle(record.id);
+      window['$message'].success('操作成功');
+      reloadTable();
+    } catch (error) {}
   }
 
   function handleSubmit(values: Recordable) {

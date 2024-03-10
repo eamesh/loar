@@ -14,8 +14,8 @@
 				<view class="bg-white rounded-md px-3 py-4" >
 					<view class="flex flex-row flex-nowrap justify-between items-center text-[#999] font-medium pb-1">
 						<view class="basis-1/2">{{ $t("table.symbol_name") }}</view>
-						<view class="basis-1/3 text-right">提交/已填写</view>
-						<view class="basis-1/3 text-right">类型</view>
+						<view class="basis-1/3 text-right">{{ $t("table.num_price") }}</view>
+						<view class="basis-1/3 text-right">{{ $t("table.type") }}</view>
 					</view>
 			
 					<view class="flex flex-row flex-nowrap justify-between items-center font-medium mt-6"
@@ -26,6 +26,7 @@
 								<view class="flex flex-row items-center gap-x-1 mt-2">
 									<view class="bg-[#3395FF] text-white text-[18rpx] px-[10rpx] py-[3px] rounded-sm">{{ item.market }}</view>
 									<view class="text-[#999] text-[20rpx]">{{ item.stockSymbol.code }}</view>
+									<view class="text-[20rpx] text-[#00c537]">挂单中</view>
 								</view>
 							</view>
 						</view>
@@ -87,7 +88,7 @@
 			currentLists() {
 				switch (this.currentIndex){
 					case 0:
-						return this.lists.filter(item => item.status === 2)
+						return this.lists.filter(item => item.status === 2 || item.status === 4)
 						break;
 					case 1:
 						return this.lists.filter(item => item.status === 0)

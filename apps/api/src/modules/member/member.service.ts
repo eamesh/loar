@@ -23,6 +23,7 @@ import Decimal from 'decimal.js';
 import { MemberRechargeEntity } from './entities/member-recharge.entity';
 import { MemberWithdrawEntity } from './entities/member-withdraw.entity';
 import { SettingService } from '../setting/setting.service';
+import dayjs from 'dayjs';
 
 @Injectable()
 export class MemberService {
@@ -123,6 +124,15 @@ export class MemberService {
     );
 
     if (!isMatch) throw new BadRequestException('Invalid password');
+
+    await this.prisma.member.update({
+      where: {
+        id: member.id,
+      },
+      data: {
+        lastLoginTime: dayjs().toDate(),
+      },
+    });
 
     const payload = this.generateToken({
       id: member.id,
@@ -614,6 +624,9 @@ export class MemberService {
       },
       include: {
         stockSymbol: true,
+      },
+      orderBy: {
+        createdAt: 'desc',
       },
     });
   }

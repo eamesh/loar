@@ -3,7 +3,9 @@
     <n-button type="primary" @click="handleSubmit">保存</n-button>
     <br />
     <br />
-
+    <div class="w-[200px] mb-2">
+      <n-select :options="markets" v-model:value="current" />
+    </div>
     <n-image width="100" :src="thumbComputed" v-if="!!thumbRef" />
     <n-upload
       :action="uploadUrl"
@@ -14,30 +16,16 @@
     >
       <n-button>上传图片</n-button>
     </n-upload>
+    <h1 class="mt-4">标题</h1>
+
     <n-input v-model:value="mainTitleRef" placeholder="主标题" style="width: 400px" />
 
-    <h1 class="mt-4">繁体中文</h1>
     <br />
-    <n-input v-model:value="titleRef['zh-Hant']" placeholder="繁体中文标题" style="width: 400px" />
     <n-card :bordered="false" class="mt-4 proCard">
       <QuillEditor
-        ref="quillEditorHant"
+        ref="quillEditor"
         :options="options"
-        v-model:content="content['zh-Hant']"
-        style="height: 350px"
-        class="quillEditor"
-      />
-    </n-card>
-
-    <h1 class="mt-4">英文</h1>
-    <br />
-    <n-input v-model:value="titleRef.en" placeholder="英文标题" style="width: 400px" />
-
-    <n-card :bordered="false" class="mt-4 proCard">
-      <QuillEditor
-        ref="quillEditorEn"
-        :options="options"
-        v-model:content="content.en"
+        v-model:content="content"
         style="height: 350px"
         class="quillEditor"
       />
@@ -47,31 +35,25 @@
 
 <script lang="ts" setup>
   import { ref, reactive } from 'vue';
+  import { getMarkets } from '@/api/market/list';
   import { QuillEditor } from '@vueup/vue-quill';
   import '@vueup/vue-quill/dist/vue-quill.snow.css';
-  import { useRoute } from 'vue-router';
+  import { useRoute, useRouter } from 'vue-router';
   import { getAricleById, updateArticle, createArticle } from '@/api/article';
   import { useUser } from '@/store/modules/user';
-  const quillEditorHant = ref();
-  const quillEditorEn = ref();
+  const quillEditor = ref();
   import { useMessage } from 'naive-ui';
   import { computed } from 'vue';
   const message = useMessage();
   const route = useRoute();
-  const titleRef = ref({
-    en: '',
-    'zh-Hant': '',
-  });
+  const router = useRouter();
   const mainTitleRef = ref('');
   const uploadUrl = ref(`${import.meta.env.VITE_GLOB_API_URL}/api/v1/user/upload`);
-
+  const current = ref('');
   const userStore = useUser();
   const token = userStore.getToken;
 
-  const content = ref({
-    'zh-Hant': '',
-    en: '',
-  });
+  const content = ref('');
   // const myContentHtml = ref(
   //   '<h4>Naive Ui Admin 是一个基于 vue3,vite2,TypeScript 的中后台解决方案</h4>'
   // );
@@ -115,19 +97,21 @@
     theme: 'snow',
     placeholder: '输入您喜欢的内容吧！',
   });
+  const markets = ref([]);
+  const loadMarkets = async () => {
+    const result = await getMarkets();
+    markets.value = result.map((item) => {
+      return {
+        label: item.code,
+        value: item.code,
+      };
+    });
+    current.value = markets.value[0].value;
+  };
 
   async function handleSubmit() {
     try {
-      const content = {
-        en: {
-          title: titleRef.value.en,
-          content: quillEditorEn.value.getHTML(),
-        },
-        'zh-Hant': {
-          title: titleRef.value['zh-Hant'],
-          content: quillEditorHant.value.getHTML(),
-        },
-      };
+      const content = quillEditor.value.getHTML();
 
       try {
         if (route.params.id) {
@@ -135,39 +119,39 @@
             title: mainTitleRef.value,
             thumb: thumbRef.value,
             content,
+            market: current.value,
           });
         } else {
           await createArticle({
             title: mainTitleRef.value,
             thumb: thumbRef.value,
             content,
+            market: current.value,
           });
         }
 
         message.success('操作成功');
+        router.push('/news/list');
       } catch (error) {
         message.success('操作失败');
+        router;
       }
     } catch (error) {}
-    console.log(123);
-    console.log(quillEditorEn.value.getHTML());
-    console.log(quillEditorHant.value.getHTML());
   }
+
+  !route.params.id && loadMarkets();
 
   async function loadDetail() {
     try {
-      const result = await getAricleById(route.params.id);
+      await loadMarkets();
 
+      const result = await getAricleById(route.params.id);
       if (result) {
         const { content } = result;
         mainTitleRef.value = result.title;
-        titleRef.value = {
-          en: content.en.title,
-          'zh-Hant': content['zh-Hant'].title,
-        };
         thumbRef.value = result.thumb;
-        quillEditorEn.value.setHTML(content.en.content);
-        quillEditorHant.value.setHTML(content['zh-Hant'].content);
+        quillEditor.value.setHTML(content);
+        current.value = result.market;
       }
     } catch (error) {
       console.log(error);

@@ -210,7 +210,7 @@
   loadMarkets();
 
   const loadDataTable = async (res) => {
-    return await getPostions({ ...getFieldsValue(), ...res, status: 2 });
+    return await getPostions({ ...getFieldsValue(), ...res, status: 2, isBefore: false });
     // return await getTableList({ ...getFieldsValue(), ...res });
   };
 

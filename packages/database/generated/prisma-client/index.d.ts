@@ -3774,6 +3774,7 @@ export namespace Prisma {
     balance: Decimal | null
     unBalance: Decimal | null
     lockBalance: Decimal | null
+    lastLoginTime: Date | null
   }
 
   export type MemberMaxAggregateOutputType = {
@@ -3791,6 +3792,7 @@ export namespace Prisma {
     balance: Decimal | null
     unBalance: Decimal | null
     lockBalance: Decimal | null
+    lastLoginTime: Date | null
   }
 
   export type MemberCountAggregateOutputType = {
@@ -3809,6 +3811,7 @@ export namespace Prisma {
     balance: number
     unBalance: number
     lockBalance: number
+    lastLoginTime: number
     _all: number
   }
 
@@ -3846,6 +3849,7 @@ export namespace Prisma {
     balance?: true
     unBalance?: true
     lockBalance?: true
+    lastLoginTime?: true
   }
 
   export type MemberMaxAggregateInputType = {
@@ -3863,6 +3867,7 @@ export namespace Prisma {
     balance?: true
     unBalance?: true
     lockBalance?: true
+    lastLoginTime?: true
   }
 
   export type MemberCountAggregateInputType = {
@@ -3881,6 +3886,7 @@ export namespace Prisma {
     balance?: true
     unBalance?: true
     lockBalance?: true
+    lastLoginTime?: true
     _all?: true
   }
 
@@ -3986,6 +3992,7 @@ export namespace Prisma {
     balance: Decimal
     unBalance: Decimal
     lockBalance: Decimal
+    lastLoginTime: Date | null
     _count: MemberCountAggregateOutputType | null
     _avg: MemberAvgAggregateOutputType | null
     _sum: MemberSumAggregateOutputType | null
@@ -4023,6 +4030,7 @@ export namespace Prisma {
     balance?: boolean
     unBalance?: boolean
     lockBalance?: boolean
+    lastLoginTime?: boolean
     stockPostion?: boolean | Member$stockPostionArgs<ExtArgs>
     memberDetail?: boolean | Member$memberDetailArgs<ExtArgs>
     memberSubscribe?: boolean | Member$memberSubscribeArgs<ExtArgs>
@@ -4050,6 +4058,7 @@ export namespace Prisma {
     balance?: boolean
     unBalance?: boolean
     lockBalance?: boolean
+    lastLoginTime?: boolean
   }
 
   export type MemberInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -4093,6 +4102,7 @@ export namespace Prisma {
       balance: Prisma.Decimal
       unBalance: Prisma.Decimal
       lockBalance: Prisma.Decimal
+      lastLoginTime: Date | null
     }, ExtArgs["result"]["member"]>
     composites: {}
   }
@@ -4517,6 +4527,7 @@ export namespace Prisma {
     readonly balance: FieldRef<"Member", 'Decimal'>
     readonly unBalance: FieldRef<"Member", 'Decimal'>
     readonly lockBalance: FieldRef<"Member", 'Decimal'>
+    readonly lastLoginTime: FieldRef<"Member", 'DateTime'>
   }
     
 
@@ -10477,6 +10488,9 @@ export namespace Prisma {
     sort: number | null
     online: number | null
     conline: number | null
+    openTime: string | null
+    timezone: string | null
+    beforeTime: string | null
     createdAt: Date | null
     updatedAt: Date | null
   }
@@ -10499,6 +10513,9 @@ export namespace Prisma {
     sort: number | null
     online: number | null
     conline: number | null
+    openTime: string | null
+    timezone: string | null
+    beforeTime: string | null
     createdAt: Date | null
     updatedAt: Date | null
   }
@@ -10521,6 +10538,9 @@ export namespace Prisma {
     sort: number
     online: number
     conline: number
+    openTime: number
+    timezone: number
+    beforeTime: number
     createdAt: number
     updatedAt: number
     _all: number
@@ -10563,6 +10583,9 @@ export namespace Prisma {
     sort?: true
     online?: true
     conline?: true
+    openTime?: true
+    timezone?: true
+    beforeTime?: true
     createdAt?: true
     updatedAt?: true
   }
@@ -10585,6 +10608,9 @@ export namespace Prisma {
     sort?: true
     online?: true
     conline?: true
+    openTime?: true
+    timezone?: true
+    beforeTime?: true
     createdAt?: true
     updatedAt?: true
   }
@@ -10607,6 +10633,9 @@ export namespace Prisma {
     sort?: true
     online?: true
     conline?: true
+    openTime?: true
+    timezone?: true
+    beforeTime?: true
     createdAt?: true
     updatedAt?: true
     _all?: true
@@ -10716,6 +10745,9 @@ export namespace Prisma {
     sort: number | null
     online: number | null
     conline: number | null
+    openTime: string | null
+    timezone: string | null
+    beforeTime: string | null
     createdAt: Date
     updatedAt: Date | null
     _count: StockMarketCountAggregateOutputType | null
@@ -10757,6 +10789,9 @@ export namespace Prisma {
     sort?: boolean
     online?: boolean
     conline?: boolean
+    openTime?: boolean
+    timezone?: boolean
+    beforeTime?: boolean
     createdAt?: boolean
     updatedAt?: boolean
   }, ExtArgs["result"]["stockMarket"]>
@@ -10779,6 +10814,9 @@ export namespace Prisma {
     sort?: boolean
     online?: boolean
     conline?: boolean
+    openTime?: boolean
+    timezone?: boolean
+    beforeTime?: boolean
     createdAt?: boolean
     updatedAt?: boolean
   }
@@ -10805,6 +10843,9 @@ export namespace Prisma {
       sort: number | null
       online: number | null
       conline: number | null
+      openTime: string | null
+      timezone: string | null
+      beforeTime: string | null
       createdAt: Date
       updatedAt: Date | null
     }, ExtArgs["result"]["stockMarket"]>
@@ -11218,6 +11259,9 @@ export namespace Prisma {
     readonly sort: FieldRef<"StockMarket", 'Int'>
     readonly online: FieldRef<"StockMarket", 'Int'>
     readonly conline: FieldRef<"StockMarket", 'Int'>
+    readonly openTime: FieldRef<"StockMarket", 'String'>
+    readonly timezone: FieldRef<"StockMarket", 'String'>
+    readonly beforeTime: FieldRef<"StockMarket", 'String'>
     readonly createdAt: FieldRef<"StockMarket", 'DateTime'>
     readonly updatedAt: FieldRef<"StockMarket", 'DateTime'>
   }
@@ -25641,7 +25685,8 @@ export namespace Prisma {
     updatedAt: 'updatedAt',
     balance: 'balance',
     unBalance: 'unBalance',
-    lockBalance: 'lockBalance'
+    lockBalance: 'lockBalance',
+    lastLoginTime: 'lastLoginTime'
   };
 
   export type MemberScalarFieldEnum = (typeof MemberScalarFieldEnum)[keyof typeof MemberScalarFieldEnum]
@@ -25773,6 +25818,9 @@ export namespace Prisma {
     sort: 'sort',
     online: 'online',
     conline: 'conline',
+    openTime: 'openTime',
+    timezone: 'timezone',
+    beforeTime: 'beforeTime',
     createdAt: 'createdAt',
     updatedAt: 'updatedAt'
   };
@@ -26237,6 +26285,7 @@ export namespace Prisma {
     balance?: DecimalFilter<"Member"> | Decimal | DecimalJsLike | number | string
     unBalance?: DecimalFilter<"Member"> | Decimal | DecimalJsLike | number | string
     lockBalance?: DecimalFilter<"Member"> | Decimal | DecimalJsLike | number | string
+    lastLoginTime?: DateTimeNullableFilter<"Member"> | Date | string | null
     stockPostion?: StockPositionListRelationFilter
     memberDetail?: MemberDetailListRelationFilter
     memberSubscribe?: MemberSubscribeListRelationFilter
@@ -26263,6 +26312,7 @@ export namespace Prisma {
     balance?: SortOrder
     unBalance?: SortOrder
     lockBalance?: SortOrder
+    lastLoginTime?: SortOrderInput | SortOrder
     stockPostion?: StockPositionOrderByRelationAggregateInput
     memberDetail?: MemberDetailOrderByRelationAggregateInput
     memberSubscribe?: MemberSubscribeOrderByRelationAggregateInput
@@ -26292,6 +26342,7 @@ export namespace Prisma {
     balance?: DecimalFilter<"Member"> | Decimal | DecimalJsLike | number | string
     unBalance?: DecimalFilter<"Member"> | Decimal | DecimalJsLike | number | string
     lockBalance?: DecimalFilter<"Member"> | Decimal | DecimalJsLike | number | string
+    lastLoginTime?: DateTimeNullableFilter<"Member"> | Date | string | null
     stockPostion?: StockPositionListRelationFilter
     memberDetail?: MemberDetailListRelationFilter
     memberSubscribe?: MemberSubscribeListRelationFilter
@@ -26318,6 +26369,7 @@ export namespace Prisma {
     balance?: SortOrder
     unBalance?: SortOrder
     lockBalance?: SortOrder
+    lastLoginTime?: SortOrderInput | SortOrder
     _count?: MemberCountOrderByAggregateInput
     _avg?: MemberAvgOrderByAggregateInput
     _max?: MemberMaxOrderByAggregateInput
@@ -26344,6 +26396,7 @@ export namespace Prisma {
     balance?: DecimalWithAggregatesFilter<"Member"> | Decimal | DecimalJsLike | number | string
     unBalance?: DecimalWithAggregatesFilter<"Member"> | Decimal | DecimalJsLike | number | string
     lockBalance?: DecimalWithAggregatesFilter<"Member"> | Decimal | DecimalJsLike | number | string
+    lastLoginTime?: DateTimeNullableWithAggregatesFilter<"Member"> | Date | string | null
   }
 
   export type MemberRechargeWhereInput = {
@@ -26919,6 +26972,9 @@ export namespace Prisma {
     sort?: IntNullableFilter<"StockMarket"> | number | null
     online?: IntNullableFilter<"StockMarket"> | number | null
     conline?: IntNullableFilter<"StockMarket"> | number | null
+    openTime?: StringNullableFilter<"StockMarket"> | string | null
+    timezone?: StringNullableFilter<"StockMarket"> | string | null
+    beforeTime?: StringNullableFilter<"StockMarket"> | string | null
     createdAt?: DateTimeFilter<"StockMarket"> | Date | string
     updatedAt?: DateTimeNullableFilter<"StockMarket"> | Date | string | null
   }
@@ -26941,6 +26997,9 @@ export namespace Prisma {
     sort?: SortOrderInput | SortOrder
     online?: SortOrderInput | SortOrder
     conline?: SortOrderInput | SortOrder
+    openTime?: SortOrderInput | SortOrder
+    timezone?: SortOrderInput | SortOrder
+    beforeTime?: SortOrderInput | SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrderInput | SortOrder
   }
@@ -26966,6 +27025,9 @@ export namespace Prisma {
     sort?: IntNullableFilter<"StockMarket"> | number | null
     online?: IntNullableFilter<"StockMarket"> | number | null
     conline?: IntNullableFilter<"StockMarket"> | number | null
+    openTime?: StringNullableFilter<"StockMarket"> | string | null
+    timezone?: StringNullableFilter<"StockMarket"> | string | null
+    beforeTime?: StringNullableFilter<"StockMarket"> | string | null
     createdAt?: DateTimeFilter<"StockMarket"> | Date | string
     updatedAt?: DateTimeNullableFilter<"StockMarket"> | Date | string | null
   }, "id">
@@ -26988,6 +27050,9 @@ export namespace Prisma {
     sort?: SortOrderInput | SortOrder
     online?: SortOrderInput | SortOrder
     conline?: SortOrderInput | SortOrder
+    openTime?: SortOrderInput | SortOrder
+    timezone?: SortOrderInput | SortOrder
+    beforeTime?: SortOrderInput | SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrderInput | SortOrder
     _count?: StockMarketCountOrderByAggregateInput
@@ -27018,6 +27083,9 @@ export namespace Prisma {
     sort?: IntNullableWithAggregatesFilter<"StockMarket"> | number | null
     online?: IntNullableWithAggregatesFilter<"StockMarket"> | number | null
     conline?: IntNullableWithAggregatesFilter<"StockMarket"> | number | null
+    openTime?: StringNullableWithAggregatesFilter<"StockMarket"> | string | null
+    timezone?: StringNullableWithAggregatesFilter<"StockMarket"> | string | null
+    beforeTime?: StringNullableWithAggregatesFilter<"StockMarket"> | string | null
     createdAt?: DateTimeWithAggregatesFilter<"StockMarket"> | Date | string
     updatedAt?: DateTimeNullableWithAggregatesFilter<"StockMarket"> | Date | string | null
   }
@@ -28343,6 +28411,7 @@ export namespace Prisma {
     balance?: Decimal | DecimalJsLike | number | string
     unBalance?: Decimal | DecimalJsLike | number | string
     lockBalance?: Decimal | DecimalJsLike | number | string
+    lastLoginTime?: Date | string | null
     stockPostion?: StockPositionCreateNestedManyWithoutMemberInput
     memberDetail?: MemberDetailCreateNestedManyWithoutMemberInput
     memberSubscribe?: MemberSubscribeCreateNestedManyWithoutMemberInput
@@ -28369,6 +28438,7 @@ export namespace Prisma {
     balance?: Decimal | DecimalJsLike | number | string
     unBalance?: Decimal | DecimalJsLike | number | string
     lockBalance?: Decimal | DecimalJsLike | number | string
+    lastLoginTime?: Date | string | null
     stockPostion?: StockPositionUncheckedCreateNestedManyWithoutMemberInput
     memberDetail?: MemberDetailUncheckedCreateNestedManyWithoutMemberInput
     memberSubscribe?: MemberSubscribeUncheckedCreateNestedManyWithoutMemberInput
@@ -28395,6 +28465,7 @@ export namespace Prisma {
     balance?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
     unBalance?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
     lockBalance?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    lastLoginTime?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     stockPostion?: StockPositionUpdateManyWithoutMemberNestedInput
     memberDetail?: MemberDetailUpdateManyWithoutMemberNestedInput
     memberSubscribe?: MemberSubscribeUpdateManyWithoutMemberNestedInput
@@ -28421,6 +28492,7 @@ export namespace Prisma {
     balance?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
     unBalance?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
     lockBalance?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    lastLoginTime?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     stockPostion?: StockPositionUncheckedUpdateManyWithoutMemberNestedInput
     memberDetail?: MemberDetailUncheckedUpdateManyWithoutMemberNestedInput
     memberSubscribe?: MemberSubscribeUncheckedUpdateManyWithoutMemberNestedInput
@@ -28447,6 +28519,7 @@ export namespace Prisma {
     balance?: Decimal | DecimalJsLike | number | string
     unBalance?: Decimal | DecimalJsLike | number | string
     lockBalance?: Decimal | DecimalJsLike | number | string
+    lastLoginTime?: Date | string | null
   }
 
   export type MemberUpdateManyMutationInput = {
@@ -28465,6 +28538,7 @@ export namespace Prisma {
     balance?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
     unBalance?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
     lockBalance?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    lastLoginTime?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
 
   export type MemberUncheckedUpdateManyInput = {
@@ -28483,6 +28557,7 @@ export namespace Prisma {
     balance?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
     unBalance?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
     lockBalance?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    lastLoginTime?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
 
   export type MemberRechargeCreateInput = {
@@ -29159,6 +29234,9 @@ export namespace Prisma {
     sort?: number | null
     online?: number | null
     conline?: number | null
+    openTime?: string | null
+    timezone?: string | null
+    beforeTime?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string | null
   }
@@ -29181,6 +29259,9 @@ export namespace Prisma {
     sort?: number | null
     online?: number | null
     conline?: number | null
+    openTime?: string | null
+    timezone?: string | null
+    beforeTime?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string | null
   }
@@ -29203,6 +29284,9 @@ export namespace Prisma {
     sort?: NullableIntFieldUpdateOperationsInput | number | null
     online?: NullableIntFieldUpdateOperationsInput | number | null
     conline?: NullableIntFieldUpdateOperationsInput | number | null
+    openTime?: NullableStringFieldUpdateOperationsInput | string | null
+    timezone?: NullableStringFieldUpdateOperationsInput | string | null
+    beforeTime?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
@@ -29225,6 +29309,9 @@ export namespace Prisma {
     sort?: NullableIntFieldUpdateOperationsInput | number | null
     online?: NullableIntFieldUpdateOperationsInput | number | null
     conline?: NullableIntFieldUpdateOperationsInput | number | null
+    openTime?: NullableStringFieldUpdateOperationsInput | string | null
+    timezone?: NullableStringFieldUpdateOperationsInput | string | null
+    beforeTime?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
@@ -29247,6 +29334,9 @@ export namespace Prisma {
     sort?: number | null
     online?: number | null
     conline?: number | null
+    openTime?: string | null
+    timezone?: string | null
+    beforeTime?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string | null
   }
@@ -29269,6 +29359,9 @@ export namespace Prisma {
     sort?: NullableIntFieldUpdateOperationsInput | number | null
     online?: NullableIntFieldUpdateOperationsInput | number | null
     conline?: NullableIntFieldUpdateOperationsInput | number | null
+    openTime?: NullableStringFieldUpdateOperationsInput | string | null
+    timezone?: NullableStringFieldUpdateOperationsInput | string | null
+    beforeTime?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
@@ -29291,6 +29384,9 @@ export namespace Prisma {
     sort?: NullableIntFieldUpdateOperationsInput | number | null
     online?: NullableIntFieldUpdateOperationsInput | number | null
     conline?: NullableIntFieldUpdateOperationsInput | number | null
+    openTime?: NullableStringFieldUpdateOperationsInput | string | null
+    timezone?: NullableStringFieldUpdateOperationsInput | string | null
+    beforeTime?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
@@ -31044,6 +31140,7 @@ export namespace Prisma {
     balance?: SortOrder
     unBalance?: SortOrder
     lockBalance?: SortOrder
+    lastLoginTime?: SortOrder
   }
 
   export type MemberAvgOrderByAggregateInput = {
@@ -31070,6 +31167,7 @@ export namespace Prisma {
     balance?: SortOrder
     unBalance?: SortOrder
     lockBalance?: SortOrder
+    lastLoginTime?: SortOrder
   }
 
   export type MemberMinOrderByAggregateInput = {
@@ -31087,6 +31185,7 @@ export namespace Prisma {
     balance?: SortOrder
     unBalance?: SortOrder
     lockBalance?: SortOrder
+    lastLoginTime?: SortOrder
   }
 
   export type MemberSumOrderByAggregateInput = {
@@ -31625,6 +31724,9 @@ export namespace Prisma {
     sort?: SortOrder
     online?: SortOrder
     conline?: SortOrder
+    openTime?: SortOrder
+    timezone?: SortOrder
+    beforeTime?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
   }
@@ -31656,6 +31758,9 @@ export namespace Prisma {
     sort?: SortOrder
     online?: SortOrder
     conline?: SortOrder
+    openTime?: SortOrder
+    timezone?: SortOrder
+    beforeTime?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
   }
@@ -31678,6 +31783,9 @@ export namespace Prisma {
     sort?: SortOrder
     online?: SortOrder
     conline?: SortOrder
+    openTime?: SortOrder
+    timezone?: SortOrder
+    beforeTime?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
   }
@@ -34163,6 +34271,7 @@ export namespace Prisma {
     balance?: Decimal | DecimalJsLike | number | string
     unBalance?: Decimal | DecimalJsLike | number | string
     lockBalance?: Decimal | DecimalJsLike | number | string
+    lastLoginTime?: Date | string | null
     stockPostion?: StockPositionCreateNestedManyWithoutMemberInput
     memberDetail?: MemberDetailCreateNestedManyWithoutMemberInput
     memberSubscribe?: MemberSubscribeCreateNestedManyWithoutMemberInput
@@ -34188,6 +34297,7 @@ export namespace Prisma {
     balance?: Decimal | DecimalJsLike | number | string
     unBalance?: Decimal | DecimalJsLike | number | string
     lockBalance?: Decimal | DecimalJsLike | number | string
+    lastLoginTime?: Date | string | null
     stockPostion?: StockPositionUncheckedCreateNestedManyWithoutMemberInput
     memberDetail?: MemberDetailUncheckedCreateNestedManyWithoutMemberInput
     memberSubscribe?: MemberSubscribeUncheckedCreateNestedManyWithoutMemberInput
@@ -34229,6 +34339,7 @@ export namespace Prisma {
     balance?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
     unBalance?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
     lockBalance?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    lastLoginTime?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     stockPostion?: StockPositionUpdateManyWithoutMemberNestedInput
     memberDetail?: MemberDetailUpdateManyWithoutMemberNestedInput
     memberSubscribe?: MemberSubscribeUpdateManyWithoutMemberNestedInput
@@ -34254,6 +34365,7 @@ export namespace Prisma {
     balance?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
     unBalance?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
     lockBalance?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    lastLoginTime?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     stockPostion?: StockPositionUncheckedUpdateManyWithoutMemberNestedInput
     memberDetail?: MemberDetailUncheckedUpdateManyWithoutMemberNestedInput
     memberSubscribe?: MemberSubscribeUncheckedUpdateManyWithoutMemberNestedInput
@@ -34279,6 +34391,7 @@ export namespace Prisma {
     balance?: Decimal | DecimalJsLike | number | string
     unBalance?: Decimal | DecimalJsLike | number | string
     lockBalance?: Decimal | DecimalJsLike | number | string
+    lastLoginTime?: Date | string | null
     stockPostion?: StockPositionCreateNestedManyWithoutMemberInput
     memberDetail?: MemberDetailCreateNestedManyWithoutMemberInput
     memberSubscribe?: MemberSubscribeCreateNestedManyWithoutMemberInput
@@ -34304,6 +34417,7 @@ export namespace Prisma {
     balance?: Decimal | DecimalJsLike | number | string
     unBalance?: Decimal | DecimalJsLike | number | string
     lockBalance?: Decimal | DecimalJsLike | number | string
+    lastLoginTime?: Date | string | null
     stockPostion?: StockPositionUncheckedCreateNestedManyWithoutMemberInput
     memberDetail?: MemberDetailUncheckedCreateNestedManyWithoutMemberInput
     memberSubscribe?: MemberSubscribeUncheckedCreateNestedManyWithoutMemberInput
@@ -34345,6 +34459,7 @@ export namespace Prisma {
     balance?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
     unBalance?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
     lockBalance?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    lastLoginTime?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     stockPostion?: StockPositionUpdateManyWithoutMemberNestedInput
     memberDetail?: MemberDetailUpdateManyWithoutMemberNestedInput
     memberSubscribe?: MemberSubscribeUpdateManyWithoutMemberNestedInput
@@ -34370,6 +34485,7 @@ export namespace Prisma {
     balance?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
     unBalance?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
     lockBalance?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    lastLoginTime?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     stockPostion?: StockPositionUncheckedUpdateManyWithoutMemberNestedInput
     memberDetail?: MemberDetailUncheckedUpdateManyWithoutMemberNestedInput
     memberSubscribe?: MemberSubscribeUncheckedUpdateManyWithoutMemberNestedInput
@@ -34659,6 +34775,7 @@ export namespace Prisma {
     balance?: Decimal | DecimalJsLike | number | string
     unBalance?: Decimal | DecimalJsLike | number | string
     lockBalance?: Decimal | DecimalJsLike | number | string
+    lastLoginTime?: Date | string | null
     stockPostion?: StockPositionCreateNestedManyWithoutMemberInput
     memberDetail?: MemberDetailCreateNestedManyWithoutMemberInput
     memberRecharges?: MemberRechargeCreateNestedManyWithoutMemberInput
@@ -34684,6 +34801,7 @@ export namespace Prisma {
     balance?: Decimal | DecimalJsLike | number | string
     unBalance?: Decimal | DecimalJsLike | number | string
     lockBalance?: Decimal | DecimalJsLike | number | string
+    lastLoginTime?: Date | string | null
     stockPostion?: StockPositionUncheckedCreateNestedManyWithoutMemberInput
     memberDetail?: MemberDetailUncheckedCreateNestedManyWithoutMemberInput
     memberRecharges?: MemberRechargeUncheckedCreateNestedManyWithoutMemberInput
@@ -34725,6 +34843,7 @@ export namespace Prisma {
     balance?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
     unBalance?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
     lockBalance?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    lastLoginTime?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     stockPostion?: StockPositionUpdateManyWithoutMemberNestedInput
     memberDetail?: MemberDetailUpdateManyWithoutMemberNestedInput
     memberRecharges?: MemberRechargeUpdateManyWithoutMemberNestedInput
@@ -34750,6 +34869,7 @@ export namespace Prisma {
     balance?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
     unBalance?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
     lockBalance?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    lastLoginTime?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     stockPostion?: StockPositionUncheckedUpdateManyWithoutMemberNestedInput
     memberDetail?: MemberDetailUncheckedUpdateManyWithoutMemberNestedInput
     memberRecharges?: MemberRechargeUncheckedUpdateManyWithoutMemberNestedInput
@@ -34775,6 +34895,7 @@ export namespace Prisma {
     balance?: Decimal | DecimalJsLike | number | string
     unBalance?: Decimal | DecimalJsLike | number | string
     lockBalance?: Decimal | DecimalJsLike | number | string
+    lastLoginTime?: Date | string | null
     memberDetail?: MemberDetailCreateNestedManyWithoutMemberInput
     memberSubscribe?: MemberSubscribeCreateNestedManyWithoutMemberInput
     memberRecharges?: MemberRechargeCreateNestedManyWithoutMemberInput
@@ -34800,6 +34921,7 @@ export namespace Prisma {
     balance?: Decimal | DecimalJsLike | number | string
     unBalance?: Decimal | DecimalJsLike | number | string
     lockBalance?: Decimal | DecimalJsLike | number | string
+    lastLoginTime?: Date | string | null
     memberDetail?: MemberDetailUncheckedCreateNestedManyWithoutMemberInput
     memberSubscribe?: MemberSubscribeUncheckedCreateNestedManyWithoutMemberInput
     memberRecharges?: MemberRechargeUncheckedCreateNestedManyWithoutMemberInput
@@ -34902,6 +35024,7 @@ export namespace Prisma {
     balance?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
     unBalance?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
     lockBalance?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    lastLoginTime?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     memberDetail?: MemberDetailUpdateManyWithoutMemberNestedInput
     memberSubscribe?: MemberSubscribeUpdateManyWithoutMemberNestedInput
     memberRecharges?: MemberRechargeUpdateManyWithoutMemberNestedInput
@@ -34927,6 +35050,7 @@ export namespace Prisma {
     balance?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
     unBalance?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
     lockBalance?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    lastLoginTime?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     memberDetail?: MemberDetailUncheckedUpdateManyWithoutMemberNestedInput
     memberSubscribe?: MemberSubscribeUncheckedUpdateManyWithoutMemberNestedInput
     memberRecharges?: MemberRechargeUncheckedUpdateManyWithoutMemberNestedInput
@@ -35019,6 +35143,7 @@ export namespace Prisma {
     balance?: Decimal | DecimalJsLike | number | string
     unBalance?: Decimal | DecimalJsLike | number | string
     lockBalance?: Decimal | DecimalJsLike | number | string
+    lastLoginTime?: Date | string | null
     stockPostion?: StockPositionCreateNestedManyWithoutMemberInput
     memberSubscribe?: MemberSubscribeCreateNestedManyWithoutMemberInput
     memberRecharges?: MemberRechargeCreateNestedManyWithoutMemberInput
@@ -35044,6 +35169,7 @@ export namespace Prisma {
     balance?: Decimal | DecimalJsLike | number | string
     unBalance?: Decimal | DecimalJsLike | number | string
     lockBalance?: Decimal | DecimalJsLike | number | string
+    lastLoginTime?: Date | string | null
     stockPostion?: StockPositionUncheckedCreateNestedManyWithoutMemberInput
     memberSubscribe?: MemberSubscribeUncheckedCreateNestedManyWithoutMemberInput
     memberRecharges?: MemberRechargeUncheckedCreateNestedManyWithoutMemberInput
@@ -35085,6 +35211,7 @@ export namespace Prisma {
     balance?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
     unBalance?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
     lockBalance?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    lastLoginTime?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     stockPostion?: StockPositionUpdateManyWithoutMemberNestedInput
     memberSubscribe?: MemberSubscribeUpdateManyWithoutMemberNestedInput
     memberRecharges?: MemberRechargeUpdateManyWithoutMemberNestedInput
@@ -35110,6 +35237,7 @@ export namespace Prisma {
     balance?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
     unBalance?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
     lockBalance?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    lastLoginTime?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     stockPostion?: StockPositionUncheckedUpdateManyWithoutMemberNestedInput
     memberSubscribe?: MemberSubscribeUncheckedUpdateManyWithoutMemberNestedInput
     memberRecharges?: MemberRechargeUncheckedUpdateManyWithoutMemberNestedInput
@@ -35135,6 +35263,7 @@ export namespace Prisma {
     balance?: Decimal | DecimalJsLike | number | string
     unBalance?: Decimal | DecimalJsLike | number | string
     lockBalance?: Decimal | DecimalJsLike | number | string
+    lastLoginTime?: Date | string | null
     stockPostion?: StockPositionCreateNestedManyWithoutMemberInput
     memberDetail?: MemberDetailCreateNestedManyWithoutMemberInput
     memberSubscribe?: MemberSubscribeCreateNestedManyWithoutMemberInput
@@ -35160,6 +35289,7 @@ export namespace Prisma {
     balance?: Decimal | DecimalJsLike | number | string
     unBalance?: Decimal | DecimalJsLike | number | string
     lockBalance?: Decimal | DecimalJsLike | number | string
+    lastLoginTime?: Date | string | null
     stockPostion?: StockPositionUncheckedCreateNestedManyWithoutMemberInput
     memberDetail?: MemberDetailUncheckedCreateNestedManyWithoutMemberInput
     memberSubscribe?: MemberSubscribeUncheckedCreateNestedManyWithoutMemberInput
@@ -35201,6 +35331,7 @@ export namespace Prisma {
     balance?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
     unBalance?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
     lockBalance?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    lastLoginTime?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     stockPostion?: StockPositionUpdateManyWithoutMemberNestedInput
     memberDetail?: MemberDetailUpdateManyWithoutMemberNestedInput
     memberSubscribe?: MemberSubscribeUpdateManyWithoutMemberNestedInput
@@ -35226,6 +35357,7 @@ export namespace Prisma {
     balance?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
     unBalance?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
     lockBalance?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    lastLoginTime?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     stockPostion?: StockPositionUncheckedUpdateManyWithoutMemberNestedInput
     memberDetail?: MemberDetailUncheckedUpdateManyWithoutMemberNestedInput
     memberSubscribe?: MemberSubscribeUncheckedUpdateManyWithoutMemberNestedInput
@@ -35251,6 +35383,7 @@ export namespace Prisma {
     balance?: Decimal | DecimalJsLike | number | string
     unBalance?: Decimal | DecimalJsLike | number | string
     lockBalance?: Decimal | DecimalJsLike | number | string
+    lastLoginTime?: Date | string | null
     stockPostion?: StockPositionCreateNestedManyWithoutMemberInput
     memberDetail?: MemberDetailCreateNestedManyWithoutMemberInput
     memberSubscribe?: MemberSubscribeCreateNestedManyWithoutMemberInput
@@ -35276,6 +35409,7 @@ export namespace Prisma {
     balance?: Decimal | DecimalJsLike | number | string
     unBalance?: Decimal | DecimalJsLike | number | string
     lockBalance?: Decimal | DecimalJsLike | number | string
+    lastLoginTime?: Date | string | null
     stockPostion?: StockPositionUncheckedCreateNestedManyWithoutMemberInput
     memberDetail?: MemberDetailUncheckedCreateNestedManyWithoutMemberInput
     memberSubscribe?: MemberSubscribeUncheckedCreateNestedManyWithoutMemberInput
@@ -35317,6 +35451,7 @@ export namespace Prisma {
     balance?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
     unBalance?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
     lockBalance?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    lastLoginTime?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     stockPostion?: StockPositionUpdateManyWithoutMemberNestedInput
     memberDetail?: MemberDetailUpdateManyWithoutMemberNestedInput
     memberSubscribe?: MemberSubscribeUpdateManyWithoutMemberNestedInput
@@ -35342,6 +35477,7 @@ export namespace Prisma {
     balance?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
     unBalance?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
     lockBalance?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    lastLoginTime?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     stockPostion?: StockPositionUncheckedUpdateManyWithoutMemberNestedInput
     memberDetail?: MemberDetailUncheckedUpdateManyWithoutMemberNestedInput
     memberSubscribe?: MemberSubscribeUncheckedUpdateManyWithoutMemberNestedInput
@@ -35367,6 +35503,7 @@ export namespace Prisma {
     balance?: Decimal | DecimalJsLike | number | string
     unBalance?: Decimal | DecimalJsLike | number | string
     lockBalance?: Decimal | DecimalJsLike | number | string
+    lastLoginTime?: Date | string | null
     stockPostion?: StockPositionCreateNestedManyWithoutMemberInput
     memberDetail?: MemberDetailCreateNestedManyWithoutMemberInput
     memberSubscribe?: MemberSubscribeCreateNestedManyWithoutMemberInput
@@ -35392,6 +35529,7 @@ export namespace Prisma {
     balance?: Decimal | DecimalJsLike | number | string
     unBalance?: Decimal | DecimalJsLike | number | string
     lockBalance?: Decimal | DecimalJsLike | number | string
+    lastLoginTime?: Date | string | null
     stockPostion?: StockPositionUncheckedCreateNestedManyWithoutMemberInput
     memberDetail?: MemberDetailUncheckedCreateNestedManyWithoutMemberInput
     memberSubscribe?: MemberSubscribeUncheckedCreateNestedManyWithoutMemberInput
@@ -35433,6 +35571,7 @@ export namespace Prisma {
     balance?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
     unBalance?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
     lockBalance?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    lastLoginTime?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     stockPostion?: StockPositionUpdateManyWithoutMemberNestedInput
     memberDetail?: MemberDetailUpdateManyWithoutMemberNestedInput
     memberSubscribe?: MemberSubscribeUpdateManyWithoutMemberNestedInput
@@ -35458,6 +35597,7 @@ export namespace Prisma {
     balance?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
     unBalance?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
     lockBalance?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    lastLoginTime?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     stockPostion?: StockPositionUncheckedUpdateManyWithoutMemberNestedInput
     memberDetail?: MemberDetailUncheckedUpdateManyWithoutMemberNestedInput
     memberSubscribe?: MemberSubscribeUncheckedUpdateManyWithoutMemberNestedInput

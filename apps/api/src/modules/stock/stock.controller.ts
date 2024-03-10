@@ -102,8 +102,17 @@ export class StockController {
   @HttpCode(HttpStatus.OK)
   @UseGuards(UserGuard)
   async getPostions(@Body() payload: any) {
-    const { page, memberId, code, status, mode, market, pageSize, type } =
-      payload;
+    const {
+      page,
+      memberId,
+      code,
+      status,
+      mode,
+      market,
+      pageSize,
+      type,
+      isBefore,
+    } = payload;
 
     const where: any =
       +type !== 2
@@ -113,7 +122,7 @@ export class StockController {
             },
           }
         : {};
-    const params = { memberId, status, mode, market };
+    const params = { memberId, status, mode, market, isBefore };
     Object.keys(params).forEach((key) => {
       if (params[key] !== '' && params[key] !== undefined)
         where[key] = params[key];
@@ -127,7 +136,7 @@ export class StockController {
     const { data, meta } = await this.stockService.getPostions({
       where,
       orderBy: {
-        createdAt: 'desc',
+        updatedAt: 'desc',
       },
       page,
       perPage: pageSize,

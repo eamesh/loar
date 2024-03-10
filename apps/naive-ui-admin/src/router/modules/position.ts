@@ -42,6 +42,14 @@ const routes: Array<RouteRecordRaw> = [
         },
         component: () => import('@/views/position/type/index.vue'),
       },
+      {
+        path: 'before',
+        name: 'system-before',
+        meta: {
+          title: '盘前订单',
+        },
+        component: () => import('@/views/position/before/index.vue'),
+      },
     ],
   },
 ];

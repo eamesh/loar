@@ -31,6 +31,7 @@ import { RechargeAccountModule } from './modules/recharge-account/recharge-accou
 import { RechargeModule } from './modules/recharge/recharge.module';
 import { WithdrawModule } from './modules/withdraw/withdraw.module';
 import { CardModule } from './modules/card/card.module';
+import { InfoModule } from './modules/info/info.module';
 
 const envFilePath = [`env.${process.env.NODE_ENV}`, '.env'];
 
@@ -78,6 +79,7 @@ const imports = [
     // disable throwing uncaughtException if an error event is emitted and it has no listeners
     ignoreErrors: false,
   }),
+  InfoModule,
   ToolModule,
   CardModule,
   CryptoModule,

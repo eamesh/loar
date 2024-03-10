@@ -14,7 +14,7 @@ export class ShuhaiService {
     const target = market === 'US' ? 'USA' : market;
     const url = `http://101.200.133.133/t/luckday/${target}/index.php?to=info&code=${symbol}`;
     // const url = 'http://ds.cnshuhai.com/stock.php';
-
+    console.log(url);
     // const query = {
     //   type: 'stock',
     //   u: 'emesh',
