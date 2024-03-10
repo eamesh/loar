@@ -9,6 +9,14 @@ import { ShuhaiService } from 'src/providers/shuhai/shuhai.service';
 import { Member } from '@loar/database';
 import { Decimal } from '@loar/database/generated/prisma-client/runtime/library';
 import { SettingService } from 'src/modules/setting/setting.service';
+import dayjs from 'dayjs';
+import utc from 'dayjs/plugin/utc';
+import timezone from 'dayjs/plugin/timezone';
+import isBetween from 'dayjs/plugin/isBetween';
+
+dayjs.extend(utc);
+dayjs.extend(timezone);
+dayjs.extend(isBetween);
 
 @Injectable()
 export class HandleStockService {
@@ -18,7 +26,45 @@ export class HandleStockService {
     private setting: SettingService,
   ) {}
 
+  async getTradingPhase(marketType: string, currentTime: string) {
+    let marketTime;
+    if (marketType === 'US') {
+      marketTime = dayjs(currentTime).tz('America/New_York');
+    } else if (marketType === 'HK') {
+      marketTime = dayjs(currentTime).tz('Asia/Hong_Kong');
+    } else {
+      return 0;
+    }
+
+    // Check if it's weekend
+    const dayOfWeek = marketTime.day();
+    if (dayOfWeek === 0 || dayOfWeek === 6) {
+      return 0;
+    }
+
+    const preMarketStartTime = marketTime.clone().hour(4).minute(0).second(0);
+    const preMarketEndTime = marketTime.clone().hour(9).minute(30).second(0);
+    const morningStartTime = marketTime.clone().hour(9).minute(30).second(0);
+    const morningEndTime = marketTime.clone().hour(12).minute(0).second(0);
+    const afternoonStartTime = marketTime.clone().hour(13).minute(0).second(0);
+    const afternoonEndTime = marketTime.clone().hour(16).minute(0).second(0);
+
+    if (
+      marketTime.isBetween(preMarketStartTime, preMarketEndTime, null, '[]')
+    ) {
+      return 2;
+    } else if (
+      marketTime.isBetween(morningStartTime, morningEndTime, null, '[]') ||
+      marketTime.isBetween(afternoonStartTime, afternoonEndTime, null, '[]')
+    ) {
+      return 1;
+    } else {
+      return 0;
+    }
+  }
+
   async buy(payload: BuyDto, member: Member, isPosition = false) {
+    console.log(isPosition);
     // 判断市场状态
     // 组装数据
     const { amount, code, stopLoss, takeProfit, mode, type, price } = payload;
@@ -27,6 +73,16 @@ export class HandleStockService {
         id: +code,
       },
     });
+
+    const tradeStatus = await this.getTradingPhase(
+      symbol.syncMarket,
+      dayjs().toISOString(),
+    );
+
+    let isBefore = false;
+
+    if (tradeStatus === 2) isBefore = true;
+
     const detail =
       +type !== 1
         ? await this.shuhai.getSymbolDetail(symbol.code, symbol.syncMarket)
@@ -81,14 +137,15 @@ export class HandleStockService {
         bond: `${bond.toFixed(3)}`,
         blast: `${blast}`,
         market: symbol.market,
-        // 0 持仓 1 平仓 2 限价审核
-        status: +type === 1 ? 2 : 0,
+        // 0 持仓 1 平仓 2 限价审核 4 盘前交易市价待审核 5 盘前交易限价待审核 6 盘前交易拒绝
+        status: isBefore ? (+type === 1 ? 5 : 4) : +type === 1 ? 2 : 0,
         memberId: member.id,
         stockSymbolId: symbol.id,
         // currentPrice: `${detail.price}`,
         pl: '0',
         rate: '0',
         type,
+        isBefore,
       },
     });
 

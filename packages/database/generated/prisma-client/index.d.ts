@@ -14746,6 +14746,7 @@ export namespace Prisma {
     type: number | null
     pl: string | null
     rate: string | null
+    isBefore: boolean | null
     currentPrice: string | null
     memberId: bigint | null
     stockSymbolId: bigint | null
@@ -14769,6 +14770,7 @@ export namespace Prisma {
     type: number | null
     pl: string | null
     rate: string | null
+    isBefore: boolean | null
     currentPrice: string | null
     memberId: bigint | null
     stockSymbolId: bigint | null
@@ -14792,6 +14794,7 @@ export namespace Prisma {
     type: number
     pl: number
     rate: number
+    isBefore: number
     currentPrice: number
     memberId: number
     stockSymbolId: number
@@ -14837,6 +14840,7 @@ export namespace Prisma {
     type?: true
     pl?: true
     rate?: true
+    isBefore?: true
     currentPrice?: true
     memberId?: true
     stockSymbolId?: true
@@ -14860,6 +14864,7 @@ export namespace Prisma {
     type?: true
     pl?: true
     rate?: true
+    isBefore?: true
     currentPrice?: true
     memberId?: true
     stockSymbolId?: true
@@ -14883,6 +14888,7 @@ export namespace Prisma {
     type?: true
     pl?: true
     rate?: true
+    isBefore?: true
     currentPrice?: true
     memberId?: true
     stockSymbolId?: true
@@ -14993,6 +14999,7 @@ export namespace Prisma {
     type: number
     pl: string | null
     rate: string | null
+    isBefore: boolean
     currentPrice: string | null
     memberId: bigint
     stockSymbolId: bigint
@@ -15035,6 +15042,7 @@ export namespace Prisma {
     type?: boolean
     pl?: boolean
     rate?: boolean
+    isBefore?: boolean
     currentPrice?: boolean
     memberId?: boolean
     stockSymbolId?: boolean
@@ -15060,6 +15068,7 @@ export namespace Prisma {
     type?: boolean
     pl?: boolean
     rate?: boolean
+    isBefore?: boolean
     currentPrice?: boolean
     memberId?: boolean
     stockSymbolId?: boolean
@@ -15095,6 +15104,7 @@ export namespace Prisma {
       type: number
       pl: string | null
       rate: string | null
+      isBefore: boolean
       currentPrice: string | null
       memberId: bigint
       stockSymbolId: bigint
@@ -15512,6 +15522,7 @@ export namespace Prisma {
     readonly type: FieldRef<"StockPosition", 'Int'>
     readonly pl: FieldRef<"StockPosition", 'String'>
     readonly rate: FieldRef<"StockPosition", 'String'>
+    readonly isBefore: FieldRef<"StockPosition", 'Boolean'>
     readonly currentPrice: FieldRef<"StockPosition", 'String'>
     readonly memberId: FieldRef<"StockPosition", 'BigInt'>
     readonly stockSymbolId: FieldRef<"StockPosition", 'BigInt'>
@@ -25851,6 +25862,7 @@ export namespace Prisma {
     type: 'type',
     pl: 'pl',
     rate: 'rate',
+    isBefore: 'isBefore',
     currentPrice: 'currentPrice',
     memberId: 'memberId',
     stockSymbolId: 'stockSymbolId',
@@ -27359,6 +27371,7 @@ export namespace Prisma {
     type?: IntFilter<"StockPosition"> | number
     pl?: StringNullableFilter<"StockPosition"> | string | null
     rate?: StringNullableFilter<"StockPosition"> | string | null
+    isBefore?: BoolFilter<"StockPosition"> | boolean
     currentPrice?: StringNullableFilter<"StockPosition"> | string | null
     memberId?: BigIntFilter<"StockPosition"> | bigint | number
     stockSymbolId?: BigIntFilter<"StockPosition"> | bigint | number
@@ -27384,6 +27397,7 @@ export namespace Prisma {
     type?: SortOrder
     pl?: SortOrderInput | SortOrder
     rate?: SortOrderInput | SortOrder
+    isBefore?: SortOrder
     currentPrice?: SortOrderInput | SortOrder
     memberId?: SortOrder
     stockSymbolId?: SortOrder
@@ -27412,6 +27426,7 @@ export namespace Prisma {
     type?: IntFilter<"StockPosition"> | number
     pl?: StringNullableFilter<"StockPosition"> | string | null
     rate?: StringNullableFilter<"StockPosition"> | string | null
+    isBefore?: BoolFilter<"StockPosition"> | boolean
     currentPrice?: StringNullableFilter<"StockPosition"> | string | null
     memberId?: BigIntFilter<"StockPosition"> | bigint | number
     stockSymbolId?: BigIntFilter<"StockPosition"> | bigint | number
@@ -27437,6 +27452,7 @@ export namespace Prisma {
     type?: SortOrder
     pl?: SortOrderInput | SortOrder
     rate?: SortOrderInput | SortOrder
+    isBefore?: SortOrder
     currentPrice?: SortOrderInput | SortOrder
     memberId?: SortOrder
     stockSymbolId?: SortOrder
@@ -27468,6 +27484,7 @@ export namespace Prisma {
     type?: IntWithAggregatesFilter<"StockPosition"> | number
     pl?: StringNullableWithAggregatesFilter<"StockPosition"> | string | null
     rate?: StringNullableWithAggregatesFilter<"StockPosition"> | string | null
+    isBefore?: BoolWithAggregatesFilter<"StockPosition"> | boolean
     currentPrice?: StringNullableWithAggregatesFilter<"StockPosition"> | string | null
     memberId?: BigIntWithAggregatesFilter<"StockPosition"> | bigint | number
     stockSymbolId?: BigIntWithAggregatesFilter<"StockPosition"> | bigint | number
@@ -29692,6 +29709,7 @@ export namespace Prisma {
     type: number
     pl?: string | null
     rate?: string | null
+    isBefore?: boolean
     currentPrice?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string | null
@@ -29715,6 +29733,7 @@ export namespace Prisma {
     type: number
     pl?: string | null
     rate?: string | null
+    isBefore?: boolean
     currentPrice?: string | null
     memberId: bigint | number
     stockSymbolId: bigint | number
@@ -29738,6 +29757,7 @@ export namespace Prisma {
     type?: IntFieldUpdateOperationsInput | number
     pl?: NullableStringFieldUpdateOperationsInput | string | null
     rate?: NullableStringFieldUpdateOperationsInput | string | null
+    isBefore?: BoolFieldUpdateOperationsInput | boolean
     currentPrice?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -29761,6 +29781,7 @@ export namespace Prisma {
     type?: IntFieldUpdateOperationsInput | number
     pl?: NullableStringFieldUpdateOperationsInput | string | null
     rate?: NullableStringFieldUpdateOperationsInput | string | null
+    isBefore?: BoolFieldUpdateOperationsInput | boolean
     currentPrice?: NullableStringFieldUpdateOperationsInput | string | null
     memberId?: BigIntFieldUpdateOperationsInput | bigint | number
     stockSymbolId?: BigIntFieldUpdateOperationsInput | bigint | number
@@ -29784,6 +29805,7 @@ export namespace Prisma {
     type: number
     pl?: string | null
     rate?: string | null
+    isBefore?: boolean
     currentPrice?: string | null
     memberId: bigint | number
     stockSymbolId: bigint | number
@@ -29807,6 +29829,7 @@ export namespace Prisma {
     type?: IntFieldUpdateOperationsInput | number
     pl?: NullableStringFieldUpdateOperationsInput | string | null
     rate?: NullableStringFieldUpdateOperationsInput | string | null
+    isBefore?: BoolFieldUpdateOperationsInput | boolean
     currentPrice?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -29828,6 +29851,7 @@ export namespace Prisma {
     type?: IntFieldUpdateOperationsInput | number
     pl?: NullableStringFieldUpdateOperationsInput | string | null
     rate?: NullableStringFieldUpdateOperationsInput | string | null
+    isBefore?: BoolFieldUpdateOperationsInput | boolean
     currentPrice?: NullableStringFieldUpdateOperationsInput | string | null
     memberId?: BigIntFieldUpdateOperationsInput | bigint | number
     stockSymbolId?: BigIntFieldUpdateOperationsInput | bigint | number
@@ -31960,6 +31984,7 @@ export namespace Prisma {
     type?: SortOrder
     pl?: SortOrder
     rate?: SortOrder
+    isBefore?: SortOrder
     currentPrice?: SortOrder
     memberId?: SortOrder
     stockSymbolId?: SortOrder
@@ -31993,6 +32018,7 @@ export namespace Prisma {
     type?: SortOrder
     pl?: SortOrder
     rate?: SortOrder
+    isBefore?: SortOrder
     currentPrice?: SortOrder
     memberId?: SortOrder
     stockSymbolId?: SortOrder
@@ -32016,6 +32042,7 @@ export namespace Prisma {
     type?: SortOrder
     pl?: SortOrder
     rate?: SortOrder
+    isBefore?: SortOrder
     currentPrice?: SortOrder
     memberId?: SortOrder
     stockSymbolId?: SortOrder
@@ -33554,6 +33581,7 @@ export namespace Prisma {
     type: number
     pl?: string | null
     rate?: string | null
+    isBefore?: boolean
     currentPrice?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string | null
@@ -33576,6 +33604,7 @@ export namespace Prisma {
     type: number
     pl?: string | null
     rate?: string | null
+    isBefore?: boolean
     currentPrice?: string | null
     stockSymbolId: bigint | number
     createdAt?: Date | string
@@ -33879,6 +33908,7 @@ export namespace Prisma {
     type?: IntFilter<"StockPosition"> | number
     pl?: StringNullableFilter<"StockPosition"> | string | null
     rate?: StringNullableFilter<"StockPosition"> | string | null
+    isBefore?: BoolFilter<"StockPosition"> | boolean
     currentPrice?: StringNullableFilter<"StockPosition"> | string | null
     memberId?: BigIntFilter<"StockPosition"> | bigint | number
     stockSymbolId?: BigIntFilter<"StockPosition"> | bigint | number
@@ -34365,6 +34395,7 @@ export namespace Prisma {
     type: number
     pl?: string | null
     rate?: string | null
+    isBefore?: boolean
     currentPrice?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string | null
@@ -34387,6 +34418,7 @@ export namespace Prisma {
     type: number
     pl?: string | null
     rate?: string | null
+    isBefore?: boolean
     currentPrice?: string | null
     memberId: bigint | number
     createdAt?: Date | string
@@ -35451,6 +35483,7 @@ export namespace Prisma {
     type: number
     pl?: string | null
     rate?: string | null
+    isBefore?: boolean
     currentPrice?: string | null
     stockSymbolId: bigint | number
     createdAt?: Date | string
@@ -35564,6 +35597,7 @@ export namespace Prisma {
     type?: IntFieldUpdateOperationsInput | number
     pl?: NullableStringFieldUpdateOperationsInput | string | null
     rate?: NullableStringFieldUpdateOperationsInput | string | null
+    isBefore?: BoolFieldUpdateOperationsInput | boolean
     currentPrice?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -35586,6 +35620,7 @@ export namespace Prisma {
     type?: IntFieldUpdateOperationsInput | number
     pl?: NullableStringFieldUpdateOperationsInput | string | null
     rate?: NullableStringFieldUpdateOperationsInput | string | null
+    isBefore?: BoolFieldUpdateOperationsInput | boolean
     currentPrice?: NullableStringFieldUpdateOperationsInput | string | null
     stockSymbolId?: BigIntFieldUpdateOperationsInput | bigint | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -35608,6 +35643,7 @@ export namespace Prisma {
     type?: IntFieldUpdateOperationsInput | number
     pl?: NullableStringFieldUpdateOperationsInput | string | null
     rate?: NullableStringFieldUpdateOperationsInput | string | null
+    isBefore?: BoolFieldUpdateOperationsInput | boolean
     currentPrice?: NullableStringFieldUpdateOperationsInput | string | null
     stockSymbolId?: BigIntFieldUpdateOperationsInput | bigint | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -35903,6 +35939,7 @@ export namespace Prisma {
     type: number
     pl?: string | null
     rate?: string | null
+    isBefore?: boolean
     currentPrice?: string | null
     memberId: bigint | number
     createdAt?: Date | string
@@ -35925,6 +35962,7 @@ export namespace Prisma {
     type?: IntFieldUpdateOperationsInput | number
     pl?: NullableStringFieldUpdateOperationsInput | string | null
     rate?: NullableStringFieldUpdateOperationsInput | string | null
+    isBefore?: BoolFieldUpdateOperationsInput | boolean
     currentPrice?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -35947,6 +35985,7 @@ export namespace Prisma {
     type?: IntFieldUpdateOperationsInput | number
     pl?: NullableStringFieldUpdateOperationsInput | string | null
     rate?: NullableStringFieldUpdateOperationsInput | string | null
+    isBefore?: BoolFieldUpdateOperationsInput | boolean
     currentPrice?: NullableStringFieldUpdateOperationsInput | string | null
     memberId?: BigIntFieldUpdateOperationsInput | bigint | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -35969,6 +36008,7 @@ export namespace Prisma {
     type?: IntFieldUpdateOperationsInput | number
     pl?: NullableStringFieldUpdateOperationsInput | string | null
     rate?: NullableStringFieldUpdateOperationsInput | string | null
+    isBefore?: BoolFieldUpdateOperationsInput | boolean
     currentPrice?: NullableStringFieldUpdateOperationsInput | string | null
     memberId?: BigIntFieldUpdateOperationsInput | bigint | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string

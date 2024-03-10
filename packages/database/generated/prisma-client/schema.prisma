@@ -376,6 +376,8 @@ model StockPosition {
   // 损益率
   rate String? @default("0")
 
+  isBefore Boolean @default(false)
+
   currentPrice String? @map("current_price")
 
   memberId      BigInt @map("member_id")

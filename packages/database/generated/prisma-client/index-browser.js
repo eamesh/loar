@@ -324,6 +324,7 @@ exports.Prisma.StockPositionScalarFieldEnum = {
   type: 'type',
   pl: 'pl',
   rate: 'rate',
+  isBefore: 'isBefore',
   currentPrice: 'currentPrice',
   memberId: 'memberId',
   stockSymbolId: 'stockSymbolId',
