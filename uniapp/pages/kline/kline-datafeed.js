@@ -101,8 +101,6 @@ export class KlineDatafeed {
    * 通过callback告知图表接收数据
    */
   async subscribe (symbol, period, callback) {
-	  return
-	  callback([])
 		try{
 			var that = this
 			clearInterval(this.timer)

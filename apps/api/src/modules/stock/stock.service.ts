@@ -169,6 +169,15 @@ export class StockService {
         ...symboldResult,
         marketResult,
         detail,
+        sync: detail,
+        open: detail.open,
+        close: detail.lastClose,
+        high: detail.high,
+        low: detail.low,
+        price: detail.price,
+        change: detail.chg,
+        changePercent: detail.chgV,
+        amount: detail.amount,
       };
     } catch (error) {
       console.log(error);
