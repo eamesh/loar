@@ -535,6 +535,7 @@ let page = 1;
 					}
 
 					if (this.tmpStocks[key]) {
+						console.log(data)
 						this.tmpStocks[key] = Object.assign(this.tmpStocks[key], data)
 					}
 				} catch (e) {

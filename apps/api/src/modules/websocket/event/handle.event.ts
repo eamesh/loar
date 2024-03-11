@@ -66,7 +66,7 @@ export class HandleEvent {
       });
 
       // 触发持仓数据更新
-      this.eventEmitter.emit('HANDLE_POSITION', stockSymbol);
+      this.eventEmitter.emit('HANDLE_POSITION', newStockSymbol);
       // 推送客户端已订阅
       // console.log(
       //   `推送订阅 `,
