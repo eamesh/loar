@@ -13,10 +13,12 @@ import * as dayjs from 'dayjs';
 import * as utc from 'dayjs/plugin/utc';
 import * as timezone from 'dayjs/plugin/timezone';
 import * as isBetween from 'dayjs/plugin/isBetween';
+import * as customParseFormat from 'dayjs/plugin/customParseFormat';
 
 dayjs.extend(utc);
 dayjs.extend(timezone);
 dayjs.extend(isBetween);
+dayjs.extend(customParseFormat);
 
 @Injectable()
 export class HandleStockService {
@@ -27,13 +29,18 @@ export class HandleStockService {
   ) {}
 
   async getTradingPhase(code: string) {
+    const map = {
+      HK: 'HKEX',
+      US: 'US',
+    };
+    code = map[code];
     const market = await this.prisma.stockMarket.findFirst({
       where: {
         code,
       },
     });
     const marketTime = dayjs().tz(market.timezone);
-
+    console.log(marketTime.format('YYYY-MM-DD HH:mm:ss'));
     // Check if it's weekend
     const dayOfWeek = marketTime.day();
     if (dayOfWeek === 0 || dayOfWeek === 6) {
@@ -42,16 +49,16 @@ export class HandleStockService {
 
     const [[mStart, mEnd], [aStart, aEnd]] = market.openTime
       .split(',')
-      .map((item) => item.split(':'));
+      .map((item) => item.split('-'));
 
-    const [pStart, pEnd] = market.beforeTime.split(':');
+    const [pStart, pEnd] = market.beforeTime.split('-');
     const preMarketStartTime = dayjs(pStart, 'HH:mm').tz(market.timezone);
     const preMarketEndTime = dayjs(pEnd, 'HH:mm').tz(market.timezone);
     const morningStartTime = dayjs(mStart, 'HH:mm').tz(market.timezone);
     const morningEndTime = dayjs(mEnd, 'HH:mm').tz(market.timezone);
     const afternoonStartTime = dayjs(aStart, 'HH:mm').tz(market.timezone);
     const afternoonEndTime = dayjs(aEnd, 'HH:mm').tz(market.timezone);
-
+    console.log('=====', mEnd, dayjs(mEnd, 'HH:mm'));
     if (
       marketTime.isBetween(preMarketStartTime, preMarketEndTime, null, '[]')
     ) {
