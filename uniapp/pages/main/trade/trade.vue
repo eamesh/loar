@@ -302,7 +302,7 @@
 			totalPrice() {
 				let sum = this.totalStockPrice
 				console.log(this.profileBalance.balance)
-				sum = parseFloat(sum) + parseFloat(this.profileBalance.balance)
+				sum = parseFloat(sum) + parseFloat(this.profileBalance.balance) + parseFloat(this.profileBalance.unBalance)
 				return sum.toFixed(4)
 			},
 			profileBalance() {
