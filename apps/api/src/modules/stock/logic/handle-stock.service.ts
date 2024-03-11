@@ -134,7 +134,9 @@ export class HandleStockService {
     // }
     console.log('冻结余额', unBalance);
     unBalance = unBalance.add(bondDecimal);
-    balance = balance.sub(bondDecimal);
+    balance = balance.sub(
+      new Decimal(detail.price).mul(new Decimal(payload.amount)),
+    );
 
     // 判断用户可用余额
 
