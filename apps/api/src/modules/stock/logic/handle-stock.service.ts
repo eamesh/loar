@@ -39,7 +39,7 @@ export class HandleStockService {
         code,
       },
     });
-    const marketTime = dayjs().tz(market.timezone);
+    const marketTime = dayjs.utc().tz(market.timezone);
     console.log(marketTime.format('YYYY-MM-DD HH:mm:ss'));
     // Check if it's weekend
     const dayOfWeek = marketTime.day();
@@ -52,13 +52,31 @@ export class HandleStockService {
       .map((item) => item.split('-'));
 
     const [pStart, pEnd] = market.beforeTime.split('-');
-    const preMarketStartTime = dayjs(pStart, 'HH:mm').tz(market.timezone);
-    const preMarketEndTime = dayjs(pEnd, 'HH:mm').tz(market.timezone);
-    const morningStartTime = dayjs(mStart, 'HH:mm').tz(market.timezone);
-    const morningEndTime = dayjs(mEnd, 'HH:mm').tz(market.timezone);
-    const afternoonStartTime = dayjs(aStart, 'HH:mm').tz(market.timezone);
-    const afternoonEndTime = dayjs(aEnd, 'HH:mm').tz(market.timezone);
-    console.log('=====', mEnd, dayjs(mEnd, 'HH:mm'));
+    const preMarketStartTime = marketTime
+      .clone()
+      .set('hour', +pStart.split(':')[0])
+      .set('minute', +pStart.split(':')[1]);
+    const preMarketEndTime = marketTime
+      .clone()
+      .set('hour', +pEnd.split(':')[0])
+      .set('minute', +pEnd.split(':')[1]);
+    const morningStartTime = marketTime
+      .clone()
+      .set('hour', +mStart.split(':')[0])
+      .set('minute', +mStart.split(':')[1]);
+    const morningEndTime = marketTime
+      .clone()
+      .set('hour', +mEnd.split(':')[0])
+      .set('minute', +mEnd.split(':')[1]);
+    const afternoonStartTime = marketTime
+      .clone()
+      .set('hour', +aStart.split(':')[0])
+      .set('minute', +aStart.split(':')[1]);
+    const afternoonEndTime = marketTime
+      .clone()
+      .set('hour', +aEnd.split(':')[0])
+      .set('minute', +aEnd.split(':')[1]);
+    console.log('=====', mStart, marketTime.format('YYYY-MM-DD HH:mm:ss'));
     if (
       marketTime.isBetween(preMarketStartTime, preMarketEndTime, null, '[]')
     ) {
