@@ -26,7 +26,7 @@ export class HandleEvent {
       change,
       changePercent,
     } = stock;
-    // console.log('handle', symbol);
+    console.log('handle', symbol);
 
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const [_, market, code] = symbol.match(/^(HK|US)(.*)/i);
@@ -60,7 +60,7 @@ export class HandleEvent {
           volume: `${volume}`,
           date: date.toString(),
           change: `${change}`,
-          changePercent,
+          changePercent: `${changePercent}`,
           sync: JSON.stringify(stock),
         },
       });
@@ -79,6 +79,7 @@ export class HandleEvent {
           data: newStockSymbol,
         });
     } catch (error) {
+      console.log(error);
       // Logger.error(`未匹配到 ${market} ${symbol} 丢弃`);
     }
   }
