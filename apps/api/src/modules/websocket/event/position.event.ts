@@ -25,7 +25,7 @@ export class PositionEvent {
 
   async handleRegistration(symbol: StockSymbol) {
     try {
-      console.log('处理挂单');
+      // console.log('处理挂单');
       // 获取正在挂单
       const positions = await this.prisma.stockPosition.findMany({
         where: {
