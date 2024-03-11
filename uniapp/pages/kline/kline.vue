@@ -63,15 +63,15 @@
 							<view class="flex flex-row justify-between items-center">
 								<view class="text-gray-400">{{ $t('kline.side') }}</view>
 								<view class="flex flex-row gap-x-3">
-									<view class="w-[50px] text-sm py-1 rounded text-center" :class="formData.mode === 0 ? 'bg-[#00c537] text-white' : 'bg-[#f9f9f9] text-[#999]'" @click="swithMode(0)">{{ $t('long') }}</view>
-									<view class="w-[50px] text-sm py-1 rounded text-center" :class="formData.mode === 1 ? 'bg-[#e60101] text-white ' : 'bg-[#f9f9f9] text-[#999]'" @click="swithMode(1)">{{ $t('short') }}</view>
+									<view class="w-[120rpx] text-sm py-1 rounded text-center" :class="formData.mode === 0 ? 'bg-[#00c537] text-white' : 'bg-[#f9f9f9] text-[#999]'" @click="swithMode(0)">{{ $t('long') }}</view>
+									<view class="w-[120rpx] text-sm py-1 rounded text-center" :class="formData.mode === 1 ? 'bg-[#e60101] text-white ' : 'bg-[#f9f9f9] text-[#999]'" @click="swithMode(1)">{{ $t('short') }}</view>
 								</view>
 							</view>
 							<view class="flex flex-row justify-between items-center">
 								<view class="text-gray-400">{{ $t('kline.type') }}</view>
 								<view class="flex flex-row gap-x-3">
-									<view class="w-[50px] text-sm py-1 rounded text-center" :class="formData.type === 0 ? 'text-white bg-[#3395FF]' : 'text-[#999] bg-[#f9f9f9]'" @click="swithType(0)">{{ $t('market') }}</view>
-									<view class="w-[50px] text-sm py-1 rounded text-center" :class="formData.type === 1 ? 'text-white bg-[#3395FF]' : 'text-[#999] bg-[#f9f9f9]'" @click="swithType(1)">{{ $t('limit') }}</view>
+									<view class="w-[120rpx] text-sm py-1 rounded text-center" :class="formData.type === 0 ? 'text-white bg-[#3395FF]' : 'text-[#999] bg-[#f9f9f9]'" @click="swithType(0)">{{ $t('market') }}</view>
+									<view class="w-[120rpx] text-sm py-1 rounded text-center" :class="formData.type === 1 ? 'text-white bg-[#3395FF]' : 'text-[#999] bg-[#f9f9f9]'" @click="swithType(1)">{{ $t('limit') }}</view>
 								</view>
 							</view>
 							<view class="flex flex-row justify-between items-center">

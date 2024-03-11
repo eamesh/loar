@@ -176,5 +176,9 @@
 	"kline.min_num": "最小單位1",
 	"kline.order_price": "訂單價格",
 	"market.close": "市場暫未開放",
-	"table.num_price": "數量/價格"
+	"table.num_price": "數量/價格",
+	"order.wait": "待處理",
+	"order.handled": "已處理",
+	"order.cancel": "已取消",
+	"order.registration": "挂單中"
 }

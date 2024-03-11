@@ -93,7 +93,7 @@
 				
 						<view class="p-4 bg-white rounded-lg ">
 							<view class="flex flex-row items-center">
-								<gui-switch-navigation width="160" :items="navSecondTabs" @change="navSecondChange" :size="0" activeDirection="center"
+								<gui-switch-navigation :width="language.key === 'en' ?200 : 140" :items="navSecondTabs" @change="navSecondChange" :size="0" activeDirection="center"
 									:margin="20" padding="0rpx" textAlign="center"></gui-switch-navigation>
 									<view class="pb-1 text-sm" @click="$go(`/pages/stock/order/order?market=${current.code}`, 'navigateTo')">
 										{{$t("orders")}}
@@ -265,7 +265,8 @@
 			...mapState(useAppStore, {
 				token: 'token',
 				markets: 'markets',
-				member: 'member'
+				member: 'member',
+				language: 'language'
 			}),
 			current() {
 				return this.navTabs.find((_, idx) => idx === this.currentIndex)

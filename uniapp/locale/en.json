@@ -177,5 +177,9 @@
 	"kline.min_num": "Min num 1",
 	"kline.order_price": "Order Price",
 	"market.close": "Market Closed",
-	"table.num_price": "Amount/Price"
+	"table.num_price": "Amount/Price",
+	"order.wait": "Pending",
+	"order.handled": "Processed",
+	"order.cancel": "Cancel",
+	"order.registration": "Registration"
 }

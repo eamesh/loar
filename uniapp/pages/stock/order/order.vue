@@ -26,7 +26,7 @@
 								<view class="flex flex-row items-center gap-x-1 mt-2">
 									<view class="bg-[#3395FF] text-white text-[18rpx] px-[10rpx] py-[3px] rounded-sm">{{ item.market }}</view>
 									<view class="text-[#999] text-[20rpx]">{{ item.stockSymbol.code }}</view>
-									<view class="text-[20rpx] text-[#00c537]">挂单中</view>
+									<view class="text-[20rpx] text-[#00c537]" v-if="item.status === 4">{{ $t('order.registration') }}</view>
 								</view>
 							</view>
 						</view>
@@ -70,13 +70,13 @@
 			navBars() {
 				return [{
 					id: 0,
-					name: "待處理"
+					name: this.$t('order.wait')
 				},{
 					id: 1,
-					name: "已處理"
+					name: this.$t('order.handled')
 				},{
 					id: 2,
-					name: "已取消"
+					name: this.$t('order.cancel')
 				}]
 			},
 			modeText() {
