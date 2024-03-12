@@ -28,10 +28,10 @@ export const columns: BasicColumn<any>[] = [
     title: '持仓数量',
     key: 'amount',
   },
-  {
-    title: '平仓价格',
-    key: 'price',
-  },
+  // {
+  //   title: '平仓价格',
+  //   key: 'price',
+  // },
   {
     title: '保证金',
     key: 'bond',

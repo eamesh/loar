@@ -400,7 +400,7 @@ export class StockService {
     return await this.updatePostionType(id, { status: 3 });
   }
 
-  async updatePostionType(id: number | bigint, payload: any) {
+  async updatePostionType(id: number | bigint, payload: any, is = false) {
     console.log(id, payload);
     const position = await this.prisma.stockPosition.findFirst({
       where: {
@@ -408,10 +408,10 @@ export class StockService {
       },
     });
 
-    if (![0, 4].includes(position.status)) {
+    if (!is && [0].includes(position.status)) {
       return;
     }
-
+    console.log(position);
     const { amount, status } = payload;
     let bond = new Decimal(position.bond);
     let refundBond = new Decimal(0);
@@ -441,9 +441,9 @@ export class StockService {
         },
         data: {
           amount,
-          bond: `${bond.toString()}`,
-          // 盘前订单或者限价订单 进入挂单 7
-          status: position.isBefore ? 4 : 0,
+          bond: `0`,
+          // 盘前订单或者限价订单 进入挂单
+          status: position.isBefore || (+position.type === 1 && !is) ? 4 : 0,
         },
       });
     }
@@ -454,10 +454,10 @@ export class StockService {
       },
     });
 
-    // 返还保证金 增加余额
+    // 返还保证金 转持仓
     const accountBalance = member.accountBalance;
     const account = accountBalance[position.market];
-    const unBalance = new Decimal(account.unBalance).sub(refundBond);
+    const unBalance = new Decimal(account.unBalance).sub(position.bond);
 
     accountBalance[position.market].unBalance = unBalance;
     accountBalance[position.market].balance = new Decimal(

@@ -39,6 +39,7 @@ export class PositionEvent {
       await Promise.all(
         positions.map(async (item) => {
           try {
+            console.log('处理挂单', item.memberId, symbol.newPrice, item.price);
             // 判断价格是否在范围内
             if (new Decimal(symbol.newPrice).lte(item.price)) {
               // 修改价格
@@ -50,9 +51,14 @@ export class PositionEvent {
                   price: symbol.newPrice,
                 },
               });
-
               // 持仓
-              await this.stockService.updatePostionType(item.id, {});
+              await this.stockService.updatePostionType(
+                item.id,
+                {
+                  amount: item.amount,
+                },
+                true,
+              );
             }
           } catch (error) {}
         }),

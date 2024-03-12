@@ -136,7 +136,7 @@ export class StockController {
     const { data, meta } = await this.stockService.getPostions({
       where,
       orderBy: {
-        updatedAt: 'desc',
+        createdAt: 'desc',
       },
       page,
       perPage: pageSize,

@@ -11,7 +11,7 @@
 
 			<view class="flex flex-col justify-center items-center pt-20 pb-10 gap-y-4 font-sans">
 				<image src="/static/img/avatar.png" class="w-32 h-24 rounded-xl"></image>
-				<text class="text-[#3395ff] font-sans font-semibold">VIM GROUPS</text>
+				<text class="text-[#3395ff] font-sans font-semibold">VIM 777777GROUPS</text>
 			</view>
 
 			<view class="px-4 font-sans">

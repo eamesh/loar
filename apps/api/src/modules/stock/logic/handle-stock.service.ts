@@ -130,7 +130,7 @@ export class HandleStockService {
     let bond = new Decimal(0);
 
     // 限价计算保证金
-    if (+type === 2 || isBefore) {
+    if (+type === 1 || isBefore) {
       bond = new Decimal(detail.price).mul(new Decimal(payload.amount));
     }
 
@@ -230,10 +230,12 @@ export class HandleStockService {
 
     // 获取股票
     const { stockSymbol } = position;
-    stockSymbol;
     // 获取最新价
+    const detailCode = stockSymbol.cat
+      ? `${stockSymbol.cat}.${stockSymbol.code}`
+      : stockSymbol.code;
     const detail = await this.shuhai.getSymbolDetail(
-      stockSymbol.code,
+      detailCode,
       stockSymbol.syncMarket,
     );
     // 获取用户余额
@@ -244,14 +246,14 @@ export class HandleStockService {
      */
     const allSellPrice = detail.price * position.amount;
     const allBuyPrice = +position.price * position.amount;
-
+    console.log('==========', detail, allSellPrice, allBuyPrice);
     // 盈亏
-    let profitLoss = 0;
-    if (+position.mode === 0) {
-      profitLoss = allSellPrice - allBuyPrice;
-    } else {
-      profitLoss = allBuyPrice - allSellPrice;
-    }
+    // let profitLoss = 0;
+    // if (+position.mode === 0) {
+    //   profitLoss = allSellPrice - allBuyPrice;
+    // } else {
+    //   profitLoss = allBuyPrice - allSellPrice;
+    // }
     // 获取市场费率
     const market = await this.prisma.stockMarket.findFirst({
       where: {
@@ -264,9 +266,9 @@ export class HandleStockService {
     const feeRate = new Decimal(market.feeRate || 0);
 
     // 计算手续费
-    const buyFee = feeRate.mul(new Decimal(allBuyPrice));
+    const buyFee = feeRate.mul(new Decimal(allSellPrice));
     // 计算总盈亏
-    const allProfit = new Decimal(profitLoss)
+    const allProfit = new Decimal(allSellPrice)
       .sub(new Decimal(buyFee))
       .toNumber()
       .toFixed(3);
@@ -279,7 +281,7 @@ export class HandleStockService {
     });
 
     const allProfitDecimal = new Decimal(allProfit);
-    const bondDecimal = new Decimal(position.bond);
+    // const bondDecimal = new Decimal(position.bond);
     // if (stockSymbol.market !== 'US') {
     //   allProfitDecimal = await this.setting.handleToUSD(
     //     allProfitDecimal,
@@ -295,11 +297,10 @@ export class HandleStockService {
     const account = accountBalance[stockSymbol.market];
 
     // 可用余额
-    const balance = new Decimal(account.balance)
-      .add(allProfitDecimal)
-      .add(bondDecimal);
+    const balance = new Decimal(account.balance).add(allProfitDecimal);
+    // .add(bondDecimal);
     // 冻结余额
-    const unBalance = new Decimal(account.unBalance).sub(bondDecimal);
+    // const unBalance = new Decimal(account.unBalance).sub(bondDecimal);
 
     // 平仓
     const rate = `${((+allProfit / allBuyPrice) * 100).toFixed(3)}`;
@@ -316,11 +317,7 @@ export class HandleStockService {
     });
     console.log('可用余额', balance, allProfitDecimal);
 
-    accountBalance[stockSymbol.market] = {
-      balance,
-      unBalance,
-      lock: 0,
-    };
+    accountBalance[stockSymbol.market].balance = balance;
     // 修改用户余额
     await this.prisma.member.update({
       where: {

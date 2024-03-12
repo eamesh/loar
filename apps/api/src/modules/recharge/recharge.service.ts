@@ -51,7 +51,7 @@ export class RechargeService {
         where,
         orderBy,
         include: {
-          member: true,
+          // member: true,
         },
       },
       {
@@ -107,6 +107,8 @@ export class RechargeService {
 
       // 修改余额
       const accountBalance = recharge.member.accountBalance;
+      console.log(market);
+
       const account = accountBalance[market.code];
       const balance = new Decimal(account.balance).add(price);
 

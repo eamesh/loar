@@ -61,7 +61,7 @@
 				<view class="mt-3 w-full">
 					<gui-upload-images :header="header" @change="change" ref="uploadimgcom" @uploaded="uploaded" fileName="file"
 						@uploaderror="handleError" :btnName="$t('upload.add')"
-						uploadServerUrl="http://localhost:3000/api/v1/member/upload/file"></gui-upload-images>
+						:uploadServerUrl="uploadServerUrl"></gui-upload-images>
 				</view>
 			</view>
 		</template>
@@ -94,6 +94,7 @@
 		getAccountList
 	} from '@/api/member.js'
 	import QRCode from '@/Grace6/js/qrcode.js';
+	import config from '@/config/index.js'
 	export default {
 		data() {
 			return {
@@ -146,6 +147,9 @@
 			network() {
 				return this.tags[this.tagIndex]?.children || []
 			},
+			uploadServerUrl () {
+				return `${config.api}/member/upload/file`
+			}
 			// currentNetwork () {
 			// 	return this.network[this.]
 			// }

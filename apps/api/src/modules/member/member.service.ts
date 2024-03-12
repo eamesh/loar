@@ -151,15 +151,17 @@ export class MemberService {
 
       const markets = await this.prisma.stockMarket.findMany();
 
-      const accountBalance = markets.map((item) => {
-        const code = item.code;
+      // const accountBalance = markets.map((item) => {
+      //   const code = item.code;
 
-        return {
-          [code]: 0,
-          [`${code}_LOCK`]: 0,
-          [`${code}_UNBALANCE`]: 0,
-        };
-      });
+      //   return {
+      //     [code]: 0,
+      //     [`${code}_LOCK`]: 0,
+      //     [`${code}_UNBALANCE`]: 0,
+      //   };
+      // });
+
+      const accountBalance = {};
 
       // const accountBalance = {};
       markets.forEach((item) => {

@@ -20,7 +20,6 @@
 						<input v-model="address" class="h-[70rpx] w-full text-[20rpx]" name="address" placeholder="地址" />
 					</view>
 				</view>
-				{{params}}
 			</view>
 		</template>
 		<template v-slot:gFooter>
