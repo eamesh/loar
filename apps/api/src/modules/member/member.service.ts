@@ -60,6 +60,20 @@ export class MemberService {
     );
   }
 
+  async getHistoryProfitLoss(memberId: number) {
+    const result = await this.prisma.stockPosition.aggregate({
+      where: {
+        memberId,
+        status: 1,
+      },
+      _sum: {
+        profitLoss: true,
+      },
+    });
+
+    return result._sum.profitLoss.toNumber();
+  }
+
   async updateMemberType(type: number, id: number) {
     const data = { type, status: 0 };
 

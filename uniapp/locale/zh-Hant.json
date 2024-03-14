@@ -180,5 +180,6 @@
 	"order.wait": "待處理",
 	"order.handled": "已處理",
 	"order.cancel": "已取消",
-	"order.registration": "挂單中"
+	"order.registration": "挂單中",
+	"order.profit_fee": "盈虧/手續費"
 }

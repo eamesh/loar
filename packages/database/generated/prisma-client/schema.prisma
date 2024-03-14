@@ -379,6 +379,9 @@ model StockPosition {
   // 损益率
   rate String? @default("0")
 
+  profitLoss Decimal @db.Decimal(20,5) @default(0) @map("profit_loss")
+  feeRateMoney String? @default("0")  @map("fee_rate_money")
+
   isBefore Boolean @default(false)
 
   currentPrice String? @map("current_price")

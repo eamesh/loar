@@ -248,12 +248,12 @@ export class HandleStockService {
     const allBuyPrice = +position.price * position.amount;
     console.log('==========', detail, allSellPrice, allBuyPrice);
     // 盈亏
-    // let profitLoss = 0;
-    // if (+position.mode === 0) {
-    //   profitLoss = allSellPrice - allBuyPrice;
-    // } else {
-    //   profitLoss = allBuyPrice - allSellPrice;
-    // }
+    let profitLoss = 0;
+    if (+position.mode === 0) {
+      profitLoss = allSellPrice - allBuyPrice;
+    } else {
+      profitLoss = allBuyPrice - allSellPrice;
+    }
     // 获取市场费率
     const market = await this.prisma.stockMarket.findFirst({
       where: {
@@ -303,7 +303,10 @@ export class HandleStockService {
     // const unBalance = new Decimal(account.unBalance).sub(bondDecimal);
 
     // 平仓
-    const rate = `${((+allProfit / allBuyPrice) * 100).toFixed(3)}`;
+    // 计算盈亏率
+    // const rate = `${((+allProfit / allBuyPrice) * 100).toFixed(3)}`;
+    const profitLossBuyFee = +profitLoss - buyFee.toNumber();
+    const rate = `${((+profitLossBuyFee / allBuyPrice) * 100).toFixed(3)}`;
     await this.prisma.stockPosition.update({
       where: {
         id: position.id,
@@ -312,6 +315,8 @@ export class HandleStockService {
         currentPrice: `${detail.price}`,
         pl: `${allProfit}`,
         rate,
+        profitLoss: new Decimal(profitLossBuyFee),
+        feeRateMoney: `${buyFee}`,
         status: 1,
       },
     });

@@ -360,7 +360,7 @@
 					this.stock.open = sync.open
 					this.stock.detail.price = sync.newPrice.toFixed(3)
 					this.stock.high = sync.high
-					this.stock.low = sync.high
+					this.stock.low = sync.low
 					this.stock.change = data.change
 					this.stock.changePercent = data.changePercent
 					// this.formData.price = sync.newPrice.toFixed(3)

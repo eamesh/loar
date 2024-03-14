@@ -14760,6 +14760,7 @@ export namespace Prisma {
     mode: number | null
     status: number | null
     type: number | null
+    profitLoss: Decimal | null
     memberId: number | null
     stockSymbolId: number | null
   }
@@ -14770,6 +14771,7 @@ export namespace Prisma {
     mode: number | null
     status: number | null
     type: number | null
+    profitLoss: Decimal | null
     memberId: bigint | null
     stockSymbolId: bigint | null
   }
@@ -14790,6 +14792,8 @@ export namespace Prisma {
     type: number | null
     pl: string | null
     rate: string | null
+    profitLoss: Decimal | null
+    feeRateMoney: string | null
     isBefore: boolean | null
     currentPrice: string | null
     memberId: bigint | null
@@ -14814,6 +14818,8 @@ export namespace Prisma {
     type: number | null
     pl: string | null
     rate: string | null
+    profitLoss: Decimal | null
+    feeRateMoney: string | null
     isBefore: boolean | null
     currentPrice: string | null
     memberId: bigint | null
@@ -14838,6 +14844,8 @@ export namespace Prisma {
     type: number
     pl: number
     rate: number
+    profitLoss: number
+    feeRateMoney: number
     isBefore: number
     currentPrice: number
     memberId: number
@@ -14854,6 +14862,7 @@ export namespace Prisma {
     mode?: true
     status?: true
     type?: true
+    profitLoss?: true
     memberId?: true
     stockSymbolId?: true
   }
@@ -14864,6 +14873,7 @@ export namespace Prisma {
     mode?: true
     status?: true
     type?: true
+    profitLoss?: true
     memberId?: true
     stockSymbolId?: true
   }
@@ -14884,6 +14894,8 @@ export namespace Prisma {
     type?: true
     pl?: true
     rate?: true
+    profitLoss?: true
+    feeRateMoney?: true
     isBefore?: true
     currentPrice?: true
     memberId?: true
@@ -14908,6 +14920,8 @@ export namespace Prisma {
     type?: true
     pl?: true
     rate?: true
+    profitLoss?: true
+    feeRateMoney?: true
     isBefore?: true
     currentPrice?: true
     memberId?: true
@@ -14932,6 +14946,8 @@ export namespace Prisma {
     type?: true
     pl?: true
     rate?: true
+    profitLoss?: true
+    feeRateMoney?: true
     isBefore?: true
     currentPrice?: true
     memberId?: true
@@ -15043,6 +15059,8 @@ export namespace Prisma {
     type: number
     pl: string | null
     rate: string | null
+    profitLoss: Decimal
+    feeRateMoney: string | null
     isBefore: boolean
     currentPrice: string | null
     memberId: bigint
@@ -15086,6 +15104,8 @@ export namespace Prisma {
     type?: boolean
     pl?: boolean
     rate?: boolean
+    profitLoss?: boolean
+    feeRateMoney?: boolean
     isBefore?: boolean
     currentPrice?: boolean
     memberId?: boolean
@@ -15112,6 +15132,8 @@ export namespace Prisma {
     type?: boolean
     pl?: boolean
     rate?: boolean
+    profitLoss?: boolean
+    feeRateMoney?: boolean
     isBefore?: boolean
     currentPrice?: boolean
     memberId?: boolean
@@ -15148,6 +15170,8 @@ export namespace Prisma {
       type: number
       pl: string | null
       rate: string | null
+      profitLoss: Prisma.Decimal
+      feeRateMoney: string | null
       isBefore: boolean
       currentPrice: string | null
       memberId: bigint
@@ -15566,6 +15590,8 @@ export namespace Prisma {
     readonly type: FieldRef<"StockPosition", 'Int'>
     readonly pl: FieldRef<"StockPosition", 'String'>
     readonly rate: FieldRef<"StockPosition", 'String'>
+    readonly profitLoss: FieldRef<"StockPosition", 'Decimal'>
+    readonly feeRateMoney: FieldRef<"StockPosition", 'String'>
     readonly isBefore: FieldRef<"StockPosition", 'Boolean'>
     readonly currentPrice: FieldRef<"StockPosition", 'String'>
     readonly memberId: FieldRef<"StockPosition", 'BigInt'>
@@ -25910,6 +25936,8 @@ export namespace Prisma {
     type: 'type',
     pl: 'pl',
     rate: 'rate',
+    profitLoss: 'profitLoss',
+    feeRateMoney: 'feeRateMoney',
     isBefore: 'isBefore',
     currentPrice: 'currentPrice',
     memberId: 'memberId',
@@ -27439,6 +27467,8 @@ export namespace Prisma {
     type?: IntFilter<"StockPosition"> | number
     pl?: StringNullableFilter<"StockPosition"> | string | null
     rate?: StringNullableFilter<"StockPosition"> | string | null
+    profitLoss?: DecimalFilter<"StockPosition"> | Decimal | DecimalJsLike | number | string
+    feeRateMoney?: StringNullableFilter<"StockPosition"> | string | null
     isBefore?: BoolFilter<"StockPosition"> | boolean
     currentPrice?: StringNullableFilter<"StockPosition"> | string | null
     memberId?: BigIntFilter<"StockPosition"> | bigint | number
@@ -27465,6 +27495,8 @@ export namespace Prisma {
     type?: SortOrder
     pl?: SortOrderInput | SortOrder
     rate?: SortOrderInput | SortOrder
+    profitLoss?: SortOrder
+    feeRateMoney?: SortOrderInput | SortOrder
     isBefore?: SortOrder
     currentPrice?: SortOrderInput | SortOrder
     memberId?: SortOrder
@@ -27494,6 +27526,8 @@ export namespace Prisma {
     type?: IntFilter<"StockPosition"> | number
     pl?: StringNullableFilter<"StockPosition"> | string | null
     rate?: StringNullableFilter<"StockPosition"> | string | null
+    profitLoss?: DecimalFilter<"StockPosition"> | Decimal | DecimalJsLike | number | string
+    feeRateMoney?: StringNullableFilter<"StockPosition"> | string | null
     isBefore?: BoolFilter<"StockPosition"> | boolean
     currentPrice?: StringNullableFilter<"StockPosition"> | string | null
     memberId?: BigIntFilter<"StockPosition"> | bigint | number
@@ -27520,6 +27554,8 @@ export namespace Prisma {
     type?: SortOrder
     pl?: SortOrderInput | SortOrder
     rate?: SortOrderInput | SortOrder
+    profitLoss?: SortOrder
+    feeRateMoney?: SortOrderInput | SortOrder
     isBefore?: SortOrder
     currentPrice?: SortOrderInput | SortOrder
     memberId?: SortOrder
@@ -27552,6 +27588,8 @@ export namespace Prisma {
     type?: IntWithAggregatesFilter<"StockPosition"> | number
     pl?: StringNullableWithAggregatesFilter<"StockPosition"> | string | null
     rate?: StringNullableWithAggregatesFilter<"StockPosition"> | string | null
+    profitLoss?: DecimalWithAggregatesFilter<"StockPosition"> | Decimal | DecimalJsLike | number | string
+    feeRateMoney?: StringNullableWithAggregatesFilter<"StockPosition"> | string | null
     isBefore?: BoolWithAggregatesFilter<"StockPosition"> | boolean
     currentPrice?: StringNullableWithAggregatesFilter<"StockPosition"> | string | null
     memberId?: BigIntWithAggregatesFilter<"StockPosition"> | bigint | number
@@ -29805,6 +29843,8 @@ export namespace Prisma {
     type: number
     pl?: string | null
     rate?: string | null
+    profitLoss?: Decimal | DecimalJsLike | number | string
+    feeRateMoney?: string | null
     isBefore?: boolean
     currentPrice?: string | null
     createdAt?: Date | string
@@ -29829,6 +29869,8 @@ export namespace Prisma {
     type: number
     pl?: string | null
     rate?: string | null
+    profitLoss?: Decimal | DecimalJsLike | number | string
+    feeRateMoney?: string | null
     isBefore?: boolean
     currentPrice?: string | null
     memberId: bigint | number
@@ -29853,6 +29895,8 @@ export namespace Prisma {
     type?: IntFieldUpdateOperationsInput | number
     pl?: NullableStringFieldUpdateOperationsInput | string | null
     rate?: NullableStringFieldUpdateOperationsInput | string | null
+    profitLoss?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    feeRateMoney?: NullableStringFieldUpdateOperationsInput | string | null
     isBefore?: BoolFieldUpdateOperationsInput | boolean
     currentPrice?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -29877,6 +29921,8 @@ export namespace Prisma {
     type?: IntFieldUpdateOperationsInput | number
     pl?: NullableStringFieldUpdateOperationsInput | string | null
     rate?: NullableStringFieldUpdateOperationsInput | string | null
+    profitLoss?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    feeRateMoney?: NullableStringFieldUpdateOperationsInput | string | null
     isBefore?: BoolFieldUpdateOperationsInput | boolean
     currentPrice?: NullableStringFieldUpdateOperationsInput | string | null
     memberId?: BigIntFieldUpdateOperationsInput | bigint | number
@@ -29901,6 +29947,8 @@ export namespace Prisma {
     type: number
     pl?: string | null
     rate?: string | null
+    profitLoss?: Decimal | DecimalJsLike | number | string
+    feeRateMoney?: string | null
     isBefore?: boolean
     currentPrice?: string | null
     memberId: bigint | number
@@ -29925,6 +29973,8 @@ export namespace Prisma {
     type?: IntFieldUpdateOperationsInput | number
     pl?: NullableStringFieldUpdateOperationsInput | string | null
     rate?: NullableStringFieldUpdateOperationsInput | string | null
+    profitLoss?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    feeRateMoney?: NullableStringFieldUpdateOperationsInput | string | null
     isBefore?: BoolFieldUpdateOperationsInput | boolean
     currentPrice?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -29947,6 +29997,8 @@ export namespace Prisma {
     type?: IntFieldUpdateOperationsInput | number
     pl?: NullableStringFieldUpdateOperationsInput | string | null
     rate?: NullableStringFieldUpdateOperationsInput | string | null
+    profitLoss?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    feeRateMoney?: NullableStringFieldUpdateOperationsInput | string | null
     isBefore?: BoolFieldUpdateOperationsInput | boolean
     currentPrice?: NullableStringFieldUpdateOperationsInput | string | null
     memberId?: BigIntFieldUpdateOperationsInput | bigint | number
@@ -32092,6 +32144,8 @@ export namespace Prisma {
     type?: SortOrder
     pl?: SortOrder
     rate?: SortOrder
+    profitLoss?: SortOrder
+    feeRateMoney?: SortOrder
     isBefore?: SortOrder
     currentPrice?: SortOrder
     memberId?: SortOrder
@@ -32106,6 +32160,7 @@ export namespace Prisma {
     mode?: SortOrder
     status?: SortOrder
     type?: SortOrder
+    profitLoss?: SortOrder
     memberId?: SortOrder
     stockSymbolId?: SortOrder
   }
@@ -32126,6 +32181,8 @@ export namespace Prisma {
     type?: SortOrder
     pl?: SortOrder
     rate?: SortOrder
+    profitLoss?: SortOrder
+    feeRateMoney?: SortOrder
     isBefore?: SortOrder
     currentPrice?: SortOrder
     memberId?: SortOrder
@@ -32150,6 +32207,8 @@ export namespace Prisma {
     type?: SortOrder
     pl?: SortOrder
     rate?: SortOrder
+    profitLoss?: SortOrder
+    feeRateMoney?: SortOrder
     isBefore?: SortOrder
     currentPrice?: SortOrder
     memberId?: SortOrder
@@ -32164,6 +32223,7 @@ export namespace Prisma {
     mode?: SortOrder
     status?: SortOrder
     type?: SortOrder
+    profitLoss?: SortOrder
     memberId?: SortOrder
     stockSymbolId?: SortOrder
   }
@@ -33689,6 +33749,8 @@ export namespace Prisma {
     type: number
     pl?: string | null
     rate?: string | null
+    profitLoss?: Decimal | DecimalJsLike | number | string
+    feeRateMoney?: string | null
     isBefore?: boolean
     currentPrice?: string | null
     createdAt?: Date | string
@@ -33712,6 +33774,8 @@ export namespace Prisma {
     type: number
     pl?: string | null
     rate?: string | null
+    profitLoss?: Decimal | DecimalJsLike | number | string
+    feeRateMoney?: string | null
     isBefore?: boolean
     currentPrice?: string | null
     stockSymbolId: bigint | number
@@ -34016,6 +34080,8 @@ export namespace Prisma {
     type?: IntFilter<"StockPosition"> | number
     pl?: StringNullableFilter<"StockPosition"> | string | null
     rate?: StringNullableFilter<"StockPosition"> | string | null
+    profitLoss?: DecimalFilter<"StockPosition"> | Decimal | DecimalJsLike | number | string
+    feeRateMoney?: StringNullableFilter<"StockPosition"> | string | null
     isBefore?: BoolFilter<"StockPosition"> | boolean
     currentPrice?: StringNullableFilter<"StockPosition"> | string | null
     memberId?: BigIntFilter<"StockPosition"> | bigint | number
@@ -34511,6 +34577,8 @@ export namespace Prisma {
     type: number
     pl?: string | null
     rate?: string | null
+    profitLoss?: Decimal | DecimalJsLike | number | string
+    feeRateMoney?: string | null
     isBefore?: boolean
     currentPrice?: string | null
     createdAt?: Date | string
@@ -34534,6 +34602,8 @@ export namespace Prisma {
     type: number
     pl?: string | null
     rate?: string | null
+    profitLoss?: Decimal | DecimalJsLike | number | string
+    feeRateMoney?: string | null
     isBefore?: boolean
     currentPrice?: string | null
     memberId: bigint | number
@@ -35623,6 +35693,8 @@ export namespace Prisma {
     type: number
     pl?: string | null
     rate?: string | null
+    profitLoss?: Decimal | DecimalJsLike | number | string
+    feeRateMoney?: string | null
     isBefore?: boolean
     currentPrice?: string | null
     stockSymbolId: bigint | number
@@ -35737,6 +35809,8 @@ export namespace Prisma {
     type?: IntFieldUpdateOperationsInput | number
     pl?: NullableStringFieldUpdateOperationsInput | string | null
     rate?: NullableStringFieldUpdateOperationsInput | string | null
+    profitLoss?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    feeRateMoney?: NullableStringFieldUpdateOperationsInput | string | null
     isBefore?: BoolFieldUpdateOperationsInput | boolean
     currentPrice?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -35760,6 +35834,8 @@ export namespace Prisma {
     type?: IntFieldUpdateOperationsInput | number
     pl?: NullableStringFieldUpdateOperationsInput | string | null
     rate?: NullableStringFieldUpdateOperationsInput | string | null
+    profitLoss?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    feeRateMoney?: NullableStringFieldUpdateOperationsInput | string | null
     isBefore?: BoolFieldUpdateOperationsInput | boolean
     currentPrice?: NullableStringFieldUpdateOperationsInput | string | null
     stockSymbolId?: BigIntFieldUpdateOperationsInput | bigint | number
@@ -35783,6 +35859,8 @@ export namespace Prisma {
     type?: IntFieldUpdateOperationsInput | number
     pl?: NullableStringFieldUpdateOperationsInput | string | null
     rate?: NullableStringFieldUpdateOperationsInput | string | null
+    profitLoss?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    feeRateMoney?: NullableStringFieldUpdateOperationsInput | string | null
     isBefore?: BoolFieldUpdateOperationsInput | boolean
     currentPrice?: NullableStringFieldUpdateOperationsInput | string | null
     stockSymbolId?: BigIntFieldUpdateOperationsInput | bigint | number
@@ -36079,6 +36157,8 @@ export namespace Prisma {
     type: number
     pl?: string | null
     rate?: string | null
+    profitLoss?: Decimal | DecimalJsLike | number | string
+    feeRateMoney?: string | null
     isBefore?: boolean
     currentPrice?: string | null
     memberId: bigint | number
@@ -36102,6 +36182,8 @@ export namespace Prisma {
     type?: IntFieldUpdateOperationsInput | number
     pl?: NullableStringFieldUpdateOperationsInput | string | null
     rate?: NullableStringFieldUpdateOperationsInput | string | null
+    profitLoss?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    feeRateMoney?: NullableStringFieldUpdateOperationsInput | string | null
     isBefore?: BoolFieldUpdateOperationsInput | boolean
     currentPrice?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -36125,6 +36207,8 @@ export namespace Prisma {
     type?: IntFieldUpdateOperationsInput | number
     pl?: NullableStringFieldUpdateOperationsInput | string | null
     rate?: NullableStringFieldUpdateOperationsInput | string | null
+    profitLoss?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    feeRateMoney?: NullableStringFieldUpdateOperationsInput | string | null
     isBefore?: BoolFieldUpdateOperationsInput | boolean
     currentPrice?: NullableStringFieldUpdateOperationsInput | string | null
     memberId?: BigIntFieldUpdateOperationsInput | bigint | number
@@ -36148,6 +36232,8 @@ export namespace Prisma {
     type?: IntFieldUpdateOperationsInput | number
     pl?: NullableStringFieldUpdateOperationsInput | string | null
     rate?: NullableStringFieldUpdateOperationsInput | string | null
+    profitLoss?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    feeRateMoney?: NullableStringFieldUpdateOperationsInput | string | null
     isBefore?: BoolFieldUpdateOperationsInput | boolean
     currentPrice?: NullableStringFieldUpdateOperationsInput | string | null
     memberId?: BigIntFieldUpdateOperationsInput | bigint | number

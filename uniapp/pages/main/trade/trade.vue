@@ -59,7 +59,7 @@
 								<view class="flex flex-col justify-between items-start gap-y-3">
 									<view class="flex flex-col gap-y-2">
 										<view class="text-[#999]">{{ $t('historical.pl') }}</view>
-										<view class="font-mono">0.000</view>
+										<view class="font-mono">{{ profitLoss }}</view>
 									</view>
 				
 									<view class="flex flex-col gap-y-2">
@@ -236,7 +236,7 @@
 		getPositions,
 		positionSell
 	} from '@/api/trade.js'
-	import { getProfile } from '@/api/member.js'
+	import { getProfile, getMemberHistoryProfitLoss } from '@/api/member.js'
 	import { getSettingBykey } from '@/api/setting.js'
 	import Exchange from './exchange.vue'
 	export default {
@@ -254,7 +254,8 @@
 					lockBalance: 0
 				},
 				settings: {},
-				accountBalance: {}
+				accountBalance: {},
+				profitLoss: 0
 			}
 		},
 		components: {
@@ -475,6 +476,8 @@
 					const positions = await getPositions(market)
 					this.account = result
 					this.positions = positions
+					
+					this.profitLoss = await getMemberHistoryProfitLoss()
 				} catch (e) {
 					console.log(e)
 				}

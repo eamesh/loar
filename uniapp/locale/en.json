@@ -181,5 +181,6 @@
 	"order.wait": "Pending",
 	"order.handled": "Processed",
 	"order.cancel": "Cancel",
-	"order.registration": "Registration"
+	"order.registration": "Registration",
+	"order.profit_fee": "profitLoss/fee"
 }

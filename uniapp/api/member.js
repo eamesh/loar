@@ -106,3 +106,10 @@ export const getAccountList = function (data) {
 		method: 'GET',
 	})
 }
+
+export const getMemberHistoryProfitLoss = function() {
+	return http({
+		url: '/member/profitLoss',
+		method: 'GET',
+	})
+}

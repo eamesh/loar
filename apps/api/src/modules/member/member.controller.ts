@@ -49,6 +49,12 @@ export class MemberController {
     return new MemberEntity(request.user);
   }
 
+  @Get('profitLoss')
+  @UseGuards(MemberGuard)
+  async historyProfitLoss(@Request() request) {
+    return await this.member.getHistoryProfitLoss(request.id);
+  }
+
   @Post('exchange')
   async exchange(@Body() body: any) {
     return await this.member.exchange(body);
